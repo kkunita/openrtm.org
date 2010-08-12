@@ -1,0 +1,104 @@
+#contents
+
+OpenRTM-aist-Java本体のソースを変更して利用したい場合には、ソースからコンパイルすることができます。
+
+**配布ソースのビルド
+
+OpenRTM-aist (Java版) は Eclipse を利用したビルド環境を提供しています。
+
+// ***対応OSおよびディストリビューション 
+// OpenRTM-aist は下記の OS および Linux ディストリビューションで動作することが確認されています。
+// 
+// - FreeBSD
+// - Vine Linux
+// - Fedora
+// - Debian
+// - Ubuntu
+// 
+// これ以外の環境でも、一般的Linux/UNIX環境であれば、ビルドできる可能性があります。
+// 
+***依存ライブラリ
+
+OpenRTM-aist のビルドには下記の開発環境およびライブラリが必要です。
+
+-Eclipse SDK 3.3.x以上
+-jdk1.5.0_xx以上
+//-Apache Ant version 1.6.5以上
+//-ant4eclipse
+
+
+それぞれのライブラリ等のドキュメントに従いインストールを行ってください。
+//これらのパッケージが、標準のディレクトリ(/usr, /usr/local 等)下にインストールされていると、以降の OpenRTM-aist のコンパイル作業を比較的簡単に行うことができます。
+
+***ソースのダウンロード
+
+OpenRTM-aist-Javaのソースをダウンロードします。
+
+-http://www.openrtm.org/pub/OpenRTM-aist/java/
+
+
+***ソースコードの展開 
+
+まずソースコード OpenRTM-aist-Java-X.X.X.tar.gz を適当なディレクトリに展開します。
+- Linuxの場合
+ $ tar xvzf OpenRTM-aist-Java-X.X.X.tar.gz
+- Windowsの場合は、tgzを展開できるツールを使用して展開します。
+
+*** ビルド 
+ビルド方法を説明します。（図はWindows版のEclipse3.4.2です。）
+Eclipse を起動し、プロジェクトをワークスペースへインポートします。
+[ファイル(F)]-[インポート(I)] を選択します。
+#ref(eclipse_open_import.png,40%,center)
+CENTER: ''[ファイル(F)]-[インポート(I)]を選択''
+インポートの「選択」ウィンドウが開きます。ここで、[一般]-[既存プロジェクトをワークスペースへ]を選択して[次へ(N)>]ボタンを押します。
+#ref(eclipse_select_import.png,60%,center)
+CENTER: ''インポートの「選択」ウィンドウ''
+「プロジェクトのインポート」ウィンドウが開きます。「ルート・ディレクトリーの選択（T）」へ展開したディレクトリを指定して[完了(F)]ボタンを押します。
+#ref(eclipse_select_project.png,60%,center)
+CENTER: ''「プロジェクトのインポート」ウィンドウ''
+これで、プロジェクトをワークスペースへインポートできます。
+#ref(eclipse_open_project.png,60%,center)
+CENTER: ''プロジェクトのインポート''
+パッケージ・エクスプローラからbuild.xmlを右クリックして[デバッグ(D)]-[2 Antビルド...]を選択します。
+#ref(eclipse_select_ant_built.png,40%,center)
+CENTER: ''[デバッグ(D)]-[2 Antビルド...]を選択''
+構成編集のウィンドウが表示さます。ここで、buildAllLinux を選択して[デバッグ(D)]ボタンを押します。
+#ref(eclipse_execute_ant.png,60%,center)
+CENTER: ''構成編集のウィンドウ''
+ビルドが始まります。
+#ref(eclipse_execution_result.png,80%,center)
+CENTER: ''ビルド実行結果''
+コンソールウィンドウに以上の表示がでれば完了です。
+
+
+**リポジトリのソースのビルド
+
+OpenRTM-aist は開発に利用しているsubversion リポジトリを一般に公開しています。
+リポジトリからチェックアウトしたソースコードからビルドを行うこともできます。
+
+***必要なツール
+EclipseでリポジトリにアクセスするためにSubclipseが必要です。
+Subclipse：Eclipseのプラグイン（http://subclipse.tigris.org/update_1.0.x）
+
+***ソースのチェックアウト
+ソースのチェックアウト方法を説明します。（図はWindows版のEclipse3.4.2です。）
+Eclipseでソースをチェックアウトして、ワークスペースへインポートします。
+[ファイル(F)]-[インポート(I)] でインポートの「選択」ウィンドウが開きます。ここで、[その他]-[SVNからプロジェクトをチェックアウト]を選択して[次へ(N)>]ボタンを押すと「SVNからチェックアウト」ウィンドウが開きます。「新規リポジトリー・ロケーションを生成」を選択して「プロジェクトのインポート」[次へ(N)>]ボタンを押します。「Url」に ''http://www.openrtp.jp/openrtm/svn/OpenRTM-aist-Java/trunk/'' と入力し[次へ(N)>]ボタンを押します。
+「フォルダの選択」ウィンドウが開きますので、「jp.go.aist.rtm.RTC」を選択して[完了]ボタンを押します。
+
+*** ビルド 
+ビルド方法を説明します。（図はWindows版のEclipse3.4.2です。）
+パッケージ・エクスプローラからbuild.xmlを右クリックして[デバッグ(D)]-[2 Antビルド...]を選択します。
+#ref(eclipse_select_ant_built.png,40%,center)
+CENTER: ''[デバッグ(D)]-[2 Antビルド...]を選択''
+構成編集のウィンドウが表示さます。
+ここで、buildAllLinux を選択して[デバッグ(D)]ボタンを押します。
+#ref(eclipse_execute_ant.png,60%,center)
+CENTER: ''構成編集のウィンドウ''
+ビルドが始まります。
+#ref(eclipse_execution_result.png,80%,center)
+CENTER: ''ビルド実行結果''
+コンソールウィンドウに以上の表示がでれば完了です。
+
+
+

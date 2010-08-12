@@ -1,0 +1,120 @@
+#contents
+
+openrtm.org ではWindows用のmsi (Microsoft Windows インストーラー)パッケージを提供しています。
+msiパッケージを利用することで、依存ライブラリであるomniORBや、RTSystemEditorといったツールも同時にインストールすることができます。
+
+**msiパッケージによるインストール
+
+openrtm.org のダウンロードサイトから、msiパッケージをダウンロードします。msiパッケージには、必要なすべてのライブラリ等が含まれているので、別途ライブラリをインストールする必要はありません。
+ただし、コンポーネントの開発を行う場合は、以下のものも追加でインストールする必要があります。
+
+-Visual C++ または Visual Studio
+-python
+-RTSystemEditorやRTCBUilderを含むeclipseパッケージ
+-OpenCV 1.0 または 2.x (カメラを使用したサンプルを動作させる際に必要)
+
+また、古いバージョンのOpenRTM-aistやomniORBなどの依存パッケージがインストールされている場合は、予めアンインストールすることをお勧めします。
+
+***インストーラの起動
+openrtm.orgからmsiをダウンロードし実行すると、以下のようなダイアログが現れます。
+
+#ref(installer_ja_00.png,60%,center)
+CENTER:''インストーラダイアログ''
+
+ウィザードに従って、インストールを進めます。
+「次へ」をクリックすると使用許諾契約書の画面になりますので、「ソフトウエアライセンス条項に同意します」をクリックし次へ進みます。(デフォルトでは EPL (Eclipse Public License)に同意したことになります。)
+
+#ref(installer_ja_02.png,60%,center)
+CENTER:''ライセンスの選択''
+
+***セットアップの種類の選択
+
+セットアップの種類の選択へと進みます。以下の3種類のインストール方法が選択できます。
+
+-標準: すべての機能がインストールされます。
+-カスタム: インストールする機能を選択します。
+-完了: すべての機能がインストールされます。標準と同じ。
+
+
+#ref(installer_ja_03.png,60%,center)
+CENTER:''セットアップの種類の選択''
+
+***カスタムインストール
+「カスタム」を選択すると、インストールするパッケージをさらに細かく選択できます。
+
+#ref(installer_ja_03.png,60%,center)
+CENTER:''セットアップの種類の選択''
+
+以下の4つの項目があります。
+-OpenRTM-aist (C++): OpenRTM-aist本体です
+-OpenRT Platform Tool Chain: RTSystemEditorのスタンドアロン版です
+-omniORB: omniORBラインタイムライブラリとヘッダです
+-Visual C++ 2008 Runtime:　VC9のラインタイムライブラリです
+
+通常は、すべてをインストールしてください。
+ただし、開発を行いわないことが明確な場合は、
+-OpenRTM-aist (C++) の Runtime Environment
+-omniORB の Runtime Environment
+のみをインストールすることでランタイムライブラリのみがインストールされます。
+
+***インストール
+
+セットアップの種類の選択後、「次へ」をクリックするとインストールが開始されます。
+
+#ref(installer_ja_09.png,60%,center)
+CENTER:''インストール''
+
+下記の画面が出たらインストールは完了です。「完了」をクリックしてインストールを終了します。
+
+
+#ref(installer_ja_10.png,60%,center)
+CENTER:''インストールの完了''
+
+
+**インストールの詳細
+***インストーラの作業内容
+インストーラは以下の作業を行います。
+
+-インストールディレクトリ (デフォルトは C:\Program Files) 以下に各種ファイルをコピー
+--OpenRTM-aist ヘッダ、スクリプト、ライブラリ、サンプルを OpenRTM-aist\<version_number> 以下にコピー
+--スタンドアロン版 RTSystemEditor を OpenRTP 以下にコピー
+--omniORB ヘッダ、ライブラリ、コマンド等を omniORB 以下にコピー
+--Visual C++ランタイムをシステムディレクトリへコピー
+-スタートメニュー以下にOpenRTM-aistフォルダを作成し各種ショートカットを設定
+--rtcd、ネームサーバ等のショートカットを作成
+--サンプルRTCのショートカットを作成
+--doxygen によるクラスリファレンス、IDLリファレンスショートカットを作成
+-環境変数の設定
+--RTM_ROOTにOpenRTM-aist\binをセット
+--OMNI_ROOTにomniORBのバイナリ・ライブラリディレクトリをセット
+
+***インストールされるファイル
+ファイルは以下のような構造でインストールされます。
+
+ <install_dir>
+   + OpenRTM-aist
+   |  + <version>
+   |     + bin: dll, lib, 各種コマンド
+   |     + coil: coil ヘッダファイル
+   |     + doc: doxygen ドキュメント
+   |     + etc: vsprops, rtc.confサンプル
+   |     + examples
+   |         + CXX: C++ サンプルコンポーネント (.exe, .dll)
+   |     + rtm: OpenRTM-aist ヘッダファイル
+   |        + idl: OpenRTM-aist IDLファイル
+   |     + util
+   |        + rtc-template: rtc-templateモジュール
+   |
+   + omniORB
+   |  + <version>
+   |     + bin: dll, 各種コマンド
+   |     + idl: IDLファイル
+   |     + include: omniORBヘッダファイル
+   |     + lib: インポートライブラリ、pythonライブラリ
+   |
+   + OpenRTP
+      + RTSystemEditor: スタンドアロン版RTSystemEditor
+   
+
+
+

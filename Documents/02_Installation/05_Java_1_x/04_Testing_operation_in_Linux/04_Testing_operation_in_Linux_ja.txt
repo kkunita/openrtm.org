@@ -1,0 +1,199 @@
+#contents
+
+インストールが正常に終了したら、付属のサンプルで動作テストをします。サンプルは、zipファイルを展開したディレクト配下の以下の場所にあります。
+
+-/OpenRTM-aist/<version>/examples
+
+ソースからビルドした場合は、プロジェクトディレクトリ配下の以下の場所にあります。
+
+-/OpenRTM-X.X.X-Java/installer/resources/Source/examples
+(X.X.Xはヴァージョン。)
+
+サンプルコンポーネントセット SimpleIO を使って、OpenRTM-aist-Java が正しくビルド・インストールされているかを確認します。
+
+**サンプルコンポーネントセット SimpleIO
+
+RT コンポーネント ConsoleInComp、ConsoleOutComp からなるサンプルセットです。ConsoleInComp はコンソールから入力された数値をOutPortから出力するコンポーネント、ConsoleOutComp はInPortに入力された数値をコンソールに表示するコンポーネントです。これらは、最も Simple な I/O (入出力) を例示するためのサンプルです。ConsoleInComp の OutPort から ConsoleOutComp のInPort へ接続を構成し、これらの2つのコンポーネントをアクティブ化(Activate) することで動作します。
+
+以降、説明を簡単にするため OpenRTM-aist-Java が /home/openrtm/OpenRTM-aist/ にインストール（展開）されているとします。
+
+
+** サンプルを使用したテスト
+
+*** ネームサーバを起動
+
+まず、コンポーネントの参照を登録するためのネームサーバを起動します。
+OpenRTM-aist-Javaでは、orbd（Java CORBA naming servic）の起動用シェルスクリプトを準備しています。
+LinuxなどのパッケージでomniORBをインストールした場合、すでにシステムの
+サービスとしてネームサーバ (omniNames) が起動している場合があります。
+orbdの代わりにomniNamesを使用しても正常に動作します。
+
+すでに omniNames が起動している場合、このようになります。
+ $ ps ax | grep omni
+ 1550  ?        Sl     0:00 /usr/bin/omniNames -errlog /var/log/omniorb4-nameserver.log
+ 18418 pts/2    S+     0:00 grep --color=auto omni
+
+omniNames が起動していない場合はこのようになります。
+ $ ps ax | grep omni
+ 18418 pts/2    S+     0:00 grep --color=auto omni
+
+ネームサーバが起動していない場合、 start-orbd.sh コマンドでネームサーバを起動します。
+start-orbd.shは、/home/openrtm/OpenRTM-aist/1.0/examples に格納されています。
+
+ $ sh /home/openrtm/OpenRTM-aist/1.0/examples/start-orbd.sh
+ Starting Java CORBA naming service (orbd).
+
+oebdはブロックします。 
+
+
+// *** rtc.conf の作成
+// 
+// テストのためのRTCコンフィギュレーションファイル rtc.conf を作成し、配置します。まず、適当な作業ディレクトリを作ります。ここでは便利のため、ホームディレクトリ直下に RTCwork というディレクトリを作業ディレクトリとしておくことにします。作業ディレクトリ RTCwork に、次のような内容のファイル rtc.conf を作成し配置します。
+// 
+// /usr/share/OpenRTM-aist/examples の下にあるrtc.confはこの例では使えませんので、~/RTCWork/rtc.conf として新たに作成してください。
+// 
+//  $ cd ~/RTCwork
+//  $ vi rtc.conf
+// 
+// 作成するファイルの内容は以下のようになります。
+// 
+//  corba.nameservers: localhost
+//  naming.formats: %h.host_cxt/%n.rtc
+//  logger.enable: NO
+//  example.ConsoleOut.config_file: consout.conf
+//  example.ConsoleIn.config_file: consin.conf
+// CENTER:''rtc.conf''
+
+システムでIPv6が設定されている場合、''localhost''というホスト名が正しく
+機能しない場合があります。その場合、localhostの代わりに''127.0.0.1''に
+置き換えてください。
+
+*** ConsoleInComp の起動
+
+ターミナルを起動して ConsoleInComp を起動します。
+
+ $ sh /home/openrtm/OpenRTM-aist/1.0/examples/ConsoleInComp
+ 
+ Creating a component: "ConsoleIn"....
+ succeed.
+ =================================================
+  Component Profile
+ -------------------------------------------------
+ InstanceID:     ConsoleIn0
+ Implementation: ConsoleIn
+ Description:    Console input component
+ Version:        1.0
+ Maker:          Noriaki Ando, AIST
+ Category:       example
+   Other properties   
+ =================================================
+ =================================================
+ Port0 (name): 
+ ConsoleIn0.out
+ -------------------------------------------------
+ - properties -
+ port.port_type:DataOutPort
+ dataport.data_type:TimedLong
+ dataport.subscription_type:new, flush, periodic
+ dataport.dataflow_type:push,pull
+ dataport.interface_type:corba_cdr
+ -------------------------------------------------
+ 
+   
+// 自分でビルド・インストールした場合は、
+// 
+//  $ <source_dir>/OpenRTM-aist/examples/SimpleIO/ConsoleInComp -f ~rtc.conf
+// 
+// などとして ConsoleInComp を起動します。
+
+*** ConsoleOutComp の起動
+
+ターミナルを起動して、同様に ConsoleOutComp を起動します。
+
+ $ sh /home/openrtm/OpenRTM-aist/1.0/examples/ConsoleOutComp
+  
+ Creating a component: "ConsoleOut"....
+ succeed.
+ =================================================
+  Component Profile
+ -------------------------------------------------
+ InstanceID:     ConsoleOut0
+ Implementation: ConsoleOut
+ Description:    Console output component
+ Version:        1.0
+ Maker:          Noriaki Ando, AIST
+ Category:       example
+   Other properties   
+ =================================================
+ =================================================
+ Port0 (name): 
+ ConsoleOut0.in
+ -------------------------------------------------
+ - properties -
+ port.port_type:DataInPort
+ dataport.data_type:TimedLong
+ dataport.subscription_type:Any
+ dataport.dataflow_type:push,pull
+ dataport.interface_type:corba_cdr
+ -------------------------------------------------
+ 
+ 
+ 
+// 自分でビルド・インストールした場合は、同様に
+// 
+//  $ <source_dir>/OpenRTM-aist/examples/SimpleIO/ConsoleOutComp -f ~rtc.conf
+// 
+// などとして ConsoleOutComp を起動します。
+// 
+*** RTSystemEditor の起動
+
+RTSystemEditorを使って、RTコンポーネントの接続とアクティブ化を行います。
+[[こちら>/ja/content/openrtm-eclipse-tools-10-release]]から Eclipse 全部入りパッケージをダウンロードし解凍してください。
+
+RTSystemEditor は Java Development Kit6 を使用します。以下のマニュアルを参考にインストールしてください。また、Ubuntu等では、デフォルトの Java 環境は OpenJDK が推奨されています。そうした場合、OpenJDKでも利用することは可能です。
+
+--[[Java Development Kit 6:http://java.sun.com/javase/ja/6/download.html]]
+--[[JDKインストール方法 >/node/661#instjavaunixjdk]]
+
+[[こちら>/ja/content/rtsystemeditor-1]]のページを参考にRTSystemEditorの起動してください。
+
+*** ネームサーバの参照と確認
+
+ネームサーバへ接続し登録内容を確認します。
+ネームサーバへの接続は、左側の Name Service View のコンセント型アイコンのボタンをクリックし、ダイアログで
+
+ localhost
+ または
+ localhost:2809
+
+と入力します。(orbdのデフォルトのポート番号は2809です。)
+
+#ref(c_unix100_NameServer.png,nolink,center)
+CENTER: ネームサーバへの接続
+
+ネームサーバに登録されたRTコンポーネントをシステムエディタに配置します。
+左の Name Service View のConsoleOut0 および ConsoleIn0 を中央のエディタ
+上にドラッグアンドドロップします。次に、コンポーネントの右端、左端に出
+ている突起上のアイコンを、片方からもう片方でドラッグアンドドロップしま
+す。接続ダイアログが表示されますが、すべてデフォルトのままで結構ですの
+でOKを押せば、接続は完了します。
+
+#ref(c_unix100_oneditor.png,nolink,center)
+CENTER: RTSystemEditorによるシステムの編集
+
+メニューの下の緑色の「再生」ボタンを押すと、エディタ上のすべてのコンポー
+ネントがアクティブ化されます。
+
+*** 数値入力と出力の確認
+
+ConsoleInComp と ConsoleOutComp のポートを接続したら、
+
+ Please input number: 
+
+というプロンプトが現れるので、そこに数字を入力します。入力する数字は、
+short int に収まる範囲の数値を入力してください。
+
+ConsoleInComp 側のターミナルに数字を打ち込むと、ConsoleOutComp 側のター
+ミナルに、入力した数値が現れます。以上で、OpenRTM-aist-Java が正しくインストー
+ルされていることが確認できました。
+

@@ -1,0 +1,322 @@
+#contents
+
+openrtm.org ではWindows用のmsi (Microsoft Windows インストーラー)パッケージを提供しています。 msiパッケージを利用することで、RTSystemEditorといったツールも同時にインストールすることができます。通常インストールでは、インストーラを使用した方が便利でしょう。また、インストールの自由度を確保するために、必要なOpenRTM-aist-JavaライブラリコンポーネントをまとめたZipファイルも用意してあります。ユーザ独自の配置・組み合わせでインストールしたい場合などはこちらを利用してインストールすることもできます。
+
+** 対応OSおよびディストリビューション
+OpenRTM-aist-Java は下記の OS で動作することが確認されています。
+- Windows XP Professional
+
+&br;
+** 動作条件 
+-[[Java Development Kit 5.0(JDK 5)：日本語:http://java.sun.com/j2se/1.5.0/ja/download.html]]
+&color(red){※ Java1.4１では動作しません。};
+
+
+&br;
+** Javaのインストール
+
+OpenRTM-aist-Java は、J2SE5.0(JDK5)上で動作します。下記サイトなどから対象のプラットフォーム用のJ2SEをダウンロードしてください。
+//-[[Java SE Development Kit 5.0 Update 15 First Customer Ship >https://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/ViewProductDetail-Start?ProductRef=jdk-1.5.0_15-oth-JPR@CDS-CDS_Developer]]
+-[[Java SE Development Kit 5.0 Update 15 ダウンロードトップ >https://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/ViewProductDetail-Start?ProductRef=jdk-1.5.0_15-oth-JPR@CDS-CDS_Developer]]
+//-[[Archive: Download Java 2 Platform Standard Edition (J2SE) 5.0 Update 12 >http://java.sun.com/products/archive/j2se/5.0_12/index.html]]
+//-[[Java SE Development Kit 5.0 Update 15 for Windows, Multi-language:Online Installation >http://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/VerifyItem-Start/jdk-1_5_0_15-windows-i586-p-iftw.exe?BundledLineItemUUID=gvJIBe.mfz4AAAEZWZk1uTa1&OrderID=9_pIBe.mRfIAAAEZTJk1uTa1&ProductID=9K3ACUFBov0AAAEYe.s5AXuQ&FileName=/jdk-1_5_0_15-windows-i586-p-iftw.exe]]
+//-[[Java SE Development Kit 5.0 Update 15 for Windows, Multi-language:Offline Installation >http://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/VerifyItem-Start/jdk-1_5_0_15-windows-i586-p.exe?BundledLineItemUUID=NLVIBe.mJiwAAAEZY5k1uTa1&OrderID=9_pIBe.mRfIAAAEZTJk1uTa1&ProductID=9K3ACUFBov0AAAEYe.s5AXuQ&FileName=/jdk-1_5_0_15-windows-i586-p.exe]]
+//-[[Java SE Development Kit 5.0 Update 15 for Windows, Multi-language:オンライン　インストーラ >http://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/VerifyItem-Start/jdk-1_5_0_15-windows-i586-p-iftw.exe?BundledLineItemUUID=gvJIBe.mfz4AAAEZWZk1uTa1&OrderID=9_pIBe.mRfIAAAEZTJk1uTa1&ProductID=9K3ACUFBov0AAAEYe.s5AXuQ&FileName=/jdk-1_5_0_15-windows-i586-p-iftw.exe]]
+//-[[Java SE Development Kit 5.0 Update 15 for Windows, Multi-language:オフライン　インストーラ >http://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/VerifyItem-Start/jdk-1_5_0_15-windows-i586-p.exe?BundledLineItemUUID=sddIBe.pzjIAAAEZYDVhv6hg&OrderID=nChIBe.pJ40AAAEZSzVhv6hg&ProductID=9K3ACUFBov0AAAEYe.s5AXuQ&FileName=/jdk-1_5_0_15-windows-i586-p.exe]]
+//-[[http://java.sun.com/javase/downloads/index_jdk5.jsp:http://java.sun.com/javase/downloads/index_jdk5.jsp]]
+-[[JDK5 トップ(English):http://java.sun.com/javase/downloads/index_jdk5.jsp]]
+
+&br;
+*** インストールの実行
+ダウンロードしたファイルを実行するとインストールが開始されます。途中、使用許諾やインストール先などを聞かれますので、お使いの環境に合わせて設定してください。
+
+#br
+
+// #ref(java_install0.png,nolink,center)
+#ref(java_install0.png,60%,center)
+CENTER:''Javaのインストール(1)''
+#br
+#br
+
+//#ref(java_install1.png,nolink,center)
+#ref(java_install1.png,60%,center)
+CENTER:''Javaのインストール(2)''
+#br
+#br
+
+//#ref(java_install2.png,nolink,center)
+#ref(java_install2.png,60%,center)
+CENTER:''Javaのインストール(3)''
+#br
+#br
+
+//#ref(java_install3.png,nolink,center)
+#ref(java_install3.png,60%,center)
+CENTER:''Javaのインストール(4)''
+#br
+
+&br;
+*** インストールの確認
+//環境変数の設定が完了後、インストールの確認を行います。
+コマンド プロンプト画面を表示（''｢スタート｣''－''｢プログラム｣''－''｢アクセサリ｣''－''｢コマンド プロンプト｣''）し、
+
+ >java -version
+
+と入力します。インストールしたJavaのバージョンが表示されればインストールは完了です。
+
+#br
+
+//#ref(java_envsetting2.png,nolink,center)
+#ref(java_envsetting2.png,60%,center)
+CENTER:''インストールの確認(Windows)''
+#br
+
+-参考→[[FAQ: 「java -version」がインストールしたJDKのバージョンと異なります。 >/node/150#JDKver]]
+
+
+&br;
+** OpenRTM-aist-Javaのインストール
+//OpenRTM-aist-Javaのインストールを簡単にするために、インストーラを用意しました。通常インストールでは、インストーラを使用した方が便利でしょう。また、インストールの自由度を確保するために、必要なOpenRTM-aist-JavaライブラリコンポーネントをまとめたZipファイルも用意してあります。ユーザ独自の配置・組み合わせでインストールしたい場合などはこちらを利用してインストールすることもできます。
+
+
+//''※'' すでにOpenRTM-aist-0.4 を使用されている方へ
+
+//新しいOpenRTM-aist-Java-1.0では以前の0.4.2で使用していたRtcLink、RTSystemEditor は使えません。すでに、Eclipse上にRtcLinkプラグイン、又はRTSystemEditor(0.4.2用)プラグインをインストールしている方は、OpenRTM-aist-1.0 Javaを使う場合は、必ずRTSystemEditorも1.0.0に対応したものに差し替えてください。
+
+//参考：
+//　→ [[''FAQ:'' Q. RtcLink上でRTCのポートが表示されない（Java版） >FAQ/RtcLink#t117ed81]]
+
+
+*** インストーラを使用したインストール
+WindowsXP用のOpenRTM-aist-Javaインストーラが用意されていますので、[[こちら >/ja/content/openrtm-aist-java-100-release]]からダウンロードして実行します。実行後は、インストーラに従っていくだけでインストールが完了します。
+
+//　''⇒''　インストール完了後は、引き続き[[インストールの確認]]に進んでください。
+
+openrtm.orgからmsiをダウンロードし実行すると、以下のようなダイアログが現れます。
+
+#ref(install_RTM_java_2.png,60%,center)
+CENTER:''インストーラダイアログ''
+
+ウィザードに従って、インストールを進めます。
+「次へ」をクリックすると使用許諾契約書の画面になりますので、「ソフトウエアライセンス条項に同意します」をクリックし次へ進みます。(デフォルトでは EPL (Eclipse Public License)に同意したことになります。)
+
+#ref(install_RTM_java_3.png,60%,center)
+CENTER:''ライセンスの選択''
+
+***セットアップの種類の選択
+
+セットアップの種類の選択へと進みます。以下の3種類のインストール方法が選択できます。
+
+-標準: すべての機能がインストールされます。
+-カスタム: インストールする機能を選択します。
+-完了: すべての機能がインストールされます。標準と同じ。
+
+
+#ref(install_RTM_java_5.png,60%,center)
+CENTER:''セットアップの種類の選択''
+
+***カスタムインストール
+「カスタム」を選択すると、インストールするパッケージをさらに細かく選択できます。
+
+#ref(install_RTM_java_9.png,60%,center)
+CENTER:''セットアップの種類の選択''
+
+以下の２つの項目があります。(既にC++版、もしくはJava版がインストールされている場合は、RTSystemEditor以外の１つの項目になります。)
+-OpenRTM-aist (Java): OpenRTM-aist本体です
+-OpenRT Platform Tool Chain: RTSystemEditorのスタンドアロン版です
+
+通常は、すべてをインストールしてください。
+ただし、開発を行いわないことが明確な場合は、
+-OpenRTM-aist (Java) の Runtime Environment
+のみをインストールすることでランタイムライブラリのみがインストールされます。
+
+***インストール
+
+セットアップの種類の選択後、「次へ」をクリックするとインストールが開始されます。
+
+#ref(install_RTM_java_7.png,60%,center)
+CENTER:''インストール''
+
+下記の画面が出たらインストールは完了です。「完了」をクリックしてインストールを終了します。
+
+
+#ref(install_RTM_java_8.png,60%,center)
+CENTER:''インストールの完了''
+
+#br
+参考：
+
+　→ [[''FAQ:'' インストーラ実行中に「…特権が不足しています。」などと表示されて、インストールが続行できない >/node/150#tokkenn]]
+
+&br;
+*** Zipファイルからのインストール
+//** OpenRTM-aist-Java-1.0.xのインストール
+
+- Zipファイルのダウンロードと解凍
+[[こちら>/ja/content/openrtm-aist-java-100-release]]から「jarファイルおよびサンプル」をダウンロードし、zipファイルを任意の場所に解凍します。解凍先は任意でかまいませんが、フォルダ構造は変更しないでください''※''。また、この解凍先に含まれる「jar」フォルダへのパスは次に取り上げるシステム環境変数RTM_JAVA_ROOTに設定しなければなりません。
+
+:''※'' 何らの事情で、解凍後のフォルダ構造を自由な配置・自由な選択としたい場合は[[こちら >/node/160#Antbuild]]を参照してください。|
+
+#br
+
+:参考：|
+
+:　→ [[''FAQ:'' Q. 任意のフォルダにクラスパスを設定してAntビルドを行う方法は？ >/node/160#Antbuild]]|
+
+#br
+
+- システム環境変数の設定
+システム環境変数の設定を行います。
+''｢スタート｣''メニューから、''｢設定｣''－''｢コントロールパネル｣''を選択し、表示されたコントロールパネル画面から''｢システム｣''を選択します。''｢システムのプロパティ｣''画面では''｢詳細設定｣''タブを選択し、画面下部の''｢環境｣''ボタンをクリックします。
+
+#br
+
+//#ref(SystemProperty.PNG,nolink,center)
+#ref(SystemProperty.PNG,60%,center)
+CENTER:''PATHの設定(システムプロパティ)''
+#br
+#br
+
+//#ref(EnvVariable.PNG,nolink,center)
+#ref(EnvVariable.PNG,60%,center)
+CENTER:''PATHの設定(環境変数)''
+#br
+
+:画面下部の''｢システム環境変数｣''から、''｢新規｣''ボタンをクリックし、''｢新しいシステム変数｣''画面で以下の内容を入力します。|
+- 変数名:RTM_JAVA_ROOT
+- 変数値:解凍先フォルダ以下に含まれる「jar」フォルダ''※''までのベースパス（「jar」フォルダの''親フォルダ''へのフルパス）
+#br
+
+:　上記を入力後、''｢OK｣''ボタンをクリックし、''｢システムのプロパティ｣''画面を閉じます。|
+
+:''※'' 解凍時には「jar」フォルダはクラスライブラリ「OpenRTM-aist-<version>.jar」と「commons-cli-1.1.jar」の二つのファイルを含んだ状態で、「OpenRTM-aist\<version>」の下にあります。したがって、フォルダ構造を変えなければ、システム環境変数RTM_JAVA_ROOTは必ずその値の末尾に「OpenRTM-aist\<version>」を持つという形になります。|
+#br
+
+:　なお、カレントユーザに対してのみインストールする場合は、上記設定を｢システム環境変数」あるいは｢ユーザー環境変数｣のどちらかに行えばよく、特に、特権を持たないユーザ（制限ユーザ）としてインストールする場合にはこのことを利用します。すなわち、制限ユーザがインストールする場合には｢システム環境変数」の設定が追加・変更できないので、上記設定を｢ユーザー環境変数｣に対して行うことになります。|
+
+#br
+
+&br;
+// *** インストールの確認
+//　インストール時に配置したフォルダ以下にRTコンポーネントのサンプルが用意されています。｢Examples｣フォルダ内にあるサンプルを使用して、インストールを確認します。実行するには、該当するファイルをダブルクリックしてください。インストーラを用いてインストールした場合は、付属するサンプルをスタートメニューから実行することもできます。
+//#br
+//
+//- インストール確認手順
+//:1. NameServerの起動：｢start-orbd.vbs｣を実行|
+//:2. ConsoleInサンプルの起動：｢ConsoleIn.bat｣を実行|
+//:3. ConsoleOutサンプルの起動：｢ConsoleOut.bat｣を実行|
+//
+//#br
+//#br
+//
+//#ref(java_sample0.png,nolink,center)
+//CENTER:''サンプル実行例(ConsoleIn)''
+//#br
+//#br
+//
+//#ref(java_sample1.png,nolink,center)
+//CENTER:''サンプル実行例(ConsoleOut)''
+//#br
+//
+//:4. RTコンポーネントの接続：｢Connector.bat｣を実行|
+//
+//:5. ConsoleIn側のウィンドウに|
+// Please input number:
+//:　というプロンプトが現れるので、そこに数字を入力する|
+//:6. その数字がConsoleOut側のウィンドウに表示されればインストールは成功です。|
+
+** インストーラを使用した場合にインストールされる内容
+インストールされる内容は以下の通りです。
+ +--<install_dir>
+     +--OpenRTM-aist
+     |  +--<version>
+     |     +--bin
+     |     +--doc
+     |     |  +--Java
+     |     +--jar
+     |     +--examples
+     |        +--Java
+     |
+     +--OpenRTP
+        +--RTSystemEditor
+
+***OpenRTM-aist\<version>\bin\
+コマンドファイルが含まれています。
+- bin/rtcprof_java.bat
+- bin/start-orbd.vbs
+- bin/rtcd_java.exe
+
+***OpenRTM-aist\<version>\doc\Java
+クラスリファレンス（Javadoc HTML形式）が含まれています。
+
+***OpenRTM-aist\<version>\jar
+OpenRTM-aistと必要なjarファイルが含まれています。
+- jar/OpenRTM-aist-<version>.jar  
+- jar/commons-cli-1.1.jar  
+- jar/rtcd.jar  
+- jar/rtcprof.jar
+
+***OpenRTM-aist\<version>\examples\Java
+サンプルのclassファイルとそれを起動するためのシェルスクリプトとソースコードが含まれています。
+
+***OpenRTP\RTSystemEditor
+RCP版のRTSystemEditorが含まれています。
+
+** Zipファイルを解凍してインストールした場合に展開される内容
+ +--<install_dir>
+     +--OpenRTM-aist
+        +--<version>
+           +--jar
+           +--examples
+           +--JavaDoc
+           +--JavaDocEn
+***jar
+OpenRTM-aistと必要なjarファイルが含まれています。
+- jar/OpenRTM-aist-<version>.jar  
+- jar/commons-cli-1.1.jar  
+- jar/rtcd.jar  
+- jar/rtcprof.jar
+
+***examples
+サンプルのclassファイルとそれを起動するためのシェルスクリプトとソースコードが含まれています。
+
+- サンプルのclassファイル
+ examples/RTMExamples/SeqIO/SeqIn.class
+ examples/RTMExamples/SeqIO/view/SeqView.class
+ examples/RTMExamples/SeqIO/view/RootPane.class
+ examples/RTMExamples/SeqIO/view/SeqViewApp.class
+ 以下 省略
+
+- サンプルを起動するためシェルスクリプト
+ examples/AutoTestIn.sh
+ examples/AutoTestOut.sh
+ examples/Composite.sh
+ examples/ConfigSample.sh
+ examples/Connector.sh
+ examples/ConsoleIn.sh
+ examples/ConsoleOut.sh
+ examples/ExtConnector.sh
+ examples/ExtConsoleIn.sh
+ examples/ExtConsoleOut.sh
+ examples/GUIIn.sh
+ examples/MyServiceConsumer.sh
+ examples/MyServiceProvider.sh
+ examples/SeqIn.sh
+ examples/SeqOut.sh
+ examples/SinCosOut.sh
+ examples/rtcd_java.sh
+ examples/start-orbd.sh
+
+- サンプルのソースコード
+ examples/RTMExamples/SeqIO/SeqInImpl.java
+ examples/RTMExamples/SeqIO/SeqOut.java
+ examples/RTMExamples/SeqIO/view/RootPane.java
+ examples/RTMExamples/SeqIO/view/SeqView.java
+ 以下 省略
+
+*** JavaDoc
+日本語のクラスリファレンス（Javadoc HTML形式）が含まれています。
+
+*** JavaDocEn
+英語のクラスリファレンス（Javadoc HTML形式）が含まれています。
+

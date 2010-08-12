@@ -1,0 +1,336 @@
+// -*- pukiwiki-edit -*-
+//*データポート(応用編)
+
+#contents
+
+データポート(基本編)では、データポートの基本的な使い方について説明しま
+した。応用編では、もう少し踏み込んだ使い方について解説します。
+
+//------------------------------------------------------------
+**新しいデータ型
+
+
+
+//------------------------------------------------------------
+**データポートコールバック
+
+InPort は isNew() でデータの到着の有無を確認して、read() で読みだす、あ
+るいはOutPort は write() でデータを送り出し、getStatusList() で送信ステー
+タスを確認する、ということについてはすでに述べました。
+
+例えば、InPort はデータが来てから、onExecute() 等などの関数内で、
+isNew() を呼び read() を呼び出すまでデータを取得することはできません。
+onExecute() の周期が非常に速かったとしても、データがInPortに到着するタ
+イミングと、実際に処理が行われるタイミングは非同期に行われます。
+
+データが到着してすぐに、すなわち同期的に処理を行いたい場合にはどうすれ
+ばよいのでしょうか。これを実現する方法として、OpenRTM-aistではデータポー
+トやコネクタの種々の処理のタイミングで呼び出されるコールバックを定義し
+ています。
+
+コールバックには大きく分けて、1) InPort, 2) OutPort, 3) コネクタ, 4) ポー
+ト の4種類のコールバックが用意されています。
+
+//------------------------------------------------------------
+***InPortのコールバック
+
+InPort には、以下の2種類のコールバックが用意されています。
+これらは rtm/PortCallback.h において定義されています。
+
+| OnRead        | InPort の read() が呼び出された際にコールされる InPort::setOnRead() 関数でセット。|
+| OnReadConvert | InPort の read() が呼び出された際にデータを変換するためにコールされる。InPort::setOnReadConvert() 関数でセット。 |
+
+OnRead コールバックは read() が呼び出されたときに、OnReadConvert は
+read() が呼び出されたとき、呼び出し元にある種の変換を施したデータを返す
+ために使用するコールバックです。
+
+それぞれのコールバックは、rtm/PortCallback.h で定義されているそれぞれの
+ファンクタの基底クラスを継承することにより実装します。
+
+>ファンクタとは、オブジェクトを通常の関数と同じような文法で呼び出し可能にするもので、C++であれば operator() をオーバーロードをすることで実現することができる。C言語では呼び出し元に関数ポインタを与えることでコールバックを実現するが、関数ポインタのみでは、コールバック自体に状態変数を与えることは難しい。ファンクタはそれ自身がオブジェクトであるため、状態変数を持たせることができ、その上C言語の関数同様の呼び出しが可能になる。
+
+以下にそれぞれの実装例を示します。
+
+ #include <rtm/Portcallback.h>
+ 
+ template <class T>
+ class MyOnRead
+  : public RTC::OnRead<T>
+ {
+ public:
+   MyOnRead(std::ostream& os) : m_os(os) {};
+   virtual void operator()()
+   {
+     m_os      << "read() 関数が呼ばれました。" << std::endl;
+     std::cout << "read() 関数が呼ばれました。" << std::endl;
+   }
+ private:
+   std::ostream& m_os;
+ };
+ 
+ template <class T> 
+ class MyOnReadConvert
+  : public RTC::OnReadConvert<T>
+ {
+ public:
+   virtual T operator()(const T& value)
+   {
+     T tmp;
+     tmp.data = value.data * value.data;
+     return tmp;
+   }
+ };
+
+OnRead を継承した MyOnRead ファンクタでは、コンストラクタで出力ストリー
+ム std::ostream を渡しています。どこかでオープンしたファイル出力ストリー
+ム std::ofstream 等を渡すことを意図しています。ファンクタの実体である
+operator()() では、出力ストリームと標準出力に対して、文字列を出力してい
+ます。このように、ファンクタでは、予めコンストラクタなどで状態変数を渡
+すことで、他のオブジェクトに対する呼び出しも実現することができます。
+
+一方 OnReadConvert<T> を継承した MyOnReadConvert は operator()(const
+T&) のみを実装しています。この関数の引数には、read() が呼ばれたときに
+InPort 変数に読みだされる前のデータが渡されます。この関数内で何らかの処
+理を行い return で返したデータは InPort 変数に書き込まれます。この例で
+は、データ型に data というメンバがあり、かつ乗算演算子が定義されている
+という前提で自乗を計算して返しています。適切なメンバがない変数型を使用
+すればコンパイルエラーになります。
+
+さて、このファンクタを実際にコンポーネントに組み込んでみましょう。
+InPort を使用しているサンプルとして、ここでは OpenRTM-aist に含まれてい
+るサンプルである ConsoleOut を利用します。ConsoleOut は OpenRTM-aist の
+ソースを展開すると、
+
+ OpenRTM-aist-<version>/examples/SimpleIO/
+
+の下に、また Linux 等でパッケージ等からインストールすると、
+
+ /usr/share/OpenRTM-aist/examples/src/
+
+の下にソースコードがあります。
+
+まず、上記のクラス定義を、ConsoleOut.h に記述します。クラス定義は、本来
+別のソースに記述した方が良いのですが、ファンクタクラスは、このコンポー
+ネント内でしか使用せず、内容も短いものですので、こういう場合はヘッダ内
+で実装も含めて定義しても構わないでしょう。
+
+ // ConsoleOut.h
+ 
+   中略
+ // Service Consumer stub headers
+ // <rtc-template block="consumer_stub_h">
+ 
+ // </rtc-template>
+ 
+ using namespace RTC; 
+ 
+ // ここから追加分
+ template <class T>
+ class MyOnRead
+  : public RTC::OnRead<T>
+ {
+ public:
+   MyOnRead(std::ostream& os) : m_os(os) {};
+   virtual void operator()()
+   {
+     m_os      << "read() 関数が呼ばれました。" << std::endl;
+     std::cout << "read() 関数が呼ばれました。" << std::endl;
+   }
+ private:
+   std::ostream& m_os;
+ };
+ 
+ template <class T> 
+ class MyOnReadConvert
+  : public RTC::OnReadConvert<T>
+ {
+ public:
+   virtual T operator()(const T& value)
+   {
+     T tmp;
+     tmp.data = value.data * value.data;
+     return tmp;
+   }
+ };
+ // ここまで追加分
+ 
+ class ConsoleOut
+   : public RTC::DataFlowComponentBase
+ {
+ 
+   中略
+ 
+  protected:
+   // DataInPort declaration
+   // <rtc-template block="inport_declare">
+   TimedLong m_in;
+   InPort<TimedLong> m_inIn;
+ 
+   中略
+ 
+  private:
+   //ここから追加分
+   MyOnRead<TimedLong>* m_onread;
+   MyOnReadConvert<TimedLong>* m_onreadconv;
+   //ここまで追加分
+ };
+
+まず、ConsoleOut クラスの宣言の前に、コールバックファンクタ MyOnRead と
+MyOnReadConvert を宣言します。これらのクラスのポインタ変数をメンバとし
+て持たせるために、private の部分に、それぞれのポインタ変数を宣言します。
+このとき、MyOnRead/MyOnReadConvert ともに、クラステンプレートの型引数に
+このコンポーネントのInPortの型と同じ、TimedLong を与えていることに注意
+してください。
+
+
+
+//------------------------------------------------------------
+***OutPortのコールバック
+
+OutPort には、以下の2種類のコールバックが用意されています。
+これらは rtm/PortCallback.h において定義されています。
+
+| OnWrite        | OutPort の write() が呼び出された際にコールされる OutPort::setOnWrite() 関数でセット。|
+| OnWriteConvert | OutPort の write() が呼び出された際にデータを変換するためにコールされる。OutPort::setOnWriteConvert() 関数でセット。 |
+
+OnWrite コールバックは write() が呼び出された際に、OnWriteConvert は
+write() が呼び出された際に、ある種の変換を施したデータを送信する
+ために使用するコールバックです。
+
+それぞれのコールバックは、InPort と同様 rtm/PortCallback.h で定義されて
+いるそれぞれのファンクタの基底クラスを継承することにより実装します。
+
+以下にそれぞれの実装例を示します。
+
+ #include <rtm/Portcallback.h>
+ 
+ template <class T>
+ class MyOnWrite
+  : public RTC::OnWrite<T>
+ {
+ public:
+   MyOnWrite(std::ostream& os) : m_os(os) {};
+   virtual void operator()()
+   {
+     m_os      << "write() 関数が呼ばれました。" << std::endl;
+     std::cout << "write() 関数が呼ばれました。" << std::endl;
+   }
+ private:
+   std::ostream& m_os;
+ };
+ 
+ template <class T> 
+ class MyOnWriteConvert
+  : public RTC::OnWriteConvert<T>
+ {
+ public:
+   virtual T operator()(const T& value)
+   {
+     T tmp;
+     tmp.data = 2 * value.data;
+     return tmp;
+   }
+ };
+
+コールバック用のファンクタの書き方は、InPort の OnRead/OnReadConvert と
+ほぼ同じです。OnWrite を継承した MyOnWrite ファンクタでは、コンストラク
+タで出力ストリーム std::ostream を渡しています。どこかでオープンしたファ
+イル出力ストリーム std::ofstream 等を渡すことを意図しています。ファンク
+タの実体である operator()() では、出力ストリームと標準出力に対して、文
+字列を出力しています。このように、ファンクタでは、予めコンストラクタな
+どで状態変数を渡すことで、他のオブジェクトに対する呼び出しも実現するこ
+とができます。
+
+一方 OnReadConvert<T> を継承した MyOnReadConvert は operator()(const
+T&) のみを実装しています。この関数の引数には、read() を呼んだときに
+InPort 変数に読みだされる前のデータが渡されます。この関数内で何らかの処
+理を行い return で返したデータは InPort 変数に書き込まれます。この例で
+は、データ型に data というメンバがあり、かつ乗算演算子が定義されている
+という前提で自乗を計算して返しています。適切なメンバがない変数型を使用
+すればコンパイルエラーになります。
+
+***コネクタ・バッファのコールバック
+
+****コネクタ
+
+コネクタはバッファおよび通信路を抽象化したオブジェクトです。図に示すよ
+うに、OutPort と InPort の間に存在し、OutPort からは write() 関数により
+データの書き込み、InPort からは read() 関数によりデータの読み出しが行わ
+れます。コネクタは、データがどのような手段で OutPort から InPort へ伝送
+されるかを抽象化し隠蔽します。
+
+#ref(dataport_connector_ja.png,50%,center)
+CENTER: データポートのコネクタの概念
+
+OutPort はコネクタ内のバッファに対して、
+-書き込み
+-各種制御 (読み戻し、未読データへのアクセス等)
+-バッファフル状態の通知およびタイムアウトの通知
+を行う(または通知を受ける)ことができます。
+同様に、InPort はコネクタ内のバッファに対して
+-データの読み出し
+-各種制御(読み戻し、未読データへのあくアクセス等)
+-バッファエンプティ状態の通知およびタイムアウト通知
+を行う(または通知を受ける)ことができます。
+
+OutPort は複数のInPortへ接続することができますが、一つの接続につき、一
+つのコネクタが生成されます。(実際には InPort も複数の接続を同時に持つこ
+ともできますが、データを区別する方法がないので、通常は用いません。) つ
+まり、接続が3つあれば、コネクタが3つ存在し、それぞれに対して書き込みの
+ステータスが存在することになります。
+
+また、これらの機能のために、OutPort/InPort 一対に対して、それぞれ一つコネクタが存在する必要があることがわかる。
+さらに、コネクタをサブスクリプション型に対応した実装レベルでモデル化するにあたり、パブリッシャと呼ばれる非同期通信のためのオブジェクトを導入した。これを図2 に示す[1]。
+
+データポートは接続が確立されると、1つの接続につき1つのコネクタオブジェクトを生成します。コネクタは、OutPortとInPortをつなぐデータストリームの抽象チャネルで、
+
+
+| ON_BUFFER_WRITE          | バッファ書き込み時 |
+| ON_BUFFER_FULL           | バッファフル時 |
+| ON_BUFFER_WRITE_TIMEOUT  | バッファ書き込みタイムアウト時 |
+| ON_BUFFER_OVERWRITE      | バッファ上書き時 |
+| ON_BUFFER_READ           | バッファ読み出し時 |
+| ON_SEND                  | InProtへの送信時 |
+| ON_RECEIVED              | InProtへの送信完了時 |
+| ON_RECEIVER_FULL         | InProt側バッファフル時 |
+| ON_RECEIVER_TIMEOUT      | InProt側バッファタイムアウト時 |
+| ON_RECEIVER_ERROR        | InProt側エラー時 |
+
+
+
+| ON_BUFFER_EMPTY          | バッファが空の場合 |
+| ON_BUFFER_READTIMEOUT    | バッファが空でタイムアウトした場合 |
+| ON_SENDER_EMPTY          | OutPort側バッファが空 |
+| ON_SENDER_TIMEOUT        | OutPort側タイムアウト時 |
+| ON_SENDER_ERROR          | OutPort側エラー時 |
+| ON_CONNECT               | 接続確立時 |
+| ON_DISCONNECT            | 接続切断時 |
+
+***ポートのコールバック
+
+
+#/bin/sh
+export GDK_NATIVE_WINDOWS=1
+./eclipse -vmargs -Dorg.eclipse.swt.browser.XULRunnerPath=/usr/lib/xulrunner-1.9.3.2/xulrunner
+
+
+
+**ステータス
+データポートは、データの送受信を行った際に、ステータスを返します。
+ステータスは、rtm/DataPortStatus.h で定義されています。
+
+データ通信が
+
+
+
+コネクタ
+-ConnectorProfile
+-コネクタコールバック
+
+**接続プロパティ
+-インターフェースタイプ
+-サブスクリプションタイプ
+-データフロータイプ
+-パブリッシャーポリシー
+-バッファリングポリシー
+

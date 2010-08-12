@@ -1,0 +1,42 @@
+*Windowsシステムでのビルド &aname(build_win); 
+//　以下の記述は、すでに[[Python-2.4:http://www.python.org/ftp/python/2.4.4/python-2.4.4.msi]]と[[omniORBpy-2.7:http://www.openrtm.org/pub/Windows/omniORB/omniORBpy-2.7.msi]]がインストールされているという前提で書かれています。これらのインストールについては[[パッケージでのインストール >#instpackage]]を参照してください。また、WINDOWS\system32フォルダ内にmsvcp71.dll、msvcr71.dllがない場合は、[[こちら :http://www.vector.co.jp/soft/win95/util/se435079.html]]から入手してください。これらがないと、「MSVCP71.dll が見つからなかったため、このアプリケーションを開始できませんでした。」などというエラーが生じます。
+　以下の作業はAdministrator特権を持った状態で行ってください。
+**対応OSおよびディストリビューション
+　OpenRTM-aist-Python-0.4.1 は下記の OS で動作することが確認されています。
+
+- Windows XP Professional SP2 及び SP3
+**動作条件 
+　OpenRTM-aist-0.4.1 のインストールには、次にしめすパッケージの組み合わせのうちどちらか一方が必要となります。
+
+- Python2.4 と omniORBpy2.7
+- Python2.5 と omniORBpy3.1
+
+
+　これらパッケージのインストーラが用意されています。詳しくは[[こちら >/ja/node/91]]を参照してください。
+
+** 環境変数の設定 
+　[[こちら >/ja/node/649]]を参照してください。
+
+**ソースコードの展開 
+
+　ソースコード OpenRTM-aist-Python24-0.4.1-RC2.zip（Python2.4使用の場合） あるいは OpenRTM-aist-Python25-0.4.1-RC2.zip（Python2.5使用の場合） を[[こちら >OpenRTM-aist-Python-0.4.1-RELEASE]]から入手し、適当なフォルダに展開します。
+
+**ビルド
+OpenRTM-aist はパッケージのビルドに PythonのDistutilsモジュールを使用しています。コマンドプロンプトにて以下のようにし入力しビルドを行って下さい。
+
+ > cd <OpenRTM-aist-Python展開フォルダ>
+ > python setup.py build
+
+
+**インストール
+ビルドが正常に終了したら、OpenRTMモジュール、ユーティリティコマンド群をインストールします。コマンドプロンプトにて以下のようにし入力しインストールを行って下さい。
+
+ > python setup.py install
+
+
+#br
+#br
+◆ WINDOWS\system32 フォルダを検索し、msvcp71.dllとmsvcr71.dllがあることを確認してください。これらがない場合は、[[こちら :http://www.vector.co.jp/soft/win95/util/se435079.html]]から入手してください。
+
+-[[''FAQ'': 「MSVCP71.dll が見つからなかったため、…」というエラーで終了する >/ja/node/150#MSVCerror]]
+

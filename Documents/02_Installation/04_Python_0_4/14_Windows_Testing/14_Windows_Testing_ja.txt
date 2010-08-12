@@ -1,0 +1,239 @@
+** インストールの確認
+***サンプルを用いてインストール完了の確認 &aname(checkinst);
+
+　付属のサンプルRTコンポーネントを用いて、動作確認を行います。"マイコンピュータ" で SimpleIO''　※1　''フォルダ を表示し、その中の run.py をダブルクリックします''　※2　''。はじめにターミナル画面が３つ開き、数秒後にもうひとつ開きます。４つ目のターミナル画面が開くまで、必ず待ってください。"Please input number:"と表示されているウィンドウに数字を打ち込みます''　※3　''。入力する数字は、long int に収まる範囲の値を入力してください。すると、もう片方のウィンドウから、入力した数値と同じ数値が現れます。ここまでできれば、OpenRTM-aist-Python が正しくインストールされていることがわかります。
+
+:''※1　''サンプルコンポーネントセット SimpleIO：|
+　インストーラを使った場合は通常 C:\Program Files\OpenRTM-aist\0.4\examples\Python\SimpleIO に、ソースからビルドした場合 <ソースの展開フォルダ>\OpenRTM\examples\SimpleIO にそれぞれインストールされています。
+
+:''※2　''あらかじめ環境変数PathにPythonインストールフォルダを追加しておいて下さい(C:\Python24など)。|
+-[[Pathの更新 >/ja/node/649#hensu]]~
+-[[''FAQ:'' python.exeが起動しない >/ja/node/150#pythonexe]]~
+-[[''FAQ:'' Cygwinをインストールしている環境ではpython.exeが複数存在する場合がある >/ja/node/150#python]]~
+-[[''FAQ:'' 「Can't open file: ./rtc.conf」などと表示される >/ja/node/150#rtc.conf]]
+
+&br;
+
+
+:''※3　''特にエラーというわけではないようだが、いっこうに"Please input number:"という表示があらわれない場合があります。この場合、同じフォルダ内のConnector.pyを起動することで正常動作を得ます。&br;
+-[[''FAQ:'' SimpleIOコンポーネントで"Please input number:"という表示があらわれない >/ja/node/150#SimpleIO]]
+
+#br
+参考：&br;
+-[[''FAQ'': 「MSVCP71.dll が見つからなかったため、…」というエラーで終了する >/ja/node/150#MSVCerror]]
+
+
+#br
+***その他サンプルコンポーネントについて
+　OpenRTM-aist-PythonにはSimpleIOだけでなく、SeqIO、SimpleService、ConfigSample、ExtTriggerなどのサンプルコンポーネントが付属しています（SimpleIO フォルダと同じ場所にあります）。これらの詳細については[[OpenRTM付属のサンプルについて >/ja/node/811]]を参照してください。
+***コンポーネントテンプレートのテスト
+　次に、コンポーネントのテンプレートジェネレータを使用して、簡単なコンポーネントを作成するテストを行います。テンプレートジェネレータ (rtc-template.py) を使用します。なおここでは、簡単のため Python2.4 を使用する環境での例をあげています。Python2.5 を使用する環境では Python24 という部分を Python25 に置き換えるなど適宜対応してください。
+
+#br
+
+
+- ''１．コンポーネントを作成する作業デイレクトリの準備''~
+　コンポーネントを作成するフォルダ(任意のパス、任意のフォルダで結構です。以下の例ではC:\Documents and Settings\<user name>\SampleComponentを作業フォルダとします。)を作成して、そこでコンポーネント作成の作業をします。
+コマンドプロンプトを起動し、作成したフォルダまで移動します。
+ > cd C:\Documents and Settings\<user name>\SampleComponent
+
+#br
+
+- ''２．rtc-template の起動を確認''~
+　まずはhelpを見てみます。
+ > C:\Python24\Lib\site-packages\OpenRTM\rtc-template\rtc-template.py --help
+ 
+ Usage: rtc-template [OPTIONS]
+ 
+ Options:
+ 
+     [-h]                                  Print short help.
+     [--help]                              Print details help.
+     [--backend[=backend] or -b]           Specify template code  generator.
+     [--module-name[=name]]                Your module name.
+     [--module-desc[=description]]         Module description.
+     [--module-version[=version]]          Module version.
+     [--module-vendor[=vendor]]            Module vendor.
+     [--module-category[=category]]        Module category.
+     [--module-comp-type[=component_type]] Component type.
+     [--module-act-type[=activity_type]]   Component's activity type.
+     [--module-max-inst[=max_instance]]    Number of maximum instance.
+     [--module-lang[=language]]            Language.
+     [--config[=ParamName:Type:Default]]   Configuration variable.
+     [--inport[=PortName:Type]]            InPort's name and type.
+     [--outport[=PortName:Type]]           OutPort's name and type
+     [--service[=PortName:Name:Type]]      Service Provider Port
+     [--service-idl[=IDL_file]]            IDL file name for service
+     [--consumer[=PortName:Name:Type]]     Service Consumer Port
+     [--consumer-idl[=IDL_file]]           IDL file name for consumer
+     [--idl-include=[path]]                Search path for IDL compile
+        :
+      中略
+        :
+ Example:
+     rtc-template -bcxx \
+     --module-name=Sample --module-desc='Sample component' \
+     --module-version=0.1 --module-vendor=AIST --module-category=Generic \
+     --module-comp-type=DataFlowComponent --module-act-type=SPORADIC \
+     --module-max-inst=10  \
+     --config=int_param0:int:0 --config=int_param1:int:1 \
+     --config=double_param0:double:3.14 --config=double_param1:double:9.99 \
+     --config="str_param0:std::string:hoge" \
+     --config="str_param1:std::string:foo" \
+     --inport=Ref:TimedFloat --inport=Sens:TimedFloat \
+     --outport=Ctrl:TimedDouble --outport=Monitor:TimedShort \
+     --service=MySvcPort:myservice0:MyService \
+     --consumer=YourSvcPort:yourservice0:YourService \
+     --service-idl=MyService.idl --consumer-idl=YourService.idl
+''※　rtc-template.py は上のようにフルパスで指定して下さい。''
+''※※　簡単のため、ここでは Python2.4 を使用する環境での例をあげています。Python2.5 での環境では Python24 を Python25 に置き換えるなど適宜対応してください。''
+　rtc-template に対して作成したいコンポーネントの設定を引数として渡すと、コンポーネントの雛形を作成します。ここでは、help の表示の最後に表示された''Example:'' 以下をコピーして試してみます。
+
+#br
+
+- ''３．MyService.idl と YourService.idl の準備''
+　''Example'' の例では、サービスプロバイダとして MyService、サービスコンシューマとして YourService を利用するオプションが与えられており、そのためのIDLファイルをカレントディレクトリにおいておく必要があります。ここでは、簡単なIDLファイルを以下のように作成しておきます。
+
+#br
+
+-- MyService.idl
+ interface MyService 
+ {
+   void echo();
+ };
+
+-- YourService.idl
+ interface YourService
+ {
+    void echo();
+ };
+
+#br
+#br
+
+- ''４．rtc-template を実行しテンプレートコードを生成''
+　これらのファイルを作成したら、''Example: ''の例をコピー＆ペーストするなどして、
+コマンドとして入力します。
+ > python C:\Python24\Lib\site-packages\OpenRTM\rtc-template\rtc-template.py -bpython^
+     --module-name=Sample --module-desc="Sample component"^
+     --module-version=0.1 --module-vendor=AIST --module-category=Generic^
+     --module-comp-type=DataFlowComponent --module-act-type=SPORADIC^
+     --module-max-inst=10^
+     --config=int_param0:int:0 --config=int_param1:int:1^
+     --config=double_param0:double:3.14 --config=double_param1:double:9.99^
+     --config="str_param0:std::string:hoge"^
+     --config="str_param1:std::string:foo"^
+     --inport=Ref:TimedFloat --inport=Sens:TimedFloat^
+     --outport=Ctrl:TimedDouble --outport=Monitor:TimedShort^
+     --service=MySvcPort:myservice0:MyService^
+     --consumer=YourSvcPort:yourservice0:YourService^
+     --service-idl=MyService.idl --consumer-idl=YourService.idl
+  File "MyService_idl_example.py" was generated.
+  File "Sample.py" was generated.
+  File "README.Sample" was generated.
+ > dir
+ 2008/06/25  12:28    <DIR>          .
+ 2008/06/25  12:28    <DIR>          ..
+ 2008/06/25  12:27                45 MyService.idl
+ 2008/06/25  12:28             2,226 MyService_idl.py
+ 2008/06/25  12:28             1,341 MyService_idl_example.py
+ 2008/06/25  12:28             3,557 README.Sample
+ 2008/06/25  12:28             4,615 Sample.py
+ 2008/06/25  12:27                47 YourService.idl
+ 2008/06/25  12:28             2,312 YourService_idl.py
+ 2008/06/25  12:28    <DIR>          _GlobalIDL
+ 2008/06/25  12:28    <DIR>          _GlobalIDL__POA
+''※　--help で表示されるサンプルはC++コード生成用ですので、Python用のコードを生成する場合は、&color(red){"-bcxx"を"-bpython"};に書き換えてください。''
+''※※　Windows環境にてrtc-template.pyを実行する場合は、"Sample component"等のように(")ダブルクォートを使用するようにして下さい。(')シングルクォートを使用した場合は、オプションが正しく解析されません。また、行継続記号は(\)を(^)に変更する必要があります。''
+''※※※　簡単のため、ここでは Python2.4 を使用する環境での例をあげています。Python2.5 での環境では Python24 を Python25 に置き換えるなど適宜対応してください。''
+　このように、コンポーネントのPythonのコード、サービスの実装コードが作成されます。これで、実行形式のコンポーネント(Sample.py)が作成されました。
+
+
+#br
+#br
+
+:''★Remark:''|
+　rtc-template.pyを実行する際に毎回コマンド入力するのは大変ですので、以下のようなバッチファイルを作成し使用する事をお奨めします。~
+ python C:\Python24\Lib\site-packages\OpenRTM\rtc-template\rtc-template.py -bpython^
+ 	--module-name=Sample --module-desc="Sample component"^
+ 	--module-version=0.1 --module-vendor=AIST --module-category=Generic^
+ 	--module-comp-type=DataFlowComponent --module-act-type=SPORADIC^
+ 	--module-max-inst=10^
+ 	--config=int_param0:int:0 --config=int_param1:int:1^
+ 	--config=double_param0:double:3.14 --config=double_param1:double:9.99^
+ 	--config="str_param0:std::string:hoge"^
+ 	--config="str_param1:std::string:foo"^
+ 	--inport=Ref:TimedFloat --inport=Sens:TimedFloat^
+ 	--outport=Ctrl:TimedDouble --outport=Monitor:TimedShort^
+ 	--service=MySvcPort:myservice0:MyService^
+ 	--consumer=YourSvcPort:yourservice0:YourService^
+ 	--service-idl=MyService.idl --consumer-idl=YourService.idl
+''※　簡単のため、ここでは Python2.4 を使用する環境での例をあげています。Python2.5 での環境では Python24 を Python25 に置き換えるなど適宜対応してください。''
+
+
+#br
+#br
+
+- ''５．コンポーネントの実行準備：ネームサーバの起動''
+　作成された実行形式のコンポーネントを実行してみます。まず、その準備を始めます。~
+　CORBA のネーミングサービスを起動します。別のコマンドプロンプトを開き、
+ > python "C:\Program Files\OpenRTM-aist\0.4\bin\rtm-naming.py" [ポート番号]
+ または、
+ C:\Program Files\OpenRTM-aist\0.4\bin にカレントを移動してから
+ >python rtm-naming.py とするか
+ または、
+ C:\Program Files\OpenRTM-aist\0.4\bin\ にある rtm-naming.py をダブルクリック
+とすることで、CORBAのネーミングサービスは起動できます。先ほど rtc.conf で指定したポート番号を指定して起動してください。何も指定しなければデフォルトポート(''2809'')を使用します。デフォルトポートを使用する例です。 
+ > python "C:\Program Files\OpenRTM-aist\0.4\bin\rtm-naming.py"
+ Starting omniORB omniNames:  localhost : 2809
+ 
+ Starting omniNames for the first time.
+ Wrote initial log file.
+ Read log file successfully.
+ Root context is IOR:010000002b00000049444c3a6f6d672e6f72672f436f734e616d696e672f4e616d696e67436f6e746578744578743a312e300000010000000000000060000000010102000e0000003135302e32392e39362e31363700f90a0b0000004e616d6553657276696365000200000000000000080000000100000000545441010000001c00000001000000010001000100000001000105090101000100000009010100
+ Checkpointing Phase 1: Prepare.
+ Checkpointing Phase 2: Commit.
+ Checkpointing completed.
+　なお、ソースからビルド・インストールした場合は、rtm-naming.py のパスは <ソースの展開フォルダ>\bin になります。
+
+#br
+
+- ''６．コンポーネントの実行準備：RtcLinkを起動''
+　次に、コンポーネントを操作するためのGUIツール：RtcLinkを起動します（RtcLinkについての詳細は[[RtcLink >RtcLink]]を、またインストール方法などは[[RtcLink・RtcTemplateのインストール]]を参照してください）。
+
+#br
+
+- ''７．コンポーネントの実行準備：rtc.conf の配置''
+　コンポーネントの実行には、コンフィギュレーションファイル(通常は rtc.conf という名前)が必要です。ここでは、簡易版の rtc.conf を作成し、カレントとしている作業フォルダに配置します。
+
+-- rtc.conf の簡単な仕様
+ corba.nameservers: ネームサーバ名:ポート番号
+ naming.formats: %n.rtc
+ logger.log_level: PARANOID
+ここで、仮にホスト名：localhost ポート番号はデフォルトとします。
+
+--- ''rtc.conf''
+ corba.nameservers: localhost
+ naming.formats: %n.rtc
+ logger.log_level: PARANOID
+
+#br
+#br
+
+- ''８．コンポーネントを起動''~
+　最後に、コンポーネントを起動します。
+ > python Sample.py -f rtc.conf
+ もしくは
+ > python Sample.py (デフォルトでカレントディレクトリのrtc.confを読み込む)
+ もしくは
+ Sample.pyをダブルクリック
+これで、コンポーネントが起動でき、[[RtcLink]]上に
+--- InPortを2つ
+--- OutPortを2つ
+--- サービスポートを2つ
+--- コンフィギュレーションを6個
+
+:を持つコンポーネントが表示されれば、OpenRTM-aist-Python-0.4.1が正常にインストールされたことになります。具体的なコンポーネントの作成の仕方は、[[こちら >RTコンポーネント作成]]を参照してください。|
+
+
+

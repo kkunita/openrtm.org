@@ -1,0 +1,30 @@
+*注意点
+
+**環境変数に関する注意点
+***環境変数PYTHONPATH 
+　rtc-templateではPYTHONPATHの一番目の要素を参照しておりますので、PYTHONPATHにはsite-packages (C:\python2.4\Lib\site-packages) までのパスのみの設定にして下さい。
+
+**rtc-templateでの注意点 
+
+*** "--config"オプションでstd::vectorを使用する場合は、次のようにオプションの指定を行って下さい。
+
+ [C++版]
+ --config="vector_param0:std::vector<double>:0.0,1.0,2.0,3.0,4.0"
+
+ 　↓　　↓　std::vector<double> を doubleに　　↓　　↓
+
+ [Python版]
+ --config="vector_param0:double:0.0,1.0,2.0,3.0,4.0"
+
+** コンポーネントの実装に関する注意点 
+*** Service Providerポートを持つコンポーネントの実装での注意点
+
+　MyService.idlという --service-idl で指定したIDLファイルがある場合、rtc-template実行後に MyService_idl_example.py というファイルが生成されます。このファイルはIDLで定義したオペレーションを実装するためのファイルですので、この中でオペレーションの実装を行って下さい。
+* FAQ 
+- [[rtm-naming.pyを実行したら、omniNamesが"usage:"を表示して終了してしまいます。 >/ja/node/150#pythonusage]]
+- [[python.exeが起動しない >/ja/node/150#pythonexe]]
+- [[Cygwinをインストールしている環境ではpython.exeが複数存在する場合がある >/ja/node/150#python]]
+- [[「MSVCP71.dll が見つからなかったため、…」というエラーで終了する >/ja/node/150#MSVCerror]]
+
+
+

@@ -1,0 +1,179 @@
+ここではOpenRTM-aist(Python)のUNIXへのインストール方法を説明します。 ※以降の説明は便宜上OpenRTM-aist-0.4.0について書かれています。OpenRTM-aist-0.4.xについても同様の手順でインストールできます。&br;
+
+**Unixでのインストール
+***対応OSおよびディストリビューション
+　OpenRTM-aist-Python-1.0.0は下記のOSで動作することが確認されています。
+- Vine Linux
+- Fedora Linux
+- Ubuntu Linux
+- Debian Linux
+
+
+
+
+
+
+** rpmパッケージによるインストール 
+　VineLinux3.2, VineLinux4.0用のrpmパッケージと, Ubuntu7.10用のdebパッケージが用意されています。
+
+*** インストール環境の準備
+　rpmパッケージやdebパッケージの作成を行った環境では、以下の表に見るバージョンのPython, omniORB, omniORBpy を使用しています。
+
+
+|           | Vine 3.2 | Vine 4.0 | Ubuntu 7.10 |
+|||||
+| omniORB   | 4.0.5* | 4.0.7 | 4.0.7 |
+| omniORBpy | 2.3-1* | 2.7-1 | 2.7 |
+| Python    | 2.3.4 | 2.4.4 | 2.5.1 |
+
+:''*'' Vine 3.2:omniORB4.0.7 + omniORBpy2.7-1 上でも動作します|~
+
+
+#br
+
+
+　OpenRTM-aist-Python のインストールに備え、事前にこれらのパッケージをインストールしておきます。
+#br
+
+''参考：''
+
+　→　[[各パッケージをインストールするためのヒント :/node/775#hint]]
+
+#br
+#br
+
+*** パッケージでのインストール
+　rpmパッケージ, debパッケージを[[こちら :/ja/node/91#linuxpkg]]から入手します。インストールを行う場合、それぞれ以下のようにして下さい。
+
+ [Vineの場合]
+ > su
+ # rpm -ivh OpenRTM-aist-Python-0.4.1-RC2.vl32.i386.rpm
+ # rpm -ivh OpenRTM-aist-Python-example-0.4.1-RC2.vl32.i386.rpm
+ または、
+ # rpm -ivh OpenRTM-aist-Python-0.4.1-RC2.vl40.i386.rpm
+ # rpm -ivh OpenRTM-aist-Python-example-0.4.1-RC2.vl40.i386.rpm
+ 
+ [Ubuntu7.10の場合]
+ > sudo dpkg -i openrtm-aist-python_0.4.1-RC2_i386_Ubuntu710.deb
+ > sudo dpkg -i openrtm-aist-python-example_0.4.1-RC2_i386_Ubuntu710.deb
+
+#br
+
+***環境変数の設定
+
+　環境変数PYTHONPATHが設定されているかの確認を行って下さい。
+
+　PYTHONPATHが設定されていない場合、以下のようにして環境変数の設定を行って下さい。
+
+ [bash]
+ > vi ~/.bashrc
+ export PYTHONPATH=/usr/lib/python2.x/site-packages 
+ > source ~/.bashrc
+ 
+ [csh]
+ > vi ~/.cshrc
+ setenv PYTHONPATH /usr/lib/python2.x/site-packages 
+ > source ~/.cshrc
+
+
+''※''　python''2.x'' の ''2.x'' は Python のバージョン(2.3, 2.4, 2.5)です。また、
+"/usr/lib/python2.x"は Python がインストールされているパスを指定して下さい。
+
+#br
+#br
+
+''◆引き続き[[動作確認 :/node/774]]へ進んでください。''
+
+
+#br
+#br
+
+** ソースからのビルドとインストール 
+***対応OSおよびディストリビューション
+OpenRTM-aist-Python-0.4.1 は下記の OS および Linux ディストリビューションで動作
+することが確認されています。
+
+- Vine Linux 3.2
+- Vine Linux 4.0
+- Ubuntu Linux 7.1
+
+***動作条件 
+OpenRTM-aist-Python-0.4.1 のインストールには下記のパッケージが必要です。
+
+#br
+
++ORB
+--現在のところ対応ORB実装は omniORB-4.0 以上のみとなっています。
+--omniORBpyはバージョン2.3または2.7が望ましいです。
++Python
+--バージョン2.3, 2.4, 2.5で動作確認を行っています。
+//+Python-devel
++Tkinter
+--GUI関係のコンポーネントで必要です。
+
+
+''参考：''
+
+　→　[[各パッケージをインストールするためのヒント >#u7d9aa20]]
+
+
+-　Vine Linux 3.2, 4.0 については[[こちら >/ja/node/91#vine]]のリポジトリサーバに omniORB 関連の rpm が用意されています。このことにより、apt-get 等を用いて簡単にインストールできるようになりました。
+--[[各パッケージをインストールするためのヒント：Vine3.2 :/node/775#vine32]]
+--[[各パッケージをインストールするためのヒント：Vine4.0 :/node/775#vine40]]
+
+-　Ubuntu Linux は、omniORB が OS 標準のパッケージとして提供されていますので、OS 付属のパッケージインストールツールを用いて手動でインストールすることもできます。~
+--[[各パッケージをインストールするためのヒント：Ubuntu7.10 :/node/775#ubuntu]]
+
+-　これら以外のOSにおいては、それぞれのパッケージのドキュメントに従いインストールを行ってください。
+
+#br
+
+***ソースコードの展開
+　まずソースコード OpenRTM-aist-Python-0.4.1-RC2.tar.gz を[[こちら :/node/524]]から入手し、適当なディレクトリに展開します。
+
+ > tar xvzf OpenRTM-aist-Python-0.4.1-RC2.tar.gz
+ > cd OpenRTM-aist-Python-0.4.1
+
+#br
+
+**ビルド
+OpenRTM-aist はパッケージのビルドに PythonのDistutilsモジュールを使用しています。以下の方法にてビルドを行って下さい。
+
+ > python setup.py build
+
+
+***インストール
+ビルドが正常に終了したら、OpenRTMモジュール、ユーティリティコマンド群をインストールします。
+
+ > su
+ # python setup.py install
+
+#br
+
+***環境変数の設定
+
+　環境変数PYTHONPATHが設定されているかの確認を行って下さい。
+
+　PYTHONPATHが設定されていない場合、以下のようにして環境変数の設定を行って下さい。
+
+ [bash]
+ > vi ~/.bashrc
+ export PYTHONPATH=/usr/lib/python2.x/site-packages 
+ > source ~/.bashrc
+ 
+ [csh]
+ > vi ~/.cshrc
+ setenv PYTHONPATH /usr/lib/python2.x/site-packages 
+ > source ~/.cshrc
+
+
+''※''　python''2.x'' の ''2.x'' は Python のバージョン(2.3, 2.4, 2.5)です。また、
+"/usr/lib/python2.x"の部分は Python がインストールされているパスを指定して下さい。
+
+
+#br
+#br
+
+''◆引き続き[[動作確認 :/ja/node/774]]へ進んでください。''
+
+

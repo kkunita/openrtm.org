@@ -1,0 +1,67 @@
+*Windowsシステムでのインストール
+　以下の作業はAdministrator特権を持った状態で行ってください。
+**対応OSおよびディストリビューション
+　OpenRTM-aist-Python-0.4.1 は下記の OS で動作することが確認されています。
+
+- Windows XP Professional SP2 及び SP3
+
+**動作条件 
+　OpenRTM-aist-0.4.1 のインストールには下記のパッケージが必要です。
+
++Pythonはバージョン2.3, 2.4, 2.5で動作確認を行っています。
++ORB
+--現在のところ対応ORB実装は omniORBpy-2.3 以上のみとなっています。
+--omniORBpyはバージョン2.3,2.7,3.1で動作確認を行っています。
+
+** 環境変数の設定 &aname(hensu); 
+*** PYTHONPATHの設定 
+　作業を行う前にユーザー環境変数(以下、環境変数と記述します。)PYTHONPATHの設定確認を行って下さい。PYTHONPATHが設定されていない場合、以下のようにして環境変数の設定を行って下さい。
+
+1. "マイコンピュータ"を右クリック
+
+2. [詳細設定]タブをクリック
+
+3. 環境変数ダイアログの"環境変数(N)"をクリック
+
+4. "ユーザー環境変数(U)"項目の"新規(N)"をクリック
+
+5. "変数名(N):"に"PYTHONPATH"を、"変数値(V)"に"C:\Python24\Lib\site-packages"をそれぞれ入力し"OK"をクリック
+
+''※''　"変数値(V)"には自分の環境でのPythonのsite-packagesフォルダのパスを指定して下さい。PYTHONPATHには複数のパスの設定はせずに、site-packages (C:\python24\Lib\site-packages) までのパスのみの設定として下さい。
+
+6. 環境変数ダイアログの"OK"をクリック
+
+
+以上は、Python2.4を使用する場合の例です。Python2.5を使用する場合は上記で"Python24"となるところを"Python25"と適宜変更して設定してください。
+*** Pathの更新
+　この時点で、環境変数Pathの設定も更新しておきましょう。手順は上記「PYTHONPATHの設定」と同様ですが、手順4.と5.が少し違います。
+
+4. "システム環境変数(S)"''*''から変数Pathを探し、それをダブルクリックします。''*'' これはユーザー環境変数でもかまいません。その場合は、「新規」からの作成になるかもしれません。
+
+5. "変数値(V)"に設定されている文字列の末尾に";C:\Python24"を書き加えて"OK"をクリック
+
+
+以上は、Python2.4を使用する場合の例です。Python2.5を使用する場合は上記で"Python24"となるところを"Python25"と適宜変更して設定してください。
+
+
+** パッケージでのインストール &aname(instpackage);
+
+　WindowsXp用のパッケージインストーラが用意されています。ソースコードからのインストールが必要な場合は本ページ末尾の章にある[[Windowsシステムでのビルド>/ja/node/651#build_win]]を合わせて参照して下さい。
+
+- インストーラでのインストールを行う方法：
+
+　インストーラをインターネット上で開くか、あるいは、デスクトップなどに保存し、それをダブルクリックして開きます。あとはインストーラに従ってインストールを行って下さい。
+
+◆ Python → omniORBpy → OpenRTM-aist-Python の順にインストールするとスムーズです。
+
+
+◆ パッケージ作成を行った環境で使用されたPython、omniORBpyのバージョンを以下に一覧します。
+
+|           | OpenRTM-aist-Python24-0.4.1 | OpenRTM-aist-Python25-0.4.1 |
+||||
+| Python    | [[Python-2.4.4 >OpenRTM-aist-Python-0.4.1-RELEASE #python24]]| [[Python-2.5.1 インストーラ >OpenRTM-aist-Python-0.4.1-RELEASE #python25]]|
+| omniORBpy | [[omniORBpy-2.7 >OpenRTM-aist-Python-0.4.1-RELEASE #python24]] | [[omniORBpy-3.1 >OpenRTM-aist-Python-0.4.1-RELEASE #python25]]|
+|  OpenRTM-aist | [[OpenRTM-aist-0.4.1-Python2.4-RC2 >OpenRTM-aist-Python-0.4.1-RELEASE #python24]] | [[OpenRTM-aist-0.4.1-Python2.5-RC2 >OpenRTM-aist-Python-0.4.1-RELEASE #python25]]|
+◆ WINDOWS\system32 フォルダを検索し、msvcp71.dllとmsvcr71.dllがあることを確認してください。これらがない場合は、[[こちら :http://www.vector.co.jp/soft/win95/util/se435079.html]]から入手してください。
+
+→ [[''FAQ'': 「MSVCP71.dll が見つからなかったため、…」というエラーで終了する >/ja/node/150#MSVCerror]]

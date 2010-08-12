@@ -1,0 +1,35 @@
+*Notice
+
+**Notice: The environment variable PYTHONPATH 
+
+Please check the environment variable PYTHONPATH is properly specified when using OpenRTM for Python.
+
+When it is not properly specified, you might not be able to run the component.
+
+&color(red){Note: In rtc-template, as the first element of PYTHONPATH is referred, set the path for the site-packages (/usr/lib/python2.4/site-packages) on the top of PYTHONPATH.};
+
+**Notice: rtc-template 
+
+***Copy rtc-template.py to the directory of your choice. 
+
+***When using std::vector in --config option, please specify the option as follows.
+
+ [C++]
+ --config="vector_param0:std::vector<double>:0.0,1.0,2.0,3.0,4.0"
+
+Pease modify std::vector<double> to double like this:
+
+ [Python]
+ --config="vector_param0:double:0.0,1.0,2.0,3.0,4.0"
+
+**Notice: Implementing the Components that have Service Provider Port [#h06cb27b]
+
+If you specify an IDL file named MyService with --service-idl option, a file named MyService_idl_example.py will be generated after running rtc-template.
+
+This file is the file to implement operarion defined in IDL, so please write the implementation code for the operation in this.
+
+----
+-[[Install(Python, Unix):/node/776]]
+-[[Building and installing OpenRTM-aist in a UNIX environment:/node/777]]
+-[[Testing the Sample Programs and the Component Template:/node/778]]
+-[[Tips:/node/779]]

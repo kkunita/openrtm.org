@@ -1,0 +1,256 @@
+* 動作確認
+
+**サンプルのテスト
+　インストールが正常に終了したら、付属のサンプルで動作テストをします。ここでは、サンプルコンポーネントセット SimpleIO を使って、サンプルコンポーネントと OpenRTM-aist-Python の動作を確認します。
+
+
+''サンプルコンポーネントセット SimpleIO：''~
+　RT コンポーネント ConsoleIn.py、ConsoleOut.py と これらの通信を接続する Connector.py とからなるサンプルセットです。このセットは ConsoleIn.py に与えた数値を ConsoleOut.py に表示させる「最も Simple な I/O デモンストレーション」を目的としたサンプルです。ConsoleIn.py から ConsoleOut.py への通信を接続し、その通信を開始させるのが Connector.py の役割です。
+
+#br
+
+*** サンプルの実行 
+- ''rpmパッケージ、あるいはdebパッケージからインストールした場合''~
+　サンプルは、{prefix}''*'' /share/OpenRTM-aist/examples/python にあります。実行したいサンプルコンポーネントセットを、ユーザーの作業ディレクトリ（次のコード例では RTCexamples ）にコピーして使います。~
+　{prefix}''*'':　通常は Linux なら /usr それ以外では /usr/local となることが多い。
+ > mkdir RTCexamples
+ > cd RTCexamples
+ > cp -r /usr/share/OpenRTM-aist/examples/python ./
+ > cd python/SimpleIO
+ > python run.py
+
+#br
+
+
+- ''ソースからビルド・インストールした場合''~
+　自分でビルド・インストールした場合は、ソースを展開したディレクトリ以下の OpenRTM/examples/<サンプルコンポーネントセット名> にあります。
+ > cd OpenRTM-aist-Python-0.4.1/OpenRTM/examples/SimpleIO/
+ > python run.py
+
+
+#br
+
+　実行すると、新規のターミナルが2つ開きます。"Please input number:"と表示されているターミナルに数字を打ち込みます。入力する数字は、long int に収まる範囲の数値を入力してください。数字を打ち込むと、もう片方のターミナルに、入力したのと同じ数字が現れます。ここまでできれば、OpenRTM-aist-Pythonが正しくインストールされていることがわかります。
+
+#br
+**コンポーネントテンプレートのテスト 
+
+*** 準備 
+//　まず、以下の手順にてrtc-templateを使用するための準備を行って下さい。
+//- 既にC++版OpenRTM-aistがインストールされている場合~
+//$PYTHONPATH/OpenRTM/rtc-template/python_gen.pyを/usr/ lib| local/liib /OpenRTM-aist/py_helper
+//にコピーしてください。
+//
+// > su
+// # cp $PYTHONPATH/OpenRTM/rtc-template/python_gen.py /usr/lib/OpenRTM-aist/py_helper/
+//- C++版OpenRTM-aistがインストールされていない場合~
+//$PYTHONPATH/OpenRTM/rtc-template/rtc-template.pyに実行権限を与え、/usr/bin/にrtc-templateとしてコピーしてください。
+//
+// > su
+// # cd $PYTHONPATH/OpenRTM/rtc-template
+// # chmod +x rtc-template.py
+// # cp rtc-template.py /usr/bin/rtc-template
+
+　まず、rtc-templateを使用するための準備を行います。
+
+#br
+
+　$PYTHONPATH/OpenRTM/rtc-template/rtc-template.pyに実行権限を与え、/usr/binなどのパスが通った所にrtc-template.pyへのシンボリックリンクを張ります。
+
+ > su
+ # cd $PYTHONPATH/OpenRTM/rtc-template
+ # chmod +x rtc-template.py
+ # ln -s $PYTHONPATH/OpenRTM/rtc-template/rtc-template.py /usr/bin/rtc-template
+*** テスト 
+次に、コンポーネントのテンプレートジェネレータを使用して、簡単なコンポーネントを作成するテストを行います。テンプレートジェネレータ (rtc-template) を使用します。コンポーネントを作成するデイレクトリ(任意のディレクトリで結構です。)を作成して、そこでコンポーネントを作成してみます。
+
+ > cd 
+ > mkdir SampleComponent
+ > cd SampleComponent
+
+まずはhelpを見てみます。
+
+ > rtc-template --help
+ 
+ Usage: rtc-template [OPTIONS]
+ 
+ Options:
+ 
+     [-h]                                  Print short help.
+     [--help]                              Print details help.
+     [--backend[=backend] or -b]           Specify template code  generator.
+     [--module-name[=name]]                Your module name.
+     [--module-desc[=description]]         Module description.
+     [--module-version[=version]]          Module version.
+     [--module-vendor[=vendor]]            Module vendor.
+     [--module-category[=category]]        Module category.
+     [--module-comp-type[=component_type]] Component type.
+     [--module-act-type[=activity_type]]   Component's activity type.
+     [--module-max-inst[=max_instance]]    Number of maximum instance.
+     [--module-lang[=language]]            Language.
+     [--config[=ParamName:Type:Default]]   Configuration variable.
+     [--inport[=PortName:Type]]            InPort's name and type.
+     [--outport[=PortName:Type]]           OutPort's name and type
+     [--service[=PortName:Name:Type]]      Service Provider Port
+     [--service-idl[=IDL_file]]            IDL file name for service
+     [--consumer[=PortName:Name:Type]]     Service Consumer Port
+     [--consumer-idl[=IDL_file]]           IDL file name for consumer
+     [--idl-include=[path]]                Search path for IDL compile
+        :
+      中略
+        :
+ Example:
+     rtc-template -bcxx \
+     --module-name=Sample --module-desc='Sample component' \
+     --module-version=0.1 --module-vendor=AIST --module-category=Generic \
+     --module-comp-type=DataFlowComponent --module-act-type=SPORADIC \
+     --module-max-inst=10  \
+     --config=int_param0:int:0 --config=int_param1:int:1 \
+     --config=double_param0:double:3.14 --config=double_param1:double:9.99 \
+     --config="str_param0:std::string:hoge" \
+     --config="str_param1:std::string:foo" \
+     --inport=Ref:TimedFloat --inport=Sens:TimedFloat \
+     --outport=Ctrl:TimedDouble --outport=Monitor:TimedShort \
+     --service=MySvcPort:myservice0:MyService \
+     --consumer=YourSvcPort:yourservice0:YourService \
+     --service-idl=MyService.idl --consumer-idl=YourService.idl
+
+rtc-template に対して作成したいコンポーネントの設定を引数として渡すと、
+コンポーネントの雛形を作成します。ここでは、help の表示の最後に表示された''Example:'' 以下をコピーして試してみます。
+
+''Example'' の例では、サービスプロバイダとして MyService、サービスコンシューマとして YourService を利用するオプションが与えられており、そのためのIDLファイルをカレントディレクトリにおいておく必要があります。
+ここでは、簡単なIDLファイルを以下のように作成しておきます。
+
+-MyService.idl
+ interface MyService 
+ {
+   void echo();
+ };
+
+-YourService.idl
+ interface YourService
+ {
+    void echo();
+ };
+
+これらのファイルを作成したら、"Example" の例をコピー＆ペーストするなどして、
+コマンドとして入力します。
+
+※ --helpで表示されるサンプルはC++コード生成用ですので、Python用のコードを生成する場合は、
+&br;&color(RED){"-bcxx"を"-bpython"};に書き換えてください。
+
+ > rtc-template -bpython \
+     --module-name=Sample --module-desc='Sample component' \
+     --module-version=0.1 --module-vendor=AIST --module-category=Generic \
+     --module-comp-type=DataFlowComponent --module-act-type=SPORADIC \
+     --module-max-inst=10  \
+     --config=int_param0:int:0 --config=int_param1:int:1 \
+     --config=double_param0:double:3.14 --config=double_param1:double:9.99 \
+     --config="str_param0:std::string:hoge" \
+     --config="str_param1:std::string:foo" \
+     --inport=Ref:TimedFloat --inport=Sens:TimedFloat \
+     --outport=Ctrl:TimedDouble --outport=Monitor:TimedShort \
+     --service=MySvcPort:myservice0:MyService \
+     --consumer=YourSvcPort:yourservice0:YourService \
+     --service-idl=MyService.idl --consumer-idl=YourService.idl
+  File "MyService_idl_example.py" was generated.
+  File "Sample.py" was generated.
+  File "README.Sample" was generated.
+ 
+ > ls
+ MyService.idl             README.Sample    YourService_idl.py
+ MyService_idl.py          Sample.py        _GlobalIDL/
+ MyService_idl_example.py  YourService.idl  _GlobalIDL__POA/
+ 
+
+このように、コンポーネントのPythonのコード、サービスの実装コードが作成されます。ここで、
+
+これで、実行形式のコンポーネント(Sample.py)が作成されました。
+ここで、実行形式のコンポーネントを実行してみます。
+コンポーネントの実行にはコンフィギュレーションファイル(通常は rtc.conf という名前)が必要です。
+ここでは、簡易版のものをカレントディレクトリに作成します。
+
+-rtc.conf
+ corba.nameservers: ネームサーバ名:ポート番号
+ naming.formats: %n.rtc
+ logger.log_level: PARANOID
+
+ここで、仮にホスト名：localhost ポート番号はデフォルトとします。
+
+-rtc.conf
+ corba.nameservers: localhost
+ naming.formats: %n.rtc
+ logger.log_level: PARANOID
+
+次に、CORBA のネーミングサービスを起動します。CORBAのネーミングサービスは、
+
+ > python $PYTHONPATH/OpenRTM/rtm-naming/rtm-naming.py [ポート番号]
+
+で起動できますので、先ほどrtc.conf で指定したポート番号を指定して起動して
+ください。何も指定しなければデフォルトポートを使用します。
+
+ > python $PYTHONPATH/OpenRTM/rtm-naming/rtm-naming.py
+ Starting omniORB omniNames:  localhost : 2809
+ 
+ Starting omniNames for the first time.
+ Wrote initial log file.
+ Read log file successfully.
+ Root context is IOR:010000002b00000049444c3a6f6d672e6f72672f436f734e616d696e672f4e616d696e67436f6e746578744578743a312e300000010000000000000060000000010102000e0000003135302e32392e39362e31363700f90a0b0000004e616d6553657276696365000200000000000000080000000100000000545441010000001c00000001000000010001000100000001000105090101000100000009010100
+ Checkpointing Phase 1: Prepare.
+ Checkpointing Phase 2: Commit.
+ Checkpointing completed.
+
+
+次に、コンポーネントを起動します。
+
+ > python Sample.py -f rtc.conf
+ もしくは
+ > python Sample.py (デフォルトでカレントディレクトリのrtc.confを読み込む)
+
+これで、コンポーネントが起動でき、RtcLinkで
+- InPortを2つ
+- OutPortを2つ
+- サービスポートを2つ
+- コンフィギュレーションを6個
+持つコンポーネントが表示されれば、OpenRTM-aist-Python-0.4.1が正常にインストール
+されたことになります。
+
+具体的なコンポーネントの作成の仕方は、マニュアルを参照してください。
+
+*注意点 
+**環境変数PYTHONPATHに関する注意点 
+　Python版OpenRTMを使用する際には、環境変数PYTHONPATHが正しく設定されているかの確認をお願いします。
+
+　正しく設定されていない場合、コンポーネントが実行できない可能性があります。
+
+*** 複数のpathを設定する場合 
+&color(red){　※ rtc-templateではPYTHONPATHの一番目の要素を参照しておりますので、PYTHONPATHにはsite-packages (/usr/lib/python2.x/site-packages) までのパスを最初に設定して下さい。};
+
+*** "--prefix" オプションを指定した場合
+　次のように''--prefix'' オプションを用いてインストールディレクトリを指定した場合、PYTHONPATHには展開後のディレクトリを指定する必要があります。
+
+ # python setup.py install --prefix=/home/openrtm
+
+上記のように--prefixオプションを指定した場合、PYTHONPATHには、/home/openrtm/lib/python2.x/site-packages を追加する必要があります。
+**rtc-templateでの注意点 
+
+***rtc-template.pyは任意の場所にコピーして下さい。
+
+*** "--config"オプションでstd::vectorを使用する場合は、次のようにオプションの指定を行って下さい。
+
+ [C++版]
+ --config="vector_param0:std::vector<double>:0.0,1.0,2.0,3.0,4.0"
+ 
+　　↓　　　　↓　　std::vector<double> を double　に　　　↓　　　↓ 
+ [Python版]
+ --config="vector_param0:double:0.0,1.0,2.0,3.0,4.0"
+
+**Service Providerポートを持つコンポーネントの実装での注意点
+
+MyService.idlという--service-idlで指定したIDLファイルがある場合、rtc-template実行後に
+MyService_idl_example.pyというファイルが生成されます。
+
+このファイルはIDLで定義したオペレーションを実装するためのファイルですので、この中で
+オペレーションの実装を行って下さい。
+
+

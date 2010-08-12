@@ -1,0 +1,226 @@
+#contents
+
+OpenRTM-aist本体に手を加えたうえでWindows上で利用したい場合は、Windows用ソースパッケージを自分でビルドするができます。
+
+//------------------------------------------------------------
+**Windows用ソースコード
+
+Windows 用の　OpenRTM-aist (C++版) ソースパッケージは Linux 用のソース
+とは別に配布されています。ソースコードの内容は全く同じですが、以下の部
+分が異なっています。
+
+-文字コード (Windows: Shift-JIS, Linux: EUC)
+-Visual Studio のソリューションを含む
+-Visual C++ のプロジェクトファイルを含む
+-msiインストーラ作成環境を含む
+
+***ソースコードの構成
+
+図に示すように、オリジナルは subversion リポジトリのソースコードで、そのソースコードから、Linux上で、
+
+-Linux/Unix用ソースコード配布パッケージ
+-Windows用ソースコード配布パッケージ
+
+の2種類を作成する構成になっています。
+
+#ref(openrtm_src_dist_ja.png,80%,center,nolink)
+CENTER:''OpenRTM-aistのソースの構成''
+
+リポジトリから取得した最新のソースコードをWindowsで利用する場合は、一旦LinuxでWindows用のソースコードを生成する必要があります。
+
+//------------------------------------------------------------
+**ビルド環境
+
+ビルドに必要な環境、ライブラリは以下の通りです。
+
+-Visual C++
+--Visual C++ Express Editionでも利用可能です
+-omniORB
+
+*** Visual C++/Visual Studio
+
+Windows用のバイナリをビルドするためには、Visual C++開発環境が必要です。
+現在対応しているVisual C++は Visual C++ 2005 または 2008のみです。
+Visual C++ 2010はプロジェクト変換ウィザードでビルドできる可能性がありま
+すが、依存ライブラリであるomniORBも自分でビルドする必要があるため、少々
+手間がかかります。
+
+Visual C++ Express Edition は Microsoft が無償で提供するC++の開発環境で、
+MFCやATLなどは利用できませんが、Windowsアプリケーション(Win32アプリケー
+ション)を開発することができます。OpenRTM-aistを利用したコンポーネント開
+発でも、MFCやATLなどを利用しないコンポーネントはVisual C++ Express
+Edition のみで開発することができます。下記リンクからISOイメージをダウン
+ロードしてインストールした上で、Microsoft Live IDを取得してライセンス
+(無料)を取得してください。
+
+-[[Visual Studio Express Top:http://www.microsoft.com/japan/msdn/vstudio/express/]]: ここからは2010しかダウンロードできません。
+-[[Visual Studio 2008 Express Edition:http://www.microsoft.com/japan/msdn/vstudio/2008/product/express/offline.aspx]]: 2008のDVD ISOイメージをここからダウンロードできます。
+
+
+*** omniORB
+
+OpenRTM-aist のビルドには omniORB のライブリが必要です。omniORB は以下
+のリンクから、ソースコードおよびバイナリを取得できますが、openrtm.org
+が提供するビルド済みバイナリインストーラが便利です。
+
+-[[omniORB official:http://omniorb.sourceforge.net/]]
+--[[sourceforge download page:http://sourceforge.net/projects/omniorb/files/]]
+-[[openrtm.org提供msiパッケージ:http://www.openrtm.org/pub/Windows/omniORB/]]
+--vc8 (Visual C++ 2005) 用とvc9 (Visual C++ 2008)用に分かれています。環境に合わせて適切なものをインストールしてください。
+
+omniORBを上記インストーラ以外の方法でインストールした場合には、後の
+OpenRTM-aistのビルドおよび、自作コンポーネントのビルドの際に必要な環境
+変数が設定されませんのでご注意ください。
+
+**** msi omniORBインストーラ
+
+インストーラは以下の作業を行います。
+
+-デフォルトのインストールディレクトリはC:\Program Files\omniORB\<version_number>
+-インストールディレクトリにソース、ヘッダ、スクリプト、LIB等をコピー
+-環境変数 ''PATH'' に ''bin/x86_win32'' を追加
+-環境変数 ''OMNI_ROOT'' にインストールディレクトリをセット
+
+なお、環境変数のアプリケーションへの通知はされませんので、環境変数の更
+新を有効にするには再起動してください。または、「マイコンピュータ」→
+「プロパティ」→「詳細設定」→「環境変数」から環境変数のどれかを選択し
+「編集」をクリックして編集ダイアログを表示させ、そのまま何も変更せずに
+OKを押すことで、シェルへ環境変数の変数が通知され、そのシェルから新たに
+実行したアプリケーションでは変更された環境変数が有効になりますが、よく
+わからなければ再起動したほうが無難です。)
+
+**** 環境変数: OMNI_ROOT
+
+上記のmsiインストーラ以外の方法でインストールした場合は環境変数
+''OMNI_ROOT'' を設定する必要があります。OMNI_ROOT に設定したディレクト
+リ以下は以下のような構造になっている必要があります。
+
+ <OMNI_ROOT>
+  + bin
+  |  + exripts
+  |  + x86_win32
+  + idl
+  |  + COS
+  + include
+  |  + COS
+  |  + omniORB4
+  |  |  + internal
+  |  + omnithread
+  |  + omniVms
+  |  + python1.5
+  + lib
+     + python
+     |  + omniidl
+     + omniidl_be
+        + cxx
+           + dynskel
+           + header
+           + impl
+           + skel
+
+*** WiX
+
+WiX (Windows Installer XML) は Windows の msi インストーラをコマンドラ
+インベースのツール群で作成することを目指しているオープンソースのプロジェ
+クトです。
+
+-[[WiX official:http://wix.sourceforge.net/]]
+-[[WiX download page:http://sourceforge.net/projects/wix/files/]]
+
+OpenRTM-aist はWindows用のインストーラをWiXを利用して作成しています。
+インストーラまで作成する場合には、WiXを予めインストールしておいてください。
+
+*** Python
+
+ビルドの途中でいくつかのPythonスクリプトを利用するのでPythonが必要にな
+ります。以下のサイトから最新のものを取得しインストールしてください。
+
+-[[Python Official Website:http://www.python.org/]]
+
+インストーラを起動すると、ウィザードで幾つか選択する部分がありますが、
+デフォルトのままでインストールしてかまいません。
+
+
+*** OpenCV
+
+Windows版OpenRTM-aistではOpenCVを利用したサンプルコンポーネントが含まれ
+ていますのでOpenCVが必要となります。現在のところOpenCV 1.0のみ対応です。
+
+-[[OpenCV win32 installer(sourceforge)>http://downloads.sourceforge.net/opencvlibrary/OpenCV_1.0.exe?modtime=1161287502&big_mirror=1]]
+
+ここからOpenCVのインストーラ OpenCV_1.0.exeをダウンロードします。
+OpenCV_1.0.exeを実行するとインストーラが起動するので指示に従ってインス
+トールします。
+
+//------------------------------------------------------------
+**ソースパッケージの取得
+
+まずソースコード OpenRTM-aist-X.X.X-win32.zip をダウンロードし、適当な
+ディレクトリに展開します。
+
+-[[OpenRTM-aist-X.X.X-win32.zip:http://www.openrtm.org/pub/OpenRTM-aist/cxx/1.0.0/]]
+
+*** バッチファイルの修正
+
+そのままでは、RTSystemEditor の RCP パッケージがないためインストーラを
+ビルドする途中でエラーとなります。以下の2種類の方法のうち一つを選択して
+ください。
+
+-installer/autowix.cmd を修正
+-openrtm.org配布のmsiインストーラでインストールされるRTSystemEditorをC:\distributionにコピー
+
+****installer/autowix.cmd を修正
+
+installer/autowix.cmd の初めの方にある RTSystemEditor に関する部分を以
+下のように修正します。
+
+ @rem ------------------------------------------------------------
+ @rem Generate RTSystemEditor wxs file
+ @rem
+ @rem RTSystemEditorRCP.exe should be under %RTSE_ROOT%
+ @rem
+ @rem ------------------------------------------------------------
+ @rem if "x%RTSE_ROOT%" == "x" (
+ @rem    echo Envrionment variable "RTSE_ROOT" is not set. Abort.
+ @rem    goto END
+ @rem )
+ @rem if not exist "%RTSE_ROOT%\RTSystemEditorRCP.exe" (
+ @rem    echo RTSystemEditorRCP.exe does not found. Abort
+ @rem    goto END
+ @rem )
+ set INCLUDE_RTSE=NO
+ set INCLUDE_OPENRTP=NO
+
+****RTSystemEditorをコピー
+
+openrtm.org で配布している Windows 用インストーラでOpenRTM-aistをインストールすると、デフォルトでは C:\Program Files\OpenRTP 以下に RTSystemEditor の RCP 版がインストールされます。これを、C:\distribution 以下にコピーします。
+
+ C:\distribution
+      + OpenRTP
+         + RTSystemEditor
+             + configuration
+             + NewProjectName
+             + plugins
+             + ...
+
+このような構造になっている必要があります。
+
+** ビルド
+
+以上の準備が環境したら、ビルドを行います。autobuild_vc8.bat (開発環境が
+VC2005の場合) あるいはautobuild_vc9.bat (同じくVC2008の場合) をダブルク
+リックし、起動すれば自動でビルドが始まります。
+
+また、ソリューションファイル(sln)からのビルドも可能です。
+OpenRTM-aist_vc8.sln (開発環境がVC2005の場合) あるいは
+OpenRTM-aist_vc9.sln (開発環境がVC2008の場合) をダブルクリックし、ビル
+ドを行ってください。
+
+** インストール
+すべてが正しくビルドできたら次のことを行い、インストールを完了させます。
+
+-''環境変数RTM_ROOTを設定'': OpenRTM-aistのディレクトリを環境変数RTM_ROOTに設定してください。
+- ''DLLへのパスを通す'': DLLをパスの通った場所にコピーする、あるいは、環境変数PATHに%RTM_ROOT%\bin を追加します。
+-''環境変数PATHの設定'': 環境変数PATHに%RTM_ROOT%\binだけでなく%RTM_ROOT%\utils\rtc-templateも登録することをお勧めします。
+
+以上で、OpenRTM-aistのインストールは終了です。

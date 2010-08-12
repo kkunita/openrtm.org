@@ -1,0 +1,64 @@
+//*Installing OpenRTM-aist in a Windows environment 
+
+**Supported OS and Distribution 
+OpenRTM-aist-Python-1.0.0 has been tested and validated on the following platforms.
+
+- Windows XP Professional
+- Windows Vista Professional
+
+**Prerequisites 
+You need the following packages for installation of OpenRTM-aist-1.0.0.
+
++Python has been tested and validated on version 2.3, 2.4, 2.5.
++ORB
+--Currently, the only omniORBpy-2.3(version2.3 or later) is supported.
+--omniORBpy has been tested and validated on version 2.3, 2.7 or 3.1.
+
+**Setting Environment Variables 
+
+Please make sure user environment variable (simply described the environment variable from here on) PYTHONPATH was properly set before installation.
+
+If PYTHONPATH has not been set, please set the environment variable as follow.
+
+1. Right-click [My Computer].
+
+2. Click [Advanced] tab.
+
+3. Click [Environment Variables(N)] button in the environment variable dialog box.
+
+4. Click [New(N)] of the [User variables(U)] item.
+
+5. Enter "PYTHONPATH" in "Variable Name(N)" and "C:\Python24\Lib\site-packages" in "Variable Value(V)" and then click [OK].
+
+Note: Please specify the path for the Python site-packages folder in your environment to the "Variable Value(V)".
+
+6. Click [OK] in the Environment Variable dialog box.
+
+**Installing OpenRTM-aist Using Package 
+
+The packages for WindowsXp are available. If you want to install from the source code, refer to [[Building OpenRTM-aist on Windows system>#o960236c]]
+
+-How to install using the installer:~
+Open installer on the web directly or save it on your desktop etc then double-click it to launch. Please follow the installation instructions.
+
+-When Python and omniORBpy has not been installed yet, it will be smooth if you install them with following order:
+Python->omniORBpy->OpenRTM-aist-Python.
+
+
+-Choose the appropriate installer for the installed Python's version. 
+Below is a list of Python and omniORBpy versions which is used to create the package.
+For your convenience, the list of links for installation will be attached below:
+
+|           | OpenRTM-aist-1.0.0-Python2.4-RC2 | OpenRTM-aist-1.0.0-Python2.5-RC2 |
+||||
+| Python    | 2.4 [[Python-2.4.4 Installer:http://www.python.org/ftp/python/2.4.4/python-2.4.4.msi]]| 2.5 [[Python-2.5.1 Installer:http://www.python.org/ftp/python/2.5.1/python-2.5.1.msi]]|
+| omniORBpy | 2.7 [[omniORBpy-2.7 Installer (Provided by AIST):http://www.is.aist.go.jp/rt/OpenRTM-aist/packages/windows/omniORBpy/omniORBpy-2.7.msi]] | 3.1 [[omniORBpy-3.1 Installer(Provided by AIST):http://www.is.aist.go.jp/rt/OpenRTM-aist/packages/windows/omniORBpy/omniORBpy-3.1.msi]]|
+|  OpenRTM-aist | OpenRTM-aist-1.0.0-Python2.4-RC2 [[OpenRTM-aist Package Installer(Supported Python2.4):http://www.openrtm.org/pub/Windows/OpenRTM-aist/python/OpenRTM-aist-Python24-1.0.0-RC1-p1.msi]] | OpenRTM-aist-1.0.0-Python2.5-RC2 [[OpenRTM-aist Package Installer(Supported Python2.5):http://www.openrtm.org/pub/Windows/OpenRTM-aist/python/OpenRTM-aist-Python25-1.0.0-RC1-p1.msi]]|
+
+----
+-[[Install(Python, Windows):/node/908]]
+-Installing OpenRTM-aist in a Windows environment
+-[[Testing the Sample Programs:/node/910]]
+-[[Building OpenRTM-aist on Windows system:/node/911]]
+-[[Notice:/node/912]]
+

@@ -1,0 +1,184 @@
+**Testing the Sample Programs
+When the installation completed successfully, you can test it on the sample application example/SimpleIO.
+
+ > cd OpenRTM/examples/SimpleIO/
+ (If you install using the package, the source files for the sample is available in the directory $PYTHONPATH/OpenRTM/example/.)
+ 
+ Note: Please modify $PYTHONPATH to the values which were set in the environment variable PYTHONPATH.
+ 
+ > python run.py
+
+At first, 2 terminal windows will appear, then after a few seconds, another one will appear. 
+You must wait until the third window appears. 
+You can then type a number in the window diplayed as text "Please input number:". It should fit in a long int structure. The number typed in will simultaneously be displayed in the other window, along with the time (the format for the time is sec:nsec). 
+Reaching this stage indicates that the build and installation of OpenRTM-aist-Python was successful.
+
+**Testing the Component Template
+
+Let's prepare to use rtc-template as procedure below.
+
+***When OpenRTM-aist for C++ has already been installed
+
+Please copy $PYTHONPATH/OpenRTM/rtc-template/python_gen.py to /usr/lib or /usr/local/lib /OpenRTM-aist/py_helper.
+
+ > su
+ # cp $PYTHONPATH/OpenRTM/rtc-template/python_gen.py /usr/lib/OpenRTM-aist/py_helper/
+
+***When OpenRTM-aist for C++ is not installed 
+
+Please give the executable attribute to "$PYTHONPATH/OpenRTM/rtc-template/rtc-template.py", and copy "rtc-template.py" as rtc-template under "/usr/bin/".
+
+ > su
+ # cd $PYTHONPATH/OpenRTM/rtc-template
+ # chmod +x rtc-template.py
+ # cp rtc-template.py /usr/bin/rtc-template
+
+Next, you will test for generating the skeleton of a component by passing its specifications as arguments to rtc-template. You will use the template generator (rtc-template). After making the directory where you will generate the component (any directory will do), you will generate the component.
+
+ > cd 
+ > mkdir SampleComponent
+ > cd SampleComponent
+
+Let's take a look at the help.
+
+ > rtc-template --help
+ 
+ Usage: rtc-template [OPTIONS]
+ 
+ Options:
+ 
+     [-h]                                  Print short help.
+     [--help]                              Print details help.
+     [--backend[=backend] or -b]           Specify template code  generator.
+     [--module-name[=name]]                Your module name.
+     [--module-desc[=description]]         Module description.
+     [--module-version[=version]]          Module version.
+     [--module-vendor[=vendor]]            Module vendor.
+     [--module-category[=category]]        Module category.
+     [--module-comp-type[=component_type]] Component type.
+     [--module-act-type[=activity_type]]   Component's activity type.
+     [--module-max-inst[=max_instance]]    Number of maximum instance.
+     [--module-lang[=language]]            Language.
+     [--config[=ParamName:Type:Default]]   Configuration variable.
+     [--inport[=PortName:Type]]            InPort's name and type.
+     [--outport[=PortName:Type]]           OutPort's name and type
+     [--service[=PortName:Name:Type]]      Service Provider Port
+     [--service-idl[=IDL_file]]            IDL file name for service
+     [--consumer[=PortName:Name:Type]]     Service Consumer Port
+     [--consumer-idl[=IDL_file]]           IDL file name for consumer
+     [--idl-include=[path]]                Search path for IDL compile
+        :
+       trans:
+        :
+ Example:
+     rtc-template -bcxx \
+     --module-name=Sample --module-desc='Sample component' \
+     --module-version=0.1 --module-vendor=AIST --module-category=Generic \
+     --module-comp-type=DataFlowComponent --module-act-type=SPORADIC \
+     --module-max-inst=10  \
+     --config=int_param0:int:0 --config=int_param1:int:1 \
+     --config=double_param0:double:3.14 --config=double_param1:double:9.99 \
+     --config="str_param0:std::string:hoge" \
+     --config="str_param1:std::string:foo" \
+     --inport=Ref:TimedFloat --inport=Sens:TimedFloat \
+     --outport=Ctrl:TimedDouble --outport=Monitor:TimedShort \
+     --service=MySvcPort:myservice0:MyService \
+     --consumer=YourSvcPort:yourservice0:YourService \
+     --service-idl=MyService.idl --consumer-idl=YourService.idl
+
+By passing the settings of the component we want to build as arguments to rtc-template, the skeleton of the component will automatically be generated.
+Here, we will try the ''Example:'' provided at the end of the help section.
+
+In this ''Example'', the options for using MyService as a service provider and YourService as a service consumer are provided, and these IDL files need to be put in the current directory for them.
+Here, we will create simple IDL files as follows:
+
+-MyService.idl
+ interface MyService 
+ {
+   void echo();
+ };
+
+-YourService.idl
+ interface YourService
+ {
+    void echo();
+ };
+
+After putting these files, we copy and paste "Example" as the input commands.
+
+Note: Since sample displayed by --help is for generating C++ codes, when you generate the source code for Python, please modify "- bcxx" to "- bpython".
+
+ > rtc-template -bpython \
+     --module-name=Sample --module-desc='Sample component' \
+     --module-version=0.1 --module-vendor=AIST --module-category=Generic \
+     --module-comp-type=DataFlowComponent --module-act-type=SPORADIC \
+     --module-max-inst=10  \
+     --config=int_param0:int:0 --config=int_param1:int:1 \
+     --config=double_param0:double:3.14 --config=double_param1:double:9.99 \
+     --config="str_param0:std::string:hoge" \
+     --config="str_param1:std::string:foo" \
+     --inport=Ref:TimedFloat --inport=Sens:TimedFloat \
+     --outport=Ctrl:TimedDouble --outport=Monitor:TimedShort \
+     --service=MySvcPort:myservice0:MyService \
+     --consumer=YourSvcPort:yourservice0:YourService \
+     --service-idl=MyService.idl --consumer-idl=YourService.idl
+  File "MyService_idl_example.py" was generated.
+  File "Sample.py" was generated.
+  File "README.Sample" was generated.
+ 
+ > ls
+ MyService.idl     MyService_idl_example.py  Sample.py        YourService_idl.py  _GlobalIDL__POA/
+ MyService_idl.py  README.Sample             YourService.idl  _GlobalIDL/
+
+Python code and service implementation code have then be generated.
+
+The executable version (Sample.py) of the component was generated.
+Let's try to run the executable version of the component. 
+A configuration file (usually named rtc.conf) must be provided when executing a component. Here, we will create a very simple one in the current directory.
+
+-rtc.conf
+ corba.nameservers:  Name Server's name : Port number
+ naming.formats: %n.rtc
+ logger.log_level: PARANOID
+
+In this example, we will set hostname to localhost and the port number to default.
+
+-rtc.conf
+ corba.nameservers: localhost
+ naming.formats: %n.rtc
+ logger.log_level: PARANOID
+
+Next, we start the CORBA Naming Service. 
+The CORBA Naming Service can be started by inputting the following command. Please start it by specifying port number in rtc.conf:
+
+ > python $PYTHONPATH/OpenRTM/rtm-naming/rtm-naming.py [Port number]
+
+If the port number is not specified, its default will be used.
+
+ > python $PYTHONPATH/OpenRTM/rtm-naming/rtm-naming.py
+ Starting omniORB omniNames:  localhost : 2809
+ 
+ Starting omniNames for the first time.
+ Wrote initial log file.
+ Read log file successfully.
+ Root context is IOR:010000002b00000049444c3a6f6d672e6f72672f436f734e616d696e672f4e616d696e67436f6e746578744578743a312e300000010000000000000060000000010102000e0000003135302e32392e39362e31363700f90a0b0000004e616d6553657276696365000200000000000000080000000100000000545441010000001c00000001000000010001000100000001000105090101000100000009010100
+ Checkpointing Phase 1: Prepare.
+ Checkpointing Phase 2: Commit.
+ Checkpointing completed.
+
+
+Next, we will start the component.
+
+ > python Sample.py -f rtc.conf
+ or
+ > python Sample.py (Read rtc.conf in the current directory by default)
+
+The component can be started.
+OpenRTM-aist-Python-0.4.1 is properly installed, if the component with the following specifications is shown on RtcLink:
+- 2 InPorts
+- 2 OutPorts
+- 2 Service ports
+- 6 Configurations
+
+For more details on developing components, please refer to the manual.
+

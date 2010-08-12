@@ -1,0 +1,243 @@
+#contents
+
+** サンプルコンポーネントの場所
+
+インストールまたはビルドが正常に終了したら、付属のサンプルで動作テスト
+をします。サンプルは、通常は以下の場所にあります。
+
+-スタートメニュー: [スタート]>>[OpenRTM-aist]>>[C++]>>[components]>>[examples]
+-C:\Program Files\OpenRTM-aist\1.0\examples\C++
+-OpenRTM-aist/examples (ソースからビルドした場合)
+
+サンプルコンポーネントセット SimpleIO を使って、OpenRTM-aist が正しくビ
+ルド・インストールされているかを確認します。
+
+//プログラムメニューに登録されているサンプルプログラムは、デフォルトでロー
+//カルホストのCORBAネームサーバを使用するように設定されています。したがっ
+//て、次に示すどちらかの方法（インストール方法により多少違いが生じます）
+//で、まずCORBAネームサーバを起動する必要があります。
+
+** サンプル (SimpleIO) を使用したテスト
+
+RT コンポーネント ConsoleInComp、ConsoleOutComp からなるサンプルセット
+です。ConsoleInComp はコンソールから入力された数値をOutPortから出力する
+コンポーネント、ConsoleOutComp はInPortに入力された数値をコンソールに表
+示するコンポーネントです。これらは、最も Simple な I/O (入出力) を例示
+するためのサンプルです。ConsoleInComp の OutPort から ConsoleOutComp の
+InPort へ接続を構成し、これらの2つのコンポーネントをアクティブ化
+(Activate) することで動作します。
+
+以下は、msiインストーラでOpenRTM-aistをインストールした環境で、スタート
+メニューから各種プログラムを起動する前提で説明します。スタートメニュー
+から、OpenRTM-aistを右クリックし「開く」でフォルダを開き、各プログラム
+へアクセスすると便利です。
+
+#ref(win_start_menu_open_ja.png,80%,center)
+CENTER: ''スタートメニューのOpenRTM-aistを開く''
+
+*** ネームサーバの起動
+
+まず、コンポーネントの参照を登録するためのネームサーバを起動します。
+「OpenRTM-aist」>>「tools」>>「Start Naming Service」にあるショートカッ
+トをクリックしネームサーバを起動します。
+
+#ref(win_start_openrtm_tool_ja.png,center,80%)
+CENTER: ''ネームサーバへのショートカット''
+
+起動すると、以下のようなコンソール画面が開きます。
+
+#ref(win_naming_service_ja.png,80%,center)
+CENTER: ''ネームサーバの起動''
+
+**** コンソール画面が開かない
+
+ネームサーバのコンソール画面が開かないケースがあります。この場合下記の
+ようないくつかの原因が考えられますので、原因を調査して対処してくださ。
+
+***** omniORBがインストールされていない。
+
+openrtm.orgが提供するmsiインストーラにはomniORBが含まれていますが、カス
+タムインストールを選択すると、omniORBをインストールせずにOpenRTM-aistを
+インストールすることもできます。
+
+また、手動でインストールした場合には、omniORBが入っていない場合も考えら
+れますので、omniORBがインストールされているか確認してください。
+
+***** 環境変数OMNI_ROOTが設定されていない
+
+「Start Naming Service」は %RTM_ROOT%\bin\rtm-naming.bat にあるバッチファ
+イルからネームサーバ(omniNames.exe)を起動します。この際、omniNames.exe
+を参照するために環境変数OMNI_NAMESを利用しています。通常インストーラで
+OpenRTM-aistをインストールした場合には、OMNI_ROOT環境変数が自動で設定さ
+れますが、何らかの理由で環境変数が無効になっていたり、手動でインストー
+ルした場合などは、環境変数が設定されていないことがあります。
+
+環境変数OMNI_ROOTが設定されていることを確認してください。
+環境編巣は、
+-「コントロールパネル」>>「システム」>>「詳細設定」タブ>>「環境変数」
+-「マイコンピュータ」を右クリック、「プロパティ」を選択、「詳細設定」タブ>>「環境変数」
+などから参照・編集することができます。
+
+**** その他
+
+ユーザ名が2バイト文字の場合、ログを出力するフォルダを適切に設定できずに
+omniNames.exe の起動に失敗する場合があります。その場合、環境変数TEMPを
+2バイト文字を含まない場所に設定することで改善する場合があります。適当な
+テンポラリディレクトリ (以下のケースでは C:\temp) を作成し、そこを環境
+変数 TEMP が指すように、rtm-naming.bat の先頭部分で以下のように設定しま
+す。
+
+ set cosnames="omninames"
+ set orb="omniORB"
+ set port=%1
+ rem set OMNIORB_USEHOSTNAME=localhost
+ set PATH=%PATH%;%OMNI_ROOT%\bin\x86_win32
+ set TEMP=C:\temp
+
+また、稀なケースですが、ホスト名やアドレスの設定の問題で、起動がうまく
+いかないケースがあります。その場合、利用しているPCのIPアドレスを
+omniNames.exe に教えてあげるとうまくいくケースがります。環境変数
+OMNIORB_USEHOSTNAME を以下のように設定します (以下は自ホストのIPアドレ
+スが192.168.0.11の場合の例)。
+
+ set cosnames="omninames"
+ set orb="omniORB"
+ set port=%1
+ set OMNIORB_USEHOSTNAME=192.168.0.11
+ set PATH=%PATH%;%OMNI_ROOT%\bin\x86_win32
+
+*** サンプルコンポーネントの起動
+
+ネームサーバ起動後、適当なサンプルコンポーネントを起動します。先ほど開
+いたスタートメニューフォルダの、「OpenRTM-aist」>>「C++」>>
+「components」>>「examples」を開くと、図のようにいくつかのコンポーネ
+ントがあります。
+
+#ref(win_start_menu_comps_ja.png,80%,center)
+CENTER:''サンプルコンポーネントフォルダ''
+
+ここでは、「ConsoleInComp.exe」「ConsoleOutComp.exe」をそれぞれダブルク
+リックして2つのコンポーネントを起動します。起動すると、下図のような2つ
+のコンソール画面が開きます。
+
+#ref(win_consoleinout_window_ja.png,60%,center)
+CENTER:''ConsoleInコンポーネントとConsoleOutコンポーネント''
+
+**** コンポーネントが起動しない場合
+
+コンポーネントが起動しない場合、いくつかの原因が考えられます。
+
+***** コンソール画面が開いてすぐに消える
+
+rtc.conf の設定に問題があり、起動できないケースがあります。上記スタート
+メニューフォルダの「rtc.conf for examples」を開いて設定を確認してくださ
+い。例えば、corba.endpoint/corba.endpoints などの設定が現在実行中のPCの
+ホストアドレスとミスマッチを起こしている場合などは、CORBAが異常終了しま
+す。
+
+以下のような最低限のrtc.confに設定しなおして試してみてください。
+
+ corba.nameservers: localhost
+
+***** ランタイムエラーが出て終了する
+
+ライブラリ等が適切にインストールされていない・設定されていない等の原因
+でラインタイムエラーが出る場合があります。-再起動してみる-OpenRTM-aist
+をすべてアンインストールし、再度インストールしてみるなどを行うことで改
+善される場合があります。
+
+*** RTSystemEditor (RTSE) の起動
+
+スタートメニューフォルダから、RTSystemEditorを起動します。
+RTSystemEditorは「OpenRTM-aist」>>「C++」>>「tools」>>「RT System
+Editor」にあります。
+
+#ref(rtse_start_ja.png,40%,center)
+CENTER: ''RTSystemEditorの起動''
+
+**** ネームサーバへの接続
+
+RTSEが起動したらまずネームサーバへ接続します。左ペインの上部にある、
+&ref(rtse_connect_ns_icon.png);のアイコンをクリックして接続ダイアログを
+開きます。接続ダイアログのホスト名の部分に先ほど起動したネームサーバの
+アドレス (この場合同一ホストですので ''localhost'') を指定します。ポー
+ト番号も指定できますが、通常デフォルトの2809番を使用する場合は何も指定
+しません。
+
+#ref(rtse_connect_dialog_ja.png,100%,center)
+CENTER: ''ネームサーバへの接続ダイアログ''
+
+接続すると、ネームサービスビューにlocalhostが現れます。ツリー表示の
+[+] をクリックすると、先ほど起動した2つのコンポーネントが登録されている
+ことがわかります。
+
+#ref(rtse_ns_connected_ja.png,100%,center)
+CENTER: ''ネームサーバに登録されたコンポーネント''
+
+**** エディタへの配置
+
+システムを編集するエディタを開きます。上部のエディタを開くボタン
+&ref(rtse_open_editor_icon_ja.png); をクリックすると、中央のペインにエ
+ディタが開きます。
+
+左側のネームサービスビューに &ref(rtse_rtc_icon.png); のアイコンで表示
+されているコンポーネント (2つ) を中央のエディタにドラッグアンドドロップ
+します。
+
+#ref(rtse_dnd_rtcs_ja.png,80%,center)
+CENTER: ''コンポーネントをエディタに配置''
+
+**** 接続とアクティブ化
+
+ConsoleIn0 コンポーネントの右側にはデータが出力される OutPort
+&ref(rtse_outport_icon.png); 、ConsoleOut0 コンポーネントの左側にはデー
+タが入力される InPort &ref(rtse_inport_icon.png); がそれぞれついていま
+す。
+
+これら InPort/OutPort (まとめてデータポートと呼びます) を接続します。
+OutPort から InPort (または InPort から OutPort) へドラッグランドドロッ
+プすると、図のようなダイアログが現れますので、デフォルト設定のまま OK
+ボタンを押します。
+
+#ref(rtse_portconnect_ja.png,80%,center)
+CENTER: ''データポートの接続''
+
+#ref(rtse_portconnect_dialog_ja.png,80%,center)
+CENTER: ''データポート接続ダイアログ''
+
+2つのコンポーネントの間に接続線が現れます。次に、エディタ上部メニューの
+All Activate ボタン &ref(rtse_all_actevate_icon.png); をクリックし、こ
+れらのコンポーネントをアクティブ化します。アクティブ化されると、コンポー
+ネントが緑色に変化します。
+
+#ref(rtse_actevated_all_ja.png,center)
+CENTER: ''アクティブ化されたコンポーネント''
+
+コンポーネントがアクティブ化されると ConsoleIn コンポーネント側では
+
+ Please input number: 
+
+というプロンプト表示に変わりますので、適当な数値 (short int の範囲内:
+32767以下) を入力し Enter キーを押します。すると、ConsoleOut 側では、入
+力した数値が表示され、ConsoleIn コンポーネントからConsoleOut コンポーネ
+ントへデータが転送されたことがわかります。
+
+以上で、コンポーネントの基本動作の確認は終了です。
+
+** 他のサンプル
+
+インストーラには、このほかにもいくつかのサンプルコンポーネントが付属しています。
+これらのコンポーネントも同様に起動し、RTSystemEditor でポート同士を接続し、アクティブ化することで試すことができます。
+
+付属しているコンポーネントのリストと簡単な説明を以下に示します。
+
+|ConsoleInComp.exe|コンソールから入力された数値をOutPortから出力する。ConsoleOutComp.exeに接続して使用する。|
+|ConsoleOutComp.exe|InPortに入力された数値をコンソールに表示する&color(default){コンポーネント};。ConsoleInComp.exeに接続して使用する。|
+|SequenceInComp.exe|ランダムな数値(Short,Long,Float,Doubleとそのシーケンス型)を出力する&color(default){コンポーネント};。SequenceOutComp.exeに接続して使用する。|
+|SequenceOutComp.exe|InPortに入力される数値(Short,Long,Float,Doubleとそのシーケンス型)を表示。SequenceInComp.exeに接続して使用する。|
+|MyServiceProviderComp.exe|MyService型のサービスを提供する&color(default){コンポーネント};。MyServiceConsumerComp.exeに接続して使用する。|
+|MyServiceConsumerComp.exe|MyService型のサービスを提供する&color(default){コンポーネント};。MyServiceProviderComp.exeに接続して使用する。|
+|ConfigSampleComp.exe|Configurationのサンプル。RtcLinkからConfigurationを変更してConfigurationの挙動を理解するためのサンプル。|
+|USBCameraAcquireComp.exe|USBカメラから画像を取得してOutPortから出力する&color(default){コンポーネント};。USBCameraMonitor.exeに接続して使用する。|
+|USBCameraMonitor.exe|InPortに入力される画像を画面に表示する&color(default){コンポーネント};。USBCameraAquire.exeに接続して使用する。|
+
