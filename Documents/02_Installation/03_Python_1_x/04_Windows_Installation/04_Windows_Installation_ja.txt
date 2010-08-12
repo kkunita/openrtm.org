@@ -13,13 +13,13 @@ openrtm.org のダウンロードサイトから、msiパッケージをダウンロードします。msiパッ
 ***インストーラの起動
 openrtm.orgからmsiをダウンロードし実行すると、以下のようなダイアログが現れます。
 
-#ref(installer_python_00_ja.png,60%,center)
+#ref(installer_python_ja_00.png,60%,center)
 CENTER:''インストーラダイアログ''
 
 ウィザードに従って、インストールを進めます。
 「次へ」をクリックすると使用許諾契約書の画面になりますので、「ソフトウエアライセンス条項に同意します」をクリックし次へ進みます。(デフォルトでは EPL (Eclipse Public License)に同意したことになります。)
 
-#ref(installer_python_01_ja.png,60%,center)
+#ref(installer_python_ja_01.png,60%,center)
 CENTER:''ライセンスの選択''
 
 ***セットアップの種類の選択
@@ -31,13 +31,13 @@ CENTER:''ライセンスの選択''
 -完了: すべての機能がインストールされます。標準と同じ。
 
 
-#ref(installer_python_02_ja.png,60%,center)
+#ref(installer_python_ja_02.png,60%,center)
 CENTER:''セットアップの種類の選択''
 
 ***カスタムインストール
 「カスタム」を選択すると、インストールするパッケージをさらに細かく選択できます。
 
-#ref(installer_python_03_ja.png,60%,center)
+#ref(installer_python_ja_03.png,60%,center)
 CENTER:''セットアップの種類の選択''
 
 以下の６つの項目があります。
@@ -55,19 +55,19 @@ CENTER:''セットアップの種類の選択''
 ***インストール
 
 セットアップの種類の選択後、「次へ」をクリックすると以下のダイアログがでます。
-#ref(installer_python_04_ja.png,60%,center)
+#ref(installer_python_ja_04.png,60%,center)
 CENTER:''インストール''
 
 
 ここで「インストール」をクリックするとインストールが開始されます。
-#ref(installer_python_05_ja.png,60%,center)
+#ref(installer_python_ja_05.png,60%,center)
 CENTER:''インストール進行状況''
 
 
 下記の画面が出たらインストールは完了です。「完了」をクリックしてインストールを終了します。
 
 
-#ref(installer_python_06_ja.png,60%,center)
+#ref(installer_python_ja_06.png,60%,center)
 CENTER:''インストールの完了''
 
 

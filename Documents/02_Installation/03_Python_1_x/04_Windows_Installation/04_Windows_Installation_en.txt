@@ -1,64 +1,108 @@
-//*Installing OpenRTM-aist in a Windows environment 
+#contents
 
-**Supported OS and Distribution 
-OpenRTM-aist-Python-1.0.0 has been tested and validated on the following platforms.
+Openrtm.org provides an MSI package for installing the Python edition of OpenRTM-aist, its prerequisites such as omniORBpy, and the RTSystemEditor tool all at once on Windows.
 
-- Windows XP Professional
-- Windows Vista Professional
+**Installing with the MSI package
 
-**Prerequisites 
-You need the following packages for installation of OpenRTM-aist-1.0.0.
+Download the MSI package from the openrtm.org download page. This package includes omniORBpy and RTSystemEditor, but it does include Python.
 
-+Python has been tested and validated on version 2.3, 2.4, 2.5.
-+ORB
---Currently, the only omniORBpy-2.3(version2.3 or later) is supported.
---omniORBpy has been tested and validated on version 2.3, 2.7 or 3.1.
+If you have an older version of OpenRTM-aist-python installed, uninstall it before continuing.
 
-**Setting Environment Variables 
+***Starting the install
 
-Please make sure user environment variable (simply described the environment variable from here on) PYTHONPATH was properly set before installation.
+Execute the MSI package downloaded from openrtm.org, and the following dialog will appear.
 
-If PYTHONPATH has not been set, please set the environment variable as follow.
+#ref(installer_python_00_en.png,60%,center)
+CENTER:''Installer dialog''
 
-1. Right-click [My Computer].
+Follow the on-screen instructions to install OpenRTM-aist. Clicking "Next" will display the software license. You must agree to this license before you can install the software. The standard license is the Eclipse Public License (EPL).
 
-2. Click [Advanced] tab.
+#ref(installer_python_01_en.png,60%,center)
+CENTER:''License screen''
 
-3. Click [Environment Variables(N)] button in the environment variable dialog box.
+***Choose a setup type
 
-4. Click [New(N)] of the [User variables(U)] item.
+Three setup types are available:
 
-5. Enter "PYTHONPATH" in "Variable Name(N)" and "C:\Python24\Lib\site-packages" in "Variable Value(V)" and then click [OK].
+-Standard: All features will be available.
+-Custom: Allows you to select which features will be available.
+-Complete: All features will be available. The same as "Standard."
 
-Note: Please specify the path for the Python site-packages folder in your environment to the "Variable Value(V)".
+#ref(installer_python_02_en.png,60%,center)
+CENTER:''Selecting a setup type.''
 
-6. Click [OK] in the Environment Variable dialog box.
+***Custom install
 
-**Installing OpenRTM-aist Using Package 
+Selecting "Custom" will display the list of packages that can be installed.
 
-The packages for WindowsXp are available. If you want to install from the source code, refer to [[Building OpenRTM-aist on Windows system>#o960236c]]
+#ref(installer_python_03_en.png,60%,center)
+CENTER:''Package selection screen''
 
--How to install using the installer:~
-Open installer on the web directly or save it on your desktop etc then double-click it to launch. Please follow the installation instructions.
+There are 6 packages available (if the C++ edition has already been installed, there are 5 packages available besides RTSystemEditor):
 
--When Python and omniORBpy has not been installed yet, it will be smooth if you install them with following order:
-Python->omniORBpy->OpenRTM-aist-Python.
+-OpenRTM-aist (Python): OpenRTM-aist main package.
+-omniORBpy: omniORB Python modules.
+-Utility: Utility programs for OpenRTM-aist, such as rtcd, rtm-naming, etc.
+-Documents: Documentation generated using Doxygen.
+-Examples: Sample components.
+-RTSystemEditor: Stand-alone version of RTSystemEditor.
 
+Typically, you should install all packages.
 
--Choose the appropriate installer for the installed Python's version. 
-Below is a list of Python and omniORBpy versions which is used to create the package.
-For your convenience, the list of links for installation will be attached below:
+***Install
 
-|           | OpenRTM-aist-1.0.0-Python2.4-RC2 | OpenRTM-aist-1.0.0-Python2.5-RC2 |
-||||
-| Python    | 2.4 [[Python-2.4.4 Installer:http://www.python.org/ftp/python/2.4.4/python-2.4.4.msi]]| 2.5 [[Python-2.5.1 Installer:http://www.python.org/ftp/python/2.5.1/python-2.5.1.msi]]|
-| omniORBpy | 2.7 [[omniORBpy-2.7 Installer (Provided by AIST):http://www.is.aist.go.jp/rt/OpenRTM-aist/packages/windows/omniORBpy/omniORBpy-2.7.msi]] | 3.1 [[omniORBpy-3.1 Installer(Provided by AIST):http://www.is.aist.go.jp/rt/OpenRTM-aist/packages/windows/omniORBpy/omniORBpy-3.1.msi]]|
-|  OpenRTM-aist | OpenRTM-aist-1.0.0-Python2.4-RC2 [[OpenRTM-aist Package Installer(Supported Python2.4):http://www.openrtm.org/pub/Windows/OpenRTM-aist/python/OpenRTM-aist-Python24-1.0.0-RC1-p1.msi]] | OpenRTM-aist-1.0.0-Python2.5-RC2 [[OpenRTM-aist Package Installer(Supported Python2.5):http://www.openrtm.org/pub/Windows/OpenRTM-aist/python/OpenRTM-aist-Python25-1.0.0-RC1-p1.msi]]|
+Select a setup type and click "Next" to show the following dialog.
 
-----
--[[Install(Python, Windows):/node/908]]
--Installing OpenRTM-aist in a Windows environment
--[[Testing the Sample Programs:/node/910]]
--[[Building OpenRTM-aist on Windows system:/node/911]]
--[[Notice:/node/912]]
+#ref(installer_python_04_en.png,60%,center)
+CENTER:''Install.''
 
+Click "Install" to start the installation.
+
+#ref(installer_python_05_en.png,60%,center)
+CENTER:''Installing.''
+
+When the following screen appears, the installation is complete. Click "Finish" to exit the installer.
+
+#ref(installer_python_06_en.png,60%,center)
+CENTER:''Installation complete.''
+
+**Installation details
+***Installer actions
+
+The installer performs the following tasks:
+
+-Copy files into the install directory (default: C:\Python<version>).
+--Copy the OpenRTM-aist modules into C:\Python<version>\Lib\site-packages\OpenRTM_aist.
+--Copy the stand-alone RTSystemEditor into C:\Program Files\OpenRTP.
+--Copy the omniORBpy modules and commands into C:\Python<version>.
+-Create shortcuts in the start menu below the OpenRTM-aist folder.
+--Create shortcuts to the name server and rtcd.
+--Create shortcuts to the sample components.
+--Create shortcuts to the class reference and the IDL reference.
+-Set environment variables.
+
+***Installed files
+
+The installed files use the following layout in the file system.
+
+ <python_install_dir>
+   + omniORB DLL files and commands
+   + OpenRTM-aist commands such as rtcd and rtcprofile
+   |
+   + Lib
+   |  + site-packages
+   |     + OpenRTM_aist: OpenRTM-aist Python modules
+   |        + RTM_IDL: IDL files
+   |
+   |     + omniORB Python modules
+
+<install_dir>
+   + OpenRTM-aist
+   |  + <version>
+   |     + bin: Various commands
+   |     + doc: Doxygen-generated documentation
+   |     + examples
+   |         + Python: Python sample components (.py)
+   |
+   + OpenRTP
+      + RTSystemEditor: Stand-alone RTSystemEditor
