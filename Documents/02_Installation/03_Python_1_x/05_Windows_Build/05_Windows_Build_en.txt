@@ -1,48 +1,53 @@
-//*Building OpenRTM-aist on Windows system
-The description below assumes that [[Python-2.4:http://www.python.org/ftp/python/2.4.4/python-2.4.4.msi]] and [[omniORBpy-2.7:http://www.is.aist.go.jp/rt/OpenRTM-aist/packages/windows/omniORBpy/omniORBpy-2.7.msi]] have been already installed.
+#contents
 
-**Extracting the Source Code
+For those who wish to install from a source package, it is possible to build OpenRTM-aist-python manually.
 
-Extract the source code OpenRTM-aist-Python24-0.4.1.zipiPython2.4) or OpenRTM-aist-Python25-1.0.0-RC1.zipiPython2.5) from [[here:/node/525 ]] into a directory of your choice.
+**Source code for Windows
 
-**Building OpenRTM-aist 
-OpenRTM-aist uses Python Distutils module to build package. Please type the next command to build:
+The Windows source code for the Python edition of OpenRTM-aist is distributed separately from the source code for Linux. The source is entirely the same, but the character sets are different. The Windows source uses Shift-JIS while the Linux source uses EUC.
 
- > cd <the folder which OpenRTM-aist-Python was extracted>
+***Source code organisation
+
+The original code is stored in a Subversion repository. The Windows and Linux source packages are built from this in Linux. The Windows source package is also built on Windows.
+
+**Build environment
+
+The necessary tools and libraries for building are:
+
+-Python
+-omniORBpy
+
+*** Python
+Download the latest 2.x Python from this site and install it.
+
+-[[Python Official Website:http://www.python.org/]]
+
+The installation package presents several options. The defaults are suitable.
+
+*** omniORBpy
+
+The omniORBpy library is necessary to build the Python edition of OpenRTM-aist. omniORBpy can be obtained from the link below. Source packages and binaries are available. However, openrtm.org provides a pre-built binary installer that may be more convenient.
+
+-[[omniORB official:http://omniorb.sourceforge.net/]]
+--[[sourceforge download page:http://sourceforge.net/projects/omniorb/files/omniORBpy/]]
+-[[MSI package provided by openrtm.org:http://www.openrtm.org/pub/Windows/omniORB/]]
+--The omniORBpy installers are separated by Python version. Be sure to use an installer matching your Python version.
+
+** Obtaining a source package.
+
+Download a source package, named OpenRTM-aist-Python-X.X.X.zip, and extract it in a suitable directory.
+
+-[[OpenRTM-aist-Python-X.X.X.zip:http://www.openrtm.org/pub/OpenRTM-aist/python/1.0.0/]]
+
+** Build
+
+Start a command prompt and change to the directory where you extracted the source code. Execute the following commands.
+
+ > OpenRTM-aist-Python-X.X.X
  > python setup.py build
 
+** Install
 
-**Installing OpenRTM-aist
-Install OpenRTM module and utility command group after the build completed properly.
-Please type the next command to install:
+Once everything has built successfully, execute the following command to install it.
 
  > python setup.py install
-
-*Bug of rtm-naming.py 
-**Symptoms 
-If you execute rtm-naming.py in the directory containing spaces such as "C:\Documents and Settings\Hoge\My Documents", omniNames shows a "usage:" and exits.
-
-This is a bug due to rtm-naming.py, so if you see the above symptom, try the following [[Solutions>#z4b2700d]].
-
-**Solutions
-
-Choose one of the following methods.
-
-*** Solution 1 
-
-Create the folder of your choice such as "RTMNaming" under c:\ (or a location whose path doesn't contain any spaces), copy and run rtm-naming.py.
-
-*** Solution 2 
-
-Modify at the 48th line of rtm-naming.py in C:\Python24(or Python25)\Lib\site-packages\OpenRTM\rtm-naming as follows:
-
-  cmd = "omniNames -start "+str(port)+" -logdir \""+str(currdir)+"\" &"
-
-
-
-----
--[[Install(Python, Windows):/node/908]]
--[[Installing OpenRTM-aist in a Windows environment:/node/909]]
--[[Testing the Sample Programs:/node/910]]
--Building OpenRTM-aist on Windows system
--[[Notice:/node/912]]
