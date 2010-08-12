@@ -136,7 +136,7 @@ CENTER: ''ネームサーバに登録されたコンポーネント''
 **** エディタへの配置
 
 システムを編集するエディタを開きます。上部のエディタを開くボタン
-&ref(rtse_open_editor_icon_ja.png); をクリックすると、中央のペインにエ
+&ref(rtse_open_editor_icon.png); をクリックすると、中央のペインにエ
 ディタが開きます。
 
 左側のネームサービスビューに &ref(rtse_rtc_icon.png); のアイコンで表示
@@ -165,11 +165,11 @@ CENTER: ''データポートの接続''
 CENTER: ''データポート接続ダイアログ''
 
 2つのコンポーネントの間に接続線が現れます。次に、エディタ上部メニューの
-All Activate ボタン &ref(rtse_all_actevate_icon.png); をクリックし、こ
+All Activate ボタン &ref(rtse_all_activate_icon.png); をクリックし、こ
 れらのコンポーネントをアクティブ化します。アクティブ化されると、コンポー
 ネントが緑色に変化します。
 
-#ref(rtse_actevated_all.png,center)
+#ref(rtse_activated_all.png,center)
 CENTER: ''アクティブ化されたコンポーネント''
 
 コンポーネントがアクティブ化されると ConsoleIn コンポーネント側では

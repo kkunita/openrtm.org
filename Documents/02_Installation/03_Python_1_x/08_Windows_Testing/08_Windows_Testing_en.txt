@@ -104,7 +104,7 @@ CENTER: ''Connecting data ports.''
 #ref(rtse_portconnect_dialog_en.png,80%,center)
 CENTER: ''Data port connection dialog.''
 
-A line indicating the connection will appear between the two ports. Next, click the "Activate All" button &ref(rtse_all_actevate_icon.png); in the toolbar. This will activate all components in the editor at once. Active components will appear green.
+A line indicating the connection will appear between the two ports. Next, click the "Activate All" button &ref(rtse_all_activate_icon.png); in the toolbar. This will activate all components in the editor at once. Active components will appear green.
 
 #ref(rtse_activated_all.png,center)
 CENTER: ''Activated components.''
