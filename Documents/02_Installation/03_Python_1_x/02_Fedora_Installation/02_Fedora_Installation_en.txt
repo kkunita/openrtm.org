@@ -1,0 +1,88 @@
+#contents
+
+An RPM package for installing the Python edition of OpenRTM-aist on Fedora Linux is available. The supported Fedora Linux versions are listed on the download page. The Fedora Linux versions may change without notice.
+
+There are two methods available for installing:
+
+-Use the installer script provided by openrtm.org.
+-Use the yum package manager.
+
+**Fedora installer script
+
+Download the "pkg_install_python_fedora.sh" install script provided on the download page of openrtm.org and execute it with root permissions. This script will install the necessary dependencies using apt-get.
+
+-[[Install script:http://www.openrtm.org/OpenRTM-aist/download/install_scripts/]]
+
+Installing all the packages needed for development with OpenRTM-aist takes some work. For new users, using the install script is recommended. However, this will install all packages used by OpenRTM-aist, even though you may not need them. Expert users should consider installing manually using yum.
+
+Follow these steps to use the install script.
+
+ > wget [pkg_install_python_fedora.sh download URL]
+ > su
+ # sh pkg_install1_python_fedora.sh
+ // Answer "y" or "Y" to the questions to proceed.
+
+**Using yum
+
+***Create /etc/yum.repos.d/openrtm.repo
+
+Openrtm.org provides a package repository for use with apt-get. This is not included in the default package repository, so it must be added to the apt-get settings by hand. Create a file called "/etc/yum.repos.d/openrtm.repo" (root permissions will be required), and add the following lines to it.
+
+ [openrtm]
+ name=Fedora $releasever - $basearch
+ failovermethod=priority
+ baseurl=http://www.openrtm.org/pub/Linux/Fedora/releases/$releasever/Fedora/$basearch/os/Packages
+ enabled=1
+ gpgcheck=0
+ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora file:///etc/pki/rpm-gpg/RPM-GPG-KEY
+CENTER:''/etc/yum.repos.d/openrtm.repo''
+
+***Install
+
+After making the file above, execute these commands to install with yum. Answer "y" to the questions to proceed.
+
+ > su
+ # yum install python
+ # yum install omniORB-servers omniORBpy omniORBpy-devel omniORBpy-standard
+ # yum install OpenRTM-aist-Python OpenRTM-aist-Python-example
+
+***Confirm installation
+
+Check the install was successful using the following command.
+
+ # rpm -qa | grep  OpenRTM-aist-Python
+ OpenRTM-aist-Python-example-1.0.0-RELEASE.fcx.i386
+ OpenRTM-aist-Python-1.0.0-RELEASE0.fcx.i386
+
+
+**Package details
+
+The packages contain the following files.
+
+***OpenRTM-aist-Python
+OpenRTM-aist-Python includes the Python modules and several commands.
+
+-Commands
+ /usr/bin/rtcprof_python
+ /usr/bin/rtcd_python
+
+-Sample settings files
+ /usr/lib/python<version>/dist-packages/OpenRTM_aist/examples/rtc.conf.sample
+
+-OpenRTM-aist Python modules
+ /usr/lib/python<version>/dist-packages/OpenRTM_aist/*
+
+-OpenRTM-aist utility modules
+ /usr/lib/python<version>/dist-packages/OpenRTM_aist/utils/rtcprof
+ /usr/lib/python<version>/dist-packages/OpenRTM_aist/utils/rtcd
+ /usr/lib/python<version>/dist-packages/OpenRTM_aist/utils/rtc-template
+ /usr/lib/python<version>/dist-packages/OpenRTM_aist/utils/rtm-naming
+
+*** OpenRTM-aist-Python-example
+
+OpenRTM-aist-Python-example contains sample components.
+
+-Samples
+ /usr/share/OpenRTM-aist/examples/python/SimpleIO/
+ /usr/share/OpenRTM-aist/examples/python/SimpleService/
+ ...
