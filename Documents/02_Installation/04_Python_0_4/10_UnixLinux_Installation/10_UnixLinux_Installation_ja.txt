@@ -1,17 +1,12 @@
-‚±‚±‚Å‚ÍOpenRTM-aist(Python)‚ÌUNIX‚Ö‚ÌƒCƒ“ƒXƒg[ƒ‹•û–@‚ðà–¾‚µ‚Ü‚·B ¦ˆÈ~‚Ìà–¾‚Í•Ö‹XãOpenRTM-aist-0.4.0‚É‚Â‚¢‚Ä‘‚©‚ê‚Ä‚¢‚Ü‚·BOpenRTM-aist-0.4.x‚É‚Â‚¢‚Ä‚à“¯—l‚ÌŽè‡‚ÅƒCƒ“ƒXƒg[ƒ‹‚Å‚«‚Ü‚·B&br;
+‚±‚±‚Å‚ÍOpenRTM-aist(Python)‚ÌUNIX‚Ö‚ÌƒCƒ“ƒXƒg[ƒ‹•û–@‚ðà–¾‚µ‚Ü‚·B ¦ˆÈ~‚Ìà–¾‚Í•Ö‹XãOpenRTM-aist-0.4.1‚É‚Â‚¢‚Ä‘‚©‚ê‚Ä‚¢‚Ü‚·BOpenRTM-aist-0.4.x‚É‚Â‚¢‚Ä‚à“¯—l‚ÌŽè‡‚ÅƒCƒ“ƒXƒg[ƒ‹‚Å‚«‚Ü‚·B&br;
 
 **Unix‚Å‚ÌƒCƒ“ƒXƒg[ƒ‹
 ***‘Î‰žOS‚¨‚æ‚ÑƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“
-@OpenRTM-aist-Python-1.0.0‚Í‰º‹L‚ÌOS‚Å“®ì‚·‚é‚±‚Æ‚ªŠm”F‚³‚ê‚Ä‚¢‚Ü‚·B
+@OpenRTM-aist-Python-0.4.1‚Í‰º‹L‚ÌOS‚Å“®ì‚·‚é‚±‚Æ‚ªŠm”F‚³‚ê‚Ä‚¢‚Ü‚·B
 - Vine Linux
 - Fedora Linux
 - Ubuntu Linux
 - Debian Linux
-
-
-
-
-
 
 ** rpmƒpƒbƒP[ƒW‚É‚æ‚éƒCƒ“ƒXƒg[ƒ‹ 
 @VineLinux3.2, VineLinux4.0—p‚ÌrpmƒpƒbƒP[ƒW‚Æ, Ubuntu7.10—p‚ÌdebƒpƒbƒP[ƒW‚ª—pˆÓ‚³‚ê‚Ä‚¢‚Ü‚·B
@@ -19,28 +14,21 @@
 *** ƒCƒ“ƒXƒg[ƒ‹ŠÂ‹«‚Ì€”õ
 @rpmƒpƒbƒP[ƒW‚âdebƒpƒbƒP[ƒW‚Ìì¬‚ðs‚Á‚½ŠÂ‹«‚Å‚ÍAˆÈ‰º‚Ì•\‚ÉŒ©‚éƒo[ƒWƒ‡ƒ“‚ÌPython, omniORB, omniORBpy ‚ðŽg—p‚µ‚Ä‚¢‚Ü‚·B
 
-
 |           | Vine 3.2 | Vine 4.0 | Ubuntu 7.10 |
 |||||
 | omniORB   | 4.0.5* | 4.0.7 | 4.0.7 |
 | omniORBpy | 2.3-1* | 2.7-1 | 2.7 |
 | Python    | 2.3.4 | 2.4.4 | 2.5.1 |
 
-:''*'' Vine 3.2:omniORB4.0.7 + omniORBpy2.7-1 ã‚Å‚à“®ì‚µ‚Ü‚·|~
-
+:''*'' Vine 3.2:omniORB4.0.7 + omniORBpy2.7-1 ã‚Å‚à“®ì‚µ‚Ü‚·
 
 #br
-
-
 @OpenRTM-aist-Python ‚ÌƒCƒ“ƒXƒg[ƒ‹‚É”õ‚¦AŽ–‘O‚É‚±‚ê‚ç‚ÌƒpƒbƒP[ƒW‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚¨‚«‚Ü‚·B
 #br
 
 ''ŽQlF''
 
 @¨@[[ŠeƒpƒbƒP[ƒW‚ðƒCƒ“ƒXƒg[ƒ‹‚·‚é‚½‚ß‚Ìƒqƒ“ƒg :/node/775#hint]]
-
-#br
-#br
 
 *** ƒpƒbƒP[ƒW‚Å‚ÌƒCƒ“ƒXƒg[ƒ‹
 @rpmƒpƒbƒP[ƒW, debƒpƒbƒP[ƒW‚ð[[‚±‚¿‚ç :/ja/node/91#linuxpkg]]‚©‚ç“üŽè‚µ‚Ü‚·BƒCƒ“ƒXƒg[ƒ‹‚ðs‚¤ê‡A‚»‚ê‚¼‚êˆÈ‰º‚Ì‚æ‚¤‚É‚µ‚Ä‰º‚³‚¢B
@@ -56,8 +44,6 @@
  [Ubuntu7.10‚Ìê‡]
  > sudo dpkg -i openrtm-aist-python_0.4.1-RC2_i386_Ubuntu710.deb
  > sudo dpkg -i openrtm-aist-python-example_0.4.1-RC2_i386_Ubuntu710.deb
-
-#br
 
 ***ŠÂ‹«•Ï”‚ÌÝ’è
 
@@ -79,14 +65,7 @@
 ''¦''@python''2.x'' ‚Ì ''2.x'' ‚Í Python ‚Ìƒo[ƒWƒ‡ƒ“(2.3, 2.4, 2.5)‚Å‚·B‚Ü‚½A
 "/usr/lib/python2.x"‚Í Python ‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚éƒpƒX‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
 
-#br
-#br
-
 ''Ÿˆø‚«‘±‚«[[“®ìŠm”F :/node/774]]‚Öi‚ñ‚Å‚­‚¾‚³‚¢B''
-
-
-#br
-#br
 
 ** ƒ\[ƒX‚©‚ç‚Ìƒrƒ‹ƒh‚ÆƒCƒ“ƒXƒg[ƒ‹ 
 ***‘Î‰žOS‚¨‚æ‚ÑƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“
@@ -100,8 +79,6 @@ OpenRTM-aist-Python-0.4.1 ‚Í‰º‹L‚Ì OS ‚¨‚æ‚Ñ Linux ƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚Å“®ì
 ***“®ìðŒ 
 OpenRTM-aist-Python-0.4.1 ‚ÌƒCƒ“ƒXƒg[ƒ‹‚É‚Í‰º‹L‚ÌƒpƒbƒP[ƒW‚ª•K—v‚Å‚·B
 
-#br
-
 +ORB
 --Œ»Ý‚Ì‚Æ‚±‚ë‘Î‰žORBŽÀ‘•‚Í omniORB-4.0 ˆÈã‚Ì‚Ý‚Æ‚È‚Á‚Ä‚¢‚Ü‚·B
 --omniORBpy‚Íƒo[ƒWƒ‡ƒ“2.3‚Ü‚½‚Í2.7‚ª–]‚Ü‚µ‚¢‚Å‚·B
@@ -111,44 +88,35 @@ OpenRTM-aist-Python-0.4.1 ‚ÌƒCƒ“ƒXƒg[ƒ‹‚É‚Í‰º‹L‚ÌƒpƒbƒP[ƒW‚ª•K—v‚Å‚·B
 +Tkinter
 --GUIŠÖŒW‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚Å•K—v‚Å‚·B
 
-
 ''ŽQlF''
 
-@¨@[[ŠeƒpƒbƒP[ƒW‚ðƒCƒ“ƒXƒg[ƒ‹‚·‚é‚½‚ß‚Ìƒqƒ“ƒg >#u7d9aa20]]
-
+@¨@[[ŠeƒpƒbƒP[ƒW‚ðƒCƒ“ƒXƒg[ƒ‹‚·‚é‚½‚ß‚Ìƒqƒ“ƒg >/ja/node/775#hint]]
 
 -@Vine Linux 3.2, 4.0 ‚É‚Â‚¢‚Ä‚Í[[‚±‚¿‚ç >/ja/node/91#vine]]‚ÌƒŠƒ|ƒWƒgƒŠƒT[ƒo‚É omniORB ŠÖ˜A‚Ì rpm ‚ª—pˆÓ‚³‚ê‚Ä‚¢‚Ü‚·B‚±‚Ì‚±‚Æ‚É‚æ‚èAapt-get “™‚ð—p‚¢‚ÄŠÈ’P‚ÉƒCƒ“ƒXƒg[ƒ‹‚Å‚«‚é‚æ‚¤‚É‚È‚è‚Ü‚µ‚½B
---[[ŠeƒpƒbƒP[ƒW‚ðƒCƒ“ƒXƒg[ƒ‹‚·‚é‚½‚ß‚Ìƒqƒ“ƒgFVine3.2 :/node/775#vine32]]
---[[ŠeƒpƒbƒP[ƒW‚ðƒCƒ“ƒXƒg[ƒ‹‚·‚é‚½‚ß‚Ìƒqƒ“ƒgFVine4.0 :/node/775#vine40]]
+--[[ŠeƒpƒbƒP[ƒW‚ðƒCƒ“ƒXƒg[ƒ‹‚·‚é‚½‚ß‚Ìƒqƒ“ƒgFVine3.2 >/ja/node/775#vine32]]
+--[[ŠeƒpƒbƒP[ƒW‚ðƒCƒ“ƒXƒg[ƒ‹‚·‚é‚½‚ß‚Ìƒqƒ“ƒgFVine4.0 >/ja/node/775#vine40]]
 
--@Ubuntu Linux ‚ÍAomniORB ‚ª OS •W€‚ÌƒpƒbƒP[ƒW‚Æ‚µ‚Ä’ñ‹Ÿ‚³‚ê‚Ä‚¢‚Ü‚·‚Ì‚ÅAOS •t‘®‚ÌƒpƒbƒP[ƒWƒCƒ“ƒXƒg[ƒ‹ƒc[ƒ‹‚ð—p‚¢‚ÄŽè“®‚ÅƒCƒ“ƒXƒg[ƒ‹‚·‚é‚±‚Æ‚à‚Å‚«‚Ü‚·B~
---[[ŠeƒpƒbƒP[ƒW‚ðƒCƒ“ƒXƒg[ƒ‹‚·‚é‚½‚ß‚Ìƒqƒ“ƒgFUbuntu7.10 :/node/775#ubuntu]]
+-@Ubuntu Linux ‚ÍAomniORB ‚ª OS •W€‚ÌƒpƒbƒP[ƒW‚Æ‚µ‚Ä’ñ‹Ÿ‚³‚ê‚Ä‚¢‚Ü‚·‚Ì‚ÅAOS •t‘®‚ÌƒpƒbƒP[ƒWƒCƒ“ƒXƒg[ƒ‹ƒc[ƒ‹‚ð—p‚¢‚ÄŽè“®‚ÅƒCƒ“ƒXƒg[ƒ‹‚·‚é‚±‚Æ‚à‚Å‚«‚Ü‚·B
+--[[ŠeƒpƒbƒP[ƒW‚ðƒCƒ“ƒXƒg[ƒ‹‚·‚é‚½‚ß‚Ìƒqƒ“ƒgFUbuntu7.10 >/ja/node/775#ubuntu]]
 
 -@‚±‚ê‚çˆÈŠO‚ÌOS‚É‚¨‚¢‚Ä‚ÍA‚»‚ê‚¼‚ê‚ÌƒpƒbƒP[ƒW‚ÌƒhƒLƒ…ƒƒ“ƒg‚É]‚¢ƒCƒ“ƒXƒg[ƒ‹‚ðs‚Á‚Ä‚­‚¾‚³‚¢B
 
-#br
-
 ***ƒ\[ƒXƒR[ƒh‚Ì“WŠJ
-@‚Ü‚¸ƒ\[ƒXƒR[ƒh OpenRTM-aist-Python-0.4.1-RC2.tar.gz ‚ð[[‚±‚¿‚ç :/node/524]]‚©‚ç“üŽè‚µA“K“–‚ÈƒfƒBƒŒƒNƒgƒŠ‚É“WŠJ‚µ‚Ü‚·B
+@‚Ü‚¸ƒ\[ƒXƒR[ƒh OpenRTM-aist-Python-0.4.1-RC2.tar.gz ‚ð[[‚±‚¿‚ç >/ja/node/524]]‚©‚ç“üŽè‚µA“K“–‚ÈƒfƒBƒŒƒNƒgƒŠ‚É“WŠJ‚µ‚Ü‚·B
 
  > tar xvzf OpenRTM-aist-Python-0.4.1-RC2.tar.gz
  > cd OpenRTM-aist-Python-0.4.1
-
-#br
 
 **ƒrƒ‹ƒh
 OpenRTM-aist ‚ÍƒpƒbƒP[ƒW‚Ìƒrƒ‹ƒh‚É Python‚ÌDistutilsƒ‚ƒWƒ…[ƒ‹‚ðŽg—p‚µ‚Ä‚¢‚Ü‚·BˆÈ‰º‚Ì•û–@‚É‚Äƒrƒ‹ƒh‚ðs‚Á‚Ä‰º‚³‚¢B
 
  > python setup.py build
 
-
 ***ƒCƒ“ƒXƒg[ƒ‹
 ƒrƒ‹ƒh‚ª³í‚ÉI—¹‚µ‚½‚çAOpenRTMƒ‚ƒWƒ…[ƒ‹Aƒ†[ƒeƒBƒŠƒeƒBƒRƒ}ƒ“ƒhŒQ‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ü‚·B
 
  > su
  # python setup.py install
-
-#br
 
 ***ŠÂ‹«•Ï”‚ÌÝ’è
 
@@ -166,14 +134,7 @@ OpenRTM-aist ‚ÍƒpƒbƒP[ƒW‚Ìƒrƒ‹ƒh‚É Python‚ÌDistutilsƒ‚ƒWƒ…[ƒ‹‚ðŽg—p‚µ‚Ä‚¢‚Ü‚·
  setenv PYTHONPATH /usr/lib/python2.x/site-packages 
  > source ~/.cshrc
 
-
 ''¦''@python''2.x'' ‚Ì ''2.x'' ‚Í Python ‚Ìƒo[ƒWƒ‡ƒ“(2.3, 2.4, 2.5)‚Å‚·B‚Ü‚½A
 "/usr/lib/python2.x"‚Ì•”•ª‚Í Python ‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚éƒpƒX‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
 
-
-#br
-#br
-
 ''Ÿˆø‚«‘±‚«[[“®ìŠm”F :/ja/node/774]]‚Öi‚ñ‚Å‚­‚¾‚³‚¢B''
-
-
