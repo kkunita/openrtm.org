@@ -119,9 +119,9 @@ RTSystemEditorを使って、RTコンポーネントの接続とアクティブ化を行います。
 RTSystemEditor は Java Development Kit6 を使用します。以下のマニュアルを参考にインストールしてください。また、Ubuntu等では、デフォルトの Java 環境は OpenJDK が推奨されています。そうした場合、OpenJDKでも利用することは可能です。
 
 --[[Java Development Kit 6:http://java.sun.com/javase/ja/6/download.html]]~
---[[JDKインストール方法 >/node/661#instjavaunixjdk]]
+--[[JDKインストール方法 >/ja/node/804#instjava]]
 
-[[こちら>/ja/node/1174]]のページを参考にRTSystemEditorを起動してください。
+[[こちら>/ja/node/1175]]のページを参考にRTSystemEditorを起動してください。
 
 *** ネームサーバの参照と確認
 
