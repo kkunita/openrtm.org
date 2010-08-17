@@ -85,9 +85,12 @@
      --service=MySvcPort:myservice0:MyService \
      --consumer=YourSvcPort:yourservice0:YourService \
      --service-idl=MyService.idl --consumer-idl=YourService.idl
+
 ''※　rtc-template.py は上のようにフルパスで指定して下さい。''
+
 ''※※　簡単のため、ここでは Python2.4 を使用する環境での例をあげています。Python2.5 での環境では Python24 を Python25 に置き換えるなど適宜対応してください。''
-　rtc-template に対して作成したいコンポーネントの設定を引数として渡すと、コンポーネントの雛形を作成します。ここでは、help の表示の最後に表示された''Example:'' 以下をコピーして試してみます。
+
+rtc-template に対して作成したいコンポーネントの設定を引数として渡すと、コンポーネントの雛形を作成します。ここでは、help の表示の最後に表示された''Example:'' 以下をコピーして試してみます。
 
 #br
 
@@ -143,10 +146,14 @@
  2008/06/25  12:28             2,312 YourService_idl.py
  2008/06/25  12:28    <DIR>          _GlobalIDL
  2008/06/25  12:28    <DIR>          _GlobalIDL__POA
+
 ''※　--help で表示されるサンプルはC++コード生成用ですので、Python用のコードを生成する場合は、&color(red){"-bcxx"を"-bpython"};に書き換えてください。''
+
 ''※※　Windows環境にてrtc-template.pyを実行する場合は、"Sample component"等のように(")ダブルクォートを使用するようにして下さい。(')シングルクォートを使用した場合は、オプションが正しく解析されません。また、行継続記号は(\)を(^)に変更する必要があります。''
+
 ''※※※　簡単のため、ここでは Python2.4 を使用する環境での例をあげています。Python2.5 での環境では Python24 を Python25 に置き換えるなど適宜対応してください。''
-　このように、コンポーネントのPythonのコード、サービスの実装コードが作成されます。これで、実行形式のコンポーネント(Sample.py)が作成されました。
+
+このように、コンポーネントのPythonのコード、サービスの実装コードが作成されます。これで、実行形式のコンポーネント(Sample.py)が作成されました。
 
 
 #br
