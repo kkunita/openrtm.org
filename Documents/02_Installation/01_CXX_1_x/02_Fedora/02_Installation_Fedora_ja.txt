@@ -1,3 +1,5 @@
+#ref(fedora_logo.png,around,40%,left)
+
 #contents
 
 C++版OpenRTM-aistはFedora Linuxで利用可能なRPMパッケージが提供されてい

@@ -1,5 +1,7 @@
 #contents
 
+#ref(ubuntu_logo2.png,around,left)
+
 C++版OpenRTM-aistはUbuntuやDebian GNU Linuxで利用可能なdebパッケージが
 提供されています。対応しているディストリビューションのバージョンは、ダ
 ウンロードページから確認できます。Ubuntu/Debian GNU Linuxへの対応および
@@ -9,7 +11,7 @@ C++版OpenRTM-aistはUbuntuやDebian GNU Linuxで利用可能なdebパッケージが
 インストールの方法には大きく分けて以下の二種類のインストール方法があります。
 
 -openrtm.org が提供する一括インストールスクリプトを使用
--apt-get や synaptic パッケージマネージャを使用
+-apt-get や synaptic パッケージマネージャを仕様
 
 好みの方法でインストールしてください。
 
@@ -25,9 +27,11 @@ openrtm.org が提供するインストール・スクリプト ''pkg_install[バージョン
 OpenRTM-aistを開発・実行するために必要なパッケージをもれなくインストー
 ルしてくれるので大変便利です。初めてOpenRTM-aistをインストールしてみる
 方にお勧めします。
+
 ただし、OpenRTM-aist関係のすべてのパッケージをインストールするので、必
 要ないものもインストールされる可能性があります。詳しく理解している人は、
 手動でインストールした方がよいでしょう。
+
 以下、一括インストールスクリプトを使用したインストールの手順です。
 
  > wget [pkg_installXXX.sh のダウンロードURL]
@@ -67,7 +71,7 @@ apt-get の設定を変更する必要があります。
 |Ubuntu 9.04 | Jaunty  |
 |Ubuntu 9.10 | karmic  |
 |Ubuntu 10.04| lucid  |
-|Ubuntu 9.10 | maverick |
+|Ubuntu 10.10 | maverick |
 
 ***apt-getによるインストール
 

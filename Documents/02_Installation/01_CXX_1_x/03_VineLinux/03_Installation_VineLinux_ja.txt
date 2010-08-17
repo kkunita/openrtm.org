@@ -1,5 +1,7 @@
 #contents
 
+#ref(vine_logo.png,around,left,80%,nolink)
+
 C++版OpenRTM-aistはVine Linuxで利用可能なRPMパッケージが提供されていま
 す。対応しているVine Linuxのバージョンは、ダウンロードページから確認で
 きます。Vine Linuxへの対応およびそのバージョンは、予告なしに変更または
