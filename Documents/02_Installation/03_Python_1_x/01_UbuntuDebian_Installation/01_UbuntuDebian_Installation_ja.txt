@@ -2,7 +2,6 @@
 
 #ref(ubuntu_logo2.png,around,60%,right)
 
-[[hogehoge:/ja/node/1182#apt_get]]
 
 
 Python版OpenRTM-aistはUbuntuやDebian GNU Linuxで利用可能なdebパッケージが
@@ -14,7 +13,7 @@ Python版OpenRTM-aistはUbuntuやDebian GNU Linuxで利用可能なdebパッケージが
 インストールの方法には大きく分けて以下の二種類のインストール方法があります。
 
 -openrtm.org が提供する一括インストールスクリプトを使用
--apt-get や synaptic パッケージマネージャを仕様
+-apt-get や synaptic パッケージマネージャを使用
 
 好みの方法でインストールしてください。
 
