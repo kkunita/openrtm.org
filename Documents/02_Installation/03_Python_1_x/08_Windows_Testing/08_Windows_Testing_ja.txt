@@ -195,10 +195,10 @@ CENTER: ''アクティブ化されたコンポーネント''
 |SeqIn.py|ランダムな数値(Short,Long,Float,Doubleとそのシーケンス型)を出力する&color(default){コンポーネント};。SeqOut.pyに接続して使用する。|
 |SeqOut.py|InPortに入力される数値(Short,Long,Float,Doubleとそのシーケンス型)を表示。SeqIn.pyに接続して使用する。|
 |MyServiceProvider.py|MyService型のサービスを提供する&color(default){コンポーネント};。MyServiceConsumer.pyに接続して使用する。|
-|MyServiceConsumer.py|MyService型のサービスを提供する&color(default){コンポーネント};。MyServiceProvider.pyに接続して使用する。|
+|MyServiceConsumer.py|MyService型のサービスを利用する&color(default){コンポーネント};。MyServiceProvider.pyに接続して使用する。|
 |ConfigSample.py|Configurationのサンプル。RTSystemEditorからConfigurationを変更してConfigurationの挙動を理解するためのサンプル。|
 |TkMobileRobotSimulator.py|モバイルロボットの簡易シミュレータ。ロボットの速度をInPortで受け、移動後の位置をOutPortから出力する。|
-|NXTRTC.py|LEGO LEGO MINDSTORMにて作成したモバイルロボットを制御するためのサンプル。InPortにて速度を受け、赤外線センサーと現在位置をそれぞれOutPortから出力する。|
+|NXTRTC.py|LEGO MINDSTORMにて作成したモバイルロボットを制御するためのサンプル。InPortにて速度を受け、赤外線センサーと現在位置をそれぞれOutPortから出力する。|
 |AutoControl.py|モバイルロボット用の速度を出力する。測位センサーのデータをInPortで受け、ロボットの速度を計算してOutPortから出力する。|
 |Composite.py|Composite用のサンプル。Motor,Controller,Sensorを包含するコンポーネント。Compositeの使用方法を理解するためのサンプル。|
 |Motor.py|Compositeコンポーネント用のサンプル。Compositeの子要素として使用。|
