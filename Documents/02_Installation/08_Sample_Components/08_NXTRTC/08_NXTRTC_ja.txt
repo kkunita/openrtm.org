@@ -1,0 +1,52 @@
+//&br;
+#contents
+//**NXTRTC
+このサンプルは、OpenRTM-aist の Python版 に同梱されています。
+C++版、Java版 には同梱されていませんのでご注意ください。
+&br;
+***概要
+NXTRTC.pyは、LEGO Mindstorm NXTのモータを制御やセンサデータを出力するコンポーネントです。
+
+-参考
+--[[RTコンポーネント作成(LEGO Mindstorm編)>/node/752]]
+
+#br
+
+&br;
+***起動画面
+
+#br
+
+#ref(NXTRTC.png,center,70%)
+CENTER:''NXTRTC実行例(NXTRTC)''
+
+#br
+
+#ref(TkMotor.png,center)
+CENTER:''TkMotorComp実行例(TkMotorComp)''
+
+#br
+
+#ref(NXTRTC_example_rtse_ja.png,center,80%)
+CENTER:''NXTRTC実行例(RTSystemEditor)''
+
+
+&br;
+****使い方
+GUIをもったTkJoystickComp(入力デバイス)と、TkMotorComp(出力デバイス)に接続し、LEGOのモータ制御と値の確認をします。
+
+　※詳細は[[RTコンポーネント作成(LEGO Mindstorm編)>/node/752]]マニュアルでごご覧ください。
+
+#br
+
+
+- 手順
+-- RTSystemEditorを起動し、SystemEditorを用意します。→RTSystemEditorの使用方法の詳細については[[RTSystemEditor >RTSystemEditor]]を参照
+--[[こちら>/node/753]]を参考にPCとLEGO  Mindstorm をBluetooth、又はUSB接続してください。
+-- NXTRTC.py、入力デバイスTkJoyStickComp.py、TkMotorComp、各コンポーネントを起動します。
+-- RTSystemEditorのNameServiceViewにコンポーネントが現れるので、それらをSystemEditor上にドラッグします。
+-- 両コンポーネントの対応ポートを結びます。（上図SystemEditor実行例を参照）
+-- どちらかのコンポーネントを右クリックし、「All Activate」を選択します。
+
+
+
