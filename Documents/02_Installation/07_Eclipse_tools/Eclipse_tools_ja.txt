@@ -1,0 +1,18 @@
+#ref(eclipse_logo.png,around,left)
+
+RTCの開発を支援するために、RTCBuilder と RTSystemEditor を提供しております。
+RTCBuilder と RTSystemEditor は、Eclipse 統合開発環境のプラグインとして作成された開発ツールです。
+そのため、RTCBuilder と RTSystemEditor を使用するには、Eclipse と Javaの開発環境をインストールする必要があります。
+
+ここでは、それらのインストール方法について説明します。 
+#clear
+----
+
+''[[こちら >/ja/node/941#package]]にUNIX用とWindows用 のインストールパッケージを用意しました。'' RTSystemEditor とRTCBuilder を含め、全て（ Eclipse3.4.2 ＋ 日本語化 + RTSystemEditor ＋ GEF ＋ EMF ＋ XSD  + RTCBuilder ）が入ったUNIX用とWindows用のパッケージを用意しました。とても簡単にインストールできますので、「とりいそぎ」動かしてみたい方はぜひご利用ください。
+
+[[Java Development Kit 6(JＤＫ):http://java.sun.com/javase/ja/6/download.html]]が必要ですので、事前にインストールしてください。
+Eclipseのアーカイブ（圧縮された状態のパッケージファイル）は100MB以上あります。 ダウンロードしたら、アーカイブをインストールしたいディレクトリに展開してください。
+Eclipseには特にインストーラは無く、アーカイブを展開するだけでそのまま使用できます。
+
+
+
