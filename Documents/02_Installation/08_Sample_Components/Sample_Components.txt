@@ -13,7 +13,7 @@ OpenRTM-aistにはいくつかのサンプルコンポーネントが同梱されており、簡単に試用する
 #br
 Windowsでネーム・サーバを実行するには、該当するファイルをダブルクリックしてください。インストーラを用いてインストールした場合は、スタートメニュー>OpenRTM-aist>言語>tools　から実行することもできます。
 なお、本章ではRTSystemEditorがインストールされた環境であることを想定し、説明しています。
-RTSystemEditorのインストールについての詳細は、[[RTSystemEditorインストール>RTSystemEditor・RTCBuilderのインストール]]を参照してください（一部のサンプルはRTSystemEditorがなくても動作します）。
+RTSystemEditorのインストールについての詳細は、[[OpenRTM Eclipse tools のインストール>/ja/content/openrtm-eclipse-tools-のインストール]]を参照してください（一部のサンプルはRTSystemEditorがなくても動作します）。
 #br
 
 //&color(red){''※'' すでにOpenRTM-aist-0.4をインストールされている方へ};

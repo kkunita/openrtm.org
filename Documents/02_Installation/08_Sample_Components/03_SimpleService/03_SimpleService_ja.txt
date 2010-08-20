@@ -32,14 +32,14 @@ CENTER:''SimpleService実行例(RTSystemEditor接続画面)''
 CENTER:''MyServiceConsumerコンポーネントとMyServiceProviderコンポーネントの実行例''
 
 &br;
-****使い方
+***使い方
 SimpleServiceは、MyServiceConsumerからコマンドを送り、MyServiceProviderでそれを処理させるというサンプルです（※正確には、コマンドの解釈はConsumer側であり、Provider側の関数を呼び出す形で実装されています）。
 MyServiceConsumerとMyServiceProviderの対応するポートをRTSystemEditor上で接続してください。両コンポーネントをアクティベートします（ActivateするのはConsumer側コンポーネントだけでもよい）とConsumer側プロンプトにコマンド一覧が表示されるので、適宜コマンドを入力してください。Provider側の応答がプロンプト上で観察できます。
 #br
 
 - 手順
 
--- RTSystemEditorを起動し、SystemEditorを用意します。→RTSystemEditorの使用方法の詳細については[[RTSystemEditor >RTSystemEditor]]を参照
+-- RTSystemEditorを起動し、SystemEditorを用意します。→RTSystemEditorの使用方法の詳細については[[RTSystemEditor >/node/1175]]を参照
 -- MyServiceConsumerとMyServiceProviderの両コンポーネントを起動します。
 コンポーネントの起動はOSやOpenRTM-aist の言語によってことなりますので、以下の表を参考に起動します。
 |LEFT:110|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c

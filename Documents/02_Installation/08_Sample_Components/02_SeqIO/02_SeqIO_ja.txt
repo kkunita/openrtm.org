@@ -33,7 +33,7 @@ SeqIOのサンプルは、SeqOutから連続して出力される数値データをデータポートからSeqIn
 
 - 手順
 
--- RTSystemEditorを起動し、SystemEditorを用意します。→RTSystemEditorの使用方法の詳細については[[RTSystemEditor >RTSystemEditor]]を参照
+-- RTSystemEditorを起動し、SystemEditorを用意します。→RTSystemEditorの使用方法の詳細については[[RTSystemEditor >/node/1175]]を参照
 -- SeqOutとSeqInの両コンポーネントを起動します。コンポーネントの起動はOSやOpenRTM-aist の言語によってことなりますので、以下の表を参考に起動します。
 |LEFT:110|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c
 ||>|CENTER:Windowsの場合|>|CENTER:Linuxの場合|

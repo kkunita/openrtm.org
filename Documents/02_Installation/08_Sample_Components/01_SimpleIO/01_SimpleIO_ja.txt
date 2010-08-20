@@ -47,7 +47,7 @@ Connectorの実行はOSやOpenRTM-aist の言語によってことなりますので、以下の表を参考
 
 - 方法２:RTSystemEditorを使う方法
 
--- Eclipseを起動し、RTSystemEditorを用意します。→RTSystemEditorの使用方法の詳細については[[RTSystemEditor >RTSystemEditor]]を参照
+-- Eclipseを起動し、RTSystemEditorを用意します。→RTSystemEditorの使用方法の詳細については[[RTSystemEditor >/node/1175]]を参照
 -- ConsoleInとConsoleOutの両コンポーネントを起動します。
 コンポーネントの起動はOSやOpenRTM-aist の言語によってことなりますので、以下の表を参考に起動します。
 |LEFT:110|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c

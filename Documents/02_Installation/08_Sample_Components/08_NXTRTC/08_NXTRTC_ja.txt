@@ -41,7 +41,7 @@ GUIをもったTkJoystickComp(入力デバイス)と、TkMotorComp(出力デバイス)に接続し、LE
 
 
 - 手順
--- RTSystemEditorを起動し、SystemEditorを用意します。→RTSystemEditorの使用方法の詳細については[[RTSystemEditor >RTSystemEditor]]を参照
+-- RTSystemEditorを起動し、SystemEditorを用意します。→RTSystemEditorの使用方法の詳細については[[RTSystemEditor >/node/1175]]を参照
 --[[こちら>/node/753]]を参考にPCとLEGO  Mindstorm をBluetooth、又はUSB接続してください。
 -- NXTRTC.py、入力デバイスTkJoyStickComp.py、TkMotorComp、各コンポーネントを起動します。
 -- RTSystemEditorのNameServiceViewにコンポーネントが現れるので、それらをSystemEditor上にドラッグします。

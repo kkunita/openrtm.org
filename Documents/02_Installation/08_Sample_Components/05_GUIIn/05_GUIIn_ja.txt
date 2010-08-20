@@ -29,7 +29,7 @@ GUIInコンポーネントのGUI画面でチェックを入れたコントロール（スライダ、スピナ）を
 #br
 
 - 手順
--- RTSystemEditorを起動し、SystemEditorを用意します。→RTSystemEditorの使用方法の詳細については[[RTSystemEditor >RTSystemEditor]]を参照
+-- RTSystemEditorを起動し、SystemEditorを用意します。→RTSystemEditorの使用方法の詳細については[[RTSystemEditor >/node/1175]]を参照
 -- GUIInとSeqInの両コンポーネントを起動します。 コンポーネントの起動はOSによってことなります。Windowsの場合はGUIIn.bat、Linuxの場合はGUIIn.shを起動します。
 -- RTSystemEditorのNameServiceViewにこれらのコンポーネントが現れるので、二つともSystemEditor上にドラッグします。
 -- 両コンポーネントの対応ポートを結びます。（上図GUIIn実行例を参照）

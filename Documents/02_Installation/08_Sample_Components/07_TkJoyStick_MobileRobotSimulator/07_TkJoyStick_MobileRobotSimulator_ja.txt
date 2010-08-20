@@ -47,7 +47,7 @@ TkJoystickComp.py(入力デバイス)・TkMotorComp.py(出力デバイス)などと接続し、GUIで
 
 
 - 手順
--- RTSystemEditorを起動し、SystemEditorを用意します。→RTSystemEditorの使用方法の詳細については[[RTSystemEditor >RTSystemEditor]]を参照
+-- RTSystemEditorを起動し、SystemEditorを用意します。→RTSystemEditorの使用方法の詳細については[[RTSystemEditor >/node/1175]]を参照
 -- TkJoyStickComp.py、TkMobileRobotSimulator.py、両コンポーネントを起動します。
 -- TkMobileRobotSimulator.pyのGUIのCreateボタンを１回押下します。
 -- RTSystemEditorのNameServiceViewに両コンポーネントが現れるので、それらをSystemEditor上にドラッグします。
