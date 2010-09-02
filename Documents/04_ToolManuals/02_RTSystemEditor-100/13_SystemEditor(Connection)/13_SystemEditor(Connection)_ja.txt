@@ -1,0 +1,63 @@
+#contents
+データポート間、サービスポート間の接続について説明します。
+*** データポート間接続
+　データポートの接続で、「 InPort 」と「 OutPort 」を接続します。これらの間をドラッグ＆ドロップでつなぐと以下のダイアログが表示されます。
+#br
+
+#clear
+
+#ref(fig29ConnectDialog1_ja.png,50%,center)
+CENTER:''データポートのコネクタプロファイルダイアログ''
+
+#ref(fig29ConnectDialog2_ja.png,50%,center)
+CENTER:''データポートのコネクタプロファイルダイアログ(詳細)''
+#br
+ダイアログの項目と条件は以下のとおりです。
+CENTER:''データポート接続のダイアログ項目と必要条件''
+|№|ダイアログ項目名|ConnectorProfile|必要条件|
+|①|Name|name|特になし|
+|②|Data Type|properties “dataport.data_type”|このコネクタで接続されているデータポート間で送受信するデータ型を指定します。&br;それぞれのポートで互いに送受信可能なデータ型から選択します。ただし、Anyを含む場合は相手ポートのどのような値も許容します。|
+|③|Instance Type|properties “dataport.interface_type”|RTシステム設計者が想定する、もしくはRTCが動作するRTミドルウェア上でサポートされているインターフェース種別を指定します。&br;それぞれのポートで互いにサポートしているインターフェース種別から選択します。ただし、Anyを含む場合は相手ポートのどのようなインターフェースも許容します。|
+|④|Dataflow Type|properties “dataport.dataflow_type”|RTシステム設計者が想定する、もしくはRTCが動作するRTミドルウェア上でサポートされているデータフロー型を指定します。&br;それぞれのポートで互いにサポートしているデータフロー型から選択します。ただし、Anyを含む場合は相手ポートのどのようなデータフローも許容します。|
+|⑤|Subscription Type|properties “dataport.subscription_type”|[Dataflow　Typeの値がPushの時に必要な条件]&br;RTシステム設計者が想定する、もしくはRTCが動作するRTミドルウェア上でサポートされているサブスクリプション種別を指定します。&br;それぞれのポートで互いにサポートしているサブスクリプション種別から選択します。ただし、Anyを含む場合は相手のどのようなサブスクリプション種別も許容します。|
+|⑥|Push Rate(Hz)|properties “dataport.push_interval”|[Dataflow Typeの値が”Push”でかつSubscription Typeが”Periodic”の時に必要な条件]&br;サブスクリプション種別が「Periodic」な場合にデータの送信周期を指定します。送信周期は正数値（小数可）で指定します。|
+|⑦|Push Policy|properties “dataport.publisher.push_policy”|データ送信ポリシー。[Dataflow Typeの値が”Push”でかつSubscription Typeが”Periodic”の時に必要な条件]all、fifo、skip、newから選択します。&br;''all'':バッファ内のデータを一括送信&br;''fifo'':バッファ内のデータをFIFOで１個ずつ送信&br;''skip'':バッファ内のデータを間引いて送信&br;''new'':バッファ内のデータの最新値を送信（古い値は捨てられます。）|
+|⑧|Skip Count|properties "dataport.publisher.skip_count"|送信データスキップ数。[Push Policyの値が”skip”の時に必要な条件]バッファ内のデータがこの設定値で間引されて送信されます。|
+|⑨|Buffer length|properties "buffer.length"|バッファの長さ|
+|⑩|Buffer full policy|properties "buffer.write.full_policy"|バッファへのデータ書き込み時に、バッファフルだった場合の挙動。overwrite、do_nothing、blockから選択します。&br;''overwrite'':データを上書きします。&br;''do_nothing'':何もしません。&br;''block'':ブロックします。&br;block を指定した場合、次の timeout 値を指定すれば、指定時間後書き込み不可能であればタイムアウトします。 デフォルトは  overwrite (上書き)です。|
+|⑪|Buffer write timeout|properties " buffer.write.timeout"|バッファへのデータ書き込み時に、タイムアウトアウトイベントを発生させるまでの時間（単位:秒）&br;デフォルトは 1.0 [sec]です。0.0を設定した場合はタイムアウトしません。|
+|⑫|Buffer empty policy|properties "buffer.read.empty_policy”|バッファからのデータ読み出し時に、バッファが空だった場合の挙動。readblock、do_nothing、blockから選択します。&br;''readblock'':最後の要素を再読み出します。&br;''do_nothing'':何もしません。&br;''block'':ブロックします。&br;block を指定した場合、次の timeout 値を指定すれば、指定時間後読み出し不可能であればタイムアウトします。 デフォルトは readbackです。|
+|⑬|Buffer read timeout|properties " buffer.read.timeout"|バッファからのデータ読み出し時に、タイムアウトイベントを発生させるための時間（単位:秒）&br;デフォルトは 1.0 [sec]です。0.0を設定した場合はタイムアウトしません。|
+
+// ②～⑤までの項目について、RTSystemditorは指定可能な値を、それぞれのポートの値リストから文字列のマッチングを行って作成します。このため、双方のポートに対してANYしか指定されていないような場合には、入力可能な値を判断することができません。このため双方のポートにANYが含まれている場合に、RTSystemEditorは任意の文字列を入力できるようにしています。任意の文字列が入力可能な項目には、「任意入力可」と表示されます。
+
+***  サービスポート間接続
+　サービスポート間の接続では、「ServicePort」と「ServicePort」を接続します。これらの間をドラッグ＆ドロップでつなぐと以下のダイアログが表示されます。
+#br
+
+#ref(fig30ServiceConnectDailog_ja.png,60%,center)
+CENTER:''サービスポートのコネクタプロファイルダイアログ''
+#br
+
+#ref(fig30ServiceConnectDailog2_ja.png,60%,center)
+CENTER:''サービスポートのコネクタプロファイルダイアログ（詳細）''
+
+
+ダイアログの項目と条件は以下のとおりです。
+CENTER:''サービスポート接続のダイアログ項目と必要条件''
+|LEFT:|LEFT:|LEFT:200|LEFT:|c
+|№|ダイアログ項目名|ConnectorProfile|必要条件|
+|①|Name|Name|特になし|
+|②||properties "rtc_iname"&br; properties "port_name" &br; properties "interfaces.if_iname"|インターフェース接続対象のサービスポートに複数のサービスインターフェースが定義されていた場合に有効。どのインターフェースを接続するかを指定できます。|
+
+#br
+
+サービスポートの場合、必須となる接続の条件はありません。しかし、 ServicePort 間での PortInterfaceProfile が完全にマッチング（※１）しない場合、接続ダイアログにて警告を表示します。
+#br
+
+#ref(fig59ServicePortWarning_ja.png,nolink,center)
+CENTER:''サービスポートの接続ダイアログの警告表示''
+#br
+　''※１''
+　ここでいう完全なマッチングとは、PortInterfaceProfileの「type」が同じで、「polarity」がお互いにPROVIDEDとREQUIredになっていること。また余りなく（PortInterfaceProfileはそれぞれのポートに複数存在する）すべてのPortInterfaceProfileがマッチングすることを指しています。~
+

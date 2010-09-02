@@ -1,0 +1,452 @@
+#contents
+ここでは、システムエディタの概要と基本操作について説明します。
+
+**概要
+システムエディタでは、RTCの状態がリアルタイムで表示されます。またポート間の接続や、RTCの状態を変更することでシステム構築、動作検証を行うことができます。
+
+#clear
+
+|
+#ref(fig50SystemEditer_ja.png,30%,center)|
+#ref(fig51SystemEditer_ja.png,80%,center)|
+|CENTER:''システムエディタの位置''|CENTER:''システムエディタ''|
+#br
+
+
+**基本操作
+RTCのポート間の接続方法とRTCを実行する方法を説明します。
+***システムエディタを開く
+新しいシステムエディタを開くには、ツールバーの「 Open New System Editor 」ボタンを押下するか、メニューバーの [ファイル]-[ Open New System Editor] を選択します。
+#br
+
+|
+#ref(fig52OpenSystemEditor_ja.png,40%,center)|
+#ref(fig53OpenSystemEditor_ja.png,40%,center)|
+|CENTER:''ツールバーからOpen New System Editor''|CENTER:''Fileメニューから Open New System Editor''|
+#br
+
+
+*** RTCをシステムエディタに配置する
+RTCをシステムエディタに配置するには、ネームサービスビューからRTCをドラッグ＆ドロップします。
+#br
+
+
+#ref(fig54SetComponentSystemEditor_ja.png,50%,center)
+CENTER:''コンポーネントをシステムエディタに配置する''
+#br
+
+// *** RTCの表示
+// システムエディタに配置された RTC は矩形で表示され、ポートはその矩形の周りに表示されます。また、それぞれの状態が色で表現されます。
+// #br
+// 
+// #ref(fig18RTCDisplayExample.png,nolink,center)
+// CENTER:''RTC表示の例''
+// #br
+// アイコンと状態色の一覧は以下のとおりです。
+// ''コンポーネントとポートのアイコン''
+// -RTC
+// #ref(IconShape1.png,nolink,center)
+// |状態|>|デフォルト色（※）|
+// |CREATED|
+// #ref(IconWhite.png,nolink,center)|White|
+// |INACTIVE|
+// #ref(IconBlue.png,nolink,center)|Blue|
+// |ACTIVE|
+// #ref(IconLightGreen.png,nolink,center)|Light Green|
+// |ERROR|
+// #ref(Iconred.png,nolink,center)|red|
+// |UNKNOWN|
+// #ref(IconBlack.png,nolink,center)|Black|
+// 
+// -Execution Context （1番目のみ）
+// --（RTCの矩形の外周線）
+// |状態|>|デフォルト色（※）|
+// |RUNNING|
+// #ref(IconGray.png,nolink,center)|Gray|
+// |STOPPED|
+// #ref(IconBlack.png,nolink,center)|Black|
+// 
+// -InPort
+// #ref(IconShape2.png,nolink,center)
+// |状態|>|デフォルト色（※）|
+// |未接続|
+// #ref(IconBlue.png,nolink,center)|Blue|
+// |接続済（1つ以上）|
+// #ref(IconLightGreen.png,nolink,center)|Light Green|
+// 
+// -OutPort
+// #ref(IconShape3.png,nolink,center)
+// |状態|>|デフォルト色（※）|
+// |未接続|
+// #ref(IconBlue.png,nolink,center)|Blue|
+// |接続済（1つ以上）|
+// #ref(IconLightGreen.png,nolink,center)|Light Green|
+// 
+// -ServicePort
+// #ref(IconShape4.png,nolink,center)
+// |状態|>|デフォルト色（※）|
+// |未接続|
+// #ref(IconLightBlue.png,nolink,center)|Light Blue|
+// |接続済（1つ以上）|
+// #ref(IconCyan.png,nolink,center)|Cyan|
+// 
+// 
+// '''※各状態の色は、設定画面の[[表示色>/ja/node/692#color]]にて変更することができます。'''
+// 
+// またシステムエディタは、RTCの状態を監視しリアルタイムに状態を表示します。（監視の周期は、設定画面の[[接続周期>マニュアル/RTSystemEditor#hafee8fa]]で変更することができます）
+// *** RTC の描画編集
+// ここでは、RTC の描画編集について説明していきます。(「編集」ではなく「描画編集」とあえてしているのは、ここで説明される作業は描画の編集であり、システムに対する影響は全くないためです。)
+// 
+// - RTC の大きさの変更と移動（システムに対する影響なし)
+// 　RTC を移動するには、RTC を選択後、ドラッグして動かします。 RTC の大きさを変更するには、 RTC を選択することで表示されるハンドルをドラッグして動かします。
+// #br
+// 
+// #ref(fig19RTCMoveSize.png,nolink,center)
+// CENTER:'' RTCの移動（左）とRTCの大きさの変更（右）''
+// #br
+// また、選択された RTC の位置と大きさがステータスバーに表示されます。
+// #br
+// 
+// #ref(fig20StatusBar.png,nolink,center)
+// #ref(fig20StatusBar_ja.png,nolink,center)
+// CENTER:''ステータスバー''
+// #br
+// 
+// - RTC の回転（システムに対する影響なし）
+// 　対象のコンポーネントを選択し、Ctrlキーを押しながらマウスの右ボタンをクリックすることで、水平の向きへ回転します。Shiftキーを押しながらマウスの右ボタンをクリックすることで、垂直の向きへ回転します。それぞれ同じ操作を繰り返し行うことで逆の水平の向き、逆の垂直の向きへ変更でき、上下左右の向きへ操作することができます。
+// #br
+// 
+// #ref(fig21RTCRotate.png,nolink,center)
+// CENTER:''回転されたRTC''
+// #br
+// 
+// - RTCの削除（システムに対する影響なし）
+// 　RTC を削除するには、RTCを選択し Delete ボタンを押下するか、コンテキストメニューから Delete を押下してください。
+// #br
+// 
+// #ref(fig55DeleteComponent.png,nolink,center)&br;
+// #ref(fig55DeleteComponent_ja.png,50%,center)
+// CENTER:'' Delete''
+// #br
+// 
+// -ポート間の接続線を移動する（システムに対する影響なし）
+// 　接続線を移動するには、接続線を選択し表示されるハンドラを移動します。垂直線は左右に、水平線は上下に移動することができます。
+// #br
+// 
+// #ref(fig56SystemEditer.png,nolink,center)&br;
+// CENTER:''垂直線（左）と水平線の（右）の接続線の移動''
+// #br
+// 
+*** RTC の状態を変更する
+ここでは、 RTC の状態を変更する方法を説明します。&br;
+システムダイアグラムでは、RTCを選択し、「Activate」、「Deactivate」、「Reset」、「Finalize」、「Exit」、「Start」、「Stop」を実行することができます。また、ネームサービスビューでも同様に実行することができます。
+#br
+
+//#ref(fig57RTCStatusChange.png,nolink,center)&br;
+
+|
+#ref(fig57RTCStatusChange_ja.png,50%,center)|
+#ref(fig57RTCStatusChange2_ja.png,50%,center)|
+
+CENTER:''ネームサービスビュー（左）とシステムエディタ（右）からRTC状態を変更する''
+#br
+これらのアクションの意味は以下のとおりです。実行先にご注意ください。
+CENTER:''RTCの状態を変更するアクション''
+|No.|アクション名|実行先|意味|
+|1|Activate|選択された RTC とその1番目の ExecutionContext に対して実行|Activate を要求する|
+|2|Deactivate|〃|Deactivate を要求する|
+|3|Reset|〃|Reset を要求する|
+|4|Finalize|選択されたRTCに対して実行|Finalize を要求する|
+|5|Exit|〃|Exit を要求する|
+|6|Start|選択された RTC の1番目の ExecutionContext に対して実行|Start を要求する|
+|7|Stop|〃|Activate を要求する|
+
+また、簡易にシステムを操作するための機能として、システムエディタに含まれるすべての RTC へActivate、Deactivate、Start、Stop、変更を要求することがツールバーとコンテキストメニューからできます。
+#br
+
+
+#ref(fig58AllExec_ja.png,60%,center)
+CENTER:''Aｌｌ実行　（ツールバーは左からAllActivate,AllDeactivate,AllStart,AllStop）''
+#br
+All 系のアクションは、1番目以外の ExecutionContext についても行われます。 Activate やStart を画面内の RTC に１つずつおこなった場合と結果が異なることにご注意ください。
+***ポート間を接続する
+システムエディタでは、 RTC のポート間を接続することができます。&br;
+ポート間を接続するには、ポートとポートをドラッグ＆ドロップでつなぎます。
+#br
+
+#ref(fig26ConnectPort.png,nolink,center)
+CENTER:''ポート間接続''
+#br
+ドラッグ＆ドロップ終了後、接続に必要な情報の入力を促すダイアログが表示されます。
+#br
+
+
+#ref(fig27ConnectorProfileDialog_ja.png,60%,center)
+CENTER:'' ConnectorProfileダイアログの例''
+#br
+このダイアログでは、 ConnectorProfile を作成します。 ConnectorProfile は、それぞれのポートが必要とする条件が満たされるように作成される必要がありますが、このダイアログは必要な条件を満たす値のみが入力されるようプルダウンで促します。
+必要な条件を満たすことができない接続の場合には、ドラッグ＆ドロップの接続時に禁止マークが表示され、ドラッグ＆ドロップを行うことができません。
+#br
+
+#ref(fig28ConnectedProhibitionMark_ja.png,nolink,center)
+CENTER:''接続禁止マーク''
+#br
+ポート間の接続は、大きくデータポート間接続とサービスポート間接続に分かれます。詳細については「[[システムエディタ（ポート間の接続 編）>/ja/node/689/]]」を参照願います。
+
+// -データポート間接続
+// 　データポートの接続で、「 InPort 」と「 OutPort 」を接続します。これらの間をドラッグ＆ドロップでつなぐと以下のダイアログが表示されます。
+// #br
+// 
+// #ref(fig29ConnectDialog.png,nolink,center)
+// #ref(fig29ConnectDialog1_ja.png,50%,center)
+// CENTER:''データポートのコネクタプロファイルダイアログ''
+// 
+// #ref(fig29ConnectDialog2_ja.png,50%,center)
+// CENTER:''データポートのコネクタプロファイルダイアログ(詳細)''
+// #br
+// ダイアログの項目と条件は以下のとおりです。
+// CENTER:''データポート接続のダイアログ項目と必要条件''
+// |№|ダイアログ項目名|ConnectorProfile|必要条件|
+// |①|Name|name|特になし|
+// |②|Data Type|properties “dataport.data_type”|このコネクタで接続されているデータポート間で送受信するデータ型を指定します。&br;それぞれのポートで互いに送受信可能なデータ型から選択します。ただし、Anyを含む場合は相手ポートのどのような値も許容します。|
+// |③|Instance Type|properties “dataport.interface_type”|RTシステム設計者が想定する、もしくはRTCが動作するRTミドルウェア上でサポートされているインターフェース種別を指定します。&br;それぞれのポートで互いにサポートしているインターフェース種別から選択します。ただし、Anyを含む場合は相手ポートのどのようなインターフェースも許容します。|
+// |④|Dataflow Type|properties “dataport.dataflow_type”|RTシステム設計者が想定する、もしくはRTCが動作するRTミドルウェア上でサポートされているデータフロー型を指定します。&br;それぞれのポートで互いにサポートしているデータフロー型から選択します。ただし、Anyを含む場合は相手ポートのどのようなデータフローも許容します。|
+// |⑤|Subscription Type|properties “dataport.subscription_type”|[Dataflow　Typeの値がPushの時に必要な条件]&br;RTシステム設計者が想定する、もしくはRTCが動作するRTミドルウェア上でサポートされているサブスクリプション種別を指定します。&br;それぞれのポートで互いにサポートしているサブスクリプション種別から選択します。ただし、Anyを含む場合は相手のどのようなサブスクリプション種別も許容します。|
+// |⑥|Push Rate(Hz)|properties “dataport.push_interval”|[Dataflow Typeの値が”Push”でかつSubscription Typeが”Periodic”の時に必要な条件]&br;サブスクリプション種別が「Periodic」な場合にデータの送信周期を指定します。送信周期は正数値（小数可）で指定します。|
+// |⑦|Push Policy|properties “dataport.publisher.push_policy”|データ送信ポリシー。[Dataflow Typeの値が”Push”でかつSubscription Typeが”Periodic”の時に必要な条件]all、fifo、skip、newから選択します。&br;''all'':バッファ内のデータを一括送信&br;''fifo'':バッファ内のデータをFIFOで１個ずつ送信&br;''skip'':バッファ内のデータを間引いて送信&br;''new'':バッファ内のデータの最新値を送信（古い値は捨てられます。）|
+// |⑧|Skip Count|properties "dataport.publisher.skip_count"|送信データスキップ数。[Push Policyの値が”skip”の時に必要な条件]バッファ内のデータがこの設定値で間引されて送信されます。|
+// |⑨|Buffer length|properties "buffer.length"|バッファの長さ|
+// |⑩|Buffer full policy|properties "buffer.write.full_policy"|バッファへのデータ書き込み時に、バッファフルだった場合の挙動。overwrite、do_nothing、blockから選択します。&br;''overwrite'':データを上書きします。&br;''do_nothing'':何もしません。&br;''block'':ブロックします。&br;block を指定した場合、次の timeout 値を指定すれば、指定時間後書き込み不可能であればタイムアウトします。 デフォルトは  overwrite (上書き)です。|
+// |⑪|Buffer write timeout|properties " buffer.write.timeout"|バッファへのデータ書き込み時に、タイムアウトアウトイベントを発生させるまでの時間（単位:秒）&br;デフォルトは 1.0 [sec]です。0.0を設定した場合はタイムアウトしません。|
+// |⑫|Buffer empty policy|properties "buffer.read.empty_policy”|バッファからのデータ読み出し時に、バッファが空だった場合の挙動。readblock、do_nothing、blockから選択します。&br;''readblock'':最後の要素を再読み出します。&br;''do_nothing'':何もしません。&br;''block'':ブロックします。&br;block を指定した場合、次の timeout 値を指定すれば、指定時間後読み出し不可能であればタイムアウトします。 デフォルトは readbackです。|
+// |⑬|Buffer read timeout|properties " buffer.read.timeout"|バッファからのデータ読み出し時に、タイムアウトイベントを発生させるための時間（単位:秒）&br;デフォルトは 1.0 [sec]です。0.0を設定した場合はタイムアウトしません。|
+// 
+// ②～⑤までの項目について、RTSystemditorは指定可能な値を、それぞれのポートの値リストから文字列のマッチングを行って作成します。このため、双方のポートに対してANYしか指定されていないような場合には、入力可能な値を判断することができません。このため双方のポートにANYが含まれている場合に、RTSystemEditorは任意の文字列を入力できるようにしています。任意の文字列が入力可能な項目には、「任意入力可」と表示されます。
+// -サービスポート間接続
+// 　サービスポート間の接続では、「ServicePort」と「ServicePort」を接続します。これらの間をドラッグ＆ドロップでつなぐと以下のダイアログが表示されます。
+// #br
+// 
+// #ref(fig30ServiceConnectDailog.png,nolink,center)
+// #ref(fig30ServiceConnectDailog_ja.png,60%,center)
+// CENTER:''サービスポートのコネクタプロファイルダイアログ''
+// #br
+// ダイアログの項目と条件は以下のとおりです。
+// |№|ダイアログ項目名|ConnectorProfile|必要条件|
+// |①|Name|Name|特になし|
+// CENTER:''サービスポート接続のダイアログ項目と必要条件''
+// #br
+// 
+// サービスポートの場合、必須となる接続の条件はありません。しかし、 ServicePort 間での PortInterfaceProfile が完全にマッチング（※１）しない場合、接続ダイアログにて警告を表示します。
+// #br
+// 
+// #ref(fig59ServicePortWarning.png,nolink,center)&br;
+// #ref(fig59ServicePortWarning_ja.png,nolink,center)
+// CENTER:''サービスポートの接続ダイアログの警告表示''
+// #br
+// 　''※１''
+// 　ここでいう完全なマッチングとは、PortInterfaceProfileの「type」が同じで、「polarity」がお互いにPROVIDEDとREQUIredになっていること。また余りなく（PortInterfaceProfileはそれぞれのポートに複数存在する）すべてのPortInterfaceProfileがマッチングすることを指しています。~
+*** ポート間の接続を切断する
+ポート間の接続を切断するには、接続を選択し Delete ボタンを押下するか、コンテキ29ストメニューに表示される Delete を押下します。
+#br
+
+
+#ref(fig60DeleteLink_ja.png,60%,center)
+CENTER:''接続の削除''
+#br
+*** ポート間の接続をすべて切断する
+ポートの接続をすべて切断するには、ポートを選択して、右クリックし「すべて切断」を実行します。
+#br
+
+
+#ref(fig61AllDisconnect_ja.png,60%,center)
+CENTER:''接続の全切断''
+#br
+// ----
+// ***複合コンポーネントを作成する
+// 複数のコンポーネントをまとめて複合コンポーネントにすることができます。&br;
+// 複合コンポーネントにしたいコンポーネントを選択して、右クリックして「Create Composite Component」を選択すると、複合コンポーネント生成ダイアログが表示されます。
+// #br
+// 
+// #ref(fig62CreateCompositeComponent.png,nolink,center)&br;
+// #ref(fig62CreateCompositeComponent_ja.png,60%,center)
+// CENTER:''複合コンポーネントの作成''
+// #br
+// #br
+// 
+// #ref(fig63CompositeComponentDialog.png,nolink,center)&br;
+// #ref(fig63CompositeComponentDialog_ja.png,60%,center)
+// CENTER:''複合コンポーネント生成ダイアログ''
+// #br
+// ダイアログの各項目は以下のとおりです。&br;
+// CENTER:''複合コンポーネント生成のダイアログ項目と必要条件''
+// |No.|ダイアログ説明|説明|
+// |①|Manager|ネームサービスビューに表示されているマネージャ一覧からマネージャを選択します。ここで選択されたマネージャが複合コンポーネントを生成します。|
+// |②|Name|複合コンポーネントのインスタンス名を指定します。|
+// |③|Type|複合コンポーネントの種別を指定します。指定可能な種別は以下のとおり。&br;[PeriodicECShared]&br;各RTCがExecutionContextのみを共有する形で動作します。各RTCの状態は独立しているため、複合コンポーネント内で複数の状態が存在することもあります。&br;[PeriodicStateShared]&br;各RTCが同一のExecutionContextを共有するとともに、状態も共有する形で動作します。&br;[Grouping]&br;各RTCが何も共有しない複合コンポーネントで、各RTCがそれぞれExecutionContext、状態を保持します。|
+// |④|Path|複合コンポーネントに設定するパスを指定します。|
+// |⑤|Port|子のコンポーネントのポート一覧から、複合コンポーネントに表示するポートを選択します。&br;ここで選択されたポートに対して、複合コンポーネントにプロキシ用のポートが作成されます。&br;|
+// |⑥|-|ポートの全選択・全解除ボタン|
+// 
+// #br
+// 複合コンポーネントを作成すると、子のコンポーネントとして選択していたコンポーネントはシステムエディタ上から表示が消え、新しい複合コンポーネントが描画されます。&br;
+// 複合コンポーネントのダイアグラムをダブルクリックするか、右クリックして「Open With System Diagram Editor」を選択すると、新しいシステムダイアグラムが開き、複合コンポーネント内部が表示されます。&br;
+// #br
+// 
+// #ref(fig64ConpositeOpenWithSE.png,nolink,center)&br;
+// #ref(fig64CompositeOpenWithSE_ja.png,60%,center)
+// CENTER:''N複合コンポーネントをシステムエディタで開く''
+// #br
+// #br
+// 
+// #ref(fig65ViewCompositeComponent.png,nolink,center)&br;
+// #ref(fig65ViewCompositeComponent_ja.png,nolink,center)
+// CENTER:''複合コンポーネント内を表示するシステムエディタ''
+// #br
+// 
+// ※&br;
+// ただし、システム構成の保存時には、コンポーネントの描画情報はコンポーネントに対して１つしか保存できないため、複合コンポーネント内を表示するシステムダイアグラムで変更した描画情報は保存されません。
+// 
+// 
+// #br
+// ***複合コンポーネントの子を追加する
+// 複合コンポーネント内を表示するシステムエディタを開いて、ネームサービスビューからRTCをドラッグ＆ドロップすることで、複合コンポーネントの子が追// 加されます。追加された子RTCのポートはすべて非公開に設定されます。
+// #br
+// 
+// #ref(fig66CompositeComponentAddRTC.png,nolink,center)&br;
+// #ref(fig66CompositeComponentAddRTC_ja.png,50%,center)
+// CENTER:''子RTCの追加''
+// #br
+// 
+// ***複合コンポーネントの子を削除する
+// 複合コンポーネント内を表示するシステムエディタを開いて、そこで子のコンポーネントを削除することで、複合コンポーネントの子が削除されます。&br;
+// 削除された子のコンポーネントは、複合コンポーネント内から表示が消え、元のシステムダイアグラム（複合コンポーネント自身が表示されているダイアグラム）に表示されます。&br;
+// 
+// #br
+// 
+// #ref(fig67DeleteChildComponent.png,nolink,center)&br;
+// #ref(fig67DeleteChildComponent_ja.png,50%,center)
+// CENTER:''複合コンポーネント内から子のコンポーネントを削除''
+// #br
+// #br
+// 
+// #ref(fig68ChildComponent.png,nolink,center)&br;
+// #ref(fig68ChildComponent_ja.png,nolink,center)
+// CENTER:''複合コンポーネントが表示されているシステムエディタ上に子のコンポーネント表示''
+// #br
+// ***複合コンポーネントを削除する
+// 複合コンポーネント上で右クリックして「Delete」を選択すると、複合コンポーネントがダイアグラムから削除されます。&br;
+// 削除時に複合コンポーネントを別のシステムダイアグラムで開いていると、エディタの終了確認のダイアログが表示されます。
+// #br
+// 
+// #ref(fig69DeleteCompositeComponent.png,nolink,center)&br;
+// #ref(fig69DeleteCompositeComponent_ja.png,50%,center)
+// CENTER:''複合コンポーネントの削除''
+// #br
+// #br
+// 
+// #ref(fig70ConpositeComponentDialog.PNG,nolink,center)&br;
+// #ref(fig70CompositeComponentDialog_ja.png,80%,center)
+// CENTER:''複合コンポーネントを表示するエディタの終了確認ダイアログ''
+// #br
+// ***複合コンポーネントを解除する
+// 複合コンポーネント上で右クリックして「Decompose Composite Component」を選択すると、複合コンポーネントへexist()が送られ、コンポーネント自体を終了します。&br;
+// 解除時に複合コンポーネントを別のシステムダイアグラムで開いていると、エディタの終了確認のダイアログが表示されます。&br;
+// 複合コンポーネントが解除されると、子のコンポーネントが元のシステムダイアグラム（複合コンポーネントが表示されていたダイアグラム）に表示されます。&br;
+// #br
+// 
+// #ref(fig71DecomposeConpositeComponent.png,nolink,center)&br;
+// #ref(fig71DecomposeCompositeComponent_ja.png,50%,center)
+// CENTER:''複合コンポーネントの解除''
+// #br
+// #br
+// 
+// #ref(fig72ConpositeComponentDialog.png,nolink,center)&br;
+// #ref(fig72CompositeComponentDialog_ja.png,80%,center)
+// CENTER:''複合コンポーネントを表示するエディタの終了確認ダイアログ''
+// #br
+// ***ポートの公開/非公開を切り替える
+// 複合コンポーネント内を表示するシステムエディタにあるコンポーネントのポートが複合コンポーネント上に公開されている場合、下記のように別のアイコンで表示されます。
+// CENTER:''子RTCの公開されているポートのアイコン''
+// |No.|名前|形状|
+// |1|InPort|
+// #ref(IconInPorts.png,nolink,center)|
+// |2|OutPort|
+// #ref(IconOutPorts.png,nolink,center)|
+// |3|ServicePort|
+// #ref(IconServicePorts.png,nolink,center)|
+// 
+// 公開されているポートを右クリックして、「非公開」を選択すると、そのポートが公開されていない状態に変わります。また、公開されていないポートを右クリックして、「公開」を選択すると、そのポートが公開されている状態に変わります。
+// #br
+// 
+// #ref(fig73ExportUnexport.png,nolink,center)&br;
+// |
+// #ref(fig73ExportUnexport_ja.png,50%,center)|
+// #ref(fig73ExportUnexport2_ja.png,50%,center)|
+// 
+// CENTER:''ポートの公開/非公開''
+// #br
+// ただし、ポートが別のコンポーネントのポートと接続されている場合は、「非公開」にすることができません。&br;
+// #br
+// 
+// #ref(fig74Export.png,nolink,center)
+// CENTER:''ポートの接続がある場合''
+// #br
+// ----
+// ***システムエディタをセーブする
+// システムエディタはセーブすることができます。セーブするには、メニューの [File] もしくはエディタを右クリックして「 Save… 」を選択します。（「 Save As… 」では、セーブするファイルを任意選択することができます）
+// #br
+// 
+// #ref(fig75SeveSystemEditer.png,nolink,center)
+// |
+// #ref(fig75SaveSystemEditor2_ja.png,50%,center)|
+// #ref(fig75SaveSystemEditor3_ja.png,50%,center)|
+// 
+// CENTER:''システムエディタのセーブ　メニュー（左）　コンテキストメニュー（右）''
+// #br
+// 
+// システムのセーブを選択すると、プロファイル情報ダイアログが開き、必要な項目を設定して「OK」をクリックすると、システムの情報がファイルにセーブされます。&br;
+// #br
+// 
+// #ref(fig76ProfileInformationDialog.png,nolink,center)
+// #ref(fig76ProfileInfomationDialog_ja.png,80%,center)
+// CENTER:''プロファイル情報ダイアログ''
+// 
+// 
+// CENTER:''プロファイル情報の項目''
+// |名前|形状|
+// |Vendor|ベンダ名。RTシステムの識別子を構成する要素。&br;必須項目。|
+// |System Name|システム名。RTシステムの識別子を構成する要素。&br;必須項目。|
+// |Version|システムのバージョン。RTシステムの識別子を構成する要素。&br;必須項目。|
+// |Path|システムをセーブするファイル名。&br;必須項目。|
+// |Update Log|バージョンの補足説明などを記述。|
+// |Required|RTシステムを動作させるのに必須のRTCにチェックをつける。|
+// 
+// ***セーブしたシステムエディタをオープンする
+// セーブしたシステムエディタをオープンするには、エディタを右クリックして「 Open 」を選択します。
+// #br
+// 
+// #ref(fig77OpenSavedSystemEditor_ja.png,50%,center)
+// CENTER:''システムエディタをオープンする''
+// #br
+// オープン後は、 RTSystemEditor はリモートのシステムを正として最新の情報へと更新を行います。セーブ内容をシステムへ復元するには、次の節で説明する「 Open and Restore… 」を使用してください
+// 
+// ***セーブしたシステムをオープンおよび復元する
+// セーブしたシステムエディタをオープンおよび復元するには、エディタを右クリックして「Open and Restore...」、もしくは「Open and Quick Restore...」を選択します。
+// #br
+// 
+// #ref(fig78OpenAndRestore_ja.png,50%,center)
+// CENTER:''システムエディタをオープンおよび復元する''
+// #br
+// システムへ復元されるのは以下の内容です。
+// -ポート間の接続　（セーブ時のコネクタがない場合。）
+// -コンフィグレーション情報
+// 　復元時には、コンポーネントのパスIDでネームサービスを検索してリモートのコンポーネントを取得します。&br;Quick Restore」を選択した場合は、ネームサービスにアクセスする前に、プロファイルに保存されたIORにてリモートのコンポーネントの取得を試み、取得できなかった場合にネームサービスから検索を行います。&br;復元に失敗した場合には、エラー内容が表示されます。&br;
+// #br
+// 
+// #ref(fig38ErrorMessageOfRestorationFailure.png,nolink,center)
+// CENTER:''復元失敗のエラーメッセージ ''
+// #br
+// また、RTSystemEditorはエラー発生時でも、できる限りの復元を試みます。
+
+
+
