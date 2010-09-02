@@ -1,0 +1,38 @@
+#contents
+
+//** RT System Editor のインストールおよび起動
+ここでは、 RTSystemEditor のインストールおよび起動について説明します。
+*** RTSystemEditor のインストール
+RTSystemEditor は Eclipse プラグインであるため、 Eclipse 本体および依存している他の Eclipse プラグインをまずインストールする必要があります。
+// [[動作環境>機能概要・動作環境_RTSE#kankyou]]を参照の上、これらをダウンロードします。
+// Eclipse のインストールは解凍するだけです。また、 Eclipse のプラグインは解凍後、 Eclipse フォルダ内に上書きするだけです。
+// RT System Editor のインストールは RT System Editor のプラグイン [[jar ファイル:http://www.openrtm.org/pub/OpenRTM-aist/tools/1.0.0/rtcbuilder_1.0.0.zip]]を eclipse/plugins フォルダに配置するだけで完了です。
+インストールに関しては、[[OpenRTM Eclipse tools のインストール:/node/676]]を参照願います。
+*** RT System Editorの起動
+インストール後、 Eclipse を初めて起動すると、以下のようなページが表示されます。
+#br
+
+#ref(fig2InitialOfEclipseStart_1_ja.png,40%,center)
+CENTER:''Eclipse の初期起動時の画面''
+#br
+この Welcome ページを左上の「X」により閉じると以下のページが表示されます。
+#br
+
+#ref(fig3PerspectiveSwitch_ja.png,40%,center)
+CENTER:''パースペクティブの切り替え''
+#br
+右上の「 Open Perspective 」ボタンを押下し、プルダウンの「 その他(O)… 」ボタンを押下します。
+
+#br
+
+#ref(fig4PerspectiveSelection_ja.png,90%,center)
+CENTER:''パースペクティブの選択''
+#br
+「 RT System Editor 」を選択することで、 RTSystemEditor が起動します。
+
+#br
+
+#ref(fig5InitialOfRTSystemEditorStarts_ja.png,60%,center)
+CENTER:''RTSystemEditor の初期起動時画面''
+#br
+
