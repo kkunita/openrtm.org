@@ -1,0 +1,44 @@
+#contents
+
+//**概要
+*** OpenRTM-aist RT System Editor 概要
+　現在[[OMG:http://www.omg.org]]にて、ロボット開発の効率を高めるRobot Technology Component（以下RTC）の仕様策定が行われています。このRTC仕様を実装および適用した共通プラットフォームとして、独立行政法人産業技術総合研究所・知能システム研究部門・タスクインテリジェンス研究グループでは[[OpenRTM-aist:/ja/node/850]]を提供しています。&br;
+　RT System Editor は、このOpenRTM-aistに含まれる開発ツールの１つであり、RTCをリアルタイムにグラフィカル操作する機能を持っています。また、その名前のとおりEclipse統合開発環境のプラグインとして作成されており、Eclipse上にて既存のプラグインとシームレスに操作を行うことができます。
+***対象
+本ドキュメントは、RTCについての基本知識を既に持っている方を対象としています。RTCの内容については、[[OMG>http://www.omg.org]]や[[産業技術総合研究所:http://openrtm.a01.aist.go.jp/~n-ando/OpenRTM-aist/]]のドキュメントを参照してください。
+***画面例
+ここでは、 OpenRTM-aist RT System Editor (以下 RTSystemEditor) の画面例を示します。
+
+// #ref(fig1InitialOfEclipseStart_1.png,nolink,center)
+#ref(fig1InitialOfEclipseStart_1_ja.png,60%,center)
+CENTER:''RTSystemEditor の画面例''
+// CENTER:''RT Name Service Viewの画面例''
+
+//----
+
+***機能概要
+RTSystemEditor は、 RTC をリアルタイムにグラフィカル操作する機能を持っています。提供される機能の一覧は以下のとおりです。
+#clear
+CENTER:''機能概要一覧''
+|№|機能名称|機能概要|
+|１|コンポーネントコンフィグレーション表示/編集機能|選択したコンポーネントのコンフィギュレーションプロファイル情報をコンフィグレーションビューに表示し編集する。|
+|２|コンポーネント動作変更機能|選択したコンポーネントの動作を変更する。|
+|３|RTシステム組み立て機能|システムエディタ上でシステムの組み立てを行う。|
+|４|システムセーブ/オープン機能|システムエディタの内容をRTSプロファイルとしてセーブする。RTSプロファイルをシステムエディタでオープンする。システムのポート接続、コンフィグレーションを変更しない）|
+|５|システム復元機能|RTSプロファイルをシステムエディタでオープンし、プロファイルの内容を元にシステムを復元する。（プロファイルの内容でシステムのポート接続、コンフィグレーションを再構築する）|
+
+***動作環境 &aname(kankyou);
+RTSystemEditor の動作に必要な環境は以下のとおりです。
+|№|環境|備考|
+|１|[[Java Development Kit 6:http://java.sun.com/javase/ja/6/download.html]]|&color(red){注意：Java1.5(5.0)では動作しません。};|
+|２|[[Eclipse 3.2.1:http://archive.eclipse.org/eclipse/downloads/drops/R-3.2.1-200609210945/download.php?dropFile=eclipse-SDK-3.2.1-win32.zip]]| Eclipse 本体|
+|３|Eclipse EMF 2.2.4 [[EMF＋SDO Runtime:http://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/downloads/drops/2.2.4/R200710030400/emf-sdo-runtime-2.2.4.zip]] および [[XSD Runtime:http://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/downloads/drops/2.2.4/R200710030400/xsd-runtime-2.2.4.zip]]| RT System Editor が依存する Eclipse プラグイン &br;※ご使用になられる Eclipse のバージョンに合ったものをご使用ください。|
+|４|[[Eclipse GEF 3.2.2>http://www.eclipse.org/downloads/download.php?file=/tools/gef/downloads/drops/R-3.2.2-200702081315/GEF-runtime-3.2.2.zip]]|RT System Editor が依存する Eclipse プラグイン &br;※ご使用になられる Eclipse のバージョンに合ったものをご使用ください。|
+|５|[[Eclipse Java development tools(JDT)>http://www.eclipse.org/projects/project_summary.php?projectid=eclipse.jdt]]|''※''ご使用になられる Eclipse のバージョンに合ったものをご使用ください。|
+|６|RT Name Service View|RT System Editorが依存するOpenRTM-aistに含まれる開発ツール|
+|７|RT Repository View|RT System Editorが依存するOpenRTM-aistに含まれる開発ツール|
+
+***制限
+RTSystemEditor は、 OpenRTM-aist を対象に開発されたものです。その他の RTC プラットフォームに対する操作は想定しておりません。
+
+
