@@ -5,7 +5,7 @@
 //--[[Windows://ja/node/150]]
 //--[[Unix:/ja/node/151]]
 //-[[トラブルシューティング:/ja/node/156]]
--[[Eclipse toolsに関するトラブルシューティング:/ja/node/248]]
+-[[ツールに関するトラブルシューティング:/ja/node/248]]
 //-[[RTCBuilderに関するFAQ:/ja/node/158]]
 -[[RTコンポーネント作成について:/ja/node/159]]
 //-[[RTコンポーネント作成に関するFAQ（Java版）:/ja/node/160]]
