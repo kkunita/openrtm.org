@@ -1,0 +1,571 @@
+#contents
+
+RTコンポーネントを管理するためのシェルスクリプト。
+
+**概要
+
+rtcshell は、ネームサーバ上に登録されているRTコンポーネントをシェルから管理することができるツールです。コンポーネントをactivate/deactivate/resetしたり、ポートの接続を行うことができます。
+このツールは、リソースの少ないシステム、GUIが利用できない環境 (特に、コンポーネントを管理する他のPCとネットワークがつながっていない環境等)、あるいはRTSystemEditorがどうしても利用できない場合等に有効です。
+コマンドラインの利用に精通している人にとっては特に便利なツールです。
+
+&br;
+
+このソフトウエアはNEDO (独立行政法人 新エネルギー・産業技術総合開発機構) の次世代ロボット知能化技術開発プロジェクトの支援により、独立行政法人産業技術総合研究所によって開発されています。
+
+&br;
+**必要条件
+
+- rtctree 2.0以上が必要となります.
+- Python 2.5以下では存在しない機能を使うので、Python 2.6 以上が必要となります。
+- rtprintとrtinjectはOpenRTM-Python-1.0.0以上が必要となります。
+- Ubuntu 9.04を使っていたら、手動でPython 2.6をインストールすることが必要となります。Ubuntu 9.04以上をおすすめします。
+
+
+**インストール
+
+インストールはいくつかの方法が利用可能です。
+
+&br;
+
+-リポジトリ（参照：以下の[[リポジトリ>#repo]]）またはソースアーカイブからダウンロード後、適当なディレクトリで解凍し、そこでコマンドを実行する。
+-リポジトリ（参照：以下の[[リポジトリ>#repo]]）またはソースアーカイブからダウンロード後、適当なディレクトリで解凍し、インストールする：
+
+++ソースを展開する。
+ $ cd /home/blurgle/src/
+ $ tar -xvzf rtcshell-2.0.0-tar.gz
+++setup.pyを実行する。
+ $ python setup.py install
+++必要に応じて、環境変数を設定します。これはデフォルトで設定されていますが、設定されていない場合は自分で設定する必要があります。Windows上では、Python の site-packages ディレクトリが ''PYTHONPATH'' 環境変数に、Pythonスクリプトのディレクトリが ''PATH'' 環境変数に設定されていることを確認してください。通常、これらは ''C:\Python26\Lib\site-packages\'' と ''C:\Python26\Scripts\'' です（Pythonが''C:\Python26\''にインストールされた場合）。
+
+-Windows ではインストーラの使用を推奨します。setup.py を利用すれば結果より容易に設定することができます。ただし、環境によってはさらに環境変数の設定が必要な場合があります。
+
+&br;
+
+Bashシェルを使う場合は「bash_completion」スクリプトを利用可能です。${prefix}/share/rtcshell/にあります。（${prefix}はrtcshellをインストールされたディレクトリです。）このスクリプトでtabを押すときコンポーネントの名前などが自動的に補完されます。以下の[[シェル補完>#shell]]に参照してください。
+
+LinuxやMac OS X等では、rtcwd のエイリアスを読み込んでください。''~/.bashrc'' に ''rtcwd'' の関数定義をコピーするのが簡単です。例えば rtcshell を /usr/local にインストールする場合、''~/.bashrc'' に以下の行を追加してください。
+
+ source /usr/local/bin/rtcwd
+
+Windows では rtcwd.bat ファイルを使用してください。
+
+&br;
+**コマンド 
+
+各コマンドの詳細なヘルプは、''-h''オプションで各コマンドを実行することによって参照することができます。rtcshellによって提供される機能は以下のリストを参照してください。
+
+|''rtact''|コンポーネントをactivateします。|
+|''rtcat''|コンポーネントの情報を表示します。|
+|''rtcon''|二つのポートを接続します。|
+|''rtconf''|コンフィグレーションセットの表示、変更及び選択します。|
+|''rtcwd''|RTC Treeの現在の作業ディレクトリを変更します。|
+|''rtdeact''|コンポーネントをdeactivateします。|
+|''rtdel''|ネームサーバから名前を消します。|
+|''rtdis''|二つのポート及びポートやコンポーネントの全部の接続を断ちます。|
+|''rtfind''|RTC Treeにコンポーネントなどを探します。|
+|''rtinject''|コンポーネントのInPortにデータを送ります。|
+|''rtls''|RTC Treeの現在の作業ディレクトリの内容を表示します。|
+|''rtmgr''|マネージャを制御します。|
+|''rtprint''|コンポーネントのOutPortから送ってくるをコンソールに印刷します。|
+|''rtpwd''|RTC Treeの現在の作業ディレクトリを表示します。|
+|''rtreset''|コンポーネントをresetします。|
+
+
+&br;
+**RTCツリー 
+
+すべてのコマンドはRTCツリー上で起動します。RTCツリーとは、ネームサーバ上のコンテキスト、コンポーネント、マネージャ等をファイルシステムに見立てて扱うことができる仕組みです。通常のファイルシステムと同じように扱うことができます。
+
+&br;
+
+ネームサーバはルートディレクトリ（''/''）からのサブディレクトリとして扱われます。その下にはファイルとサブディレクトリが存在します。サブディレクトリはネームサーバ上のネーミングコンテクストに対応します。ファイルはコンポーネントとマネージャーに対応します。
+
+&br;
+
+ツリーを構築するためのネームサーバを与える方法は2通りあります。一つはコマンドに渡したネームサーバへのパスです。これは現在のツリーの作業ディレクトリに追加され、最初の要素はネームサーバとして扱われます。
+
+&br;
+
+もう一つは''RTCTREE_NAMESERVERS''環境変数です。ネームサーバアドレスをセミコロンで区切り、リストを渡すこともできます。
+
+
+&br;
+**環境変数
+
+以下の環境変数が使われます。
+
+|''RTCTREE_ORB_ARGS''|ORB作成時に与えるセミコロンで区切られた引数のリスト。設定することは必要となりません。|
+|''RTCTREE_NAMESERVERS''|セミコロンで区切ったRTCツリーのためのネームサーバのアドレスのリスト。この変数に書いたサーバはツリーに追加します。設定することは必要となりません。|
+|''RTCSH_CWD''|RTCツリーの現在の作業ディレクトリ。この変数を設定しないでください。rtcshellは自動的に設定します。|
+
+普通の場合、RTCTREE_ORB_ARGSを設定することは必要となりません。RTCTREE_NAMESERVERSを設定したら、rtctreeを使うときにもっと便利となります。例えば、Bashシェルでしたら：
+
+ $ export RTCTREE_NAMESERVERS=localhost;192.168.0.1:65346;example.com
+
+&br;
+**シェル補完&aname(shell);
+
+Bashの補完機能を追加するスクリプトが含まれます。''${prefix}/share/rtsshell''にインストールされます。以下のコマンドで読み込んでください。
+
+ $ source bash_completion
+
+以前のコマンドを''~/.bashrc''ファイルに追加して、新しいシェルに自動的に読み込まれます。Tabを押して使えることができます。
+
+ $ rtcwd [TAB]
+ $ rtcwd localhost/
+ $ rtcwd localhost/[TAB]
+ $ rtcwd localhost/kenroke.host_cxt/
+ $ rtcwd localhost/kenroke.host_cxt/[TAB][TAB]
+ ConsoleIn0.rtc  ConfigSample0.rtc  manager.mgr  Sensor0.rtc
+ $ rtcwd localhost/kenroke.host_cxt/[ENTER]
+ $ rtconf ConfigSample0.rtc set [TAB]
+ double_param0  double_param1  int_param0     int_param1     str_param0
+ str_param1     vector_param0
+ $ rtcon Sensor0.rtc:[TAB]
+ in   out
+
+
+&br;
+**チュートリアル 
+
+このセクションではさまざまなコマンドを使用する方法を示します。これは、全コマンドのすべての機能を示しているわけではありません。
+
+&br;
+
+環境変数の設定を行います。これは必ずしも必要ではありませんが、絶対パスを指定する必要が無くなるので、コマンドタイプ量を減らすことができます。
+ $ export RTCTREE_NAMESERVERS=localhost
+
+''rtpwd''は現在の作業ディレクトリを表示します。下記の例では、ルートディレクトリにいます。
+ $ rtpwd
+ /
+
+''RTCTREE_NAMESERVERS''に一つのネームサーバのみ設定されているので、サブディレクトリは一つしかありません。
+ $ rtls
+ localhost/
+
+''rtcwd''コマンドで、作業ディレクトリを変更します。
+ $ rtcwd localhost
+
+''rtls''は渡したパスのファイルとサブディレクトリを表示します。パスを渡さない場合,現在の作業ディレクトリの内容を表示します。''ls''と同じです。
+ $ rtls
+ Clusterer0.rtc  Hokuyo_AIST0.rtc  kenroke.host_cxt/
+
+長いフォーマットの出力も可能です。これにより詳細な情報(コンポーネントの状態など）を見ることもできます。Linux上で''watch''と言うコマンドを一緒に使えば、継続的にコンポーネントの状態を監視することができます。(例：''watch -n 10 rtls -l''）
+ $ rtls -l
+ Inactive  2/0  1/0  1/0  0/0  Clusterer0.rtc
+ Inactive  4/0  0/0  3/0  1/0  Hokuyo_AIST0.rtc
+ -         -    -    -    -    kenroke.host_cxt
+
+同じネームサーバのサブディレクトリに移動します。
+ $ rtcwd kenroke.host_cxt
+ $ rtpwd
+ /localhost/kenroke.host_cxt
+
+ここには、多くのコンポーネントがあります。
+ $ rtls
+ Motor0.rtc                ConfigSample0.rtc  SequenceOutComponent0.rtc  ConsoleIn0.rtc
+ SequenceInComponent0.rtc  Controller0.rtc    Sensor0.rtc  manager.mgr   MyServiceConsumer0.rtc
+ MyServiceProvider0.rtc    ConsoleOut0.rtc
+
+''rtcat''はコンポーネントの情報（プロファイル、execution contexts、ポートなど）を表示します。
+ $ rtcat ConsoleIn0.rtc
+ ConsoleIn0.rtc  Inactive
+   Category       example
+   Description    Console input component
+   Instance name  ConsoleIn0
+   Parent
+   Type name      ConsoleIn
+   Vendor         Noriaki Ando, AIST
+   Version        1.0
+  +Execution Context 0
+  +DataOutPort: out
+
+'+'がある項目はさらに情報が存在することを示していす。冗長出力を行うとこれらも表示することができます。
+ $ rtcat ConsoleIn0.rtc -l
+ ConsoleIn0.rtc  Inactive
+   Category       example
+   Description    Console input component
+   Instance name  ConsoleIn0
+   Parent
+   Type name      ConsoleIn
+   Vendor         Noriaki Ando, AIST
+   Version        1.0
+  -Execution Context 0
+     State  Running
+     Kind   Periodic
+     Rate   1000.0
+  -DataOutPort: out
+     dataport.data_type          TimedLong
+     dataport.dataflow_type      push
+     dataport.interface_type     corba_cdr
+     dataport.subscription_type  flush,new,periodic
+     port.port_type              DataOutPort
+
+''rtcon''によって二つのポートを接続することができます。データポートにもサービスポートにも利用可能です。
+ $ rtcon ConsoleIn0.rtc:out ConsoleOut0.rtc:in
+
+これで、''out''ポートが別のコンポーネントの ''in'' ポートに接続されました。
+ $ rtcat ConsoleIn0.rtc -l
+ ConsoleIn0.rtc  Inactive
+   Category       example
+   Description    Console input component
+   Instance name  ConsoleIn0
+   Parent         
+   Type name      ConsoleIn
+   Vendor         Noriaki Ando, AIST
+   Version        1.0
+  -Execution Context 0
+     State  Running
+     Kind   Periodic
+     Rate   1000.0
+  -DataOutPort: out
+     dataport.data_type          TimedLong
+     dataport.dataflow_type      push
+     dataport.interface_type     corba_cdr
+     dataport.subscription_type  flush,new,periodic
+     port.port_type              DataOutPort
+    +Connected to  /localhost/kenroke.host_cxt/ConsoleOut0.rtc:in
+
+''--ll''を使うと、さらに長い情報が表示されます。
+ $ rtcat ConsoleIn0.rtc --ll
+ ConsoleIn0.rtc  Inactive
+   Category       example
+   Description    Console input component
+   Instance name  ConsoleIn0
+   Parent         
+   Type name      ConsoleIn
+   Vendor         Noriaki Ando, AIST
+   Version        1.0
+  -Execution Context 0
+     State  Running
+     Kind   Periodic
+     Rate   1000.0
+  -DataOutPort: out
+     dataport.data_type          TimedLong
+     dataport.dataflow_type      push
+     dataport.interface_type     corba_cdr
+     dataport.subscription_type  flush,new,periodic
+     port.port_type              DataOutPort
+    -Connected to  /localhost/kenroke.host_cxt/ConsoleOut0.rtc:in
+       Name                        out_in
+       ID                          cb196ab9-5114-4f0b-9685-29ae86697613
+       dataport.subscription_type  flush
+       dataport.interface_type     corba_cdr
+       dataport.dataflow_type      push
+       dataport.data_type          TimedLong
+
+データポートは同時に複数のポートに接続できます。
+ $ rtcon ConsoleIn0.rtc:out SequenceInComponent0.rtc:Long
+ $ rtcat ConsoleIn0.rtc -l
+ ConsoleIn0.rtc  Inactive
+   Category       example
+   Description    Console input component
+   Instance name  ConsoleIn0
+   Parent         
+   Type name      ConsoleIn
+   Vendor         Noriaki Ando, AIST
+   Version        1.0
+  -Execution Context 0
+     State  Running
+     Kind   Periodic
+     Rate   1000.0
+  -DataOutPort: out
+     dataport.data_type          TimedLong
+     dataport.dataflow_type      push
+     dataport.interface_type     corba_cdr
+     dataport.subscription_type  flush,new,periodic
+     port.port_type              DataOutPort
+    +Connected to  /localhost/kenroke.host_cxt/ConsoleOut0.rtc:in
+    +Connected to  /localhost/kenroke.host_cxt/SequenceInComponent0.rtc:Long
+
+
+長いディレクトリのリストではコンポーネントの名前だけでなく、コンポーネントの状態、ポートの状態も表示します。数字列はポートの合計数、入力ポートの数、出力ポートの数、サービスポートの数です。スラッシュの左は合計、スラッシュの右は接続されたポートの数です。この例ではConsoleIn0.rtcは一つの接続されたポートがあります。
+ $ rtls -l
+ Inactive  2/0  1/0  1/0  0/0  Motor0.rtc
+ Active    0/0  0/0  0/0  0/0  ConfigSample0.rtc
+ Inactive  8/0  0/0  8/0  0/0  SequenceOutComponent0.rtc
+ Inactive  1/1  0/0  1/1  0/0  ConsoleIn0.rtc
+ Inactive  8/1  8/1  0/0  0/0  SequenceInComponent0.rtc
+ Inactive  2/0  1/0  1/0  0/0  Controller0.rtc
+ Inactive  2/0  1/0  1/0  0/0  Sensor0.rtc
+ -         -    -    -    -    manager.mgr
+ Inactive  1/0  0/0  0/0  1/0  MyServiceConsumer0.rtc
+ Inactive  1/0  0/0  0/0  1/0  MyServiceProvider0.rtc
+ Inactive  1/1  1/1  0/0  0/0  ConsoleOut0.rtc
+
+''rtact''によってコンポーネントをactivateすることができます。同種のコマンドとしては ''rtdeact'' と ''rtreset'' があります。
+ $ rtact ConsoleIn0.rtc
+ $ rtact ConsoleOut0.rtc
+ $ rtact SequenceInComponent0.rtc
+
+これらの三つのコンポーネントの状態がactiveに変更されました。お使いの端末がカラー表示に対応している場合、状態に応じてカラーで表示します。
+ $ rtls -l
+ Inactive  2/0  1/0  1/0  0/0  Motor0.rtc
+ Active    0/0  0/0  0/0  0/0  ConfigSample0.rtc
+ Inactive  8/0  0/0  8/0  0/0  SequenceOutComponent0.rtc
+ Active    1/1  0/0  1/1  0/0  ConsoleIn0.rtc
+ Active    8/1  8/1  0/0  0/0  SequenceInComponent0.rtc
+ Inactive  2/0  1/0  1/0  0/0  Controller0.rtc
+ Inactive  2/0  1/0  1/0  0/0  Sensor0.rtc
+ -         -    -    -    -    manager.mgr
+ Inactive  1/0  0/0  0/0  1/0  MyServiceConsumer0.rtc
+ Inactive  1/0  0/0  0/0  1/0  MyServiceProvider0.rtc
+ Active    1/1  1/1  0/0  0/0  ConsoleOut0.rtc
+
+接続を切断するためには、''rtdis'' を使います。二つのポートの間の接続を切断することができます。
+ $ rtdis ConsoleIn0.rtc:out ConsoleOut0.rtc:in
+
+これにより、接続の一つがなくなりました。
+ $ rtcat ConsoleIn0.rtc -l
+ ConsoleIn0.rtc  Active
+   Category       example
+   Description    Console input component
+   Instance name  ConsoleIn0
+   Parent         
+   Type name      ConsoleIn
+   Vendor         Noriaki Ando, AIST
+   Version        1.0
+  -Execution Context 0
+     State  Running
+     Kind   Periodic
+     Rate   1000.0
+  -DataOutPort: out
+     dataport.data_type          TimedLong
+     dataport.dataflow_type      push
+     dataport.interface_type     corba_cdr
+     dataport.subscription_type  flush,new,periodic
+     port.port_type              DataOutPort
+    +Connected to  /localhost/kenroke.host_cxt/SequenceInComponent0.rtc:Long
+
+あるコンポーネントのポートの接続を一度にすべて切断することができます。特定のポートのすべての接続を切断する場合は引数でポートを指定します。(例：'ConsoleIn0.rtc:out'）
+ $ rtdis ConsoleIn0.rtc
+
+All connections are now gone.
+ $ rtcat ConsoleIn0.rtc -l
+ ConsoleIn0.rtc  Active
+   Category       example
+   Description    Console input component
+   Instance name  ConsoleIn0
+   Parent         
+   Type name      ConsoleIn
+   Vendor         Noriaki Ando, AIST
+   Version        1.0
+  -Execution Context 0
+     State  Running
+     Kind   Periodic
+     Rate   1000.0
+  -DataOutPort: out
+     dataport.data_type          TimedLong
+     dataport.dataflow_type      push
+     dataport.interface_type     corba_cdr
+     dataport.subscription_type  flush,new,periodic
+     port.port_type              DataOutPort
+
+''rtdeact''によってコンポーネントをdeactivateします。
+ $ rtdeact ConsoleOut0.rtc
+ $ rtdeact SequenceInComponent0.rtc
+ $ rtls -l
+ Inactive  2/0  1/0  1/0  0/0  Motor0.rtc
+ Active    0/0  0/0  0/0  0/0  ConfigSample0.rtc
+ Inactive  8/0  0/0  8/0  0/0  SequenceOutComponent0.rtc
+ Active    1/0  0/0  1/0  0/0  ConsoleIn0.rtc
+ Inactive  8/0  8/0  0/0  0/0  SequenceInComponent0.rtc
+ Inactive  2/0  1/0  1/0  0/0  Controller0.rtc
+ Inactive  2/0  1/0  1/0  0/0  Sensor0.rtc
+ -         -    -    -    -    manager.mgr
+ Inactive  1/0  0/0  0/0  1/0  MyServiceConsumer0.rtc
+ Inactive  1/0  0/0  0/0  1/0  MyServiceProvider0.rtc
+ Inactive  1/0  1/0  0/0  0/0  ConsoleOut0.rtc
+
+''rtcwd''は''cd''と同じように使うことができます。
+ $ rtcwd ..
+ $ rtpwd
+ /localhost
+ $ rtcwd
+ $ rtpwd
+ /
+
+''rtls''は''ls''と同様に使うことができます。現在の作業ディレクトリ以外のパスも表示できます。
+
+ $ rtls localhost
+ Clusterer0.rtc  Hokuyo_AIST0.rtc  kenroke.host_cxt/
+
+''/''で始まるパス（Windows上では''\''）以外のパスは、現在の作業ディレクトリからの相対的パスを意味します。任意の深さのディレクトリ、コンポーネントまたはマネージャーを指定することができます。
+ $ rtcwd localhost/kenroke.host_cxt
+ $ rtpwd
+ /localhost/kenroke.host_cxt
+
+コンフィグレーションセットは''rtconf''で管理することができます。デフォルトはコンフィグレーションセット名を表示します。
+ $ rtconf ConfigSample0.rtc
+ +default*
+
+冗長出力ではセットのパラメータも表示します。
+The long format lists the parameters of each set, as well.
+ $ rtconf ConfigSample0.rtc -l
+ -default*
+   double_param0  0.11
+   double_param1  9.9
+   int_param0     0
+   int_param1     1
+   str_param0     hoge
+   str_param1     dara
+   vector_param0  0.0,1.0,2.0,3.0,4.0
+
+''set''を使ってセットの変数を変更できます。通常は三つの引数(コンフィグレーションセットの名前、変数の名前、新しい値）を使います。引数は二つの場合、セットの名前は現在のアクティブのセットの名前にして、引数は変数の名前と新しい値にします。
+ $ rtconf ConfigSample0.rtc set default int_param0 5
+ $ rtconf ConfigSample0.rtc set int_param1 3
+ $ rtconf ConfigSample0.rtc list -l
+ -default*
+   double_param0  0.11
+   double_param1  9.9
+   int_param0     5
+   int_param1     3
+   str_param0     hoge
+   str_param1     dara
+   vector_param0  0.0,1.0,2.0,3.0,4.0
+
+''act''を使って現在のアクティブのコンフィグレーションセットを変更できます。現在のアクティブのセットは'*'で示されます。
+ $ rtconf ConfigSample0.rtc act default
+
+''rtcwd''に引数を渡さない場合、ルートディレクトリに移動します。
+ $ rtcwd
+ $ rtls localhost -l
+ Inactive  2/0  1/0  1/0  0/0  Clusterer0.rtc
+ Inactive  4/0  0/0  3/0  1/0  Hokuyo_AIST0.rtc
+ -         -    -    -    -    kenroke.host_cxt
+
+コンポーネントが以下のようにエラーの状態になった場合：
+ $ rtact localhost/Hokuyo_AIST0.rtc
+ $ rtls localhost -l
+ Inactive  2/0  1/0  1/0  0/0  Clusterer0.rtc
+ Error     4/0  0/0  3/0  1/0  Hokuyo_AIST0.rtc
+ -         -    -    -    -    kenroke.host_cxt
+
+''rtreset''によってコンポーネントの状態をエラーからinactiveに遷移させることができます。
+ $ rtreset localhost/Hokuyo_AIST0.rtc
+ $ rtls localhost -l
+ Inactive  2/0  1/0  1/0  0/0  Clusterer0.rtc
+ Inactive  4/0  0/0  3/0  1/0  Hokuyo_AIST0.rtc
+ -         -    -    -    -    kenroke.host_cxt
+
+''rtmgr''によってマネージャの制御することができます。モジュールをロードします。
+ $ rtcwd kenroke.host_cxt/
+ $ rtmgr manager.mgr load ~/share/OpenRTM-aist/examples/rtcs/ConsoleIn.so ConsoleInInit
+ $ rtcat manager.mgr
+ Name: manager
+ Instance name: manager
+ Process ID: 25256
+ Naming format: %h.host_cxt/%n.mgr
+ Refstring path: /var/log/rtcmanager.ref
+ Components precreate: 
+ Modules:
+   Load path: ./
+   Config path: 
+   Preload: 
+   Init function prefix: 
+   Init function suffix: 
+   Download allowed: 
+   Absolute path allowed: YES
+ OS:
+   Version: #1 SMP PREEMPT Mon Nov 30 11:10:37 JST 2009
+   Architecture: x86_64
+   Release: 2.6.31-gentoo-r6-gb
+   Host name: kenroke
+   Name: Linux
+ Loaded modules:
+   Filepath: /home/geoff/share/OpenRTM-aist/examples/rtcs/ConsoleIn.so
+ Loadable modules:
+
+そうして、そのモジュールの中のコンポーネントをインスタンスにします。
+ $ rtmgr manager.mgr create ConsoleIn
+ $ rtmgr manager.mgr create ConsoleIn
+ $ rtcwd manager.mgr
+ $ rtls
+ ConsoleIn0.rtc  ConsoleIn1.rtc
+
+マネージャによって作ったコンポーネントインスタンスを消すことができます。
+ $ rtcwd ..
+ $ rtmgr manager.mgr delete ConsoleIn0
+ $ rtls manager.mgr/
+ ConsoleIn1.rtc 
+
+マネージャにロードしたモジュールをアンロードすることができます。
+ $ rtcwd ..
+ $ rtmgr manager.mgr unload ~/share/OpenRTM-aist/examples/rtcs/ConsoleIn.so
+ $ rtcat manager.mgr
+ Name: manager
+ Instance name: manager
+ Process ID: 25256
+ Naming format: %h.host_cxt/%n.mgr
+ Refstring path: /var/log/rtcmanager.ref
+ Components precreate: 
+ Modules:
+   Load path: ./
+   Config path: 
+   Preload: 
+   Init function prefix: 
+   Init function suffix: 
+   Download allowed: 
+   Absolute path allowed: YES
+ OS:
+   Version: #1 SMP PREEMPT Mon Nov 30 11:10:37 JST 2009
+   Architecture: x86_64
+   Release: 2.6.31-gentoo-r6-gb
+   Host name: kenroke
+   Name: Linux
+ Loaded modules:
+ Loadable modules:
+
+''rtinject''によって、コンポーネントの入力ポートに一つの値を注入することができます。
+ $ rtinject ConsoleOut0.rtc:in 'RTC.TimedLong({time}, 42)'
+
+ConsoleOutからのアウトプットは以下のようになります。
+ $ ./ConsoleOutComp
+ =================================================
+  Component Profile
+ [...]
+ Port0 (name): ConsoleOut0.in
+ [...]
+ Received: 42
+ TimeStamp: 1266053430[s] 578351020[ns]
+
+''rtprint''によって、コンポーネントの出力ポートが送信しているデータを印刷することができます。
+ $ rtprint ConsoleIn0.rtc:out
+ [0.025029968] 42
+
+ネームサーバでゾンビがある場合、報告は出ます。ゾンビを削除するために''rtdel''を使ってください。''rtdel''によってどんなオブジェクトでも削除することができます。
+ $ rtls
+ ConsoleOut0.rtc
+ $ rtdel ConsoleOut0.rtc
+ $ rtls
+ $
+
+&br;
+**バグ
+
+このツールはJavaのORBと一緒に使うことは可能ではありません。
+
+&br;
+**リポジトリ&aname(repo);
+
+最新版のソースは[[githubでGitのリポジトリ>http://github.com/gbiggs/rtcshell]]にあります。「Download source」をクリックしてダウンロードをすることができます。「git clone」を使うこともできます。パッチを送りたがったら、この方法がおすすめします。
+
+ $ git clone git://github.com/gbiggs/rtcshell.git
+
+&br;
+**Changelog
+***2.0 
+
+- Windows対応のための調整。
+- 親ディレクトリを示すパスの扱い方を修正しました。
+- 新しいコマンド：rtdel
+- 新しいコマンド：rtinject
+- 新しいコマンド：rtprint
+- rtcat：未知の接続の数を表示します。
+- リファクタリング:全てのコマンドをPythonのスクリプトからも簡単に使えるようにしました。
+- シェル補完機能の追加（鈴木圭介氏より提供）
+- rtcwdをcsh系のシェルで使用できるようにしました。
+- rtcat：rtctreeから取得できるようになった実行コンテキストに関する新しい情報を表示します。
+- rtls：lsと一致するように再帰オプションを-rから-Rにの変更しました。
+- rtls：未知のオブジェクトを死んだファイルとして表示します。
+

@@ -1,0 +1,188 @@
+#contents
+
+rtctreeはPythonでRTコンポーネントの管理をするためのライブラリです。
+
+**概要 
+
+rtctreeは簡単なAPIでRTコンポーネントの管理をするためのPython用のライブラリです。開発者はCORBAのAPIを知らなくとも、他のプログラムから、RTコンポーネントのシステムを管理することができます。コンポーネントをactivateしたりdeactivateしたり、コンポーネントの間の接続を行うこと等が可能です。
+
+このソフトウエアはNEDO (独立行政法人 新エネルギー・産業技術総合開発機構) の次世代ロボット知能化技術開発プロジェクトの支援により、独立行政法人産業技術総合研究所によって開発されています。
+
+**必要条件
+
+- ominorb-py及びomniidlとomniidl用のPythonモジュールが必要となります。
+- Python 2.5以下では存在しない機能を使うので、Python 2.6 以上が必要となります。
+- Ubuntu 9.04を使っていたら、手動でPython 2.6をインストールすることが必要となります。Ubuntu 9.04以上をおすすめします。
+
+**インストール
+
+インストールはいくつかの方法が利用可能です。
+
+-リポジトリ（参照：以下の[[リポジトリ>#repo]]）またはソースアーカイブからダウンロード後、適当なディレクトリで解凍し、インストールする：
+++ソースを展開する。
+ $ cd /home/blurgle/src/
+ $ tar -xvzf rtctree-2.0.0.tar.gz
+++setup.pyを実行する。
+ $ python setup.py install
+++必要に応じて、環境変数を設定します。これはデフォルトで設定されていますが、設定されていない場合は自分で設定する必要があります。Windows上では、Python の site-packages ディレクトリが ''PYTHONPATH'' 環境変数に、Pythonスクリプトのディレクトリが ''PATH'' 環境変数に設定されていることを確認してください。通常、これらは ''C:\Python26\Lib\site-packages\'' と ''C:\Python26\Scripts\'' です（Pythonが''C:\Python26\''にインストールされた場合）。
+
+-Windows ではインストーラの使用を推奨します。setup.py を利用すれば結果より容易に設定することができます。ただし、環境によってはさらに環境変数の設定が必要な場合があります。
+
+
+**環境変数
+
+以下の環境変数が使われます。
+
+|''RTCTREE_ORB_ARGS''|ORB作成時に与えるセミコロンで区切られた引数のリスト。設定することは必要となりません。|
+|''RTCTREE_NAMESERVERS''|セミコロンで区切ったRTCツリーのためのネームサーバのアドレスのリスト。この変数に書いたサーバはツリーに追加します。設定することは必要となりません。|
+
+普通の場合、RTCTREE_ORB_ARGSを設定することは必要となりません。RTCTREE_NAMESERVERSを設定したら、rtctreeを使うときにもっと便利となります。例えば、Bashシェルでしたら：
+
+ $ export RTCTREE_NAMESERVERS=localhost;192.168.0.1:65346;example.com
+
+**RTCツリー
+
+ライブラリの主要部分はRTCツリーです。
+ from rtctree.tree import create_rtctree
+ tree = create_rtctree()
+これはネーミングコンテキスト、コンポーネントおよびマネージャを取得するためにネームサーバを検索して作成したファイルシステムのようなツリーです。通常のファイルシステムを扱う場合とまったく同じように扱うことができます。ツリーはすべての既知のネームサーバに登録されたネーミングコンテキスト、マネージャ、およびコンポーネントをツリー構造で表します。
+
+ \  
+ |-+localhost
+ | |-+naming_context
+ | | |--ConsoleIn0.rtc
+ | | |--ConsoleOut0.rtc
+ | |
+ | |--another_naming_context
+ | |--Sensor0.rtc
+ |
+ |-+192.168.0.5
+   |--Motor0.rtc
+   |--Controller0.rtc
+
+ツリー内の各ディレクトリは、通常のネーミングコンテキストまたはネームサーバーのルートコンテキストです。ネームサーバのルートコンテキストは''NameServer''クラスで示します。また、ネーミングコンテクストは''Directory''クラスで示し、マネージャは''Manager''クラスで示します。
+
+ネームサーバは、ルートディレクトリからのディレクトリとして扱われます。その下はファイルとサブディレクトリです。サブディレクトリはルートコンテクストの下のネーミングコンテクスト及びマネージャを示します。
+
+ファイルはコンポーネントとマネージャです。コンポーネントは''Component''クラスで示します。
+
+コンポーネントオブジェクトが表しているコンポーネントに関するさまざまな情報を格納します。コンポーネントをactivateやdeactivateしたり、コンポーネントのポートを管理したり、ポートを接続したり、構成設定を設定したりができます。
+
+マネージャで新しいコンポーネントインスタンスを作ったり、コンポーネントを消したりことができます。
+
+ツリー内のすべてのノードにも、それらが表すオブジェクトには、CORBAオブジェクトの参照を格納します。このオブジェクトにアクセスすることで、IDLのメソッドを呼び出すことができます。もし現在rtctreeで実現不可能な機能があったとしても、このCORBAオブジェクトを利用しIDLメソッドを直接的に呼び出すことができます。
+
+***ツリーの構築
+
+ツリーのファクトリ関数の引数（''create_tree()''）は、ツリーを構築するための解析対象となるネームサーバーを指定します。詳しくは当該関数のドキュメンテーションに参照してください。一般的に、ネームサーバのアドレスのリストまたはパスのリストを渡してツリーを構築することができます。環境変数''RTCTREE_NAMESERVERS''もチェックされます。
+
+***パス 
+
+ツリー内のノードはパスで指定されます。パスはストリングのリストです。一つ右のレベルは、左のものより1レベル深くなります。絶対パスは、ツリーオブジェクトを指定するために必要となります。もしパスがノード以下に存在する場合、ノードからの相対パス指定も可能です。
+
+これらのパス文字列は、ファイルシステムパス指定と似ています。ツリーのルートは''/''で示します（Windowsの場合は''\''）。最初のレベルはネームサーバのアドレスです。その下のレベルはコンポーネント、マネージャ及びネーミングコンテクスト（ディレクトリとしてしめす）です。''parse_path''と言う関数は文字列のパスをRTCツリー用のパスに変更します。
+
+例えば、以下のパス：
+ /localhost/naming_context/ConsoleIn0.rtc
+は''localhost''上で起動しているネームサーバの''naming_context''の下に登録された''ConsoleIn0.rtc''と言うコンポーネントを示します。ツリーからそのコンポーネントのオブジェクトを取得したい時、パスを''parse_path''でPythonのリストに変更する必要があります。
+ ['/', 'localhost', 'naming_context', 'ConsoleIn0.rtc']
+
+***ヘルパー関数
+
+以下はRTCTreeクラス及びさまざまなノードクラスのためのヘルパー関数です。以下はすべてのAPIを示しているわけではありません。Doxygenで記述されたAPIのドキュメンテーションを参照してください。例はrtcshellのソースを参照してください。
+
+|''RTCTree.has_path''|ツリーのパスがあるかどうかをチェックします。コンポーネントの存在をチェックするには、この関数を使うと便利です。|
+|''RTCTree.get_node''|ツリーからノードを取得します。コンポーネント、ディレクトリなどを取得するためにこの関数を使ってください。|
+|''RTCTree.is_component''|パスはコンポーネントを指しているかどうかを調べます。ノードクラスは''is_component''という同じ機能のプロパティーを持っています。''is_directory''、''is_manager''及び''is_nameserver''という関数およびプロパティーもあります。|
+|''RTCTree.iterate()''|ツリーのすべてのノードに同じ関数を実行します。すべての結果はリストとして返されます。例はrtcshellの''rtls''を参照してください。|
+
+|''Node.children''|ノードのすべての子ノード。例：ディレクトリの下のコンポーネントのリストを取得するために利用することができます。|
+|''Node.full_path''|ツリーのルートからこのノードまでのパス。|
+|''Node.name''|ノードの名前。例：ディレクトリの名前。|
+|''Node.parent_name''|ノードの親の名前。|
+|''Node.root''|このノードのツリーのルートノード。返されたオブジェクトでツリーのほとんどすべての機能ができます。|
+
+|''Component.activate_in_ec()''|コンポーネントをactivateします。通常は ec_index は 0 で構いません。|
+|''Component.deactivate_in_ec()''|コンポーネントをdeactivateします。|
+|''Component.reset_in_ec()''|コンポーネントをresetします。|
+|''Component.state_in_ec()''|あるexecution contextでコンポーネントのステートを得ます。|
+|''Component.alive''|コンポーネントがaliveかどうかをチェックします。|
+|''Component.owned_ecs''|コンポーネントが持っているexecution contextのリストです。|
+|''Component.participating_ecs''|コンポーネントが使っているexecution contextのリストです。|
+|''Component.state''|コンポーネントのステートです。|
+|''Component.state_string''|文字列にしたコンポーネントのステートです。|
+|''Component.disconnect_all()''|コンポーネントのすべてのポートのすべての接続を切断します。|
+|''Component.get_port_by_name()''|コンポーネントのポートを名前で探す。|
+|''Component.ports''|コンポーネントのポートのリストです。入力ポート、出力ポート、及びサービスポートのリストが含まれ、かつ現在接続状態のポートのリストも取得できます。|
+|''Component.object''|コンポーネントのCORBAの''LightweightRTObject''オブジェクトです。|
+|''Component.activate_conf_set''|コンフィグレーションセットをactivateします。|
+|''Component.set_conf_set_value''|コンフィグレーションセットの変数を設定します。|
+|''Component.active_conf_set''|現在のactiveコンフィグレーションセットです。|
+|''Component.active_conf_set_name''|現在のactiveコンフィグレーションセットの名前です。|
+|''Component.conf_sets''|コンフィグレーションセットのリストです。|
+
+|''Port.connect()''|このポートを別のポートに接続します。|
+|''Port.disconnect_all()''|このポートのすべての接続を切断します。|
+|''Port.get_connection_by_dest()''|このポートの接続を他のポートで探します。|
+|''Port.get_connection_by_name()''|このポートの接続を名前で探します。|
+|''Port.connections''|このポートの接続リストです。|
+|''Port.is_connected''|このポートは接続の状態かどうかをチェックします。|
+|''Port.name''|ポートの名前です。|
+|''Port.object''|このポートのCORBAの''PortService''オブジェクトです。|
+|''Port.name''|ポートのオーナー（通常は''Component''オブジェクト）です。|
+|''Port.porttype''|ポートの種類（''DataInPort''、''DataOutPort''及び''CorbaPort''）。|
+
+|''Connection.disconnect()''|この接続を切断します。|
+|''Connection.ports''|この接続のソースや目的ポートのリストです。|
+
+|''ConfigurationSet.has_param()''|このセットに変数があるかどうかをチェックします。|
+|''ConfigurationSet.set_param()''|このセットの変数を設定します。|
+
+|''ExecutionContext.activate_component()''|このexecution contextでコンポーネントをactivateします。|
+|''ExecutionContext.deactivate_component()''|このexecution contextでコンポーネントをdeactivateします。|
+|''ExecutionContext.reset_component()''|このexecution contextでコンポーネントをresetします。|
+|''ExecutionContext.get_component_state()''|このexecution contextの中のコンポーネントのステートをとります。|
+|''ExecutionContext.running''|このexecution contextは起動しているかどうかをチェックします。|
+
+|''Manager.create_component()''|新しいコンポーネントインスタンスを作ります。|
+|''Manager.delete_component()''|コンポーネントインスタンスを削除します。|
+
+|''dict_to_nvlist()''|PythonのdictをCORBAのnamevalueリストに変更します。|
+|''nvlist_to_dict()''|CORBAのnamevalueリストをPythonのdictに変更します。|
+
+**APIのスタイル
+
+rtctreeはPythonの標準スタイルに従います。[[PEP8>http://www.python.org/dev/peps/pep-0008/]]に参照してください。
+
+最も重要な点は、プライベートな内部API関数はアンダースコア（「_」）で始まることです。アンダースコアで始まる関数はクラス外から証すべきではありません。もし使用した場合には、未定義の振る舞いを引き起こす可能性があります。アンダースコアで始まらず、docstringがある関数だけを使ってください。
+
+**リポジトリ&aname(repo);
+
+最新版のソースは[[githubでGitのリポジトリ>http://github.com/gbiggs/rtctree]]にあります。「Download source」をクリックしてダウンロードをすることができます。「git clone」を使うこともできます。パッチを送りたがったら、この方法がおすすめします。
+
+ $ git clone git://github.com/gbiggs/rtctree.git
+
+**より詳細なドキュメンテーションとサンプル
+
+より詳細なドキュメンテーションはDoxygenで記述されたドキュメンテーションを参照してください。
+
+サンプルは[[rtcshell>/ja/node/851]]のソースを参照してください。これらはRTSystemEditorで実現可能なことをrtctreeで行う方法のほぼ全てを示しています。
+
+**Changelog 
+***2.0
+
+- 実行コンテキストに関してより多くの情報を解析するようにしました。
+- ORBオブジェクトを外部から与えられるようにしました。
+- reparse_connections()関数をpublicにしました。
+- ノードで使用されているORBを取得するための新しいAPIを追加しました。
+- コンテキストから名前をアンバインドするための新しいAPIを追加しました。
+- より多くのCORBAオブジェクトへのアクセスを可能にしました。
+- ゾンビの認識効率が向上しました。
+- 未知なCORBAオブジェクトの扱い方を修正しました。
+- オーナーが未知なポートの扱い方を修正しました。
+- rtctreeオブジェクトをスレッドセーフにするためのロックを追加しました。
+- ツリーのオブジェクトを再ロードするためのAPIを追加しました。
+- 適切なinheritence取り扱いのために__init__関数を修正しました。
+- 特定のECの中のコンポーネントの状態を得るための新しいAPIを追加しました。
+- 特定のECの中のコンポーネントの状態を更新するための新しいAPIを追加しました。
+
