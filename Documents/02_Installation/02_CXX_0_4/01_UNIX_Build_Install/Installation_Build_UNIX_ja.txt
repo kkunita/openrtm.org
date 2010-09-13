@@ -1,0 +1,127 @@
+#contents
+*ソースからのビルドとインストール 
+
+※以降の説明は便宜上OpenRTM-aist-0.4.0について書かれています。OpenRTM-aist-0.4.xについても同様の手順でインストールできます。
+**対応OSおよびディストリビューション
+　OpenRTM-aist-0.4.x は下記の OS および Linux ディストリビューションで動作
+することが確認されています。
+
+- FreeBSD
+- Vine Linux
+- Fedora
+- Debian
+- Ubuntu
+
+**動作条件
+　OpenRTM-aist-0.4.0 のインストールには下記のパッケージが必要です。
+
++The ADAPTIVE Communication Environment (ACE) 5.4 以上
++ORB
+-- 現在のところ対応ORB実装は omniORB-4.0 以上のみとなっています。
+-- Ubuntu7で提供されているomniORB4.0.6にはバグがあります。必ず4.0.7か4.1.2に入れ替えてください。
++gcc は version3 以降が望ましい。gcc2.95.x でもコンパイル可能ですが、オプションを指定する必要があります。~
+　→　[[configure に与えるオプションについて >#configure]]の「・gcc3.x以前のコンパイラ（gcc2.95.x等）を使用する場合」を参照
++python
++PyYAML (0.4.2のみ、rtc-templateに必要)
+
+#br
+
+
+　なお、下記の OS 及び Linux ディストリビューションについては、これらのパッケージをインストールするためのスクリプトが展開したソースの build ディレクトリ内にあります。
+#br
+
+-◆OpenRTM-aist-0.4.0、0.4.1の場合
+-- FreeBSD 5.2: pkg_install_freebsd52.sh
+-- FreeBSD 6.x: pkg_install_freebsd6.sh
+-- Vine Linux 3.2: pkg_install_vl32.sh
+--Vine Linux 4.0: pkg_install_vl4.sh
+-- Fedora Core 4: pkg_install_fc4.sh
+-- Fedora Core 5: pkg_install_fc5.sh
+-- Fedora Core 6: pkg_install_fc6.sh
+-- Debian3.1(Sarge): pkg_install_debianSarge.sh
+-- Ubuntu: pkg_install_debianSarge.sh
+-◆OpenRTM-aist-0.4.2の場合
+-- FreeBSD: pkg_install_freebsd.sh
+-- Vine Linux: pkg_install_vine.sh
+-- Fedora: pkg_install_fedora.sh
+-- Debian: pkg_install_debian.sh
+-- Ubuntu: pkg_install_debian.sh
+
+　ただし、OpenRTM-aist-0.4.2ソースに付属のこれらのシェルスクリプトはOpenRTM-aist-0.4.2ビルド済みパッケージも同時にインストールするようになっているものもあります。上記ツールパッケージのみをインストールしたい場合は、これらのシェルスクリプトを適宜編集して使ってください。
+
+　　Fedora と Vine のいくつかの代表的なバージョンについては[[こちら >OpenRTM-aist-1.0.0-RC1]]のリポジトリサーバに ACE と omniORB の rpm, deb パッケージが用意されています。このことにより、apt-get や yum を用いて簡単にインストールできるようになりました。
+
+''参考''
+-[[''apt-get'' を使う方法　（Ubuntu）>//ja/node/1347#deb]]
+-[[''apt-get'' を使う方法　（Debian）>/ja/node/1347#deb]]
+
+　OpenRTM-aist のソースからのビルドを行う場合は、''参考：''でしめす手順のうち OpenRTM-aist 関連 (OpenRTM-aist, OpenRTM-aist-devel, OpenRTM-aist-doc, OpenRTM-aist-example) のインストール部分は省いてください。
+
+
+　上記以外のOSにおいては、それぞれのパッケージのドキュメントに従いインストールを行ってください。これらのパッケージが、標準のディレクトリ(/usr, /usr/local 等)下にインストールされていると、以降の OpenRTM-aist のコンパイル作業を比較的簡単に行うことができます。
+
+**ソースコードの展開
+　まずソースコード OpenRTM-aist-0.4.0.tar.gz zip''（※最新バージョンはこちら⇒''[[OpenRTM-aist-1.0.0-RC1.tar.gz:OpenRTM-aist-1.0.0-RC1]]''）'' を適当なディレクトリに展開します。
+
+ > tar xvzf OpenRTM-aist-0.4.0.tar.gz
+ > cd OpenRTM-aist-0.4.0
+
+**ビルド
+　OpenRTM-aist はパッケージのビルドに autoconf, automake を使用しています。ビルドの仕方は、他の autoconf, automake を使用したパッケージと同様に行います。
+
+ > ./configure --prefix=/usr [options]
+
+./configureに与えることのできるオプションの一部を以下に示します。
+
+***configureに与えるオプションについて &aname(configure);
+-prefix
+--[[こちら >http://www.openrtm.org/openrtm/ja/node/631]]に参考あります。
+-使用するORB
+　※omniORB, MICO, TAO 以外はサポートされていません。他のオプションは将来のために予約されています。
+  --with-omniorb=dir
+  --with-tao=dir
+  --with-mico=dir
+  --with-orbix=dir
+  --with-orbacus=dir
+
+-gcc3.x以前のコンパイラ（gcc2.95.x等）を使用する場合
+　バージョン3未満のgccではテンプレートのコンパイルで不具合が生じますので、gcc2.95.xなどのコンパイラを使用する場合は、以下のオプションを指定してください。
+ --with-gcc2
+
+-ACE include パス, lib パス
+　ACE が標準的なディレクトリにインスト一ルされていない場合以下のオプションでへッダとライブラリのディレクトリを指定して下さい。
+ --with-ace-includes=dir
+  --with-ace-lib=dir
+ACE_wrppersが仮に "/tmp/src/ACE_wrappers" 以下にインストールされている場合
+ --with-ace-include=/tmp/src/ACE_wrappers
+ --with-ace-libs=/tmp/src/ACE_wrappers/ace
+のように指定します。
+
+-その他
+　その他使用可能なオプションは
+ > ./configure --help
+で参照して下さい。
+
+**make 
+　configure が正常に終了したことを確認して下さい。正常に終了したらmakeします。
+
+ > make
+
+インストールするためには少なくとも
+
+ OpenRTM-aist-0.4.0/rtm
+ OpenRTM-aist-0.4.0/rtm/idl
+ OpenRTM-aist-0.4.0/utils/rtm-config
+ OpenRTM-aist-0.4.0/utils/rtm-naming
+ OpenRTM-aist-0.4.0/utils/rtc-template
+
+以下のディレクトリが正常にビルドされている必要があります。ビルドが正常に終了し
+たら、ヘッダファイル、ライブラリ、ユーティリティコマンド群をインストールします。
+
+ > su
+ # make install
+
+''参考：''
+-[[''FAQ:'' OpenRTM-aist-0.4.2をVine上でmakeする時にエラーが出て終了 >/ja/node/151#errorvine]]~
+''　※'' この問題については、08/06/11に修正がなされました。
+
