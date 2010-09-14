@@ -38,5 +38,5 @@ OpenRTM-aist ‚ÍƒpƒbƒP[ƒW‚Ìƒrƒ‹ƒh‚É Python‚ÌDistutilsƒ‚ƒWƒ…[ƒ‹‚ðŽg—p‚µ‚Ä‚¢‚Ü‚·
 #br
 Ÿ WINDOWS\system32 ƒtƒHƒ‹ƒ_‚ðŒŸõ‚µAmsvcp71.dll‚Æmsvcr71.dll‚ª‚ ‚é‚±‚Æ‚ðŠm”F‚µ‚Ä‚­‚¾‚³‚¢B‚±‚ê‚ç‚ª‚È‚¢ê‡‚ÍA[[‚±‚¿‚ç :http://www.vector.co.jp/soft/win95/util/se435079.html]]‚©‚ç“üŽè‚µ‚Ä‚­‚¾‚³‚¢B
 
--[[''FAQ'': uMSVCP71.dll ‚ªŒ©‚Â‚©‚ç‚È‚©‚Á‚½‚½‚ßAcv‚Æ‚¢‚¤ƒGƒ‰[‚ÅI—¹‚·‚é >/ja/node/150#MSVCerror]]
+-[[''FAQ'': uMSVCP71.dll ‚ªŒ©‚Â‚©‚ç‚È‚©‚Á‚½‚½‚ßAcv‚Æ‚¢‚¤ƒGƒ‰[‚ÅI—¹‚·‚é >/ja/node/1190#MSVCerror]]
 
