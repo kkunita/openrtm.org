@@ -21,7 +21,7 @@
 
 　MyService.idlという --service-idl で指定したIDLファイルがある場合、rtc-template実行後に MyService_idl_example.py というファイルが生成されます。このファイルはIDLで定義したオペレーションを実装するためのファイルですので、この中でオペレーションの実装を行って下さい。
 * FAQ 
-- [[rtm-naming.pyを実行したら、omniNamesが"usage:"を表示して終了してしまいます。 >/ja/node/150#pythonusage]]
+- [[rtm-naming.pyを実行したら、omniNamesが"usage:"を表示して終了してしまいます。 >/ja/node/1190#pythonusage]]
 - [[python.exeが起動しない >/ja/node/150#pythonexe]]
 - [[Cygwinをインストールしている環境ではpython.exeが複数存在する場合がある >/ja/node/150#python]]
 - [[「MSVCP71.dll が見つからなかったため、…」というエラーで終了する >/ja/node/150#MSVCerror]]
