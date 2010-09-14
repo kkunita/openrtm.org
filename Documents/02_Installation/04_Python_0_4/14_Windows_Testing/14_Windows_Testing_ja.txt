@@ -8,19 +8,19 @@
 
 :''※2　''あらかじめ環境変数PathにPythonインストールフォルダを追加しておいて下さい(C:\Python24など)。|
 -[[Pathの更新 >/ja/node/649#hensu]]~
--[[''FAQ:'' python.exeが起動しない >/ja/node/150#pythonexe]]~
--[[''FAQ:'' Cygwinをインストールしている環境ではpython.exeが複数存在する場合がある >/ja/node/150#python]]~
--[[''FAQ:'' 「Can't open file: ./rtc.conf」などと表示される >/ja/node/150#rtc.conf]]
+-[[''FAQ:'' python.exeが起動しない >/ja/node/1190#pythonexe]]~
+-[[''FAQ:'' Cygwinをインストールしている環境ではpython.exeが複数存在する場合がある >/ja/node/1190#python]]~
+-[[''FAQ:'' 「Can't open file: ./rtc.conf」などと表示される >/ja/node/1190#rtc.conf]]
 
 &br;
 
 
 :''※3　''特にエラーというわけではないようだが、いっこうに"Please input number:"という表示があらわれない場合があります。この場合、同じフォルダ内のConnector.pyを起動することで正常動作を得ます。&br;
--[[''FAQ:'' SimpleIOコンポーネントで"Please input number:"という表示があらわれない >/ja/node/150#SimpleIO]]
+-[[''FAQ:'' SimpleIOコンポーネントで"Please input number:"という表示があらわれない >/ja/node/1190#SimpleIO]]
 
 #br
 参考：&br;
--[[''FAQ'': 「MSVCP71.dll が見つからなかったため、…」というエラーで終了する >/ja/node/150#MSVCerror]]
+-[[''FAQ'': 「MSVCP71.dll が見つからなかったため、…」というエラーで終了する >/ja/node/1190#MSVCerror]]
 
 
 #br
