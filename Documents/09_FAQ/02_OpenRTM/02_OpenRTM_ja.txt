@@ -212,7 +212,10 @@ rtm-naming.pyを"C:\Documents and Settings\Hoge\My Documents"等ディレクトリ名に空
 ****「MSVCP71.dll が見つからなかったため、…」というエラーで終了する
 : |WINDOWS\system32フォルダ内にmsvcp71.dllがないために発生するエラーです。msvcp71.dllを[[こちら >http://www.vector.co.jp/soft/win95/util/se435079.html]]から入手してください。
 #br
-**** 「Can't open file: ./rtc.conf」などと表示される。&aname(rtc.conf);
+
+&aname(rtc.conf);
+
+**** 「Can't open file: ./rtc.conf」などと表示される。
 : |RTコンポーネントの起動フォルダ（あるいはサーチパス上）にrtc.confが見つからないため、起動できない状態です。この場合、次のように表示されます。~
  Can't open file: ./rtc.conf
  Can't open file: /etc/rtc.conf
