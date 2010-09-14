@@ -1,0 +1,178 @@
+#contents
+** JDKインストールのためのヒント &aname(instjavaunixjdk);
+
+- [[Vine3.2 >#vine32]] 
+- [[Ubuntu7.10 >#ubuntu710]]
+- [[Debian4.0 etch >#debian40]] 
+- [[Fedora 8 >#instjavaunixfedora]]
+//- [[FreeBSD 7.0 >#nd416b5f]]
+
+*** Vine3.2 &aname(vine32);
+　一例として、Vine3.2へのインストール方法を述べます。以下の作業はスーパーユーザとして行ってください。
+#br
+
+- JDK 5インストール方法
+-- Linux RPM in self-extracting fileを入手した場合~
+　ターミナルを起動し、Linux RPM in self-extracting fileをダウンロードしたディレクトリにカレントを移動させて、次のようにコマンドを入力する。
+ # ls
+ jdk-1_5_0_15-linux-i586-rpm.bin
+ # sh jdk-1_5_0_15-linux-i586-rpm.bin
+ライセンス許諾条項が表示されるの適宜スペースを押して進んでいく。ライセンスを承諾するかどうか質問されるので、問題なければ「yes」と答える。
+
+#br
+
+-- Linux self-extracting fileを入手した場合~
+　ターミナルを起動し、Linux self-extracting fileをダウンロードしたディレクトリにカレントを移動させて、次のようにコマンドを入力する。
+ # ls
+ jdk-1_5_0_15-linux-i586.bin
+ # sh jdk-1_5_0_15-linux-i586.bin
+ライセンス許諾条項が表示されるの適宜スペースを押して進んでいく。ライセンスを承諾するかどうか質問されるので、問題なければ「yes」と答える。
+ # mkdir /usr/java
+ # mv jdk1.5.0_15/ /usr/java/
+などとして、/usr/java以下に解凍されたJDKを配置する。
+
+#br
+
+- 環境変数の設定
+
+ /etc/profileの末尾に次の3行を追加する。
+ 
+ export JAVA_HOME=/usr/java/jdk1.5.0_15
+ export PATH=$PATH:$JAVA_HOME/bin
+ export CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar
+#br
+
+''参考サイト（外部サイト）:''
+
+　→ [[Javaのインストール(Linux) :http://rat.cis.k.hosei.ac.jp/article/java/javalinux.html]]
+
+　→ [[Linux環境におけるJavaインストール手順 :http://codezine.jp/a/article/aid/1744.aspx]]
+
+
+#br
+
+*** Ubuntu7.10 &aname(ubuntu710);
+　Ubuntu7.10ではデフォルトでGCJ(The GNU Compiler for Java)が起動できるようになっています。
+ $ java -version
+ java version "1.5.0"
+ gij (GNU libgcj) version 4.2.1 (Ubuntu 4.2.1-5ubuntu5)
+ 
+ Copyright (C) 2007 Free Software Foundation, Inc.
+ This is free software; see the source for copying conditions.  There is NO
+ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ $
+　しかし、OpenRTM-aist-Javaは[[動作条件 >/node/659#jyouken]]にあるとおり、Java Development Kit 5.0(JDK 5)でないと正常に動作しません。したがって、JDK 5をインストールし、javaコマンドにてSun Java(JDK 5)が起動するようにします。
+　次に、Ubuntu7.10でJDK 5をインストールする手順を簡単に記述します。
+
+-Synaptic パッケージ・マネージャを起動
+-「sun java」をキーワードに検索
+-sun-java5-jdkをダブルクリック（依存関係が自動的に選択されます）
+-「適用」ボタンを押下
+
+
+ $ java -version
+ java version "1.5.0_13"
+ Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_13-b05)
+ Java HotSpot(TM) Client VM (build 1.5.0_13-b05, mixed mode, sharing)
+ $
+
+#br
+
+*** Debian4.0 etch &aname(debian40);
+　Debian4.0(etch)ではデフォルトでGCJ(The GNU Compiler for Java)が起動できるようになっています。
+ $ java -version
+ java version "1.4.2"
+ gij (GNU libgcj) version 4.1.2 20061115 (prerelease) (Debian 4.1.1-20)
+ 
+ Copyright (C) 2006 Free Software Foundation, Inc.
+ This is free software; see the source for copying conditions.  There is NO
+ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ $ 
+　しかし、OpenRTM-aist-Javaは[[動作条件 >/node/659#jyouken]]にあるとおり、Java Development Kit 5.0(JDK 5)でないと正常に動作しません。したがって、JDK 5をインストールし、javaコマンドにてSun Java(JDK 5)が起動するようにします。~
+　次に、Debian4.0(etch)でJDK 5をインストールする手順を簡単に記述します。
+-/etc/apt/sources.listの末尾に次の一文を追加
+ deb http://ftp.jp.debian.org/debian/ etch main contrib non-free
+-aptitudeを最新にするため、次のコマンドを実行
+ # aptitude update
+-「sun-java」関連のパッケージの存在を確認
+ # apt-cache search sun-java
+ sun-java5-bin - Sun Java(TM) Runtime Environment (JRE) 5.0 (architecture dependent files)
+ sun-java5-demo - Sun Java(TM) Development Kit (JDK) 5.0 demos and examples
+ sun-java5-doc - Sun JDK(TM) Documention -- integration installer
+ sun-java5-fonts - Lucida TrueType fonts (from the Sun JRE)
+ sun-java5-jdk - Sun Java(TM) Development Kit (JDK) 5.0
+ sun-java5-jre - Sun Java(TM) Runtime Environment (JRE) 5.0 (architecture independent files)
+ sun-java5-plugin - The Java(TM) Plug-in, Java SE 5.0
+ sun-java5-source - Sun Java(TM) Development Kit (JDK) 5.0 source files
+-必要なパッケージをインストール（依存関係は自動的に解決してくれます）
+ # aptitude install sun-java5-jdk
+ # aptitude install sun-java5-fonts
+ # aptitude install sun-java5-plugin
+
+-JDK 5のインストール確認
+ # java -version
+ java version "1.5.0_14"
+ Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_14-b03)
+ Java HotSpot(TM) Client VM (build 1.5.0_14-b03, mixed mode, sharing)
+ #
+
+#br
+
+''参考サイト（外部サイト）:''
+
+　→ [[debian(x86)にJDK+Tomcat :http://90h.dip.jp/archives/2005/09/debianx86jdktomcat.html]]
+
+　→ [[Debian GNU/Linux Etch に Sun の JDK (Java SDK) をインストールする :http://www.nilab.info/zurazure2/000599.html]]
+
+#br
+
+*** Fedora8 &aname(instjavaunixfedora); 
+　Fedora Core 8ではデフォルトでGCJ(The GNU Compiler for Java)が起動できるようになっています。
+ $ java -version
+ java version "1.7.0"
+ IcedTea Runtime Environment (build 1.7.0-b21)
+ IcedTea Client VM (build 1.7.0-b21, mixed mode)
+ $ 
+　しかし、OpenRTM-aist-Javaは[[動作条件 >/node/659#jyouken]]にあるとおり、Java Development Kit 5.0(JDK 5)でないと正常に動作しません。したがって、JDK 5をインストールし、javaコマンドにてSun Java(JDK 5)が起動するようにします。~
+　次に、Fedora Core 8でJDK 5をインストールする手順を簡単に記述します。
+-java-1.5.0-sun-compat-1.5.0.14-1jpp.src.rpmを入手~
+　→　http://www.jpackage.org/browser/rpm.php?jppversion=1.7&id=7850
+-jdk-1_5_0_14-linux-i586-rpm.binを入手~
+　→　http://java.sun.com/products/archive/j2se/5.0_14/index.html
+
+- # chmod a+x jdk-1_5_0_14-linux-i586-rpm.bin
+- # ./jdk-1_5_0_14-linux-i586-rpm.bin 
+- # rm -fr /usr/src/redhat/{BUILD,SOURCES,SPECS}/*
+- # rpm -i java-1.5.0-sun-compat-1.5.0.14-1jpp.src.rpm
+- # rpmbuild -bb /usr/src/redhat/SPECS/java-1.5.0-sun-compat.spec
+- # rpm -ivh /usr/src/redhat/RPMS/i586/java-1.5.0-sun-compat-1.5.0.14-1jpp.i586.rpm
+- # alternatives --config java
+ # alternatives --config java
+ 3 プログラムがあり 'java' を提供します。
+   選択       コマンド
+ -----------------------------------------------
+ *+ 1           /usr/lib/jvm/jre-1.7.0-icedtea/bin/java
+    2           /usr/lib/jvm/jre-1.5.0-gcj/bin/java
+    3           /usr/lib/jvm/jre-1.5.0-sun/bin/java
+ Enter を押して現在の選択 [+] を保持するか、選択番号を入力します:3
+ #
+
+-JDK 5のインストール確認
+ # java -version
+ java version "1.5.0_14"
+ Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_14-b03)
+ Java HotSpot(TM) Client VM (build 1.5.0_14-b03, mixed mode, sharing)
+ #
+#br
+
+''参考サイト（外部サイト）:''
+
+　→ [[Fedora5/java :http://wiki.mmj.jp/index.php?Fedora5%2Fjava]]
+
+　→ [[Fedora Core 5にSun Javaをインストール (リンク切れ):http://www.ossexpo.net/wiki/index.php/Fedora_Core_5%E3%81%ABSun_Java%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB]]
+
+　→ [[Java開発実行環境を構築する(J2SDK-Linux編) :http://fedorasrv.com/j2sdk-linux.shtml]]
+
+#br
+
+
