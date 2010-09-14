@@ -122,6 +122,6 @@ ACE_wrppersが仮に "/tmp/src/ACE_wrappers" 以下にインストールされている場合
  # make install
 
 ''参考：''
--[[''FAQ:'' OpenRTM-aist-0.4.2をVine上でmakeする時にエラーが出て終了 >/ja/node/151#errorvine]]~
+-[[''FAQ:'' OpenRTM-aist-0.4.2をVine上でmakeする時にエラーが出て終了 >/ja/node/1190#errorvine]]~
 ''　※'' この問題については、08/06/11に修正がなされました。
 
