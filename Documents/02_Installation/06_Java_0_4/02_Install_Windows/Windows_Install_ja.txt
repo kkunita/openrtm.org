@@ -60,7 +60,7 @@ CENTER:''Javaのインストール(4)''
 CENTER:''インストールの確認(Windows)''
 #br
 
--参考→[[FAQ: 「java -version」がインストールしたJDKのバージョンと異なります。 >/node/150#JDKver]]
+-参考→[[FAQ: 「java -version」がインストールしたJDKのバージョンと異なります。 >/node/1190#JDKver]]
 #br
 
 ** OpenRTM-aist-Java-0.4のインストール &aname(instjava04);
@@ -82,7 +82,7 @@ CENTER:''インストールの確認(Windows)''
 #br
 
 参考：
--[[''FAQ:'' インストーラ実行中に「…特権が不足しています。」などと表示されて、インストールが続行できない >/node/150#tokkenn]]
+-[[''FAQ:'' インストーラ実行中に「…特権が不足しています。」などと表示されて、インストールが続行できない >/node/1190#tokkenn]]
 
 *** Zipファイルからのインストール &aname(zipfile);
 //** OpenRTM-aist-Java-0.4.xのインストール
