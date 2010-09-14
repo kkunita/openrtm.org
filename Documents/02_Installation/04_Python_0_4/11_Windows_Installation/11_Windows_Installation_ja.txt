@@ -64,4 +64,4 @@
 |  OpenRTM-aist | [[OpenRTM-aist-0.4.1-Python2.4-RC2 >OpenRTM-aist-Python-0.4.1-RELEASE #python24]] | [[OpenRTM-aist-0.4.1-Python2.5-RC2 >OpenRTM-aist-Python-0.4.1-RELEASE #python25]]|
 ◆ WINDOWS\system32 フォルダを検索し、msvcp71.dllとmsvcr71.dllがあることを確認してください。これらがない場合は、[[こちら :http://www.vector.co.jp/soft/win95/util/se435079.html]]から入手してください。
 
-→ [[''FAQ'': 「MSVCP71.dll が見つからなかったため、…」というエラーで終了する >/ja/node/150#MSVCerror]]
+→ [[''FAQ'': 「MSVCP71.dll が見つからなかったため、…」というエラーで終了する >/ja/node/1190#MSVCerror]]
