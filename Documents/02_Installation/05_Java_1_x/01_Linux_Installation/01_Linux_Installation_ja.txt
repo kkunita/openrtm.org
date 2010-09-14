@@ -29,9 +29,9 @@ OpenRTM-aist-Java は、J2SE5.0(JDK5)上で動作します。対象のプラットフォーム用のJ2S
 #br
 &color(red){''※ Fedora Core へのJavaのインストールについては注意が必要です:''};
 
-　→ [[''FAQ:'' Javaをインストールする際のFedoraCoreでの対応について >/node/151#javafedora]]
+　→ [[''FAQ:'' Javaをインストールする際のFedoraCoreでの対応について >/ja/node/151#javafedora]]
 
-　→ [[''FAQ:'' Q. Fedora Core上でRtcLinkのNameService Viewにエラーがでる >RtcLink.#fedoraNS]]
+　→ [[''FAQ:'' Q. Fedora Core上でRtcLinkのNameService Viewにエラーがでる >/ja/node/248#toc2]]
 #br
 
 *** インストールの確認
@@ -64,18 +64,19 @@ OpenRTM-aist-Java は、J2SE5.0(JDK5)上で動作します。対象のプラットフォーム用のJ2S
 *** Zipファイルのダウンロードと解凍 
 [[こちら>/ja/content/openrtm-aist-java-100-release#winpkg]]から「 jar ファイルおよびサンプル」をダウンロードし、zipファイルを任意の場所に解凍します。解凍先は任意でかまいませんが、ディレクトリ構造は変更しないでください''※''。また、この解凍先に含まれる「jar」フォルダへのパスは次に取り上げるシステム環境変数RTM_JAVA_ROOTに設定しなければなりません。
 
-''※'' 何らの事情で、解凍後のフォルダ構造を自由な配置・自由な選択としたい場合は[[こちら >RTコンポーネント作成（Java版）.#Antbuild]]を参照してください。
+''※'' 何らの事情で、解凍後のフォルダ構造を自由な配置・自由な選択としたい場合は[[こちら >/ja/node/159#toc75]]を参照してください。
 
 #br
 参考：
 
-　→ [[''FAQ:'' Q. 任意のフォルダにクラスパスを設定してAntビルドを行う方法は？ >RTコンポーネント作成（Java版）.#Antbuild]]
+　→ [[''FAQ:'' Q. 任意のフォルダにクラスパスを設定してAntビルドを行う方法はRTコンポーネント作成（Java版）/ja/node/159#toc75]]
 
 
 &aname(hensu);
 ** 環境変数の設定 
 環境変数の設定を行います。
-ログインシェルがbashの場合は.bashrcを、cshの場合は.cshrcを…など適宜設定ファイルを選択し、次のような設定を記述しておきます。または、個々のユーザに対してではなくシステムワイドに設定を行いたい場合には、設定ファイルとして/etc/profileなどを選択する方法もあります''※''。
+ログインシェルがbashの場合は.bashrcを、cshの場合は.cshrcを…など適宜設定ファイルを選択し、次のような設定を記述しておきます。または、個々のユーザに対してではなくシステムワイドに設定を行いたい場合には、設定ファイルとして/etc/profileなどを選択する方法もあります。''※''。
+
 - 変数名:RTM_JAVA_ROOT
 - 変数値:解凍ディレクトリ以下に含まれる「jar」ディレクトリ''※※''までのベースパス（「jar」ディレクトリの''親ディレクトリ''へのフルパス）
 
@@ -87,7 +88,7 @@ OpenRTM-aist-Java は、J2SE5.0(JDK5)上で動作します。対象のプラットフォーム用のJ2S
 とするか（.bashrcに環境変数を設定した場合）、あるいはシステムを再起動します。
 
 #br
-''※'' 環境変数RTM_JAVA_ROOTを.bashrc（bashの場合）などのユーザ設定にしたのか、あるいは、/etc/profile（bashの場合）などにシステムワイドに設定したのかで、GUIツールであるEclipseの起動方法が変わってきます。 →　[[Eclipseの起動方法 >RtcTemplate.#eclipse]]を参照
+''※'' 環境変数RTM_JAVA_ROOTを.bashrc（bashの場合）などのユーザ設定にしたのか、あるいは、/etc/profile（bashの場合）などにシステムワイドに設定したのかで、GUIツールであるEclipseの起動方法が変わってきます。 →　[[Eclipseの起動方法 >/ja/node/248#eclipse]を参照
 
 ''※※'' 解凍時には「jar」ディレクトリはクラスライブラリ「OpenRTM-aist-X.X.X.jar」(X.X.Xはバージョン)と「commons-cli-1.1.jar」の二つのファイルを含んだ状態で、「OpenRTM-aist\<version>」の直下にあります。したがって、ディレクトリ構造を変えなければ、環境変数RTM_JAVA_ROOTは必ずその値の末尾に「OpenRTM-aist\<version>」を持つという形になります。
 #br
