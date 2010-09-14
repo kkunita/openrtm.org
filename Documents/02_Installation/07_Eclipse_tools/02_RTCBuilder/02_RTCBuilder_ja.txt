@@ -85,7 +85,7 @@ CENTER:''ツールバーからの起動''
 #br
 
 参考：
-　→ [[''FAQ:'' Eclipseの起動方法 >/ja/node/248#eclipse]]
+　→ [[''FAQ:'' Eclipseの起動方法 >/ja/node/248#toc9]]
 
 #br
 
