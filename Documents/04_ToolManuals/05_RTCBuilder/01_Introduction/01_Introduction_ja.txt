@@ -1,0 +1,22 @@
+//*RTCBuilder
+#contents
+
+**概要
+***動作環境
+RT-Component Builder (以下、 RTCBuilder )の動作に必要な環境は以下のとおりです。
+|№|環境|備考|
+|１|[[Java Development Kit 6:http://java.sun.com/javase/ja/6/download.html]]|&color(Red){注意：Java1.5(5.0)では動作しません。};|
+|２|Eclipse 3.2.以上 &br; http://www.eclipse.org/downloads/index.php &br;http://archive.eclipse.org/eclipse/downloads/index.php|Eclipse本体|
+|３|[[Eclipse EMF 2.2以上(SDO,XSD含む):http://www.eclipse.org/modeling/emf/downloads/]]|RTCBuilderが依存するEclipseプラグイン &br; ''※''ご使用になられるEclipseのバージョンに合ったものをご使用ください。|
+|４|[[Eclipse GEF 3.2以上(Draw2D含む):http://www.eclipse.org/gef/downloads/]]|RTCBuilderが依存する Eclipse プラグイン &br; ''※''ご使用になられる Eclipse のバージョンに合ったものをご使用ください。|
+
+　また以下の開発を行う言語によっては以下の環境をインストールしておくと便利です。
+|№|環境|備考|
+|１|[[Eclipse CDT:http://www.eclipse.org/cdt/downloads.php]]|C++用の開発環境|
+|２|[[Pydev for Eclipse>http://sourceforge.net/projects/pydev/]]|python用の開発環境|
+
+***制限
+RTCBuilder は、OpenRTM-aist を対象に開発されたものです。その他の RTC プラットフォームに対する動作は想定しておりません。
+
+
+

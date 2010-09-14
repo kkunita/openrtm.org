@@ -1,0 +1,78 @@
+#contents
+** RTCBuilder のインストールおよび起動 
+ここでは、RTCBuilder のインストールおよび起動方法について説明します。
+*** RTCBuilder のインストール
+RTCBuilder は Eclipse プラグインであるため、 Eclipse 本体および依存している他の Eclipse プラグインをまずインストールする必要があります。[[動作環境:/node/824]]を参照の上、これらをダウンロードします。
+Eclipse のインストールは解凍するだけです。また、 Eclipse のプラグインは解凍後、Eclipse フォルダ内に上書きするだけです。
+RTCBuilder のインストールは RTCBuilder のプラグイン jar ファイル（jp.go.aist.rtm.rtcbuilder_X.X.X.jar）を eclipse/plugins フォルダに配置するだけで完了です。
+***RTCBuilderの起動
+インストール後、Eclipseを初めて起動すると、以下のようなWelcomeページが表示されます。
+#br
+
+#ref(fig1-1EclipseInit.png,nolink,center)
+CENTER:''Eclipseの初期起動時の画面''
+#br
+このWelcomeページを左上の「X」により閉じると以下のページが表示されます。
+#br
+
+#ref(fig2-2PerspectiveSwitch.png,nolink,center)
+CENTER:''パースペクティブの切り替え''
+#br
+右上の「Open Perspective」ボタンを押下し、プルダウンの「Other…」ボタンを押下します。
+#br
+
+#ref(fig2-3PerspectiveSelection.png,nolink,center)
+CENTER:''パースペクティブの選択''
+#br
+「RTC Builder」を選択することで、RTCBuilderが起動します。
+#br
+
+#ref(fig2-4RTCBuilderInit.png,nolink,center)
+CENTER:''RTC Builderの初期起動時画面''
+#br
+
+*** RTCBuilder 用プロジェクトの作成 
+まず最初に，RT コンポーネントを作成するための Eclipse プロジェクトを作成します。
+画面上部のメニューから[ファイル]－[新規]－[プロジェクト]を選択します。
+#br
+
+#ref(fig2-5CreateProject.png,nolink,center)
+CENTER:''RTC Builder 用プロジェクトの作成　１''
+#br
+
+表示された｢新規プロジェクト｣画面において，｢その他｣－｢ RTC ビルダ｣を選択し、｢次へ｣をクリック．
+#br
+
+#ref(fig2-6CreateProject2_ja.png,nolink,center)
+CENTER:''RTC Builder 用プロジェクトの作成　２''
+#br
+
+｢プロジェクト名｣欄に作成するプロジェクト名を入力して｢終了｣をクリック。
+#br
+
+#ref(fig2-7CreteProject3.PNG,nolink,center)
+CENTER:''RTC Builder 用プロジェクトの作成　３''
+
+#br
+指定した名称のプロジェクトが生成され、パッケージエクスプローラ内に追加されます。
+#br
+
+#ref(fig2-8CreateProject4.png,nolink,center)
+//CENTER:''図 2-8 RTC Builder 用プロジェクトの作成　４''
+CENTER:''RTC Builder 用プロジェクトの作成　４''
+#br
+生成したプロジェクト内には、デフォルト値が設定された RTC プロファイル XML(RTC.xml) が自動的に生成されます。
+
+**** RTC プロファイルエディタの起動
+RTC プロファイルエディタを開くには、ツールバーの｢ Open New RtcBuilder Editor ｣ボタンを押下するか、メニューバーの [file]-[Open New Builder Editor] を選択します。
+#br
+
+#ref(fig2-9ToolsBarOpenNewRtcBuilder.png,nolink,center)
+CENTER:''ツールバーから Open New RtcBuilder Editor''
+#br
+#br
+
+#ref(fig2-10FileMenuOpenNewBuilder.png,nolink,center)
+CENTER:''File メニューから Open New Builder Editor''
+
+
