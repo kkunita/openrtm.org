@@ -271,7 +271,10 @@ CENTER:''マイコンピュータからJDK5を確認''
 #br
 
 ***Unix
-****FedoraCoreでJavaをインストールする際の対応 &aname(javafedora);
+
+&aname(javafedora);
+
+****FedoraCoreでJavaをインストールする際の対応 
 : |OSがFedoraCoreの場合、yumにてjavaをインストールするとGCJ(The GNU Compiler for Java )がインストールされてしまい、そのGCJを使用するといくつかの不具合が生じる事があります。~
 不具合が発生した場合は、まず、Sun MicrosystemsのJavaが使用されているかの確認をしてください。
 :: 参考：|[[JDKインストールのためのヒント:/ja/node/661#nstjavaunixfedora]]
