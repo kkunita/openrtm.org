@@ -194,7 +194,7 @@ RTSystemEditor の起動が確認できましたら、いったんEclipseを終了してください。再度
 #br
 #br
 参考：
-　→ [[''FAQ:'' Eclipseの起動方法 >/ja/node/158#eclipse]]
+　→ [[''FAQ:'' Eclipseの起動方法 >/ja/node/248#toc9]]
 #br
 #br
 
