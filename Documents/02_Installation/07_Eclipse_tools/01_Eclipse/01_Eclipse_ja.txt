@@ -61,7 +61,7 @@ Eclipseは以下のRingサーバでもミラーされていますので、こちらからも[[ダウンロード>
 
 参考：
 
-　→ [[''FAQ:'' Eclipseの起動方法 >/ja/node/158#eclipse]]
+　→ [[''FAQ:'' Eclipseの起動方法 >/ja/node/248#eclipse]]
 
 -Ubuntu8.04, Ubuntu9.10でLinux用Eclipse3.4.2が動作しない不具合が報告されています。
 --Ubuntu8.04では、''apt-get install xulrunner-1.9'' として xulrunninerをアップデートしてください。
@@ -102,7 +102,7 @@ Eclipseは以下のRingサーバでもミラーされていますので、こちらからも[[ダウンロード>
 #br
 
 参考：
-　→ [[''FAQ:'' Eclipseの起動方法 >/ja/node/158#eclipse]]
+　→ [[''FAQ:'' Eclipseの起動方法 >/ja/node/248#eclipse]]
 
 ***プラグインのインストール
 RTCBuilder と RTSystemEditor  は下記の Eclipse プラグインを使用しています。
