@@ -17,7 +17,7 @@
 
 ''参考：''
 
-　→　[[''FAQ:'' OpenRTM-aistのインストールに失敗します >/ja/node/151#openrtminstfault]]
+　→　[[''FAQ:'' OpenRTM-aistのインストールに失敗します >/ja/node/1190#openrtminstfault]]
 
 &br;
 &br;
@@ -120,7 +120,7 @@ CENTER:''/etc/yum.repos.d/openrtm.repo''
 　３つのインストール方法があります。
 #br
 ''NOTE: ''インストール作業中に CD の要求をされるが、それを回避する方法は？~
-　→　[[FAQ:apt-get などを使用してインストール作業を行うときに CD を要求される >/ja/node/151#openrtminstfault]]
+　→　[[FAQ:apt-get などを使用してインストール作業を行うときに CD を要求される>/ja/node/1190#openrtminstfault]]
 
 #br
 
