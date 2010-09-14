@@ -76,7 +76,7 @@
 とするか（.bashrcに環境変数を設定した場合）、あるいはシステムを再起動します。
 
 #br
-''※'' 環境変数RTM_JAVA_ROOTを.bashrc（bashの場合）などのユーザ設定にしたのか、あるいは、/etc/profile（bashの場合）などにシステムワイドに設定したのかで、GUIツールであるEclipse（RtcLink、RtcTemplate）の起動方法が変わってきます。 →　[[Eclipseの起動方法 >/ja/node/158#eclipse]]を参照
+''※'' 環境変数RTM_JAVA_ROOTを.bashrc（bashの場合）などのユーザ設定にしたのか、あるいは、/etc/profile（bashの場合）などにシステムワイドに設定したのかで、GUIツールであるEclipse（RtcLink、RtcTemplate）の起動方法が変わってきます。 →　[[Eclipseの起動方法 >/ja/node/248#toc8]]を参照
 
 ''※※'' 解凍時には「jar」ディレクトリはクラスライブラリ「OpenRTM-aist-0.4.1.jar」と「commons-cli-1.1.jar」の二つのファイルを含んだ状態で、「OpenRTM-aist\0.4」の直下にあります。したがって、ディレクトリ構造を変えなければ、環境変数RTM_JAVA_ROOTは必ずその値の末尾に「OpenRTM-aist\0.4」を持つという形になります。
 #br
