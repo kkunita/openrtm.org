@@ -201,7 +201,9 @@ rtm-naming.pyを"C:\Documents and Settings\Hoge\My Documents"等ディレクトリ名に空
 ::確認方法の例：|python -Vでバージョンを調べる、（Cygwinのある環境では）which pythonでどのpython.exeが実行されているかを確認する...など
 ::この障害が発見された場合の対処：|Pythonインストールフォルダ(C:\Python26など)を''システム環境変数Path''（*ユーザー環境変数Pathではなく）の''先頭に追加''することで解決できます。
 #br
-****「MSVCP71.dll が見つからなかったため、…」というエラーで終了する &aname(MSVCerror);
+
+ &aname(MSVCerror);
+****「MSVCP71.dll が見つからなかったため、…」というエラーで終了する
 : |WINDOWS\system32フォルダ内にmsvcp71.dllがないために発生するエラーです。msvcp71.dllを[[こちら >http://www.vector.co.jp/soft/win95/util/se435079.html]]から入手してください。
 #br
 **** 「Can't open file: ./rtc.conf」などと表示される。&aname(rtc.conf);
