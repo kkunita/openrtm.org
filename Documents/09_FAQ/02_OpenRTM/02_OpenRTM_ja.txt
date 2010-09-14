@@ -21,7 +21,9 @@ OpenRTM-aist(C++”ÅAPython”ÅAJava”Å)‚ÉŠÖ‚·‚éƒgƒ‰ƒuƒ‹ƒVƒ…[ƒeƒBƒ“ƒO‚ð‚Ü‚Æ‚ß‚Ü‚µ‚
 ƒtƒ@ƒCƒ„ƒEƒH[ƒ‹‚ÌÝ’è‚ðŒ©’¼‚·‚©OFF‚É‚·‚é‚È‚Ç‚µ‚ÄAŠO•”‚©‚çƒRƒ“ƒ|[ƒlƒ“ƒg‚É’ÊM‚Å‚«‚é‚æ‚¤‚É‚µ‚Ä‚­‚¾‚³‚¢B
 #br
 ***Windows
-****ƒCƒ“ƒXƒg[ƒ‰ŽÀs’†‚Éuc“ÁŒ ‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·Bv‚È‚Ç‚Æ•\Ž¦‚³‚ê‚ÄAƒCƒ“ƒXƒg[ƒ‹‚ª‘±s‚Å‚«‚È‚¢ &aname(tokkenn);
+
+&aname(tokkenn);
+****ƒCƒ“ƒXƒg[ƒ‰ŽÀs’†‚Éuc“ÁŒ ‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·Bv‚È‚Ç‚Æ•\Ž¦‚³‚ê‚ÄAƒCƒ“ƒXƒg[ƒ‹‚ª‘±s‚Å‚«‚È‚¢
 : |Administrator“ÁŒ ‚ðŽ‚Âƒ†[ƒU[‚Æ‚µ‚ÄƒƒOƒIƒ“‚µAƒCƒ“ƒXƒg[ƒ‹ì‹Æ‚ðs‚Á‚Ä‚­‚¾‚³‚¢B
 #br
 ****ƒRƒ“ƒ|[ƒlƒ“ƒg‚ªƒl[ƒ€ƒT[ƒrƒX‚É“o˜^‚³‚ê‚È‚¢B
@@ -68,11 +70,14 @@ ping‚ª’Ê‚Á‚Ä‚àAƒtƒ@ƒCƒ„ƒEƒH[ƒ‹‚È‚Ç‚ÅÚ‘±‚ª‹ÖŽ~‚³‚ê‚Ä‚¢‚é‰Â”\«‚ª‚ ‚è‚Ü‚·B‚Ü‚¸
 
 **OpenRTM-aist(C++”Å)
 ***Windows
-**** ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒGƒ‰[uƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ð³‚µ‚­‰Šú‰»‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½Bcv &aname(errorinit);
+
+&aname(errorinit);
+**** ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒGƒ‰[uƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ð³‚µ‚­‰Šú‰»‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½Bcv
 : |ƒl[ƒ€ƒT[ƒo‹N“®‚µ‚æ‚¤‚Æ‚µ‚ÄArtm-naming.bat‚ðŽÀs‚·‚é‚ÆAã‹L‚Ì‚æ‚¤‚ÈƒGƒ‰[‚ªo‚éê‡‚ª‚ ‚è‚Ü‚·B‚±‚ÌƒGƒ‰[‚Í‹N“®ŠÂ‹«ã‚ÉVC++ƒ‰ƒCƒuƒ‰ƒŠ‚Ìƒ‰ƒ“ƒ^ƒCƒ€ƒRƒ“ƒ|[ƒlƒ“ƒg‚ª‚È‚¢‚½‚ß‚É‹N‚±‚è‚Ü‚·BVC++ŠÖ˜A‚ÌŠJ”­ŠÂ‹«iMicrosoft Visual Studio AVisual C++  Express‚È‚Çj‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚¢‚È‚¢ŠÂ‹«‚Å‚ÍOpenRTM-aist(C++”Å)‚ð“®ì‚³‚¹‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ‚Ì‚ÅA•K‚¸VC++ŠÖ˜A‚ÌŠJ”­ŠÂ‹«‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B~
 OpenRTM-aist(C++”Å)‚É‚ÍAVC8iVS2005jƒx[ƒX‚Ì‚à‚Ì‚ÆAVC9iVS2008jƒx[ƒX‚Ì‚à‚Ì‚ª‚ ‚è‚Ü‚·BOpenRTM-aist-X.X.X-jp_vc8.msiiX.X.X‚Íƒo[ƒWƒ‡ƒ“‚Å‚·B)‚È‚Ç‚ÌVC8ƒx[ƒX‚ÌƒCƒ“ƒXƒg[ƒ‰‚ðŽg—p‚µ‚½ê‡‚Í[[Microsoft Visual C++ 2005 SP1 Ä”Ð•z‰Â”\ƒpƒbƒP[ƒW (x86) >http://www.microsoft.com/downloads/details.aspx?FamilyID=200b2fd9-ae1a-4a14-984d-389c36f85647&DisplayLang=ja]]‚ðAOpenRTM-aist-X.X.X-jp_vc9.msiiX.X.X‚Íƒo[ƒWƒ‡ƒ“‚Å‚·B)‚È‚Ç‚ÌVC9ƒx[ƒX‚ÌƒCƒ“ƒXƒg[ƒ‰‚ðŽg—p‚µ‚½ê‡‚Í[[Microsoft Visual C++ 2008 Ä”Ð•z‰Â”\ƒpƒbƒP[ƒW (x86) >http://www.microsoft.com/downloads/details.aspx?displaylang=ja&FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf]]‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B
 #br
-**** u‚±‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Ì\¬‚ª³‚µ‚­‚È‚¢‚½‚ßAƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ðŠJŽn‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½Bcv &aname(errorapplication);
+&aname(errorapplication);
+**** u‚±‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Ì\¬‚ª³‚µ‚­‚È‚¢‚½‚ßAƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ðŠJŽn‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½Bcv 
 : |ƒTƒ“ƒvƒ‹‚ÌRTƒRƒ“ƒ|[ƒlƒ“ƒg‚È‚Ç‚ð‹N“®‚µ‚æ‚¤‚Æ‚µ‚ÄAxxxComp.exe‚ðŽÀs‚·‚é‚ÆAã‹L‚Ì‚æ‚¤‚ÈƒGƒ‰[‚ªo‚éê‡‚ª‚ ‚è‚Ü‚·B‚±‚ÌƒGƒ‰[‚Í‹N“®ŠÂ‹«ã‚ÉVC++ƒ‰ƒCƒuƒ‰ƒŠ‚Ìƒ‰ƒ“ƒ^ƒCƒ€ƒRƒ“ƒ|[ƒlƒ“ƒg‚ª‚È‚¢‚½‚ß‚É‹N‚±‚è‚Ü‚·BVC++ŠÖ˜A‚ÌŠJ”­ŠÂ‹«iMicrosoft Visual Studio,Visual C++ Express‚È‚Çj‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚¢‚È‚¢ŠÂ‹«‚Å‚ÍOpenRTM-aist(C++”Å)‚ð“®ì‚³‚¹‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ‚Ì‚ÅA•K‚¸VC++ŠÖ˜A‚ÌŠJ”­ŠÂ‹«‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B~
 OpenRTM-aist(C++”Å)‚É‚ÍAVC8iVS2005jƒx[ƒX‚Ì‚à‚Ì‚ÆAVC9iVS2008jƒx[ƒX‚Ì‚à‚Ì‚ª‚ ‚è‚Ü‚·BOpenRTM-aist-X.X.X-jp_vc8.msiiX.X.X‚Íƒo[ƒWƒ‡ƒ“‚Å‚·B)‚È‚Ç‚ÌVC8ƒx[ƒX‚ÌƒCƒ“ƒXƒg[ƒ‰‚ðŽg—p‚µ‚½ê‡‚Í[[Microsoft Visual C++ 2005 SP1 Ä”Ð•z‰Â”\ƒpƒbƒP[ƒW (x86) >http://www.microsoft.com/downloads/details.aspx?FamilyID=200b2fd9-ae1a-4a14-984d-389c36f85647&DisplayLang=ja]]‚ðAOpenRTM-aist-X.X.X-jp_vc9.msiiX.X.X‚Íƒo[ƒWƒ‡ƒ“‚Å‚·B)‚È‚Ç‚ÌVC9ƒx[ƒX‚ÌƒCƒ“ƒXƒg[ƒ‰‚ðŽg—p‚µ‚½ê‡‚Í[[Microsoft Visual C++ 2008 Ä”Ð•z‰Â”\ƒpƒbƒP[ƒW (x86) >http://www.microsoft.com/downloads/details.aspx?displaylang=ja&FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf]]‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B
 #br
@@ -127,7 +132,8 @@ omniORB‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚È‚¢‚Æ''omniNames.exe''‚àƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚È‚¢‚Ì‚ÅA
 ****make‚ðŽÀs‚µ‚Ä‚àƒrƒ‹ƒh‚ªŠ®—¹‚µ‚È‚¢B‚Ü‚½‚Ímake‚ÌŽÀsƒGƒ‰[‚ªo‚éB 
 : |ƒpƒbƒP[ƒW‚ÌƒCƒ“ƒXƒg[ƒ‹‚Ü‚½‚ÍOpenRTM-aistiC++j‚Ìƒrƒ‹ƒh‚ª•sŠ®‘S‚È‰Â”\«‚ª‚ ‚è‚Ü‚·B‚à‚¤ˆê“xƒpƒbƒP[ƒW‚ÌŽ©“®ƒCƒ“ƒXƒg[ƒ‰‚ð‹N“®‚µ‚ÄAƒpƒbƒP[ƒW‚ÌƒCƒ“ƒXƒg[ƒ‹‚©‚ç‚â‚è’¼‚µ‚Ä‚­‚¾‚³‚¢BƒpƒbƒP[ƒW‚ÌƒCƒ“ƒXƒg[ƒ‹’†‚Ìˆ—‰æ–Ê‚É‰½‚ç‚©‚ÌƒGƒ‰[ƒƒbƒZ[ƒW‚ªo‚Ä‚«‚½ê‡AŠY“–‚·‚éƒpƒbƒP[ƒW‚¾‚¯‚ðŽè“®‚ÅƒCƒ“ƒXƒg[ƒ‹‚·‚é‚È‚Ç‚µ‚Ä‚©‚çconfigure‚ðŽÀs‚µ‚Ä‚­‚¾‚³‚¢Bconfigure‚ðŽÀs‚µ‚ÄƒGƒ‰[ƒƒbƒZ[ƒW‚ªo‚È‚¢‚±‚Æ‚ðŠm”F‚µ‚Ä‚©‚çAÄ“xmake‚ðŽÀs‚µ‚Äƒrƒ‹ƒh‚ðŠ®—¹‚³‚¹‚Ä‚­‚¾‚³‚¢B
 #br
-**** OpenRTM-aist‚ÌƒCƒ“ƒXƒg[ƒ‹‚ÉŽ¸”s‚·‚é &aname(openrtminstfault);
+&aname(openrtminstfault);
+**** OpenRTM-aist‚ÌƒCƒ“ƒXƒg[ƒ‹‚ÉŽ¸”s‚·‚é 
 : |ŒÃ‚¢ƒo[ƒWƒ‡ƒ“‚ÌOpenRTM-aist‚ªŠ®‘S‚ÉƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚È‚¢ê‡AV‚µ‚¢ƒo[ƒWƒ‡ƒ“‚ÌƒCƒ“ƒXƒg[ƒ‹‚ª‚Å‚«‚Ü‚¹‚ñBŒÃ‚¢ƒo[ƒWƒ‡ƒ“‚ðˆê“xƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚©‚çAÄ“xƒCƒ“ƒXƒg[ƒ‹ì‹Æ‚ð‚µ‚Ü‚·B
 ::VineEFedoraEubuntuEdebian‹¤’ÊF| pkg_install_XXXX.sh ‚ð—˜—p‚µ‚ÄƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚·‚éB~
  >su
@@ -153,7 +159,8 @@ omniORB‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚È‚¢‚Æ''omniNames.exe''‚àƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚È‚¢‚Ì‚ÅA
  #apt-get remove OpenRTM-aist-doc
  #apt-get remove OpenRTM-aist
 #br
-**** apt-get ‚È‚Ç‚ðŽg—p‚µ‚ÄƒCƒ“ƒXƒg[ƒ‹ì‹Æ‚ðs‚¤‚Æ‚«‚É CD ‚ð—v‹‚³‚ê‚é &aname(notusecd);
+&aname(notusecd);
+**** apt-get ‚È‚Ç‚ðŽg—p‚µ‚ÄƒCƒ“ƒXƒg[ƒ‹ì‹Æ‚ðs‚¤‚Æ‚«‚É CD ‚ð—v‹‚³‚ê‚é 
 : |UbuntuADebian ‚È‚Ç‚ÌƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚ÅAapt-get ‚â pkg_install_ubuntu.sh, pkg_install_debian.sh ‚ðŽg—p‚µ‚ÄƒCƒ“ƒXƒg[ƒ‹ì‹Æ‚ð‚µ‚Ä‚¢‚é‚ÆAŽŸ‚Ì‚æ‚¤‚É CD ‚ð‹‚ß‚ç‚ê‚é‚±‚Æ‚ª‚ ‚è‚Ü‚·B
 :: ƒƒfƒBƒA•ÏX:~
  @@'Ubuntu 7.10 _Gutsy Gibbon_ Japanese Remix - Release i386 (20071018)'
@@ -184,7 +191,8 @@ omniORB‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚È‚¢‚Æ''omniNames.exe''‚àƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚È‚¢‚Ì‚ÅA
 #br
 **OpenRTM-aist(Python”Å)
 ***Windows
-**** rtm-naming.py‚ðŽÀs‚µ‚½‚çAomniNames‚ª"usage:"‚ð•\Ž¦‚µ‚ÄI—¹‚µ‚Ä‚µ‚Ü‚¤  &aname(pythonusage);
+&aname(pythonusage);
+**** rtm-naming.py‚ðŽÀs‚µ‚½‚çAomniNames‚ª"usage:"‚ð•\Ž¦‚µ‚ÄI—¹‚µ‚Ä‚µ‚Ü‚¤  
 : |Çó ~
 rtm-naming.py‚ð"C:\Documents and Settings\Hoge\My Documents"“™ƒfƒBƒŒƒNƒgƒŠ–¼‚É‹ó”’‚ª“ü‚Á‚Ä‚¢‚éƒfƒBƒŒƒNƒgƒŠ‚©‚çŽÀs‚µ‚½ê‡AomniNames‚Í"usage:"‚ð•\Ž¦‚µ‚ÄI—¹‚µ‚Ä‚µ‚Ü‚¢‚Ü‚·B
 ::‘Îˆ•û–@|‚±‚ê‚ÍArtm-naming.py‚ÌƒoƒO‚É‚æ‚é‚à‚Ì‚Å‚·Bã‹L‚ÌÇó‚ª‚Å‚½ê‡A‰º‹L‚Ì‚Ç‚¿‚ç‚©‚Ì•û–@‚Å‘Îˆ‚µ‚Ä‰º‚³‚¢B
@@ -195,26 +203,23 @@ rtm-naming.py‚ð"C:\Documents and Settings\Hoge\My Documents"“™ƒfƒBƒŒƒNƒgƒŠ–¼‚É‹ó
 #br
 
 &aname(pythonexe);
-
-**** python.exe‚ª‹N“®‚µ‚È‚¢ 
+**** python.exe‚ª‹N“®‚µ‚È‚¢  
 : |ŠÂ‹«•Ï”Path‚ÉPythonƒCƒ“ƒXƒg[ƒ‹ƒtƒHƒ‹ƒ_‚ð’Ç‰Á‚µ‚Ä‚¨‚¢‚Ä‰º‚³‚¢(C:\Python26‚È‚Ç)B
 #br
 
 &aname(python);
-
 **** Cygwin‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚¢‚éŠÂ‹«‚Å‚Ípython.exe‚ª•¡”‘¶Ý‚·‚éê‡‚ª‚ ‚é 
 : |Cygwin‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚¢‚éŠÂ‹«‚Å‚ÍACygwinã‚É‚àpython.exe‚ª‘¶Ý‚·‚éê‡‚ª‚ ‚è‚Ü‚·B‚»‚Ìê‡‚ÍA’Ê—áCygwinã‚Ìpython.exe‚Ö‚ÌƒT[ƒ`ƒpƒX‚ª—Dæ‚³‚ê‚é‚æ‚¤Ý’è‚³‚ê‚é‚½‚ßAŠÂ‹«•Ï”Path‚ð“KØ‚ÉÝ’è‚µ‚Ä‚¢‚é‚Ì‚É‚à‚©‚©‚í‚ç‚¸A¡‰ñ“±“ü‚µ‚½‚Í‚¸‚ÌPython‚Æ‚Íˆá‚¤ƒo[ƒWƒ‡ƒ“‚Ìi‚·‚È‚í‚¿Cygwinã‚Ìjpython.exe‚ª‹N“®‚µ‚Ä‚µ‚Ü‚¤ê‡‚ª‚ ‚è‚Ü‚·B‚±‚Ìê‡APython‚Ìƒo[ƒWƒ‡ƒ“‚Ìˆá‚¢‚É‚æ‚é•s‹ï‡‚ª”­¶‚µ‚Ä‚µ‚Ü‚¢‚Ü‚·B‚±‚Ì–â‘è‚Í”ñí‚ÉŒ´ˆö‚ª“Á’è‚µ‚Ã‚ç‚¢‚Ì‚ª“Á’¥‚Å‚·B‚±‚Ì‚æ‚¤‚ÉCygwin‚È‚Ç‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚¢‚éŠÂ‹«‚ÅOpenRTM-aist Python”Å‚ðŽg‚¤ê‡‚ÍAŠY“–ƒo[ƒWƒ‡ƒ“‚ÌpythonƒCƒ“ƒXƒg[ƒ‹ƒtƒHƒ‹ƒ_‚©‚çpython.exe‚ª‹N“®‚µ‚Ä‚¢‚é‚±‚Æ‚ðŠm”F‚µ‚Ä‚­‚¾‚³‚¢B
 ::Šm”F•û–@‚Ì—áF|python -V‚Åƒo[ƒWƒ‡ƒ“‚ð’²‚×‚éAiCygwin‚Ì‚ ‚éŠÂ‹«‚Å‚Íjwhich python‚Å‚Ç‚Ìpython.exe‚ªŽÀs‚³‚ê‚Ä‚¢‚é‚©‚ðŠm”F‚·‚é...‚È‚Ç
 ::‚±‚ÌáŠQ‚ª”­Œ©‚³‚ê‚½ê‡‚Ì‘ÎˆF|PythonƒCƒ“ƒXƒg[ƒ‹ƒtƒHƒ‹ƒ_(C:\Python26‚È‚Ç)‚ð''ƒVƒXƒeƒ€ŠÂ‹«•Ï”Path''i*ƒ†[ƒU[ŠÂ‹«•Ï”Path‚Å‚Í‚È‚­j‚Ì''æ“ª‚É’Ç‰Á''‚·‚é‚±‚Æ‚Å‰ðŒˆ‚Å‚«‚Ü‚·B
 #br
 
- &aname(MSVCerror);
-****uMSVCP71.dll ‚ªŒ©‚Â‚©‚ç‚È‚©‚Á‚½‚½‚ßAcv‚Æ‚¢‚¤ƒGƒ‰[‚ÅI—¹‚·‚é
+&aname(MSVCerror);
+****uMSVCP71.dll ‚ªŒ©‚Â‚©‚ç‚È‚©‚Á‚½‚½‚ßAcv‚Æ‚¢‚¤ƒGƒ‰[‚ÅI—¹‚·‚é 
 : |WINDOWS\system32ƒtƒHƒ‹ƒ_“à‚Émsvcp71.dll‚ª‚È‚¢‚½‚ß‚É”­¶‚·‚éƒGƒ‰[‚Å‚·Bmsvcp71.dll‚ð[[‚±‚¿‚ç >http://www.vector.co.jp/soft/win95/util/se435079.html]]‚©‚ç“üŽè‚µ‚Ä‚­‚¾‚³‚¢B
 #br
 
 &aname(rtc.conf);
-
 **** uCan't open file: ./rtc.confv‚È‚Ç‚Æ•\Ž¦‚³‚ê‚éB
 : |RTƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì‹N“®ƒtƒHƒ‹ƒ_i‚ ‚é‚¢‚ÍƒT[ƒ`ƒpƒXãj‚Értc.conf‚ªŒ©‚Â‚©‚ç‚È‚¢‚½‚ßA‹N“®‚Å‚«‚È‚¢ó‘Ô‚Å‚·B‚±‚Ìê‡AŽŸ‚Ì‚æ‚¤‚É•\Ž¦‚³‚ê‚Ü‚·B~
  Can't open file: ./rtc.conf
@@ -255,7 +260,9 @@ Java”Å‚ÌRTC‚ª“Ç‚Ýž‚Þrtc.conf‚ÉˆÈ‰º‚Ì‚æ‚¤‚É‹Lq‚·‚é‚±‚Æ‚ÅAJava‚ÌCORBA‚Ìƒ^ƒCƒ€ƒA
 Java‚ÌCORBA‚Å‚Íƒf[ƒ^‚ð100kB‚Å•ªŠ„‚·‚é‚Ì‚ÅA‚±‚ê‚ð’´‚¦‚éƒf[ƒ^‚ð‚â‚èŽæ‚è‚·‚éÛ‚É‚ÍAã‹L‚ÌÝ’è‚ðrtc.conf‚É‚Äs‚Á‚Ä‚¨‚¢‚½‚Ù‚¤‚ª‚æ‚¢‚Å‚µ‚å‚¤B
 #br
 ***Windows
-**** ujava -versionv‚ªƒCƒ“ƒXƒg[ƒ‹‚µ‚½JDK‚Ìƒo[ƒWƒ‡ƒ“‚ÆˆÙ‚È‚éB &aname(JDKver);
+
+&aname(JDKver);
+**** ujava -versionv‚ªƒCƒ“ƒXƒg[ƒ‹‚µ‚½JDK‚Ìƒo[ƒWƒ‡ƒ“‚ÆˆÙ‚È‚éB 
 : |‚·‚Å‚ÉJDK‚æ‚è‚àV‚µ‚¢ƒo[ƒWƒ‡ƒ“‚ÌJREiJava Runtime Environmentj‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚éê‡‚ÍAJDK‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚àujava -versionv‚ªJRE‚Ì‚Ü‚Ü‚É‚È‚é‚±‚Æ‚ª‚ ‚è‚Ü‚·B‚±‚Ìê‡‚ÌƒCƒ“ƒXƒg[ƒ‹‚ÌŠm”F•û–@‚ðà–¾‚µ‚Ü‚·B
 :: uƒvƒƒOƒ‰ƒ€‚Ì’Ç‰Á‚Æíœv‚Å‚ÌŠm”F•û–@|Windows‚ÌƒRƒ“ƒgƒ[ƒ‹ƒpƒlƒ‹‚©‚çuƒvƒƒOƒ‰ƒ€‚Ì’Ç‰Á‚Æíœv‚ðŒÄ‚Ño‚µAJDK5‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ðŠm”F‚µ‚Ä‚­‚¾‚³‚¢B
 
@@ -273,11 +280,9 @@ CENTER:''ƒ}ƒCƒRƒ“ƒsƒ…[ƒ^‚©‚çJDK5‚ðŠm”F''
 ***Unix
 
 &aname(javafedora);
-
 ****FedoraCore‚ÅJava‚ðƒCƒ“ƒXƒg[ƒ‹‚·‚éÛ‚Ì‘Î‰ž 
 : |OS‚ªFedoraCore‚Ìê‡Ayum‚É‚Äjava‚ðƒCƒ“ƒXƒg[ƒ‹‚·‚é‚ÆGCJ(The GNU Compiler for Java )‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚µ‚Ü‚¢A‚»‚ÌGCJ‚ðŽg—p‚·‚é‚Æ‚¢‚­‚Â‚©‚Ì•s‹ï‡‚ª¶‚¶‚éŽ–‚ª‚ ‚è‚Ü‚·B~
 •s‹ï‡‚ª”­¶‚µ‚½ê‡‚ÍA‚Ü‚¸ASun Microsystems‚ÌJava‚ªŽg—p‚³‚ê‚Ä‚¢‚é‚©‚ÌŠm”F‚ð‚µ‚Ä‚­‚¾‚³‚¢B
 :: ŽQlF|[[JDKƒCƒ“ƒXƒg[ƒ‹‚Ì‚½‚ß‚Ìƒqƒ“ƒg:/ja/node/661#nstjavaunixfedora]]
 :: |[[UNIXŒnŠÂ‹«‚ÅŠÈˆÕ‚ÉSun‚ÌJava‚ðEclipse‚É“K—p‚·‚é•û–@:/ja/node/248#rtclinksunjava]]
-
 
