@@ -199,7 +199,10 @@ rtm-naming.pyを"C:\Documents and Settings\Hoge\My Documents"等ディレクトリ名に空
 **** python.exeが起動しない 
 : |環境変数PathにPythonインストールフォルダを追加しておいて下さい(C:\Python26など)。
 #br
-**** Cygwinをインストールしている環境ではpython.exeが複数存在する場合がある &aname(python);
+
+&aname(python);
+
+**** Cygwinをインストールしている環境ではpython.exeが複数存在する場合がある 
 : |Cygwinをインストールしている環境では、Cygwin上にもpython.exeが存在する場合があります。その場合は、通例Cygwin上のpython.exeへのサーチパスが優先されるよう設定されるため、環境変数Pathを適切に設定しているのにもかかわらず、今回導入したはずのPythonとは違うバージョンの（すなわちCygwin上の）python.exeが起動してしまう場合があります。この場合、Pythonのバージョンの違いによる不具合が発生してしまいます。この問題は非常に原因が特定しづらいのが特徴です。このようにCygwinなどをインストールしている環境でOpenRTM-aist Python版を使う場合は、該当バージョンのpythonインストールフォルダからpython.exeが起動していることを確認してください。
 ::確認方法の例：|python -Vでバージョンを調べる、（Cygwinのある環境では）which pythonでどのpython.exeが実行されているかを確認する...など
 ::この障害が発見された場合の対処：|Pythonインストールフォルダ(C:\Python26など)を''システム環境変数Path''（*ユーザー環境変数Pathではなく）の''先頭に追加''することで解決できます。
