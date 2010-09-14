@@ -7,13 +7,13 @@
 ‚È‚¨A–{Í‚Å‚ÍRtcLink‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚½ŠÂ‹«‚Å‚ ‚é‚±‚Æ‚ð‘z’è‚µAà–¾‚µ‚Ä‚¢‚Ü‚·BRtcLink‚ÌƒCƒ“ƒXƒg[ƒ‹‚É‚Â‚¢‚Ä‚ÌÚ×‚ÍA[[RtcLinkƒCƒ“ƒXƒg[ƒ‹>RtcLinkERtcTemplate‚ÌƒCƒ“ƒXƒg[ƒ‹]]
 ‚ðŽQÆ‚µ‚Ä‚­‚¾‚³‚¢iˆê•”‚ÌƒTƒ“ƒvƒ‹‚ÍRtcLink‚ª‚È‚­‚Ä‚à“®ì‚µ‚Ü‚·jB
 #br
-''¦'' ‚·‚Å‚ÉRtcLink‚ðƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚é•û‚Ö
-
-@V‚µ‚¢OpenRTM-aist-Java-0.4‚Å‚ÍRtcLink 0.4.0‚ÍŽg‚¦‚È‚­‚È‚è‚Ü‚µ‚½B‚·‚Å‚ÉAEclipseã‚ÉRtcLinkƒvƒ‰ƒOƒCƒ“‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚¢‚é•û‚ÍAOpenRTM-aist-Java-0.4‚ðŽg‚¤ê‡‚ÍA•K‚¸RtcLink‚à0.4.1‚É·‚µ‘Ö‚¦‚Ä‚­‚¾‚³‚¢B
-
-ŽQlF
-
-@¨ [[''FAQ:'' Q. RtcLinkã‚ÅRTC‚Ìƒ|[ƒg‚ª•\Ž¦‚³‚ê‚È‚¢iJava”Åj >RtcLink.#RtcLinkport]]
+// ''¦'' ‚·‚Å‚ÉRtcLink‚ðƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚é•û‚Ö
+//
+//@V‚µ‚¢OpenRTM-aist-Java-0.4‚Å‚ÍRtcLink 0.4.0‚ÍŽg‚¦‚È‚­‚È‚è‚Ü‚µ‚½B‚·‚Å‚ÉAEclipseã‚ÉRtcLinkƒvƒ‰ƒOƒCƒ“‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚¢‚é•û‚ÍAOpenRTM-aist-Java-0.4‚ðŽg‚¤ê‡‚ÍA•K‚¸RtcLink‚à0.4.1‚É·‚µ‘Ö‚¦‚Ä‚­‚¾‚³‚¢B
+//
+//ŽQlF
+//
+//@¨ [[''FAQ:'' Q. RtcLinkã‚ÅRTC‚Ìƒ|[ƒg‚ª•\Ž¦‚³‚ê‚È‚¢iJava”Åj >RtcLink.#RtcLinkport]]
 ***SimpleIO
 @DataInPortADataOutPort‚ÌŽg—p•û–@‚ðŽ¦‚µ‚½ƒTƒ“ƒvƒ‹‚Å‚·DConsoleIn.sh‚ÆConsoleOut.sh‚ðŽÀs‚·‚é‚±‚Æ‚ÅƒTƒ“ƒvƒ‹ƒRƒ“ƒ|[ƒlƒ“ƒg‚ª‹N“®‚µ‚Ü‚·DPortŠÔ‚ðÚ‘±‚·‚é‚ÆCConsoleIn‘¤‚Å“ü—Í‚µ‚½”Žš‚ªCConsoleOut‘¤‚É•\Ž¦‚³‚ê‚Ü‚·DPortŠÔ‚ÍRtcLink‚ð—p‚¢‚é‘¼‚ÉCConnector.sh‚ðŽÀs‚·‚é‚±‚Æ‚ÅÚ‘±‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·D
 
@@ -45,7 +45,7 @@ ConsoleIn‚Ì‰æ–Ê‚©‚ç”Žš‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B‚»‚¤‚·‚é‚ÆConsoleOut‚Å“ü—Í‚µ‚½”Žš‚ª
 #br
 
 - •û–@‚Q:RtcLink‚ðŽg‚¤•û–@
--- [[RtcLink‚ð‹N“® >RtcLink#startRtcLink]]‚µA[[SystemEditor ‚ðŠJ‚«>RtcLink‘€ì‰æ–Ê#systemediter]]‚Ü‚·B¨RtcLink‚ÌŽg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[RtcLink >RtcLink]]‚ðŽQÆ
+-- [[RtcLink‚ð‹N“® >/node/201#startRtcLink]]‚µA[[SystemEditor ‚ðŠJ‚«>/node/727#systemediter]]‚Ü‚·B¨RtcLink‚ÌŽg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[RtcLink >/node/201]]‚ðŽQÆ
 -- ConsoleIn‚ÆConsoleOut‚Ì—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ð‹N“®‚µ‚Ü‚·B
 -- RtcLink‚ÌNameServiceView‚É—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ªŒ»‚ê‚é‚Ì‚ÅA‚»‚ê‚ç‚ðSystemEditorã‚Éƒhƒ‰ƒbƒO‚·‚éB
 -- —¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒ|[ƒg‚ðŒ‹‚ÔBiã}SimpleIOŽÀs—á‚ðŽQÆj
@@ -85,7 +85,7 @@ SeqOut‚ÆSeqIn‚Ì‘Î‰ž‚·‚éƒ|[ƒg‚ðRtcLinkã‚ÅÚ‘±‚µ‚Ä‚­‚¾‚³‚¢B—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ðƒA
 #br
 
 - Žè‡
--- [[RtcLink‚ð‹N“® >RtcLink#startRtcLink]]‚µA[[SystemEditor ‚ðŠJ‚«>RtcLink‘€ì‰æ–Ê#systemediter]]‚Ü‚·B¨RtcLink‚ÌŽg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[RtcLink >RtcLink]]‚ðŽQÆ
+-- [[RtcLink‚ð‹N“® >/node/201#startRtcLink]]‚µA[[SystemEditor ‚ðŠJ‚«>/node/727#systemediter]]‚Ü‚·B¨RtcLink‚ÌŽg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[RtcLink >/node/201]]‚ðŽQÆ
 -- SeqOut‚ÆSeqIn‚Ì—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ð‹N“®‚µ‚Ü‚·B
 -- RtcLink‚ÌNameServiceView‚É—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ªŒ»‚ê‚é‚Ì‚ÅA‚»‚ê‚ç‚ðSystemEditorã‚Éƒhƒ‰ƒbƒO‚·‚éB
 -- —¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì‘Î‰žƒ|[ƒg‚ðŒ‹‚ÔBiã}SeqIOŽÀs—á‚ðŽQÆj
@@ -133,7 +133,7 @@ MyServiceConsumer‚ÆMyServiceProvider‚Ì‘Î‰ž‚·‚éƒ|[ƒg‚ðRtcLinkã‚ÅÚ‘±‚µ‚Ä‚­‚¾‚³‚
 #br
 
 - Žè‡
--- [[RtcLink‚ð‹N“® >RtcLink#startRtcLink]]‚µA[[SystemEditor ‚ðŠJ‚«>RtcLink‘€ì‰æ–Ê#systemediter]]‚Ü‚·B¨RtcLink‚ÌŽg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[RtcLink >RtcLink]]‚ðŽQÆ
+-- [[RtcLink‚ð‹N“® >/node/201#startRtcLink]]‚µA[[SystemEditor ‚ðŠJ‚«>/node/727#systemediter]]‚Ü‚·B¨RtcLink‚ÌŽg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[RtcLink >/node/201]]‚ðŽQÆ
 -- MyServiceConsumer‚ÆMyServiceProvider‚Ì—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ð‹N“®‚µ‚Ü‚·B
 -- RtcLink‚ÌNameServiceView‚É—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ªŒ»‚ê‚é‚Ì‚ÅA‚»‚ê‚ç‚ðSystemEditorã‚Éƒhƒ‰ƒbƒO‚·‚éB
 -- —¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì‘Î‰žƒ|[ƒg‚ðŒ‹‚ÔBiã}SimpleServiceŽÀs—á‚ðŽQÆj
@@ -166,7 +166,7 @@ CENTER:''ConfigSampleŽÀs—á''
 #br
 
 - Žè‡
--- [[RtcLink‚ð‹N“® >RtcLink#startRtcLink]]‚µA[[SystemEditor ‚ðŠJ‚«>RtcLink‘€ì‰æ–Ê#systemediter]]‚Ü‚·B¨RtcLink‚ÌŽg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[RtcLink >RtcLink]]‚ðŽQÆ
+-- [[RtcLink‚ð‹N“® >/node/201#startRtcLink]]‚µA[[SystemEditor ‚ðŠJ‚«>/node/727#systemediter]]‚Ü‚·B¨RtcLink‚ÌŽg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[RtcLink >/node/201]]‚ðŽQÆ
 -- ConfigSampleƒRƒ“ƒ|[ƒlƒ“ƒg‚ð‹N“®‚µ‚Ü‚·B
 -- RtcLink‚ÌNameServiceView‚É‚±‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ªŒ»‚ê‚é‚Ì‚ÅASystemEditorã‚Éƒhƒ‰ƒbƒO‚·‚éB
 
@@ -239,7 +239,7 @@ CENTER:''GUIInŽÀs—á(RtcLinkÚ‘±‰æ–Ê)''
 #br
 
 - Žè‡
--- [[RtcLink‚ð‹N“® >RtcLink#startRtcLink]]‚µA[[SystemEditor ‚ðŠJ‚«>RtcLink‘€ì‰æ–Ê#systemediter]]‚Ü‚·B¨RtcLink‚ÌŽg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[RtcLink >RtcLink]]‚ðŽQÆ
+-- [[RtcLink‚ð‹N“® >/node/201#startRtcLink]]‚µA[[SystemEditor ‚ðŠJ‚«>/node/727#systemediter]]‚Ü‚·B¨RtcLink‚ÌŽg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[RtcLink >/node/201]]‚ðŽQÆ
 -- GUIIn‚ÆSeqIn‚Ì—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ð‹N“®‚µ‚Ü‚·B
 -- RtcLink‚ÌNameServiceView‚É‚±‚ê‚ç‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ªŒ»‚ê‚é‚Ì‚ÅA“ñ‚Â‚Æ‚àSystemEditorã‚Éƒhƒ‰ƒbƒO‚·‚éB
 -- —¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì‘Î‰žƒ|[ƒg‚ðŒ‹‚ÔBiã}GUIInŽÀs—á‚ðŽQÆj

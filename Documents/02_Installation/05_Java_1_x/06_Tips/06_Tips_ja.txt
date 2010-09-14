@@ -171,7 +171,7 @@
 ''参考サイト（外部サイト）:''
 
 - [[Fedora5/java >http://wiki.mmj.jp/index.php?Fedora5%2Fjava]]
-- [[Fedora Core 5にSun Javaをインストール >http://www.ossexpo.net/wiki/index.php/Fedora_Core_5%E3%81%ABSun_Java%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB]]
+//- [[Fedora Core 5にSun Javaをインストール >http://www.ossexpo.net/wiki/index.php/Fedora_Core_5%E3%81%ABSun_Java%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB]]
 
 - [[Java開発実行環境を構築する(J2SDK-Linux編) >http://fedorasrv.com/j2sdk-linux.shtml]]
 

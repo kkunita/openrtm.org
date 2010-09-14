@@ -66,13 +66,13 @@ CENTER:''インストールの確認(Windows)''
 ** OpenRTM-aist-Java-0.4のインストール &aname(instjava04);
 　OpenRTM-aist-Java-0.4のインストールを簡単にするために、インストーラを用意しました。通常インストールでは、インストーラを使用した方が便利でしょう。また、インストールの自由度を確保するために、必要なOpenRTM-aist-Java-0.4ライブラリコンポーネントをまとめたZipファイルも用意してあります。ユーザ独自の配置・組み合わせでインストールしたい場合などはこちらを利用してインストールすることもできます。
 #br
-''※'' すでにOpenRTM-aist-0.4 を使用されている方へ
-
-　新しいOpenRTM-aist-Java-0.4ではRtcLink 0.4.0は使えなくなりました。すでに、Eclipse上にRtcLinkプラグインをインストールしている方は、OpenRTM-aist-0.4 Javaを使う場合は、必ずRtcLinkも0.4.1に差し替えてください。
-
-参考：
--[[''FAQ:'' Q. RtcLink上でRTCのポートが表示されない（Java版） >/ja/node/248#RtcLinkport]]
-
+// ''※'' すでにOpenRTM-aist-0.4 を使用されている方へ
+//
+//　新しいOpenRTM-aist-Java-0.4ではRtcLink 0.4.0は使えなくなりました。すでに、Eclipse上にRtcLinkプラグインをインストールしている方は、OpenRTM-aist-0.4 Javaを使う場合は、必ずRtcLinkも0.4.1に差し替えてください。
+//
+//参考：
+//-[[''FAQ:'' Q. RtcLink上でRTCのポートが表示されない（Java版） >/ja/node/248#RtcLinkport]]
+//
 *** ''インストーラを使用したインストール'' 
 　WindowsXP用のOpenRTM-aist-0.4 Javaインストーラが用意されていますので、[[こちら >/ja/node/90]]からダウンロードして実行します。実行後は、インストーラに従っていくだけでインストールが完了します。
 
@@ -95,7 +95,7 @@ CENTER:''インストールの確認(Windows)''
 #br
 
 :参考：
--[[''FAQ:'' Q. 任意のフォルダにクラスパスを設定してAntビルドを行う方法は？ >/ja/node/160#Antbuild]]|
+-[[''FAQ:'' Q. 任意のフォルダにクラスパスを設定してAntビルドを行う方法は？ >/ja/node/159#Antbuild]]
 
 #br
 - システム環境変数の設定

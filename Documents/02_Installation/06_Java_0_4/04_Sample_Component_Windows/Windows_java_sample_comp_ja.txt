@@ -1,17 +1,18 @@
 #contents
-** OpenRTM-aist-Java-0.4‚ÌƒTƒ“ƒvƒ‹‚É‚Â‚¢‚Ä &aname(javasample);
-@–{Í‚Å‚ÍCOpenRTM-aist-Java-0.4‚É•t‘®‚ÌƒTƒ“ƒvƒ‹‚É‚Â‚¢‚Äà–¾‚µ‚Ü‚·B
+&aname(javasample);
+** OpenRTM-aist-Java-0.4‚ÌƒTƒ“ƒvƒ‹‚É‚Â‚¢‚Ä 
+–{Í‚Å‚ÍCOpenRTM-aist-Java-0.4‚É•t‘®‚ÌƒTƒ“ƒvƒ‹‚É‚Â‚¢‚Äà–¾‚µ‚Ü‚·B
 ƒTƒ“ƒvƒ‹‚ğ—p‚·‚éê‡‚ÍCŠeƒTƒ“ƒvƒ‹EƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®‚·‚é‘O‚Éstart-orbd.vbs‚ğÀs‚µ‚Äƒl[ƒ€EƒT[ƒrƒX‚ğ‹N“®‚µ‚Ä‚¨‚¢‚Ä‚­‚¾‚³‚¢Dstart-orbd.vbs‚ğÀs‚·‚é‚É‚ÍAŠY“–‚·‚éƒtƒ@ƒCƒ‹‚ğƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µ‚Ä‚­‚¾‚³‚¢BƒCƒ“ƒXƒg[ƒ‰‚ğ—p‚¢‚ÄƒCƒ“ƒXƒg[ƒ‹‚µ‚½ê‡‚ÍAstart-orbd.vbs‚ğƒXƒ^[ƒgƒƒjƒ…[‚©‚çÀs‚·‚é‚±‚Æ‚à‚Å‚«‚Ü‚·B
-‚È‚¨A–{Í‚Å‚ÍRtcLink‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚½ŠÂ‹«‚Å‚ ‚é‚±‚Æ‚ğ‘z’è‚µAà–¾‚µ‚Ä‚¢‚Ü‚·BRtcLink‚ÌƒCƒ“ƒXƒg[ƒ‹‚É‚Â‚¢‚Ä‚ÌÚ×‚ÍA[[RtcLinkƒCƒ“ƒXƒg[ƒ‹>RtcLinkERtcTemplate‚ÌƒCƒ“ƒXƒg[ƒ‹]]
+‚È‚¨A–{Í‚Å‚ÍRtcLink‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚½ŠÂ‹«‚Å‚ ‚é‚±‚Æ‚ğ‘z’è‚µAà–¾‚µ‚Ä‚¢‚Ü‚·BRtcLink‚ÌƒCƒ“ƒXƒg[ƒ‹‚É‚Â‚¢‚Ä‚ÌÚ×‚ÍA[[RtcLinkƒCƒ“ƒXƒg[ƒ‹>/node/719]]
 ‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢iˆê•”‚ÌƒTƒ“ƒvƒ‹‚ÍRtcLink‚ª‚È‚­‚Ä‚à“®ì‚µ‚Ü‚·jB
 #br
-''¦'' ‚·‚Å‚ÉRtcLink‚ğƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚é•û‚Ö
-
-@V‚µ‚¢OpenRTM-aist-Java-0.4‚Å‚ÍRtcLink 0.4.0‚Íg‚¦‚È‚­‚È‚è‚Ü‚µ‚½B‚·‚Å‚ÉAEclipseã‚ÉRtcLinkƒvƒ‰ƒOƒCƒ“‚ğƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚¢‚é•û‚ÍAOpenRTM-aist-Java-0.4‚ğg‚¤ê‡‚ÍA•K‚¸RtcLink‚à0.4.1‚É·‚µ‘Ö‚¦‚Ä‚­‚¾‚³‚¢B
-
-QlF
--[[''FAQ:'' Q. RtcLinkã‚ÅRTC‚Ìƒ|[ƒg‚ª•\¦‚³‚ê‚È‚¢iJava”Åj >/ja/node/248#RtcLinkport]]
-
+// ''¦'' ‚·‚Å‚ÉRtcLink‚ğƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚é•û‚Ö
+//
+//@V‚µ‚¢OpenRTM-aist-Java-0.4‚Å‚ÍRtcLink 0.4.0‚Íg‚¦‚È‚­‚È‚è‚Ü‚µ‚½B‚·‚Å‚ÉAEclipseã‚ÉRtcLinkƒvƒ‰ƒOƒCƒ“‚ğƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚¢‚é•û‚ÍAOpenRTM-aist-Java-0.4‚ğg‚¤ê‡‚ÍA•K‚¸RtcLink‚à0.4.1‚É·‚µ‘Ö‚¦‚Ä‚­‚¾‚³‚¢B
+//
+//QlF
+//-[[''FAQ:'' Q. RtcLinkã‚ÅRTC‚Ìƒ|[ƒg‚ª•\¦‚³‚ê‚È‚¢iJava”Åj >/ja/node/248#RtcLinkport]]
+//
 ***SimpleIO 
 @DataInPortADataOutPort‚Ìg—p•û–@‚ğ¦‚µ‚½ƒTƒ“ƒvƒ‹‚Å‚·DConsoleIn.bat‚ÆConsoleOut.bat‚ğÀs‚·‚é‚±‚Æ‚ÅƒTƒ“ƒvƒ‹ƒRƒ“ƒ|[ƒlƒ“ƒg‚ª‹N“®‚µ‚Ü‚·DPortŠÔ‚ğÚ‘±‚·‚é‚ÆCConsoleIn‘¤‚Å“ü—Í‚µ‚½”š‚ªCConsoleOut‘¤‚É•\¦‚³‚ê‚Ü‚·DPortŠÔ‚ÍRtcLink‚ğ—p‚¢‚é‘¼‚ÉCConnector.bat‚ğÀs‚·‚é‚±‚Æ‚ÅÚ‘±‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·D
 
@@ -22,12 +23,12 @@ CENTER:''SimpleIOÀs—á(RtcLinkÚ‘±‰æ–Ê)''
 #br
 #br
 
-#ref(java_simpleio1.png,nolink,center)
+#ref(java_simpleio1_ja.png,nolink,center)
 CENTER:''SimpleIOÀs—á(ConsoleIn)''
 #br
 #br
 
-#ref(java_simpleio2.png,nolink,center)
+#ref(java_simpleio2_ja.png,nolink,center)
 CENTER:''SimpleIOÀs—á(ConsoleOut)''
 #br
 
@@ -44,7 +45,7 @@ ConsoleIn‚Ì‰æ–Ê‚©‚ç”š‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B‚»‚¤‚·‚é‚ÆConsoleOut‚Å“ü—Í‚µ‚½”š‚ª
 #br
 
 - •û–@‚Q:RtcLink‚ğg‚¤•û–@
--- RtcLink‚ğ‹N“®‚µ,SystemEditor‚ğ—pˆÓ‚µ‚Ü‚·B¨RtcLink‚Ìg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[RtcLink]]‚ğQÆ
+-- RtcLink‚ğ‹N“®‚µ,SystemEditor‚ğ—pˆÓ‚µ‚Ü‚·B¨RtcLink‚Ìg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[/node/201]]‚ğQÆ
 -- ConsoleIn‚ÆConsoleOut‚Ì—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®‚µ‚Ü‚·B
 -- RtcLink‚ÌNameServiceView‚É—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ªŒ»‚ê‚é‚Ì‚ÅA‚»‚ê‚ç‚ğSystemEditorã‚Éƒhƒ‰ƒbƒO‚·‚éB
 -- —¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒ|[ƒg‚ğŒ‹‚ÔBiã}SimpleIOÀs—á‚ğQÆj
@@ -83,7 +84,7 @@ SeqOut‚ÆSeqIn‚Ì‘Î‰‚·‚éƒ|[ƒg‚ğRtcLinkã‚ÅÚ‘±‚µ‚Ä‚­‚¾‚³‚¢B—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğƒA
 #br
 
 - è‡
--- RtcLink‚ğ‹N“®‚µ,SystemEditor‚ğ—pˆÓ‚µ‚Ü‚·B¨RtcLink‚Ìg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[RtcLink]]‚ğQÆ
+-- RtcLink‚ğ‹N“®‚µ,SystemEditor‚ğ—pˆÓ‚µ‚Ü‚·B¨RtcLink‚Ìg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[/node/201]]‚ğQÆ
 -- SeqOut‚ÆSeqIn‚Ì—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®‚µ‚Ü‚·B
 -- RtcLink‚ÌNameServiceView‚É—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ªŒ»‚ê‚é‚Ì‚ÅA‚»‚ê‚ç‚ğSystemEditorã‚Éƒhƒ‰ƒbƒO‚·‚éB
 -- —¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì‘Î‰ƒ|[ƒg‚ğŒ‹‚ÔBiã}SeqIOÀs—á‚ğQÆj
@@ -115,13 +116,13 @@ Consumer‘¤ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğActivate‚·‚é‚ÆCƒRƒ“ƒ\[ƒ‹‚É—˜—p‰Â”\‚ÈƒRƒ}ƒ“ƒhƒŠƒXƒg‚ª
 CENTER:''SimpleServiceÀs—á(RtcLinkÚ‘±‰æ–Ê)''
 #br
 
-#ref(java_simplesvc1.png,nolink,center)
+#ref(java_simplesvc1_ja.png,nolink,center)
 CENTER:''SimpleServiceÀs—á(MyServiceConsumer)''
 
 #br
 #br
 
-#ref(java_simplesvc2.png,nolink,center)
+#ref(java_simplesvc2_ja.png,nolink,center)
 CENTER:''SimpleServiceÀs—á(MyServiceProvider)''
 #br
 #br
@@ -132,7 +133,7 @@ MyServiceConsumer‚ÆMyServiceProvider‚Ì‘Î‰‚·‚éƒ|[ƒg‚ğRtcLinkã‚ÅÚ‘±‚µ‚Ä‚­‚¾‚³‚
 #br
 
 - è‡
--- RtcLink‚ğ‹N“®‚µ,SystemEditor‚ğ—pˆÓ‚µ‚Ü‚·B¨RtcLink‚Ìg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[RtcLink]]‚ğQÆ
+-- RtcLink‚ğ‹N“®‚µ,SystemEditor‚ğ—pˆÓ‚µ‚Ü‚·B¨RtcLink‚Ìg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[/node/201]]‚ğQÆ
 -- MyServiceConsumer‚ÆMyServiceProvider‚Ì—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®‚µ‚Ü‚·B
 -- RtcLink‚ÌNameServiceView‚É—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ªŒ»‚ê‚é‚Ì‚ÅA‚»‚ê‚ç‚ğSystemEditorã‚Éƒhƒ‰ƒbƒO‚·‚éB
 -- —¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì‘Î‰ƒ|[ƒg‚ğŒ‹‚ÔBiã}SimpleServiceÀs—á‚ğQÆj
@@ -175,7 +176,7 @@ CENTER:''ConfigSampleÀs—á''
 #br
 
 - è‡
--- RtcLink‚ğ‹N“®‚µ,SystemEditor‚ğ—pˆÓ‚µ‚Ü‚·B¨RtcLink‚Ìg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[RtcLink]]‚ğQÆ
+-- RtcLink‚ğ‹N“®‚µ,SystemEditor‚ğ—pˆÓ‚µ‚Ü‚·B¨RtcLink‚Ìg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[/node/201]]‚ğQÆ
 -- ConfigSampleƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®‚µ‚Ü‚·B
 -- RtcLink‚ÌNameServiceView‚É‚±‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ªŒ»‚ê‚é‚Ì‚ÅASystemEditorã‚Éƒhƒ‰ƒbƒO‚·‚éB
 
@@ -239,7 +240,7 @@ CENTER:''GUIInÀs—á(RtcLinkÚ‘±‰æ–Ê)''
 #br
 
 - è‡
--- RtcLink‚ğ‹N“®‚µ,SystemEditor‚ğ—pˆÓ‚µ‚Ü‚·B¨RtcLink‚Ìg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[RtcLink]]‚ğQÆ
+-- RtcLink‚ğ‹N“®‚µ,SystemEditor‚ğ—pˆÓ‚µ‚Ü‚·B¨RtcLink‚Ìg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í[[/node/201]]‚ğQÆ
 -- GUIIn‚ÆSeqIn‚Ì—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®‚µ‚Ü‚·B
 -- RtcLink‚ÌNameServiceView‚É‚±‚ê‚ç‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ªŒ»‚ê‚é‚Ì‚ÅA“ñ‚Â‚Æ‚àSystemEditorã‚Éƒhƒ‰ƒbƒO‚·‚éB
 -- —¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì‘Î‰ƒ|[ƒg‚ğŒ‹‚ÔBiã}GUIInÀs—á‚ğQÆj
@@ -261,7 +262,7 @@ CENTER:''LogView‚ÌÀs‰æ–Ê''
 #br
 
 ****ƒCƒ“ƒXƒg[ƒ‹‚Æ‹N“®
-@LogViewƒfƒBƒŒƒNƒgƒŠ“à‚É‚ ‚é¢jp.go.aist.rtm.logview_1.0.0.jar£‚ğEclipseƒCƒ“ƒXƒg[ƒ‹ƒfƒBƒŒƒNƒgƒŠˆÈ‰º‚ÌpluginsƒfƒBƒŒƒNƒgƒŠ“à‚ÉƒRƒs[‚·‚ê‚ÎƒCƒ“ƒXƒg[ƒ‹‚ÍŠ®—¹‚Å‚·D(Eclipse‚ÌƒCƒ“ƒXƒg[ƒ‹•û–@‚É‚Â‚¢‚Ä‚ÍC[[RtcLinkERtcTemplate‚ÌƒCƒ“ƒXƒg[ƒ‹]]‚È‚Ç‚ğ‚²QÆ‚­‚¾‚³‚¢)
+@LogViewƒfƒBƒŒƒNƒgƒŠ“à‚É‚ ‚é¢jp.go.aist.rtm.logview_1.0.0.jar£‚ğEclipseƒCƒ“ƒXƒg[ƒ‹ƒfƒBƒŒƒNƒgƒŠˆÈ‰º‚ÌpluginsƒfƒBƒŒƒNƒgƒŠ“à‚ÉƒRƒs[‚·‚ê‚ÎƒCƒ“ƒXƒg[ƒ‹‚ÍŠ®—¹‚Å‚·D(Eclipse‚ÌƒCƒ“ƒXƒg[ƒ‹•û–@‚É‚Â‚¢‚Ä‚ÍC[[/node/719]]‚È‚Ç‚ğ‚²QÆ‚­‚¾‚³‚¢)
 
 ƒl[ƒ€EƒT[ƒrƒX‚ğ‹N“®ŒãCEclipse‚ğ‹N“®‚µ‚Ä‚­‚¾‚³‚¢D(Eclipse‹N“®C‚à‚µ‚­‚Í‰æ–Ê•\¦‚ÉƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì“o˜^‚ğs‚¢‚Ü‚·‚Ì‚ÅCƒl[ƒ€EƒT[ƒrƒX‚Í–‘O‚É‹N“®‚µ‚Ä‚¨‚¢‚Ä‚­‚¾‚³‚¢D)
 
