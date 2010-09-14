@@ -1,0 +1,3 @@
+ここではOpenRTM-aist(JAVA)のUNIXへのインストール方法を説明します。 ※以降の説明は便宜上OpenRTM-aist-0.4.0について書かれています。OpenRTM-aist-0.4.xについても同様の手順でインストールできます。&br;
+
+
