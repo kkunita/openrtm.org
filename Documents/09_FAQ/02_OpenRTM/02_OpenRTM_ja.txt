@@ -194,7 +194,7 @@ rtm-naming.pyを"C:\Documents and Settings\Hoge\My Documents"等ディレクトリ名に空
   cmd = "omniNames -start "+str(port)+" -logdir \""+str(currdir)+"\" &"
 #br
 
- &aname(pythonexe);
+&aname(pythonexe);
 
 **** python.exeが起動しない 
 : |環境変数PathにPythonインストールフォルダを追加しておいて下さい(C:\Python26など)。
