@@ -25,7 +25,7 @@
 #br
 &color(red){''※ Fedora Core へのJavaのインストールについては注意が必要です:''};
 
-　→ [[''FAQ:'' Javaをインストールする際のFedoraCoreでの対応について >/node/151#javafedora]]
+　→ [[''FAQ:'' Javaをインストールする際のFedoraCoreでの対応について >/node/1190#javafedora]]
 
 　→ [[''FAQ:'' Q. Fedora Core上でRtcLinkのNameService Viewにエラーがでる >/ja/node/248#fedoraNS]]
 #br
