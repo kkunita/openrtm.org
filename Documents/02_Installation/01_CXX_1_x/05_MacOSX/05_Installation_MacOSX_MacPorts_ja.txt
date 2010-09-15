@@ -39,7 +39,7 @@ MacPorts自体は dmg パッケージ形式になっており、自分のMacのOSのバージョ
 Portfileのダウンロード、展開、ビルドを一括でおこなうスクリプトが以下に用意されています。
 
 -[[Portfile:http://www.openrtm.org/pub/MacOSX/macports/ports.tgz]]
--[[インストールスクリプト>http://www.openrtm.org/pub/OpenRTM-aist/cxx/install_scripts/port_install100_mac.sh]]: ports.tgz のダウンロード、OpenRTM-aistのビルド・インストールまで自動で行います。
+-[[インストールスクリプト:http://www.openrtm.org/pub/MacOSX/macports/port_install.sh]]: ports.tgz のダウンロード、OpenRTM-aistのビルド・インストールまで自動で行います。
 
 適当なディレクトリで、以下のようにスクリプトを実行します。実行は一般ユーザで構いません。ただし、途中で当該ユーザのパスワードを聞かれることがあります。
 
