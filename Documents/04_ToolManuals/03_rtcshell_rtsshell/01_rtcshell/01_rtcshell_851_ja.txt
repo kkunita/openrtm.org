@@ -103,8 +103,9 @@ Windows では rtcwd.bat ファイルを使用してください。
  $ export RTCTREE_NAMESERVERS=localhost;192.168.0.1:65346;example.com
 
 &br;
-**シェル補完&aname(shell);
 
+&aname(shell);
+**シェル補完
 Bashの補完機能を追加するスクリプトが含まれます。''${prefix}/share/rtsshell''にインストールされます。以下のコマンドで読み込んでください。
 
  $ source bash_completion
@@ -546,8 +547,9 @@ ConsoleOutからのアウトプットは以下のようになります。
 このツールはJavaのORBと一緒に使うことは可能ではありません。
 
 &br;
-**リポジトリ&aname(repo);
 
+&aname(repo);
+**リポジトリ
 最新版のソースは[[githubでGitのリポジトリ>http://github.com/gbiggs/rtcshell]]にあります。「Download source」をクリックしてダウンロードをすることができます。「git clone」を使うこともできます。パッチを送りたがったら、この方法がおすすめします。
 
  $ git clone git://github.com/gbiggs/rtcshell.git
