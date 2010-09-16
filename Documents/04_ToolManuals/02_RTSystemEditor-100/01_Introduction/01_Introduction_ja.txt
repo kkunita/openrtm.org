@@ -2,10 +2,10 @@
 
 //**概要
 *** OpenRTM-aist RT System Editor 概要
-　現在[[OMG:http://www.omg.org]]にて、ロボット開発の効率を高めるRobot Technology Component（以下RTC）の仕様策定が行われています。このRTC仕様を実装および適用した共通プラットフォームとして、独立行政法人産業技術総合研究所・知能システム研究部門・タスクインテリジェンス研究グループでは[[OpenRTM-aist:/ja/node/850]]を提供しています。&br;
+　現在[[OMG:http://www.omg.org]]にて、ロボット開発の効率を高めるRobot Technology Component（以下RTC）の仕様策定が行われています。このRTC仕様を実装および適用した共通プラットフォームとして、独立行政法人産業技術総合研究所・知能システム研究部門・統合知能研究グループでは[[OpenRTM-aist:/ja/node/850]]を提供しています。&br;
 　RT System Editor は、このOpenRTM-aistに含まれる開発ツールの１つであり、RTCをリアルタイムにグラフィカル操作する機能を持っています。また、その名前のとおりEclipse統合開発環境のプラグインとして作成されており、Eclipse上にて既存のプラグインとシームレスに操作を行うことができます。
 ***対象
-本ドキュメントは、RTCについての基本知識を既に持っている方を対象としています。RTCの内容については、[[OMG>http://www.omg.org]]や[[産業技術総合研究所:http://openrtm.a01.aist.go.jp/~n-ando/OpenRTM-aist/]]のドキュメントを参照してください。
+本ドキュメントは、RTCについての基本知識を既に持っている方を対象としています。RTCの内容については、[[OMG>http://www.omg.org]] のドキュメントや [[こちら:/node/835]]を参照してください。
 ***画面例
 ここでは、 OpenRTM-aist RT System Editor (以下 RTSystemEditor) の画面例を示します。
 
