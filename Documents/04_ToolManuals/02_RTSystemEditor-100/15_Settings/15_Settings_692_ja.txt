@@ -4,7 +4,9 @@
 **RT System Editor
 ここでは、 RT System Editor の設定画面について説明します。
 RT System Editor の設定画面は、メニューの [window]-[preferences…]-[RT System Editor] で表示することができます。
-***接続周期&aname(cycle);
+
+&aname(cycle);
+***接続周期
 接続周期とは、 RT System Editor がシステムの情報を収集して表示へ反映する周期のことです。&br;
 単位はミリ秒で、0を指定した場合には、同期は行われません。&br;
 &br;
@@ -15,7 +17,9 @@ RT System Editor の設定画面は、メニューの [window]-[preferences…]-[RT System Ed
 CENTER:''接続周期設定画面''
 #br
 
-***表示色&aname(color);
+
+&aname(color);
+***表示色
 表示色の設定画面では、システムエディタにて表示される RTC と ExecutionContext 状態の色を設定することができます。それぞれの状態の意味については、[[システムエディタのRTCの表示>システムエディタ機能_1#RTCcolor]]をご覧ください。
 #br
 
