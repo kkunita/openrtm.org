@@ -57,7 +57,8 @@ rtsprofileはPythonの標準スタイルに従います。[[PEP8>http://www.python.org/dev/pep
 
 サンプルは[[rtsshell>/node/854]]のソースに参照してください。
 
-**リポジトリ &aname(repo);
+&aname(repo);
+**リポジトリ 
 
 最新版のソースは[[githubでGitのリポジトリ>http://github.com/gbiggs/rtsprofile]]にあります。「Download source」をクリックしてダウンロードをすることができます。「git clone」を使うこともできます。パッチを送りたがったら、この方法がおすすめします。
 
