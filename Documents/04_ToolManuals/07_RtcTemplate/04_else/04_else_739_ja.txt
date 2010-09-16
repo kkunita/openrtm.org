@@ -1,0 +1,18 @@
+#contents
+**その他
+***FAQ
+　[[こちら>/node/248]]を参照してください。
+**謝辞 
+　RtcTemplateは、以下のライブラリあるいは製品を使用して開発されました。これらのプロジェクトの開発と設計にかかわった方々に感謝します。
+
+-Apache Log4j 　1.2.1.4~
+This product includes software developed by The Apache Software Foundation ([[http://www.apache.org/:http://www.apache.org/]]).
+
+-Apache Velocity  1.4~
+This product includes software developed by The Apache Software Foundation ([[http://www.apache.org/:http://www.apache.org/]]).
+
+-Java CC (生成されたソースコードを利用しています)~
+https://javacc.dev.java.net/
+
+
+

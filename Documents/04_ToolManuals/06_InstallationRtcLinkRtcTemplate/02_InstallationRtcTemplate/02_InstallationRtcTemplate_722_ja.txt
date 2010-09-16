@@ -1,0 +1,51 @@
+#contents
+**RtcTemplateとは
+　RtcTemplateはRTコンポーネントのテンプレートを生成する開発ツールです。パラメータを基にRTコンポーネントのテンプレートを生成する機能を持っています。また、RtcTemplateはEclipseにて動作し、直感的な操作と他のEclipseプラグインとのシームレスな連携が可能です。~
+　RtcTemplateはRtcLinkがなくても動作しますが、RtcLinkがインストールされている場合には、RtcTemplateとメニューが統合されます。本マニュアルではRtcLinkがインストールされていることを前提として説明されています。
+
+
+**RtcTemplateのインストール
+　RtcTemplateはEclipseプラグインであるため、Eclipse本体をインストールする必要があります。さらに、Eclipse は Java アプリケーションなので, Eclipse本体をインストールする前にJava実行環境（あるいはJDK：Java開発環境でもよい）をインストールする必要があります.また、RtcTemplateをインストールする場合は、RtcLinkもインストールしておいた方がよいでしょう。
+***Java実行環境インストール 
+　「RtcLinkのインストール」の[[Java実行環境インストール >/ja/node/720#instJRE]]を参照してください。すでに、JDK（Java開発環境、ただし、1.5以上）がインストールされている場合はJava実行環境(JRE)のインストールは必要ありません。RtcLinkを用いてJavaのコードを生成する場合には、JDKが必要にまります。~
+''JDKインストールの参考：''~
+　⇒　Javaのインストール[[UNIX>/ja/node/659#instjava]]、[[Windows>/ja/node/666#instjava]]
+***Eclipseインストール
+　「RtcLinkのインストール」の[[Eclipseインストール >RtcLinkのインストール#insteclipse]]を参照してください。
+
+#br
+
+//参考：
+//　→ [[''FAQ:'' Q.RtcLinkを使用せずにRtcTemplateを動作させるにはどうすれば良いのですか？ >RtcTemplate.#pa18a2b2]]~
+//　→ [[''FAQ:'' Eclipseの起動方法 >RtcTemplate.#eclipse]]
+//
+//#br
+***RtcTemplateのインストールと起動
+　[[RtcTemplateのプラグイン(RtcTemplate on Eclipse) >RtcLink・RtcTemplate]] をダウンロードして, Eclipseのpluginディレクトリ(eclipseディレクトリ以下のpluginというディレクトリ)にダウンロードしたjarファイルをそのままコピーします.
+
+　EclipseとRtcLinkとを順に起動し, ツールバーの｢Open New RtcTemplate Editor｣ボタンを押下するか、メニューバーの[file]-[Open New Template Editor]を選択することで、RtcTemplateエディタが起動します。
+#br
+
+#ref(StartFromToolbar.png,nolink,center)
+CENTER:''ツールバーからの起動''
+#br
+#br
+
+#ref(StartFromMenu.png,nolink,center)
+CENTER:''メニューバーからの起動''
+#br
+#br
+
+#ref(StatusOfStart.png,nolink,center)
+CENTER:''起動直後の状態''
+#br
+#br
+
+// 参考：
+//　→ [[''FAQ:'' Q.RtcLinkを使用せずにRtcTemplateを動作させるにはどうすれば良いのですか？ >RtcTemplate.#RtcTemplate_start]]~
+//　→ [[''FAQ:'' Eclipseの起動方法 >RtcTemplate.#eclipse]]
+//
+//#br
+
+
+

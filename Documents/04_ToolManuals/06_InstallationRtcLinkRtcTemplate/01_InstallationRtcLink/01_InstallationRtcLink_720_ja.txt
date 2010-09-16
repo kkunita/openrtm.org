@@ -1,0 +1,133 @@
+#contents
+**RtcLinkのインストール 
+　RtcLinkはEclipseプラグインであるため、Eclipse本体をインストールする必要があります。さらに、Eclipse は Java アプリケーションなので, Eclipse本体をインストールする前にJava実行環境（あるいはJDK：Java開発環境でもよい）をインストールする必要があります.
+
+&aname(instJRE);
+*** Java実行環境(JRE)のインストール
+　Eclipse は Java アプリケーションなので, SunのJava実行環境[[(JRE: Java Runtime Environment):http://www.java.com/ja/download/manual.jsp]] をインストールする必要があります。すでに、JDK（Java開発環境、ただし、1.5以上）がインストールされている環境ではJREのインストールは必要ありません。（後述RtcTemplateで、Javaのコードを生成させる場合にはJREでなくJDKが必要となります。）~
+''JDKインストールの参考：''
+　⇒　Javaのインストール[[UNIX >/ja/node/805/]]、[[Windows >/ja/node/807/]]
+
+-[[JRE ダウンロード:http://www.java.com/ja/download/manual.jsp]]
+-[[JRE (Windows) オンラインインストーラ:http://javadl.sun.com/webapps/download/AutoDL?BundleId=11145]]
+-[[JRE (Windows) オフラインインストーラ:http://javadl.sun.com/webapps/download/AutoDL?BundleId=11193]]
+
+ダウンロード後はインストーラの指示に従ってインストールしてください.
+
+&br;
+''参考：''~
+　→　[[UNIX系環境で簡易にSunのJava(JRE)をEclipseに適用する方法 >/node/248#rtclinksunjava]]
+&br;
+　→　[[''FAQ:'' Fedora Core上でRtcLinkのNameService Viewにエラーがでる >/node/248#fedoraNS]]
+#br
+
+&aname(insteclipse);
+*** Eclipseのインストール
+　Eclipseの[[ダウンロードサイト:http://www.eclipse.org/downloads/index.php]] からそれぞれのプラットフォームに対応したEclipseのアーカイブをダウンロード、インストールしてください.
+なお、RtcLinkの推奨環境はEclipse3.1および3.2です.
+
+-[[Eclipse 3.1.2 (Windows版):http://archive.eclipse.org/eclipse/downloads/drops/R-3.1.2-200601181600/eclipse-SDK-3.1.2-win32.zip]]
+-[[Eclipse 3.2.2 (Windows版):http://archive.eclipse.org/eclipse/downloads/drops/R-3.2.2-200702121330/eclipse-SDK-3.2.2-win32.zip]]
+-[[Eclipse 3.2.2 (Linux版 x86/GTK 2):http://archive.eclipse.org/eclipse/downloads/drops/R-3.2.2-200702121330/eclipse-SDK-3.2.2-linux-gtk.tar.gz]]
+-[[Eclipse 3.2.2 (Linux版 x86/Motif):http://archive.eclipse.org/eclipse/downloads/drops/R-3.2.2-200702121330/eclipse-SDK-3.2.2-linux-motif.tar.gz]]
+
+Eclipseは以下のRingサーバでもミラーされていますので, こちらからも[[ダウンロード:http://www.ring.gr.jp/pub/misc/eclipse/downloads/drops/]]できるでしょう.
+
+-[[Ring Server Project:http://www.ring.gr.jp/pub/misc/eclipse/downloads/drops/]]
+-[[AIST Ring Server:http://ring.aist.go.jp/pub/misc/eclipse/downloads/drops/]]
+-[[RIKEN Ring Server:http://ring.riken.go.jp/pub/misc/eclipse/downloads/drops/]]
+-[[参考 eclipse project archived downloads  :http://archive.eclipse.org/eclipse/downloads/]](過去のバージョンのアーカイブ)
+
+#br
+
+//''新着情報！''
+''[[こちら >RtcLink・RtcTemplate#allinone]]にUNIX用とWindows用 のインストールパッケージを用意しました。''RtcLinkとRtcTemplate（後述）を含め、全て（ Eclipse3.2 ＋ 日本語化 + RtcLink ＋ GEF ＋ EMF ＋ RtcTemplate ）が入ったUNIX用とWindows用のパッケージを用意しました。「とりいそぎ」動かしてみたい方はぜひご利用ください。次の[[インストールの仕方 >#howtoinstall]]に従うだけで、とても簡単にインストールできます。
+
+&aname(howtoinstall);
+****インストールの仕方 
+　Eclipseのアーカイブ（圧縮された状態のパッケージファイル）は100MB以上あります.ダウンロードしたら, アーカイブをインストールしたいディレクトリに展開してください.
+Eclipseには特にインストーラは無く, アーカイブを展開するだけでそのまま使用できます.
+#br
+
+参考：
+　→ [[''FAQ:'' Eclipseの起動方法 >/node/248#eclipse]]
+#br
+***Eclipseの日本語化
+　この時点ではEclipseは日本語化されていません.もし, 日本語化したい場合は以下のEclipseの日本語化のページを参考にしてください.
+//-[[Eclipse日本語化:http://eclipsewiki.net/eclipse/?%C6%FC%CB%DC%B8%EC%B2%BD]]
+-[[Eclipse日本語化>http://sourceforge.jp/magazine/08/10/20/0936240]]
+
+簡単な手順は, 以下の通りです.
+
+-Eclipseのバージョンに合ったファイルを下記サイトからダウンロードする.
+--[[NLpack1-eclipse-SDK-3.1.1-win32.zip>http://archive.eclipse.org/eclipse/downloads/drops/L-3.1.1_Language_Packs-200510051300/download.php?dropFile=NLpack1-eclipse-SDK-3.1.1a-win32.zip]]
+--[[NLpack1-eclipse-SDK-3.2-win32.zip>http://archive.eclipse.org/eclipse/downloads/drops/L-3.2_Language_Packs-200607121700/download.php?dropFile=NLpack1-eclipse-SDK-3.2-win32.zip]]
+-解凍して出来た eclipse フォルダ内の features, plugins をeclipse本体があるフォルダにコピーする.
+-eclipse を再起動する。
+#br
+
+参考：
+　→ [[''FAQ:'' Eclipseの起動方法 >/node/248#eclipse]]
+#br
+
+***RtcLinkのインストールと起動
+RtcLinkは下記のEclipseプラグインを使用しています.
+-[[EMF (Eclipse Modeling Framework):http://www.eclipse.org/modeling/emf/]]
+-[[GEF (Graphical Editing Framework):http://www.eclipse.org/gef/]] 
+
+RtcLinkプラグインをインストールする前に, これらのプラグインをインストールしてください.
+
+まず, Eclipseのメニューから''ヘルプ(H)→ソフトウエア更新(S)→検索およびインストール''を選択します.
+このようなインストール/更新ウィザードが表示されます.
+#br
+
+#ref(EclipsePluginInstall0.png,nolink,center)
+#br
+新たなプラグインをインストールするので, ''インストールする新規フィーチャーを検索''をチェックして''次へ(N)''を押します.
+#br
+
+#ref(EclipsePluginInstall1.png,nolink,center)
+#br
+''Callisto Discovery Site''をチェックして''終了(F)''を押します.
+#br
+
+#ref(EclipsePluginInstall2.png,nolink,center)
+#br
+''Callisto Discovery Site''をクリックして''OK''を押します.
+#br
+
+#ref(EclipsePluginInstall3.png,nolink,center)
+#br
+-Graphical Editing Framework
+-Eclipse Modling Framework Runtime
+を選択して''次へ(N)''を押します.
+これで, これらのプラグインが自動的にダウンロードされて, インストールされます.
+インストール後Eclipseを一旦終了します.
+
+次に, [[RtcLinkのプラグイン(RtcLink on Eclipse)>RtcLink・RtcTemplate]] をダウンロードして, Eclipseのpluginディレクトリ(Eclipseのアーカイブを展開すると通常eclipseというディレクトリが作成されますが, その中のpluginというディレクトリ)にダウンロードしたjarファイルをそのままコピーします.
+
+Eclipseを起動し, メニューから''ウインドウ(W)→パースペクティブを開く(O)→その他(O)''を選択すると, 次のようなパースペクティブ選択画面が現れます.
+#br
+
+#ref(EclipsePluginInstall4.png,nolink,center)
+#br
+パースペクティブ一覧にあるRtcLinkを選択すると, 次のような画面が現れてRtcLinkが起動されます.
+#br
+
+#ref(EclipsePluginInstall5.png,nolink,center)
+#br
+
+もし, パースペクティブの一覧にRtcLinkが現れない場合は, EMFやGEFが正しくインストールできているかどうか, RtcLinkがpluginディレクトリに正しくコピーされているかを再度チェックしてください.
+
+***Eclipseの再起動
+　RtcLinkの起動が確認できましたら、いったんEclipseを終了してください。再度、Eclipseを起動する（もちろん同じワークスペースを指定した場合に）と、RtcLinkが起動された状態から始まります。
+
+#br
+#br
+参考：
+
+//　→ [[''FAQ:'' Q. RtcLink上でRTCのポートが表示されない（Java版） >RtcLink.#RtcLink.Java]]~
+　→ [[''FAQ:'' Eclipseの起動方法 >/node/248#eclipse]]
+#br
+#br
+

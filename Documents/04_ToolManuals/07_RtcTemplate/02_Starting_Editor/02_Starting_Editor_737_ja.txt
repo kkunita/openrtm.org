@@ -1,0 +1,30 @@
+#contents
+**RtcTemplateエディタの起動
+　RtcTemplateはRtcLinkから起動する方法とRtcLinkは使用しないで（直接）起動する方法とがあります。
+*** RtcLinkからRtcTemplateを起動する
+　[[Eclipseを起動 >/node/248#eclipse]]し, さらにRtcLinkを起動します。その後、ツールバーの｢Open New RtcTemplate Editor｣ボタンを押下するか、メニューバーの[file]-[Open New Template Editor]を選択します。
+#br
+
+#ref(StartFromToolbar.png,nolink,center)
+CENTER:''ツールバーからの起動''
+#br
+#br
+
+#ref(StartFromMenu.png,nolink,center)
+CENTER:''メニューバーからの起動''
+#br
+#br
+
+#ref(StatusOfStart.png,nolink,center)
+CENTER:''起動直後の状態''
+#br
+*** RtcTemplateを直接起動する &aname(startTemplate);
+　RtcLinkを使用しないでRtcTemplateを直接起動するには、Eclipseの設定をカスタマイズしてRtcTemplateエディタが表示されるようにしなければなりません。RtcTemplateエディタを表示するには、Eclipseのメニューバーの[ウィンドウ]-[パースペクティブのカスタマイズ]でダイアログを開き、上部の「コマンド」タグを押下し、「RTC Template Actions」をチェックします。
+
+#br
+
+#ref(ShowRtcTemplateWithoutRtcLink.png,nolink,center)
+CENTER:''RtcTemlateの起動（RtcLinkを使用しない場合）''
+#br
+
+

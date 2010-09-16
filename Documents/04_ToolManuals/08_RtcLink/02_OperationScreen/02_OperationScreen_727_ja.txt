@@ -1,0 +1,266 @@
+**RtcLink操作画面
+RtcLinkは, Eclipseの用語でビュー(View)やエディタ(Editor)と呼ばれるいくつかのサブウインドウから構成されます.
+:''ネームサービスビュー(NameServiceView)''|RTコンポーネントが登録されているネームサービスの内容をツリー表示します.
+:''コンフィグレーションビュー(ConfigurationView)''|選択されているRTコンポーネントのコンフィグレーション情報を表示/編集します.
+:''プロパティビュー(PropertyView)''|選択されているRTコンポーネントのプロファイル情報を表示します.
+:''システムエディタ(SystemEditor)''|RTコンポーネントの状態をグラフィカルに表示し、ポート接続等を行いシステムを構築します.
+
+以下, RtcLinkのビュー(View)やエディタ(Editor)毎の操作方法を説明します.
+
+***ネームサービスビュー(NameServiceView)
+下図の枠で囲まれた部分がネームサービスビューです.
+#br
+
+#ref(rtc-link7.png,nolink,center)
+#br
+OpenRTM-aistではRTCを管理・公開するためにネームサービスが使用されており, ネームサービスビューでは、この内容を表示/編集することができます.
+****ネームサーバへの接続
+ネームサーバへ接続するには, ネームサービスビューの上部に存在するボタンを押下するか, コンテクストメニューにて''「Add Name Server」''を選択します. 
+#br
+
+#ref(rtc-link8.png,nolink,center)
+#br
+ネームサーバ接続ダイアログでは、IPアドレスおよびポート番号を入力します.
+(ポート番号が省略された場合には, omniORBのネームサービスのデフォルトポートの2809番ポートが使用されます.)
+#br
+
+#ref(rtc-link9.png,nolink,center)
+#br
+※Eclipseの(再)起動時には最後に接続したアドレスへ自動的に接続します.
+存在しない場合には, ローカルホストの2809番に接続を試みます.
+
+****ネームサーバをビューから削除する
+接続しているネームサーバを画面から削除するには、ネームサーバを選択し''「Delete from View」''ボタンを押下します.
+#br
+
+#ref(rtc-link10.png,nolink,center)
+#br
+
+****ネームサーバの内容を表示する
+接続したネームサーバにコンポーネントが登録されていると, 以下のように登録内容がツリー形式で表示されます.
+#br
+
+#ref(rtc-link11.png,nolink,center)
+#br
+各アイコンの意味は以下のとおりです.
+|アイコン|kind|意味|
+|
+#ref(icon1.png,around,nolink,center,60%)|host_cxt|ホストコンテキスト|
+|
+#ref(icon2.png,around,nolink,center,60%)|mgr_cxt|マネージャコンテキスト|
+|
+#ref(icon3.png,around,nolink,center,60%)|cate_cxt|カテゴリコンテキスト|
+|
+#ref(icon4.png,around,nolink,center,60%)|mod_cxt|モジュールコンテキスト|
+|
+#ref(icon5.png,around,nolink,center,60%)|上記以外|上記以外のコンテキスト|
+|
+#ref(icon6.png,around,nolink,center,60%)|rtc|RTコンポーネント|
+|なし|--|RTコンポーネント以外のオブジェクト|
+|
+#ref(icon8.png,around,nolink,center,60%)|--|登録されているが, 実体のないゾンビオブジェクト|
+
+ネームサービスビューは, 接続先の各ネームサーバを常に監視し表示の同期・更新を行っています.
+(監視の周期は, 設定画面の接続周期の項目で変更することができます)
+また, 明示的にネームサーバの内容を再取得する場合にはリフレッシュを行うことができます.
+リフレッシュを行うには, ネームサービスビューの上部に存在するボタンを押下するか, コンテキストメニューにて''「Refresh」''を選択します.
+
+****ネームサービスビューの表示範囲を変更する
+ネームサービスビューでは、RTCの数が多くなることによって操作する範囲が煩雑化するのを防ぐために, 表示ルートの位置を移動する機能があります.
+表示ルートを移動するには, 移動する先を選択し, ''「Go Into」''で移動します.
+
+#br
+
+#ref(rtc-link13.png,nolink,center)
+CENTER:表示ルート変更
+#br
+
+#ref(rtc-link14.png,nolink,center)
+CENTER:表示ルート変更例
+#br
+移動後は, ''「Go Back」''で1階層上に上ることができます.
+また, ''「Go Home」''で最上位の階層に戻ります.
+
+****ネームツリーの内容の編集
+ネームサービスビューでは, ネームサーバに登録されているコンテキストやオブジェクトの削除を行うことができます.
+(追加を行うことはできません)
+コンテキストやオブジェクトを削除するには, コンテクストメニューにて''「Delete from Name Service」''ボタンを押下します.
+ネームサービス上でRTコンポーネントのエントリを削除しても, RTコンポーネント自体が削除されたり終了したりすることはありません.
+
+また, 登録されているネームサーバについても同様に削除することができます.
+#br
+
+#ref(rtc-link15.png,nolink,center)
+#br
+
+
+***コンフィグレーションビュー(ConfigurationView)
+下図の枠で囲まれたビューがコンフィギュレーションビューです.
+#br
+
+#ref(rtc-link16.png,nolink,center)
+CENTER:''コンフィグレーションビュー(ConfigurationView)''
+#br
+コンフィグレーションビューでは、選択されたRTCのコンフィグレーションを表示/編集することができます.
+左側にCofigurationSetのリストが表示され, 右側にConfigurationSet内のプロパティが表示されます.
+
+#br
+
+#ref(rtc-link17.png,nolink,center)
+#br
+
++選択されているコンポーネント名.
++選択されているConfigurationSet名.
++アクティブになっているConfigurationSet. また, アクティブなConfigurationSetを変更することができる.
++ConfigurationSetのリスト.
++左側で選択されているConfigurationSetのプロパティの名前.
++左側で選択されているConfigurationSetのプロパティの値.
++ConfigurationSetを追加/削除するボタン.
++プロパティを追加/削除するボタン.
++変更内容を適用/キャンセルするボタン.
+
+コンフィグレーションビューで編集中の情報は, 9.の適用ボタンが押下されるまで適用されません.
+また, 修正中(未適用)の情報は赤く表示されます.
+
+#br
+
+#ref(rtc-link18.png,nolink,center)
+#br
+
+コンフィグレーションビューに表示される情報は, RTコンポーネント選択時に最新の情報をキャッシュして表示しています(コンフィグレーションの編集に備えるため).
+あるRTコンポーネントを選択したままで, 他(のRtcLinkなど)からコンフィギュレーションが変更されると,　コンフィギュレーション情報の不整合が生じますので注意してください.
+RtcLinkはコンフィギュレーションの編集結果の適用時には, 以前の情報に関係なく完全に上書きますので注意してください.
+
+***プロパティビュー(PropertyView) 
+下図の枠で囲まれた部分がプロパティビューです.
+#br
+
+#ref(rtc-link20.png,nolink,center)
+CENTER:プロパティビュー(PropertyView)
+#br
+表示されるアイコンの意味は以下のとおりです.
+
+|
+#ref(prof_icon1.png,nolink,center)|RTC|InstanceName, TypeName, Description, Vender, Category, State((※1番目のExecutionContextのLifeCycleStateを基にして表示される))|
+|
+#ref(prof_icon2.png,nolink,center)|ExecutionContext|State, Kind, Rate|
+|
+#ref(prof_icon3.png,nolink,center)|ServicePort|Name, プロパティ情報のリスト|
+|
+#ref(prof_icon4.png,nolink,center)|Outport|Name, プロパティ情報のリスト|
+|
+#ref(prof_icon5.png,nolink,center)|Inport|Name, プロパティ情報のリスト|
+|
+#ref(prof_icon5.png,nolink,center)|PrtInterfaceProfile|InterfaceName, TypeName, PortInterfacePolarity|
+
+なお, OMG RTCの仕様では、RTCのLifeCycleStateはExecutionContextごとに存在します.
+つまり状態は複数存在しますが, RtcLinkでは1番目のExecutionContextのみを使用してSTATEを表示します.
+***システムエディタ(SystemEditor)
+下図の枠で囲まれた部分がシステムエディタ(SystemEditor)です.
+
+#br
+
+#ref(rtc-link22.png,nolink,center)
+CENTER:''システムエディタ(SystemEditor)''
+#br
+
+システムエディタでは, RTコンポーネントの状態がリアルタイムで表示されます.
+またポート間の接続や, RTコンポーネントの状態を変更することでシステム構築, 動作検証を行うことができます.
+
+#br
+
+#ref(rtc-link23.png,nolink,center)
+CENTER:''システムエディタ(SystemEditor)''
+#br
+
+****システムエディタを開く&aname(systemediter);
+新しいシステムエディタを開くには, ツールバーの''「Open New System Editor」''ボタンを押下するか, メニューバーの''[ファイル]-[ Open New System Editor]''を選択します.
+#br
+
+#ref(rtc-link24.png,nolink,center)
+CENTER:''ツールバーからOpen New System Editorを選択''
+#br
+
+#br
+
+#ref(rtc-link25.png,nolink,center)
+CENTER:''ファイルメニューから Open New System Editorを選択''
+#br
+
+****RTCをシステムエディタに配置する
+RTCをシステムエディタに配置するには, ネームサービスビューからRTコンポーネントをドラッグ＆ドロップします.
+
+#br
+
+#ref(rtc-link26.png,nolink,center)
+CENTER:''コンポーネントをシステムエディタに配置する''
+#br
+
+****RTコンポーネントの表示 
+システムエディタに配置されたRTコンポーネントは矩形で表示され, ポートはその矩形の周りに表示されます.
+また, それぞれの状態が色で表現されます.
+
+#br
+
+#ref(rtc-link27.png,nolink,center)
+CENTER:''RTコンポーネント表示の例''
+#br
+
+アイコンと状態色の一覧は以下のとおりです.
+
+-コンポーネントの状態
+//|オブジェクト|形状|状態|色|変更可|
+
+--RTコンポーネント
+#ref(box_icon.png,nolink,center)
+|状態|色|変更可|
+|CREATED|&color(white){■};(白)|○|
+|INACTIVE|&color(blue){■};(青)|○|
+|ACTIVE|&color(lime){■};(緑)|○|
+|ERROR|&color(red){■};(赤)|○|
+|UNKNOWN|&color(black){■};(黒)|○|
+
+--ExecutionContext(RTCの外周線)
+|状態|色|変更可|
+|RUNNING|&color(black){□};(黒)|×|
+|STOPPED|&color(gray){□};(灰色)|×|
+
+--InPort
+#ref(in_p_icon.png,nolink,center)
+
+|状態|色|変更可|
+|未接続|&color(blue){■};(青)|×|
+|接続あり|&color(lime){■};(緑)|×|
+
+--OutPort
+#ref(out_p_icon.png,nolink,center)
+
+|状態|色|変更可|
+|未接続|&color(blue){■};(青)|×|
+|接続あり|&color(Lime){■};(緑)|×|
+
+--ServicePort
+#ref(svc_icon.png,nolink,center)
+
+|状態|色|変更可|
+|未接続|&color(blue){■};(青)|×|
+|接続あり|&color(aqua){■};(水色)|×|
+
+
+//|オブジェクト|形状|状態|色|変更可|
+//|RTコンポーネント|#ref(box_icon.png,nolink,center)|CREATED|&color(white){■};(白)|○|
+//|~|~|INACTIVE|&color(blue){■};(青)|○|
+//|~|~|ACTIVE|&color(lime){■};(緑)|○|
+//|~|~|ERROR|&color(red){■};(赤)|○|
+//|~|~|UNKNOWN|&color(black){■};(黒)|○|
+//|ExecutionContext|RTCの外周線|RUNNING|&color(black){□};(黒)|×|
+//|~|~|STOPPED|&color(gray){□};(灰色)|×|
+//|InPort|#ref(in_p_icon.png,nolink,center)|未接続|&color(blue){■};(青)|×|
+//|~|~|接続あり|&color(lime){■};(緑)|×|
+//|OutPort|#ref(out_p_icon.png,nolink,center)|未接続|&color(blue){■};(青)|×|
+//|~|~|接続あり|&color(Lime){■};(緑)|×|
+//|ServicePort|#ref(svc_icon.png,nolink,center)|未接続|&color(blue){■};(青)|×|
+//|~|~|接続あり|&color(aqua){■};(水色)|×|
+
+
+

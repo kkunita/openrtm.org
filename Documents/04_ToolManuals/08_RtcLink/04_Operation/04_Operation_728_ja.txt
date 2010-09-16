@@ -1,0 +1,143 @@
+**RtcLinkを用いたRTコンポーネントの操作
+
+***RTコンポーネントの状態を変更する
+システムエディタでは, RTコンポーネントを選択し, ''「Activate」'', ''「Deactivate」'', ''「Reset」'', ''「Finalize」'', ''「Exit」'', ''「Start」'', ''「Stop」''を実行することができます.
+また, ネームサービスビューでも同様操作を実行することができます. 
+
+#br
+
+#ref(rtc-link33.png,nolink,center)
+CENTER:''ネームサービスビュー(左)とシステムエディタ(右)から状態を変更する''
+#br
+
+これらのアクションの意味は以下のとおりです.
+
+|アクション名|実行対象|意味|
+|Activate|1番目のExecutionContext|Active化する|
+|Deactivate|〃|非Active化する|
+|Reset|〃|Resetする|
+|Finalize|RTコンポーネント|Finalizeする|
+|Exit|〃|Exitする|
+|Start|1番目のExecutionContext|Startする|
+|Stop|〃|Stopする|
+
+また, ツールバーとコンテクストメニューから, システムエディタに含まれるすべてのRTコンポーネントへ''Activate'', ''Deactivate'', ''Start'', ''Stop''を実行することができます.
+#br
+
+#ref(rtc-link34.png,nolink,center)
+CENTER:''ツールバーボタン:全コンポーネントを一括操作可能''
+#br
+
+All系のアクションは, 1番目以外のExecutionContextについても行われます.
+''Activate''や''Start''を画面内のRTコンポーネントに１つずつ行った場合と結果が異なることに注意してください.
+
+***ポート間を接続する
+システムエディタでは, RTコンポーネントのポート間を接続することができます.
+ポート間を接続するには, ポートとポートをドラッグ＆ドロップでつなぎます.  
+#br
+
+#ref(rtc-link35.png,nolink,center)
+#br
+
+ドラッグ＆ドロップ終了後, 接続に必要な情報の入力を促すダイアログが表示されます.
+#br
+
+#ref(rtc-link36.png,nolink,center)
+#br
+
+このダイアログでは, ConnectorProfileを作成します.
+ConnectorProfileは, それぞれのポートが必要とする条件を満たすように作成しなければなりません, このダイアログでは自動的に必要な条件を満たす値のみが入力できるようになっています.
+
+必要な条件を満たすことができない接続の場合には, ドラッグ＆ドロップの接続時に禁止マークが表示され, ドラッグ＆ドロップを行うことができません.  
+#br
+
+#ref(rtc-link37.png,nolink,center) \\
+#br
+
+ポート間の接続には, データポート間接続とサービスポート間接続があります.
+
+***データポート間接続
+データポートの接続で, 「InPort」と「OutPort」を接続します. これらの間をドラッグ＆ドロップでつなぐと以下のダイアログが表示されます. 
+#br
+
+#ref(rtc-link38.png,nolink,center)
+#br
+
+ダイアログの項目と条件は以下のとおりです. 
+
+|項目|プロファイル名|概要|
+|Data Type|''dataport.data_type''|ポートが使用するデータ型.|
+|Interface Type|''dataport.interface_type''|データポートが使用するインターフェースタイプ.デフォルトではCORBA_Anyのみ使用可能.|
+|Dataflow Type|''dataport.dataflow_type''|データフロー型.Push型とPull型がある.|
+|Subscription Type|''dataport.subscription_type''|サブスクリプション型.Push型の時のみ意味を持つ.New, Periodic, Flush型がある.|
+|Push Rate(Hz)|''dataport.push_interval''|Subscription Type がPeriodicのときのデータ送信周期. Subscription Typeが''Periodic''の時のみ指定可能.|
+
+これらの項目について, RtcLinkは指定可能な値を, それぞれのポートの値リストから文字列のマッチングを行って作成します. 
+このため, 双方のポートに対してANYしか指定されていないような場合には, 入力可能な値を判断することができません.
+このため双方のポートにANYが含まれている場合に, RtcLinkは任意の文字列を入力できるようにしています. 任意の文字列が入力可能な項目には, 「任意入力可」と表示されます.
+***サービスポート間接続 
+サービスポート間の接続では, ''「ServicePort」''と''「ServicePort」''を接続します. 
+これらの間をドラッグ＆ドロップでつなぐと以下のダイアログが表示されます.  
+
+#br
+
+#ref(rtc-link39.png,nolink,center)
+#br
+
+サービスポートの場合, 必須となる接続の条件はありません.
+しかし, ServicePort間でのPortInterfaceProfileが完全にマッチングしない場合, 接続ダイアログにて警告を表示します. 
+ここでいう完全なマッチングとは, PortInterfaceProfileの「type」が同じで, 「polarity」がお互いにPROVIDEDとREQUIredになっていること.
+また余りなく (PortInterfaceProfileはそれぞれのポートに複数存在する) すべてのPortInterfaceProfileがマッチングすることを指しています. 
+
+***ポート間の接続を切断する 
+ポート間の接続を切断するには, 接続を選択しDeleteボタンを押下するか, コンテクストメニューに表示されるDeleteを押下します.  
+
+#br
+
+#ref(rtc-link40.png,nolink,center)
+#br
+
+
+
+***システムをセーブする
+システムエディタで構築すしたシステムはセーブすることができます.
+セーブするには, メニューの''[ファイル]''もしくはエディタを右クリックして''「Save…」''を選択します.
+(''「SaveAs…」''では, セーブするファイルを任意選択することができます) 
+
+#br
+
+#ref(rtc-link41.png,nolink,center)
+#br
+
+
+****セーブしたシステムをオープンする
+セーブしたシステムエディタをオープンするには, エディタを右クリックして
+「Open」を選択します.  
+#br
+
+#ref(rtc-link42.png,nolink,center)
+#br
+
+オープン後は, RtcLinkはリモートのシステムを正として最新の情報へと更新を行います.
+セーブ内容をシステムへ復元するには, 次の節で説明する「Open and Restore…」を使用してください.
+
+***セーブしたシステムをオープンおよび復元する
+セーブしたシステムエディタをオープンおよび復元するには, エディタを右クリックして「Open and Restore…」を選択します.  
+#br
+
+#ref(rtc-link43.png,nolink,center) \\
+#br
+
+システムへ復元されるのは以下の内容です. 
+-ポート間の接続
+-コンフィグレーション情報
+
+また, 復元後は自動的にAll Activateが実行されます. 
+復元に失敗した場合には, エラー内容が表示されます. 
+また, RtcLinkはエラー発生時でも, できる限りの復元を試みます. 
+
+***セーブしたシステムを復元する（コンソール）
+RtcLinkには, GUIからではなくコンソールにて, システムを復元する機能も持っています. コンソール復元を行うには, 別途配布されているRtcLinkのコンソール復元パッケージの「ConsoleRestore」フォルダにある, 「run.bat」をセーブファイルを指定して実行します. 
+
+ C:\tmp\RtcLink\ConsoleRestore > run.bat C:\tmp\save.rtclink 
+
