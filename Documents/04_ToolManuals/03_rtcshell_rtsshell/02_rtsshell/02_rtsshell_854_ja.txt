@@ -93,7 +93,8 @@ rtstart と rtstop はこの情報を利用します。rtstart は Activation ブロックに含まれ
 
 ラインの残りはアクションの説明です。
 
-**シェル補完&aname(shell);
+&aname(shell);
+**シェル補完
 
 Bashの補完機能を追加するスクリプトが含まれます。''${prefix}/share/rtsshell''にインストールされます。（''${prefix}''はrtsshellがインストールされたディレクトリです。）例えば''/usr/local/''にインストールされた場合、以下のコマンドで読み込んでください。
 
@@ -101,7 +102,8 @@ Bashの補完機能を追加するスクリプトが含まれます。''${prefix}/share/rtsshell''にイ
 
 以前のコマンドを''~/.bashrc''ファイルに追加して、新しいシェルに自動的に読み込まれます。
 
-**リポジトリ&aname(repo);
+&aname(repo);
+**リポジトリ
 
 最新版のソースは[[githubでGitのリポジトリ>http://github.com/gbiggs/rtsshell]]にあります。「Download source」をクリックしてダウンロードをすることができます。「git clone」を使うこともできます。パッチを送りたがったら、この方法がおすすめします。
 
