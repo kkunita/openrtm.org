@@ -180,11 +180,11 @@ RTSystemEditor ‚Í Eclipse ƒvƒ‰ƒOƒCƒ“‚Å‚ ‚é‚½‚ßA Eclipse –{‘Ì‚ğƒCƒ“ƒXƒg[ƒ‹‚·‚é•
 
 Eclipse ‚ğ‹N“®‚µA ƒƒjƒ…[‚©‚ç''ƒEƒCƒ“ƒhƒE(W)¨ƒp[ƒXƒyƒNƒeƒBƒu‚ğŠJ‚­(O)¨‚»‚Ì‘¼(O)''‚ğ‘I‘ğ‚·‚é‚ÆA Ÿ‚Ì‚æ‚¤‚Èƒp[ƒXƒyƒNƒeƒBƒu‘I‘ğ‰æ–Ê‚ªŒ»‚ê‚Ü‚·B
 
-#ref(fig4PerspectiveSelection.png,nolink,center)
+#ref(fig4PerspectiveSelection_ja.png,90%,center)
 #br
 ƒp[ƒXƒyƒNƒeƒBƒuˆê——‚É‚ ‚éRT System Editor‚ğ‘I‘ğ‚·‚é‚ÆA Ÿ‚Ì‚æ‚¤‚È‰æ–Ê‚ªŒ»‚ê‚ÄRTSystemEditor‚ª‹N“®‚³‚ê‚Ü‚·B
 
-#ref(fig5InitialOfRTSystemEditorstarts.png,80%,center)
+#ref(fig5InitialOfRTSystemEditorstarts_ja.png,80%,center)
 #br
 
 ‚à‚µA ƒp[ƒXƒyƒNƒeƒBƒu‚Ìˆê——‚ÉRT System Editor‚ªŒ»‚ê‚È‚¢ê‡‚ÍA  EMF ‚â GEF ‚â XSD ‚â ‚i‚c‚s ‚ª³‚µ‚­ƒCƒ“ƒXƒg[ƒ‹‚Å‚«‚Ä‚¢‚é‚©‚Ç‚¤‚©A RT System Editor‚ªpluginƒfƒBƒŒƒNƒgƒŠ‚É³‚µ‚­ƒRƒs[‚³‚ê‚Ä‚¢‚é‚©‚ğÄ“xƒ`ƒFƒbƒN‚µ‚Ä‚­‚¾‚³‚¢B

@@ -60,32 +60,34 @@ RTCBuilder ‚Í Eclipse ƒvƒ‰ƒOƒCƒ“‚Å‚ ‚é‚½‚ßA Eclipse –{‘Ì‚ðƒCƒ“ƒXƒg[ƒ‹‚·‚é•K—v‚
 Eclipse ‚ð‹N“®‚µA ƒƒjƒ…[‚©‚ç''ƒEƒCƒ“ƒhƒE(W)¨ƒp[ƒXƒyƒNƒeƒBƒu‚ðŠJ‚­(O)¨‚»‚Ì‘¼(O)''‚ð‘I‘ð‚·‚é‚ÆA ŽŸ‚Ì‚æ‚¤‚Èƒp[ƒXƒyƒNƒeƒBƒu‘I‘ð‰æ–Ê‚ªŒ»‚ê‚Ü‚·B
 #br
 
-#ref(fig2-3PerspectiveSelection.png,nolink,center)
+#ref(fig2-3PerspectiveSelection_ja.png,50%,center)
 CENTER:''ƒc[ƒ‹ƒo[‚©‚ç‚Ì‹N“®''
 #br
 ƒp[ƒXƒyƒNƒeƒBƒuˆê——‚É‚ ‚éRTC Builder‚ð‘I‘ð‚·‚é‚ÆAŽŸ‚Ì‚æ‚¤‚È‰æ–Ê‚ªŒ»‚ê‚ÄRTCBuilder‚ª‹N“®‚³‚ê‚Ü‚·B
 #br
 
-#ref(RTCBuilderInit.png,80%,center)
+
+#ref(fig2-4RTCBuilderInit_ja.png,60%,center)
 #br
 ~ƒc[ƒ‹ƒo[‚Ì¢ Open New RTC Builder Editor£ƒ{ƒ^ƒ“‚ð‰Ÿ‰º‚·‚é‚©Aƒƒjƒ…[ƒo[‚Ì[file]-[Open New Builder Editor]‚ð‘I‘ð‚·‚é‚±‚Æ‚ÅABuilderƒGƒfƒBƒ^‚ª‹N“®‚µ‚Ü‚·B
 #br
 
-#ref(fig2-9ToolsBarOpenNewRtcBuilder.png,nolink,center)
+#ref(fig2-9ToolsBarOpenNewRtcBuilder_ja.png,nolink,center)
 #br
 #br
 
-#ref(fig2-10FileMenuOpenNewBuilder.png,nolink,center)
+
+#ref(fig2-10FileMenuOpenNewBuilder_ja.png,80%,center)
 #br
 #br
 
-#ref(fig2-4RTCBuilderInit.png,80%,center)
+//#ref(fig2-4RTCBuilderInit.png,80%,center)
 #br
 
 #br
 
 ŽQlF
-@¨ [[''FAQ:'' Eclipse‚Ì‹N“®•û–@ >/ja/node/248#toc9]]
+@¨ [[''FAQ:'' Eclipse‚Ì‹N“®•û–@ >/ja/node/248#eclipse]]
 
 #br
 
