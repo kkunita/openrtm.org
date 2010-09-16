@@ -1,0 +1,54 @@
+**概要 
+OpenRTM-aistおよびRTコンポーネントをIntel(i386)以外のCPUで動かしたい場合、SH4やPPCなど遅いCPUではコンパイルに時間がかかり効率よく開発できない場合があります。他のCPU用のOpenRTMおよびRTコンポーネントをIntel(i386)CPU上でコンパイル・開発するためのクロス開発環境を作成すれば、C2DやQuadなど最近の速いPC上で効率よく開発することが出来ます。
+&color(red){このTIPSはアックスの森田さんにご提供いただきました。};
+
+**開発環境 
+Fedora6推奨です。
+他の環境では、ビルドスクリプトが動作しない可能性があります。
+[[こちら>VMware Image]]にある講習会用のVMwareImageが利用可能です。
+**必要なファイルをダウンロードする
+クロス開発に必要なファイルをダウンロードします。
+
+***toolchain
+toolchainとは特定のアーキテクチャ用のビルドと開発に使用されるソフトウェアパッケージの集合体のことです。
+個々では、SH4をターゲットアーキテクチャとした開発を想定していますので、SH4用のtoolchainが必要となります。
+-[[toolchain_345.tar.gz:http://www.superh-linux.org/archive/bsp/sh7770_lanbic/toolchain_345.tar.gz]]
+
+***ACE 
+ACEはOpenRTM-aistで必要とされるライブラリです。
+SH4用にビルドされたものが必要となりますので、すでにPCにACEがインストールされていても、後述の自動化スクリプトで改めてビルドする必要があります。
+-[[ACE-5.4.10.tar.gz:http://download.dre.vanderbilt.edu/previous_versions/ACE-5.4.10.tar.gz]]
+
+***omniORB
+omniORBはOpenRTM-aistで必要とされるライブラリです。
+SH4用にビルドされたものが必要となりますので、すでにPCにomniORBがインストールされていても、後述の自動化スクリプトで改めてビルドする必要があります。
+-[[omniORB-4.0.7.tar.gz:http://downloads.sourceforge.net/omniorb/omniORB-4.0.7.tar.gz?modtime=1137170883&big_mirror=1]]
+
+***boost
+-[[boost-jam-3.1.14-1-linuxx86.tgz:http://downloads.sourceforge.net/boost/boost-jam-3.1.14-1-linuxx86.tgz?modtime=1177983118&big_mirror=0]]
+-[[boost-1_32_0.tar.gz:http://downloads.sourceforge.net/boost/boost_1_32_0.tar.gz?modtime=1100885484&big_mirror=0]]
+
+***OpenRTM-aist 
+-[[OpenRTM-aist-0.4.0-RELESE.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/cxx/0.4.0/OpenRTM-aist-0.4.0-RELEASE.tar.gz]]
+
+***ビルド自動化スクリプト
+以下のビルド自動スクリプトをダウンロードします。
+上記のパッケージのパッチおよび自動ビルドに必要なスクリプトが入っています。(アックス 森田さん提供)
+-[[Build_SH4_OpenRTM070921.tgz>http://www.openrtm.org/OpenRTM-aist/download/CrossCompile/Build_SH4_OpenRTM070921.tgz]]
+
+**ビルドする
+***アーカイブの展開
+まず、以下の3つのディレクトリ(A),(B),(C)を用意します。
+-(A) Build_SH4_OpenRTM.tgzを展開してできるディレクトリ(Build_SH4_OpenRTM)
+-(B) OpenRTM-aistの環境がインストールされるディレクトリ
+-(C) ビルド作業用ディレクトリ
+
+***ビルドスクリプトの実行
++上記のtoolchain, ACE, omniORB, boost, OpenRTM-aistのアーカイブを
+ディレクトリ(A)の中に置く。
++(A)のディレクトリ内で、以下のように./Build_SH4_SDK.shを実行します。
+
+ $./Build_SH4_SDK.sh [(B)のフルパス] [(A)のフルパス] [(C)のフルパス]
+
+スクリプトの実行が完了すると、ディレクトリ(B)内にOpenRTMの環境とSH4のtoolchain、ビルドされたACEライブラリが作成されます。
+
