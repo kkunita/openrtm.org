@@ -1,0 +1,134 @@
+#contents
+
+The Java edition of OpenRTM-aist is provided as a zip file, which merely needs to be extracted to complete the installation.
+
+** Requirements &aname(jyouken);
+-[[Java Development Kit 5.0 (JDK 5):http://java.sun.com/j2se/1.5.0/download.html]]
+&color(red){※ Java 1.4 is not supported.};
+
+** Installation overview
+
+The install process has three steps:
+
+-[[Install Java>#instjava]] to get the java and javac commands.
+-[[Extract OpenRTM-aist-Java>#instrtm]] into the correct location.
+-[[Set the RTM_JAVA_ROOT>#hensu]] environment variable.
+
+&aname(instjava);
+** Install Java
+
+OpenRTM-aist-Java requires J2SE 5.0 (JDK5) or higher. Download the correct J2SE for your platform from the below websites.
+
+-[[Java SE Development Kit 5.0 Update 15 Download Top :https://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/ViewProductDetail-Start?ProductRef=jdk-1.5.0_15-oth-JPR@CDS-CDS_Developer]]
+-[[JDK5 Top:http://java.sun.com/javase/downloads/index_jdk5.jsp]]
+
+*** Execute the installer
+
+Refer to the [[JDK installation hints:/ja/content/tipsjava100]] for tips on installing Java on various distributions. The Java installer must be executed as a superuser.
+
+&color(red){''※ When installing Java on Fedora Core, be aware of the following issues:''};
+
+　→ [[''FAQ:'' Installing Java on Fedora Core>/node/151#javafedora]]
+
+　→ [[''FAQ:'' Q. An error appears in the RtcLink NameService View on Fedora Core >RtcLink.#fedoraNS]]
+
+*** Test the installation
+
+In a terminal, execute this command to test Java. If the Java version is displayed, the installation is complete.
+
+ $ java -version
+
+ java version "1.5.0_15"
+ Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_15-b04)
+ Java HotSpot(TM) Client VM (build 1.5.0_15-b04, mixed mode, sharing)
+
+&aname(instrtm);
+** Install OpenRTM-aist-Java
+
+*** Download and extract the zip file
+
+Download the jar file and samples from [[here>/en/content/openrtm-aist-java-100-release#winpkg]]. Extract the zip file into a suitable location. The extracted location does not matter, but do not change the directory structure*. The "jar" directory in the extracted location must be added to the RTM_JAVA_ROOT environment variable.
+
+*If you wish to change the directory structure of the extracted files, refer [[here>RTコンポーネント作成（Java版）.#Antbuild]].
+
+&aname(hensu);
+** Setting environment variables
+
+The environment variables should be changed in a file appropriate to your shell. For example, users of the bash shell should edit ".bashrc" in their home directory, while users of the csh shell should edit ".cshrc" in their home directory. If you wish to change the variable system-wide, edit the files in /etc/profile. Note that changing the variables for an individual user or system wide will affect how the GUI tools such as Eclipse should be started. See [[here>RtcTemplate.#eclipse]] for more information.
+
+- Variable:RTM_JAVA_ROOT
+- Value: Directory extracted from the zip file containing the "jar" directory. The "jar" directory contains the class library file (OpenRTM-aist-X.X.X.jar) and commons-cli-1.1.jar, and should be below a directory called "OpenRTM-aist\<version>". Be sure to include "OpenRTM-aist\<version>" in RTM_JAVA_ROOT.
+
+For example, if the bash shell is in use and OpenRTM-aist-Java has been extracted to /usr/lib, the following line can be appended to .bashrc:
+
+ export RTM_JAVA_ROOT=/usr/lib/OpenRTM-aist/<version>
+
+To make this change active in the current shell, execute:
+
+ source ~/.bashrc
+
+or open a new shell.
+
+** Zip file contents
+ +--<install_dir>
+     +--OpenRTM-aist
+        +--<version>
+           +--jar
+           +--examples
+           +--JavaDoc
+           +--JavaDocEn
+
+***jar
+OpenRTM-aist-Java jar file and other necessary jar files.
+
+- jar/OpenRTM-aist-X.X.X.jar  （X.X.Xはバージョン）
+- jar/commons-cli-1.1.jar  
+- jar/rtcd.jar  
+- jar/rtcprof.jar
+
+***examples
+
+Sample class files and shell scripts to launch them.
+
+-Sample class files
+ examples/RTMExamples/SeqIO/SeqIn.class
+ examples/RTMExamples/SeqIO/view/SeqView.class
+ examples/RTMExamples/SeqIO/view/RootPane.class
+ examples/RTMExamples/SeqIO/view/SeqViewApp.class
+ ...
+
+- Sample execution shell scripts
+ examples/AutoTestIn.sh
+ examples/AutoTestOut.sh
+ examples/Composite.sh
+ examples/ConfigSample.sh
+ examples/Connector.sh
+ examples/ConsoleIn.sh
+ examples/ConsoleOut.sh
+ examples/ExtConnector.sh
+ examples/ExtConsoleIn.sh
+ examples/ExtConsoleOut.sh
+ examples/GUIIn.sh
+ examples/MyServiceConsumer.sh
+ examples/MyServiceProvider.sh
+ examples/SeqIn.sh
+ examples/SeqOut.sh
+ examples/SinCosOut.sh
+ examples/rtcd_java.sh
+ examples/start-orbd.sh
+
+- Sample source code
+ examples/RTMExamples/SeqIO/SeqInImpl.java
+ examples/RTMExamples/SeqIO/SeqOut.java
+ examples/RTMExamples/SeqIO/view/RootPane.java
+ examples/RTMExamples/SeqIO/view/SeqView.java
+ ...
+
+***JavaDoc
+
+Contains the class reference as Javadoc HTML (Japanese).
+
+***JavaDocEn
+
+Contains the class reference as Javadoc HTML (English).
+
