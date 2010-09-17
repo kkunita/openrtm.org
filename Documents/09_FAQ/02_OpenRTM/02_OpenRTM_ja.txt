@@ -1,23 +1,26 @@
 #contents(4)
 OpenRTM-aist(C++”ÅAPython”ÅAJava”Å)‚ÉŠÖ‚·‚éƒgƒ‰ƒuƒ‹ƒVƒ…[ƒeƒBƒ“ƒO‚ğ‚Ü‚Æ‚ß‚Ü‚µ‚½B
 
-#clear
+//#clear
 
 **OpenRTM-aist(‹¤’Ê)
 ***OS‹¤’Ê
 ****ƒRƒ“ƒ|[ƒlƒ“ƒg‚Í‹N“®‚µ‚Ä‚¢‚é‚Í‚¸‚È‚Ì‚Éƒ]ƒ“ƒrƒIƒuƒWƒFƒNƒg‚Æ‚µ‚Ä•\¦‚³‚ê‚éB
-: |ƒRƒ“ƒ|[ƒlƒ“ƒg‚Í‹N“®‚µ‚Ä‚¨‚èAƒl[ƒ€ƒT[ƒo‚É‚à“o˜^‚³‚ê‚Ä‚¢‚é‚Ì‚ÉARTSystemEditor‚Ìƒl[ƒ€ƒT[ƒrƒXƒrƒ…[ã‚Å‚Íƒ]ƒ“ƒrƒIƒuƒWƒFƒNƒg‚Æ‚µ‚Ä•\¦‚³‚ê‚Ä‚¨‚èAƒVƒXƒeƒ€ƒGƒfƒBƒ^‚Éƒhƒ‰ƒbƒOƒAƒ“ƒhƒhƒƒbƒv‚µ‚Ä‚à‰½‚à•\¦‚³‚ê‚È‚¢B
-::[Œ´ˆö]ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®‚µ‚½ƒzƒXƒg‚É“’B‚Å‚«‚È‚¢ | RTSystemEditor‚ª“®ì‚µ‚Ä‚¢‚éPC‚©‚çƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®‚µ‚½ƒzƒXƒg‚É‰½‚ç‚©‚Ì——R‚Å“’B‚Å‚«‚Ä‚¢‚È‚¢‰Â”\«‚ª‚ ‚è‚Ü‚·B~
+ƒRƒ“ƒ|[ƒlƒ“ƒg‚Í‹N“®‚µ‚Ä‚¨‚èAƒl[ƒ€ƒT[ƒo‚É‚à“o˜^‚³‚ê‚Ä‚¢‚é‚Ì‚ÉARTSystemEditor‚Ìƒl[ƒ€ƒT[ƒrƒXƒrƒ…[ã‚Å‚Íƒ]ƒ“ƒrƒIƒuƒWƒFƒNƒg‚Æ‚µ‚Ä•\¦‚³‚ê‚Ä‚¨‚èAƒVƒXƒeƒ€ƒGƒfƒBƒ^‚Éƒhƒ‰ƒbƒOƒAƒ“ƒhƒhƒƒbƒv‚µ‚Ä‚à‰½‚à•\¦‚³‚ê‚È‚¢B
+*****[Œ´ˆö]ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®‚µ‚½ƒzƒXƒg‚É“’B‚Å‚«‚È‚¢
+RTSystemEditor‚ª“®ì‚µ‚Ä‚¢‚éPC‚©‚çƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®‚µ‚½ƒzƒXƒg‚É‰½‚ç‚©‚Ì——R‚Å“’B‚Å‚«‚Ä‚¢‚È‚¢‰Â”\«‚ª‚ ‚è‚Ü‚·B~
 ‚Ü‚¸ARTSystemEditor‚ª“®ì‚µ‚Ä‚¢‚éPC‚©‚çƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®‚µ‚½ƒzƒXƒg‚É‘Î‚µ‚Äping‚ª’Ê‚é‚©Šm”F‚µ‚Ä‚­‚¾‚³‚¢B~
 —á‚¦‚ÎAˆÈ‰º‚Ì3‘ä‚ÌƒzƒXƒgA,B,C‚ª‚ ‚é‚Æ‚µ‚Ü‚·B
-:::hostA: ƒRƒ“ƒ|[ƒlƒ“ƒg‚ª“®‚¢‚Ä‚¢‚éƒzƒXƒg
-:::hostB: ƒl[ƒ€ƒT[ƒo‚ª“®‚¢‚Ä‚¢‚éƒzƒXƒg
-:::hostC: RTSystemEditor‚ª“®‚¢‚Ä‚¢‚éƒzƒXƒg
-:: |‚±‚ê‚ç‚ÌƒzƒXƒg‚Ìƒlƒbƒgƒ[ƒN‚ªˆÈ‰º‚Ì‚æ‚¤‚È\¬‚É‚È‚Á‚Ä‚¨‚èA
-:::[hostA]-(ƒlƒbƒgƒ[ƒNI)-[hostB]-(ƒlƒbƒgƒ[ƒNI)-[hostC]
-:: |‚©‚ÂhostB‚ª''ƒlƒbƒgƒ[ƒNI''‚Æ''ƒlƒbƒgƒ[ƒNII''ŠÔ‚ğ“KØ‚Éƒ‹[ƒeƒBƒ“ƒO‚·‚é‚æ‚¤‚Éİ’è‚³‚ê‚Ä‚¢‚È‚¯‚ê‚ÎAhostC‚©‚çhostA‚Ö‚Í“’B‚Å‚«‚Ü‚¹‚ñB~
+--hostA: ƒRƒ“ƒ|[ƒlƒ“ƒg‚ª“®‚¢‚Ä‚¢‚éƒzƒXƒg
+--hostB: ƒl[ƒ€ƒT[ƒo‚ª“®‚¢‚Ä‚¢‚éƒzƒXƒg
+--hostC: RTSystemEditor‚ª“®‚¢‚Ä‚¢‚éƒzƒXƒg
+
+‚±‚ê‚ç‚ÌƒzƒXƒg‚Ìƒlƒbƒgƒ[ƒN‚ªˆÈ‰º‚Ì‚æ‚¤‚È\¬‚É‚È‚Á‚Ä‚¨‚èA~
+''[hostA]-(ƒlƒbƒgƒ[ƒNI)-[hostB]-(ƒlƒbƒgƒ[ƒNI)-[hostC]''~
+‚©‚ÂhostB‚ª''ƒlƒbƒgƒ[ƒNI''‚Æ''ƒlƒbƒgƒ[ƒNII''ŠÔ‚ğ“KØ‚Éƒ‹[ƒeƒBƒ“ƒO‚·‚é‚æ‚¤‚Éİ’è‚³‚ê‚Ä‚¢‚È‚¯‚ê‚ÎAhostC‚©‚çhostA‚Ö‚Í“’B‚Å‚«‚Ü‚¹‚ñB~
 ‚±‚¤‚¢‚Á‚½ê‡‚ÍAhostB‚ğ“KØ‚Éİ’è‚µ‚ÄhostC‚©‚çhostA‚Ö“’B‚Å‚«‚é‚æ‚¤‚É‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B
-::[Œ´ˆö]ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®‚µ‚½ƒzƒXƒg‚Åƒtƒ@ƒCƒ„ƒEƒH[ƒ‹‚ª—LŒø‚É‚È‚Á‚Ä‚¢‚é |ƒRƒ“ƒ|[ƒlƒ“ƒg‚ª“®ì‚µ‚Ä‚¢‚éƒzƒXƒg‚Åƒtƒ@ƒCƒ„ƒEƒH[ƒ‹‚ª“®ì‚µ‚Ä‚¢‚éê‡ARTSystemEditor‚ÆƒRƒ“ƒ|[ƒlƒ“ƒg‚ª’ÊM‚Å‚«‚¸‚É‚±‚¤‚µ‚½Œ»Û‚ª”­¶‚·‚éê‡‚ª‚ ‚è‚Ü‚·B~
+*****[Œ´ˆö]ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®‚µ‚½ƒzƒXƒg‚Åƒtƒ@ƒCƒ„ƒEƒH[ƒ‹‚ª—LŒø‚É‚È‚Á‚Ä‚¢‚é 
+ƒRƒ“ƒ|[ƒlƒ“ƒg‚ª“®ì‚µ‚Ä‚¢‚éƒzƒXƒg‚Åƒtƒ@ƒCƒ„ƒEƒH[ƒ‹‚ª“®ì‚µ‚Ä‚¢‚éê‡ARTSystemEditor‚ÆƒRƒ“ƒ|[ƒlƒ“ƒg‚ª’ÊM‚Å‚«‚¸‚É‚±‚¤‚µ‚½Œ»Û‚ª”­¶‚·‚éê‡‚ª‚ ‚è‚Ü‚·B~
 ƒtƒ@ƒCƒ„ƒEƒH[ƒ‹‚Ìİ’è‚ğŒ©’¼‚·‚©OFF‚É‚·‚é‚È‚Ç‚µ‚ÄAŠO•”‚©‚çƒRƒ“ƒ|[ƒlƒ“ƒg‚É’ÊM‚Å‚«‚é‚æ‚¤‚É‚µ‚Ä‚­‚¾‚³‚¢B
 #br
 ***Windows
@@ -27,45 +30,52 @@ OpenRTM-aist(C++”ÅAPython”ÅAJava”Å)‚ÉŠÖ‚·‚éƒgƒ‰ƒuƒ‹ƒVƒ…[ƒeƒBƒ“ƒO‚ğ‚Ü‚Æ‚ß‚Ü‚µ‚
 : |Administrator“ÁŒ ‚ğ‚Âƒ†[ƒU[‚Æ‚µ‚ÄƒƒOƒIƒ“‚µAƒCƒ“ƒXƒg[ƒ‹ì‹Æ‚ğs‚Á‚Ä‚­‚¾‚³‚¢B
 #br
 ****ƒRƒ“ƒ|[ƒlƒ“ƒg‚ªƒl[ƒ€ƒT[ƒrƒX‚É“o˜^‚³‚ê‚È‚¢B
-: |ƒl[ƒ€ƒT[ƒoAƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®ŒãARTSystemEditor‚È‚Ç‚Åƒl[ƒ€ƒT[ƒo‚ÉÚ‘±‚µAƒRƒ“ƒ|[ƒlƒ“ƒg‚ª“o˜^‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ª‚ ‚è‚Ü‚·B~
+ƒl[ƒ€ƒT[ƒoAƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®ŒãARTSystemEditor‚È‚Ç‚Åƒl[ƒ€ƒT[ƒo‚ÉÚ‘±‚µAƒRƒ“ƒ|[ƒlƒ“ƒg‚ª“o˜^‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ª‚ ‚è‚Ü‚·B~
 ‚±‚Ì‚æ‚¤‚Èê‡‚ÍA~
 ‚Ü‚¸‚ÍAƒƒOƒŒƒxƒ‹‚ğÅ‚‚É‚·‚é‚½‚ßrtc.conf‚É~
  logger.log_level:PARANOID
-: |‚ğİ’è‚µAƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®‚µ‚Ä‚İ‚Ä‚­‚¾‚³‚¢B~
+‚ğİ’è‚µAƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®‚µ‚Ä‚İ‚Ä‚­‚¾‚³‚¢B~
 ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒƒO‚É~
  naming_svc NameServer connection succeeded: corba/ƒzƒXƒg–¼:ƒ|[ƒg”Ô†
-: |‚Æ‚¢‚¤ƒƒbƒZ[ƒW–³‚¯‚ê‚ÎAƒl[ƒ€ƒT[ƒo‚Ö‚Ì“o˜^‚É¸”s‚µ‚Ä‚¢‚Ü‚·B~
+‚Æ‚¢‚¤ƒƒbƒZ[ƒW–³‚¯‚ê‚ÎAƒl[ƒ€ƒT[ƒo‚Ö‚Ì“o˜^‚É¸”s‚µ‚Ä‚¢‚Ü‚·B~
 ‚±‚Ì‚æ‚¤‚Èê‡AˆÈ‰º‚ÌŒ´ˆö‚ªl‚¦‚ç‚ê‚Ü‚·B
-::rtc.conf ‚Ì corba.nameservers ‚ª³‚µ‚­İ’è‚³‚ê‚Ä‚¢‚È‚¢|ƒRƒ“ƒ|[ƒlƒ“ƒg‚ª“Ç‚İ‚Şrtc.conf‚ª³‚µ‚­İ’è‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©Šm”F‚µ‚Ä‚­‚¾‚³‚¢B—˜—p‚µ‚æ‚¤‚Æ‚·‚éƒl[ƒ€ƒT[ƒo‚ğ openrtm.aist.go.jp ‚Æ‚¢‚¤ƒzƒXƒg–¼‚Æ‰¼’è‚·‚é‚ÆAˆÈ‰º‚Ìs‚ªrtc.conf‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñB~
+*****rtc.conf ‚Ì corba.nameservers ‚ª³‚µ‚­İ’è‚³‚ê‚Ä‚¢‚È‚¢
+ƒRƒ“ƒ|[ƒlƒ“ƒg‚ª“Ç‚İ‚Şrtc.conf‚ª³‚µ‚­İ’è‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©Šm”F‚µ‚Ä‚­‚¾‚³‚¢B—˜—p‚µ‚æ‚¤‚Æ‚·‚éƒl[ƒ€ƒT[ƒo‚ğ openrtm.aist.go.jp ‚Æ‚¢‚¤ƒzƒXƒg–¼‚Æ‰¼’è‚·‚é‚ÆAˆÈ‰º‚Ìs‚ªrtc.conf‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñB
  corba.nameservers: openrtm.aist.go.jp
-:: |‚Ü‚½Aƒl[ƒ€ƒT[ƒo‚ğƒ|[ƒg”Ô†‚ğw’è‚µ‚Ä‹N“®‚µ‚½ê‡‚É‚ÍAƒ|[ƒg”Ô†‚àw’è‚·‚é•K—v‚ª‚ ‚è‚Ü‚·Bƒl[ƒ€ƒT[ƒo‹N“®‚Éw’è‚µ‚½ƒ|[ƒg”Ô†‚ª1234”Ô‚Ìê‡AˆÈ‰º‚Ì‚æ‚¤‚Éİ’è‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B~
+
+‚Ü‚½Aƒl[ƒ€ƒT[ƒo‚ğƒ|[ƒg”Ô†‚ğw’è‚µ‚Ä‹N“®‚µ‚½ê‡‚É‚ÍAƒ|[ƒg”Ô†‚àw’è‚·‚é•K—v‚ª‚ ‚è‚Ü‚·Bƒl[ƒ€ƒT[ƒo‹N“®‚Éw’è‚µ‚½ƒ|[ƒg”Ô†‚ª1234”Ô‚Ìê‡AˆÈ‰º‚Ì‚æ‚¤‚Éİ’è‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B~
  corba.nameservers: openrtm.aist.go.jp:1234
-:: |ƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚È‚¢ê‡AƒfƒtƒHƒ‹ƒgƒ|[ƒg”Ô†2809‚ªg—p‚³‚ê‚Ü‚·B‚±‚ê‚ÍomniORB‚Ìƒl[ƒ€ƒT[ƒo(omniNames)‚ÌƒfƒtƒHƒ‹ƒgƒ|[ƒg”Ô†‚Å‚·B‚à‚µAomniORBˆÈŠO‚Ìƒl[ƒ€ƒT[ƒo‚ğg—p‚·‚éê‡‚Í’ˆÓ‚µ‚Ä‚­‚¾‚³‚¢B
-::ƒRƒ“ƒ|[ƒlƒ“ƒg‹N“®‚µ‚½ƒzƒXƒg‚©‚çƒl[ƒ€ƒT[ƒo‚ğ‹N“®‚µ‚½ƒzƒXƒg‚Öƒlƒbƒgƒ[ƒNÚ‘±‚ª‚Å‚«‚È‚¢|ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®‚µ‚½ƒzƒXƒg‚©‚çƒl[ƒ€ƒT[ƒo‚ğ‹N“®‚µ‚½ƒzƒXƒg‚Öƒlƒbƒgƒ[ƒNÚ‘±‚ªo—ˆ‚é‚©Šm”F‚µ‚Ä‚­‚¾‚³‚¢B~
+
+ƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚È‚¢ê‡AƒfƒtƒHƒ‹ƒgƒ|[ƒg”Ô†2809‚ªg—p‚³‚ê‚Ü‚·B‚±‚ê‚ÍomniORB‚Ìƒl[ƒ€ƒT[ƒo(omniNames)‚ÌƒfƒtƒHƒ‹ƒgƒ|[ƒg”Ô†‚Å‚·B‚à‚µAomniORBˆÈŠO‚Ìƒl[ƒ€ƒT[ƒo‚ğg—p‚·‚éê‡‚Í’ˆÓ‚µ‚Ä‚­‚¾‚³‚¢B
+*****ƒRƒ“ƒ|[ƒlƒ“ƒg‹N“®‚µ‚½ƒzƒXƒg‚©‚çƒl[ƒ€ƒT[ƒo‚ğ‹N“®‚µ‚½ƒzƒXƒg‚Öƒlƒbƒgƒ[ƒNÚ‘±‚ª‚Å‚«‚È‚¢
+ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‹N“®‚µ‚½ƒzƒXƒg‚©‚çƒl[ƒ€ƒT[ƒo‚ğ‹N“®‚µ‚½ƒzƒXƒg‚Öƒlƒbƒgƒ[ƒNÚ‘±‚ªo—ˆ‚é‚©Šm”F‚µ‚Ä‚­‚¾‚³‚¢B~
 ‚Ü‚¸‚ÍAping‚ª’Ê‚é‚©‚Ç‚¤‚©Šm”F‚µ‚Ü‚·B‚à‚µ’Ê‚ç‚È‚¯‚ê‚Îƒlƒbƒgƒ[ƒN‚Ìİ’è‚ğŒ©’¼‚µ‚Ä‚­‚¾‚³‚¢B~
 ping‚ª’Ê‚Á‚Ä‚àAƒtƒ@ƒCƒ„ƒEƒH[ƒ‹‚È‚Ç‚ÅÚ‘±‚ª‹Ö~‚³‚ê‚Ä‚¢‚é‰Â”\«‚ª‚ ‚è‚Ü‚·B‚Ü‚¸Aƒl[ƒ€ƒT[ƒo‚ğ‹N“®‚µ‚½ƒzƒXƒg‘¤‚Ìƒtƒ@ƒCƒ„ƒEƒH[ƒ‹‚Ìİ’è‚ğŒ©’¼‚µ‚Ä‚­‚¾‚³‚¢Bˆê”ÔŠÈ’P‚È•û–@‚ÍAƒtƒ@ƒCƒ„ƒEƒH[ƒ‹‚ğOFF‚É‚·‚é‚±‚Æ‚Å‚·B•û–@‚ÍŠeOS‚âƒtƒ@ƒCƒ„ƒEƒH[ƒ‹‚Ìİ’è•û–@‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B
-::ƒlƒbƒgƒ[ƒNƒCƒ“ƒ^[ƒtƒF[ƒX‚ª2‚ÂˆÈã‚ ‚é|ƒzƒXƒg‚Éƒlƒbƒgƒ[ƒNƒCƒ“ƒ^[ƒtƒF[ƒX‚ª2‚ÂˆÈã‚ ‚éê‡ACORBA‚É‚Ç‚¿‚ç‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚ğg—p‚·‚é‚©‹³‚¦‚Ä‚â‚é•K—v‚ª‚ ‚è‚Ü‚·B~
+*****ƒlƒbƒgƒ[ƒNƒCƒ“ƒ^[ƒtƒF[ƒX‚ª2‚ÂˆÈã‚ ‚é
+ƒzƒXƒg‚Éƒlƒbƒgƒ[ƒNƒCƒ“ƒ^[ƒtƒF[ƒX‚ª2‚ÂˆÈã‚ ‚éê‡ACORBA‚É‚Ç‚¿‚ç‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚ğg—p‚·‚é‚©‹³‚¦‚Ä‚â‚é•K—v‚ª‚ ‚è‚Ü‚·B~
 ‚±‚ê‚ÍAƒl[ƒ€ƒT[ƒo‘¤AƒRƒ“ƒ|[ƒlƒ“ƒg‘¤—¼Ò‚Æ‚à‚Él—¶‚µ‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñB~
-¡‰¼‚É‚»‚ê‚¼‚ê‚ÌƒzƒXƒg‚ª2‚Â‚¸‚ÂƒCƒ“ƒ^[ƒtƒF[ƒX‚ğ‚Á‚Ä‚¢‚é‚Æ‚µ‚ÄAŠeƒCƒ“ƒ^[ƒtƒF[ƒX‚ÌƒAƒhƒŒƒX‚ªˆÈ‰º‚Ì‚æ‚¤‚Éİ’è‚³‚ê‚Ä‚¢‚é‚Æ‰¼’è‚µ‚Ü‚·(mask‚Í255.255.255.0‚Æ‰¼’è)B
-::: ƒl[ƒ€ƒT[ƒohost: eth0:192.168.0.1, eth1:192.168.100.1
-::: ƒRƒ“ƒ|[ƒlƒ“ƒghost: eth0:192.168.0.2, eth1:192.168.11.96
-:: |‚±‚Ìê‡Aƒl[ƒ€ƒT[ƒohost‚ÆƒRƒ“ƒ|[ƒlƒ“ƒghost‚Í 192.168.0 ‚Ìƒlƒbƒgƒ[ƒN‚ÅÚ‘±‚³‚ê‚Ä‚¢‚é‚Í‚¸‚Å‚·B~
-]‚Á‚ÄA
-::: ƒl[ƒ€ƒT[ƒo‚É‚Í eth0:192.168.0.1
-::: ƒRƒ“ƒ|[ƒlƒ“ƒg‚É‚Í eth0:192.168.0.2
-:: |‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚ğg‚¤‚æ‚¤‚É‹³‚¦‚Ä‚ ‚°‚é•K—v‚ª‚ ‚è‚Ü‚·B~
+¡‰¼‚É‚»‚ê‚¼‚ê‚ÌƒzƒXƒg‚ª2‚Â‚¸‚ÂƒCƒ“ƒ^[ƒtƒF[ƒX‚ğ‚Á‚Ä‚¢‚é‚Æ‚µ‚ÄAŠeƒCƒ“ƒ^[ƒtƒF[ƒX‚ÌƒAƒhƒŒƒX‚ªˆÈ‰º‚Ì‚æ‚¤‚Éİ’è‚³‚ê‚Ä‚¢‚é‚Æ‰¼’è‚µ‚Ü‚·(mask‚Í255.255.255.0‚Æ‰¼’è)B~
+''ƒl[ƒ€ƒT[ƒohost: eth0:192.168.0.1, eth1:192.168.100.1''~
+''ƒRƒ“ƒ|[ƒlƒ“ƒghost: eth0:192.168.0.2, eth1:192.168.11.96''~
+‚±‚Ìê‡Aƒl[ƒ€ƒT[ƒohost‚ÆƒRƒ“ƒ|[ƒlƒ“ƒghost‚Í 192.168.0 ‚Ìƒlƒbƒgƒ[ƒN‚ÅÚ‘±‚³‚ê‚Ä‚¢‚é‚Í‚¸‚Å‚·B~
+]‚Á‚ÄA~
+''ƒl[ƒ€ƒT[ƒo‚É‚Í eth0:192.168.0.1''~
+''ƒRƒ“ƒ|[ƒlƒ“ƒg‚É‚Í eth0:192.168.0.2''~
+‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚ğg‚¤‚æ‚¤‚É‹³‚¦‚Ä‚ ‚°‚é•K—v‚ª‚ ‚è‚Ü‚·B~
 ƒl[ƒ€ƒT[ƒo‘¤‚Å‚ÍAƒl[ƒ€ƒT[ƒo‚ğ‹N“®‚·‚éÛ‚É OMNIORB_USEHOSTNAME ‚Æ‚¢‚¤ŠÂ‹«•Ï”‚ğİ’è‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B~
  (cshŒn)
  > setenv OMNIORB_USEHOSTNAME 192.168.0.1
  (bashŒn)
  > export OMNIORB_USEHOSTNAME=192.168.0.1
  > rtm-naming ‚à‚µ‚­‚Í omniNames ‚Åƒl[ƒ€ƒT[ƒo‚ğ‹N“®
-:: |’¼ÚArtm-naming (UNIXŒn) ‚à‚µ‚­‚Í rtm-naming.bat (Windows) ‚É‘‚«‚ñ‚Å‚à—Ç‚¢‚Å‚µ‚å‚¤B~
+
+’¼ÚArtm-naming (UNIXŒn) ‚à‚µ‚­‚Í rtm-naming.bat (Windows) ‚É‘‚«‚ñ‚Å‚à—Ç‚¢‚Å‚µ‚å‚¤B~
 ˆê•ûAƒRƒ“ƒ|[ƒlƒ“ƒg‘¤‚Írtc.conf‚Écorba.endpoint‚Ìİ’è‚ğ‹Lq‚·‚é‚±‚Æ‚ÅAg—p‚·‚éƒCƒ“ƒ^[ƒtƒF[ƒX‚ğw’è‚·‚é‚±‚Æ‚ªo—ˆ‚Ü‚·B~
  corba.endpoint: ƒCƒ“ƒ^[ƒtƒF[ƒXIPƒAƒhƒŒƒX:ƒ|[ƒg”Ô†
  corba:endpoint: 192.168.0.2:       (ƒ|[ƒg”Ô†‚ğw’è‚µ‚È‚¢ê‡)
  corba:endpoint: 192.168.0.2:1234   (ƒ|[ƒg”Ô†‚ğw’è‚·‚éê‡)
-:: |ƒ|[ƒg”Ô†‚Í“Á‚Éw’è‚µ‚È‚­‚Ä‚à\‚¢‚Ü‚¹‚ñ‚ªAIPƒAƒhƒŒƒX‚ÌŒã‚Ì'':(ƒRƒƒ“)''‚ğ–Y‚ê‚¸‚É•t‚¯‚Ä‚­‚¾‚³‚¢B
+
+ƒ|[ƒg”Ô†‚Í“Á‚Éw’è‚µ‚È‚­‚Ä‚à\‚¢‚Ü‚¹‚ñ‚ªAIPƒAƒhƒŒƒX‚ÌŒã‚Ì'':(ƒRƒƒ“)''‚ğ–Y‚ê‚¸‚É•t‚¯‚Ä‚­‚¾‚³‚¢B
 #br
 
 **OpenRTM-aist(C++”Å)
@@ -82,42 +92,48 @@ OpenRTM-aist(C++”Å)‚É‚ÍAVC8iVS2005jƒx[ƒX‚Ì‚à‚Ì‚ÆAVC9iVS2008jƒx[ƒX‚Ì‚à‚Ì‚
 OpenRTM-aist(C++”Å)‚É‚ÍAVC8iVS2005jƒx[ƒX‚Ì‚à‚Ì‚ÆAVC9iVS2008jƒx[ƒX‚Ì‚à‚Ì‚ª‚ ‚è‚Ü‚·BOpenRTM-aist-X.X.X-jp_vc8.msiiX.X.X‚Íƒo[ƒWƒ‡ƒ“‚Å‚·B)‚È‚Ç‚ÌVC8ƒx[ƒX‚ÌƒCƒ“ƒXƒg[ƒ‰‚ğg—p‚µ‚½ê‡‚Í[[Microsoft Visual C++ 2005 SP1 Ä”Ğ•z‰Â”\ƒpƒbƒP[ƒW (x86) >http://www.microsoft.com/downloads/details.aspx?FamilyID=200b2fd9-ae1a-4a14-984d-389c36f85647&DisplayLang=ja]]‚ğAOpenRTM-aist-X.X.X-jp_vc9.msiiX.X.X‚Íƒo[ƒWƒ‡ƒ“‚Å‚·B)‚È‚Ç‚ÌVC9ƒx[ƒX‚ÌƒCƒ“ƒXƒg[ƒ‰‚ğg—p‚µ‚½ê‡‚Í[[Microsoft Visual C++ 2008 Ä”Ğ•z‰Â”\ƒpƒbƒP[ƒW (x86) >http://www.microsoft.com/downloads/details.aspx?displaylang=ja&FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf]]‚ğƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B
 #br
 ****Visual C++ 2005 Express Edition‚Åƒrƒ‹ƒh‚Éu'windows.h'‚ªŒ©‚Â‚©‚ç‚È‚¢v‚Æ‚¢‚¤ƒGƒ‰[
-: |Visual C++ 2005 Express Edition‚Åƒrƒ‹ƒh‚ÉŸ‚Ì‚æ‚¤‚ÈƒGƒ‰[‚ªo‚éê‡‚ª‚ ‚è‚Ü‚·B~
+Visual C++ 2005 Express Edition‚Åƒrƒ‹ƒh‚ÉŸ‚Ì‚æ‚¤‚ÈƒGƒ‰[‚ªo‚éê‡‚ª‚ ‚è‚Ü‚·B~
  >c:\program files\omniorb\include\omnithread\nt.h(35) : fatal error C1083: include ƒtƒ@ƒCƒ‹‚ğŠJ‚¯‚Ü‚¹‚ñB'windows.h': No such file or directory
-: |‚±‚ê‚Í''‚PDMicrosoft Platform SDK‚ªƒCƒ“ƒXƒg[ƒ‹‚ª‚³‚ê‚Ä‚¢‚È‚¢A''‚ ‚é‚¢‚Í''‚QDƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹ƒpƒXEƒ‰ƒCƒuƒ‰ƒŠƒpƒX‚Ìİ’è•s”õ''‚ªŒ´ˆö‚Æl‚¦‚ç‚ê‚Ü‚·B
-:: ‚PDMicrosoft Platform SDK‚ªƒCƒ“ƒXƒg[ƒ‹‚ª‚³‚ê‚Ä‚¢‚È‚¢
-:::‘Î‰•û–@F|Microsoft Platform SDK‚ğƒCƒ“ƒXƒg[ƒ‹‚·‚éB‚»‚ÌÛ‚ÍA[[‚±‚¿‚ç:/ja/node/640#2005SDKattention]]‚ğQl‚É‚µ‚Ä‚­‚¾‚³‚¢B‚ ‚é‚¢‚ÍAŸ‚Ì''‚QD''‚É‚µ‚½‚ª‚Á‚Ä‚­‚¾‚³‚¢B
-:: ‚QDƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹ƒpƒXEƒ‰ƒCƒuƒ‰ƒŠƒpƒX‚Ìİ’è•s”õ
-:::‘Î‰•û–@F|ƒCƒ“ƒXƒg[ƒ‹‚ğ‚·‚é‡˜‚È‚Ç‚ÌŠÖŒW‚ÅAVisual C++ 2005 Express Edition‚ÌƒCƒ“ƒXƒg[ƒ‹ƒfƒBƒŒƒNƒgƒŠ‚Æ‚Íˆá‚¤êŠ‚ÉMicrosoft Platform SDK‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚µ‚Ü‚¤‚È‚Ç‚Ì–î‚ÅAVisual C++ 2005 Express Edition ‚ÌƒRƒ“ƒpƒCƒ‰‚ªMicrosoft Platform SDK‚ÌƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹‚âƒ‰ƒCƒuƒ‰ƒŠ‚ğ‚½‚®‚ê‚È‚­‚È‚Á‚Ä‚¢‚éê‡‚ª‚ ‚è‚Ü‚·B‚±‚Ìê‡‚ÍAƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹ƒT[ƒ`ƒpƒX‚âƒ‰ƒCƒuƒ‰ƒŠƒT[ƒ`ƒpƒX‚ÉMicrosoft Platform SDK‚ÌƒCƒ“ƒXƒg[ƒ‹ƒfƒBƒŒƒNƒgƒŠ‚ğ’Ç‰Á‚·‚é‚±‚Æ‚Å–â‘è‚ğ‰ğŒˆ‚Å‚«‚Ü‚·B
-::::''ƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹ƒT[ƒ`ƒpƒX‚Ì’Ç‰Á•û–@''|Visual C++ 2005 Express Edition‚Ìƒƒjƒ…[ƒo[¨uƒc[ƒ‹v¨uƒIƒvƒVƒ‡ƒ“v‚ğ‘I‘ğ‚µAuƒIƒvƒVƒ‡ƒ“vƒEƒBƒ“ƒhƒE‚ğŠJ‚«‚Ü‚·B¶‚ÌƒcƒŠ[ƒrƒ…[‚©‚çuƒvƒƒWƒFƒNƒg‚¨‚æ‚Ñƒ\ƒŠƒ…[ƒVƒ‡ƒ“v¨uVC++ƒfƒBƒŒƒNƒgƒŠv‚ğ‘I‘ğ‚µ‚Ü‚·B~
+
+‚±‚ê‚Í''‚PDMicrosoft Platform SDK‚ªƒCƒ“ƒXƒg[ƒ‹‚ª‚³‚ê‚Ä‚¢‚È‚¢A''‚ ‚é‚¢‚Í''‚QDƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹ƒpƒXEƒ‰ƒCƒuƒ‰ƒŠƒpƒX‚Ìİ’è•s”õ''‚ªŒ´ˆö‚Æl‚¦‚ç‚ê‚Ü‚·B
+*****‚PDMicrosoft Platform SDK‚ªƒCƒ“ƒXƒg[ƒ‹‚ª‚³‚ê‚Ä‚¢‚È‚¢
+:‘Î‰•û–@F|Microsoft Platform SDK‚ğƒCƒ“ƒXƒg[ƒ‹‚·‚éB‚»‚ÌÛ‚ÍA[[‚±‚¿‚ç:/ja/node/640#2005SDKattention]]‚ğQl‚É‚µ‚Ä‚­‚¾‚³‚¢B‚ ‚é‚¢‚ÍAŸ‚Ì''‚QD''‚É‚µ‚½‚ª‚Á‚Ä‚­‚¾‚³‚¢B
+***** ‚QDƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹ƒpƒXEƒ‰ƒCƒuƒ‰ƒŠƒpƒX‚Ìİ’è•s”õ
+:‘Î‰•û–@F|ƒCƒ“ƒXƒg[ƒ‹‚ğ‚·‚é‡˜‚È‚Ç‚ÌŠÖŒW‚ÅAVisual C++ 2005 Express Edition‚ÌƒCƒ“ƒXƒg[ƒ‹ƒfƒBƒŒƒNƒgƒŠ‚Æ‚Íˆá‚¤êŠ‚ÉMicrosoft Platform SDK‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚µ‚Ü‚¤‚È‚Ç‚Ì–î‚ÅAVisual C++ 2005 Express Edition ‚ÌƒRƒ“ƒpƒCƒ‰‚ªMicrosoft Platform SDK‚ÌƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹‚âƒ‰ƒCƒuƒ‰ƒŠ‚ğ‚½‚®‚ê‚È‚­‚È‚Á‚Ä‚¢‚éê‡‚ª‚ ‚è‚Ü‚·B‚±‚Ìê‡‚ÍAƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹ƒT[ƒ`ƒpƒX‚âƒ‰ƒCƒuƒ‰ƒŠƒT[ƒ`ƒpƒX‚ÉMicrosoft Platform SDK‚ÌƒCƒ“ƒXƒg[ƒ‹ƒfƒBƒŒƒNƒgƒŠ‚ğ’Ç‰Á‚·‚é‚±‚Æ‚Å–â‘è‚ğ‰ğŒˆ‚Å‚«‚Ü‚·B
+::''ƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹ƒT[ƒ`ƒpƒX‚Ì’Ç‰Á•û–@''|Visual C++ 2005 Express Edition‚Ìƒƒjƒ…[ƒo[¨uƒc[ƒ‹v¨uƒIƒvƒVƒ‡ƒ“v‚ğ‘I‘ğ‚µAuƒIƒvƒVƒ‡ƒ“vƒEƒBƒ“ƒhƒE‚ğŠJ‚«‚Ü‚·B¶‚ÌƒcƒŠ[ƒrƒ…[‚©‚çuƒvƒƒWƒFƒNƒg‚¨‚æ‚Ñƒ\ƒŠƒ…[ƒVƒ‡ƒ“v¨uVC++ƒfƒBƒŒƒNƒgƒŠv‚ğ‘I‘ğ‚µ‚Ü‚·B~
 ‰Eã‚Ìƒvƒ‹ƒ_ƒEƒ“ƒƒjƒ…[uƒfƒBƒŒƒNƒgƒŠ‚ğ•\¦‚·‚éƒvƒƒWƒFƒNƒgv‚ğuƒCƒ“ƒNƒ‹[ƒh@ƒtƒ@ƒCƒ‹v‚Æ‚µ‚ÄAMicrosoft Platform SDK‚ÌƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹‚ÌƒfƒBƒŒƒNƒgƒŠi—á‚¦‚ÎAuC:\Program Files\Microsoft Platform SDK\Includevj‚ğƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹‚ÌƒT[ƒ`ƒpƒX‚É’Ç‰Á‚µ‚Ü‚·B
-::::''ƒ‰ƒCƒuƒ‰ƒŠƒtƒ@ƒCƒ‹ƒT[ƒ`ƒpƒX‚Ì’Ç‰Á•û–@''|“¯—l‚É‚µ‚ÄAuƒIƒvƒVƒ‡ƒ“v‚Ì¶‚ÌƒcƒŠ[ƒrƒ…[uVC++ƒfƒBƒŒƒNƒgƒŠv‚ğ‘I‘ğ‚µ‚½ó‘Ô‚ÅA‰Eã‚Ìƒvƒ‹ƒ_ƒEƒ“ƒƒjƒ…[uƒfƒBƒŒƒNƒgƒŠ‚ğ•\¦‚·‚éƒvƒƒWƒFƒNƒgv‚ğuƒ‰ƒCƒuƒ‰ƒŠ@ƒtƒ@ƒCƒ‹v‚Æ‚µ‚ÄAMicrosoft Platform SDK‚Ìƒ‰ƒCƒuƒ‰ƒŠƒtƒ@ƒCƒ‹‚ÌƒfƒBƒŒƒNƒgƒŠi—á‚¦‚ÎAuC:\Program Files\Microsoft Platform SDK\Libvj‚ğƒ‰ƒCƒuƒ‰ƒŠƒtƒ@ƒCƒ‹‚ÌƒT[ƒ`ƒpƒX‚É’Ç‰Á‚µ‚Ü‚·B
-:::‚È‚¨AƒT[ƒ`ƒpƒX‚Ì‹ï‘Ì“I‚È’Ç‰Á•û–@‚È‚Ç‚ÍVisual C++ 2005 Express Edition‚Ìƒwƒ‹ƒv“™‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B
+::''ƒ‰ƒCƒuƒ‰ƒŠƒtƒ@ƒCƒ‹ƒT[ƒ`ƒpƒX‚Ì’Ç‰Á•û–@''|“¯—l‚É‚µ‚ÄAuƒIƒvƒVƒ‡ƒ“v‚Ì¶‚ÌƒcƒŠ[ƒrƒ…[uVC++ƒfƒBƒŒƒNƒgƒŠv‚ğ‘I‘ğ‚µ‚½ó‘Ô‚ÅA‰Eã‚Ìƒvƒ‹ƒ_ƒEƒ“ƒƒjƒ…[uƒfƒBƒŒƒNƒgƒŠ‚ğ•\¦‚·‚éƒvƒƒWƒFƒNƒgv‚ğuƒ‰ƒCƒuƒ‰ƒŠ@ƒtƒ@ƒCƒ‹v‚Æ‚µ‚ÄAMicrosoft Platform SDK‚Ìƒ‰ƒCƒuƒ‰ƒŠƒtƒ@ƒCƒ‹‚ÌƒfƒBƒŒƒNƒgƒŠi—á‚¦‚ÎAuC:\Program Files\Microsoft Platform SDK\Libvj‚ğƒ‰ƒCƒuƒ‰ƒŠƒtƒ@ƒCƒ‹‚ÌƒT[ƒ`ƒpƒX‚É’Ç‰Á‚µ‚Ü‚·B
+‚È‚¨AƒT[ƒ`ƒpƒX‚Ì‹ï‘Ì“I‚È’Ç‰Á•û–@‚È‚Ç‚ÍVisual C++ 2005 Express Edition‚Ìƒwƒ‹ƒv“™‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B
 #br
 ****rtm-naming‚ÌÀs‚ÅƒGƒ‰[”­¶ 
-: |Çó: rtm-naming.bat‚ğÀs‚·‚é‚ÆƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒGƒ‰[‚ª”­¶‚·‚éB~
+Çó: rtm-naming.bat‚ğÀs‚·‚é‚ÆƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒGƒ‰[‚ª”­¶‚·‚éB~
 VC++ŠÖŒW‚Ìƒ‰ƒCƒuƒ‰ƒŠ‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚È‚¢‰Â”\«‚ªl‚¦‚ç‚ê‚Ü‚·B
-:: VC++ŠÖŒW‚Ìƒ‰ƒCƒuƒ‰ƒŠ‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚È‚¢|Visual Studio 2005“™‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‚±‚±[[Visual Studio 2005 Express Edition:http://www.microsoft.com/japan/msdn/vstudio/express/]]‚©‚ç"Visual C++ 2005 Express Edition"‚ÌƒCƒ“ƒXƒg[ƒ‹‚ğs‚Á‚Ä‰º‚³‚¢B
+*****VC++ŠÖŒW‚Ìƒ‰ƒCƒuƒ‰ƒŠ‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚È‚¢
+Visual Studio 2005“™‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‚±‚±[[Visual Studio 2005 Express Edition:http://www.microsoft.com/japan/msdn/vstudio/express/]]‚©‚ç"Visual C++ 2005 Express Edition"‚ÌƒCƒ“ƒXƒg[ƒ‹‚ğs‚Á‚Ä‰º‚³‚¢B
 #br
 ****rtm-naming‚ªÀs‚Å‚«‚È‚¢
-: |ÇóFrtm-naming.bat‚ğÀs‚µ‚Ä‚à•‚¢‘‹iƒRƒ}ƒ“ƒhƒvƒƒ“ƒvƒg‰æ–Êj‚ªˆêuŠJ‚¢‚Ä•Â‚¶‚Ä‚µ‚Ü‚¤B
-::[Œ´ˆö]omniORB‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚È‚¢|rtm-naming.bat“à‚Å‚Í’ÊíomniORB‚Ìƒl[ƒ€ƒT[ƒo''omniNames.exe''‚ğÀs‚µ‚Ü‚·B~
+ÇóFrtm-naming.bat‚ğÀs‚µ‚Ä‚à•‚¢‘‹iƒRƒ}ƒ“ƒhƒvƒƒ“ƒvƒg‰æ–Êj‚ªˆêuŠJ‚¢‚Ä•Â‚¶‚Ä‚µ‚Ü‚¤B
+*****[Œ´ˆö]omniORB‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚È‚¢
+rtm-naming.bat“à‚Å‚Í’ÊíomniORB‚Ìƒl[ƒ€ƒT[ƒo''omniNames.exe''‚ğÀs‚µ‚Ü‚·B~
 omniORB‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚È‚¢‚Æ''omniNames.exe''‚àƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚È‚¢‚Ì‚ÅAƒl[ƒ€ƒT[ƒo‚ğÀs‚Å‚«‚Ü‚¹‚ñB~
 ƒ_ƒEƒ“ƒ[ƒhƒy[ƒW‚©‚çomniORB‚ğƒ_ƒEƒ“ƒ[ƒh‚µƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B
-::[Œ´ˆö]logƒfƒBƒŒƒNƒgƒŠ‚ÌƒpƒX’†‚É2ƒoƒCƒg•¶š‚ªŠÜ‚Ü‚ê‚Ä‚¢‚é |rtm-naming.bat“à‚Å‚Í’ÊíomniORB‚Ìƒl[ƒ€ƒT[ƒo''omniNames.exe''‚ğˆÈ‰º‚Ì‚æ‚¤‚ÉÀs‚µ‚Ü‚·B~
+*****[Œ´ˆö]logƒfƒBƒŒƒNƒgƒŠ‚ÌƒpƒX’†‚É2ƒoƒCƒg•¶š‚ªŠÜ‚Ü‚ê‚Ä‚¢‚é
+rtm-naming.bat“à‚Å‚Í’ÊíomniORB‚Ìƒl[ƒ€ƒT[ƒo''omniNames.exe''‚ğˆÈ‰º‚Ì‚æ‚¤‚ÉÀs‚µ‚Ü‚·B~
  omniNames.exe -start 2809 -logdir %TEMP%
-:: |’ÊíŠÂ‹«•Ï” %TEMP% ‚Íƒ†[ƒU‚Ìƒeƒ“ƒ|ƒ‰ƒŠƒfƒBƒŒƒNƒgƒŠ~
+
+’ÊíŠÂ‹«•Ï” %TEMP% ‚Íƒ†[ƒU‚Ìƒeƒ“ƒ|ƒ‰ƒŠƒfƒBƒŒƒNƒgƒŠ~
  C:\Documents and Settings\ƒ†[ƒU–¼\Local Settings\Temp
-:: |‚ğw‚µ‚Ü‚·B‚±‚±‚ÅA''ƒ†[ƒU–¼''‚ª“ú–{Œê‚Ìê‡AomniNames‚ªƒƒOƒtƒ@ƒCƒ‹‚ğ³‚µ‚­ì¬‚Å‚«‚È‚¢‚½‚ßAÀs‚Å‚«‚¸‚ÉI—¹‚µ‚Ü‚·B~
+
+‚ğw‚µ‚Ü‚·B‚±‚±‚ÅA''ƒ†[ƒU–¼''‚ª“ú–{Œê‚Ìê‡AomniNames‚ªƒƒOƒtƒ@ƒCƒ‹‚ğ³‚µ‚­ì¬‚Å‚«‚È‚¢‚½‚ßAÀs‚Å‚«‚¸‚ÉI—¹‚µ‚Ü‚·B~
 ‘Î‰ô‚Æ‚µ‚Ä‚ÍAˆÈ‰º‚Ì3‚Â‚ªl‚¦‚ç‚ê‚Ü‚·B
-:::“ú–{Œê‚Ìƒ†[ƒU–¼‚ğg—p‚µ‚È‚¢|“ú–{Œê‚ğg—p‚µ‚È‚¢ƒ†[ƒU‚ğV‚½‚Éì‚èA‚»‚ÌŠÂ‹«‚ÅÀs‚·‚éB
-:::rtm-naming.bat‚ğ‘‚«Š·‚¦‚é|''C:\Program Files\OpenRTM-aist\[ƒo[ƒWƒ‡ƒ“”Ô†]\bin''‚Ì‰º‚É‚ ‚értm-naming.bat‚Ì’†‚ÌˆÈ‰º‚Ì•”•ª ~
+:“ú–{Œê‚Ìƒ†[ƒU–¼‚ğg—p‚µ‚È‚¢|“ú–{Œê‚ğg—p‚µ‚È‚¢ƒ†[ƒU‚ğV‚½‚Éì‚èA‚»‚ÌŠÂ‹«‚ÅÀs‚·‚éB
+:rtm-naming.bat‚ğ‘‚«Š·‚¦‚é|''C:\Program Files\OpenRTM-aist\[ƒo[ƒWƒ‡ƒ“”Ô†]\bin''‚Ì‰º‚É‚ ‚értm-naming.bat‚Ì’†‚ÌˆÈ‰º‚Ì•”•ª ~
  %cosnames% -start %port% -logdir %TEMP%\ 
-::: |‚ğ~
+: |‚ğ~
  %cosnames% -start %port% -logdir [ƒpƒX‚É“ú–{Œê‚ğŠÜ‚Ü‚È‚¢ƒƒOƒfƒBƒŒƒNƒgƒŠ]
-::: |‚Ì‚æ‚¤‚É‘‚«Š·‚¦‚Ü‚·B~
+: |‚Ì‚æ‚¤‚É‘‚«Š·‚¦‚Ü‚·B~
 ''ƒpƒX‚É“ú–{Œê‚ğŠÜ‚Ü‚È‚¢ƒƒOƒfƒBƒŒƒNƒgƒŠ''‚Í©•ª‚É‘‚«‚İ‚ÌŒ ŒÀ‚ª‚ ‚éƒfƒBƒŒƒNƒgƒŠ‚ÅAˆÀ‘S‚ÈêŠ‚É‚µ‚Ä‚­‚¾‚³‚¢B‚½‚Æ‚¦‚ÎAC:\tmp ‚È‚ÇB
-:::Java”Å‚Ìorbd‚ğg—p‚·‚é|OpenRTM-aist‚ÌJava”Å‚ÆJDK‚ğƒCƒ“ƒXƒg[ƒ‹‚·‚é‚ÆAƒXƒ^[ƒgƒƒjƒ…[‚ÌJava”Å‚Ìexamples‚Ì’†‚É''start-orbd.vbs''‚ªŒ»‚ê‚Ü‚·B‚±‚ê‚ÍAJDK‚É•t‘®‚·‚éCORBAƒl[ƒ€ƒT[ƒo‚ğ‹N“®‚·‚éƒXƒNƒŠƒvƒg‚Å‚·B~
+:Java”Å‚Ìorbd‚ğg—p‚·‚é|OpenRTM-aist‚ÌJava”Å‚ÆJDK‚ğƒCƒ“ƒXƒg[ƒ‹‚·‚é‚ÆAƒXƒ^[ƒgƒƒjƒ…[‚ÌJava”Å‚Ìexamples‚Ì’†‚É''start-orbd.vbs''‚ªŒ»‚ê‚Ü‚·B‚±‚ê‚ÍAJDK‚É•t‘®‚·‚éCORBAƒl[ƒ€ƒT[ƒo‚ğ‹N“®‚·‚éƒXƒNƒŠƒvƒg‚Å‚·B~
 ‚±‚Ìƒl[ƒ€ƒT[ƒo‚É‚ÍAomniNames‚Ì‚æ‚¤‚È“ú–{Œê‚ÌƒpƒX‚Ì–â‘è‚Í‘¶İ‚µ‚È‚¢‚Ì‚ÅA‚±‚ê‚ğg—p‚·‚é‚±‚Æ‚Åƒ†[ƒU–¼‚ª“ú–{Œê‚Å‚àAƒl[ƒ€ƒT[ƒo‚ğ‹N“®‚Å‚«‚Ü‚·B
 #br
 ***Unix
@@ -134,25 +150,30 @@ omniORB‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚È‚¢‚Æ''omniNames.exe''‚àƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚È‚¢‚Ì‚ÅA
 #br
 &aname(openrtminstfault);
 **** OpenRTM-aist‚ÌƒCƒ“ƒXƒg[ƒ‹‚É¸”s‚·‚é 
-: |ŒÃ‚¢ƒo[ƒWƒ‡ƒ“‚ÌOpenRTM-aist‚ªŠ®‘S‚ÉƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚È‚¢ê‡AV‚µ‚¢ƒo[ƒWƒ‡ƒ“‚ÌƒCƒ“ƒXƒg[ƒ‹‚ª‚Å‚«‚Ü‚¹‚ñBŒÃ‚¢ƒo[ƒWƒ‡ƒ“‚ğˆê“xƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚©‚çAÄ“xƒCƒ“ƒXƒg[ƒ‹ì‹Æ‚ğ‚µ‚Ü‚·B
-::VineEFedoraEubuntuEdebian‹¤’ÊF| pkg_install_XXXX.sh ‚ğ—˜—p‚µ‚ÄƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚·‚éB~
+ŒÃ‚¢ƒo[ƒWƒ‡ƒ“‚ÌOpenRTM-aist‚ªŠ®‘S‚ÉƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚È‚¢ê‡AV‚µ‚¢ƒo[ƒWƒ‡ƒ“‚ÌƒCƒ“ƒXƒg[ƒ‹‚ª‚Å‚«‚Ü‚¹‚ñBŒÃ‚¢ƒo[ƒWƒ‡ƒ“‚ğˆê“xƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚©‚çAÄ“xƒCƒ“ƒXƒg[ƒ‹ì‹Æ‚ğ‚µ‚Ü‚·B
+*****VineEFedoraEubuntuEdebian‹¤’ÊF
+pkg_install_XXXX.sh ‚ğ—˜—p‚µ‚ÄƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚·‚éB~
  >su
  #pkg_install_XXXX.sh -u
-:: |ƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚Ì‹–‰Â‚ğ‹‚ß‚ç‚ê‚é‚Ì‚ÅA''y'' ‚ğ“ü—Í‚µ‚È‚ª‚çŠ®—¹‚³‚¹‚Ü‚·B
-: |‚ ‚é‚¢‚ÍŸ‚Ìè‡‚É]‚¢‚Ü‚·B
-::VineF|apt-getƒRƒ}ƒ“ƒh‚ÅƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚·‚éBŸ‚Ìè‡‚ÅƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚ğs‚Á‚Ä‚­‚¾‚³‚¢B~
+
+ƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚Ì‹–‰Â‚ğ‹‚ß‚ç‚ê‚é‚Ì‚ÅA''y'' ‚ğ“ü—Í‚µ‚È‚ª‚çŠ®—¹‚³‚¹‚Ü‚·B
+‚ ‚é‚¢‚ÍŸ‚Ìè‡‚É]‚¢‚Ü‚·B
+*****VineF
+apt-getƒRƒ}ƒ“ƒh‚ÅƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚·‚éBŸ‚Ìè‡‚ÅƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚ğs‚Á‚Ä‚­‚¾‚³‚¢B~
  >su
  #apt-get remove OpenRTM-aist-example
  #apt-get remove OpenRTM-aist-dev
  #apt-get remove OpenRTM-aist-doc
  #apt-get remove OpenRTM-aist
-::FedoraF|yumƒRƒ}ƒ“ƒh‚ÅƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚·‚éBŸ‚Ìè‡‚ÅƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚ğs‚Á‚Ä‚­‚¾‚³‚¢B~
+*****FedoraF
+yumƒRƒ}ƒ“ƒh‚ÅƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚·‚éBŸ‚Ìè‡‚ÅƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚ğs‚Á‚Ä‚­‚¾‚³‚¢B~
  >su
  #yum remove OpenRTM-aist-example
  #yum remove OpenRTM-aist-dev
  #yum remove OpenRTM-aist-doc
  #yum remove OpenRTM-aist
-::ubuntu/debianF|apt-getƒRƒ}ƒ“ƒh‚ÅƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚·‚éBŸ‚Ìè‡‚ÅƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚ğs‚Á‚Ä‚­‚¾‚³‚¢B~
+*****ubuntu/debianF
+apt-getƒRƒ}ƒ“ƒh‚ÅƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚·‚éBŸ‚Ìè‡‚ÅƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚ğs‚Á‚Ä‚­‚¾‚³‚¢B~
  >su
  #apt-get remove OpenRTM-aist-example
  #apt-get remove OpenRTM-aist-dev
@@ -161,21 +182,28 @@ omniORB‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚È‚¢‚Æ''omniNames.exe''‚àƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚È‚¢‚Ì‚ÅA
 #br
 &aname(notusecd);
 **** apt-get ‚È‚Ç‚ğg—p‚µ‚ÄƒCƒ“ƒXƒg[ƒ‹ì‹Æ‚ğs‚¤‚Æ‚«‚É CD ‚ğ—v‹‚³‚ê‚é 
-: |UbuntuADebian ‚È‚Ç‚ÌƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚ÅAapt-get ‚â pkg_install_ubuntu.sh, pkg_install_debian.sh ‚ğg—p‚µ‚ÄƒCƒ“ƒXƒg[ƒ‹ì‹Æ‚ğ‚µ‚Ä‚¢‚é‚ÆAŸ‚Ì‚æ‚¤‚É CD ‚ğ‹‚ß‚ç‚ê‚é‚±‚Æ‚ª‚ ‚è‚Ü‚·B
-:: ƒƒfƒBƒA•ÏX:~
+UbuntuADebian ‚È‚Ç‚ÌƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚ÅAapt-get ‚â pkg_install_ubuntu.sh, pkg_install_debian.sh ‚ğg—p‚µ‚ÄƒCƒ“ƒXƒg[ƒ‹ì‹Æ‚ğ‚µ‚Ä‚¢‚é‚ÆAŸ‚Ì‚æ‚¤‚É CD ‚ğ‹‚ß‚ç‚ê‚é‚±‚Æ‚ª‚ ‚è‚Ü‚·B
+ƒƒfƒBƒA•ÏX:~
  @@'Ubuntu 7.10 _Gutsy Gibbon_ Japanese Remix - Release i386 (20071018)'
-:: |‚Æƒ‰ƒxƒ‹‚Ì•t‚¢‚½ƒfƒBƒXƒN‚ğƒhƒ‰ƒCƒu '/cdrom/' ‚É“ü‚ê‚Ä enter ‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B~
+
+‚Æƒ‰ƒxƒ‹‚Ì•t‚¢‚½ƒfƒBƒXƒN‚ğƒhƒ‰ƒCƒu '/cdrom/' ‚É“ü‚ê‚Ä enter ‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B~
 ‚à‚¿‚ë‚ñACD ‚ğ—pˆÓ‚·‚ê‚Î‚æ‚¢‚±‚Æ‚È‚Ì‚Å‚·‚ªA”–î‚É‚æ‚è—pˆÓ‚Å‚«‚È‚¢ê‡‚Ì‘Îˆ•û–@‚ğ‹Lq‚µ‚Ü‚·B~
 ‚±‚Ìê‡‚Í‚Æ‚è‚ ‚¦‚¸A''C-c''(Ctrl+c) ‚ğ“ü—Í‚µ‚ÄƒCƒ“ƒXƒg[ƒ‹ì‹Æ‚ğ’†’f‚µAˆÈ‰º‚Ìè‡‚ÅƒCƒ“ƒXƒg[ƒ‹ì‹Æ‚ğ‚â‚è’¼‚µ‚Ä‚­‚¾‚³‚¢B
-:::1.''/etc/apt/sources.list'' ‚Ì•ÒW‚ğ‚·‚é|''/etc/apt/sources.list'' ‚Ì–`“ª•”•ª‚É~
+*****1.''/etc/apt/sources.list'' ‚Ì•ÒW‚ğ‚·‚é
+''/etc/apt/sources.list'' ‚Ì–`“ª•”•ª‚É~
  deb cdrom:[Ubuntu 7.10 _Gutsy Gibbon_ Japanese Remix - Release i386 (20071018)]/ gutsy main restricted
-::: |‚ ‚é‚¢‚Í~
+
+‚ ‚é‚¢‚Í~
  deb cdrom:[Debian GNU/Linux 4.0 r3 _Etch_ - Official i386 NETINST Binary-1 20080218-14:15]/ etch contrib main
-::: |‚Æ‚¢‚¤‚æ‚¤‚Ès‚ª‚ ‚è‚Ü‚·‚Ì‚ÅAŠY“–‚·‚és“ª‚É ''#'' •¶š‚ğ‘}“ü‚µAƒRƒƒ“ƒgƒAƒEƒg‚µ‚Ä‚­‚¾‚³‚¢B~
+
+‚Æ‚¢‚¤‚æ‚¤‚Ès‚ª‚ ‚è‚Ü‚·‚Ì‚ÅAŠY“–‚·‚és“ª‚É ''#'' •¶š‚ğ‘}“ü‚µAƒRƒƒ“ƒgƒAƒEƒg‚µ‚Ä‚­‚¾‚³‚¢B~
  #deb cdrom:[Ubuntu 7.10 _Gutsy Gibbon_ Japanese Remix - Release i386 (20071018)]/ gutsy main restricted
-::: |–”‚ÍA~
+
+–”‚ÍA~
  #deb cdrom:[Debian GNU/Linux 4.0 r3 _Etch_ - Official i386 NETINST Binary-1 20080218-14:15]/ etch contrib main
-:::2.ƒCƒ“ƒXƒg[ƒ‹ì‹Æ‚ğ‚â‚è’¼‚·|æ‚Ù‚Ç’†’f‚µ‚½ƒCƒ“ƒXƒg[ƒ‹ì‹Æ‚ğn‚ß‚©‚ç‚â‚è’¼‚µ‚Ä‚­‚¾‚³‚¢B
+
+*****2.ƒCƒ“ƒXƒg[ƒ‹ì‹Æ‚ğ‚â‚è’¼‚·
+æ‚Ù‚Ç’†’f‚µ‚½ƒCƒ“ƒXƒg[ƒ‹ì‹Æ‚ğn‚ß‚©‚ç‚â‚è’¼‚µ‚Ä‚­‚¾‚³‚¢B
 #br
 ****ƒTƒ“ƒvƒ‹ƒvƒƒOƒ‰ƒ€‚ÌSimpleIO‚ğÀs‚·‚érun.sh‚ªÀs‚Å‚«‚È‚¢
 : |run.sh‚ÉÀsƒrƒbƒg‚ª—§‚Á‚Ä‚¢‚È‚¢‰Â”\«‚ª‚ ‚è‚Ü‚·B‰º‹L‚Ì‚æ‚¤‚ÉÀsƒrƒbƒg‚ğ—§‚Ä‚ÄÀs‚·‚é‚©A’¼ÚƒVƒFƒ‹‚É“n‚µ‚ÄÀs‚µ‚Ä‚­‚¾‚³‚¢B~
@@ -187,17 +215,20 @@ omniORB‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚È‚¢‚Æ''omniNames.exe''‚àƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚È‚¢‚Ì‚ÅA
  > sh run.sh
 #br
 ****ƒTƒ“ƒvƒ‹ƒvƒƒOƒ‰ƒ€SimpleIO‚ğ‹N“®‚µ‚½‚ªA³í‚É“®‚©‚È‚¢B 
-:|SimpleIO‚ÌÀsƒXƒNƒŠƒvƒgrun.sh‚Å‚ÍAƒ^[ƒ~ƒiƒ‹ƒEƒBƒ“ƒhƒE‚ğktermCxtermCgnome-terminal‚Ì‚¢‚¸‚ê‚©‚É‰¼’è‚µ‚Ä‚¨‚è‚Ü‚·B‚±‚Ì‚½‚ßA‚±‚êˆÈŠO‚Ìƒ^[ƒ~ƒiƒ‹ƒEƒBƒ“ƒhƒE‚ğg—p‚µ‚Ä‚¢‚éê‡‚ÍArun.sh‚ğ“K‹X‘‚«Š·‚¦‚Ä‚©‚çÀs‚µ‚Ä‚­‚¾‚³‚¢B
+SimpleIO‚ÌÀsƒXƒNƒŠƒvƒgrun.sh‚Å‚ÍAƒ^[ƒ~ƒiƒ‹ƒEƒBƒ“ƒhƒE‚ğktermCxtermCgnome-terminal‚Ì‚¢‚¸‚ê‚©‚É‰¼’è‚µ‚Ä‚¨‚è‚Ü‚·B‚±‚Ì‚½‚ßA‚±‚êˆÈŠO‚Ìƒ^[ƒ~ƒiƒ‹ƒEƒBƒ“ƒhƒE‚ğg—p‚µ‚Ä‚¢‚éê‡‚ÍArun.sh‚ğ“K‹X‘‚«Š·‚¦‚Ä‚©‚çÀs‚µ‚Ä‚­‚¾‚³‚¢B~
 #br
+
+
 **OpenRTM-aist(Python”Å)
 ***Windows
 &aname(pythonusage);
 **** rtm-naming.py‚ğÀs‚µ‚½‚çAomniNames‚ª"usage:"‚ğ•\¦‚µ‚ÄI—¹‚µ‚Ä‚µ‚Ü‚¤  
-: |Çó ~
+*****Çó
 rtm-naming.py‚ğ"C:\Documents and Settings\Hoge\My Documents"“™ƒfƒBƒŒƒNƒgƒŠ–¼‚É‹ó”’‚ª“ü‚Á‚Ä‚¢‚éƒfƒBƒŒƒNƒgƒŠ‚©‚çÀs‚µ‚½ê‡AomniNames‚Í"usage:"‚ğ•\¦‚µ‚ÄI—¹‚µ‚Ä‚µ‚Ü‚¢‚Ü‚·B
-::‘Îˆ•û–@|‚±‚ê‚ÍArtm-naming.py‚ÌƒoƒO‚É‚æ‚é‚à‚Ì‚Å‚·Bã‹L‚ÌÇó‚ª‚Å‚½ê‡A‰º‹L‚Ì‚Ç‚¿‚ç‚©‚Ì•û–@‚Å‘Îˆ‚µ‚Ä‰º‚³‚¢B
-:::‘Îˆ–@‚»‚Ì1|C:\‚Ì’¼‰º(‚Ü‚½‚ÍAƒpƒX–¼‚É‹ó”’‚ª“ü‚Á‚Ä‚¢‚È‚¢êŠ)‚É"RTMNaming"“™“K“–‚ÈƒtƒHƒ‹ƒ_‚ğì¬‚µrtm-naming.py‚ğÀs‚µ‚Ä‚­‚¾‚³‚¢B
-:::‘Îˆ–@‚»‚Ì2|C:\Python<version>\Lib\site-packages\OpenRTM\rtm-naming‚Ìrtm-naming.py‚Ì48s–Ú‚ğ‰º‹L‚Ì‚æ‚¤‚É•ÒW‚µ‚Ä‚­‚¾‚³‚¢B~
+*****‘Îˆ•û–@
+‚±‚ê‚ÍArtm-naming.py‚ÌƒoƒO‚É‚æ‚é‚à‚Ì‚Å‚·Bã‹L‚ÌÇó‚ª‚Å‚½ê‡A‰º‹L‚Ì‚Ç‚¿‚ç‚©‚Ì•û–@‚Å‘Îˆ‚µ‚Ä‰º‚³‚¢B
+:‘Îˆ–@‚»‚Ì1|C:\‚Ì’¼‰º(‚Ü‚½‚ÍAƒpƒX–¼‚É‹ó”’‚ª“ü‚Á‚Ä‚¢‚È‚¢êŠ)‚É"RTMNaming"“™“K“–‚ÈƒtƒHƒ‹ƒ_‚ğì¬‚µrtm-naming.py‚ğÀs‚µ‚Ä‚­‚¾‚³‚¢B
+:‘Îˆ–@‚»‚Ì2|C:\Python<version>\Lib\site-packages\OpenRTM\rtm-naming‚Ìrtm-naming.py‚Ì48s–Ú‚ğ‰º‹L‚Ì‚æ‚¤‚É•ÒW‚µ‚Ä‚­‚¾‚³‚¢B~
  rtm-naming.py 48s–Ú
   cmd = "omniNames -start "+str(port)+" -logdir \""+str(currdir)+"\" &"
 #br
@@ -240,20 +271,22 @@ rtm-naming.py‚ğ"C:\Documents and Settings\Hoge\My Documents"“™ƒfƒBƒŒƒNƒgƒŠ–¼‚É‹ó
 **OpenRTM-aist(Java”Å)
 ***OS‹¤’Ê
 ****Java”ÅƒRƒ“ƒ|[ƒlƒ“ƒg‚Åƒf[ƒ^“]‘—‚ÉŠÔ‚ª‚©‚©‚é
-: |Java”Å‚ÌRTƒRƒ“ƒ|[ƒlƒ“ƒg‚ÆC++”Å‚È‚Ç‘¼‚ÌŒ¾Œê‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚Æ‚ÌŠÔ‚ÅA“Á‚É‘å‚«‚Èƒf[ƒ^i100kBˆÈã‚Å‚İ‚ç‚ê‚é‚±‚Æ‚ª‘½‚¢Bj‚ğ‘—óM‚·‚éê‡‚ÉA‹É’[‚É‘¬“x‚ª’á‰º‚·‚éê‡‚ª‚ ‚è‚Ü‚·B‚±‚ê‚ÍJava‚ÌCORBA‘¤‚Ì–â‘è‚Å‚ ‚é‚±‚Æ‚ª’m‚ç‚ê‚Ä‚¨‚èAƒ^ƒCƒ€ƒAƒEƒg‚ğ“KØ‚Éİ’è‚·‚é‚±‚Æ‚É‚æ‚è‰ñ”ğ‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B~
+Java”Å‚ÌRTƒRƒ“ƒ|[ƒlƒ“ƒg‚ÆC++”Å‚È‚Ç‘¼‚ÌŒ¾Œê‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚Æ‚ÌŠÔ‚ÅA“Á‚É‘å‚«‚Èƒf[ƒ^i100kBˆÈã‚Å‚İ‚ç‚ê‚é‚±‚Æ‚ª‘½‚¢Bj‚ğ‘—óM‚·‚éê‡‚ÉA‹É’[‚É‘¬“x‚ª’á‰º‚·‚éê‡‚ª‚ ‚è‚Ü‚·B‚±‚ê‚ÍJava‚ÌCORBA‘¤‚Ì–â‘è‚Å‚ ‚é‚±‚Æ‚ª’m‚ç‚ê‚Ä‚¨‚èAƒ^ƒCƒ€ƒAƒEƒg‚ğ“KØ‚Éİ’è‚·‚é‚±‚Æ‚É‚æ‚è‰ñ”ğ‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B~
 Java”Å‚ÌRTC‚ª“Ç‚İ‚Şrtc.conf‚ÉˆÈ‰º‚Ì‚æ‚¤‚É‹Lq‚·‚é‚±‚Æ‚ÅAJava‚ÌCORBA‚Ìƒ^ƒCƒ€ƒAƒEƒg‚ğİ’è‚µ‚Ü‚·B~
  corba.args: -ORBTCPReadTimeouts 1:60000:300:1
-: |Java (JDK1.5ˆÈ~) ‚Å‚ÍƒfƒtƒHƒ‹ƒg‚ÅA''100:3000:300:20'' ‚Æ‚È‚Á‚Ä‚¢‚Ü‚·‚ªA‚±‚ê‚ğ ''1:60000:300:1'' ‚É•ÏX‚·‚é‚Æ‚¢‚¤ˆÓ–¡‚Å‚·BŠe€–Ú‚Í¶‚©‚çA
-:: CORBAƒf[ƒ^‚ğread‚·‚é‚Æ‚«‚ÉA0byte‚Å‚ ‚Á‚½‚Æ‚«‚ÉRead Thread ‚ª‹x~‚³‚¹‚ç‚ê‚éŠÔ(ms)
-:: CORBAƒf[ƒ^‚Ìread‚ÉRead Thread‚ª‘Ò‚½‚³‚ê‚é—İÏÅ‘åŠÔ (ms)
-:: GIOP‚Ìƒwƒbƒ_[‚ğread‚·‚é‚Æ‚«‚Ìƒ^ƒCƒ€ƒAƒEƒg(ms)
-:: CORBAƒf[ƒ^‚ğread‚·‚é‚Æ‚«‚ÉARead Thread‚ª‹x~‚³‚¹‚ç‚ê‚½‚Æ‚«‚ÉAŸ‰ñ‚Ì‹x~‚ÌŠÔ‚ğ‘‰Á‚·‚éŠ„‡(%)
-: |‚Æ‚¢‚¤ˆÓ–¡‚É‚È‚Á‚Ä‚¢‚Ü‚·B‚µ‚½‚ª‚Á‚ÄA''1:60000:300:1'' ‚Í
-:: read‚µ‚Ä0byte‚Ì‚Æ‚«ARead Thread ‚ğ 1ms‹x~‚·‚é
-:: Read Thread ‚ª‘Ò‚ÂÅ‘å—İÏŠÔ‚Í 6000ms
-:: GIOP‚Ìƒwƒbƒ_‚ğread‚·‚é‚Æ‚«‚Ìƒ^ƒCƒ€ƒAƒEƒgŠÔ‚Í 300ms
-:: Read Thread ‚Ì‹x~ŠÔ‚Í1%‚Ã‚Â‘‰Á‚³‚¹‚é
-: |‚Æ‚¢‚¤ˆÓ–¡‚É‚È‚è‚Ü‚·B~
+Java (JDK1.5ˆÈ~) ‚Å‚ÍƒfƒtƒHƒ‹ƒg‚ÅA''100:3000:300:20'' ‚Æ‚È‚Á‚Ä‚¢‚Ü‚·‚ªA‚±‚ê‚ğ ''1:60000:300:1'' ‚É•ÏX‚·‚é‚Æ‚¢‚¤ˆÓ–¡‚Å‚·BŠe€–Ú‚Í¶‚©‚çA
+- CORBAƒf[ƒ^‚ğread‚·‚é‚Æ‚«‚ÉA0byte‚Å‚ ‚Á‚½‚Æ‚«‚ÉRead Thread ‚ª‹x~‚³‚¹‚ç‚ê‚éŠÔ(ms)
+- CORBAƒf[ƒ^‚Ìread‚ÉRead Thread‚ª‘Ò‚½‚³‚ê‚é—İÏÅ‘åŠÔ (ms)
+- GIOP‚Ìƒwƒbƒ_[‚ğread‚·‚é‚Æ‚«‚Ìƒ^ƒCƒ€ƒAƒEƒg(ms)
+- CORBAƒf[ƒ^‚ğread‚·‚é‚Æ‚«‚ÉARead Thread‚ª‹x~‚³‚¹‚ç‚ê‚½‚Æ‚«‚ÉAŸ‰ñ‚Ì‹x~‚ÌŠÔ‚ğ‘‰Á‚·‚éŠ„‡(%)
+
+‚Æ‚¢‚¤ˆÓ–¡‚É‚È‚Á‚Ä‚¢‚Ü‚·B‚µ‚½‚ª‚Á‚ÄA''1:60000:300:1'' ‚Í
+- read‚µ‚Ä0byte‚Ì‚Æ‚«ARead Thread ‚ğ 1ms‹x~‚·‚é
+- Read Thread ‚ª‘Ò‚ÂÅ‘å—İÏŠÔ‚Í 6000ms
+- GIOP‚Ìƒwƒbƒ_‚ğread‚·‚é‚Æ‚«‚Ìƒ^ƒCƒ€ƒAƒEƒgŠÔ‚Í 300ms
+- Read Thread ‚Ì‹x~ŠÔ‚Í1%‚Ã‚Â‘‰Á‚³‚¹‚é
+
+‚Æ‚¢‚¤ˆÓ–¡‚É‚È‚è‚Ü‚·B~
 ‘å‚«‚Èƒf[ƒ^‚Ìê‡A1‰ñ‚Ìread‚Åƒf[ƒ^‚ª“Ç‚İØ‚ê‚È‚¢‚Ì‚ÅA’Êí‰½‰ñ‚©read‚ğs‚¢‚Ü‚·B~
 Ÿ‚Ìƒf[ƒ^‚Í‚·‚®‚É‚Í—ˆ‚Ü‚¹‚ñ‚Ì‚ÅAread‚Í“Ç‚İ‚İƒoƒCƒg”‚ğ0byte‚Æ‚µ‚Ä–ß‚è‚Ü‚·‚ªA’Êí1msˆÈ“à‚É‚ÍŸ‚Ìƒf[ƒ^‚Í‚â‚Á‚Ä‚«‚Ü‚·BƒfƒtƒHƒ‹ƒg‚Ìİ’è‚¾‚ÆRead Thread‚ª100ms‘Ò‚½‚³‚ê‚Ü‚·‚ªA‚»‚ñ‚È‚É’·ŠÔ‘Ò‚Â•K—v‚Í‚È‚­1ms’ö“x‘Ò‚Ä‚ÎA‚·‚®‚ÉŸ‚Ìƒf[ƒ^‚ğ“Ç‚İ‚Ş‚±‚Æ‚ª‚Å‚«‚Ü‚·B~
 ƒfƒtƒHƒ‹ƒgİ’è‚Ìê‡A100ms‘Ò‚Á‚ÄA‚³‚ç‚É‚à‚¤ˆê“x“Ç‚İ‚İread‚ª0‚ğ•Ô‚·‚Ì‚ÅA‚³‚ç‚É100ms+20%‚Ì120ms‘Ò‚¿‚Ü‚·Bƒf[ƒ^‚ª‘å‚«‚·‚¬‚ê‚ÎA‚±‚ê‚ğ12‰ñŒJ‚è•Ô‚·‚ÆÅ‘å—İÏŠÔ‚Ì3000ms‚É’B‚µ‚Ä‚µ‚Ü‚¤‚Ì‚ÅAƒ^ƒCƒ€ƒAƒEƒg‚µ‚Ä‚µ‚Ü‚¢‚Ü‚·‚µAƒf[ƒ^‚ª¬‚³‚­‚Ä‚àAƒf[ƒ^‚Ì•ªŠ„”~100ms‚ÌŠÔ‚ª‚©‚©‚Á‚Ä‚µ‚Ü‚¤‚Ì‚ÅA”ñí‚É’x‚­‚È‚è‚Ü‚·B~
