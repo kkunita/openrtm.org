@@ -1,0 +1,172 @@
+#contents
+
+Source packages are provided for Windows users who wish to build OpenRTM-aist themselves.
+
+//------------------------------------------------------------
+**Source code for Windows
+
+The source package for Windows is distributed separately from the source package for Linux. Although the actual source code is the same, the Windows source package contains the following:
+
+-Shift-JIS character encoding (Linux uses EUC).
+-A Visual Studio solution.
+-Visual C++ project files.
+-An environment to create an MSI installer package.
+
+***Source code organisation
+
+As shown in the diagram, the original source code is contained in a Subversion repository. From this, on Linux the following packages are created:
+
+-Linux/Unix source code distribution package.
+-Windows source code distribution package.
+
+#ref(openrtm_src_dist_en.png,70%,center,nolink)
+CENTER:''OpenRTM-aist source code organisation''
+
+To use source obtained from the repository on Windows, you must first make a source package in Linux.
+
+//------------------------------------------------------------
+**Build environment
+
+The following environments and tools are necessary:
+
+-Visual C++ (or Visual C++ Express Edition)
+-omniORB
+
+*** Visual C++/Visual Studio
+
+To build binaries for Windows, the Visual C++ development environment is necessary. Currently Visual C++ 2005 and Visual C++ 2008 are supported. While the Project Transfer Wizard of Visual C++ 2010 should work, you will also need to build omniORB by hand.
+
+Visual C++ Express Edition is a free edition of Microsoft's C++ development environment. While it cannot create applications using MFC or ATL, it can create standard Win32 applications. As long as your components are not using MFC or ATL, you can use Visual C++ Express Edition. Download it from the following links. You will need to obtain a free Microsoft Live ID to get the necessary free license.
+
+-[[Visual Studio Express Top:http://www.microsoft.com/japan/msdn/vstudio/express/]] (Only the 2010 edition is available from this link.)
+-[[Visual Studio 2008 Express Edition:http://www.microsoft.com/japan/msdn/vstudio/2008/product/express/offline.aspx]] (The 2008 edition DVD ISO is available from this link.)
+
+*** omniORB
+
+The omniORB library is necessary to built OpenRTM-aist. Source code and binaries for omniORB can be downloaded from the following links, although the binary installer provided at openrtm.org is more convenient.
+
+-[[omniORB official:http://omniorb.sourceforge.net/]]
+--[[sourceforge download page:http://sourceforge.net/projects/omniorb/files/]]
+-[[msi package offered by openrtm.org:http://www.openrtm.org/pub/Windows/omniORB/]]
+--The packages are divided into vc8 (Visual C++ 2005) and vc9 (Visual C++ 2008) editions. Choose the correct one for your environment.
+
+If you install omniORB by a method other than the above installers, you will need to ensure the necessary environment variables are set before you can build OpenRTM-aist or your own RT Components.
+
+****MSI omniORB installer
+
+The installer performs the following actions:
+
+-Creates the installation directory (default: C:\Program Files\omniORB\<version_number>).
+-Copies the source files, header files, scripts, libraries, etc. into the installation directory.
+-Adds "bin/x86_win32" to the PATH environment variable.
+-Adds the installation directory to the OMNI_ROOT environment variable.
+
+The environment variable changes will not be immediately available without restarting your computer. Alternatively, you can force new shells to receive the new values by opening "My Computer" Å® "Properties" Å® "Advanced System Settings" Å® "Environment Variables...", selecting any variable, clicking "Edit...", and finally clicking "OK" without making any changes. New shells and applications opened from these shells from this point will receive the new values.
+
+**** Environment variable: OMNI_ROOT
+
+When installing by a method other than the MSI installer, the OMNI_ROOT environment variable must be set. The directory structure of the location this points to must be as follows.
+
+ <OMNI_ROOT>
+  + bin
+  |  + exripts
+  |  + x86_win32
+  + idl
+  |  + COS
+  + include
+  |  + COS
+  |  + omniORB4
+  |  |  + internal
+  |  + omnithread
+  |  + omniVms
+  |  + python1.5
+  + lib
+     + python
+     |  + omniidl
+     + omniidl_be
+        + cxx
+           + dynskel
+           + header
+           + impl
+           + skel
+
+*** WiX
+
+WiX (Windows Installer XML) is an open-source, command line-based toolkit for Windows MSI installers.
+
+-[[WiX official:http://wix.sourceforge.net/]]
+-[[WiX download page:http://sourceforge.net/projects/wix/files/]]
+
+OpenRTM-aist uses WiX to create Windows installers. To create installers yourself, you will need to install WiX.
+
+*** Python
+
+Python is used in many places in the build process, so it must be installed. Download and install the newest version from the [[Python Official Website:http://www.python.org/]]. Installing with the default settings is sufficient.
+
+*** OpenCV
+
+Several sample components using OpenCV are included in the Windows version of OpenRTM-aist. To build them, OpenCV must be installed. Currently only OpenCV 1.0 is supported. Download the OpenCV_1.0.exe installer and follow the instructions.
+
+-[[OpenCV win32 installer(sourceforge)>http://downloads.sourceforge.net/opencvlibrary/OpenCV_1.0.exe?modtime=1161287502&big_mirror=1]]
+
+//------------------------------------------------------------
+**Downloading a source package
+
+Download an appropriate source package, named similar to OpenRTM-aist-X.X.X-win32.zip, and extract it to a suitable location.
+
+-[[OpenRTM-aist-X.X.X-win32.zip:http://www.openrtm.org/pub/OpenRTM-aist/cxx/1.0.0/]]
+
+*** Applying patches
+
+The source package does not include the RTSystemEditor RCP package, which will cause an error during the build process. This can be resolved through one of these methods:
+
+-Amend installer/autowix.cmd
+-Copy the RTSystemEditor installed by the MSI installer package provided at openrtm.org to C:\distribution.
+
+****Amend installer/autowix.cmd
+
+Edit the part near the start of installer/autowix.cmd dealing with RTSystemEditor to the following:
+
+ @rem ------------------------------------------------------------
+ @rem Generate RTSystemEditor wxs file
+ @rem
+ @rem RTSystemEditorRCP.exe should be under %RTSE_ROOT%
+ @rem
+ @rem ------------------------------------------------------------
+ @rem if "x%RTSE_ROOT%" == "x" (
+ @rem    echo Envrionment variable "RTSE_ROOT" is not set. Abort.
+ @rem    goto END
+ @rem )
+ @rem if not exist "%RTSE_ROOT%\RTSystemEditorRCP.exe" (
+ @rem    echo RTSystemEditorRCP.exe does not found. Abort
+ @rem    goto END
+ @rem )
+ set INCLUDE_RTSE=NO
+ set INCLUDE_OPENRTP=NO
+
+****Copy RTSystemEditor
+
+Installing OpenRTM-aist by the MSI installer package for Windows provided at openrtm.org will, by default, install the RTSystemEditor RCP into C:\Program Files\OpenRTP. Copy this into the C:\distribution directory, maintaining the following file system structure.
+
+ C:\distribution
+      + OpenRTP
+         + RTSystemEditor
+             + configuration
+             + NewProjectName
+             + plugins
+             + ...
+
+** Build
+
+Once your environment has been set up as above, you can build OpenRTM-aist. Execute autobuild_vc8.bat (for VC2005) or autobuild_vc9.bat (for VC2008), and the build should automatically start.
+
+You can also build from a solution file. Open the OpenRTM-aist_vc8.sln (for VC2005) or OpenRTM-aist_vc9.sln (for VC2008) and build it.
+
+** Installing
+
+Once everything has built successfully, install it using the following procedure.
+
+-Set the RTM_ROOT environment variable to the OpenRTM-aist directory.
+-Copy the DLL files into a directory included in the PATH environment variable. Alternatively, add %RTM_ROOT%\bin to the PATH environment variable.
+-Adding %RTM_ROOT%\utils\rtc-template to the PATH environment variable is also recommended.
+
