@@ -63,7 +63,6 @@ Click the ''Open New RtcBuilder Editor'' button in the toolbar or select ''Open 
 #ref(fig2-9ToolsBarOpenNewRtcBuilder_en.png,nolink,center)
 CENTER:''Open New RtcBuilder Editor button in the toolbar''
 #br
-#br
 
 #ref(fig2-10FileMenuOpenNewBuilder_en.png,nolink,center)
 CENTER:''Open New Builder Editor option in the File menu''
