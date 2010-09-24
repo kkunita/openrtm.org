@@ -1,0 +1,22 @@
+** RTSampleComponent
+Some sample components are bundled to OpenRTM-aist, and it is possible to try it easily. (OpenCV1.0 is necessary for the USBCameraMonitor/USBCameraAcquire component. )The source code of the sample component is attached, and use it to develop, please. 
+
+
+The name server must be started to connect components together.If you have installed the Windows C++ version of OpenRTM-aist, the Start Menu will contain an entry for this: OpenRTM-aist->C++->examples->Start Naming Service.
+#br
+
+--Start Naming Service.bat　(C++)
+--rtc-naming.py　(Python)
+--start-orbd.vbs　(Java)
+
+#br
+
+//Start RTSystemEditor. Once it has started, connect to your name server and open the System Diagram Editor.
+Please double-click the corresponding file to execute the name server with Windows. When OpenRTM-aist is installed with the installer, it is also possible to execute the name server from start menu > OpenRTM-aist > language > tools. This chapter is written on the assumption that RTSystemEditor is installed. Please refer to the installation of Eclipse tools for details of the installation of RTSystemEditor. (A part of sample operates even if there is no RTSystemEditor. )
+#br
+
+//&color(red){''※''};
+//RtcLink Plagin and RTSystemEditor(0.4.2) cannot connect component compiled for OpenRTM-aist-1.0. //Replace RtcLink Plagin or RTSystemEditor（0.4.2) with RTSystemEditor（1.0.0).
+
+#br
+
