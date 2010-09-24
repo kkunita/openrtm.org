@@ -107,10 +107,10 @@ In the same way, start ConsoleOutComp.
 
 You can use RTSystemEditor to connect the two components and activate them. Download the all-in-one Eclipse package from [[here>/en/content/openrtm-eclipse-tools-10-release]] and extract it.
 
-RTSystemEditor requires Java Development Kit 6. Install it according to the instructions below, or use an equivalent such as OpenJDK as provided by your distribution. Refer to [[this page>ƒ}ƒjƒ…ƒAƒ‹/RTSystemEditor]] for details on starting RTSystemEditor.
+RTSystemEditor requires Java Development Kit 6. Install it according to the instructions below, or use an equivalent such as OpenJDK as provided by your distribution. Refer to [[this page>/node/1322]] for details on starting RTSystemEditor.
 
 --[[Java Development Kit 6:http://java.sun.com/javase/ja/6/download.html]]
---[[JDK installation instructions>/node/661#instjavaunixjdk]]
+--[[JDK installation instructions>/node/664#instjavaunixjdk]]
 
 *** Browsing the name server
 
