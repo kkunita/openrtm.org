@@ -1,0 +1,55 @@
+This Sample Component in OpenRTM-aist(C++, WINDOWS).Please note that this
+sample is not bundled to C++ edition Linux package, the Python edition, and
+the Java edition of OpenRTM-aist. 
+#contents
+**Introduction 
+The USBCameraAcquire component provides image data captured from a USB
+camera over its OutPort. The USBCameraMonitor component displays image data
+received over its InPort.
+
+#br
+
+**Screen shots
+#br
+
+
+#ref(USBCamera_example_en.png,60%,center)
+CENTER:''Example to run USBCamera ''
+
+#br
+
+
+#ref(USBCamera_example_rtse_en.png,60%,center)
+CENTER:''Example to run USBCamera (RTSystemEditor)''
+
+#br
+
+#ref(CaptureImage.png,60%,center)
+CENTER:''Example to run USBCamera(Monitor)''
+
+#br
+
+**Execution of RT-Component
+USBCamera is a sample that acquires the image data of the USB camera by
+USBCameraAqcuireComp Component, and displays it by USBCameraMonitorComp
+Component in the monitor. You can put the effect on the image data by
+connecting the RT sample component of OpenCV. 
+
+- Please install the driver of the USB camera used. 
+- Please install OpenCV when you use the USB camera. 
+- Please install it from an installer (for VC2008)
+[[here>http://downloads.sourceforge.net/opencvlibrary/OpenCV_1.0.exe?modtime=1161287502&big_mirror=1]]
+when you use OpenCV sample RT component. 
+
+#br
+You can execute this sample with the following procedures.
+--Start RTSystemEditor.
+--Run USBCameraAqcuireComp and USBCameraMonitorComp, then each sample component starts.
+--Both components are displayed on NameServiceView of RTSystemEditor. To add
+a RTcomponent to the System Editor from the Name Service View into the
+System Editor.
+--Drag and drop between two ports to connect them.
+--RTcomponents Activate.
+
+
+

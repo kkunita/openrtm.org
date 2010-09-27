@@ -1,0 +1,53 @@
+//*NXTRTC
+This Sample Component in OpenRTM-aist Python edition.Please note that this
+sample is not bundled to C++ edition, and the Java edition of OpenRTM-aist. 
+#contents
+**Introduction
+NXTRTC.py is a component that controls the motor , and outputs the sensor
+data for LEGO Mindstorm NXT. 
+-Reference
+--[[Development of RT-Components (for LEGO Mindstorms)>/en/node/762]]
+
+#br
+
+**Screen shots
+#br
+
+#ref(NXTRTC.png,nolink,center,70%)
+CENTER:''Example to run NXTRTC(NXTRTC)''
+
+#br
+
+
+#ref(TkMotor_en.png,center)
+CENTER:''Example to run TkMotorComp(TkMotorComp)''
+
+#br
+
+
+#ref(NXTRC_example_rtse_en.png,60%,center)
+CENTER:''Example to run NXTRTC(RTSystemEditor)''
+
+
+**Execution of RT-Component
+The motor of LEGO can be controlled by connecting this component with TkJoystickComp (input device) and TkMotorComp (output device).
+-Reference
+--[[Development of RT-Components (for LEGO Mindstorms)>/en/node/762]]
+
+
+
+#br
+
+You can execute this sample with the following procedures.
+--Start RTSystemEditor.
+--Start LEGO  Mindstorm from [[here>/en/node/763]], and connect the NXT to
+the PC with Bluetooth or USB.
+--Run NXTRTC.py, TkJoyStickComp.py and TkMotorComp.py, then each sample
+component starts.
+--Both components are displayed on NameServiceView of RTSystemEditor. To add
+a RTcomponent to the System Editor from the Name Service View into the
+System Editor.
+--Drag and drop between two ports to connect them.
+--RTcomponents Activate
+
+
