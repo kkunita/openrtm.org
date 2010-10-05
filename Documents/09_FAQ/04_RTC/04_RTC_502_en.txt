@@ -1,0 +1,296 @@
+#contents(4)
+FAQ concerning the RT component making was brought together.
+
+
+#clear
+#br
+
+****About the rule of the naming of the instance of the RT-Component
+The rule of the naming of the instance of the RT component is as follows. 
+ [RT-Component type name]+[number (0,1,2,3...)]
+
+[RT-Component type name] is a name specified by --type-name option of
+rtc-template or  for type_name of the component profile(Describe it at the
+head of *.cpp file usually). 
+
+[number (0,1,2,3...)] is numbered for the component generated on the same
+manager. (It is numbered like "0, 1, 2, and 3....". ) 
+
+Because the number of the instance started from 0 respectively when two or
+more same RT-Components were started in another process, two or more
+RT-Components of the same name were started. 
+According to circumstances, two or more RT-Components will be registered in
+the nameserver as the same name. The one registered ahead is overwrited in
+the one that was registered later. 
+There are the following methods to avoid this. 
+-Please start the components in the same process. 
+-Please specify the name format that doesn't collide respectively by
+optional naming.formats of rtc.conf. 
+
+#br
+
+****How can I use other than standard data type for InPort/OutPort
+Usually, in OpenRTM-aist, you can use twenty kinds of data type that are
+defined in rtm/idl/BasicDataType.idl as the data type of InPort and OutPort:
+such as TimedShort, TimedLong, TimedUShort, TimedULong, TimedFloat,
+TimedDouble, TimedChar, TimedBoolean, TimedOctet, TimedString,
+TimedShortSeq, TimedLongSeq, TimedUShortSeq, TimedULongSeq, TimedFloatSeq,
+TimedDoubleSeq, TimedCharSeq, TimedBooleanSeq, TimedOctetSeq and
+TimedStringSeq.
+
+When you want to define and use data types other than these for
+InPort/OutPort, you need to define them in your IDL, and compile and link
+them  as the same time you compile the components.
+
+Let's assume we want use a data type to store images, which has size (width,
+height), depth, and image data as members.
+Define the following data type in your IDL as follows:
+
+ #include <rtm/idl/DataType.idl>
+ struct TimedImage
+ {
+   Time tm;
+   long width;
+   long height;
+   long depth;
+   sequence<octet> data;
+ };
+ 
+
+Time type is a type for timestamp that is defined in OpenRTM.
+You may not need it but you will be better to include it.
+Save this to a file named TimedImage.idl.
+
+Put this file under the directory where the component is created.
+Next, generate the component with rtc-template.
+At that time, specify this IDL file to --consumer-idl option.
+
+ rtc-template -bcxx \ 
+   --module-name=ConsoleIn --module-type='DataFlowComponent' \ 
+   --module-desc='Console input component' \ 
+   --module-version=1.0 --module-vendor='Noriaki Ando, AIST' \ 
+   --module-category=example \ 
+   --module-comp-type=DataFlowComponent --module-act-type=SPORADIC \ 
+   --module-max-inst=10 --outport=out:TimedImage \ 
+   --consumer-idl=TimedImage.idl
+
+In this example, we use TimedImage type defined in TimedImage.idl as a data
+type of OutPort. Let's compile the generated codes.
+
+make -f Makefile.ConsoleIn
+
+As a result, TimedImage.idl is compiled by IDL compiler and linked to the
+component as well as its stub is generated. 
+Usage of data in the component is the same as usual.
+
+If you want use the same data type as this one in another component, please
+copy this IDL file and specify the file to consumer-idl option of
+rtc-template in a similar way.
+
+Now, you can connect between components by using this data type.
+
+****How can I use other than standard data type for InPort/OutPort(a supplementary explanation.)
+Please check the following points when it doesn't go well by the method of
+the above-mentioned or adds the data port by the hand work.
+The method of using the structure named TimedImage by the foo component is
+described as an example.
+
+1.Is TimedImage.idl written accurately?
+Example
+ #include <BasicDataType.idl>
+ module RTC
+ {
+   struct TimedImage
+   {
+     Time tm;
+     long width;
+     long height;
+     long depth;
+     sequence<octet> data;
+   };
+ };
+
+2.Is there a description related to Stub in Makefile?
+ ...
+ STUB_OBJ = TimedImageStub.o
+ ...
+ TimedImageStub.cpp : TimedImage.idl
+        $(IDLC) $(IDLFLAGS) -I/usr/include/rtm/idl TimedImage.idl
+        $(WRAPPER) $(WRAPPER_FLAGS) --idl-file=TimedImage.idl
+ TimedImageStub.h : iis.idl
+        $(IDLC) $(IDLFLAGS) -I/usr/include/rtm/idl TimedImage.idl
+        $(WRAPPER) $(WRAPPER_FLAGS) --idl-file=TimedImage.idl
+ ...
+ 
+ foo.so: $(OBJS)
+ foo.o: foo.h TimedImageStub.h              
+ fooComp.o: fooComp.cpp foo.cpp foo.h TimedImageStub.h
+ 
+ TimedImageStub.o: TimedImageStub.cpp TimedImageStub.h
+
+3.Is Stub.h included with foo.h?Is the type declaration done?
+ ...
+ #include "TimedImageStub.h"
+ ...
+ TimedImage m_hoge;
+ InPort<TimedImage> m_hogeIn;
+
+****Method of sending data of about 2MB or more in data port
+When data that exceeds 2MB is sent by using the data port, it is necessary
+to note it.  In omniORB, the size that can be treated with giop(General
+Inter-ORB Protocol) default is "2097152B(2MB). " When data that exceeds this
+size is sent, correct data cannot be sent because of the limitation of giop.
+There are the following two methods to change this maximum size. 
+
+::Method of specifying maximum size with rtc.conf
+
+ # file: rtc.conf
+ corba.nameservers: localhost
+ naming.formats: %n.rtc
+ corba.args: -ORBgiopMaxMsgSize 3145728 # add 
+                                        # The maximum size was changed to 3MB. 
+
+::Method to specify by environment variable
+  export ORBgiopMaxMsgSize=3145728
+
+:: |When giopMaxMsgSize is specified, it is necessary to set it to both (pairing component) server and client. 
+:: |(omniORB configuration and API) [[http://omniorb.sourceforge.net/omni41/omniORB/omniORB004.html:http://omniorb.sourceforge.net/omni41/omniORB/omniORB004.html]]
+
+#br
+
+&aname(errorjavaJDK);
+****The new Java project in accordance with JDK6(1.6) cannot be made. 
+The JDK conforming might not be able to be selected by the following
+dialogs' being displayed when it tries to make the Java project by a new
+project. 
+#ref(new_project_name_en.png,center,50%)
+CENTER:''Dialog of new Java project to which selection of JDK is not displayed''
+In the project that uses RTCBuilder, it is necessary to specify JDK for the
+item of JRE of this dialog (Java execution environment).  Please enable the
+selection of JDK in the following way.Please click "JRE is composed" link in
+the JRE intraframe as shown in the above figure.  
+
+&br;
+&br;
+#ref(new_JRE_setting_en.png,center,80%)
+CENTER:''Dialog of installed JRE''
+#br
+Please push an upper right "Addition" button. 
+
+&br;&br;
+
+#ref(new_JRE_VM_setting_en.png,center,60%)
+CENTER:''Dialog of selection of type of JRE''
+Please select standard VM and push "Next" button. (in JDK)The dialog
+(figure below) to add JRE is displayed. 
+
+
+
+#ref(add_JRE_en.png,center,50%)
+CENTER:''Additional dialog of JRE''
+#br
+
+Please push "Directory" button, and select path to JDK6. (reference: Pash
+JDK6 is C:\Program Files\Java\jdk1.6.0_XX usually. )
+
+&br;
+&br;
+
+#ref(select_JDK_en.png,center,nolink)
+
+CENTER:''Please set path to JDK6''  
+&br;
+When the reference to pash about JDK succeeds, "Addition of JRE" dialog is
+shown in the figure below. "OK" Please push the button. 
+&br;
+&br;
+
+#ref(load_JDK_en.png,center,50%)
+CENTER:''Refer to path for JDK''
+&br;
+&br;
+Please it returns to "Installed JRE" dialog (With JDK added), and move the
+check on JRE assumed to be active as shown in the figure below to JDK, and
+push the "OK" button. 
+&br;
+&br;
+
+
+#ref(set_active_JDK_en.png,center,80%)
+CENTER:''Change the check actively to JDK. ''
+
+It comes to be able to select JDK by the dialog of "New Java project".
+
+&br;
+&br;
+
+#ref(SelectJDKasJRE_en.png,center,50%)
+CENTER:''Specify JRE in JDK''  
+&br;
+&br;
+
+#br
+
+&aname(Antbuild);
+****Method of building project that exists in arbitrary folder by Ant.
+// In OpenRTM-aist-Java, as for  building RT-Component by Ant and generating
+// code  by RTCBuilder, it cooperates.  It has been achieved by setting
+// RTM_JAVA_ROOT to classpath. 
+// Therefore, RTM_JAVA_ROOT should maintain the base pash of the library
+// folder of OpenRTM-aist. 
+// However, because RTM_JAVA_ROOT originally indicates the installation
+// place of OpenRTM-aist (Java version), the library and other components
+// (document sample utility tools) of OpenRTM-aist (Java version) should always
+// keep the folder structure. 
+// There is a method of assuming RTM_JAVA_ROOT only for the setting of
+// class-path. The usage of setting RTM_JAVA_ROOT by arranging the library
+// folder of OpenRTM-aist at a free position according to it will be able to be
+// done.However, the condition "RTM_JAVA_ROOT is not used for the usages other
+// than class-path to the library" is necessary in this case. 
+Here, the method of setting class-path to the directory besides the
+directory that RTM_JAVA_ROOT directs is explained. 
+*****Please call the Ant setting dialog of ''Eclipse. ''
+Please right-click in
+build_<CompName>.xml that exists in "Package Explorer" of Eclipse, and
+select "Execution" Å®"Ant build". 
+&br;
+&br;
+#ref(Call_Ant_Setting_en.png,center,80%)
+CENTER:''Please call the Ant setting dialog''
+&br;
+&br;
+*****''Please set the class-path''. 
+Please select class-path tag if a set dialog of Ant is displayed. 
+&br;
+&br;
+
+#ref(Ant_Setting_Classpath_en.png,center,80%)
+CENTER:''Please select class-path tag''
+Please select "User entry" once, and push "External JAR addition" button
+afterwards. 
+
+&br;
+&br;
+
+#ref(Ant_External_Jar_en.png,center,80%)
+CENTER:''Please add external JAR''
+
+&br;
+Please specify path in a target JAR library when "Selection of JAR"
+dialog appears. Then, the JAR library added as shown in the figure below is
+displayed in a set dialog of Ant. 
+
+&br;
+&br;
+
+#ref(Ant_Add_Jar_en.png,center,80%)
+CENTER:''Added JAR''
+&br;&br;
+*****''Important note''
+It is necessary to set RTM_JAVA_ROOT (However, there is no problem even if
+the value of the dummy is set).  Please do not delete the setting of
+RTM_JAVA_ROOT though the setting of RTM_JAVA_ROOT becomes unnecessary
+because it specifies arbitrary path for class-path. The error occurs at the
+build when the setting of RTM_JAVA_ROOT is deleted. Moreover, RTM_JAVA_ROOT
+should indicate the directory of the name of "jar". 
+

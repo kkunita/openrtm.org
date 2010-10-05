@@ -1,0 +1,69 @@
+#contents
+**What is RT-Middleware? 
+Not only an entire robot but also various usable robots functional elements
+are called RT (Robot Technology/Robotic Technology).
+RT-Middleware is a platform to module and integrate a variety of functional
+elements as software.
+Goals of the RT-Middleware is to open the specifications and establish an
+open architecture platform that enables the interoperability between various
+implementations. Thus, "RT-Middleware" indicates such an entire platform.
+
+**What is RT-Component? 
+In RT-Middleware, an RT functional element is modularized as a software
+component called RT-Component, and a robot is implemented by combining
+RT-Components on RT-Middleware. 
+RT-Components have data ports and service ports to communicate with other
+components, and you can integrate various components easily by standardizing
+these interface specifications. Also, RT-Components have common state
+machine inside, and you can handle with a lot of components in upper
+application programs integrally. Moreover, since RT-Components have standard
+interfaces to operate internal parameter configurations externally, you can
+reuse them for various usage without recompiling.
+
+**What is OpenRTM-aist?
+OpenRTM-aist is one of the reference implementations of RT-Middleware that
+AIST has been implementing and distributing. 
+It consists of RT-Component framework to create RT-Components, RT-Middleware
+that manages the lifecycle of RT-Component, moreover RtcTemplate to generate
+skeleton codes of the components and GUI tools to operate and connect
+RT-Components. 
+Currently, AIST provides reference implementations for C++, Python and Java,
+and develops other versions of implementing other languages. There are
+compatibility middleware of OpenRTM for Java and .NET as reference
+implementation of Version0.2.0 compatibility
+
+//**What is the current version of OpenRTM-aist? 
+//The current OpenRTM-aist version is 0.4.1.
+
+**Which languages are supported? 
+OpenRTM-aist provides a framework to develop RT-Components with C++, Python
+and Java.
+
+**Which platforms are supported? 
+Currently, OpenRTM-aist is supported on FreeBSD, Linux and Windows.
+The supported versions of FreeBSD and Linux distribution are as follows:
+-FreeBSD 
+-Vine Linux 
+-Fedora Core 
+-Debian
+-Ubuntu Linux 
+
+**How about License? 
+OpenRTM-aist is provided by the dual license mode to contract to LGPL(GNU
+Lesser General Public License) and AIST individually. 
+An individual license is a license for modifying source codes of
+OpenRTM-aist and distributing them in a closed format for commercial
+purposes.
+Since source codes need to be modified for use in embedded systems, this
+type of license is provided to promote their use in business.
+
+**How about the license of the component I created? 
+Components can be created and distributed as dynamically linked libraries
+(called "Shared Object" in Unix and "DLL"(Dynamic Link Library) in Windows),
+and the components used by dynamically linking with core libraries of
+OpenRTM-aist do not have limitation under LGPL license. The component
+developers can set license their components individually.
+For those of you who would like to support our goal in promoting the reuse
+of the components, please open the components you created on a source code
+level.
+
