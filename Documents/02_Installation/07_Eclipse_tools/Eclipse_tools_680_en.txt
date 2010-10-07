@@ -1,0 +1,88 @@
+#ref(eclipse_logo.png,around,left)
+RTCBuilder and RTSystemEditor support the development of RTC. RTCBuilder and RTSystemEditor are development tools made as a plug-in of the Eclipse integration development environment. Therefore, it is necessary to install the development environment of Eclipse and Java to use RTCBuilder and RTSystemEditor.
+
+#clear
+----
+
+If you are in a hurry and can handle the Japanese versions of Eclipse and the tools, you can download all-in-one packages for Windows and UNIX from [[here:/en/node/945]]. These include Eclipse, RTSystemEditor, RTCBuilder, and all required Eclipse plugins. It is possible to install it very easily. 
+
+[[Java Development Kit 6(JDK):http://www.oracle.com/technetwork/java/javase/downloads/index.html]]is necessary. Please install it beforehand. 
+The compressed Eclipse archive is 100MB or more. Extract its contents into the directory you wish to install Eclipse into. There is no installer for Eclipse. Start it by running the eclipse.exe executable on Windows, or the eclipse binary on UNIX.
+
+
+
+
+
+
+
+// **RT System Editor 
+// RT System Editor is one of the OpenRTM-aist development tools. It allows
+// RT Components to be manipulated in real-time using a graphical interface. It
+// functions as a plugin for the Eclipse IDE, allowing seamless operation from
+// within Eclipse and integration with existing plugins.
+// 
+// ***Functional Overview 
+// The functions offered by RT System Editor are given below.
+// 
+// |Function|Overview|
+// |Display and edit component configurations|The configuration profiles of the
+// selected component is displayed in the Configuration View, and can be edited
+// there.|
+// |Change component behaviour|Select components and change their behaviour
+// (active state, etc).|
+// |Combine components|Retrieve components from a repository or load them from
+// the file system and combine them together into a system using the System
+// Editor.|
+// |Save and open systems|Save the contents of the System Editor and load it
+// again at a later date.|
+// |Restore systems|Use saved System Editor states to restore a system of
+// connected RT Components.|
+// 
+// ***Operating Environment
+// The following must be installed for RT System Editor to function.
+// 
+// |Software|Remarks|
+// |[[Java Development Kit
+// 6:http://java.sun.com/javase/ja/6/download.html]]|&color(Red){Note: Java1.5
+// (5.0) is not suitable.};|
+// |[[Eclipse
+// 3.2.1:http://archive.eclipse.org/eclipse/downloads/drops/R-3.2.1-200609210945/download.php?dropFile=eclipse-SDK-3.2.1-win32.zip]]|Eclipse
+// itself|
+// |Eclipse EMF 2.2.4 [[EMF{SDO
+// Runtime:http://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/downloads/drops/2.2.4/R200710030400/emf-sdo-runtime-2.2.4.zip]]
+// and [[XSD
+// Runtime:http://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/downloads/drops/2.2.4/R200710030400/xsd-runtime-2.2.4.zip]]|Eclipse
+// plugin required by RT System Editor|
+// |[[Eclipse GEF
+// 3.2.2:http://www.eclipse.org/downloads/download.php?file=/tools/gef/downloads/drops/3.2.2/R200702081315/GEF-runtime-3.2.2.zip]]|Eclipse
+// plugin required by RT System Editor|
+// 
+// ** Eclipse 
+// [[Eclipse>http://www.eclipse.org/]] is an open-source Integrated Development
+// Environment framework for developing in Java and other languages, developed
+// by the Eclipse Foundation. Eclipse is, at its core, a platform for plugins
+// to execute in, combining a wide variety of plugins to create various
+// development environments. Even the default Java development environment is
+// implemented as a plugin, and development environments for other languages
+// can be created and expanded using other plugins.
+// 
+// The characteristics of Eclipse include:
+// -Easily extensible using plugins. Plugins can also cooperate.
+// -Using the Rich Client Platform (RCP) structure, plugins can function
+// standalone.
+// -Because it is written in Java, it functions on many platforms.
+// These characteristics are very useful for constructing a robot-oriented
+// development environment. For this reason, it was selected as the platform
+// for the RT Middleware tools.
+// 
+// In order to use RT System Editor, Eclipse must first be installed. See the
+// links below for instructions on installing Eclipse.
+// -[[http://eclipsewiki.net/eclipse/>http://eclipsewiki.net/eclipse/]]
+// -[[http://www13.plala.or.jp/observe/eclipse/install.html>http://www13.plala.or.jp/observe/eclipse/install.html]]
+// 
+// ----
+// -Installation of RT System Editor and RTC Builder
+// -[[Installing RT System Editor:/en/node/681]]
+// -[[Installing RTCBuilder:/en/node/682]]
+// -[[Installing and Starting RTC Builder:/en/node/683]]
+
