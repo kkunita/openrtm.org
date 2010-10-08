@@ -24,13 +24,13 @@ OpenRTM-aist-Java requires J2SE 5.0 (JDK5) or higher. Download the correct J2SE 
 
 *** Execute the installer
 
-Refer to the [[JDK installation hints:/ja/content/tipsjava100]] for tips on installing Java on various distributions. The Java installer must be executed as a superuser.
+Refer to the [[JDK installation hints:/en/node/915#tipsjava100]] for tips on installing Java on various distributions. The Java installer must be executed as a superuser.
 
 &color(red){''※ When installing Java on Fedora Core, be aware of the following issues:''};
 
-　→ [[''FAQ:'' Installing Java on Fedora Core>/node/151#javafedora]]
+　→ [[''FAQ:'' Installing Java on Fedora Core>/en/node/1327#javafedora]]
 
-　→ [[''FAQ:'' Q. An error appears in the RtcLink NameService View on Fedora Core >RtcLink.#fedoraNS]]
+　→ [[''FAQ:'' Q. An error appears in RTSystemEditor NameService View on Fedora Core >/en/node/500/#fedoraNS]]
 
 *** Test the installation
 
@@ -49,12 +49,12 @@ In a terminal, execute this command to test Java. If the Java version is display
 
 Download the jar file and samples from [[here>/en/content/openrtm-aist-java-100-release#winpkg]]. Extract the zip file into a suitable location. The extracted location does not matter, but do not change the directory structure*. The "jar" directory in the extracted location must be added to the RTM_JAVA_ROOT environment variable.
 
-*If you wish to change the directory structure of the extracted files, refer [[here>RTコンポーネント作成（Java版）.#Antbuild]].
+-If you wish to change the directory structure of the extracted files, refer [[here>/en/node/502#Antbuild]].
 
 &aname(hensu);
 ** Setting environment variables
 
-The environment variables should be changed in a file appropriate to your shell. For example, users of the bash shell should edit ".bashrc" in their home directory, while users of the csh shell should edit ".cshrc" in their home directory. If you wish to change the variable system-wide, edit the files in /etc/profile. Note that changing the variables for an individual user or system wide will affect how the GUI tools such as Eclipse should be started. See [[here>RtcTemplate.#eclipse]] for more information.
+The environment variables should be changed in a file appropriate to your shell. For example, users of the bash shell should edit ".bashrc" in their home directory, while users of the csh shell should edit ".cshrc" in their home directory. If you wish to change the variable system-wide, edit the files in /etc/profile. Note that changing the variables for an individual user or system wide will affect how the GUI tools such as Eclipse should be started. See [[here>/en/node/500#eclipse]] for more information.
 
 - Variable:RTM_JAVA_ROOT
 - Value: Directory extracted from the zip file containing the "jar" directory. The "jar" directory contains the class library file (OpenRTM-aist-X.X.X.jar) and commons-cli-1.1.jar, and should be below a directory called "OpenRTM-aist\<version>". Be sure to include "OpenRTM-aist\<version>" in RTM_JAVA_ROOT.
