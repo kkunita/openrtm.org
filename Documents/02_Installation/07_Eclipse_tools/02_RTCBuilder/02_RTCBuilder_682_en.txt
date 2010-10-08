@@ -14,8 +14,8 @@ Although RTC Builder can be used even if RT System Editor is not installed, if i
 ***Operating Environment
 The following must be installed for RTC Builder to function.
 |Software|Remarks|
-|[[Java Development Kit 6:http://java.sun.com/javase/ja/6/download.html]]|&color(red){Note: Java1.5 (5.0) is not suitable.};|
-|Eclipse version 3.4.2 or above &br; http://www.eclipse.org/downloads/index.php &br; (http://archive.eclipse.org/eclipse/downloads/index.php)|Eclipse itself|
+|[[Java Development Kit 6:http://www.oracle.com/technetwork/java/javase/downloads/index.html]]|&color(red){Note: Java1.5 (5.0) is not suitable.};|
+|Eclipse version 3.4.2 or above &br; http://www.eclipse.org/downloads/index.php &br; http://archive.eclipse.org/eclipse/downloads/index.php|Eclipse itself|
 |[[Eclipse EMF version 2.2 or above (SDO, XSD included):http://www.eclipse.org/modeling/emf/downloads/]]|Eclipse plugin required by RTC Builder &br; Note: be sure to use versions that match your Eclipse version.|
 |[[Eclipse GEF version 3.2 or above (Draw2D included):http://www.eclipse.org/gef/downloads/]]|Eclipse plugin required by RTC Builder &br; Note: be sure to use versions that match your Eclipse version.|
 
@@ -26,8 +26,8 @@ If you will be generating components for C++ or Python, you will need the follow
 
 **Install RTC Builder 
 Because RTC Builder is an Eclipse plugin, it requires Eclipse to be installed. Eclipse is written in Java, so it in turn requires a Java environment to be set up before it can be installed (such as the JDK).
-- Please refer to [["Installation of Java execution environment (JRE) of Eclipse":/ne/node/1418#jre_install]] for the installation of the Java execution environment. 
--Please refer to [["Installation of Eclipse of Eclipse":/ne/node/1418#eclipse_install]] for the installation of Eclipse.  
+- Please refer to [["Installation of Java execution environment (JRE) of Eclipse":/en/node/1418#jre_install]] for the installation of the Java execution environment. 
+-Please refer to [["Installation of Eclipse of Eclipse":/en/node/1418#eclipse_install]] for the installation of Eclipse.  
 
 // *** Installing the Java Runtime Environment (JRE) 
 // Before installing Eclipse, install a suitable Java, such as Sun's [[Java
@@ -48,7 +48,7 @@ Because RTC Builder is an Eclipse plugin, it requires Eclipse to be installed. E
 // 
 
 *** Installing and Starting RTC Builder 
-Download the [[RTC Builder plugin:RTSystemEditor/RTCBuilder-1.0.0_en]] and copy the jar files into the Eclipse plugin directory. This is a directory called ''plugin'' below the ''eclipse'' directory in the location you extracted the Eclipse archive to.  Download the Start Eclipse and select ''Open Perspective''->''Other'' from the ''Window'' menu. The perspective selection dialog will be displayed.
+Download the [[RTC Builder plugin:/en/node/529]] and copy the jar files into the Eclipse plugin directory. This is a directory called ''plugin'' below the ''eclipse'' directory in the location you extracted the Eclipse archive to.  Download the Start Eclipse and select ''Open Perspective''->''Other'' from the ''Window'' menu. The perspective selection dialog will be displayed.
 #br
 
 #ref(fig2-3PerspectiveSelection_en.png,50%,center)
