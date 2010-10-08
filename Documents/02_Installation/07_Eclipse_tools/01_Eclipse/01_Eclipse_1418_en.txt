@@ -9,17 +9,17 @@ These characteristics are very useful for constructing a robot-oriented developm
 
 In order to use RT System Editor, Eclipse must first be installed. See the links below for instructions on installing Eclipse.
 -[[http://eclipsewiki.net/eclipse/>http://eclipsewiki.net/eclipse/]]
--[[http://www13.plala.or.jp/observe/eclipse/install.html>http://www13.plala.or.jp/observe/eclipse/install.html]]
+//-[[http://www13.plala.or.jp/observe/eclipse/install.html>http://www13.plala.or.jp/observe/eclipse/install.html]]
 #contents
 #clear
 
 &aname(jre_install);
 *** Installing the Java Runtime Environment (JRE) 
-Before installing Eclipse, install a suitable Java, such as Sun's [[Java Runtime Environment (JRE)>http://www.java.com/ja/download/manual.jsp]]. If you already have a Java Development Environment (JDK) version 1.6 or above installed, there is no need to install a separate JRE. (If you will be generating Java code using RTC Builder, you will need to have a JDK installed; the JRE will not be sufficient.)
--[[JRE download>http://www.java.com/ja/download/manual.jsp]]
+Before installing Eclipse, install a suitable Java, such as Sun's [[Java Runtime Environment (JRE)>http://www.java.com/en/download/manual.jsp]]. If you already have a Java Development Environment (JDK) version 1.6 or above installed, there is no need to install a separate JRE. (If you will be generating Java code using RTC Builder, you will need to have a JDK installed; the JRE will not be sufficient.)
+-[[JRE download>http://www.java.com/en/download/manual.jsp]]
 -[[JRE (Windows) online installer>http://javadl.sun.com/webapps/download/AutoDL?BundleId=11145]]
 -[[JRE (Windows) online installer>http://javadl.sun.com/webapps/download/AutoDL?BundleId=11193]]
--[[Java Development Kit 6:http://java.sun.com/javase/ja/6/download.html]]
+-[[Java Development Kit 6:http://www.oracle.com/technetwork/java/javase/downloads/index.html]]
 
 Follow the displayed instructions to install after downloading.
 
