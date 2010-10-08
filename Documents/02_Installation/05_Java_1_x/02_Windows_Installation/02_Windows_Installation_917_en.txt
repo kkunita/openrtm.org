@@ -118,7 +118,7 @@ CENTER:''Installation complete''
 
 *** Installing from a zip file
 
-Download the "Jar file and samples" from [[here>/en/content/openrtm-aist-java-100-release]] and extract it to a suitable directory. The extracted location does not matter, but do not change the directory structure (If you wish to change the directory structure of the extracted files, refer [[here>RTコンポーネント作成（Java版）.#Antbuild]]). The "jar" directory in the extracted location must be added to the RTM_JAVA_ROOT environment variable.
+Download the "Jar file and samples" from [[here>/en/content/openrtm-aist-java-100-release]] and extract it to a suitable directory. The extracted location does not matter, but do not change the directory structure (If you wish to change the directory structure of the extracted files, refer [[here>/en/node/502#Antbuild]]). The "jar" directory in the extracted location must be added to the RTM_JAVA_ROOT environment variable.
 
 - Setting environment variables
 
