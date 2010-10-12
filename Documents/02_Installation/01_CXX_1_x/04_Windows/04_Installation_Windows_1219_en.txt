@@ -33,9 +33,9 @@ CENTER:''License screen''
 
 Three setup types are available:
 
--Standard: All features will be available.
+-Typical: All features will be available.
 -Custom: Allows you to select which features will be available.
--Complete: All features will be available. The same as "Standard."
+-Complete: All features will be available. The same as "Typical".
 
 
 #ref(installer_en_03.png,60%,center)
