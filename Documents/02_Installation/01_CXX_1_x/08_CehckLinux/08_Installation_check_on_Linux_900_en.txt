@@ -134,10 +134,10 @@ If using the samples directly from a source directory:
 
 You can use RTSystemEditor to connect the two components and activate them. Download the all-in-one Eclipse package from [[here>RTSystemEditor・RTCBuilder-1.0.0]] and extract it.
 
-RTSystemEditor requires Java Development Kit 6. Install it according to the instructions below, or use an equivalent such as OpenJDK as provided by your distribution. Refer to [[this page>マニュアル/RTSystemEditor]] for details on starting RTSystemEditor.
+RTSystemEditor requires Java Development Kit 6. Install it according to the instructions below, or use an equivalent such as OpenJDK as provided by your distribution. Refer to [[this page>/en/node/945]] for details on starting RTSystemEditor.
 
---[[Java Development Kit 6:http://java.sun.com/javase/ja/6/download.html]]~
---[[JDK installation instructions>/node/661#instjavaunixjdk]]
+--[[Java Development Kit 6:http://www.oracle.com/technetwork/java/javase/downloads/index.html]]~
+--[[JDK installation instructions>/en/node/664#instjavaunixjdk]]
 
 *** Browsing the name server
 
