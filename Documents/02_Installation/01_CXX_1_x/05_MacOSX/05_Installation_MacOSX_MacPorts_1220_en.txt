@@ -25,7 +25,7 @@ MacPorts uses dmg package files. You must select the dmg file that matches your 
 A script to download the portfile and automatically build and install it is available:
 
 -[[Portfile:http://www.openrtm.org/pub/MacOSX/macports/ports.tgz]]
--[[Install script:http://www.openrtm.org/pub/OpenRTM-aist/cxx/install_scripts/port_install100_mac.sh]]: Automatically downloads ports.tgz and installs it.
+-[[Install script:http://www.openrtm.org/pub/MacOSX/macports/port_install.sh]]: Automatically downloads ports.tgz and installs it.
 
 In an appropriate directory, execute the script as below. You will be asked for a superuser password during the install.
 
