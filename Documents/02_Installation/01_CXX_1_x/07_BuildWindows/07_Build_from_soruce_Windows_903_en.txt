@@ -38,8 +38,8 @@ To build binaries for Windows, the Visual C++ development environment is necessa
 
 Visual C++ Express Edition is a free edition of Microsoft's C++ development environment. While it cannot create applications using MFC or ATL, it can create standard Win32 applications. As long as your components are not using MFC or ATL, you can use Visual C++ Express Edition. Download it from the following links. You will need to obtain a free Microsoft Live ID to get the necessary free license.
 
--[[Visual Studio Express Top:http://www.microsoft.com/japan/msdn/vstudio/express/]] (Only the 2010 edition is available from this link.)
--[[Visual Studio 2008 Express Edition:http://www.microsoft.com/japan/msdn/vstudio/2008/product/express/offline.aspx]] (The 2008 edition DVD ISO is available from this link.)
+-[[Visual Studio Express Top:http://www.microsoft.com/express/downloads/]] (Only the 2010 edition is available from this link.)
+-[[Visual Studio 2008 Express Edition:http://www.microsoft.com/downloads/en/details.aspx?FamilyID=94de806b-e1a1-4282-abc5-1f7347782553]] (The 2008 edition DVD ISO is available from this link.)
 
 *** omniORB
 
