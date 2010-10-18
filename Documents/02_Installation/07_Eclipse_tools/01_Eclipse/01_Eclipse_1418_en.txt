@@ -7,8 +7,9 @@ The characteristics of Eclipse include:
 -Because it is written in Java, it functions on many platforms.
 These characteristics are very useful for constructing a robot-oriented development environment. For this reason, it was selected as the platform for the RT Middleware tools.
 
-In order to use RT System Editor, Eclipse must first be installed. See the links below for instructions on installing Eclipse.
--[[http://eclipsewiki.net/eclipse/>http://eclipsewiki.net/eclipse/]]
+In order to use RT System Editor, Eclipse must first be installed. 
+// See the links below for instructions on installing Eclipse.
+// -[[http://eclipsewiki.net/eclipse/>http://eclipsewiki.net/eclipse/]]
 //-[[http://www13.plala.or.jp/observe/eclipse/install.html>http://www13.plala.or.jp/observe/eclipse/install.html]]
 #contents
 #clear
@@ -35,8 +36,8 @@ Download an Eclipse archive suitable for your platform from the [[Eclipse Downlo
 
 Eclipse is also mirrored on the below ring servers, so it can also be downloaded from [[here>http://www.ring.gr.jp/pub/misc/eclipse/downloads/drops/]].
 -[[Ring Server Project>http://www.ring.gr.jp/pub/misc/eclipse/downloads/drops/]]
--[[AIST Ring Server>http://ring.aist.go.jp/pub/misc/eclipse/downloads/drops/]] (Versions 3.2 and later)
--[[RIKEN Ring Server>http://ring.riken.go.jp/pub/misc/eclipse/downloads/drops/]] (Versions 3.2 and later)
+-[[AIST Ring Server>http://ring.aist.go.jp/pub/misc/eclipse/downloads/drops/]]
+-[[RIKEN Ring Server>http://ring.riken.go.jp/pub/misc/eclipse/downloads/drops/]] 
 -[[Eclipse Project archived downloads>http://archive.eclipse.org/eclipse/downloads/]](Previous versions archive)
 
 #br
