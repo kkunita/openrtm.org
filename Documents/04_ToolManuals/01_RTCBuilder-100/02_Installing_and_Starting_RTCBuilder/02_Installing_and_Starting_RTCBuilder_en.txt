@@ -1,7 +1,7 @@
 ** Installing and Starting RTCBuilder 
 
 *** Installing RTCBuilder 
-RTCBuilder is an Eclipse plugin. As such, it requires that Eclipse and supporting Eclipse plugins are installed first. See the [[Requirements:RTCBuilder_en]] section for download links. The Eclipse install is simply extracting the archive. Plugins should be copied into the plugins directory in the Eclipse directory. To install RTCBuilder, copy its jar file (jp.go.aist.rtm.rtcbuilder_X.X.X.jar) into the eclipse/plugins directory in the directory you extracted the Eclipse archive to.
+RTCBuilder is an Eclipse plugin. As such, it requires that Eclipse and supporting Eclipse plugins are installed first. See the [[Requirements:/en/node/711]] section for download links. The Eclipse install is simply extracting the archive. Plugins should be copied into the plugins directory in the Eclipse directory. To install RTCBuilder, copy its jar file (jp.go.aist.rtm.rtcbuilder_X.X.X.jar) into the eclipse/plugins directory in the directory you extracted the Eclipse archive to.
 
 ***Starting RTCBuilder 
 The first time Eclipse is started, a Welcome page similar to that shown below will be displayed.
