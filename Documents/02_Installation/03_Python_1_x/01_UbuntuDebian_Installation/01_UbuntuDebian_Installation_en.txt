@@ -71,7 +71,7 @@ It is possible to freeze OpenRTM-aist at the installed version. To do so, edit t
  Package: OpenRTM-aist-Python
  Pin: version 1.0.*
 
-For more details, see http://www.debian.org/doc/manuals/apt-howto/ch-apt-get.ja.html#s-pin.
+For more details, see http://www.debian.org/doc/manuals/apt-howto/ch-apt-get.en.html#s-pin.
 
 ***Confirm installation
 
