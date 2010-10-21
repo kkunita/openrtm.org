@@ -1,0 +1,143 @@
+#contents
+&aname(jyouken);
+** Requirements 
+-[[Java Development Kit 5.0(JDK 5):http://java.sun.com/j2se/1.5.0/ja/download.html]]
+&color(red){※ Java 1.4 is not supported.};
+
+
+** Installation overview
+The install process has three steps:
+-[[Install Java>#instjava]] to get the java and javac commands.
+-[[Extract OpenRTM-aist-Java>#instrtm]] into the correct location.
+-[[Set the RTM_JAVA_ROOT>#hensu]] environment variable.
+//-java、javacといったJavaのコマンドが動作する　→　[[Javaのインストール >#instjava]]
+//-OpenRTM-aist-Java-0.4が展開・配置されている（場所は任意）　→　[[OpenRTM-aist-Java-0.4のインストール >#instjava04]]
+//-環境変数RTM_JAVA_ROOTが設定されている　→　[[OpenRTM-aist-Java-0.4 環境変数の設定 >#kankyouhensu]]
+
+//　本ページではこれらを以下で順に説明するとともに、[[インストール後の動作確認の方法 >#checkinst]]や[[RTCのサンプルコンポーネントの紹介 :/node/304#samplecomponent]]をしています。
+#br
+#br
+&aname(instjava);
+** Install Java 
+OpenRTM-aist-Java-0.4 requires J2SE 5.0 (JDK5) or higher. Download the correct J2SE for your platform from the below websites.
+//　OpenRTM-aist-Java-0.4 は、J2SE5.0(JDK5)上で動作します。対象のプラットフォーム用のJ2SEについては下記サイトなどを参考にしてください。
+-[[Java SE Development Kit 5.0 Update 15 Download Top :https://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/ViewProductDetail-Start?ProductRef=jdk-1.5.0_15-oth-JPR@CDS-CDS_Developer]]
+-[[JDK5 Top(English):http://java.sun.com/javase/downloads/index_jdk5.jsp]]
+
+*** Execute the installer 
+Refer to the [[JDK installation hints:/en/node/915]] for tips on installing Java on various distributions. The Java installer must be executed as a superuser.
+//　各ディストリビューションについてJDK 5のインストール方法を[[JDKインストールのためのヒント :Tips_Java#instjavaunixjdk]]のまとめましたので参考にしてください。なお、Javaのインストールはスーパーユーザとして行ってください。
+
+#br
+//&color(red){''※ Fedora Core へのJavaのインストールについては注意が必要です:''};
+//
+//　→ [[''FAQ:'' Javaをインストールする際のFedoraCoreでの対応について >Install_Unix.#javafedora]]
+//
+//　→ [[''FAQ:'' Q. Fedora Core上でRtcLinkのNameService Viewにエラーがでる >RtcLink.#fedoraNS]]
+&color(red){''※ When installing Java on Fedora Core, be aware of the following issues:''};
+
+　→ [[''FAQ:'' Installing Java on Fedora Core>/en/node/1327#javafedora]]
+
+　→ [[''FAQ:'' Q. An error appears in the RtcLink NameService View on Fedora Core >/en/node/500#fedoraNS]]
+#br
+
+
+*** Test the installation
+In a terminal, execute this command to test Java. If the Java version is displayed, the installation is complete.
+ $ java -version
+
+ java version "1.5.0_15"
+ Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_15-b04)
+ Java HotSpot(TM) Client VM (build 1.5.0_15-b04, mixed mode, sharing)
+
+#br
+
+//&color(red){''◆参考:''};
+//-[[''FAQ:'' Javaをインストールする際のFedoraCoreでの対応について >Install_Unix.#javafedora]]
+//-[[''FAQ:'' Q. Fedora Core上でRtcLinkのNameService Viewにエラーがでる >RtcLink.#fedoraNS]]
+#br
+
+&aname(instrtm);
+** Install OpenRTM-aist-Java-0.4
+//&color(red){''※'' すでにOpenRTM-aist-0.4 を使用されている方へ};
+
+//　新しいOpenRTM-aist-Java-0.4ではRtcLink 0.4.0は使えなくなりました。すでに、Eclipse上にRtcLinkプラグインをインストールしている方は、OpenRTM-aist-Java-0.4を使う場合は、必ずRtcLinkも0.4.1に差し替えてください。
+//#br
+//参考：
+//-[[''FAQ:'' Q. RtcLink上でRTCのポートが表示されない（Java版） :RtcLink.#RtcLinkport]]
+//#br
+*** Download and extract the zip file
+
+Download the jar file and samples from [[here>/en/content/openrtm-aist-java-100-release#winpkg]]. Extract the zip file into a suitable location. The extracted location does not matter, but do not change the directory structure*. The "jar" directory in the extracted location must be added to the RTM_JAVA_ROOT environment variable.
+
+//*** Zipファイルのダウンロードと解凍 
+//　[[こちら >OpenRTM-aist-Java-0.4.2-RELEASE]]から「ビルド済みjarファイルおよびサンプル」（zip形式）をダウンロードし、zipファイルを任意の場所に解凍します。解凍先は任意でかまいませんが、ディレクトリ構造は変更しないでください''※''。また、この解凍先に含まれる「jar」フォルダへのパスは次に取り上げるシステム環境変数RTM_JAVA_ROOTに設定しなければなりません。
+//
+//''※'' 何らの事情で、解凍後のフォルダ構造を自由な配置・自由な選択としたい場合は[[こちら >RTコンポーネント作成（Java版）.#Antbuild]]を参照してください。
+//
+//#br
+//参考：
+//
+//　→ [[''FAQ:'' Q. 任意のフォルダにクラスパスを設定してAntビルドを行う方法は？ >RTコンポーネント作成（Java版）.#Antbuild]]
+//
+#br
+&aname(hensu);
+*** Setting environment variables 
+The environment variables should be changed in a file appropriate to your shell. For example, users of the bash shell should edit ".bashrc" in their home directory, while users of the csh shell should edit ".cshrc" in their home directory. If you wish to change the variable system-wide, edit the files in /etc/profile. Note that changing the variables for an individual user or system wide will affect how the GUI tools such as Eclipse should be started. See [[here>/en/node/500#eclipse]] for more information.
+
+- Variable:RTM_JAVA_ROOT
+- Value: Directory extracted from the zip file containing the "jar" directory. The "jar" directory contains the class library file (OpenRTM-aist-X.X.X.jar) and commons-cli-1.1.jar, and should be below a directory called "OpenRTM-aist\<version>". Be sure to include "OpenRTM-aist\<version>" in RTM_JAVA_ROOT.
+
+For example, if the bash shell is in use and OpenRTM-aist-Java has been extracted to /usr/lib, the following line can be appended to .bashrc:
+
+ export RTM_JAVA_ROOT=/usr/lib/OpenRTM-aist/<version>
+
+To make this change active in the current shell, execute:
+
+ source ~/.bashrc
+
+or open a new shell.
+
+//　環境変数の設定を行います。
+//ログインシェルがbashの場合は.bashrcを、cshの場合は.cshrcを…など適宜設定ファイルを選択し、次のような設定を記述しておきます。または、個々のユーザに対してではなくシステムワイドに設定を行いたい場合には、設定ファイルとして/etc/profileなどを選択する方法もあります''※''。
+//:変数名|RTM_JAVA_ROOT
+//:変数値|解凍ディレクトリ以下に含まれる「jar」ディレクトリ''※※''までのベースパス（「jar」ディレクトリの%%%''親ディレクトリ''%%%へのフルパス）
+//#br
+//
+//例えば、ログインシェルがbashの場合で、OpenRTM-aist-Javaを/usr/lib以下に解凍した場合を考えたとき、.bashrc（あるいは/etc/profile''※''）の末尾に次の一文を追加します。
+// export RTM_JAVA_ROOT=/usr/lib/OpenRTM-aist/0.4
+//この設定ファイルの編集が完了した時点で、
+// > source ~/.bashrc
+//とするか（.bashrcに環境変数を設定した場合）、あるいはシステムを再起動します。
+//
+//#br
+//''※'' 環境変数RTM_JAVA_ROOTを.bashrc（bashの場合）などのユーザ設定にしたのか、あるいは、/etc/profile（bashの場合）などにシステムワイドに設定したのかで、GUIツールであるEclipse（RtcLink、RtcTemplate）の起動方法が変わってきます。 →　[[Eclipseの起動方法 >RtcTemplate.#eclipse]]を参照
+//
+//''※※'' 解凍時には「jar」ディレクトリはクラスライブラリ「OpenRTM-aist-0.4.1.jar」と「commons-cli-1.1.jar」の二つのファイルを含んだ状態で、「OpenRTM-aist\0.4」の直下にあります。したがって、ディレクトリ構造を変えなければ、環境変数RTM_JAVA_ROOTは必ずその値の末尾に「OpenRTM-aist\0.4」を持つという形になります。
+//#br
+//
+//　なお、カレントユーザに対してのみインストールする場合は、上記設定を｢システム環境変数」あるいは｢ユーザー環境変数｣のどちらかに行えばよく、特に、特権を持たないユーザ（制限ユーザ）としてインストールする場合にはこのことを利用します。すなわち、制限ユーザがインストールする場合には｢システム環境変数」の設定が追加・変更できないので、上記設定を｢ユーザー環境変数｣に対して行うことになります。
+//
+//#br
+//*** インストールの確認 &aname(checkinst);
+//　インストール時に配置したディレクトリ以下にRTコンポーネントのサンプルが用意されています。｢examples｣ディレクトリ内にあるサンプルを使用して、インストールを確認します。実行するには、ターミナルを起動し、カレントを｢examples｣ディレクトリに移してから、該当するシェルスクリプトを起動してください。
+//#br
+//- インストール確認手順
+//:1. NameServerの起動：｢start-orbd.sh｣を実行|
+//:2. ConsoleInサンプルの起動：｢ConsoleIn.sh｣を実行|
+//:3. ConsoleOutサンプルの起動：｢ConsoleOut.sh｣を実行|
+//
+//:4. RTコンポーネントの接続：｢Connector.sh｣を実行|
+//
+//:5. ConsoleIn側のウィンドウに|
+// Please input number:
+//:　というプロンプトが現れるので、そこに数字を入力する|
+//:6. その数字がConsoleOut側のウィンドウに表示されればインストールは成功です。|
+//
+//
+#br
+#br
+//
+//#ref(OpenRTM-javaComfirm.png,nolink,center)
+
+

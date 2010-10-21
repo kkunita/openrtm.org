@@ -1,0 +1,115 @@
+#contents
+
+**Supported OS and Distribution
+OpenRTM-aist-Java-0.4.1 has been tested and validated on the following platform.
+
+- Windows XP Professional
+
+**Prerequisites 
+-[[Java Development Kit 5.0(JDK 5):http://java.sun.com/products/archive/j2se/5.0_12/index.html]]
+&color(Red){Note: Java 1.4 is not supported on OpenRTM-aist-Java-0.4.1};~
+#br
+#br
+Note: The following explains about OpenRTM-aist-0.4.0.
+OpenRTM-aist-0.4.1 can be installed according to a similar procedure.
+
+**Installing Java 
+
+OpenRTM-aist-Java-0.4.0. can work on J2SE5.0.  Please download J2SE for the target platform from the following website etc.
+-[[http://java.sun.com/javase/downloads/index_jdk5.jsp:http://java.sun.com/javase/downloads/index_jdk5.jsp]]
+
+***Running Installation 
+Run the download file, then installation starts. Please follow the instructions provided by the installation wizard.
+#br
+
+#ref(java_install0.png,nolink,center)
+CENTER:''Installing Java(1)''
+#br
+#br
+
+#ref(java_install1.png,nolink,center)
+CENTER:''Installing Java(2)''
+#br
+#br
+
+#ref(java_install2.png,nolink,center)
+CENTER:''Installing Java(3)''
+#br
+#br
+
+#ref(java_install3.png,nolink,center)
+CENTER:''Installing Java(4)''
+#br
+
+***Setting System Environment Variables &aname(JAVA_HOME);
+Set the environment variables after the installation.
+Go to [''Start''] menu and select [''Settings'']-[''Control Panel''] to open the control panel, then select [''System''].
+Select the [''Advanced''] tab and then click [''Environment Variables'']. 
+
+#br
+
+#ref(java_envsetting0.png,nolink,center)
+CENTER:''Setting PATH(System property)''
+#br
+#br
+
+#ref(java_envsetting1.png,nolink,center)
+CENTER:''Setting Path(The environment variable)''
+#br
+
+Click [New] in the "System Variables" and set the following values in the "New System Variable" window.
+:Variable name|JAVA_HOME
+:Variable value|Installation directory for JAVA
+
+Click [''OK''] to successively close each window.
+
+***Confirmation to be installed 
+Once the environment variables are set up, confirm installation is successful.
+Open command prompt ([''Start'']-[''Program'']-[''Accessories'']-[''Command Prompt'']) and enter this command:
+
+ >java -version
+
+If the version of Java you have installed is shown, it has been installed successfully.
+
+#br
+
+#ref(java_envsetting2.png,nolink,center)
+CENTER:''Confirmation to be installed (Windows)''
+#br
+-See -> [[FAQ:"java -version" shows a different version from the installed JDK. :/en/node/1327#javaver]]
+#br
+
+**Installing OpenRTM-aist-0.4 Java 
+***Installing OpenRTM-aist-Java-0.4.x
+Extract the file that you have [[downloaded:/en/node/526]].
+Copy the following files in the extracted file to the destination directory.
+- Files
+--OpenRTM-aist-0.4.x.jar
+--commons-cli-1.1.jar
+
+(Both are placed in the RTM_Sample folder)
+-The destination directory: <JAVA_HOME>\jre\lib\ext\ or <JAVA_HOME>\lib\ext\
+
+***Confirmation to be installed
+Confirm the installation by using samples in the "Examples" folder which you extracted.
+
++ Strart NameServer : Run "start-orbd.bat"
++ Start ConsoleIn sample : Run "ConsoleIn.bat"
++ Start ConsoleOut sample : Run "ConsoleOut.bat"
++ Connect RT-Components : Run "Connector.bat"
+
+
+#br
+
+#ref(java_sample0.png,nolink,center)
+CENTER:''Example to run Sample(ConsoleIn)''
+#br
+#br
+
+#ref(java_sample1.png,nolink,center)
+CENTER:''Example to run Sample(ConsoleOut)''
+#br
+
+If these numbers typed in will be displayed in the console called ConsoleOut after typing the numbers in the window called ConsoleIn, the installation completed correctly.
+
+
