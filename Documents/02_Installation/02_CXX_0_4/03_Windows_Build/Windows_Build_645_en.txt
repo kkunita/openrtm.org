@@ -1,0 +1,130 @@
+#contents
+**Supported Compiler 
+OpenRTM-aist-0.4.0-win32 is confirmed the build by the following compilers.
+
+- Visual Studio 2005 Professional
+- Visual C++ 2005 Express Edition + Microsoft Platform SDK
+
+
+Visual C++ 2005 Express Edition is the C++ development environment that Microsoft provides for free, while you can't use MFC and ATL, etc. in it, you can develop Windows applications by [[using it with Microsoft Platform SDK>http://www.microsoft.com/japan/msdn/vstudio/express/visualc/usingpsdk/]] similarly offered for free by Microsoft.
+
+Also in the development of the components; using OpenRTM-aist, you can develop ones without using MFC and ALT etc in the C++ development environment of Visual C++ 2005 Express Edition.
+
+-[[Visual Studio 2005 Express Edition>http://www.microsoft.com/japan/msdn/visualc/]]
+
+-[[Visual C++ 2005 Express Download>http://www.microsoft.com/japan/msdn/vstudio/express/past/2005/]]->It is necessary for Windows Live ID
+-[[Microsoft Platform SDK>http://www.microsoft.com/downloads/details.aspx?FamilyId=A55B6B43-E24F-4EA3-A93E-40C0EC4F68E5&displaylang=en]] (See ''Note'')~
+''Note:'' Please install it in the order of "Visual C++ 2005 Express Edition"->"Microsoft Platform SDK".
+Please refer to  [[FAQ>FAQ/Install#a37d09dd]] when the build doesn't go well in the environment "Visual C++ 2005 Express Edition + Microsoft Platform SDK" (Cf:windows.h can not be found).
+&br;
+
+''Additional notes: ''2008/01/28
+We have not confirmed that OpenRTM-aist-0.4.1-win32 can be built with [[Visual C++ 2008 Express Edition(Japanese)>http://www.microsoft.com/japan/msdn/vstudio/express/default.aspx]].
+Currently, we are collecting information to make it work.
+#br
+
+**Prerequisites
+You need the following package for the OpenRTM-aist-0.4.0 installation.
+
++The ADAPTIVE Communication Environment (ACE) 5.4 or later
++omniORB-4.0.7
+
+The ACE as well as omniORB installer included headers and libraries (LIB.DLL) for Windows are available in [[the download page:/en/node/620]] and the following URLs.
+
+- [[ACE win32 installer >http://www.openrtm.org/pub/Windows/ace/ACE-5.5_vc8.msi]]
+- [[omniORB win32 installer >http://www.openrtm.org/pub/Windows/omniORB/omniORB-4.0.7_vc8.msi]]
+
+Please note that if you install ACE and omniORB using installers not shown above, the environment variables necessary for building OpenRTM-aist or customized components; are not set.
+We recommend that you install them using shown above installers.
+
+
+**Installing ACE
+Download; ACE installer (ACE.msi) from [[ACE win32 installer >http://www.openrtm.org/pub/Windows/ace/ACE-5.5_vc8.msi]] link shown above.
+Open the ACE.msi to start the installation process automatically.
+To install ACE, follow the instructions directly given by the installer.
+
+This installer does the following:
+-The default directory (install_dir) is C:\Program Files.
+-Copy headers and LIB etc to (install_dir)\ACE_wrappers
+-Copy ACE.DLL and ACEd.DLL to the Windows system directory (Usually C:\Windows\system32).
+-Set (install_dir)\ACE_wrappers to the environment variable ACE_ROOT.
+
+
+**Installing omniORB
+Download; omniORB installer (omniORB.msi) from [[omniORB win32 installer >http://www.openrtm.org/pub/Windows/omniORB/omniORB-4.0.7_vc8.msi]] link shown above.
+Open the omniORB.msi to start the installation process automatically.
+To install omniORB, follow the instructions directly given by the installer.
+
+This installer does the following:
+-The default directory (install_dir) is C:\Program Files.
+-Copy the source codes, headers, scripts and libraries to (install_dir)\omniORB.
+-Copy omniORBxxx.DLL(xxx is version number) to the Windows system directory (Usually C:\Windows\system32).
+-Set (install_dir)\omniORB to the environment variable OMNI_ROOT.
+&br;
+
+Please restart your computer to activate the changes, since the environment variable is not notified to the application.
+(Note: Go [My Computer]-[Property]-[The environment variable], and then select any environment variable and click [Edit] and the edit dialog is displayed. Once click [OK] without making further changes, the change of the environment variables is notified to the shell. The changed environment variable becomes effective in the application which executed from that shell. If you don't know well, restarting might be good.)
+&br;
+**Extracting Source Code and Building 
+First, extract the source files of OpenRTM-aist-0.4.0-win32.zip into a directory of your choice.
+Click OpenRTM-aist.sln and then [rebuild] the solution.
+The build of OpenRTM-aist is completed, if all builds are completed.
+
+
+**Building without Using Distribution Installer (ACE, omniORB)
+When you build from the source files without using the installers of the above distribution ACE and omniORB individually, you need to generate the property sheet of OpenRTM-aist again.
+&br;
+
+***When Directory Structure of omniORB and ACE is Standard 
+
+If the directory structure of omniORB is as follow:
+
+-omniORB or a directory of similar name
+--bin
+---scripts: The makedeffile.py etc exists.
+---x86_win32: The omniORB407_rt.dll etc exists.
+--include
+---The omniORB4 directory etc exists.
+--lib
+---The python directory exists.
+---x86_win32: omniDynamic407_rt.lib etc exists.
+
+&br;
+
+If the directory structure of ACE is as follow:
+
+-ACE_wrappers directory
+--ace directory
+---The ACE.h etc exists
+--lib
+---The ACE.dll, ACE.lib etc exist
+
+&br;
+
+
++Specify the directory of ACE_wrappers to the environment variable ACE_ROOT.
+--If it is C:\src\ACE_wrappers, ACE_ROOT=C:\src\ACE_wrappers is specified. 
++Specify the above described directory of omniORB to the environment variable OMNI_ROOT.
+--If it is C:\src\omniORB, specify OMNI_ROOT=C:\src\omniORB.
+
+&br;
+
+After setting the environment variables, you start Visual Studio, load OpenRTM-aist.sln and rebuild it.
+&br;
+
+***When Directory Structure of omniORB and ACE is Not Standard 
+In this case, please generate a property sheet again by executing RunAtFirst.py in the directory where the source of OpenRTM-aist was extracted.
+
+#ref(RunAtFirst.png,nolink,center)
+CENTER:''A property sheet is generated with RunAtFirst.py''
+
+After the property sheet is generated, you open OpenRTM-aist.sln to start Visual Studio and you can build it by rebuilding the solution.
+
+**Installing after build
+When all builds have competed properly, you will set the environment variable RTM_ROOT. 
+Please set the directory of OpenRTM-aist to the environment variable RTM_ROOT. 
+Also, you either copy DLL to the location referred by the path or add the location of OpenRTM-aist\bin to the environment variable PATH. 
+
+Now, the OpenRTM-aist installation is completed.
+
+

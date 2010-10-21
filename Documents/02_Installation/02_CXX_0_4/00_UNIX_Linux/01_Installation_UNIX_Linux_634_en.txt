@@ -1,0 +1,90 @@
+#contents
+//*Building and Installing OpenRTM-aist in a UNIX environment 
+
+**Supported OS and Distribution 
+OpenRTM-aist-1.0.0 has been tested and validated on the following platforms.
+
+- FreeBSD
+- Vine
+- Fedora
+- Debian
+- Ubuntu
+
+**Prerequisites 
+The following packages are necessary when installing OpenRTM-aist-1.0.0
+
++ORB
+--Currently, the only ORB supported is omniORB-4.0 or later.
++Gcc version 3 or later is preferred. Although, it is possible to compile with gcc2.95.x, some options need to be specified (see below).
+
+Also, in the following OSes and Linux distributions, script files for the installation of these packages are available under the build directory.
+#br
+- pkg_install_freebsd.sh
+-pkg_install100_vine.sh
+-pkg_install100_fedora.sh
+-pkg_install100_ubuntu.sh
+-pkg_install100_debian.sh
+
+#br
+
+¦ For FreeBSD, Debian and Ubuntu Linux, ACE and omniORB are provided as an OS standard package . You can manually install it without using the above installation scripts by using the package installation tools provided by OS.
+
+On other above OSes, please follow the installation instructions in the package document for each platform. In order to make the compilation of OpenRTM-aist easier, we recommend that you install all these packages in standard directories (/usr,/usr/local...).
+
+**Extracting the Source File 
+The first task is to extract the source file OpenRTM-aist-1.0.0.tar.gz into a directory of your choice.
+
+ > tar xvzf OpenRTM-aist-1.0.0.tar.gz
+ > cd OpenRTM-aist-1.0.0
+
+**Building OpenRTM-aist 
+The building of OpenRTM-aist is performed using autoconf, automake. You can build in the same way as any other package using autoconfig, automake.
+
+ > ./configure [options]
+
+Below is a partial list of options that can be passed to ./configure.
+
+***ORB 
+¦Currently, only ominiORB is supported. We plan to support other options in the future.
+
+  --with-omniorb=dir
+  --with-tao=dir
+  --with-mico=dir
+  --with-orbix=dir
+  --with-orbacus=dir
+
+***Specifying Type of Wrapper Module (Now is not available) 
+The wrapper module for Python which was supported with OpenRTM-aist-1.0.0 is no longer supported now.
+
+***Compiling Using a Version of gcc prior to Version 3.x (gcc2.95.x) 
+Errors occur when trying to compile a template using gcc3.x or earlier versions. To fix this problem, the following option should be set.
+
+  --with-gcc2
+
+
+***Other Options 
+Please refer to other available options as follows: 
+
+ > ./configure --help
+
+**Make 
+Please make sure configure executed successfully.
+Once the configure executed properly, you can now run make.
+
+ > make
+
+In order to complete the installation, at least the following directory should be built successfully.
+
+  OpenRTM-aist/src/lib/rtm
+  OpenRTM-aist/src/lib/rtm/idl
+  OpenRTM-aist/utils/rtm-config
+  OpenRTM-aist/utils/rtm-naming
+  OpenRTM-aist/utils/rtc-template
+
+After the build has completed successfully, we now have to install the header files, library files, utility commands..
+
+ > su
+ # make install
+
+
+
