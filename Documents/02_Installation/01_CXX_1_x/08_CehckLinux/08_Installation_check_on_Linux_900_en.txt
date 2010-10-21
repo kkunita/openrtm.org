@@ -132,7 +132,7 @@ If using the samples directly from a source directory:
 
 *** Start RTSystemEditor
 
-You can use RTSystemEditor to connect the two components and activate them. Download the all-in-one Eclipse package from [[here>RTSystemEditorERTCBuilder-1.0.0]] and extract it.
+You can use RTSystemEditor to connect the two components and activate them. Download the all-in-one Eclipse package from [[here>/en/node/945]] and extract it.
 
 RTSystemEditor requires Java Development Kit 6. Install it according to the instructions below, or use an equivalent such as OpenJDK as provided by your distribution. Refer to [[this page>/en/node/945]] for details on starting RTSystemEditor.
 
