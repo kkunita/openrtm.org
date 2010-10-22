@@ -1,0 +1,263 @@
+#contents
+**RtcLink Operation Screen 
+RtcLink consists of several sub-windows which are called views or editors in terms of Eclipse.
+:''NameServiceView''|It displays contents of the name service in which RT-Components are registered in a tree form.
+:''ConfigurationView''|Here configuration information of a selected RT-Component is displayed/edited.
+:''PropertyView''|It displays the profile information of a selected RT-Component.
+:''SystemEditor''|Here states of RT-Component are displayed graphically, and you can connect ports and construct the system.
+
+Next, we describe how to operate on each view and editor of RtcLink.
+
+***Name Service View 
+The area inside the window below is the name service view.
+#br
+
+#ref(rtc-link7.png,nolink,center)
+#br
+In OpenRTM-aist, name servers are used to manage and publish RTC, and you can edit these contents displayed on the Name Service View.
+
+***Connecting to the Name Server 
+To connect to a name server, press the button on the upper of Name Service View, or select [''Add Name Server''] from the context menu.
+#br
+
+#ref(rtc-link8.png,nolink,center)
+#br
+In the name server connection dialog, enter its IP address and port number.
+(If you don't specify the port number, the default port 2809 of omniORB name service will be used.)
+#br
+
+#ref(rtc-link9.png,nolink,center)
+#br
+Note: when Eclipse is (re)launched, the name server which you connected lastly is tried to be connected automatically.
+If such a name server does not exist,  port 2809 of localhost is tried to be connected.
+
+****Deleting a Name Server from the view
+To delete a name server which you are connecting, select the name server and press [''Delete from View''] button.
+#br
+
+#ref(rtc-link10.png,nolink,center)
+#br
+
+***Displaying Contents of the Name Server 
+If the name server which you are connecting has registered components, contents of the registration are displayed as below in a tree form.
+#br
+
+#ref(rtc-link11.png,nolink,center)
+#br
+Each icon means:
+|Icons|kind|Meaning|
+|
+#ref(icon1.png,around,nolink,center,60%)|host_cxt|Host  Context|
+|
+#ref(icon2.png,around,nolink,center,60%)|mgr_cxt|Manager context|
+|
+#ref(icon3.png,around,nolink,center,60%)|cate_cxt|Category context|
+|
+#ref(icon4.png,around,nolink,center,60%)|mod_cxt|Module context|
+|
+#ref(icon5.png,around,nolink,center,60%)|Others|Other context|
+|
+#ref(icon6.png,around,nolink,center,60%)|rtc|RT-Component|
+|None|--|Object except RT-Component|
+|
+#ref(icon8.png,around,nolink,center,60%)|--|Zombi objects which have been registered but do not exist|
+
+Periodically, the name service view monitors each name server which are connecting to synchronize and update its contents.
+(You can change the cycle for the view to monitor through the item of connection cycles on the preference dialog.)
+Also, you can refresh the view to get the contents of name servers explicitly again.
+To refresh, press the button on the upper of Name Service View, or select [''Refresh''] from the context menu.
+
+****Changing the Display Range on Name Service View 
+On Name Service view, you can move the location of origin for its display to avoid the range you operate from cluttering  when there is many RTCs. 
+To move the origin, select the destination point and perform [''Go Into''].
+#br
+
+#ref(rtc-link13.png,nolink,center)
+CENTER:Change of the display origin
+#br
+
+#ref(rtc-link14.png,nolink,center)
+CENTER:Example to change the display origin
+#br
+After you move it, you can go up to one level by [''Go Back''].
+In addition, you can go back to the top level by [''Go Home''].
+
+****Editing Contents of a Name Tree 
+On Name Service view, you can delete contexts or objects which are registered in the name server.
+(You cannot add them.)
+To remove a context or an object, select [''Delete from Name Service''] from the context menu.
+If you delete entries of RT-Components on the name service, RT-Components themselves are not deleted or quit.
+
+Moreover, you can delete name servers which are registered in the same way.
+#br
+
+#ref(rtc-link15.png,nolink,center)
+#br
+
+
+***Configuration View
+The area inside the window below is the configuration view.
+#br
+
+#ref(rtc-link16.png,nolink,center)
+CENTER:''Configuration View''
+#br
+You can edit configuration of a selected RTC displayed on Configuration View.
+In the left side CofigurationSets are listed, and in the right side properties of the ConfigurationSet are shown.
+
+#br
+
+#ref(rtc-link17.png,nolink,center)
+#br
+
++Name of a selected component.
++Name of a selected ConfigurationSet.
++Active ConfigurationSet. You can change what ConfigurationSet is active.
++List of ConfigurationSets.
++Property name of the ConfigurationSet selected in the left.
++Property value of the ConfigurationSet selected in the left.
++Button to add/delete a ConfigurationSet.
++Button to add/delete a property.
++Button to apply/cancel what you have changed.
+
+Any information being edited, will be shown in red, will not be applied until pressing the [Apply] button (9 above).
+
+#br
+
+#ref(rtc-link18.png,nolink,center)
+#br
+
+The latest information of a RT-Component when it is selected, is cached and displayed on the configuration view (to prepare for edit of its configuration).
+Please note that changing the configuration from others (such as RtcLink)  while selecting the RT-Component will cause discrepancies.
+Also note that RtcLink will overwrite any previous information after pressing the [Apply] button.
+
+***Property View 
+The area inside the window below is the Property view.
+#br
+
+#ref(rtc-link18.png,nolink,center)
+CENTER:Property View
+#br
+Each shown icon means:
+
+|
+#ref(prof_icon1.png,nolink,center)|RTC|InstanceName, TypeName, Description, Vender, Category, State((Note:which is displayed based on LifeCycleState of the first ExecutionContext))|
+|
+#ref(prof_icon2.png,nolink,center)|ExecutionContext|State, Kind, Rate|
+|
+#ref(prof_icon3.png,nolink,center)|ServicePort|Name, List of property information|
+|
+#ref(prof_icon4.png,nolink,center)|Outport|Name, List of property information|
+|
+#ref(prof_icon5.png,nolink,center)|Inport|Name, List of property information|
+|
+#ref(prof_icon5.png,nolink,center)|PrtInterfaceProfile|InterfaceName, TypeName, PortInterfacePolarity|
+
+In OMG RTC specification, LifeCycleState of RTC exists for each ExecutionContext.
+It means there are multiple states, however in RtcLink, only the state of the first ExecutionContext is shown.
+
+**System Editor 
+The area inside the window below is the System Editor.
+
+#br
+
+#ref(rtc-link22.png,nolink,center)
+CENTER:''System Editor''
+#br
+
+On the system editor, states of RT-Component are shown in real time.
+You can connect their ports, and change the states of RT-Components to build the system and verify its operation.
+
+#br
+
+#ref(rtc-link23.png,nolink,center)
+CENTER:''System Editor''
+#br
+
+***Opening System Editor 
+To open a new system editor, press [''Open New System Editor''] button on the toolbar, or select [''File'']-['' Open New System Editor''] from the menu bar.
+#br
+
+#ref(rtc-link24.png,nolink,center)
+CENTER:''Select Open New System Editor from the toolbar''
+#br
+
+#br
+
+#ref(rtc-link25.png,nolink,center)
+CENTER:''Select Open New System Editor from File menu''
+#br
+
+****Locating RTC on System Editor 
+To put a RTC on the system editor, drag the RT-Component from the name service view to the system editor.
+
+#br
+
+#ref(rtc-link26.png,nolink,center)
+CENTER:''Locate components on the system editor''
+#br
+
+****Displaying RT-Components 
+RT-Components on the system editor are shown in rectangle, and their ports are shown around them.
+And each state is expressed in a color.
+
+#br
+
+#ref(rtc-link27.png,nolink,center)
+CENTER:''Example for displaying RT-Components''
+#br
+
+Here is the list of icons and state colors:
+
+States of the component
+-RT-Component|
+#ref(box_icon.png,nolink,center)
+|State|Color|Changeable|
+|CREATED|&color(black){White};|OK|
+|INACTIVE|&color(blue){Blue};|OK|
+|ACTIVE|&color(lime){Green};|OK|
+|ERROR|&color(red){Red};|OK|
+|UNKNOWN|&color(black){Black};|OK|
+-ExecutionContext
+--Outside line of RTC
+|State|Color|Changeable|
+|RUNNING|&color(black){Black};|OK|
+|STOPPED|&color(gray){Gray};|OK|
+-InPort
+#ref(in_p_icon.png,nolink,center)
+|State|Color|Changeable|
+|Not connected|&color(blue){Blue};|OK|
+|Connected|&color(lime){Green};|OK|
+-OutPort
+#ref(out_p_icon.png,nolink,center)
+|State|Color|Changeable|
+|Not connected|&color(blue){Blue};|OK|
+|Connected|&color(lime){Green};|OK|
+-ServicePort
+#ref(svc_icon.png,nolink,center)
+|State|Color|Changeable|
+|Not connected|&color(blue){Blue};|OK|
+|Connected|&color(aqua){Aqua};|OK|
+
+
+
+//|Object|Shape|State|Color|Changeable|
+//|RT-Component|
+//#ref(box_icon.png,nolink,center)|CREATED|&color(black){White};|OK|
+//|~|~|INACTIVE|&color(blue){Blue};|OK|
+//|~|~|ACTIVE|&color(lime){Green};|OK|
+//|~|~|ERROR|&color(red){Red};|OK|
+//|~|~|UNKNOWN|&color(black){Black};|OK|
+//|ExecutionContext|Outside line of RTC|RUNNING|&color(black){Black};|OK|
+//|~|~|STOPPED|&color(gray){Gray};|OK|
+//|InPort|
+//#ref(in_p_icon.png,nolink,center)|Not connected|&color(blue){Blue};|OK|
+//|~|~|Connected|&color(lime){Green};|OK|
+//|OutPort|
+//#ref(out_p_icon.png,nolink,center)|Not connected|&color(blue){Blue};|OK|
+//|~|~|Connected|&color(lime){Green};|OK|
+//|ServicePort|
+//#ref(svc_icon.png,nolink,center)|Not connected|&color(blue){Blue};|OK|
+//|~|~|Connected|&color(aqua){Aqua};|OK|
+
+

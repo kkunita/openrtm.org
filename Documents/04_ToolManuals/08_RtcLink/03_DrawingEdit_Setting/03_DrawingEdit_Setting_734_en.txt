@@ -1,0 +1,61 @@
+Here, we explain about edit drawing of RT-Components. ("edit drawing" not "edit" means operations described here modify drawing and does not affect system at all.)
+#contents
+***Resize and Move of Component Blocks
+To move blocks, select them and drag.
+To resize blocks, select a handle which is shown when you select blocks, and drag the handle.
+#br
+
+#ref(rtc-link28.png,nolink,center)
+#br
+The location and size of a selected block are shown on the status bar.
+#br
+
+#ref(rtc-link29.png,nolink,center)
+#br
+
+***Rotation of Blocks
+To move horizontally, select a block and click the middle button (or the wheel) of your mouse.
+To move vertically, hold Shift key and click the middle button (or the wheel) of your mouse.
+Continuing the same operation, you can rotate to reverse angle and operate it to top and bottom, or left and right.
+#br
+
+#ref(rtc-link30.png,nolink,center)
+#br
+
+***Deleting a Block
+To delete a block, select the block and press [Delete] button, or select Delete from the context menu.
+#br
+
+#ref(rtc-link31.png,nolink,center)
+#br
+
+***Moving a Connection Line Between Ports
+To move a connection line, select the line, and move a handle which is shown. You can move a vertical line to left or right, and move a horizontal line to top or bottom. 
+#br
+
+#ref(rtc-link32.png,nolink,center)
+#br
+
+**Configuration of RtcLink
+Here we explain about preference dialog of RtcLink. This dialog can be shown by [''Window'']-[''Preferences...'']-[''RtcLink''] from the menu. 
+
+***Connection Cycle
+Connection Cycle is a cycle which RtcLink collects system information and refresh views and editors.
+Two cycles are used for the name service view and the system editor respectively.
+The unit is in milliseconds and if "0" is selected, the synchronization will not be carried out.
+
+#br
+
+#ref(rtc-link44.png,nolink,center)
+#br
+
+***Display Color 
+In this preference, you can set up state colors of RT-Components and those of ExecutionContext on the system editor.
+Please refer to displaying RT-Components on the system editor, for meanings of the state.
+
+#br
+
+#ref(rtc-link45.png,nolink,center)
+#br
+
+
