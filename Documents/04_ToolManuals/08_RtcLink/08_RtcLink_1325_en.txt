@@ -1,0 +1,5 @@
+**What is the RtcLink? 
+RtcLink is a GUI tool to operate RT-Components that exist on the network. It can activate and deactivate RT-Components (Activate/Deactivate) or connect between their ports.
+RtcLink, included in OpenRTM-aist-0.2.0 as a system development tool, was implemented with the toolkit named wxPython.
+In OpenRTM-aist-0.4.0, this was reimplemented as a plug-in of the integrated development environment platform Eclipse.
+
