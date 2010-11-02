@@ -1,0 +1,30 @@
+**Installing and Starting RT System Editor 
+
+*** Installing RT System Editor 
+Because RT System Editor is an Eclipse plugin, it first requires that Eclipse and the other Eclipse plugins it depends on be installed. See the [[installation instructions>Functionality Outline/Operating Environment]] for details on how to do this. Then copy the RT System Editor jar file (jp.go.aist.rtm.X.X.X.jar) into the eclipse/plugins directory as described in that document.
+
+*** Starting RT System Editor 
+The first time Eclipse is started after installing, the Welcome page will be displayed.
+#br
+
+#ref(fig2InitialOfEclipseStart_1_en.png,40%,center)
+CENTER:''Eclipse Welcome page''
+#br
+Click the cross in the top left of the Welcome page to close it and display the below screen.
+#br
+
+#ref(fig3PerspectiveSwitch_en.png,40%,center)
+CENTER:''Changing perspective''
+#br
+Click the ''Open Perspective'' button in the top right and select ''Other...''
+#br
+
+#ref(fig4PerspectiveSelection_en.png,90%,center)
+CENTER:''Select Perspective''
+#br
+Select ''RT System Editor'' to start the plugin.
+#br
+
+#ref(fig5InitialOfRTSystemEditorStarts_en.png,60%,center)
+CENTER:''RT System Editor start screen''
+#br

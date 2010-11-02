@@ -1,0 +1,38 @@
+**Introduction 
+*** OpenRTM-aist RT System Editor Introduction 
+The [[OMG:http://www.omg.org]] has developed the Robot Technology Component (RTC) specification as a way to increase the efficiency of robot development. Based on this specification, AIST has developed the [[OpenRTM-aist:http://openrtm.a01.aist.go.jp/~n-ando/OpenRTM-aist/]]. RT System Editor is one of the development tools included in this architecture. It is used for manipulating RT Components in a real-time graphical interface. It is a plugin for the Eclipse IDE, and interacts seamlessly with other Eclipse plugins.
+
+***Target Audience 
+This document is targetted at those who already have an understanding of the basic principles of RT Components. Details of the RTC specification and use can be found at the [[OMG:http://www.omg.org/]] and [[AIST:http://openrtm.a01.aist.go.jp/~n-ando/OpenRTM-aist/]].
+
+***Screenshot 
+
+#ref(fig1InitialOfEclipseStart_1_en.png,nolink,center,50%)
+CENTER:''RT System Editor''
+
+
+**Functionality Outline 
+RT System Editor allows the manipulation of RT Components in real time using a graphical interface.
+
+CENTER:''Functionality''
+|Functionality|Overview|
+|Display/edit component configuration|Display the configuration profile of the selected component in the configuration view and allow it to be edited.|
+|Change component action|Change the action of the selected component.|
+|Combine components|Create a system by combining components in the editor.|
+|System save/load|Save the contents of the system editor as an RTS Profile. Load RTS Profiles into the system editor. (Does not change port connections or configuration parameters.)|
+|System reset|Open an RTS Profile using the system editor, and have the system restored based on the profile contents. (Restores port connections and configuration parameters as well.)|
+
+**Operating Environment 
+The following software is required to use RT System Editor.
+|Software|Remarks|
+|[[Java Development Kit 6:http://java.sun.com/javase/ja/6/download.html]]|&color(Red){Note: Java1.5 (5.0) is not suitable.};|
+|[[Eclipse 3.2.1:http://archive.eclipse.org/eclipse/downloads/drops/R-3.2.1-200609210945/download.php?dropFile=eclipse-SDK-3.2.1-win32.zip]]| Eclipse IDE|
+|Eclipse EMF 2.2.4 [[EMFÅ{SDO Runtime:http://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/downloads/drops/2.2.4/R200710030400/emf-sdo-runtime-2.2.4.zip]] or [[XSD Runtime:http://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/downloads/drops/2.2.4/R200710030400/xsd-runtime-2.2.4.zip]]| Eclipse plugin required by RT System Editor &br; Note: be sure to use versions that match your Eclipse version.|
+|[[Eclipse GEF 3.2.2:http://www.eclipse.org/downloads/download.php?file=/tools/gef/downloads/drops/3.2.2/R200702081315/GEF-runtime-3.2.2.zip]]|Eclipse plugin required by RT System Editor &br; Note: be sure to use versions that match your Eclipse version.|
+|RT Name Service View|Development tool included with OpenRTM-aist required by RT System Editor|
+|RT Repository View|Development tool included with OpenRTM-aist required by RT System Editor|
+
+**Limitations
+RT System Editor is designed for OpenRTM-aist. It may no work with other RTC platforms.
+
+

@@ -1,0 +1,62 @@
+#ref(fig34ManagerControlView_en.png,nolink,center,70%)
+CENTER:''Manager Control View location''
+#br
+When a manager is selected in the Name Service view, the Manager Control view becomes active and allows control of the selected manager.
+#br
+
+#ref(fig35ManagerControlView_en.png,nolink,center,80%)
+CENTER:''Manager Control View''
+
+#br
+
+CENTER:''Parts of the Manager Control View''
+
+|No.|Description|
+|‡@|Display loadable modules.|
+|‡A|Display loaded modules.|
+|‡B|Display components.|
+|‡C|Generate components. Displays a component construction dialog where new components can be created. After generating, the new component will appear in the list of components, ‡B.|
+|‡D|Manager diplication. Creates a new manager.|
+|‡E|Shut down the selected manager.|
+|‡F|Table to display modules or components.|
+|‡G|Load modules by specifying a URL.|
+|‡H|Load and unload modules. Load or unload the module selected in the table (‡F), or specified in the URL entry (‡G).|
+#br
+To load a module, click the ''Loadable Modules'' button and select a module in the displayed list of loadable modules, then click the ''Load'' button. Alternatively, enter the URL of the module into the URL entry field and click the ''Load'' button.
+#br
+
+#ref(fig36LoadModule_en.png,nolink,center,50%)
+CENTER:''Load Module''
+#br
+To unload a module, click the ''Loaded Modules'' button and selected a loaded module from the list, then click the ''Unload'' button.
+#br
+
+#ref(fig37UnLoadModule_en.png,nolink,center,50%)
+CENTER:''Unload Module''
+#br
+To create a new component, first click the ''Create'' button. Select the type of component to create and click OK. The new component will be registered with the name server by the manager. It will be visible in the list displayed by the ''Active Components'' button.
+#br
+
+#ref(fig38ComponentDialog_en.png,nolink,center,70%)
+CENTER:''Component creation dialog''
+#br
+Component types are specified by modules loaded into the manager. The ''Parameter'' text box allows parameters for the component to be specified. These should be entered in URL parameter format, e.g. "param1=value1&param2=value2". The following general parameters are available for all components.
+CENTER:''Component creation general parameters''
+
+|Parameter|Description|
+|instance_name|Component instance name. If not specified, the type_name value is used.|
+|type_name|Component type.|
+|description|Description of the component.|
+|version|Version number.|
+|vendor|Vendor of the component.|
+|category|Category of the component.|
+#br
+Configuration set values can also be set using the paramater text box. The format for these is "conf.NNNN.PPPP=VVVV". NNNN is the configuration set name, PPPP is the parameter name, and VVVV is the value. The example below illustrates setting parameters in an instance of the ConsoleIn component. A configuration set called "mode1" is created and the parameters "input_mode" and "input_cycle" are set.
+#br
+
+#ref(fig40ConfigurationSet_en.png,nolink,center,50%)
+CENTER:''Specifying ConfigurationSet values in parameters''
+#br
+Other parameters may be settable as well, depending on the component.
+#br
+
