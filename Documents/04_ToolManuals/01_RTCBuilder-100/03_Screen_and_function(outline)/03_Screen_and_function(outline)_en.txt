@@ -1,0 +1,95 @@
+**RTC Builder screen layout 
+
+***Outline 
+The RTC Builder screen is laid out as below.
+#br
+
+#ref(fig3-1RTCBuilder_en.png,nolink,center,50%)
+CENTER:''RTC Builder screenshot''
+
+
+CENTER:''RTC Builder components''
+|Component|Explanation|
+|RTC Profile Editor|Edit the RTC specification based profile, data port definitions, service port definitions, configuration parameter definitions, and other profile extensions.|
+|Build view|Graphically display the RT Component being edited, including its data ports, service ports, service interfaces.|
+|Repository View|Display information on a selected RT Repository.|
+
+***Build View
+The Build View displays the component being designed in a graphical viewer.
+#br
+
+#ref(fig3-13BuildView_en.png,nolink,center,80%)
+CENTER:''Build View''
+#br
+The Build View displays the component's name, data ports, service ports and service interfaces.
+
+****Displaying the Build View 
+If the Build View is not displayed when changing to the RTC Builder perspective, it can be enabled through the Window menu. Select ''Views,'' then ''Other.'' In the displayed dialog, select ''Other,'' then ''Build View.''
+
+#br
+
+|
+#ref(fig3-14DispBuildView_en.png,50%,center)|
+#ref(fig3-14DispBuildView2_en.png,50%,center)|
+|>|CENTER:''Displaying the Build View''|
+#br
+
+***Repository View 
+The Repository View can load and read files describing RT Components and display them in a repository. As well as displaying locally-stored files, it can also connect to remote repositories and display the information from them in a tree.
+
+****Displaying the Repository View
+From the Window menu, select ''Views,'' then ''Other.''
+
+#br
+
+#ref(fig1-3SelectRepositoryView_en.png,nolink,center,70%)
+CENTER:''Selecting the Repository View''
+#br
+By selecting ''Repository View,'' the Repository View will be started and displayed.
+#br
+
+#ref(fig1-4RepositoryViewInit_en.png,nolink,center,70%)
+CENTER:''Repository View start screen''
+#br
+
+****Local operation 
+Locally-stored RT Component specifications are loaded and displayed in a tree view.
+#br
+
+#ref(fig2-1RepositoryViewLocal_en.png,nolink,center,70%)
+CENTER:''Repository View (local operation)''
+#br
+
+****Loading files 
+Right-click within the Repository View area and select ''Load File'' from the context menu. Use the displayed file selector dialog to select an RT Component specification to load. The file selector dialog will only display XML files.
+#br
+
+#ref(fig2-1LoadFile_en.png,nolink,center,50%)
+CENTER:''Loading a file''
+#br
+When loading a locally-stored specification file, the absolute path will be displayed at the top level of the tree hierarchy. The second level will display the category specified by the component in the file. The third level will display the name of the component contained in the file.
+
+//If the path of the loaded file already exists in the Repository View, the new component will be added below the existing path entry. The same applies if the category also already exists.
+//#br
+
+//#ref(fig2-3LoadFile2.png,nolink,center)
+//CENTER:''After loading a file with the same path and category''
+//#br
+
+****Loading directories 
+All components in a directory can be loaded in a single action. Right-click in the Repository View and select ''Load Dir'' from the context menu. A directory selector dialog will be displayed. Select a directory to load. All components in that directory will be loaded into the Repository View and displayed as with loading individual files.
+#br
+
+#ref(fig2-5LoadDir_en.png,nolink,center,50%)
+CENTER:''After loading a directory''
+#br
+
+****Deleting 
+Right-click on a component in the Repository View and select ''Delete'' from the context menu. Paths, categories and components can be deleted.
+#br
+
+#ref(fig2-6Delete_en.png,nolink,center,70%)
+CENTER:''Deletion''
+#br
+When deleting a top-level path, all categories and components below that path are deleted at the same time. If a component is deleted, and there are no more components in the same category, that category will be deleted. If there are no other categories, the top-level directory will also be deleted.
+

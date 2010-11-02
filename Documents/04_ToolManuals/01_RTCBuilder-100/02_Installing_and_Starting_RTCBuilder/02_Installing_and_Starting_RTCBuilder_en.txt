@@ -1,69 +1,50 @@
-** Installing and Starting RTCBuilder 
+** Installing and Starting RTC Builder 
 
-*** Installing RTCBuilder 
-RTCBuilder is an Eclipse plugin. As such, it requires that Eclipse and supporting Eclipse plugins are installed first. See the [[Requirements:/en/node/711]] section for download links. The Eclipse install is simply extracting the archive. Plugins should be copied into the plugins directory in the Eclipse directory. To install RTCBuilder, copy its jar file (jp.go.aist.rtm.rtcbuilder_X.X.X.jar) into the eclipse/plugins directory in the directory you extracted the Eclipse archive to.
+*** Installing RTC Builder 
+RTC Builder is an Eclipse plugin. As such, it requires that Eclipse and supporting Eclipse plugins are installed first. See the [[Requirements:/en/node/711]] section for download links. The Eclipse install is simply extracting the archive. Plugins should be copied into the plugins directory in the Eclipse directory. To install RTC Builder, copy its jar file (jp.go.aist.rtm.rtcbuilder_X.X.X.jar) into the eclipse/plugins directory in the directory you extracted the Eclipse archive to.
 
-***Starting RTCBuilder 
+***Starting RTC Builder 
 The first time Eclipse is started, a Welcome page similar to that shown below will be displayed.
-#br
 
-#ref(fig2InitialOfEclipseStart_1_en.png,nolink,center,50%)
+#ref(fig2InitialOfEclipseStart_1_en.png,nolink,center,40%)
 CENTER:''Eclipse first start screen''
-#br
 Click the cross in the upper left of this page to close it.
-#br
 
-#ref(fig3PerspectiveSwitch_en.png,nolink,center,50%)
+#ref(fig3PerspectiveSwitch_en.png,nolink,center,40%)
 CENTER:''Change perspective''
-#br
 Click the ''Open Perspective'' button in the top right and select ''Other...''
-#br
 
 #ref(fig2-3PerspectiveSelection_en.png,nolink,center,50%)
 CENTER:''Select Perspective''
-#br
 Select ''RTC Builder'' and it will start.
-#br
 
-#ref(fig2-4RTCBuilderInit_en.png,nolink,center,75%)
+#ref(fig2-4RTCBuilderInit_en.png,nolink,center,70%)
 CENTER:''RTC Builder start screen''
-#br
 
 *** Creating a project for RTC Builder 
 Before generating a new RT Component, an Eclipse project for the component should be created. From the File menu, select ''New''->''Project''.
-#br
 
 #ref(fig2-5CreateProject_en.png,nolink,center,50%)
 CENTER:''Creating a project for RTC Builder 1''
-#br
 In the displayed dialog, choose ''Other'' and then ''RTC Builder'' and click ''Next.''
-#br
 
 #ref(fig2-6CreateProject2_en.png,nolink,center,50%)
 CENTER:''Creating a project for RTC Builder 2''
-#br
 Enter a project name and click ''Finish.''
-#br
 
 #ref(fig2-7CreateProject3_en.PNG,nolink,center, 50%)
 CENTER:''Creating a project for RTC Builder 3''
-#br
 A project with the chosen name will be created and added to the package explorer.
-#br
 
 #ref(fig2-8CreateProject4_en.png,nolink,center)
 CENTER:''Creating a project for RTC Builder 4''
-#br
 A default RTC profile XML file (RTC.xml) is automatically added to the new project.
 
 *** Starting the RTC Profile Editor 
 Click the ''Open New RtcBuilder Editor'' button in the toolbar or select ''Open New Builder Editor'' from the File menu to start the RTC Profile Editor.
-#br
 
-#ref(fig2-9ToolsBarOpenNewRtcBuilder_en.png,nolink,center)
-CENTER:''Open New RtcBuilder Editor button in the toolbar''
-#br
+|
+#ref(fig2-9ToolsBarOpenNewRtcBuilder_en.png,nolink,center)|
+#ref(fig2-10FileMenuOpenNewBuilder_en.png,nolink,60%,center)|
+|CENTER:''Open New RtcBuilder Editor button in the toolbar''|CENTER:''Open New Builder Editor option in the File menu''|
 
-#ref(fig2-10FileMenuOpenNewBuilder_en.png,nolink,center)
-CENTER:''Open New Builder Editor option in the File menu''
-#br

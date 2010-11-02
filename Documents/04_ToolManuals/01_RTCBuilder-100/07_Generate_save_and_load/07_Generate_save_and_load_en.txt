@@ -1,0 +1,102 @@
+**Generating code 
+***Generating code 
+Once all the necessary information for the new RT Component has been specified, the template code can be generated. On the Basic Profile tab, click the ''Generate'' button to generate the template code.
+#br
+
+#ref(fig4-1GenerateTemplate_en.png,nolink,center,50%)
+CENTER:''Generating template code''
+#br
+The generated template files are as follows, dependent on the language selected:
+CENTER:''Generated files''
+-All
+|Filename|Explanation|
+|README_<RTC name>|README file. Contains the information entered before generation.|
+-C++
+|Filename|Explanation|
+|<RTC name> Comp.cpp|RT Component launch code.|
+|<RTC name>.h|RT Component main header.|
+|<RTC name>.cpp|RT Component main code.|
+|<Service type name>SVC_impl.h|Service provider header*.&br;Only the specified ServiceProvider Type will be output.|
+|<Service type name>SVC_impl. cpp|Service provider implementation*.&br;Only the specified ServiceProvider Type will be output.|
+|Makefile.<RTC name>|Makefile for compiling the component.|
+|<RTC name>.vcproj|Project file for Visual Studio.&br;Only generated when the supported OS is set to Windows.|
+|OpenRTM-aist.vsprops|Visual Studio property file for OpenRTM-aist.|
+
+-Java
+|Filename|Explanation|
+|<RTC name>Comp.java|RT Component launch class.|
+|<RTC name>.java|RT Component's Component Profile. Class specified during initialisation.|
+|<RTC name>Impl.java|RT Component implementation.|
+|build_<RTC name>.xml|Build file for the RT Component.|
+|<Service type name> SVC_impl.java|Service provider implementation class*.|
+-Python
+|Filename|Explanation|
+|<RTC name>.py|RT component implementation.|
+|<Service type name>_idl.py||
+|<Service type name>_idl_example.py|Service provider implementation class*.|
+
+~''*'' RTC Builder will parse the IDL file(s) when generating the template code in order to generate the operation templates for the service providers. However, the following limitations apply to this:
+-Only #include can be used by the preprocessor. #ifdef, etc. are ignored.
+-The generated operations are only those directly specified by the interface. Inherited operations are not generated.
+
+***Output selection 
+If an output file of the code to be generated already exists, and there are differences between the existing file and the generated file, it will request confirmation of how to merge the two files.
+#br
+
+#ref(fig4-2SelectOutPut_en.png,nolink,center)
+CENTER:''Output selection screen''
+#br
+In this screen there are three options to select from.
+-Original： Use the existing file.
+-Merge： Merge using a merge block*.
+-Generate： Overwrite using the generated code.
+
+~''*'' When merging, only blocks of code surrounged by ''<rtc-template block="block">'' tags will be overwritten by newly generated code. Unchanged code in a generated file will already be surrouned by these tags. The contents of these tags will be replaced when merging, so take care not to change code within these tagged blocks.
+
+***Changing perspective 
+If the correct development environment plugins are installed for the language the template was generated in, after generation is complete the perspective will ask to change to the correct perspective for that language.
+#br
+
+#ref(fig4-3MessagePerspectiveSwitch_en.png,nolink,center)
+CENTER:''Change perspective confirmation dialog''
+#br
+The necessary development plugins are:
+-Java：  JDT (Java Development Tools) - already included in Eclipse
+-C++：   CDT (C/C++ Development Tooling)
+-Pytho： PyDev
+
+~''*'' When the correct development plugins are installed, and a new project is generated, the correct properties will be set for the language in use.
+
+**Loading and Saving Settings 
+RTC Builder can save and load the contents of the RTC Profile Editor entered by the user to and from an RTC Profile XML file (RTC.xml).
+
+***Saving 
+Use one of the following methods to save the editor contents to an RTC Profile XML file.
+
+-Press ''Ctrl-S''
+-Right-click in the editor and select ''Save'' or ''Save As...'' from the context menu
+-Select ''Save'' or ''Save As...'' from the File menu.
+
+~''*'' ''Save As...'' allows the profile to be saved to any project.
+#br
+
+#ref(fig5-1Save_en.png,nolink,center,50%)
+CENTER:''Saving''
+#br
+//~''*''If the specified destination directory is not a project directory, the below error message will be displayed. Correct the destination directory to be a project directory.
+//#br
+
+//#ref(SaveError.png,nolink,center)
+//CENTER:''Bad destination directory error''
+//#br
+
+***Loading
+Use one of the following methods to load an RTC Profile into the editor from an RTC Profile XML file.
+-Right-click on the editor and select ''Open'' from the context menu.
+-Select ''Open File...'' from the File menu.
+#br
+
+#ref(fig5-2Load_en.png,nolink,center,50%)
+CENTER:''Loading''
+#br
+

@@ -1,0 +1,125 @@
+The RTC Builder settings screen can be accessed from the Window menu's ''Settings...'' option. Select ''RTC Builder'' from the displayed settings dialog.
+#br
+
+#ref(fig7-1SettingRTCBuilder_en.png,nolink,center,70%)
+CENTER:''The RTC Builder settings''
+#br
+
+***Code Generation 
+These settings allow the default values in the Basic Profile tab and the Configuration Parameters tab to be set.
+#br
+
+#ref(fig7-2SettingGenerateCode_en.png,nolink,center,70%)
+CENTER:''Code Generation settings''
+#br
+Clicking the ''Reset to Default'' button will set these to the following values.
+CENTER:''Code Generation settings defaults''
+|Item|Default value|
+|>|Basic|
+|Component name|ModuleName|
+|Description|ModuleDescription|
+|Version|1.0.0|
+|Vendor|VendorName|
+|Category|Category|
+|Component Type|DataFlowComponent|
+|Component’s activity type|PERIODIC|
+|Max. Instances|1|
+|Execution type|PeriodicExecutionContext|
+|Execution rate|1.0|
+|>|Configuration|
+|Name|conf_name|
+|Type|conf_type|
+|Variable Name|conf_varname|
+|Default Value|conf_default|
+
+***Port 
+These settings allow the default values in the Data Port tab and the Service Port tab to be set.
+#br
+
+#ref(fig7-3SettingPort_en.png,nolink,center,70%)
+CENTER:''Port settings''
+#br
+Clicking the ''Reset to Default'' button will set these to the following values.
+CENTER:''Port settings defaults''
+|Item|Default value|
+|>|Data Port|
+|DataPort Name|dp_name|
+|DataPort Type|dp_type|
+|DataPort Variable Name|dp_vname|
+|>|Service Port|
+|ServicePort Name|sv_name|
+|>|Service Interface|
+|Interface Name|if_name|
+|Instance Name|if_instance|
+|Variable Name|if_varname|
+
+***Configuration 
+These settings allow what information is displayed in the configuration profile and the system profile to be configured.
+#br
+
+#ref(fig7-4SettingConfig_en.png,nolink,center,70%)
+CENTER:''Configuration settings''
+#br
+Clicking the ''Reset to Default'' button will set these to the following values.
+CENTER:''Configuration Setting Window　Default value''
+|Item|Default value||Item|Default value|
+|manager .name|Manager||naming.enable|YES|
+|os.name|None||naming.type|corba|
+|os.release|None||naming.format|%h.host/%n.rtc|
+|os.version|None||naming.update.enable|YES|
+|os.arch|None||naming.update.interval|10.0|
+|os.hostname|None||timer.enable|YES|
+|logger.enable|YES||timer.tick|0.1|
+|logger.file_name|./rtc%p.log||corba.args|None|
+|logger.data_format|%b %d %H:%M:%S||corba.endpoint|None|
+|logger.log_level|NORMAL||corba.name_servers|None|
+|logger.stream_lock|NO||exec_cxt.periodic.type|PeriodicExecutionContext|
+|logger.master_logger|None||exec_cxt.periodic.rate|1000|
+|module.conf_path|None||exec_cxt.evdriven.type|EventDrivenExecutionContext|
+|module.load_path|None||>||
+
+***Export 
+These settings allow what is included in the different archive types to be set.
+#br
+
+#ref(fig7-4SettingExport_en.png,nolink,center,70%)
+CENTER:''Export settings''
+#br
+The settings are divided by archive type (Source export, Binary export and Source plus binary export). Each section is divided in file extension and file name sections.
+#br
+
+#ref(fig7-5SettingExport_en.png,nolink,center,50%)
+CENTER:''Export settings (sections)''
+#br
+The file extension section allows file types to be included in the archive to be specified by extension. Click the ''Select type'' button to display the file type selection dialog. Select which file types to include in the archive using this dialog.
+|BGCOLOR(white):
+#ref(fig7-6Select_en.png,70%,left)|BGCOLOR(white): * The list only displays registered file types. To enter types not in the list, enter them in the text field at the bottom of the dialog. Separate multiple entries with a comma.|
+
+#br
+
+CENTER:''File type selection dialog''
+#br
+The file name section allows files to be included in the archive to be specified by file name. Click the ''Add'' button to add a new name to the list. Use the ''Delete'' button to remove names from the list. In the above ''Export settings (sections)'' figure, the "Source plus binary" archive type will include all files with the extensions .cpp and .h, as well as any files named "Makefile" and "README."
+Clicking the ''Reset to Default'' button will set these to the following values.
+CENTER:''Export settings defaults''
+|Item|Default value|
+|>|Source Export|
+|Extension|conf，cpp，h，vcproj，java，xml，py|
+|Name|Makefile，README|
+|>|Binary Export|
+|Extension|conf，exe，class，py|
+|Name|README|
+|>|Source+Binary Export|
+|Extension|conf，cpp，h，vcproj，java，xml，py，exe，class|
+|Name|Makefile，README|
+
+*** Build View 
+These settings allow the colours of different icons displayed in the Build View to be congfigured.
+#br
+
+#ref(fig7-7SettingBuildView_en.png,nolink,center,70%)
+CENTER:''Build View settings''
+#br
+Clicking the various colour buttons allows the colors of the Component, DataInPort, DataOutPort, ServicePort and ServiceInterface to be changed.
+
+
