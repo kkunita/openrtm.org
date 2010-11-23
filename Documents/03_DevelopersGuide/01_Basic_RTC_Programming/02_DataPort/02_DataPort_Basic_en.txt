@@ -11,7 +11,7 @@ The data port which sends data to other RTC is called "OutPort", and
 the data port which receives from other RTC is called "InPort."
 "OutPort" and "InPort" collectively means "Data Port."
 
-#ref(dataport_en.png,60%,center)
+#ref(dataport_en.png,30%,center)
 CENTER: ''Data Port (InPort and OutPort)''
 
 RTCs can be written in a various progamming languages. And, RTCs can
@@ -32,7 +32,7 @@ controller component by using these components, it must have an InPort
 to receive sensor data, and an InPort to receive reference data and an
 OutPort to output torque data respectively.
 
-#ref(dataport_example_ja.png,40%,center)
+#ref(dataport_example_en.png,40%,center)
 CENTER: ''An example of data ports of a sensor, a controller and a motor''
 
 Let's see a simple example usage of InPort and OutPort in actual code.
