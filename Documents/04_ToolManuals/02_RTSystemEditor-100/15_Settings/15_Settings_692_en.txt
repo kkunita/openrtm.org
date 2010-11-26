@@ -10,7 +10,7 @@ CENTER:''Connection period setting''
 #br
 
 ***Setting Colours 
-This screen allows the colours used in the System Editor to indicate various states to be configured. For information on what each state means, see [[RTC Display>SystemEditer_Functions_1#RTCcolor]].
+This screen allows the colours used in the System Editor to indicate various states to be configured. For information on what each state means, see [[RTC Display>/en/node/1429#RTCcolor]].
 #br
 
 #ref(fig81DisplayColorSettingScreen_en.png,nolink,50%,center)
