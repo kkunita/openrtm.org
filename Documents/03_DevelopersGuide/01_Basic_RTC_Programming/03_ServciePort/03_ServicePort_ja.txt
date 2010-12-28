@@ -1,0 +1,930 @@
+// -*- pukiwiki-edit -*-
+//*サービスポート(基本編)
+
+#contents
+
+//------------------------------------------------------------
+**サービスポートとは
+
+ロボットシステムをコンポーネント指向で構築するためには、コンポーネント
+間のデータ通信だけでは十分ではなく、コマンドレベル(あるいは関数レベル)
+のコンポーネント間通信が必要になってきます。例えば、ロボットアームを制
+御するマニピュレータコンポーネントの場合、手先の位置や速度などは、上位
+のアプリケーションやコンポーネントからデータポートで送られるべきデータ
+です。
+
+一方、ロボットアームの各種設定、座標系の設定、制御パラメータの設定、動
+作モードの設定、などをデータポートで行うのは適切とは言えず、オブジェク
+ト指向的にいえば、マニピュレータオブジェクトに対して、
+setCoordinationSystem(), setParameter(), setMode(), などの関数が用意さ
+れていて、これらの関数を必要に応じて適切なタイミングで呼ぶのが自然とい
+えます。
+
+#ref(serviceport_example_ja.png,40%,center)
+CENTER: ''サービスポートの例''
+
+サービスポートはこのようなコマンドレベルのコンポーネント間のやり取りを
+行うための仕組みを提供します。
+
+一般にサービスとは、機能的に関連のあるひとまとまりのコマンド (関数、メ
+ソッド、オペレーションなどとも呼ばれます) 群であり、OpenRTM-aistにおい
+ては、この機能を提供する側をサービスプロバイダ(インターフェース)、機能
+を利用する側をサービスコンシューマ(インターフェース)と呼びます。
+
+なお、UML等の規約においては、サービスプロバイダを Privided Interface,
+またサービスコンシューマを Required Interface などと呼び、それぞれ下図
+のような記号 (ロリポップ (lollipop) 、ソケット (socket) ) で表します。
+これは、一般的な用語および記述法なので覚えておいた方がよいでしょう。呼
+ぶあるいは呼ばれる方向でいえば、呼ばれるものがプロバイダ (Provided
+Interface) であり、呼ぶものがコンシューマ (Required Interface) という見
+方もできます。
+
+#ref(provider_and_consumer_ja.png,40%,center)
+CENTER: ''プロバイダとコンシューマ''
+
+- プロバイダ (Provided Interface): 呼ばれる側、サービスを提供する側
+- コンシューマ (Required Interface): 呼ぶ側、サービスを利用する側 
+
+プロバイダおよびコンシューマをまとめてインターフェースまたは、サービス
+インターフェースと呼び、これらサービスインターフェースを持つポートをサー
+ビスポートと呼びます。
+
+
+**サービスポートとインターフェース
+
+サービスインターフェースとサービスポートの関係について詳しく説明します。
+
+#ref(component_port_interface_ja.png,40%,center)
+CENTER: ''コンポーネント、ポート、インターフェース''
+
+ポートとはコンポーネントに付属し、コンポーネント間の接続の端点となる部
+分を指します。コンポーネント間の接続とは、コンポーネントに付属するポー
+ト間で接続に関する調停が行われ、何らかの相互作用 (データやコマンドのや
+り取り) が行える状態にすることを意味します。
+
+ポート自体はデータやコマンドのやり取りに対して、何の機能も提供しません。
+実際にコマンドのやり取りを行うのはサービスインターフェース (プロバイダ
+とコンシューマ) になります。一般的にポートには機能的に関連のある任意の
+数の任意の方向のインターフェースを付加することができます。これにより、
+コマンドのやり取りを一方向だけでなく双方向にすることもできます。
+
+コンシューマとプロバイダは、ポートが接続されたときに、ある条件に基づい
+て接続され、コンシューマからプロバイダの機能を呼び出すことが可能になり
+ます。コンシューマとプロバイダを接続するためには、両者の''型''が同じ、
+または互換性がある必要があります。
+
+同じ型である、とは同一のインターフェース定義を持つことであり、互換性が
+あるとは、プロバイダのインターフェースがコンシューマのインターフェース
+のサブクラスの一つである、(逆にいえば、コンシューマのインターフェースが
+プロバイダのインターフェースのスーパークラスの一つである)ということにな
+ります。
+
+
+***サービスポート
+
+RTコンポーネントはデータポート同様、任意の数のサービスポートを持つこと
+ができます。また、サービスポートには、任意の種類、数のプロバイダまたは
+コンシューマを付加することができます。
+
+以下は、OpenRTM-aistのサンプルコンポーネント MyServiceProvider から抜粋
+したポートとプロバイダの登録のためのコードです。
+
+ RTC::ReturnCode_t MyServiceProvider::onInitialize()
+ {
+   // Set service provider to Ports
+   m_MyServicePort.registerProvider("myservice0", "MyService", m_myservice0);
+   
+   // Set CORBA Service Ports
+   addPort(m_MyServicePort);
+   
+   return RTC::RTC_OK;
+ }
+
+m_MyServicePort.registerProvider() でプロバイダをサービスポートオブジェ
+クト m_MyServicePort に登録しています。第3引数が実体であるプロバイダオ
+ブジェクトです。次に、コンポーネントのフレームワーククラスである
+RTObjectクラスのaddPort() 関数で、ポートをコンポーネントに登録していま
+す。
+
+同様に、サンプルコンポーネント MyServiceConsumer から抜粋したコードを示します。
+
+ RTC::ReturnCode_t MyServiceConsumer::onInitialize()
+ {
+   // Set service consumers to Ports
+   m_MyServicePort.registerConsumer("myservice0", "MyService", m_myservice0);
+   
+   // Set CORBA Service Ports
+   addPort(m_MyServicePort);
+ 
+   return RTC::RTC_OK;
+ }
+
+プロバイダの場合とほとんど同じで、m_MyServicePort.registerConsumer() 関
+数でコンシューマをポートに登録し、そのポートを addPort() 関数でコンポー
+ネントに登録しています。
+
+以上、特に説明もなしに、それぞれ m_myservice0 というオブジェクトが、プ
+ロバイダ、またはコンシューマであるとしてコード例を示しましたが、以下、
+これらのインターフェースがどのように定義され、オブジェクトがどのように
+実装されるかを説明していきます。
+
+***インターフェース定義
+
+インターフェースとは何でしょうか？C++であれば、純粋仮想クラスをインター
+フェースと呼んだりしますし、Javaは言語レベルで interface キーワードが用
+意されています。
+
+OpenRTM-aistには、言語やOSに依存しない、ネットワーク透過であるといった
+特徴がありますが、これはCORBAと呼ばれる分散オブジェクトミドルウエアを利
+用することにより実現されています。CORBAは、国際標準化団体OMGで標準化さ
+れている分散オブジェクトミドルウエアで、標準に従って、多くの会社や団体、
+個人などが多様な実装を提供しています。
+
+OpenRTM-aistでは、インターフェースはIDLと呼ばれるCORBAのインターフェー
+ス定義言語によって定義します。このIDLは言語に依存しないインターフェース
+定義方法を提供し、またIDLコンパイラと呼ばれるスタブやスケルトンを生成ツー
+ルを利用することで、各種言語に対応したコードが自動的に生成されます。ス
+タブとは、リモートのオブジェクトを呼び出すためのプロキシオブジェクトの
+ためのコードであり、スケルトンとは、プロバイダを実装するためのベースと
+なるコードです。
+
+これら自動生成されるコードのおかげで、異なる言語同士の呼び出しもシーム
+レスに行うことができます。例えば、C++で実装されたプロバイダを、Pythonや
+Java等で容易に呼び出すことができるのです。
+
+以下は、OpenRTM-aistのサンプルで使用されているIDL定義です。
+
+ module SimpleService {
+   typedef sequence<string> EchoList;
+   typedef sequence<float> ValueList;
+   interface MyService
+   {
+     string echo(in string msg);
+     EchoList get_echo_history();
+     void set_value(in float value);
+     float get_value();
+     ValueList get_value_history();
+   };
+ };
+
+module とは C++で言うところの名前空間のようなもので、これによりインター
+フェース名を就職し衝突を防ぐことができます。
+
+C言語等と同様に typedef キーワードがあります。上の例では、sequence と呼
+ばれる動的配列型を定義しています。一つは、string (文字列型) 型のリスト
+として、EchoList 型、もうひとつは float 型のリストとして ValueList 型を
+定義しています。特に sequence 型は、typedef せずに、定義中で直接使うこ
+とができないので、このように予め typedef しておく必要があります。
+
+次に interface で始まる部分が実際のインターフェースの定義になります。
+MyService インターフェースには、5つの関数 (IDLではオペレーションと呼び
+ます) が定義されています。ほとんどは、C言語やJavaなどと同じような定義で
+すが、IDLでは引数が入力であるか出力であるかを明確にするために、引数宣言
+の前に、''in'', ''out'' または ''inout'' の修飾子が付きます。
+
+***IDLコンパイル
+
+図に、IDL定義からIDLコンパイル、プロバイダの実装およびスタブの利用の流
+れを示します。
+
+#ref(idlcompile_stub_skel_ja.png,40%,center)
+CENTER: ''IDLコンパイルとスタブ、スケルトン''
+
+定義されたIDLをIDLコンパイラに与えてコンパイルを行うと、通常スタブとス
+ケルトン (またはサーバとクライアントという呼び方をする場合もある) のた
+めのコードが生成されます。
+
+クライアント、すなわちサービスを利用する側は、スタブコードをインクルー
+ドするなどして、スタブとしてい定義されているプロキシ(代理)オブジェクト
+を利用して、リモートにある、サーバの機能にアクセスします。以下にC++での
+コード例を示します。
+
+ MyService_var mysvobj = <何からの方法でリモートオブジェクトの参照を取得>
+ Retval retval = mysvobj->myoperation(argument);
+
+MyService_var というのが、プロキシオブジェクトのための宣言です。
+mysvobjにリモートオブジェクトの参照を何らかの形で代入すると、その下で行
+われている myoperation() 関数の呼び出しは、実際にはリモートに存在するオ
+ブジェクトにおいて行われます。このMyService_var クラスが定義されている
+のがスタブにあたります。
+
+一方、上記の方法によって実際に呼ばれるサーバ側のオブジェクトは、以下の
+ようにスケルトンクラスを継承して以下のように実装されます。
+
+ class MyServiceSVC_impl
+   : public virtual MyService,
+     public virtual PortableServer::RefCountServantBase
+ {
+ public:
+    MyServiceSVC_impl() {};
+    virtual ~MyServiceSVC_impl() {};
+    Retval myoperation(ArgType argument)
+    {
+      return do_ something(argument);
+    }
+ };
+
+さらに、ここで定義されたサーバントクラスをインスタンス化し、CORBAオブジェ
+クトとしてアクティベートすることで、リモートからオペレーションを呼び出
+すことができます。
+
+ // CORBAのORB等を起動するためのいろいろなおまじない
+ MyServiceSVC_impl mysvc;
+ POA->activate_object(id, mysvc);
+
+IDLを定義して、コンパイルすることで、分散オブジェクトを定義し利用するの
+に必要な大半のコードが自動的に生成されます。ただし、上記の「何らかの方
+法でリモートオブジェクトの参照を取得」したり、「CORBAのORBを起動するた
+めのいろいろなおまじない」といったものは、CORBAを直接利用する場合には依
+然としてコーディングする必要がある部分であり、これらはCORBAを利用するう
+えでも理解が難しかったり、煩雑な作業が必要となる部分です。
+
+しかしながら、OpenRTM-aistを利用すれば、こうしたCORBAの様々な呼び出しの
+大半は隠蔽され、実装者はクライアントの呼び出し、サーバントの実装にのみ
+集中することができます。以下では、サーバントを実装しプロバイダとしてコ
+ンポーネントに登録する方法、コンシューマとしてプロバイダを利用する方法
+について詳しく見ていきます。
+
+**実装
+
+サービスポートの実装に当たっては、RTCBuilderを利用するのが便利です。
+自分でサービスポート、プロバイダおよびコンシューマを実装することもできますが、CORBAやIDLコンパイラに精通している必要がありますし、Makefileやコードの様々な部分を書き換える必要がありますのであまりお勧めできません。
+
+RTCBuilderの詳細な使い方は、RTCBuilderのマニュアルを参照してください。
+
+***IDL定義
+
+サービスポートを利用するには、利用するインターフェースを予め
+IDLで定義するか、既存のIDLファイルを適当なディレクトリに配置しておく必
+要があります。
+
+IDLの定義方法については、ここでは詳細は述べませんが、おおよそ以下のよう
+なフォーマットで定義することができ、C言語やJavaに慣れた読者であれば、比
+較的容易に定義できるでしょう。
+
+ // 名前空間のためにモジュールを定義することができる。
+ // モジュール定義は積極的に利用することが推奨される。
+ module <モジュール名>
+ {
+   // 構造体を定義することができる。
+   struct MyStruct // 構造体名
+   {
+     short x; // int型はshortとlongのみ利用可能
+     short y;
+     long  a;
+     long  b;
+     double dval; // 浮動小数点型はfloatとdoubleのみ利用可能
+     float fval;
+     string strval; // 文字列のためにstringが利用可能
+   };
+ 
+   // 動的配列 sequence 型は予め typedef する必要がある
+   typedef sequence<double> DvalueList;
+   typedef sequence<MyStruct> MyStructList; // 任意の構造体もsequence型にできる
+ 
+   // インターフェース定義
+   interface MyInterface // インターフェース名
+   {
+     void op1(); // 戻り値なし、引数なしの場合
+ 
+     // NG: 大文字・小文字を区別しない言語では以下の定義が問題になるためIDLではエラーになる
+     // short op2(in MuStruct mystruct);
+     short op2(in MyStruct mydata); // 引数は {in, out, inout} で方向を指定
+ 
+     oneway void op3(); // 戻り値なしのオペレーションはonwayキーワードが利用可能
+ 
+     void op4(in short inshort, out short outshort, inout short ioshort);
+ 
+     void op5(MyInterface myif); // MyInterface 自身を引数に利用することも可能
+   };
+ 
+   // 同一のIDLファイルに複数のinterfaceを定義することも可能
+   interface YourInterface
+   {
+     void op1();
+   };
+ };
+
+
+***RTCBuilderによる設計
+
+上のようにIDLで定義したインターフェースを、これから開発するRTコンポーネ
+ントのサービスポートのプロバイダ、もしくはコンシューマとして用いるため
+には、コンポーネントのコードジェネレータである RTCBuilder でサービスポー
+トを設計し、その際にこのIDL定義を与えてやる必要があります。
+
+RTCBuilder の新規プロジェクトを作成し、パースペクティブを開きます。各種
+プロファイル(コンポーネントの名称やカテゴリ名)等、必要な設定を行った後、
+サービスポートタブを開くと、次のような画面が現れます。
+
+#ref(rtcbuilder_serviceport_tab1_ja.png,40%,center)
+CENTER: ''サービスポート設計タブ''
+
+まず、''Add Port'' ボタンを押しサービスポートを一つ追加します。そうする
+と、sv_name というサービスポートが一つ追加され、下のBuildViewのコンポー
+ネントの箱に、小さな正方形のポートが一つ追加されます。RTCBuilderのエディ
+タ左のポートリストのsv_nameをクリックすると、右側に''RT-Component
+Service Port Profile''が表示されるので、ポート名を適当な名前 (ここでは
+''MyServiceProviderPort'') に変更します。
+
+#ref(rtcbuilder_serviceport_tab2_ja.png,40%,center)
+CENTER: ''サービスポートの追加''
+
+エディタ左のポートリストの MyServiceProviderPort をクリックし、''Add
+Interface''ボタンをクリックすると、MyServiceProviderPort にインターフェー
+ス ''if_name'' が一つ追加されますので、先ほどと同様にエディタ左
+の''if_name''をクリックし、''RT-Component Service Port Interface
+Profile''上で''if_name''を適当な名前 (ここではMyServiceProvider) に変更
+します。下のBuildeViewでは、正方形のポートにロリポップが追加され、プロ
+バイダ (Provided Interface) がポートに付加されたことが視覚的に分かりま
+す。
+
+#ref(rtcbuilder_serviceport_tab3_ja.png,40%,center)
+CENTER: ''サービスインターフェース(プロバイダ)の追加''
+
+エディタ右側の Interface Profile では、インターフェースのプロファイルを
+設定します。例えば''方向''のドロップダウンリストでは、対象のインター
+フェースがプロバイダ (Provided) かコンシューマ (Required) かを指定しま
+す。
+
+#ref(rtcbuilder_direction_ddown_ja.png,100%,center)
+CENTER: ''サービスインターフェースの「方向」の設定''
+
+ここではプロバイダを追加しようとしているので、Provided のままにしま
+す。このほか、インスタンス名、変数名なども指定できますが、必須ではあり
+ません。インスタンス名は、接続時にプロバイダとコンシューマのインスタン
+ス名が同じなら、対応関係を指定しなくてもポートの接続を自動的に行う場合
+に利用されます。
+
+#ref(serviceif_autoconnection_ja.png,40%,center)
+CENTER: ''サービスインターフェースのインスタンス名と自動接続''
+
+ただし、インスタンス名が異なっていても、接続時に任意のインターフェース
+同士を接続できるので、入力は必須ではありません。また、変数名はコードを
+生成した際にプロバイダオブジェクトを代入する変数名を指定するための項目
+ですが、これもインターフェース名から自動的に生成されるので、入力は任意
+です。
+
+次にIDLの指定と、インターフェース型の指定を行います。上で定義したような
+IDLを適当なディレクトリに配置し、IDLファイル指定ボックス横の Browse ボ
+タンを押し、対象となるIDLを指定します。すると、指定されたIDLで定義され
+たインターフェースが、その下のインターフェース型のドロップダウンリスト
+に現れます。このドロップダウンリストで、このポートに付加したインター
+フェース名を選択します。IDLファイルに文法エラーなどがある場合には、ドロッ
+プダウンリストに希望するインターフェースが現れません。再度IDLファイルの
+定義をチェックしてください。
+
+#ref(rtcbuilder_interfacetype_ddwon_ja.png,100%,center)
+CENTER: ''インターフェース型の選択''
+
+なお、上述の''方向''ドロップダウンリストで ''Required''を指定すると、こ
+のインターフェースはコンシューマになります。以下は別のコンポーネント
+''MyServiceConsumer'' のサービスポートとインターフェースの設定画面の例
+です。
+
+#ref(rtcbuilder_serviceport_tab4_ja.png,40%,center)
+CENTER: ''サービスインターフェース(コンシューマ)の追加''
+
+エディタ下の BuildView においてポートにソケットが追加されて、コンシュー
+マ (Required interface) がポートに付加されたことが視覚的に分かります。
+
+***プロバイダの実装
+
+プロバイダというのは文字通り、サービスをプロバイド(提供)するためのイン
+ターフェースです。したがって、IDLで定義したインターフェースを持つサー
+ビスの中身を実装する必要があります。
+
+プロバイダインターフェースを持つコンポーネントをRTCBuilderで設計した場
+合、コード生成を行うと、コンポーネントのソースのひな形とともに、例えば
+C++の場合には、<サービスインターフェース名>SVC_impl.cpp と <サービスイ
+ンターフェース名>SVC_impl.h という、プロバイダの実装コードのひな形も生
+成されます。
+
+#ref(rtcbuilder_svcimpl_cxxsrc_ja.png,100%,center)
+CENTER: ''サービスプロバイダ実装ファイル (C++,Python,Java)''
+
+以下に、各言語で生成されるプロバイダの実装のひな形コードのファイル名を
+示します。
+
+|>|CENTER: ''生成されるプロバイダのひな形コードファイル'' |
+| ''C++''    | <interface name>SVC_impl.cpp &br; <interface name>SVC_impl.h |
+| ''Python'' | <interface name>_idl_example.py |
+| ''Java''   | <interface name>SVC_impl.java |
+
+
+#ref(rtcbuilder_svcimpl_pysrc_ja.png,100%,center)
+CENTER: ''サービスプロバイダ実装ファイル (Python)''
+
+#ref(rtcbuilder_svcimpl_javasrc_ja.png,100%,center)
+CENTER: ''サービスプロバイダ実装ファイル (Java)''
+
+これらの実装のひな形には、IDLで定義されたインターフェースに相当するクラ
+スがあらかじめ定義されています。
+
+ここでは、C++での実装方法を例にとり、IDLで定義されたオペレーションのい
+くつかを実装していきます。
+
+****echo()関数の実装
+
+はじめに、echo() メンバ関数を見てみます。
+
+ /*
+  * Methods corresponding to IDL attributes and operations
+  */
+ char* MyServiceSVC_impl::echo(const char* msg)
+ {
+   // Please insert your code here and remove the following warning pragma
+ #ifndef WIN32
+   #warning "Code missing in function <char* MyServiceSVC_impl::echo(const char* msg)>"
+ #endif
+   return 0;
+ }
+
+#warning プリプロセッサディレクティブがありますが、これはgccでコンパイ
+ルした際にこの関数が実装されていないことを警告するためのものですので、
+#ifndefごと削除します。
+
+ char* MyServiceSVC_impl::echo(const char* msg)
+ {
+   return msg;
+ }
+
+また、この関数は、echo() 関数の引数に与えられた文字列を、単に呼び出し側
+に返すだけの機能を提供するとします。したがって、以下のように実装すれば
+よいように思えます。
+
+ char* MyServiceSVC_impl::echo(const char* msg)
+ {
+   return msg;
+ }
+
+しかし、これはコンパイル時にエラーになります。const char* を char* に渡
+しているためです。また、CORBA のオブジェクトの実装方法としても間違って
+います。CORBAでは、return で返されるオブジェクトは、ORB (Object
+Request Broker, リモートオブジェクトの呼び出し部分を司る部分、CORBAのコ
+ア) によって解体されるというルールがあるためです。(return時にはオブジェ
+クトの所有権を放棄する、とも言います。)
+
+したがって、return には、別途領域を確保し、msg の内容をコピーした文字列
+を返す必要があります。これに従えば、以下のように実装すればよいように思
+うかもしれません。
+
+ char* MyServiceSVC_impl::echo(const char* msg)
+ {
+   char* msgcopy;
+   msgcopy = malloc(strlen(msg));
+   strncpy(msgcopy, msg, strlen(msg));
+   return msgcopy;
+ }
+
+ここでは、mallocで領域を確保していますが、ORBはfreeで領域を解体するのか、
+deleteで解体するのかはわかりません。実は、CORBAではオブジェクト(構造体
+や配列、またその複合型等も含む)や文字列を扱うための方法が別途定められて
+いて、それに従って関数の引数を受け取ったり、返したりする必要があるので
+す。
+
+CORBAで定められた方法に従うと、echo()関数は以下のように実装する必要があります。
+
+ char* MyServiceSVC_impl::echo(const char* msg)
+ {
+   CORBA::String_var msgcopy = CORBA::string_dup(msg);
+   return msgcopy._retn();
+ }
+
+関数内の1行目では、CORBAの文字列クラスCORBA::String のスマートポインタ
+である CORBA::String_var 型を宣言しています。String_var 型はいわゆる所
+有権を管理するためのスマートポインタでSTLのauto_ptrに似ています。
+
+ CORBA::String_var msgcopy = CORBA::string_dup(msg);
+
+この String_var 型の変数 msgcopy に引数の msg に格納されている文字列を
+コピーしているのが CORBA::string_dup() 関数です。この関数では引数に与え
+られた文字列を格納するのに十分なメモリ領域を確保し、その領域に引数の文
+字列をコピーしています。
+
+次の行では、return で呼び出し元に msgcopy 内の文字列を返しつつ、オブジェ
+クトの所有権を放棄、return 側に所有権を移譲しています。下図に示すように
+ORB では、return で返された文字列を、ネットワーク上の呼び出し元に送信し
+てから、文字列オブジェクトを解放します。
+
+#ref(serviceport_orb_and_provider_ja.png,50%,center)
+CENTER: ''ORBとオペレーション呼び出し、メモリ管理の関係''
+
+このルールをよく理解すると、msgcopy オブジェクトが echo() 関数内で使用
+されていないことから、echo() 関数の実装は最終的には以下のようにも書くこ
+ともできます。
+
+ char* MyServiceSVC_impl::echo(const char* msg)
+ {
+   return CORBA::string_dup(msg);
+ }
+
+CORBA::string_dup() 関数で文字列領域の確保と内容のコピーを行ったうえで、
+その所有権を直に呼び出し元に与えていることになります。
+
+このように、サービスプロバイダは CORBA のオブジェクトですので、その実装
+方法は通常の C++ の実装とは少し違ったやり方で行う必要があります。特に、関
+数の引数および返り値の受け渡し規則は、少し複雑なように見えます。ただし、
+上記のように、オブジェクトの所有権という考え方を念頭において考えると、
+引数をどのように受け取るべきなのか、あるいは返り値をどのように返すべき
+なのかが自ずと明らかになります。詳細については、Appendixや他のCORBAの参
+考書等を参考にしてください。
+
+
+****set_value(), get_value() と get_value_history()
+
+次は、set_value() 関数, get_value() 関数および get_value_list() 関数を
+同時に実装していきます。これらの関数は、set_value() で設定されたfloat型
+の値を保存しておき、get_value()でその値を返すという単純なものです。また、
+get_value_history() では、今までにセットされた値の履歴を保存しておき、
+履歴をリストとして返すというものです。
+
+まず、値を保存しておく変数を用意します。現在の値はMyServiceSVC_implクラ
+スにCORBA::Float型のprivateメンバーとして用意します。一方、
+get_value_history() では、戻り値にSimpleService::ValueList というCORBA
+のシーケンス型が使われているので、これをメンバー変数として持つようにし
+ます。これらの変数宣言を MyServiceSVC_impl.h の MyServiceSVC_impl クラ
+ス定義の最後の方に以下のように追加します。
+
+ class MyServiceSVC_impl
+   : public virtual POA_SimpleService::MyService,
+    public virtual PortableServer::RefCountServantBase
+ {
+   : (中略)
+ private:
+   CORBA::Float m_value; // この行を追加する
+   SimpleService::ValueList m_valueList; // この行を追加する
+   };
+
+変数の初期化も忘れずに行います。MyServiceSVC_impl.cpp のコンストラクタ
+で、m_value は 0.0に、m\valueList は長さ0に初期化しておきます。
+
+ MyServiceSVC_impl::MyServiceSVC_impl()
+ : m_value(0.0), m_valueList(0)
+ {
+   // Please add extra constructor code here.
+ }
+
+次に、set_value() 関数を実装します。引数に与えられた数値をメンバ変数
+m_value に代入するとともに、m_valueListにも追加します。CORBAのシーケン
+ス型は、動的配列型で、[]オペレータとともに、length(),
+length(CORBA::ULong) の関数を利用することができます。length() 関数は、現
+在の配列の長さを返し、length(CORBA::ULong) 関数は現在の配列の長さを設定
+します。実装は以下のようになります。
+
+ void MyServiceSVC_impl::set_value(CORBA::Float value)
+   throw (CORBA::SystemException)
+ {
+   m_value = value; // 現在値
+ 
+   CORBA::ULong len(m_valueList.length()); // 配列の長さを取得
+   m_valueList.length(len + 1); // 配列の長さを1つ増やす
+   m_valueList[len] = value; // 配列の最後尾にvalueを追加
+ 
+   return;
+ }
+
+echo() 関数とは異なり、CORBA::Long 型はC++のlong intと等価で、オブジェ
+クトの所有権、領域確保や廃棄等は考える必要はありません。したがって、上
+のように単純な代入で構いません。また、配列型は、2種類の length() 関数と
+[]オペレータを利用して、配列の長さを1つ増やして最後尾に引数の値を代入し
+ています。なお、OpenRTM-aistでは、CORBAのシーケンス型をSTLのvectorに近い形で利用するための関数テンプレートを提供しており、それを使うと、
+
+ void MyServiceSVC_impl::set_value(CORBA::Float value)
+   throw (CORBA::SystemException)
+ {
+   m_value = value; // 現在値
+   CORBA_SeqUitl::push_back(m_valueList, value);
+ 
+   return;
+ }
+
+のように書くことができます。CORBA_SeqUtil.h では、 for_each(), find(),
+push_back(), insert(), front(), back(), erase(), clear() といった関数が
+定義されています。
+
+get_value() は以下のようになります。
+
+ CORBA::Float MyServiceSVC_impl::get_value()
+   throw (CORBA::SystemException)
+ {
+   return m_value;
+ }
+
+保存された値を return で呼び出し元に返すだけです。ここでも、先ほどの
+echo() の例とは異なり、CORBA::Float がプリミティブ型なので所有権等を考
+慮する必要はありません。
+
+最後に、get_value_history() の実装を見ていきます。値の履歴が格納された
+m_valueListを返せばいいだけのように思えますが、先ほどの述べた所有権と領
+域の解放の問題があるため、以下のように実装する必要があります。
+
+ SimpleService::ValueList* MyServiceSVC_impl::get_value_history()
+   throw (CORBA::SystemException)
+ {
+   SimpleService::ValueList_var vl;
+   vl = new SimpleService::ValueList(m_valueList);
+   return vl._retn();
+ }
+
+関数内1行目では、シーケンス型オブジェクトのためのスマートポインタである、
+SimpleService::valueList_var 型の変数を宣言しています。さらに次の行で、
+このスマートポインタに対して、コピーコンストラクタを呼び出してそのポイ
+ンタを代入しています。これにより、領域の確保と、値のコピーが同時に行わ
+れます。最後に、vl._retn() で、vl が保持しているシーケンス型のオブジェ
+クトの所有権を放棄して、return側にオブジェクトを渡しています。
+
+そして、vl は関数内で使用されていないので、以下のように書くこともできます。
+
+ SimpleService::ValueList* MyServiceSVC_impl::get_value_history()
+   throw (CORBA::SystemException)
+ {
+   return new SimpleService::ValueList(m_valueList);
+ }
+
+
+以上、プロバイダの実装についてみてきましたが、プロバイダがいわゆる
+CORBAオブジェクトであるので、使用する型、変数の受け渡しの仕方など、
+CORBAのルールに従って実装しなければなりません。はじめは煩わしく感じるか
+もしれませんが、プリミティブ型については従来通りの実装、複雑なオブジェ
+クトについてはメモリの確保と解放がどこで行われるか、所有権はどちらにあ
+るかを理解すると、どのように実装するべきなのか理解できると思います。
+
+
+***コンシューマの利用
+
+コンシューマでは、上で実装したサービスプロバイダを呼び出し、その機能を
+利用することになります。コンシューマを持つコンポーネントのひな形コード
+をRTCBuilderで生成した場合には、プロバイダの場合とは異なり特別なファイルは生
+成されません。
+
+その代わり、コンポーネントのヘッダに以下のようなプロバイダのプレースホ
+ルダであるコンシューマオブジェクトが宣言されます。
+
+      : (中略)
+   // Consumer declaration
+   // <rtc-template block="consumer_declare">
+   /*!
+    */
+   RTC::CorbaConsumer<SimpleService::MyService> m_MyServiceConsumer;
+ 
+   // </rtc-template>
+ 
+  private:
+      : (中略)
+
+これは、RTC::CorbaConsumer クラステンプレートに型引数
+SimpleService::MyService を与えて、MyService 型のコンシューマを宣言して
+いることになります。また、実装ファイルの方では、onInitialize() 関数にお
+いて、コンシューマのポートへの登録と、ポートのコンポーネントへの登録が
+行われていることが確認できます。
+
+ RTC::ReturnCode_t MyServiceConsumer::onInitialize()
+ {
+   : (中略)   
+  // Set service consumers to Ports
+   m_MyServiceConsumerPortPort.registerConsumer("MyServiceConsumer",
+                                                "SimpleService::MyService",
+                                                m_MyServiceConsumer);
+  
+   // Set CORBA Service Ports
+   addPort(m_MyServiceConsumerPortPort);
+   // </rtc-template>
+ 
+   return RTC::RTC_OK;
+ }
+ 
+
+ヘッダで宣言されていた m_MyServiceConsumer 変数が、registerConsumer()
+メンバ関数によってポートに登録されていることが分かります。第1引数では、
+このコンシューマの「インスタンス変数」が、第2引数ではコンシューマの「イ
+ンターフェース型」が、そして第3引数ではコンシューマのインスタンスである
+m_MyServiceConsumer 変数がそれぞれ与えられています。これによって、コン
+シューマがインスタンス名、型名ともにポートに関連付けられていることにな
+ります。
+
+
+コンシューマ m_MyServiceConsumer は上でも述べたように、プロバイダのプレー
+スホルダになっています。C++では、オブジェクトへのポインタのように扱うこ
+とができます。
+
+MyService インターフェースでは、string 型 (CORBAのstring型) 引数を一つ
+取る echo() オペレーションが定義されていました。したがって、例えば以下
+のように echo() 関数を呼び出すことができます。
+
+ m_MyServiceConsumer->echo("Hello World");
+
+C++では上のようにポインタ、JavaやPythonでは参照のように、オペレーション
+を呼び出すことができるのです。
+
+さて、ここで勘の良い方は、ポインタまたは参照の指す先は一体どうなっているんだとお思いでしょう。C++等でも、例えば以下のようなコードは segmentation fault で即座に落ちます。
+
+ class A {
+ public:
+   const char* echo(const char* msg) {
+     std::cout << msg << std::endl;
+     return msg;
+   }
+ };
+ 
+ int main (void) {
+   A* a;
+   a->echo("Hello World!!");
+ }
+
+a はnullポインタですので、何もオブジェクトを指していません。これと同様
+に、上の m_MyServiceConsumer も、コンポーネントの起動直後には、いかなる
+オブジェクトも指していませんので、当然オペレーションを呼び出すことがで
+きません。上の class A の場合では、
+
+ int main (void) {
+   A* a;
+   a = new A();
+   a->echo("Hello World!!");
+ }
+
+オブジェクトをnewで生成して、変数 a に代入してあげれば a はその時点であ
+るオブジェクトを指し示す正当なポインタですので、class Aのメンバ関数であ
+る echo() を呼ぶことができます。
+
+しかしながら、コンポーネントないのコンシューマが呼び出したいのは、ネッ
+トワーク上のどこかにあるオブジェクトのオペレーションです。したがって、
+m_MyServiceConsumer が指し示すのはリモートオブジェクトの参照 (CORBAオブ
+ジェクト参照(リファレンス)) です。
+
+実は下図に示すように、コンシューマはそのポートがプロバイダを持つポート
+と接続されるときに、対応するオブジェクト参照を受け取ります。接続により
+コンシューマは正当なオブジェクトを指すことになり、こうして初めてオペレー
+ションを呼び出すことができるのです。
+
+#ref(serviceport_connection_and_reference_ja.png,40%,center)
+CENTER: ''サービスポートの接続とオブジェクト(参照)リファレンス''
+
+接続後は(相手のポートに適当なプロバイダが存在すれば)コンシューマのオペ
+レーションを呼び出すことができますが、接続していない場合、または有効な
+参照がセットされていない場合は、コンシューマオブジェクトは例外を投げま
+す。そして、コンシューマを利用する場合、いつ接続が行われるか、またいつ
+接続が切断されるかは分かりませんので、常にこの例外を捕捉して適切に処理
+する必要があります。
+
+ try
+ {
+   m_MyServiceConsumer->echo("Hello World!!");
+ }
+ catch (CORBA::SystemException &e)
+ {
+   // 例外捕捉時の処理
+      std::cout << "ポートが接続されていません"" << std::endl;
+ }
+ catch (...)
+ {
+   // その他の例外
+ }
+
+なお、onExecute() メンバ関数内で例外が発生し、関数内部で捕捉されなかっ
+た場合、RTCはエラー状態へ遷移します。
+
+以上を踏まえて、MyServiceConsumer コンポーネント実装します。この例では、
+onExecute() でユーザからの入力待ちを行い、各オペレーションに対応したコ
+マンドを受け取り、コマンドに応じてリモートのプロバイダのオペレーション
+を呼び出し結果を返すといった簡単なものです。
+
+では、まずユーザに利用できるコマンドを提示する部分からみていきます。
+
+RTC::ReturnCode_t MyServiceConsumer::onExecute(RTC::UniqueId ec_id)
+{
+  try
+    {
+      std::cout << std::endl;
+      std::cout << "Command list: " << std::endl;
+      std::cout << " echo [msg]       : echo message." << std::endl;
+      std::cout << " set_value [value]: set value." << std::endl;
+      std::cout << " get_value        : get current value." << std::endl;
+      std::cout << " get_echo_history : get input messsage history." << std::endl;
+      std::cout << " get_value_history: get input value history." << std::endl;
+      std::cout << "> ";
+      
+      std::string args;
+      std::string::size_type pos;
+      std::vector<std::string> argv;
+      std::getline(std::cin, args);
+
+まず、上で述べたようにコンシューマが発する例外を捕捉するためにtry節で囲
+みます。利用可能なコマンドリストを表示して、ユーザの入力をgetline()関数
+で受け取っています。
+
+      
+      pos = args.find_first_of(" ");
+      if (pos != std::string::npos)
+        {
+          argv.push_back(args.substr(0, pos));
+          argv.push_back(args.substr(++pos));
+        }
+      else
+        {
+          argv.push_back(args);
+        }
+
+これらのコマンドのうち、引数を取るものは echo と set_value だけで、かつ
+これらのコマンドは引数を一つだけとります。受け取った文字列を最初の空白
+で分割し、argv[0] = コマンド、argv[1] = 引数として string の vector に
+格納します。echo, set_value コマンドでは argv[1] を引数として利用し、他
+のコマンドでは単純に無視することにします。
+
+        
+      if (argv[0] == "echo" && argv.size() > 1)
+        {
+          CORBA::String_var retmsg;
+          retmsg = m_myservice0->echo(argv[1].c_str());
+          std::cout << "echo return: " << retmsg << std::endl;
+          return RTC::RTC_OK;
+        }
+
+echo コマンドの実装です。argv[0] が ''echo'' の場合、argv[1] を引数にし
+て echo() 関数を呼び出します。echo() のCORBAのstring型の戻り値を受け取
+るための変数として、retmsg を宣言しています。echo() の戻り値の所有権は
+こちら側にあるので、受け取った後に適切に領域を解放する必要があるのです
+が、String_var 型のスマートポインタを利用すると、不要になった時点で適切
+に領域解放を行ってくれます。戻り値を表示して、return RTC::RTC_OK として
+onExecute() 関数を抜けています。
+
+        
+      if (argv[0] == "set_value" && argv.size() > 1)
+        {
+          CORBA::Float val(atof(argv[1].c_str()));
+          m_myservice0->set_value(val);
+          std::cout << "Set remote value: " << val << std::endl;
+          return RTC::RTC_OK;
+        }
+
+set_value コマンドの実装です。引数 argv[1] の文字列をCORBA::Float 型に
+変換して、set_value() オペレーションの引数に与えています。
+
+        
+      if (argv[0] == "get_value")
+        {
+          std::cout << "Current remote value: "
+                    << m_myservice0->get_value() << std::endl;
+          return RTC::RTC_OK;
+        }
+
+get_value コマンドは set_value コマンドで設定した値を取得します。
+get_value() オペレーションは、戻り値が CORBA::Float で値渡しのためオブ
+ジェクトの所有権などは特に考えなくとも構いません。ここでは、戻り値をそ
+のまま std::cout でコンソールに表示させています。
+
+      if (argv[0] == "get_echo_history")
+        {
+          EchoList_var elist = m_myservice0->get_echo_history();
+          for (CORBA::ULong i(0), len(elist.length(); i <len; ++i)
+          {
+            std::cout << elist[i] << std::endl;
+          }
+          return RTC::RTC_OK;
+        }
+
+get_echo_history コマンドでは、get_echo_history() の結果を受け取り、そ
+れまで echo コマンドで引数に与えられた文字列のリストを返しています。
+get_echo_history() 関数の戻り値は CORBA のシーケンス型である EchoList
+です。シーケンス型についてもスマートポインタである _var 型が定義されて
+いますので、これを利用します。配列の長さを取得するための length() 関数
+が利用できるので、長さを調べて for 文ですべての要素を表示しています。シー
+ケンス型の_var型では、上のように[]オペレータを利用してC言語の配列のよう
+に各要素にアクセスできます。
+
+      if (argv[0] == "get_value_history")
+        {
+          ValueList_var vlist = m_myservice0->get_value_history();
+          for (CORBA::ULong i(0), len(vlist.length()); i < len; ++i)
+          {
+            std::cout << vlist[i] << std::endl;
+          }
+          return RTC::RTC_OK;
+        }
+
+最後に、get_value_history コマンドです。get_value_history() オペレーショ
+ンを呼び出し、これまで設定されたあたりのリストを表示します。
+get_value_hitory() 関数の戻り値は CORBA::Float のシーケンス型の
+ValueList です。要素は CORBA::Float のためオブジェクトの所有権等といっ
+たことは考えなくてもよいのですが、シーケンス型はそれ自身オブジェクトで
+すので、所有権を考慮しなければならないのでここでは _var 型の変数で受け
+取っています。
+
+ std::cout << "Invalid command or argument(s)." << std::endl;
+     }
+   catch (CORBA::SystemException &e)
+     {
+       std::cout << "No service connected." << std::endl;
+     }
+   return RTC::RTC_OK;
+ }
+
+最後に、上のどれにも当てはまらなかったコマンドの場合に、メッセージを出
+しています。また、コンシューマに参照がセットされていない場合の例外を含
+めて捕捉するための catch 節があります。
+
+以上、コンシューマによるオペレーションの呼び方について簡単な例を交えて
+説明しました。コンシューマを利用する際には、必ずしもオブジェクト参照が
+セットされているとは限らないので、必ず例外を捕捉し対処することと、各オ
+ペレーションの呼び出しが、CORBAのルールに基づいて行われることに留意して
+ください。
