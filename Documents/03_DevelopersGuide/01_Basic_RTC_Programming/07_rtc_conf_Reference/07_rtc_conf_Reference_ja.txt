@@ -1,3 +1,19 @@
+// -*- pukiwiki-edit -*-
+// 
+// @brief How to use Service Port Basic
+// @date $Date$
+// @author Noriaki Ando <n-ando@aist.go.jp>
+// 
+// Copyright (C) 2011
+//     Noriaki Ando
+//     Intelligent Systems Research Institute,
+//     National Institute of
+//         Advanced Industrial Science and Technology (AIST), Japan
+//     All rights reserved.
+// 
+// $Id$
+// 
+//*rtc.conf(基本編) 
 #contents
 
 //------------------------------------------------------------
@@ -194,11 +210,15 @@ CORBAにおいては、リモートのオブジェクトのIORと呼ばれる参照によりアクセ
 スするが、IORには当該オブジェクトが動作するノードのアドレスとポート番号
 が通常1セットのみ記述されている。OpenRTMが動作しているノードに2つ以上の
 ネットワークインターフェースが存在する場合、IORに含まれるノードのアドレ
-スとして意図しないアドレスが割り振られる場合がある。
+スとして意図しないアドレスが割り振られる場合がある。これにより、到達不
+可能なオブジェクト参照が生じる場合がある。
 
 これを解消するために、本オプションでCORBAで利用するネットワークのアドレ
 スを指定することができる。''ホストアドレス:ポート番号'' として指定する
 が、ポート番号は省略できる。ただし、'':(コロン)''は省略できない。
+
+なお、このオプションは将来的に廃止されます。次の corba.endpoints を使用
+してください。
 
 - 指定: <host_addr>:<port>
 - デフォルト: 空文字
@@ -339,7 +359,7 @@ naming.update.enable が YES の場合、ネームサーバの確認および再登録を行
 *** naming.update.rebind
 
 このオプションに YES を指定すると、すでに名前と参照が登録されているネー
-ムサーバ上で名前が削除されるなどした場合にもの、再度登録を行う。
+ムサーバ上で名前が削除されるなどした場合にも、再度登録を行う。
 
 - 指定: ''YES'' or ''NO''
 - デフォルト値: NO
@@ -498,7 +518,7 @@ manager.module.preload または、マネージャに静的にリンクするなどして、登
 - VERBOSE
 - PARANOID
 
-書くログレベルを指定した際に実際にログに記録されるログメッセージのレベ
+各ログレベルを指定した際に実際にログに記録されるログメッセージのレベ
 ルは以下の通り。
 
 | SILENT   | completely silent |
