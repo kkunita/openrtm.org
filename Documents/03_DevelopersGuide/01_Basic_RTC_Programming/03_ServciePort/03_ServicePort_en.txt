@@ -104,7 +104,7 @@ service interfaces is called the service port.
 This section describes the relation between service interfaces and
 service ports in detail.
 
-#ref(component_port_interface_ja.png,40%,center)
+#ref(component_port_interface_en.png,40%,center)
 CENTER: ''The component, the port and the interface''
 
 // ポートとはコンポーネントに付属し、コンポーネント間の接続の端点となる部
@@ -336,7 +336,7 @@ argument is used as input, output or both.
 The following figure shows the flow of IDL definition, IDL
 compilation, implementation of provider and use of stub.
 
-#ref(idlcompile_stub_skel_ja.png,40%,center)
+#ref(idlcompile_stub_skel_en.png,40%,center)
 CENTER: ''IDL compilation and stub and skeleton''
 
 // 定義されたIDLをIDLコンパイラに与えてコンパイルを行うと、通常スタブとス
@@ -526,7 +526,7 @@ After setting various required profiles including component's name and
 category, open service port's tab, you can see the following editor
 view.
 
-#ref(rtcbuilder_serviceport_tab1_ja.png,40%,center)
+#ref(rtcbuilder_serviceport_tab1_en.png,40%,center)
 CENTER: ''Service port's design tab.''
 
 // まず、''Add Port'' ボタンを押しサービスポートを一つ追加します。そうする
@@ -544,7 +544,7 @@ port list in the left side of the editor, then ''RT-Component Service
 Port Profile'' will appear on the right side.  Please modify it to an
 appropriate name (here it is set as ''MyServiceProviderPort'').
 
-#ref(rtcbuilder_serviceport_tab2_ja.png,40%,center)
+#ref(rtcbuilder_serviceport_tab2_en.png,40%,center)
 CENTER: ''Adding a service port''
 
 // エディタ左のポートリストの MyServiceProviderPort をクリックし、''Add
@@ -565,7 +565,7 @@ rename ''if_name'' to an appropriate name (here it is set as
 Profile''.
 
 
-#ref(rtcbuilder_serviceport_tab3_ja.png,40%,center)
+#ref(rtcbuilder_serviceport_tab3_en.png,40%,center)
 CENTER: ''Adding a service interface (provider)''
 
 // エディタ右側の Interface Profile では、インターフェースのプロファイルを
@@ -579,7 +579,7 @@ interface as a provider (provided interface) or a consumer (required
 interface) in the ''Direction'' drop-down list.
 
 
-#ref(rtcbuilder_direction_ddown_ja.png,100%,center)
+#ref(rtcbuilder_direction_ddown_en.png,100%,center)
 CENTER: ''Setting direction of a service interface''
 
 // ここではプロバイダを追加しようとしているので、Provided のままにしま
@@ -594,7 +594,7 @@ specified, but thease are not mandatory parameters. The instance name
 is used as a matching key when service ports are connected without
 detailed interface pair settings.
 
-#ref(serviceif_autoconnection_ja.png,40%,center)
+#ref(serviceif_autoconnection_en.png,40%,center)
 CENTER: ''Instance name of service interface, and automatic pairing.''
 
 // ただし、インスタンス名が異なっていても、接続時に任意のインターフェース
@@ -631,7 +631,7 @@ file again.
 
 
 
-#ref(rtcbuilder_interfacetype_ddwon_ja.png,100%,center)
+#ref(rtcbuilder_interfacetype_ddwon_en.png,100%,center)
 CENTER: ''Selecting interface type''
 
 // なお、上述の''方向''ドロップダウンリストで ''Required''を指定すると、こ
@@ -645,7 +645,7 @@ shows a service port and interfaces setting page of another
 ''MyServiceConsumer'' component.
 
 
-#ref(rtcbuilder_serviceport_tab4_ja.png,40%,center)
+#ref(rtcbuilder_serviceport_tab4_en.png,40%,center)
 CENTER: ''Adding service interface (consumer)''
 
 // エディタ下の BuildView においてポートにソケットが追加されて、コンシュー
@@ -677,7 +677,7 @@ implementation source code such as <service interface
 name>SVC_impl.cpp and <service interface name>SVC_impl.h will be
 generated with other component template source code.
 
-#ref(rtcbuilder_svcimpl_cxxsrc_ja.png,100%,center)
+#ref(rtcbuilder_svcimpl_cxxsrc_en.png,100%,center)
 CENTER: ''Service provider implementation files (C++,Python,Java)''
 
 以下に、各言語で生成されるプロバイダの実装のひな形コードのファイル名を
@@ -691,10 +691,10 @@ Provider's implementation template code file names for each language are shown i
 | ''Java''   | <interface name>SVC_impl.java |
 
 
-#ref(rtcbuilder_svcimpl_pysrc_ja.png,100%,center)
+#ref(rtcbuilder_svcimpl_pysrc_en.png,100%,center)
 CENTER: ''Implementation file for service provider (Python)''
 
-#ref(rtcbuilder_svcimpl_javasrc_ja.png,100%,center)
+#ref(rtcbuilder_svcimpl_javasrc_en.png,100%,center)
 CENTER: ''Implementation file for service provider (Java)''
 
 // これらの実装のひな形には、IDLで定義されたインターフェースに相当するクラ
@@ -840,7 +840,7 @@ in the following figure, ORB destructs string object after it is
 transferred to the caller on the network.
 
 
-#ref(serviceport_orb_and_provider_ja.png,50%,center)
+#ref(serviceport_orb_and_provider_en.png,50%,center)
 CENTER: ''Relation among ORB, operation call and memory management.''
 
 // このルールをよく理解すると、msgcopy オブジェクトが echo() 関数内で使用
@@ -1230,7 +1230,7 @@ reference when it is connected to the other port which has provider.
 After the connection established, since the consumer has a valid
 object reference, it can call operations in the remote object.
 
-#ref(serviceport_connection_and_reference_ja.png,40%,center)
+#ref(serviceport_connection_and_reference_en.png,40%,center)
 CENTER: ''Connecting service ports and object reference''
 
 // 接続後は(相手のポートに適当なプロバイダが存在すれば)コンシューマのオペ
