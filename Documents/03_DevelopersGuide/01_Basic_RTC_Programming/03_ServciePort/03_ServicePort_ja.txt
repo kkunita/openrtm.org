@@ -1,4 +1,18 @@
 // -*- pukiwiki-edit -*-
+// 
+// @brief How to use Service Port Basic
+// @date $Date$
+// @author Noriaki Ando <n-ando@aist.go.jp>
+// 
+// Copyright (C) 2011
+//     Noriaki Ando
+//     Intelligent Systems Research Institute,
+//     National Institute of
+//         Advanced Industrial Science and Technology (AIST), Japan
+//     All rights reserved.
+// 
+// $Id$
+// 
 //*サービスポート(基本編)
 
 #contents
@@ -557,7 +571,7 @@ get_value_history() では、戻り値にSimpleService::ValueList というCORBA
    };
 
 変数の初期化も忘れずに行います。MyServiceSVC_impl.cpp のコンストラクタ
-で、m_value は 0.0に、m\valueList は長さ0に初期化しておきます。
+で、m_value は 0.0に、m_valueList は長さ0に初期化しておきます。
 
  MyServiceSVC_impl::MyServiceSVC_impl()
  : m_value(0.0), m_valueList(0)
@@ -747,7 +761,7 @@ a はnullポインタですので、何もオブジェクトを指していません。これと同様
 るオブジェクトを指し示す正当なポインタですので、class Aのメンバ関数であ
 る echo() を呼ぶことができます。
 
-しかしながら、コンポーネントないのコンシューマが呼び出したいのは、ネッ
+しかしながら、コンポーネント内のコンシューマが呼び出したいのは、ネッ
 トワーク上のどこかにあるオブジェクトのオペレーションです。したがって、
 m_MyServiceConsumer が指し示すのはリモートオブジェクトの参照 (CORBAオブ
 ジェクト参照(リファレンス)) です。
@@ -903,7 +917,7 @@ get_echo_history() 関数の戻り値は CORBA のシーケンス型である EchoList
         }
 
 最後に、get_value_history コマンドです。get_value_history() オペレーショ
-ンを呼び出し、これまで設定されたあたりのリストを表示します。
+ンを呼び出し、これまで設定された値のリストを表示します。
 get_value_hitory() 関数の戻り値は CORBA::Float のシーケンス型の
 ValueList です。要素は CORBA::Float のためオブジェクトの所有権等といっ
 たことは考えなくてもよいのですが、シーケンス型はそれ自身オブジェクトで
