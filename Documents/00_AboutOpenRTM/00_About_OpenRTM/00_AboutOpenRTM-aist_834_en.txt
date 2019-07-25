@@ -1,4 +1,4 @@
-#ref(rtm_logo.png,right,around,url=/en/node/834)
+﻿#ref(rtm_logo.png,right,around,url=/en/node/834)
 OpenRTM-aist is a software platform for component-oriented development of robot systems.
 
 OpenRTM-aist builds a system by creating a program for each functional element (this is called RT component: RTC) and connecting the RT components when building the robot system. The RT component can be developed in ''C++'', ''Python'', ''Java'' language and supports major OS (Linux / Unix, Windows, Mac OS X). Eclipse tool and command line tool can be used for component development and system development using components.

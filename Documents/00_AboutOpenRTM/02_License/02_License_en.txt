@@ -1,31 +1,31 @@
-#contents
+ï»¿#contents
 
-//OpenRTM-aist ‚ÍAŠeŒ¾Œê”Å (C++AJavaAPython) ‚Ìƒ~ƒhƒ‹ƒEƒGƒAƒ‰ƒCƒuƒ‰ƒŠ‚ÆARTCBuilderARTSystemEditor ‚È‚Çƒc[ƒ‹‚©‚ç\¬‚³‚ê‚Ä‚¨‚èA‚»‚ê‚¼‚ê
-//- OpenRTM-aist (C++AJavaAPython”Å)‚Í ''LGPL ‚ÆŒÂ•ÊŒ_–ñ‚Ìƒfƒ…ƒAƒ‹ƒ‰ƒCƒZƒ“ƒX''
-//- RTSystemEditorARTCBuilder ‚Í ''EPL ‚ÆŒÂ•ÊŒ_–ñ‚Ìƒfƒ…ƒAƒ‹ƒ‰ƒCƒZƒ“ƒX''
+//OpenRTM-aist ã¯ã€å„è¨€èªç‰ˆ (C++ã€Javaã€Python) ã®ãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã¨ã€RTCBuilderã€RTSystemEditor ãªã©ãƒ„ãƒ¼ãƒ«ã‹ã‚‰æ§‹æˆã•ã‚Œã¦ãŠã‚Šã€ãã‚Œãã‚Œ
+//- OpenRTM-aist (C++ã€Javaã€Pythonç‰ˆ)ã¯ ''LGPL ã¨å€‹åˆ¥å¥‘ç´„ã®ãƒ‡ãƒ¥ã‚¢ãƒ«ãƒ©ã‚¤ã‚»ãƒ³ã‚¹''
+//- RTSystemEditorã€RTCBuilder ã¯ ''EPL ã¨å€‹åˆ¥å¥‘ç´„ã®ãƒ‡ãƒ¥ã‚¢ãƒ«ãƒ©ã‚¤ã‚»ãƒ³ã‚¹''
 
-//‚Ì‚à‚Æ‚ÅƒI[ƒvƒ“ƒ\[ƒXŒ`®‚Å”z•z‚µ‚Ä‚¢‚Ü‚·B
+//ã®ã‚‚ã¨ã§ã‚ªãƒ¼ãƒ—ãƒ³ã‚½ãƒ¼ã‚¹å½¢å¼ã§é…å¸ƒã—ã¦ã„ã¾ã™ã€‚
 (G)OpenRTM-aist consists of middleware libraries of various languages (C ++, Java, Python), tools such as RTCBuilder, RTSystemEditor, etc.
 - OpenRTM-aist (C ++, Java, Python version) '' LGPL and individual contract dual license ''
 - RTSystemEditor, RTCBuilder '' EPL and individual contract dual license ''
 
 (G)We distribute it in open source format under the.
 
-//LGPL (GNU Lesser General Public License) ‚ÍƒtƒŠ[ƒ\ƒtƒgƒEƒFƒAà’ciFree Software FoundationAˆÈ‰ºFSF‚Æ—ªÌj‚ªŒöŠJ‚µ‚Ä‚¢‚éƒRƒs[ƒŒƒtƒgŒ^‚ÌƒtƒŠ[ƒ\ƒtƒgƒEƒFƒAƒ‰ƒCƒZƒ“ƒX‚Å‚·B
+//LGPL (GNU Lesser General Public License) ã¯ãƒ•ãƒªãƒ¼ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢è²¡å›£ï¼ˆFree Software Foundationã€ä»¥ä¸‹FSFã¨ç•¥ç§°ï¼‰ãŒå…¬é–‹ã—ã¦ã„ã‚‹ã‚³ãƒ”ãƒ¼ãƒ¬ãƒ•ãƒˆå‹ã®ãƒ•ãƒªãƒ¼ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã§ã™ã€‚
 (G)LGPL (GNU Lesser General Public License) is a copyleft-type free software license released by the Free Software Foundation (FSF).
 
-//EPL (Eclipse Public License) ‚Í FSF‚É‚æ‚Á‚Ä”F‚ß‚ç‚ê‚Ä‚¢‚éuƒtƒŠ[ƒ\ƒtƒgƒEƒFƒAƒ‰ƒCƒZƒ“ƒXv‚Ì1‚Â‚Å‚ ‚èACPL (ˆê•”‚ÍLGPL) “™‚Æ—‚½ƒ‰ƒCƒZƒ“ƒXŒ`‘Ô‚Å‚ ‚èA‚æ‚è¤‹Æ—˜—p‚ğ‘£i‚·‚é‚à‚Ì‚Æ‚È‚Á‚Ä‚¢‚Ü‚·B
+//EPL (Eclipse Public License) ã¯ FSFã«ã‚ˆã£ã¦èªã‚ã‚‰ã‚Œã¦ã„ã‚‹ã€Œãƒ•ãƒªãƒ¼ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã€ã®1ã¤ã§ã‚ã‚Šã€CPL (ä¸€éƒ¨ã¯LGPL) ç­‰ã¨ä¼¼ãŸãƒ©ã‚¤ã‚»ãƒ³ã‚¹å½¢æ…‹ã§ã‚ã‚Šã€ã‚ˆã‚Šå•†æ¥­åˆ©ç”¨ã‚’ä¿ƒé€²ã™ã‚‹ã‚‚ã®ã¨ãªã£ã¦ã„ã¾ã™ã€‚
 (G)EPL (Eclipse Public License) is one of "free software licenses" approved by FSF, it is a license form similar to CPL (partly LGPL) and the like and promotes commercial use more I will.
 
-//‚±‚ê‚ç‚Ìƒ‰ƒCƒZƒ“ƒX‚ÍA(i) •Êƒ‚ƒWƒ…[ƒ‹‚Æ‚µ‚Ä”Ğ•z‚³‚ê‚éƒ\ƒtƒgƒEƒGƒA‚âA(ii) ƒvƒƒOƒ‰ƒ€‚Ì”h¶•¨‚Å‚È‚¢‚à‚Ì‚É‚Í‹y‚Ñ‚Ü‚¹‚ñB‚Ü‚½EPLƒ‰ƒCƒZƒ“ƒX‚ÍA“Á‹–‚ÉŠÖ‚·‚éğ€‚ªŠÜ‚Ü‚ê‚Ä‚¨‚èAƒRƒ“ƒgƒŠƒrƒ…[ƒ^[‚ª‚Â“Á‹–‚ª“–ŠYƒ\ƒtƒgƒEƒGƒA‚É‰e‹¿‚µ‚È‚¢ (g—pÒ‚É‚Íg—p—¿–³—¿‚Ì“Á‹–ƒ‰ƒCƒZƒ“ƒX‚ª•t—^‚³‚ê‚é) Œ`‘Ô‚Æ‚È‚Á‚Ä‚¢‚Ü‚·B
+//ã“ã‚Œã‚‰ã®ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã¯ã€(i) åˆ¥ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¨ã—ã¦é ’å¸ƒã•ã‚Œã‚‹ã‚½ãƒ•ãƒˆã‚¦ã‚¨ã‚¢ã‚„ã€(ii) ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®æ´¾ç”Ÿç‰©ã§ãªã„ã‚‚ã®ã«ã¯åŠã³ã¾ã›ã‚“ã€‚ã¾ãŸEPLãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã¯ã€ç‰¹è¨±ã«é–¢ã™ã‚‹æ¡é …ãŒå«ã¾ã‚Œã¦ãŠã‚Šã€ã‚³ãƒ³ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ã‚¿ãƒ¼ãŒæŒã¤ç‰¹è¨±ãŒå½“è©²ã‚½ãƒ•ãƒˆã‚¦ã‚¨ã‚¢ã«å½±éŸ¿ã—ãªã„ (ä½¿ç”¨è€…ã«ã¯ä½¿ç”¨æ–™ç„¡æ–™ã®ç‰¹è¨±ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ãŒä»˜ä¸ã•ã‚Œã‚‹) å½¢æ…‹ã¨ãªã£ã¦ã„ã¾ã™ã€‚
 (G)These licenses are not (i) software that is distributed as a separate module or (ii) not a derivative of the program. In addition, the EPL license contains a clause concerning patents, and the patent owned by the contributor does not affect the software (the user is granted a patent license free of charge).
 
-//‚È‚¨ALGPLƒ‰ƒCƒZƒ“ƒX‚ÌÚ×‚É‚Â‚¢‚Ä‚ÍA
+//ãªãŠã€LGPLãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã®è©³ç´°ã«ã¤ã„ã¦ã¯ã€
 //- http://www.gnu.org/copyleft/lesser.html
-//‚ğAEPLƒ‰ƒCƒZƒ“ƒX‚ÌÚ×‚É‚Â‚¢‚Ä‚ÍA
+//ã‚’ã€EPLãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã®è©³ç´°ã«ã¤ã„ã¦ã¯ã€
 //- http://opensource.org/licenses/eclipse-1.0.php
-//- http://sourceforge.jp/projects/opensource/wiki/licenses%2FEclipse_Public_License (“ú–{Œê–ó)
-//‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B
+//- http://sourceforge.jp/projects/opensource/wiki/licenses%2FEclipse_Public_License (æ—¥æœ¬èªè¨³)
+//ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
 (G)For details of the LGPL license,
 - http://www.gnu.org/copyleft/lesser.html
 For details on the EPL license,
@@ -33,54 +33,54 @@ For details on the EPL license,
 - https://sourceforge.jp/projects/opensource/wiki/licenses%2FEclipse_Public_License (Japanese translation)
 Please refer to.
 
-//ˆÈ‰ºA‹ï‘Ì“I—˜—p—á‚ÉŠî‚Ã‚­ƒ‰ƒCƒZƒ“ƒX‚Æ§–ñğŒ‚ğà–¾‚µ‚Ü‚·B
+//ä»¥ä¸‹ã€å…·ä½“çš„åˆ©ç”¨ä¾‹ã«åŸºã¥ããƒ©ã‚¤ã‚»ãƒ³ã‚¹ã¨åˆ¶ç´„æ¡ä»¶ã‚’èª¬æ˜ã—ã¾ã™ã€‚
 (G)Licenses and constraints based on concrete usage examples are explained below.
 
-//** RTƒRƒ“ƒ|[ƒlƒ“ƒgŠJ”­E”z•z
+//** RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆé–‹ç™ºãƒ»é…å¸ƒ
 ** RT Component Development / Distribution
 
-//OpenRTM-ais‚Ìƒ‰ƒCƒZƒ“ƒX‚ÍAŒÂX‚ÌRTƒRƒ“ƒ|[ƒlƒ“ƒg‚É‚Í‹y‚Ñ‚Ü‚¹‚ñB‚µ‚½‚ª‚Á‚ÄA''RTƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìì¬Ò‚ÍA©—R‚Èƒ‰ƒCƒZƒ“ƒX‚Å”z•zE”Ì”„‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·''B
+//OpenRTM-aisã®ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã¯ã€å€‹ã€…ã®RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«ã¯åŠã³ã¾ã›ã‚“ã€‚ã—ãŸãŒã£ã¦ã€''RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ä½œæˆè€…ã¯ã€è‡ªç”±ãªãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã§é…å¸ƒãƒ»è²©å£²ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™''ã€‚
 (G)The OpenRTM-ais license does not apply to individual RT components. Therefore, '' RT component creator can distribute / sell with free license '' '.
 
-//RTƒRƒ“ƒ|[ƒlƒ“ƒg‚ÍAOpenRTM-aist ‚Ì libRTC.so (‚Ü‚½‚ÍRTC.DLL) ‚Æ“®“IƒŠƒ“ƒN‚³‚ê‚Ä‚¨‚èA‚Ü‚½ARTƒRƒ“ƒ|[ƒlƒ“ƒg©‘Ì‚à‹¤—LƒIƒuƒWƒFƒNƒg (‚Ü‚½‚Íƒ_ƒCƒiƒ~ƒbƒNƒŠƒ“ƒNƒ‰ƒCƒuƒ‰ƒŠ) ‚Æ‚µ‚Ä”z•z‰Â”\‚Å‚·B‚µ‚½‚ª‚Á‚ÄARTƒRƒ“ƒ|[ƒlƒ“ƒg©‘Ì‚Íƒ‰ƒCƒZƒ“ƒX‚ª’è‚ß‚é”h¶•¨‚Æ‚Í‚İ‚È‚³‚ê‚¸ALGPL ƒ‰ƒCƒZƒ“ƒX‚Í‹y‚Ñ‚Ü‚¹‚ñB
+//RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¯ã€OpenRTM-aist ã® libRTC.so (ã¾ãŸã¯RTC.DLL) ã¨å‹•çš„ãƒªãƒ³ã‚¯ã•ã‚Œã¦ãŠã‚Šã€ã¾ãŸã€RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆè‡ªä½“ã‚‚å…±æœ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ (ã¾ãŸã¯ãƒ€ã‚¤ãƒŠãƒŸãƒƒã‚¯ãƒªãƒ³ã‚¯ãƒ©ã‚¤ãƒ–ãƒ©ãƒª) ã¨ã—ã¦é…å¸ƒå¯èƒ½ã§ã™ã€‚ã—ãŸãŒã£ã¦ã€RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆè‡ªä½“ã¯ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ãŒå®šã‚ã‚‹æ´¾ç”Ÿç‰©ã¨ã¯ã¿ãªã•ã‚Œãšã€LGPL ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã¯åŠã³ã¾ã›ã‚“ã€‚
 (G)The RT component is dynamically linked with libRTC.so (or RTC.DLL) of OpenRTM - aist, and the RT component itself can also be distributed as a shared object (or dynamic link library). Therefore, the RT component itself is not regarded as a derivative defined by the license, and it does not include the LGPL license.
 
 #ref(license_for_rtcs_en.png,50%,center)
-//CENTER: ''RTƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒ‰ƒCƒZƒ“ƒX''
+//CENTER: ''RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ©ã‚¤ã‚»ãƒ³ã‚¹''
 CENTER: '' license of RT component ''
 
-//RTƒRƒ“ƒ|[ƒlƒ“ƒg‚ğì¬‚µ‚Ä”z•z‚·‚é•û‚ÍA”CˆÓ‚Ìƒ‰ƒCƒZƒ“ƒX‚ÌŒ³‚ÅRTƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ”z•z‚Ü‚½‚Í”Ì”„‚·‚é‚±‚Æ‚ª‚Å‚«Aƒ\[ƒXƒR[ƒh‚ğƒI[ƒvƒ“‚É‚·‚é‚©ƒNƒ[ƒY‚É‚·‚é‚©‚ğ©—R‚É‘I‚Ô‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+//RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ä½œæˆã—ã¦é…å¸ƒã™ã‚‹æ–¹ã¯ã€ä»»æ„ã®ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã®å…ƒã§RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’é…å¸ƒã¾ãŸã¯è²©å£²ã™ã‚‹ã“ã¨ãŒã§ãã€ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’ã‚ªãƒ¼ãƒ—ãƒ³ã«ã™ã‚‹ã‹ã‚¯ãƒ­ãƒ¼ã‚ºã«ã™ã‚‹ã‹ã‚’è‡ªç”±ã«é¸ã¶ã“ã¨ãŒã§ãã¾ã™ã€‚
 (G)If you create and distribute RT components, you can distribute or sell RT components under any license and you can freely choose to open or close source code.
 
-//** LGPL‚ÉŠî‚Ã‚­OpenRTM-aist ‚Ì‰ü•Ò‚ÆÄ”z•z
+//** LGPLã«åŸºã¥ãOpenRTM-aist ã®æ”¹ç·¨ã¨å†é…å¸ƒ
 ** Reorganization and redistribution of OpenRTM-aist based on LGPL
 
-//Y‘Œ¤‚ªŒöŠJ‚·‚é OpenRTM-aist ‚ğ LGPL ‚ÉŠî‚Ã‚«—˜—p‚·‚éê‡AY‘Œ¤‚Í—˜—pÒ‚É‘Î‚µ‚ÄAOpenRTM-aist ‚ğÀsA‰ü•ÒAÄ”z•zA–³—¿g—p‚·‚éƒ‰ƒCƒZƒ“ƒX‚ğ•t—^‚µ‚Ü‚·B
-//‚½‚¾‚µALGPL ‚Å‚ÍÄ”z•z‚·‚éê‡‚ÉAÄ”z•z‚·‚éƒvƒƒOƒ‰ƒ€‚É‚Â‚¢‚ÄALGPL‚Æ–µ‚‚µ‚È‚¢‚±‚Æ‚ğ—v‹‚µ‚Ä‚¨‚èA‚»‚Ì’†‚É‚Í‰ü•Ò‚³‚ê‚½ƒ\[ƒXƒR[ƒh‚ğ‘æOÒ‚ª“üè‰Â”\‚Å‚ ‚é‚±‚Æ‚àŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·B
-//‚µ‚½‚ª‚Á‚ÄALGPL ‚Ì‚à‚Æ‚É OpenRTM-aist ‚ğ‰ü•Ò‚µ‚ÄÄ”z•z‚µ‚½‚è”Ì”„‚·‚éê‡‚É‚ÍAƒ\[ƒXƒR[ƒh‚ğŠJ¦‚·‚é‚±‚Æ‚ª—v‹‚³‚ê‚Ü‚·B
+//ç”£ç·ç ”ãŒå…¬é–‹ã™ã‚‹ OpenRTM-aist ã‚’ LGPL ã«åŸºã¥ãåˆ©ç”¨ã™ã‚‹å ´åˆã€ç”£ç·ç ”ã¯åˆ©ç”¨è€…ã«å¯¾ã—ã¦ã€OpenRTM-aist ã‚’å®Ÿè¡Œã€æ”¹ç·¨ã€å†é…å¸ƒã€ç„¡æ–™ä½¿ç”¨ã™ã‚‹ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã‚’ä»˜ä¸ã—ã¾ã™ã€‚
+//ãŸã ã—ã€LGPL ã§ã¯å†é…å¸ƒã™ã‚‹å ´åˆã«ã€å†é…å¸ƒã™ã‚‹ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã«ã¤ã„ã¦ã€LGPLã¨çŸ›ç›¾ã—ãªã„ã“ã¨ã‚’è¦æ±‚ã—ã¦ãŠã‚Šã€ãã®ä¸­ã«ã¯æ”¹ç·¨ã•ã‚ŒãŸã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’ç¬¬ä¸‰è€…ãŒå…¥æ‰‹å¯èƒ½ã§ã‚ã‚‹ã“ã¨ã‚‚å«ã¾ã‚Œã¦ã„ã¾ã™ã€‚
+//ã—ãŸãŒã£ã¦ã€LGPL ã®ã‚‚ã¨ã« OpenRTM-aist ã‚’æ”¹ç·¨ã—ã¦å†é…å¸ƒã—ãŸã‚Šè²©å£²ã™ã‚‹å ´åˆã«ã¯ã€ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’é–‹ç¤ºã™ã‚‹ã“ã¨ãŒè¦æ±‚ã•ã‚Œã¾ã™ã€‚
 (G)When using OpenRTM - aist published by AIS under the LGPL, AIST grants users a license to execute, reform, redistribute, and use OpenRTM - aist free of charge.
 However, when redistributing in LGPL, it is requested that the redistributing program be consistent with LGPL, including that the modified source code can be obtained by a third party I will.
 Therefore, when reorganizing and selling OpenRTM-aist under LGPL, it is required to disclose the source code.
 
-//‘g‚İƒVƒXƒeƒ€‚È‚Ç‚É‚¨‚¢‚Ä‚ÍAƒ\[ƒXƒR[ƒh‚ğ‰ü•Ò‚¹‚¸‚Éƒ^[ƒQƒbƒg‚É“K—p‚·‚é‚±‚Æ‚ª¢“ï‚Èê‡‚ª”‘½‚­‚ ‚èA‚±‚ê‚Íƒƒ{ƒbƒg‚ğ–‹Æ‰»‚µ‚½‚¢‰ïĞ“™‚É‚Æ‚Á‚Ä‚Í•s“s‡‚Èê‡‚ª‚ ‚è‚Ü‚·B
-//‚±‚¤‚µ‚½ê‡‚ğl—¶‚µ‚ÄAOpenRTM-aist ‚ÍŸ‚Éà–¾‚·‚éAŒÂ•ÊŒ_–ñ‚ÉŠî‚Ã‚­ƒ‰ƒCƒZƒ“ƒX•t—^‚ÌŒ`‘Ô‚à‚Æ‚ê‚é‚æ‚¤Aƒfƒ…ƒAƒ‹ƒ‰ƒCƒZƒ“ƒXŒ`®‚Æ‚È‚Á‚Ä‚¢‚Ü‚·B
+//çµ„è¾¼ã¿ã‚·ã‚¹ãƒ†ãƒ ãªã©ã«ãŠã„ã¦ã¯ã€ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’æ”¹ç·¨ã›ãšã«ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã«é©ç”¨ã™ã‚‹ã“ã¨ãŒå›°é›£ãªå ´åˆãŒæ•°å¤šãã‚ã‚Šã€ã“ã‚Œã¯ãƒ­ãƒœãƒƒãƒˆã‚’äº‹æ¥­åŒ–ã—ãŸã„ä¼šç¤¾ç­‰ã«ã¨ã£ã¦ã¯ä¸éƒ½åˆãªå ´åˆãŒã‚ã‚Šã¾ã™ã€‚
+//ã“ã†ã—ãŸå ´åˆã‚’è€ƒæ…®ã—ã¦ã€OpenRTM-aist ã¯æ¬¡ã«èª¬æ˜ã™ã‚‹ã€å€‹åˆ¥å¥‘ç´„ã«åŸºã¥ããƒ©ã‚¤ã‚»ãƒ³ã‚¹ä»˜ä¸ã®å½¢æ…‹ã‚‚ã¨ã‚Œã‚‹ã‚ˆã†ã€ãƒ‡ãƒ¥ã‚¢ãƒ«ãƒ©ã‚¤ã‚»ãƒ³ã‚¹å½¢å¼ã¨ãªã£ã¦ã„ã¾ã™ã€‚
 (G)In embedded systems, there are many cases where it is difficult to apply it to the target without reconstructing the source code, which may be inconvenient for companies that want to commercialize the robot.
 In consideration of these cases, OpenRTM - aist is a dual license format so that it can take the form of licensing based on individual contract as described below.
 
-//** ŒÂ•ÊŒ_–ñ‚ÉŠî‚Ã‚­OpenRTM-aist ‚Ì‰ü•Ò‚ÆÄ”z•z
+//** å€‹åˆ¥å¥‘ç´„ã«åŸºã¥ãOpenRTM-aist ã®æ”¹ç·¨ã¨å†é…å¸ƒ
 ** Reorganization and redistribution of OpenRTM-aist based on individual contract
 
-//ã‹L‚Ìê‡‚Ì‚æ‚¤‚ÉAƒƒ{ƒbƒgƒVƒXƒeƒ€‚ğ¤‹Æ‰»‚·‚éÛ‚ÉAƒ\[ƒXƒR[ƒh‚ğ‰ü•Ò‚µ‚Â‚ÂA‹Zp‚Ì—¬o‚ğ–h‚®‚½‚ß‚Éƒ\[ƒXƒR[ƒh‚ğƒNƒ[ƒY‚É‚µ‚½‚¢ê‡ALGPL‚âEPL‚Å‚Í‚È‚­AŒÂ•ÊŒ_–ñ‚Ìƒ‰ƒCƒZƒ“ƒX‚Æ‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+//ä¸Šè¨˜ã®å ´åˆã®ã‚ˆã†ã«ã€ãƒ­ãƒœãƒƒãƒˆã‚·ã‚¹ãƒ†ãƒ ã‚’å•†æ¥­åŒ–ã™ã‚‹éš›ã«ã€ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’æ”¹ç·¨ã—ã¤ã¤ã€æŠ€è¡“ã®æµå‡ºã‚’é˜²ããŸã‚ã«ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’ã‚¯ãƒ­ãƒ¼ã‚ºã«ã—ãŸã„å ´åˆã€LGPLã‚„EPLã§ã¯ãªãã€å€‹åˆ¥å¥‘ç´„ã®ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã¨ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
 (G)As in the above cases, when commercializing the robot system, if you want to close the source code in order to prevent leakage of technology while reforming the source code, not to LGPL or EPL but to make a license for individual contract I can.
 
-//ŒÂ•ÊŒ_–ñ‚É‚æ‚è OpenRTM-aist ‚ğ‰ü•ÒAÄ”z•z‚·‚éê‡AY‘Œ¤‚Ì’m“IàY•”–å‚Æ‹¦‹c‚Ì‚¤‚¦A—˜—pŒ`‘ÔAƒ\[ƒXƒR[ƒh‚Ì‰ü•Ò‚Ì“x‡‚¢‚â—¼Ò‚Ì’m“IàY‚ÌŠ„‡“™‚É‰‚¶‚ÄAY‘Œ¤‚©‚ç—˜—pÒ‚É‘Î‚µ‚Ä”ñLGPLE”ñEPL‚Ìƒ‰ƒCƒZƒ“ƒX‚ğ•t—^‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
-//ƒ\[ƒXƒR[ƒh‚Ì—˜—p—¿ (À{—¿) ‚âƒ‰ƒCƒZƒ“ƒX‚·‚é”ÍˆÍ“™‚É‚Â‚¢‚Ä‚ÍŒÂ•Ê‚É‹¦‹c‚Ì‚¤‚¦Ú×‚ğŒˆ’è‚µ‚Ü‚·B‚½‚¾‚µAY‘Œ¤‚ÍY‹ÆU‹»‚ğ–Ú“I‚Æ‚·‚é”ñ‰c—˜–@l‚Å‚ ‚èAˆÀ‰¿‚ÈÀ{—¿‚Å—˜—p‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+//å€‹åˆ¥å¥‘ç´„ã«ã‚ˆã‚Š OpenRTM-aist ã‚’æ”¹ç·¨ã€å†é…å¸ƒã™ã‚‹å ´åˆã€ç”£ç·ç ”ã®çŸ¥çš„è²¡ç”£éƒ¨é–€ã¨å”è­°ã®ã†ãˆã€åˆ©ç”¨å½¢æ…‹ã€ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã®æ”¹ç·¨ã®åº¦åˆã„ã‚„ä¸¡è€…ã®çŸ¥çš„è²¡ç”£ã®å‰²åˆç­‰ã«å¿œã˜ã¦ã€ç”£ç·ç ”ã‹ã‚‰åˆ©ç”¨è€…ã«å¯¾ã—ã¦éLGPLãƒ»éEPLã®ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã‚’ä»˜ä¸ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+//ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã®åˆ©ç”¨æ–™ (å®Ÿæ–½æ–™) ã‚„ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã™ã‚‹ç¯„å›²ç­‰ã«ã¤ã„ã¦ã¯å€‹åˆ¥ã«å”è­°ã®ã†ãˆè©³ç´°ã‚’æ±ºå®šã—ã¾ã™ã€‚ãŸã ã—ã€ç”£ç·ç ”ã¯ç”£æ¥­æŒ¯èˆˆã‚’ç›®çš„ã¨ã™ã‚‹éå–¶åˆ©æ³•äººã§ã‚ã‚Šã€å®‰ä¾¡ãªå®Ÿæ–½æ–™ã§åˆ©ç”¨ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
 (G)When reorganizing and redistributing OpenRTM-aist by individual contract, after consultation with the intellectual property department of AIST, depending on the usage form, the degree of reorganization of source code, the ratio of intellectual property of both, etc., AIST You can grant non-LGPL / non-EPL licenses from users to users.
 We will discuss the source code usage fee (royalty fee) and the scope of licensing separately after consultation. However, AIST is a non-profit corporation aiming at industrial promotion, and it can be used with cheap implementation fee.
 
 #ref(license_for_rtms_en.png,50%,center)
-//CENTER: ''RTƒ~ƒhƒ‹ƒEƒGƒA‚Ìƒ‰ƒCƒZƒ“ƒX''
+//CENTER: ''RTãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ã®ãƒ©ã‚¤ã‚»ãƒ³ã‚¹''
 CENTER: '' RT Middleware License ''
 
-//‚·‚Å‚ÉARtcLinkARtcTemplate (RTSystemEditorARTCBuilder‚ÌˆÈ‘O‚Ìƒo[ƒWƒ‡ƒ“) ‚¨‚æ‚Ñ OpenRTM-aist (Java”Å) ‚É‚Â‚¢‚Ä‚ÍAƒ\[ƒXƒR[ƒh‚ÌŠJ¦‚¨‚æ‚ÑÀ{ (»•i‚Ö‚Ì—˜—p) ‚É‚Â‚¢‚ÄŒÂ•ÊŒ_–ñ‚É‚æ‚éƒ‰ƒCƒZƒ“ƒX‚ğs‚Á‚½ÀÑ‚ª‚ ‚è‚Ü‚·B
+//ã™ã§ã«ã€RtcLinkã€RtcTemplate (RTSystemEditorã€RTCBuilderã®ä»¥å‰ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³) ãŠã‚ˆã³ OpenRTM-aist (Javaç‰ˆ) ã«ã¤ã„ã¦ã¯ã€ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã®é–‹ç¤ºãŠã‚ˆã³å®Ÿæ–½ (è£½å“ã¸ã®åˆ©ç”¨) ã«ã¤ã„ã¦å€‹åˆ¥å¥‘ç´„ã«ã‚ˆã‚‹ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã‚’è¡Œã£ãŸå®Ÿç¸¾ãŒã‚ã‚Šã¾ã™ã€‚
 (G)We already have licensed individual contracts for RtcLink, RtcTemplate (RTSystemEditor, previous version of RTCBuilder) and OpenRTM - aist (Java version) for disclosure and implementation (source use) of source code.

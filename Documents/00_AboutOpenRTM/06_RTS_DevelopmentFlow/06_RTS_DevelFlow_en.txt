@@ -1,38 +1,38 @@
-#contents
+ï»¿#contents
 
-//‚±‚±‚Å‚ÍAì¬‚µ‚½ RTC ‚ğ•¡”‘g‚İ‡‚í‚¹‚Ä, ƒVƒXƒeƒ€‚ğ\’z‚·‚éè–@‚É‚Â‚¢‚Äà–¾‚µ‚Ü‚·B
+//ã“ã“ã§ã¯ã€ä½œæˆã—ãŸ RTC ã‚’è¤‡æ•°çµ„ã¿åˆã‚ã›ã¦, ã‚·ã‚¹ãƒ†ãƒ ã‚’æ§‹ç¯‰ã™ã‚‹æ‰‹æ³•ã«ã¤ã„ã¦èª¬æ˜ã—ã¾ã™ã€‚
 (G)In this section, we will explain how to build a system by combining multiple RTCs created.
 
-//** ƒl[ƒ€ƒT[ƒrƒX
+//** ãƒãƒ¼ãƒ ã‚µãƒ¼ãƒ“ã‚¹
 ** (G)Name service
 
-//•ªUƒIƒuƒWƒFƒNƒgƒ~ƒhƒ‹ƒEƒGƒA‚ÍA”CˆÓ‚ÌêŠ‚É‚ ‚éŒvZ‹@ã‚ÌƒIƒuƒWƒFƒNƒg‚É‘Î‚µ‚ÄQÆ‚ğ•Û‚·‚é‘ã—ƒIƒuƒWƒFƒNƒg‚ğ‰î‚µ‚Ä“§‰ß“IƒAƒNƒZƒX‚ğ’ñ‹Ÿ‚µ‚Ü‚·B‚±‚ÌQÆ‚Í CORBA ‚Å‚Í IOR (Interoperable Object Reference) ‚ÆŒÄ‚Î‚êAÀ‘Ì‚ÍƒIƒuƒWƒFƒNƒg‚ª‘¶İ‚·‚éŒvZ‹@‚ÌƒAƒhƒŒƒX‚âƒ|[ƒgAƒIƒuƒWƒFƒNƒgŒÅ—L‚ÌƒL[“™‚ªƒGƒ“ƒR[ƒh‚³‚ê‚½‚à‚Ì‚Å‚·B ‚ ‚éƒIƒuƒWƒFƒNƒg‚Ì IOR ‚ğ•Ê‚ÌŒvZ‹@ã‚ÌƒvƒƒOƒ‰ƒ€‚©‚ç—˜—p‚·‚é•û–@‚Æ‚µ‚Ä‚ÍAƒlƒbƒgƒ[ƒNã‚ÌƒT[ƒo[ã‚É“o˜^‚·‚é•û–@‚ª‚ ‚è‚Ü‚·B‚±‚ÌQÆ‚ğ“o˜^‚µ‚½‚èæ“¾‚µ‚½‚è‚·‚éƒT[ƒrƒX‚ªƒl[ƒ€ƒT[ƒrƒX‚Å‚·Bƒl[ƒ€ƒT[ƒrƒX‚Í CORBA ‚Å•W€“I‚É’è‹`‚³‚ê‚Ä‚¢‚éƒT[ƒrƒX‚Ìˆê‚Â‚Å‚ ‚èAOpenRTM-aist ‚Å‚ÍA''rtm-naming'' ‚Æ‚¢‚¤ƒ‰ƒbƒp[ƒRƒ}ƒ“ƒh‚ª’ñ‹Ÿ‚³‚ê‚Ä‚¢‚Ü‚·B
+//åˆ†æ•£ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ã¯ã€ä»»æ„ã®å ´æ‰€ã«ã‚ã‚‹è¨ˆç®—æ©Ÿä¸Šã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¯¾ã—ã¦å‚ç…§ã‚’ä¿æŒã™ã‚‹ä»£ç†ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä»‹ã—ã¦é€éçš„ã‚¢ã‚¯ã‚»ã‚¹ã‚’æä¾›ã—ã¾ã™ã€‚ã“ã®å‚ç…§ã¯ CORBA ã§ã¯ IOR (Interoperable Object Reference) ã¨å‘¼ã°ã‚Œã€å®Ÿä½“ã¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå­˜åœ¨ã™ã‚‹è¨ˆç®—æ©Ÿã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚„ãƒãƒ¼ãƒˆã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå›ºæœ‰ã®ã‚­ãƒ¼ç­‰ãŒã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã•ã‚ŒãŸã‚‚ã®ã§ã™ã€‚ ã‚ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã® IOR ã‚’åˆ¥ã®è¨ˆç®—æ©Ÿä¸Šã®ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‹ã‚‰åˆ©ç”¨ã™ã‚‹æ–¹æ³•ã¨ã—ã¦ã¯ã€ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ä¸Šã®ã‚µãƒ¼ãƒãƒ¼ä¸Šã«ç™»éŒ²ã™ã‚‹æ–¹æ³•ãŒã‚ã‚Šã¾ã™ã€‚ã“ã®å‚ç…§ã‚’ç™»éŒ²ã—ãŸã‚Šå–å¾—ã—ãŸã‚Šã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãŒãƒãƒ¼ãƒ ã‚µãƒ¼ãƒ“ã‚¹ã§ã™ã€‚ãƒãƒ¼ãƒ ã‚µãƒ¼ãƒ“ã‚¹ã¯ CORBA ã§æ¨™æº–çš„ã«å®šç¾©ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ä¸€ã¤ã§ã‚ã‚Šã€OpenRTM-aist ã§ã¯ã€''rtm-naming'' ã¨ã„ã†ãƒ©ãƒƒãƒ‘ãƒ¼ã‚³ãƒãƒ³ãƒ‰ãŒæä¾›ã•ã‚Œã¦ã„ã¾ã™ã€‚
 (G)Distributed Object Middleware provides transparent access via proxy objects that hold references to objects on the computer at arbitrary locations.
 This reference is called IOR (Interoperable Object Reference) in CORBA, and the entity is the encoded address and port of the computer where the object exists and the key unique to the object. As a method of using the IOR of an object from a program on another computer, there is a method of registering it on a server on the network. A service that registers and acquires this reference is a name service. The name service is one of the standard services defined by CORBA, and in OpenRTM-aist, a wrapper command '' rtm-naming '' is provided.
 
-//ƒVƒXƒeƒ€‚ğ‹N“®‚·‚é‘O‚ÉARTC ‚ğ“o˜^‚·‚éƒl[ƒ€ƒT[ƒo[‚ğ‹N“®‚³‚¹‚é•K—v‚ª‚ ‚è‚Ü‚·B‚Ü‚½AŠe RTC ‚É‘Î‚µ‚Ä‚ÍAƒl[ƒ€ƒT[ƒo[‚ÌêŠ‚ğİ’èƒtƒ@ƒCƒ‹ ''rtc.conf'' ‚É‹LÚ‚µ‚Ä—\‚ß—^‚¦‚é•K—v‚ª‚ ‚è‚Ü‚·B—á‚¦‚ÎAƒl[ƒ€ƒT[ƒo[‚ğƒzƒXƒg–¼ ''openrtm.mydomain.net'' ã‚Å‹N“®‚µ‚½ê‡A‘S‚Ä‚Ì RTC ‚É‚ÍAˆÈ‰º‚Ì‚æ‚¤‚É‹LÚ‚µ‚½ rtc.conf ‚ğ—^‚¦‚é•K—v‚ª‚ ‚è‚Ü‚·B
+//ã‚·ã‚¹ãƒ†ãƒ ã‚’èµ·å‹•ã™ã‚‹å‰ã«ã€RTC ã‚’ç™»éŒ²ã™ã‚‹ãƒãƒ¼ãƒ ã‚µãƒ¼ãƒãƒ¼ã‚’èµ·å‹•ã•ã›ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ã¾ãŸã€å„ RTC ã«å¯¾ã—ã¦ã¯ã€ãƒãƒ¼ãƒ ã‚µãƒ¼ãƒãƒ¼ã®å ´æ‰€ã‚’è¨­å®šãƒ•ã‚¡ã‚¤ãƒ« ''rtc.conf'' ã«è¨˜è¼‰ã—ã¦äºˆã‚ä¸ãˆã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ä¾‹ãˆã°ã€ãƒãƒ¼ãƒ ã‚µãƒ¼ãƒãƒ¼ã‚’ãƒ›ã‚¹ãƒˆå ''openrtm.mydomain.net'' ä¸Šã§èµ·å‹•ã—ãŸå ´åˆã€å…¨ã¦ã® RTC ã«ã¯ã€ä»¥ä¸‹ã®ã‚ˆã†ã«è¨˜è¼‰ã—ãŸ rtc.conf ã‚’ä¸ãˆã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
 (G)Before starting up the system, you need to start the name server registering RTC. In addition, for each RTC, it is necessary to give the name server location in advance in the configuration file '' rtc.conf ''. For example, if you start a name server on the host name '' openrtm.mydomain.net '', you need to give rtc.conf to all the RTCs as described below.
 
  corba.nameservers: openrtm.mydomain.net
 
-//‚Ü‚½Aƒl[ƒ€ƒT[ƒo[‚ÍIPƒAƒhƒŒƒX‚Å‚à—^‚¦‚é‚±‚Æ‚ª‚Å‚«Au , v‚Å‹æØ‚é‚±‚Æ‚Å•¡”‚ÌƒT[ƒo[‚É“¯‚É RTC ‚ğ“o˜^‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·Bƒl[ƒ€ƒT[ƒo[‚ÍA’Êí’·ŠÔ‹N“®‚µ‚½‚Ü‚Ü‚Å‚æ‚­AƒVƒXƒeƒ€‚É‚¨‚¢‚ÄŒÅ’è“I‚Å‚ ‚é‚Ì‚ÅAİ’èƒtƒ@ƒCƒ‹‚ğ•p”É‚É‘‚«Š·‚¦‚é•K—v‚Í‚ ‚è‚Ü‚¹‚ñB
+//ã¾ãŸã€ãƒãƒ¼ãƒ ã‚µãƒ¼ãƒãƒ¼ã¯IPã‚¢ãƒ‰ãƒ¬ã‚¹ã§ã‚‚ä¸ãˆã‚‹ã“ã¨ãŒã§ãã€ã€Œ , ã€ã§åŒºåˆ‡ã‚‹ã“ã¨ã§è¤‡æ•°ã®ã‚µãƒ¼ãƒãƒ¼ã«åŒæ™‚ã« RTC ã‚’ç™»éŒ²ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚ãƒãƒ¼ãƒ ã‚µãƒ¼ãƒãƒ¼ã¯ã€é€šå¸¸é•·æ™‚é–“èµ·å‹•ã—ãŸã¾ã¾ã§ã‚ˆãã€ã‚·ã‚¹ãƒ†ãƒ ã«ãŠã„ã¦å›ºå®šçš„ã§ã‚ã‚‹ã®ã§ã€è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’é »ç¹ã«æ›¸ãæ›ãˆã‚‹å¿…è¦ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
 (G)In addition, the name server can also be given as an IP address, and by separating it with "," you can register RTC to multiple servers at the same time. Normally, it is not necessary to frequently rewrite the configuration file, since the name server can usually be kept running for a long time and it is fixed in the system.
 
-//** RTSystemEditor ‚É‚æ‚éƒVƒXƒeƒ€\’z
+//** RTSystemEditor ã«ã‚ˆã‚‹ã‚·ã‚¹ãƒ†ãƒ æ§‹ç¯‰
 ** (G)System construction with RTSystemEditor
 
-//ì¬‚³‚ê‚½‚¢‚­‚Â‚©‚Ì RTC ‚ğÀs‚µA‚»‚ê‚ç‚Ìƒ|[ƒg‚ğÚ‘±‚µAƒAƒNƒeƒBƒu‰»‚·‚é‚±‚Æ‚ÅƒVƒXƒeƒ€‚ª“®ì‚µ‚Ü‚·BRTC “¯m‚ÌÚ‘±‚â RTC ‚É‘Î‚µ‚ÄƒAƒNƒeƒBƒu‰»‚â”ñƒAƒNƒeƒBƒu‰»‚ÌƒRƒ}ƒ“ƒh‚ğ‘—‚èAƒVƒXƒeƒ€‚ğ‹N“®‚·‚é‚½‚ß‚Ìƒc[ƒ‹‚Æ‚µ‚Ä RTSystemEditor ‚ª’ñ‹Ÿ‚³‚ê‚Ä‚¢‚Ü‚·B
+//ä½œæˆã•ã‚ŒãŸã„ãã¤ã‹ã® RTC ã‚’å®Ÿè¡Œã—ã€ãã‚Œã‚‰ã®ãƒãƒ¼ãƒˆã‚’æ¥ç¶šã—ã€ã‚¢ã‚¯ãƒ†ã‚£ãƒ–åŒ–ã™ã‚‹ã“ã¨ã§ã‚·ã‚¹ãƒ†ãƒ ãŒå‹•ä½œã—ã¾ã™ã€‚RTC åŒå£«ã®æ¥ç¶šã‚„ RTC ã«å¯¾ã—ã¦ã‚¢ã‚¯ãƒ†ã‚£ãƒ–åŒ–ã‚„éã‚¢ã‚¯ãƒ†ã‚£ãƒ–åŒ–ã®ã‚³ãƒãƒ³ãƒ‰ã‚’é€ã‚Šã€ã‚·ã‚¹ãƒ†ãƒ ã‚’èµ·å‹•ã™ã‚‹ãŸã‚ã®ãƒ„ãƒ¼ãƒ«ã¨ã—ã¦ RTSystemEditor ãŒæä¾›ã•ã‚Œã¦ã„ã¾ã™ã€‚
 The system runs by running some created RTCs, connecting and activating those ports. RTSystemEditor is provided as a tool for sending activation and deactivation commands to RTC's connection and RTC and starting up the system.
 
 #ref(rtse_en.png,40%,center)
-//CENTER: ''RTSystemEditor‚É‚æ‚éƒVƒXƒeƒ€\’z''
+//CENTER: ''RTSystemEditorã«ã‚ˆã‚‹ã‚·ã‚¹ãƒ†ãƒ æ§‹ç¯‰''
 CENTER: ''System construction with RTSystemEditor''
 
-//RTC ‚Í‹N“®‚³‚ê‚é‚ÆA}¶‚Ìƒl[ƒ€ƒT[ƒrƒXƒrƒ…[‚É•\¦‚³‚ê‚Ü‚·B ƒl[ƒ€ƒT[ƒrƒXƒrƒ…[ã‚Ì RTC ‚ğ’†‰›‚ÌƒGƒfƒBƒ^‚Éƒhƒ‰ƒbƒOƒAƒ“ƒhƒhƒƒbƒv‚·‚é‚ÆARTC ‚ªƒVƒXƒeƒ€ƒGƒfƒBƒ^“à‚ÉƒAƒCƒRƒ“‚Å•\¦‚³‚ê‚Ü‚·B ’·•ûŒ`‚Ì•Óã‚Ì“Ê•”‚ªƒ|[ƒg‚ğ•\‚µ‚Ä‚¨‚èA‚±‚ê‚ç RTC ŠÔ‚Ìƒ|[ƒg‚ğÚ‘±‚·‚é‚±‚Æ‚ÅƒVƒXƒeƒ€‚ğ\’z‚µ‚Ü‚·B‚Ü‚½A‰æ–Ê’†‰›‰º•”‚É‚Í RTC ‚ÌƒRƒ“ƒtƒBƒMƒ…ƒŒ[ƒVƒ‡ƒ“ƒrƒ…[‚ª•\¦‚³‚ê‚Ä‚¨‚èA‚±‚±‚Å”CˆÓ‚Ì RTC ‚Ìƒpƒ‰ƒ[ƒ^[‚ğ•ÒW‚·‚é‚±‚Æ‚ª‚Å‚«‚é‚æ‚¤‚É‚È‚Á‚Ä‚¢‚Ü‚·B
+//RTC ã¯èµ·å‹•ã•ã‚Œã‚‹ã¨ã€å›³å·¦ã®ãƒãƒ¼ãƒ ã‚µãƒ¼ãƒ“ã‚¹ãƒ“ãƒ¥ãƒ¼ã«è¡¨ç¤ºã•ã‚Œã¾ã™ã€‚ ãƒãƒ¼ãƒ ã‚µãƒ¼ãƒ“ã‚¹ãƒ“ãƒ¥ãƒ¼ä¸Šã® RTC ã‚’ä¸­å¤®ã®ã‚¨ãƒ‡ã‚£ã‚¿ã«ãƒ‰ãƒ©ãƒƒã‚°ã‚¢ãƒ³ãƒ‰ãƒ‰ãƒ­ãƒƒãƒ—ã™ã‚‹ã¨ã€RTC ãŒã‚·ã‚¹ãƒ†ãƒ ã‚¨ãƒ‡ã‚£ã‚¿å†…ã«ã‚¢ã‚¤ã‚³ãƒ³ã§è¡¨ç¤ºã•ã‚Œã¾ã™ã€‚ é•·æ–¹å½¢ã®è¾ºä¸Šã®å‡¸éƒ¨ãŒãƒãƒ¼ãƒˆã‚’è¡¨ã—ã¦ãŠã‚Šã€ã“ã‚Œã‚‰ RTC é–“ã®ãƒãƒ¼ãƒˆã‚’æ¥ç¶šã™ã‚‹ã“ã¨ã§ã‚·ã‚¹ãƒ†ãƒ ã‚’æ§‹ç¯‰ã—ã¾ã™ã€‚ã¾ãŸã€ç”»é¢ä¸­å¤®ä¸‹éƒ¨ã«ã¯ RTC ã®ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ãƒ“ãƒ¥ãƒ¼ãŒè¡¨ç¤ºã•ã‚Œã¦ãŠã‚Šã€ã“ã“ã§ä»»æ„ã® RTC ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã‚’ç·¨é›†ã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã‚ˆã†ã«ãªã£ã¦ã„ã¾ã™ã€‚
 (G)When RTC is started, it is displayed in the name service view on the left of the figure. When RTC on the name service view is dragged and dropped to the central editor, the RTC is displayed as an icon in the system editor. The protrusion on the side of the rectangle represents the port, and the system is constructed by connecting the ports between these RTCs. In addition, the RTC configuration view is displayed at the lower center of the screen, so you can edit parameters of any RTC here.
 
-//ƒVƒXƒeƒ€‚ğ\’z‚µ‚½‚çAƒGƒfƒBƒ^ã‚Å‰EƒNƒŠƒbƒN‚µuAll Activatev‚ğ‘I‘ğ‚·‚é‚±‚Æ‚ÅA‘S‚Ä‚Ì RTC ‚ğƒAƒNƒeƒBƒu‰»‚·‚é‚±‚Æ‚ª‰Â”\‚Å‚·B‚Ü‚½AƒGƒfƒBƒ^ã‚Å‰EƒNƒŠƒbƒN‚µuSave asv‚ğ‘I‘ğ‚·‚é‚±‚Æ‚ÅAƒVƒXƒeƒ€‚Ì\¬î•ñ‚ğ•Û‘¶‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B•Û‘¶‚µ‚½ƒVƒXƒeƒ€\¬î•ñ‚ÍAÄ“xŒÄ‚Ño‚·‚±‚Æ‚ÅƒVƒXƒeƒ€‚ÌÚ‘±î•ñAƒRƒ“ƒtƒBƒMƒ…ƒŒ[ƒVƒ‡ƒ“‚Ìî•ñ“™‚ğ•œŒ³‚·‚é‚±‚Æ‚ª‰Â”\‚Å‚·B
+//ã‚·ã‚¹ãƒ†ãƒ ã‚’æ§‹ç¯‰ã—ãŸã‚‰ã€ã‚¨ãƒ‡ã‚£ã‚¿ä¸Šã§å³ã‚¯ãƒªãƒƒã‚¯ã—ã€ŒAll Activateã€ã‚’é¸æŠã™ã‚‹ã“ã¨ã§ã€å…¨ã¦ã® RTC ã‚’ã‚¢ã‚¯ãƒ†ã‚£ãƒ–åŒ–ã™ã‚‹ã“ã¨ãŒå¯èƒ½ã§ã™ã€‚ã¾ãŸã€ã‚¨ãƒ‡ã‚£ã‚¿ä¸Šã§å³ã‚¯ãƒªãƒƒã‚¯ã—ã€ŒSave asã€ã‚’é¸æŠã™ã‚‹ã“ã¨ã§ã€ã‚·ã‚¹ãƒ†ãƒ ã®æ§‹æˆæƒ…å ±ã‚’ä¿å­˜ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚ä¿å­˜ã—ãŸã‚·ã‚¹ãƒ†ãƒ æ§‹æˆæƒ…å ±ã¯ã€å†åº¦å‘¼ã³å‡ºã™ã“ã¨ã§ã‚·ã‚¹ãƒ†ãƒ ã®æ¥ç¶šæƒ…å ±ã€ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®æƒ…å ±ç­‰ã‚’å¾©å…ƒã™ã‚‹ã“ã¨ãŒå¯èƒ½ã§ã™ã€‚
 (G)After building the system, it is possible to activate all the RTC by right-clicking on the editor and selecting "All Activate". You can also save the system configuration information by right-clicking on the editor and selecting "Save as". By saving the system configuration information again, it is possible to restore system connection information, configuration information and so on.
 
-//Œ»İ‚Ì‚Æ‚±‚ëAƒVƒXƒeƒ€\¬î•ñ‚ğ•œŒ³‚·‚éÛ‚É‚Í—\‚ß RTC ‚ğ‹N“®‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚è‚Ü‚·‚ªA«—ˆ“I‚É‚Í RTC ‚Ì‹N“®‚©‚çÚ‘±•œŒ³‚Ü‚Å‚ª©“®‚Ås‚¦‚é‚æ‚¤‚É‚È‚é—\’è‚Å‚·B
+//ç¾åœ¨ã®ã¨ã“ã‚ã€ã‚·ã‚¹ãƒ†ãƒ æ§‹æˆæƒ…å ±ã‚’å¾©å…ƒã™ã‚‹éš›ã«ã¯äºˆã‚ RTC ã‚’èµ·å‹•ã—ã¦ãŠãå¿…è¦ãŒã‚ã‚Šã¾ã™ãŒã€å°†æ¥çš„ã«ã¯ RTC ã®èµ·å‹•ã‹ã‚‰æ¥ç¶šå¾©å…ƒã¾ã§ãŒè‡ªå‹•ã§è¡Œãˆã‚‹ã‚ˆã†ã«ãªã‚‹äºˆå®šã§ã™ã€‚
 (G)Currently, it is necessary to start up RTC beforehand when restoring the system configuration information, but in future it will be possible to automatically start from RTC startup to connection restoration.

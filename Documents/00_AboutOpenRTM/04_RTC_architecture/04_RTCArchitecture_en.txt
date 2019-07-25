@@ -1,97 +1,97 @@
-#contents
+ï»¿#contents
 
-//** RTƒRƒ“ƒ|[ƒlƒ“ƒgƒtƒŒ[ƒ€ƒ[ƒN
+//** RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯
 ** (G)RT Component Framework
 
-//RTƒRƒ“ƒ|[ƒlƒ“ƒg‚ğì¬‚·‚é‚½‚ß‚ÌƒtƒŒ[ƒ€ƒ[ƒN‚Å‚·B
+//RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ä½œæˆã™ã‚‹ãŸã‚ã®ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã§ã™ã€‚
 (G)It is a framework for creating RT Components.
 
-//ƒƒ{ƒbƒgƒVƒXƒeƒ€‚ğ\¬‚·‚é—v‘f‚ğƒ‚ƒWƒ…[ƒ‹‰»‚·‚é‚Æ‚«A—lX‚È—±“x‚Å‚Ìƒ‚ƒWƒ…[ƒ‹‰»‚ªl‚¦‚ç‚ê‚Ü‚·B‚½‚Æ‚¦‚ÎAƒ‚[ƒ^[‚âƒZƒ“ƒT[‚Æ‚¢‚Á‚½’P‹@”\‚ÌƒfƒoƒCƒXAˆÚ“®ƒƒ{ƒbƒg‚âƒA[ƒ€‚È‚Ç•¡‡“I‚ÈƒVƒXƒeƒ€A‚ ‚é‚¢‚Í—lX‚Èˆ—‚ğs‚¤ƒAƒ‹ƒSƒŠƒYƒ€‚Æ‚¢‚Á‚½’PˆÊ‚ªl‚¦‚ç‚êA‚»‚ê‚ç‚ÌŠK‘w“I‚ÈWÏ‚É‚æ‚èƒVƒXƒeƒ€‚ª\’z‚³‚ê‚Ü‚·BRTƒ~ƒhƒ‹ƒEƒGƒA‚Å‚ÍA‚±‚ê‚ç‚Ì RT‹@”\—v‘f‚Ì–{¿“I‚Èƒ\ƒtƒgƒEƒGƒA•”•ª‚ğƒRƒAƒƒWƒbƒN‚ÆŒÄ‚Ñ‚Ü‚·BRTƒRƒ“ƒ|[ƒlƒ“ƒgƒtƒŒ[ƒ€ƒ[ƒN‚ÍAƒRƒAƒƒWƒbƒN‚É‹¤’Ê‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚Æ‚¢‚¤”ç‚ğ”í‚¹‚ÄA‚±‚ê‚ç‚Ìƒ‚ƒWƒ…[ƒ‹‚ğ“ˆê“I‚Éˆµ‚¤‚±‚Æ‚ª‚Å‚«‚é‚æ‚¤‚É‚·‚é‚½‚ß‚Ìd‘g‚İ‚Å‚·B
+//ãƒ­ãƒœãƒƒãƒˆã‚·ã‚¹ãƒ†ãƒ ã‚’æ§‹æˆã™ã‚‹è¦ç´ ã‚’ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«åŒ–ã™ã‚‹ã¨ãã€æ§˜ã€…ãªç²’åº¦ã§ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«åŒ–ãŒè€ƒãˆã‚‰ã‚Œã¾ã™ã€‚ãŸã¨ãˆã°ã€ãƒ¢ãƒ¼ã‚¿ãƒ¼ã‚„ã‚»ãƒ³ã‚µãƒ¼ã¨ã„ã£ãŸå˜æ©Ÿèƒ½ã®ãƒ‡ãƒã‚¤ã‚¹ã€ç§»å‹•ãƒ­ãƒœãƒƒãƒˆã‚„ã‚¢ãƒ¼ãƒ ãªã©è¤‡åˆçš„ãªã‚·ã‚¹ãƒ†ãƒ ã€ã‚ã‚‹ã„ã¯æ§˜ã€…ãªå‡¦ç†ã‚’è¡Œã†ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã¨ã„ã£ãŸå˜ä½ãŒè€ƒãˆã‚‰ã‚Œã€ãã‚Œã‚‰ã®éšå±¤çš„ãªé›†ç©ã«ã‚ˆã‚Šã‚·ã‚¹ãƒ†ãƒ ãŒæ§‹ç¯‰ã•ã‚Œã¾ã™ã€‚RTãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ã§ã¯ã€ã“ã‚Œã‚‰ã® RTæ©Ÿèƒ½è¦ç´ ã®æœ¬è³ªçš„ãªã‚½ãƒ•ãƒˆã‚¦ã‚¨ã‚¢éƒ¨åˆ†ã‚’ã‚³ã‚¢ãƒ­ã‚¸ãƒƒã‚¯ã¨å‘¼ã³ã¾ã™ã€‚RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã¯ã€ã‚³ã‚¢ãƒ­ã‚¸ãƒƒã‚¯ã«å…±é€šã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã¨ã„ã†çš®ã‚’è¢«ã›ã¦ã€ã“ã‚Œã‚‰ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’çµ±ä¸€çš„ã«æ‰±ã†ã“ã¨ãŒã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹ãŸã‚ã®ä»•çµ„ã¿ã§ã™ã€‚
 (G)When modularizing the elements making up the robot system, it is possible to modularize with various granularity. For example, units such as single-function devices such as motors and sensors, complex systems such as mobile robots and arms, and algorithms that perform various processes are considered, and the system is built up by hierarchical integration of them. In RT middleware, the essential software part of these RT function elements is called core logic. The RT Component Framework is a mechanism for covering the interface common to Core Logic as a common interface so that these modules can be handled uniformly.
 
 #ref(RTCFrameWorkAndCoreLogic_en.png,40%,center)
-//CENTER: ''RT RTƒRƒ“ƒ|[ƒlƒ“ƒgƒtƒŒ[ƒ€ƒ[ƒN‚ÆƒRƒAƒƒWƒbƒN''
+//CENTER: ''RT RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã¨ã‚³ã‚¢ãƒ­ã‚¸ãƒƒã‚¯''
 CENTER: ''RT Component Framework and Core Logic''
 
-//ã}‚Ì‚æ‚¤‚ÉAƒXƒeƒŒƒIƒrƒWƒ‡ƒ“‚ÌƒAƒ‹ƒSƒŠƒYƒ€‚ğƒRƒ“ƒ|[ƒlƒ“ƒg‰»‚·‚é—á‚ğl‚¦‚é‚ÆAƒAƒ‹ƒSƒŠƒYƒ€‚ğÀ‘•‚µ‚½ƒvƒƒOƒ‰ƒ€‚»‚Ì‚à‚Ì‚ÍƒRƒAƒƒWƒbƒN‚É‘Š“–‚µ‚Ü‚·B“KØ‚Èƒ|[ƒg‚ğİ’è‚µ‚½ RTƒRƒ“ƒ|[ƒlƒ“ƒgƒtƒŒ[ƒ€ƒ[ƒN‚ğ—pˆÓ‚µ‚Ä‚â‚èAƒXƒeƒŒƒIƒrƒWƒ‡ƒ“ƒAƒ‹ƒSƒŠƒYƒ€‚ğ‚±‚ÌƒtƒŒ[ƒ€ƒ[ƒN‚ÉÀ‘•‚µ‚Ä‚â‚é‚±‚Æ‚ÅAƒXƒeƒŒƒIƒrƒWƒ‡ƒ“ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğì‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B‚±‚Ì‚æ‚¤‚ÉAƒRƒ“ƒ|[ƒlƒ“ƒgƒtƒŒ[ƒ€ƒ[ƒN‚ÉŠî‚Ã‚«ƒRƒ“ƒ|[ƒlƒ“ƒgŠJ”­Ò‚ªƒRƒAƒƒWƒbƒN‚ğÀ‘•‚µAƒVƒXƒeƒ€‚É‘g‚İ‚Ş‚±‚Æ‚ª‚Å‚«‚é‚æ‚¤‚É‚µ‚½ƒ‚ƒWƒ…[ƒ‹‚ğ RTƒRƒ“ƒ|[ƒlƒ“ƒg‚ÆŒÄ‚Ñ‚Ü‚·BRTƒRƒ“ƒ|[ƒlƒ“ƒgƒtƒŒ[ƒ€ƒ[ƒN‚ÍA‹¤’ÊƒCƒ“ƒ^[ƒtƒF[ƒX‚â‚»‚ÌU‚é•‘‚¢‚ğƒRƒ“ƒ|[ƒlƒ“ƒgŠJ”­Ò‚âAƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‘g‡‚í‚¹‚ÄƒVƒXƒeƒ€‚ğ\’z‚·‚éƒCƒ“ƒeƒOƒŒ[ƒ^‚©‚ç‰B•Á‚µ‚Ü‚·B‚±‚¤‚·‚é‚±‚Æ‚É‚æ‚Á‚ÄAƒRƒ“ƒ|[ƒlƒ“ƒgŠJ”­Ò‚ÍƒƒCƒ“‚ÌƒƒWƒbƒN‚ÌÀ‘•‚ÉW’†‚Å‚«AƒCƒ“ƒeƒOƒŒ[ƒ^‚ÍÀ‘•‚ÌÚ×‚ğ‹C‚É‚·‚é‚±‚Æ‚È‚­ƒVƒXƒeƒ€‘S‘Ì‚ÌİŒv‚ÉW’†‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+//ä¸Šå›³ã®ã‚ˆã†ã«ã€ã‚¹ãƒ†ãƒ¬ã‚ªãƒ“ã‚¸ãƒ§ãƒ³ã®ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚’ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåŒ–ã™ã‚‹ä¾‹ã‚’è€ƒãˆã‚‹ã¨ã€ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚’å®Ÿè£…ã—ãŸãƒ—ãƒ­ã‚°ãƒ©ãƒ ãã®ã‚‚ã®ã¯ã‚³ã‚¢ãƒ­ã‚¸ãƒƒã‚¯ã«ç›¸å½“ã—ã¾ã™ã€‚é©åˆ‡ãªãƒãƒ¼ãƒˆã‚’è¨­å®šã—ãŸ RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã‚’ç”¨æ„ã—ã¦ã‚„ã‚Šã€ã‚¹ãƒ†ãƒ¬ã‚ªãƒ“ã‚¸ãƒ§ãƒ³ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚’ã“ã®ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã«å®Ÿè£…ã—ã¦ã‚„ã‚‹ã“ã¨ã§ã€ã‚¹ãƒ†ãƒ¬ã‚ªãƒ“ã‚¸ãƒ§ãƒ³ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ä½œã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚ã“ã®ã‚ˆã†ã«ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã«åŸºã¥ãã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆé–‹ç™ºè€…ãŒã‚³ã‚¢ãƒ­ã‚¸ãƒƒã‚¯ã‚’å®Ÿè£…ã—ã€ã‚·ã‚¹ãƒ†ãƒ ã«çµ„ã¿è¾¼ã‚€ã“ã¨ãŒã§ãã‚‹ã‚ˆã†ã«ã—ãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¨å‘¼ã³ã¾ã™ã€‚RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã¯ã€å…±é€šã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚„ãã®æŒ¯ã‚‹èˆã„ã‚’ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆé–‹ç™ºè€…ã‚„ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’çµ„åˆã‚ã›ã¦ã‚·ã‚¹ãƒ†ãƒ ã‚’æ§‹ç¯‰ã™ã‚‹ã‚¤ãƒ³ãƒ†ã‚°ãƒ¬ãƒ¼ã‚¿ã‹ã‚‰éš è”½ã—ã¾ã™ã€‚ã“ã†ã™ã‚‹ã“ã¨ã«ã‚ˆã£ã¦ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆé–‹ç™ºè€…ã¯ãƒ¡ã‚¤ãƒ³ã®ãƒ­ã‚¸ãƒƒã‚¯ã®å®Ÿè£…ã«é›†ä¸­ã§ãã€ã‚¤ãƒ³ãƒ†ã‚°ãƒ¬ãƒ¼ã‚¿ã¯å®Ÿè£…ã®è©³ç´°ã‚’æ°—ã«ã™ã‚‹ã“ã¨ãªãã‚·ã‚¹ãƒ†ãƒ å…¨ä½“ã®è¨­è¨ˆã«é›†ä¸­ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
 (G)Consider the example of componentizing the stereo vision algorithm as shown above, the program itself that implements the algorithm itself corresponds to the core logic. We can prepare a stereo vision component by preparing an RT component framework with appropriate ports and implementing the stereo vision algorithm in this framework. In this way, a module that enables component developers to implement core logic and incorporate them into the system based on the component framework is called an RT component. The RT component framework hides common interfaces and their behaviors from component developers and integrators who build systems by combining components. This allows component developers to concentrate on the implementation of the main logic and allows the integrator to concentrate on the design of the entire system without worrying about implementation details.
 
-//** RTƒRƒ“ƒ|[ƒlƒ“ƒgƒA[ƒLƒeƒNƒ`ƒƒ
+//** RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚¢ãƒ¼ã‚­ãƒ†ã‚¯ãƒãƒ£
 ** (G)RT Component architecture
 
-//RTƒVƒXƒeƒ€‚Å‚ÍA’áƒŒƒxƒ‹‚ÌƒZƒ“ƒTˆ—‚âƒAƒNƒ`ƒ…ƒG[ƒ^§Œä‚©‚çA‚ƒŒƒxƒ‹‚Ì”F¯A”»’fAs“®§Œä‚È‚ÇA—lX‚ÈƒŒƒxƒ‹‚Ìˆ—‚ğ˜AŒg‚µ‚Äs‚¤•K—v‚ª‚ ‚è‚Ü‚·B’áƒŒƒxƒ‹‚Ì§ŒäƒvƒƒOƒ‰ƒ€‚É‚ÍA‘¬“x‚âƒŠƒAƒ‹ƒ^ƒCƒ€«‚Ì—v‹‚ğ–‚½‚·Œ¾Œê‚ª‹‚ß‚ç‚ê‚éˆê•û‚ÅA‚ƒŒƒxƒ‹‚ÌƒvƒƒOƒ‰ƒ€‚É‚ÍA’ŠÛ“x‚â‹Lq—Í‚Ì‚‚¢Œ¾Œê‚ª‹‚ß‚ç‚ê‚Ü‚·B‚Ü‚½AŒ»İ‚ÌRTƒVƒXƒeƒ€‚ÍA•¡”‚Ì CPU ‚Å\¬‚³‚ê‚éƒP[ƒX‚ª‘‚¦‚Ä‚¨‚èA•À—ñ§Œä‚âƒlƒbƒgƒ[ƒN‚ğ‰î‚µ‚½˜AŒg‹@”\‚à•K—v‚Å‚·B
+//RTã‚·ã‚¹ãƒ†ãƒ ã§ã¯ã€ä½ãƒ¬ãƒ™ãƒ«ã®ã‚»ãƒ³ã‚µå‡¦ç†ã‚„ã‚¢ã‚¯ãƒãƒ¥ã‚¨ãƒ¼ã‚¿åˆ¶å¾¡ã‹ã‚‰ã€é«˜ãƒ¬ãƒ™ãƒ«ã®èªè­˜ã€åˆ¤æ–­ã€è¡Œå‹•åˆ¶å¾¡ãªã©ã€æ§˜ã€…ãªãƒ¬ãƒ™ãƒ«ã®å‡¦ç†ã‚’é€£æºã—ã¦è¡Œã†å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ä½ãƒ¬ãƒ™ãƒ«ã®åˆ¶å¾¡ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã«ã¯ã€é€Ÿåº¦ã‚„ãƒªã‚¢ãƒ«ã‚¿ã‚¤ãƒ æ€§ã®è¦æ±‚ã‚’æº€ãŸã™è¨€èªãŒæ±‚ã‚ã‚‰ã‚Œã‚‹ä¸€æ–¹ã§ã€é«˜ãƒ¬ãƒ™ãƒ«ã®ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã«ã¯ã€æŠ½è±¡åº¦ã‚„è¨˜è¿°åŠ›ã®é«˜ã„è¨€èªãŒæ±‚ã‚ã‚‰ã‚Œã¾ã™ã€‚ã¾ãŸã€ç¾åœ¨ã®RTã‚·ã‚¹ãƒ†ãƒ ã¯ã€è¤‡æ•°ã® CPU ã§æ§‹æˆã•ã‚Œã‚‹ã‚±ãƒ¼ã‚¹ãŒå¢—ãˆã¦ãŠã‚Šã€ä¸¦åˆ—åˆ¶å¾¡ã‚„ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã‚’ä»‹ã—ãŸé€£æºæ©Ÿèƒ½ã‚‚å¿…è¦ã§ã™ã€‚
 (G)In the RT system, it is necessary to cooperate with various levels of processing such as high level recognition, judgment, behavior control, etc. from low level sensor processing and actuator control. Low-level control programs require languages that satisfy speed and real-time requirements, while high-level programs require abstract and descriptive languages. In addition, the number of cases where the current RT system is made up of multiple CPUs is increasing, and it is necessary to have parallel control and cooperation function via the network.
 
-//‚±‚ê‚ç‚Ì‹@”\—v‘f‚ğƒ‚ƒWƒ…[ƒ‹‰»‚·‚é‚½‚ßARTƒRƒ“ƒ|[ƒlƒ“ƒg‚ÍA—lX‚È—±“x‚Åƒ‚ƒWƒ…[ƒ‹‰»‚ª‰Â”\‚ÅA‚©‚ÂA‘½—l‚ÈŒ¾ŒêAOSã‚Å“®ì‚·‚éA•ªUƒRƒ“ƒ|[ƒlƒ“ƒgŒ^‚ÌƒtƒŒ[ƒ€ƒ[ƒN‚ğ’ñ‹Ÿ‚µ‚Ä‚¢‚Ü‚·B
+//ã“ã‚Œã‚‰ã®æ©Ÿèƒ½è¦ç´ ã‚’ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«åŒ–ã™ã‚‹ãŸã‚ã€RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¯ã€æ§˜ã€…ãªç²’åº¦ã§ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«åŒ–ãŒå¯èƒ½ã§ã€ã‹ã¤ã€å¤šæ§˜ãªè¨€èªã€OSä¸Šã§å‹•ä½œã™ã‚‹ã€åˆ†æ•£ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå‹ã®ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã‚’æä¾›ã—ã¦ã„ã¾ã™ã€‚
 (G)In order to modularize these functional elements, the RT component provides a framework of distributed component type that can be modularized with various granularity and operate on various languages and OS.
 
-//}‚É RTC ‚ÌŠî–{“I‚ÈƒA[ƒLƒeƒNƒ`ƒƒ‚ğ¦‚µ‚Ü‚·BRTC ‚Ìå‚È‹@”\‚Æ‚µ‚Ä‚ÍˆÈ‰º‚Ì‚à‚Ì‚ª‚ ‚è‚Ü‚·B
+//å›³ã« RTC ã®åŸºæœ¬çš„ãªã‚¢ãƒ¼ã‚­ãƒ†ã‚¯ãƒãƒ£ã‚’ç¤ºã—ã¾ã™ã€‚RTC ã®ä¸»ãªæ©Ÿèƒ½ã¨ã—ã¦ã¯ä»¥ä¸‹ã®ã‚‚ã®ãŒã‚ã‚Šã¾ã™ã€‚
 (G)The figure shows the basic architecture of RTC. The main functions of RTC are as follows.
 
 #ref(RTCArchitecture_en.png,40%,center)
-//CENTER: ''RTƒRƒ“ƒ|[ƒlƒ“ƒgƒA[ƒLƒeƒNƒ`ƒƒ''
+//CENTER: ''RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚¢ãƒ¼ã‚­ãƒ†ã‚¯ãƒãƒ£''
 CENTER: '' RT Component architecture ''
 
-//*** ƒƒ^î•ñæ“¾
+//*** ãƒ¡ã‚¿æƒ…å ±å–å¾—
 *** (G)Get meta information
 
-//RTC ‚Íƒƒ^î•ñ (RTC ƒvƒƒtƒ@ƒCƒ‹) æ“¾‚Ì‚½‚ß‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX (ƒCƒ“ƒgƒƒXƒyƒNƒVƒ‡ƒ“‹@”\) ‚ğ‚¿‚Ü‚·BRTC ƒvƒƒtƒ@ƒCƒ‹‚Æ‚ÍAƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì–¼‘O‚âŠ—L‚µ‚Ä‚¢‚éƒ|[ƒg‚Ìƒvƒƒtƒ@ƒCƒ‹‚È‚ÇAƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì“Á«‚ğ•\‚í‚·ˆê˜A‚Ìî•ñ‚Å‚·B‚±‚Ì‹@”\‚ÍÀs‚Ì“®“I‚ÈƒVƒXƒeƒ€\¬‚É•K—v‚Æ‚È‚è‚Ü‚·B
+//RTC ã¯ãƒ¡ã‚¿æƒ…å ± (RTC ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«) å–å¾—ã®ãŸã‚ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ (ã‚¤ãƒ³ãƒˆãƒ­ã‚¹ãƒšã‚¯ã‚·ãƒ§ãƒ³æ©Ÿèƒ½) ã‚’æŒã¡ã¾ã™ã€‚RTC ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã¨ã¯ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®åå‰ã‚„æ‰€æœ‰ã—ã¦ã„ã‚‹ãƒãƒ¼ãƒˆã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ãªã©ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ç‰¹æ€§ã‚’è¡¨ã‚ã™ä¸€é€£ã®æƒ…å ±ã§ã™ã€‚ã“ã®æ©Ÿèƒ½ã¯å®Ÿè¡Œæ™‚ã®å‹•çš„ãªã‚·ã‚¹ãƒ†ãƒ æ§‹æˆæ™‚ã«å¿…è¦ã¨ãªã‚Šã¾ã™ã€‚
 (G)RTC has an interface (introspection function) for obtaining meta information (RTC profile). An RTC profile is a set of information that describes the characteristics of a component, such as the name of the component or the profile of the port it owns. This function is necessary for dynamic system configuration at run time.
 
-//> ƒCƒ“ƒgƒƒXƒyƒNƒVƒ‡ƒ“: “ú–{Œê‚Å“àÈ‚Æ–ó‚³‚ê‚éAƒIƒuƒWƒFƒNƒg‚âƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒƒ^î•ñ‚ğæ“¾‚·‚éd‘g‚İ‚Ì‚±‚Æ. ’è‹`‚Íˆê’è‚µ‚Ä‚¢‚È‚¢‚ªAJava ‚É‚¨‚¯‚éƒŠƒtƒŒƒNƒVƒ‡ƒ“‚Æ—Ş—‚Ì‹@”\. OMG RTC d—l‚Å‚Í‚±‚Ì‹@”\‚ğ introspection ‚Æ’è‹`‚µ‚Ä‚¢‚éB
+//> ã‚¤ãƒ³ãƒˆãƒ­ã‚¹ãƒšã‚¯ã‚·ãƒ§ãƒ³: æ—¥æœ¬èªã§å†…çœã¨è¨³ã•ã‚Œã‚‹ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ¡ã‚¿æƒ…å ±ã‚’å–å¾—ã™ã‚‹ä»•çµ„ã¿ã®ã“ã¨. å®šç¾©ã¯ä¸€å®šã—ã¦ã„ãªã„ãŒã€Java ã«ãŠã‘ã‚‹ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã¨é¡ä¼¼ã®æ©Ÿèƒ½. OMG RTC ä»•æ§˜ã§ã¯ã“ã®æ©Ÿèƒ½ã‚’ introspection ã¨å®šç¾©ã—ã¦ã„ã‚‹ã€‚
 (G)> Introspection: A mechanism to acquire meta information of objects and components translated as introspection in Japanese.The definitions are not fixed, but functions similar to reflection in Java OMG RTC specification uses this function Is defined as introspection.
 
 #ref(rtc_arch_introspection_en.png,40%,center)
-//CENTER: ''ƒƒ^î•ñæ“¾''
+//CENTER: ''ãƒ¡ã‚¿æƒ…å ±å–å¾—''
 CENTER: '' Get meta information ''
 
-//*** ƒAƒNƒeƒBƒrƒeƒB
+//*** ã‚¢ã‚¯ãƒ†ã‚£ãƒ“ãƒ†ã‚£
 *** (G)Activity
 
-//ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìå‚½‚é‹@”\‚ğÀs‚·‚é•”•ªBRTC ‚Ì“ˆê“IŠÇ—‚Ì‚½‚ßAInactive (OFFó‘Ô)AActive (ONó‘Ô)AError (ƒGƒ‰[ó‘Ô)‚Æ‚¢‚Á‚½‹¤’Ê‚Ìó‘Ô‘JˆÚ‚ªŒˆ‚ß‚ç‚ê‚Ä‚¢‚Ü‚·BRTCŠJ”­Ò‚ÍAå‚É‚»‚ê‚¼‚ê‚Ìó‘Ô‚âƒCƒxƒ“ƒg‚ÉŠ„‚è“–‚Ä‚ç‚ê‚½ŠÖ” (ƒR[ƒ‹ƒoƒbƒNŠÖ”) ‚ÉÀŒ»‚µ‚½‚¢‹@”\‚ğÀ‘•‚·‚é‚±‚Æ‚Å RTC ‚ğì¬‚µ‚Ü‚·B
+//ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ä¸»ãŸã‚‹æ©Ÿèƒ½ã‚’å®Ÿè¡Œã™ã‚‹éƒ¨åˆ†ã€‚RTC ã®çµ±ä¸€çš„ç®¡ç†ã®ãŸã‚ã€Inactive (OFFçŠ¶æ…‹)ã€Active (ONçŠ¶æ…‹)ã€Error (ã‚¨ãƒ©ãƒ¼çŠ¶æ…‹)ã¨ã„ã£ãŸå…±é€šã®çŠ¶æ…‹é·ç§»ãŒæ±ºã‚ã‚‰ã‚Œã¦ã„ã¾ã™ã€‚RTCé–‹ç™ºè€…ã¯ã€ä¸»ã«ãã‚Œãã‚Œã®çŠ¶æ…‹ã‚„ã‚¤ãƒ™ãƒ³ãƒˆã«å‰²ã‚Šå½“ã¦ã‚‰ã‚ŒãŸé–¢æ•° (ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°) ã«å®Ÿç¾ã—ãŸã„æ©Ÿèƒ½ã‚’å®Ÿè£…ã™ã‚‹ã“ã¨ã§ RTC ã‚’ä½œæˆã—ã¾ã™ã€‚
 (G)The part that performs the main function of the component. Common state transitions such as Inactive (OFF state), Active (ON state), Error (Error state) are decided for unified management of RTC. An RTC developer creates an RTC by implementing the function which it wants to realize mainly in the function (callback function) assigned to each state and event.
 
 #ref(rtc_arch_activity_en.png,40%,center)
-//CENTER: ''ƒAƒNƒeƒBƒrƒeƒB‚ÆÀsƒRƒ“ƒeƒLƒXƒg''
+//CENTER: ''ã‚¢ã‚¯ãƒ†ã‚£ãƒ“ãƒ†ã‚£ã¨å®Ÿè¡Œã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ''
 CENTER: ''activity and execution context''
 
-//*** ÀsƒRƒ“ƒeƒLƒXƒg
+//*** å®Ÿè¡Œã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
 *** (G)Execution Context
 
-//ƒAƒNƒeƒBƒrƒeƒB‚ÌŠÖ”‚ÍAÀsƒRƒ“ƒeƒLƒXƒg (Execution Context: EC) ‚ÆŒÄ‚Î‚ê‚éƒXƒŒƒbƒh‚É‚æ‚èÀs‚³‚ê‚Ü‚·BEC‚ÍARTC ‚É‘Î‚µ‚Ä“®“I‚ÉƒAƒ^ƒbƒ`Eƒfƒ^ƒbƒ`‰Â”\‚ÅAˆê‚Â‚Ì EC ‚ğ•¡”‚Ì RTC ‚ÉƒAƒ^ƒbƒ`‚µA’¼—ñ‚É“¯Šú“I‚ÉÀs‚³‚¹‚½‚èAƒŠƒAƒ‹ƒ^ƒCƒ€Às‰Â”\‚È EC ‚Æ“ü‚ê‘Ö‚¦‚é‚±‚Æ‚Å RTC ‚ÌÀs‚ğƒŠƒAƒ‹ƒ^ƒCƒ€‰»‚·‚é‚±‚Æ‚à‰Â”\‚Å‚·B
+//ã‚¢ã‚¯ãƒ†ã‚£ãƒ“ãƒ†ã‚£ã®é–¢æ•°ã¯ã€å®Ÿè¡Œã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ (Execution Context: EC) ã¨å‘¼ã°ã‚Œã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã«ã‚ˆã‚Šå®Ÿè¡Œã•ã‚Œã¾ã™ã€‚ECã¯ã€RTC ã«å¯¾ã—ã¦å‹•çš„ã«ã‚¢ã‚¿ãƒƒãƒãƒ»ãƒ‡ã‚¿ãƒƒãƒå¯èƒ½ã§ã€ä¸€ã¤ã® EC ã‚’è¤‡æ•°ã® RTC ã«ã‚¢ã‚¿ãƒƒãƒã—ã€ç›´åˆ—ã«åŒæœŸçš„ã«å®Ÿè¡Œã•ã›ãŸã‚Šã€ãƒªã‚¢ãƒ«ã‚¿ã‚¤ãƒ å®Ÿè¡Œå¯èƒ½ãª EC ã¨å…¥ã‚Œæ›¿ãˆã‚‹ã“ã¨ã§ RTC ã®å®Ÿè¡Œã‚’ãƒªã‚¢ãƒ«ã‚¿ã‚¤ãƒ åŒ–ã™ã‚‹ã“ã¨ã‚‚å¯èƒ½ã§ã™ã€‚
 (G)Activity functions are executed by a thread called Execution Context (EC). EC can attach and detach dynamically to RTC, attach one EC to multiple RTC, execute it synchronously in series, replace it with EC which can be executed in real time, real time RTC execution It is also possible to convert it.
 
-//*** ƒf[ƒ^ƒ|[ƒg
+//*** ãƒ‡ãƒ¼ã‚¿ãƒãƒ¼ãƒˆ
 *** (G)Data port
 
-//˜A‘±“I‚Èƒf[ƒ^‚Ì‘—óM‚ğs‚¤‚½‚ß‚Ìƒf[ƒ^wŒüƒ|[ƒgB“ü—Íƒ|[ƒg (InPort) ‚Æo—Íƒ|[ƒg (OutPort) ‚Ì2í—Ş‚ª‚ ‚èA“¯‚¶ƒf[ƒ^Œ^“¯m‚È‚çAŒ¾Œê‚â OS ‚ªˆÙ‚È‚Á‚Ä‚¢‚Ä‚àAƒlƒbƒgƒ[ƒN‚ğ‰î‚µ‚ÄÚ‘±E’ÊM‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+//é€£ç¶šçš„ãªãƒ‡ãƒ¼ã‚¿ã®é€å—ä¿¡ã‚’è¡Œã†ãŸã‚ã®ãƒ‡ãƒ¼ã‚¿æŒ‡å‘ãƒãƒ¼ãƒˆã€‚å…¥åŠ›ãƒãƒ¼ãƒˆ (InPort) ã¨å‡ºåŠ›ãƒãƒ¼ãƒˆ (OutPort) ã®2ç¨®é¡ãŒã‚ã‚Šã€åŒã˜ãƒ‡ãƒ¼ã‚¿å‹åŒå£«ãªã‚‰ã€è¨€èªã‚„ OS ãŒç•°ãªã£ã¦ã„ã¦ã‚‚ã€ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã‚’ä»‹ã—ã¦æ¥ç¶šãƒ»é€šä¿¡ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
 (G)A data directional port for transmitting and receiving continuous data. There are two types of input port (InPort) and output port (OutPort). Even if the same data types are used, even if the language and OS are different, you can connect and communicate via the network.
 
 #ref(rtc_arch_dataport_en.png,40%,center)
-//CENTER: ''ƒf[ƒ^ƒ|[ƒg''
+//CENTER: ''ãƒ‡ãƒ¼ã‚¿ãƒãƒ¼ãƒˆ''
 CENTER: '' Data port ''
 
-//*** ƒT[ƒrƒXƒ|[ƒg
+//*** ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒˆ
 *** (G)Service port
 
-//ƒRƒ}ƒ“ƒhƒŒƒxƒ‹‚ÌÚ×‚È‹@”\‚Ì’ñ‹ŸE—˜—p‚ğs‚¤Aƒ†[ƒU[’è‹`‚ÌƒvƒƒoƒCƒ_(’ñ‹Ÿ(Provided)ƒCƒ“ƒ^[ƒtƒF[ƒX)‚âAƒRƒ“ƒVƒ…[ƒ}[(—v‹ (Required) ƒCƒ“ƒ^[ƒtƒF[ƒX)‚ğ‚½‚¹‚é‚±‚Æ‚ª‚Å‚«‚éƒ|[ƒg (ŠO•”‚É‹@”\‚ğ’ñ‹Ÿ‚·‚éƒCƒ“ƒ^[ƒtƒF[ƒX‚ğ Provided InterfaceAŠO•”‚Ì‹@”\‚ğ—v‹E—˜—p‚·‚éƒCƒ“ƒ^[ƒtƒF[ƒX‚ğ Required Interface ‚ÆŒÄ‚Ñ‚Ü‚·B)Bƒf[ƒ^ƒ|[ƒg“¯—lAŒ¾ŒêAOS ‚ªˆÙ‚È‚Á‚Ä‚¢‚Ä‚àƒCƒ“ƒ^[ƒtƒF[ƒXŒ^‚ª“¯‚¶‚È‚çÚ‘±‚µŠÖ”‚ğŒÄ‚Ño‚·‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+//ã‚³ãƒãƒ³ãƒ‰ãƒ¬ãƒ™ãƒ«ã®è©³ç´°ãªæ©Ÿèƒ½ã®æä¾›ãƒ»åˆ©ç”¨ã‚’è¡Œã†ã€ãƒ¦ãƒ¼ã‚¶ãƒ¼å®šç¾©ã®ãƒ—ãƒ­ãƒã‚¤ãƒ€(æä¾›(Provided)ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹)ã‚„ã€ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒãƒ¼(è¦æ±‚ (Required) ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹)ã‚’æŒãŸã›ã‚‹ã“ã¨ãŒã§ãã‚‹ãƒãƒ¼ãƒˆ (å¤–éƒ¨ã«æ©Ÿèƒ½ã‚’æä¾›ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ Provided Interfaceã€å¤–éƒ¨ã®æ©Ÿèƒ½ã‚’è¦æ±‚ãƒ»åˆ©ç”¨ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ Required Interface ã¨å‘¼ã³ã¾ã™ã€‚)ã€‚ãƒ‡ãƒ¼ã‚¿ãƒãƒ¼ãƒˆåŒæ§˜ã€è¨€èªã€OS ãŒç•°ãªã£ã¦ã„ã¦ã‚‚ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹å‹ãŒåŒã˜ãªã‚‰æ¥ç¶šã—é–¢æ•°ã‚’å‘¼ã³å‡ºã™ã“ã¨ãŒã§ãã¾ã™ã€‚
 (G)A port that can have a user-defined provider (Provided interface) that provides and exploits command level detailed functions and a port that can have a consumer (Required interface) Provided Interface, an interface that requests and uses external functions is called Required Interface. Like the data port, even if the language and OS are different, you can connect and call the function if the interface type is the same.
 
 #ref(rtc_arch_serviceport_en.png,40%,center)
-//CENTER: ''ƒf[ƒ^ƒ|[ƒg''
+//CENTER: ''ãƒ‡ãƒ¼ã‚¿ãƒãƒ¼ãƒˆ''
 CENTER: ''Data port''
 
 *** (G)Configuration
 
-//ƒ†[ƒU[’è‹`‚Ìƒpƒ‰ƒ[ƒ^[‚ğAÀs‚ÉŠO•”‚©‚ç•ÏX‚·‚é‚½‚ß‚Ì‹@”\B•¡”‚Ìƒpƒ‰ƒ[ƒ^[ƒZƒbƒg‚ğ‚¿A‚»‚ê‚ç‚ğˆêÄ‚É“ü‚ê‘Ö‚¦‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·Bƒpƒ‰ƒ[ƒ^[‚ğ—\‚ß•ÏX‰Â”\‚É‚µ‚Ä‚¨‚­‚±‚Æ‚ÅARTC ‚ğ—lX‚ÈƒVƒXƒeƒ€‚ÅÄ—˜—p‰Â”\‚É‚µ‚Ü‚·B
+//ãƒ¦ãƒ¼ã‚¶ãƒ¼å®šç¾©ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã‚’ã€å®Ÿè¡Œæ™‚ã«å¤–éƒ¨ã‹ã‚‰å¤‰æ›´ã™ã‚‹ãŸã‚ã®æ©Ÿèƒ½ã€‚è¤‡æ•°ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã‚»ãƒƒãƒˆã‚’æŒã¡ã€ãã‚Œã‚‰ã‚’ä¸€æ–‰ã«å…¥ã‚Œæ›¿ãˆã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã‚’äºˆã‚å¤‰æ›´å¯èƒ½ã«ã—ã¦ãŠãã“ã¨ã§ã€RTC ã‚’æ§˜ã€…ãªã‚·ã‚¹ãƒ†ãƒ ã§å†åˆ©ç”¨å¯èƒ½ã«ã—ã¾ã™ã€‚
 (G)A function to change user-defined parameters externally at runtime. It has multiple parameter sets and you can swap them all at once. By making the parameters changeable in advance, RTC can be reused in various systems.
 
 #ref(rtc_arch_configuration_en.png,40%,center)
-//CENTER: ''ƒRƒ“ƒtƒBƒMƒ…ƒŒ[ƒVƒ‡ƒ“''
+//CENTER: ''ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³''
 CENTER: ''Configuration''
 
-//ˆê”Ê‚ÉARTƒVƒXƒeƒ€‚É‚¨‚¯‚é’áƒŒƒxƒ‹•”•ª‚Å‚ÍAƒT[ƒ{ƒRƒ“ƒgƒ[ƒ‰[“™—±“x‚ª×‚©‚­ƒf[ƒ^wŒü‚Ì–§Œ‹‡‚ÈƒTƒuƒVƒXƒeƒ€‚ªå‘Ì‚Å‚ ‚èA”»’f‚âU‚é•‘‚¢‚ğŒˆ‚ß‚é‚ƒŒƒxƒ‹‚Ì•”•ª‚Å‚ÍA—±“x‚Ì‘e‚¢ƒT[ƒrƒXwŒü‚ÌƒTƒuƒVƒXƒeƒ€‚ªå‘Ì‚Æ‚È‚è‚Ü‚·BRTC ‚Å‚ÍA‚±‚¤‚µ‚½‘½—l‚È—±“x‚Ìƒ‚ƒWƒ…[ƒ‹‰»‚ğ‹¤’Ê‚ÌƒtƒŒ[ƒ€ƒ[ƒN‚ÅÀŒ»‚µ‚Ä‚¢‚é‚½‚ßAŠK‘w‰»ƒtƒŒ[ƒ€ƒ[ƒN‚Å–â‘è‚Æ‚È‚éAŠK‘wŠÔ‚ÌŒ‹‡‚Í–â‘è‚Æ‚È‚è‚Ü‚¹‚ñB
+//ä¸€èˆ¬ã«ã€RTã‚·ã‚¹ãƒ†ãƒ ã«ãŠã‘ã‚‹ä½ãƒ¬ãƒ™ãƒ«éƒ¨åˆ†ã§ã¯ã€ã‚µãƒ¼ãƒœã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼ç­‰ç²’åº¦ãŒç´°ã‹ããƒ‡ãƒ¼ã‚¿æŒ‡å‘ã®å¯†çµåˆãªã‚µãƒ–ã‚·ã‚¹ãƒ†ãƒ ãŒä¸»ä½“ã§ã‚ã‚Šã€åˆ¤æ–­ã‚„æŒ¯ã‚‹èˆã„ã‚’æ±ºã‚ã‚‹é«˜ãƒ¬ãƒ™ãƒ«ã®éƒ¨åˆ†ã§ã¯ã€ç²’åº¦ã®ç²—ã„ã‚µãƒ¼ãƒ“ã‚¹æŒ‡å‘ã®ã‚µãƒ–ã‚·ã‚¹ãƒ†ãƒ ãŒä¸»ä½“ã¨ãªã‚Šã¾ã™ã€‚RTC ã§ã¯ã€ã“ã†ã—ãŸå¤šæ§˜ãªç²’åº¦ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«åŒ–ã‚’å…±é€šã®ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã§å®Ÿç¾ã—ã¦ã„ã‚‹ãŸã‚ã€éšå±¤åŒ–ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã§å•é¡Œã¨ãªã‚‹ã€éšå±¤é–“ã®çµåˆã¯å•é¡Œã¨ãªã‚Šã¾ã›ã‚“ã€‚
 (G)Generally, in the low-level part of the RT system, the servo controller etc. are mainly composed of data-oriented and tightly coupled subsystems, and in the high level part which decides judgment and behavior, the coarse-grained service-oriented subsystem is mainly . Since RTC realizes such modularization with various granularity with a common framework, coupling between hierarchies, which becomes a problem in the hierarchical framework, is not a problem.
 
-//ˆÙ‚È‚éŒ¾ŒêA‚¨‚æ‚Ñ OS ã‚Ì RTC ŠÔ‚Ì“§‰ß“I˜AŒg‚ÍA•ªUƒIƒuƒWƒFƒNƒgƒ~ƒhƒ‹ƒEƒGƒA‚Ì•W€d—l‚Å‚ ‚é CORBA (Common Object Request Broker Architectur) ‚ğ—˜—p‚·‚é‚±‚Æ‚ÅÀŒ»‚³‚ê‚Ä‚¢‚Ü‚·B
+//ç•°ãªã‚‹è¨€èªã€ãŠã‚ˆã³ OS ä¸Šã® RTC é–“ã®é€éçš„é€£æºã¯ã€åˆ†æ•£ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ã®æ¨™æº–ä»•æ§˜ã§ã‚ã‚‹ CORBA (Common Object Request Broker Architectur) ã‚’åˆ©ç”¨ã™ã‚‹ã“ã¨ã§å®Ÿç¾ã•ã‚Œã¦ã„ã¾ã™ã€‚
 (G)Transparency linkage between different languages and RTC on the OS is realized by using CORBA (Common Object Request Broker Architectur) which is the standard specification of distributed object middleware.

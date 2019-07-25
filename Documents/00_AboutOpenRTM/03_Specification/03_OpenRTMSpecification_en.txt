@@ -1,56 +1,56 @@
-#contents
+ï»¿#contents
 
-//OpenRTM-aist ‚ÍARTƒRƒ“ƒ|[ƒlƒ“ƒgƒtƒŒ[ƒ€ƒ[ƒNARTƒ~ƒhƒ‹ƒEƒGƒAAŠî–{RTƒRƒ“ƒ|[ƒlƒ“ƒgŒQAƒ‰ƒCƒuƒ‰ƒŠAŠî–{ƒT[ƒrƒXŒQAŠî–{ƒc[ƒ‹ŒQ“™‚©‚ç\¬‚³‚ê‚Ä‚¢‚Ü‚·B
-//RTƒRƒ“ƒ|[ƒlƒ“ƒgƒtƒŒ[ƒ€ƒ[ƒN‚ÍARTƒRƒ“ƒ|[ƒlƒ“ƒg‚ğì‚é‚½‚ß‚ÌŠî–{ƒNƒ‰ƒX‚Å‚ ‚èA‚·‚×‚Ä‚Ì RTƒRƒ“ƒ|[ƒlƒ“ƒg‚Í‚±‚ÌŠî–{ƒNƒ‰ƒX‚ÌƒTƒuƒNƒ‰ƒX‚Æ‚µ‚Äì¬‚³‚ê‚Ü‚·B
-//RTƒ~ƒhƒ‹ƒEƒGƒA‚ÍAƒtƒŒ[ƒ€ƒ[ƒN‚ÉŠî‚Ã‚¢‚Äì¬‚³‚ê‚½ RTƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒ‚ƒWƒ…[ƒ‹‚Ìƒ[ƒh‚âAƒCƒ“ƒXƒ^ƒ“ƒX‚Ì¶¬E‰ğ‘Ì“™‚Ìƒ‰ƒCƒtƒTƒCƒNƒ‹‚ÌŠÇ—AƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒl[ƒ€ƒT[ƒrƒX‚Ö‚Ì“o˜^“™‚ğs‚¤•”•ª‚Å‚·B
+//OpenRTM-aist ã¯ã€RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã€RTãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ã€åŸºæœ¬RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆç¾¤ã€ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã€åŸºæœ¬ã‚µãƒ¼ãƒ“ã‚¹ç¾¤ã€åŸºæœ¬ãƒ„ãƒ¼ãƒ«ç¾¤ç­‰ã‹ã‚‰æ§‹æˆã•ã‚Œã¦ã„ã¾ã™ã€‚
+//RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã¯ã€RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ä½œã‚‹ãŸã‚ã®åŸºæœ¬ã‚¯ãƒ©ã‚¹ã§ã‚ã‚Šã€ã™ã¹ã¦ã® RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¯ã“ã®åŸºæœ¬ã‚¯ãƒ©ã‚¹ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã¨ã—ã¦ä½œæˆã•ã‚Œã¾ã™ã€‚
+//RTãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ã¯ã€ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã«åŸºã¥ã„ã¦ä½œæˆã•ã‚ŒãŸ RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒ­ãƒ¼ãƒ‰ã‚„ã€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ç”Ÿæˆãƒ»è§£ä½“ç­‰ã®ãƒ©ã‚¤ãƒ•ã‚µã‚¤ã‚¯ãƒ«ã®ç®¡ç†ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒãƒ¼ãƒ ã‚µãƒ¼ãƒ“ã‚¹ã¸ã®ç™»éŒ²ç­‰ã‚’è¡Œã†éƒ¨åˆ†ã§ã™ã€‚
 (G)OpenRTM-aist consists of RT component framework, RT middleware, basic RT component group, library, basic service group, basic tools group and so on.
 The RT component framework is the base class for creating RT components, and all RT components are created as subclasses of this base class.
 RT middleware is a part that loads modules of RT component created based on framework, management of life cycle such as creation and disassembly of instances, registration of components to name service, etc.
 
-//Œ»İ‚Ì‚Æ‚±‚ëAOpenRTM-aist ‚Í C++APythonAJava ‚ÌŠeŒ¾Œê‚ğƒTƒ|[ƒg‚µ‚Ä‚¨‚èAWindowsAUNIX Œn OSA$\mu$ITRON (C++‚Ì‚İ‘Î‰) Œn‚ÌŠe OS ã‚Å“®ì‰Â”\‚Å‚·B
-//‚³‚ç‚ÉAŠ”®‰ïĞƒZƒbƒN‚ª OpenRTM-aist ŒİŠ·‚Ìƒ~ƒhƒ‹ƒEƒGƒA:OpenRTM.NET ‚ğŒöŠJ‚µ‚Ä‚¨‚èAC# ‚ğn‚ß‚Æ‚·‚é.NET ŠÂ‹«‚ÅRTC‚ğì¬EÀs‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
-//ˆÙ‚È‚éŒ¾Œê‚Åì¬‚³‚ê‚½‚èAˆÙ‚È‚é OS ã‚Å“®ì‚·‚é RTC “¯m‚Í‘ŠŒİ‚ÉÚ‘±‚µA˜AŒg‚ª‰Â”\‚Å‚·B
+//ç¾åœ¨ã®ã¨ã“ã‚ã€OpenRTM-aist ã¯ C++ã€Pythonã€Java ã®å„è¨€èªã‚’ã‚µãƒãƒ¼ãƒˆã—ã¦ãŠã‚Šã€Windowsã€UNIX ç³» OSã€$\mu$ITRON (C++ã®ã¿å¯¾å¿œ) ç³»ã®å„ OS ä¸Šã§å‹•ä½œå¯èƒ½ã§ã™ã€‚
+//ã•ã‚‰ã«ã€æ ªå¼ä¼šç¤¾ã‚»ãƒƒã‚¯ãŒ OpenRTM-aist äº’æ›ã®ãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢:OpenRTM.NET ã‚’å…¬é–‹ã—ã¦ãŠã‚Šã€C# ã‚’å§‹ã‚ã¨ã™ã‚‹.NET ç’°å¢ƒã§RTCã‚’ä½œæˆãƒ»å®Ÿè¡Œã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+//ç•°ãªã‚‹è¨€èªã§ä½œæˆã•ã‚ŒãŸã‚Šã€ç•°ãªã‚‹ OS ä¸Šã§å‹•ä½œã™ã‚‹ RTC åŒå£«ã¯ç›¸äº’ã«æ¥ç¶šã—ã€é€£æºãŒå¯èƒ½ã§ã™ã€‚
 (G)At present, OpenRTM-aist supports C++, Python, Java languages, it can run on Windows, UNIX based OS, $ \ mu $ ITRON (C++ only) based OS.
 In addition, SEC Corporation has released OpenRTM-aist compatible middleware: OpenRTM.NET, and it can create and execute RTC in .NET environment including C #.
 RTCs that are created in different languages or operate on different OSs can be connected to each other and linked together.
 
-//‚±‚Ì‘¼Aƒ†[ƒU[‚Ì—˜•Ö«‚ğŒüã‚³‚¹‚éƒ‰ƒCƒuƒ‰ƒŠARTƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì“o˜^ŒŸõ“™‚ÌŠî–{“IƒT[ƒrƒX (Œ»İ‚Í CORBA ‚Ì Naming Service ‚ğ—˜—p)ARTƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì—Œ^ƒR[ƒh‚ğ¶¬‚·‚é RTCBuilderARTƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌÚ‘±E§Œä“™‚ğs‚¤ RTSystemEditor “™‚Ìƒc[ƒ‹ŒQ‚©‚ç\¬‚³‚ê‚Ä‚¢‚Ü‚·B
+//ã“ã®ä»–ã€ãƒ¦ãƒ¼ã‚¶ãƒ¼ã®åˆ©ä¾¿æ€§ã‚’å‘ä¸Šã•ã›ã‚‹ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã€RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ç™»éŒ²æ¤œç´¢ç­‰ã®åŸºæœ¬çš„ã‚µãƒ¼ãƒ“ã‚¹ (ç¾åœ¨ã¯ CORBA ã® Naming Service ã‚’åˆ©ç”¨)ã€RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®é››å‹ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ RTCBuilderã€RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®æ¥ç¶šãƒ»åˆ¶å¾¡ç­‰ã‚’è¡Œã† RTSystemEditor ç­‰ã®ãƒ„ãƒ¼ãƒ«ç¾¤ã‹ã‚‰æ§‹æˆã•ã‚Œã¦ã„ã¾ã™ã€‚
 (G)In addition to this, basic services (currently using CORBA's Naming Service) such as library and RT component registration search for improving user convenience, RTC Builder for generating RTC component model code, RT component connection / control It consists of a tool group such as RTSystemEditor which does the above.
 
-//** ƒCƒ“ƒ^[ƒtƒF[ƒXd—l
+//** ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ä»•æ§˜
 ** (G)Interface Specification
 
-//- OMG Robotic Technology Component Specification 1.0 €‹’
-//-- [[OMGd—l‘ formal/08-04-04:http://www.omg.org/spec/RTC/1.0/]]
-//- OMG Super Distributed Object Specification 1.1 €‹’
-//-- [[OMGd—l‘ formal/08-10-01:http://www.omg.org/spec/SDO/1.1/]]
+//- OMG Robotic Technology Component Specification 1.0 æº–æ‹ 
+//-- [[OMGä»•æ§˜æ›¸ formal/08-04-04:http://www.omg.org/spec/RTC/1.0/]]
+//- OMG Super Distributed Object Specification 1.1 æº–æ‹ 
+//-- [[OMGä»•æ§˜æ›¸ formal/08-10-01:http://www.omg.org/spec/SDO/1.1/]]
 - Compliant with OMG Robotic Technology Component Specification 1.0
 -- [[OMG specification sheet formal/08-04-04:http://www.omg.org/spec/RTC/1.0/]]
 - Compliant with OMG Super Distributed Object Specification 1.1
 -- [[OMG specification sheet formal/08-10-01:http://www.omg.org/spec/SDO/1.1/]]
 
-//***Ql
+//***å‚è€ƒ
 ***(G)reference
 
 - [[OMG (Object Management Group):http://www.omg.org]]
 - [[OMG Specifications:http://www.omg.org/technology/documents/spec_catalog.htm]]
 
 
-//** \¬
+//** æ§‹æˆ
 ** (G)Constitution
 
-//OpenRTM-aist ‚ÍˆÈ‰º‚ÌŠeŒ¾Œê”Å‚Ìƒ~ƒhƒ‹ƒEƒGƒAƒ‰ƒCƒuƒ‰ƒŠ‚¨‚æ‚Ñƒc[ƒ‹ŒQ‚©‚ç\¬‚³‚ê‚Ä‚¢‚Ü‚·B
+//OpenRTM-aist ã¯ä»¥ä¸‹ã®å„è¨€èªç‰ˆã®ãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŠã‚ˆã³ãƒ„ãƒ¼ãƒ«ç¾¤ã‹ã‚‰æ§‹æˆã•ã‚Œã¦ã„ã¾ã™ã€‚
 (G)OpenRTM-aist consists of the following middle language libraries and tools of each language version.
 
-//CENTER:''OpenRTM-aist‚Ì\¬''
+//CENTER:''OpenRTM-aistã®æ§‹æˆ''
 //|CENTER:170|LEFT:350|c
-//| –¼‘O | ŠT—v |
-//| OpenRTM-aist (C++”Å)    | C++Œ¾Œê‚ÅRTƒRƒ“ƒ|[ƒlƒ“ƒg‚ğì¬‚·‚é‚½‚ß‚ÌƒRƒ“ƒ|[ƒlƒ“ƒgƒtƒŒ[ƒ€ƒ[ƒN‚Æƒ~ƒhƒ‹ƒEƒGƒAƒ‰ƒCƒuƒ‰ƒŠ‚¨‚æ‚ÑƒRƒ}ƒ“ƒhŒQ |
-//| OpenRTM-aist (Python”Å) | PythonŒ¾Œê‚ÅRTƒRƒ“ƒ|[ƒlƒ“ƒg‚ğì¬‚·‚é‚½‚ß‚ÌƒRƒ“ƒ|[ƒlƒ“ƒgƒtƒŒ[ƒ€ƒ[ƒN‚Æƒ~ƒhƒ‹ƒEƒGƒAƒ‰ƒCƒuƒ‰ƒŠ‚¨‚æ‚ÑƒRƒ}ƒ“ƒhŒQ |
-//| OpenRTM-aist (Java”Å)   | JavaŒ¾Œê‚ÅRTƒRƒ“ƒ|[ƒlƒ“ƒg‚ğì¬‚·‚é‚½‚ß‚ÌƒRƒ“ƒ|[ƒlƒ“ƒgƒtƒŒ[ƒ€ƒ[ƒN‚Æƒ~ƒhƒ‹ƒEƒGƒAƒ‰ƒCƒuƒ‰ƒŠ‚¨‚æ‚ÑƒRƒ}ƒ“ƒhŒQ |
-//| RTCBuilder              | RTƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌİŒvAƒR[ƒh¶¬‚ğs‚¤‚½‚ß‚Ì Eclipse ƒvƒ‰ƒOƒCƒ“ |
-//| RTSystemEditor          | RTƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì‘€ì‚¨‚æ‚ÑRTƒVƒXƒeƒ€‚ÌİŒvE‘€ì‚ğs‚¤‚½‚ß‚Ì Eclipse ƒvƒ‰ƒOƒCƒ“ |
-//| rtcshell/rtsshell       | RTƒRƒ“ƒ|[ƒlƒ“ƒgARTƒVƒXƒeƒ€‚Ì‘€ì‚ğCUI‚©‚çs‚¤‚½‚ß‚ÌƒRƒ}ƒ“ƒhŒQ |
+//| åå‰ | æ¦‚è¦ |
+//| OpenRTM-aist (C++ç‰ˆ)    | C++è¨€èªã§RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ä½œæˆã™ã‚‹ãŸã‚ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã¨ãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŠã‚ˆã³ã‚³ãƒãƒ³ãƒ‰ç¾¤ |
+//| OpenRTM-aist (Pythonç‰ˆ) | Pythonè¨€èªã§RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ä½œæˆã™ã‚‹ãŸã‚ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã¨ãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŠã‚ˆã³ã‚³ãƒãƒ³ãƒ‰ç¾¤ |
+//| OpenRTM-aist (Javaç‰ˆ)   | Javaè¨€èªã§RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ä½œæˆã™ã‚‹ãŸã‚ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã¨ãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŠã‚ˆã³ã‚³ãƒãƒ³ãƒ‰ç¾¤ |
+//| RTCBuilder              | RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è¨­è¨ˆã€ã‚³ãƒ¼ãƒ‰ç”Ÿæˆã‚’è¡Œã†ãŸã‚ã® Eclipse ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ |
+//| RTSystemEditor          | RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®æ“ä½œãŠã‚ˆã³RTã‚·ã‚¹ãƒ†ãƒ ã®è¨­è¨ˆãƒ»æ“ä½œã‚’è¡Œã†ãŸã‚ã® Eclipse ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ |
+//| rtcshell/rtsshell       | RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã€RTã‚·ã‚¹ãƒ†ãƒ ã®æ“ä½œã‚’CUIã‹ã‚‰è¡Œã†ãŸã‚ã®ã‚³ãƒãƒ³ãƒ‰ç¾¤ |
 CENTER: '' Configuration of OpenRTM-aist ''
 |CENTER:170|LEFT:350|c
 | Name | Summary |
@@ -61,42 +61,42 @@ CENTER: '' Configuration of OpenRTM-aist ''
 | RTSystemEditor | Eclipse plugin for RT component operation and RT system design / operation |
 | rtcshell / rtsshell | command group for performing RT component and RT system operations from CUI |
 
-//‚±‚ê‚ç‚Ì”z•z•¨‚Í‚»‚ê‚¼‚ê EPL ‚ÆŒÂ•ÊŒ_–ñ‚Ìƒfƒ…ƒAƒ‹ƒ‰ƒCƒZƒ“ƒX‚ÌŒ³”z•z‚³‚ê‚Ä‚¢‚Ü‚·B
+//ã“ã‚Œã‚‰ã®é…å¸ƒç‰©ã¯ãã‚Œãã‚Œ EPL ã¨å€‹åˆ¥å¥‘ç´„ã®ãƒ‡ãƒ¥ã‚¢ãƒ«ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã®å…ƒé…å¸ƒã•ã‚Œã¦ã„ã¾ã™ã€‚
 (G)Each of these distributions is distributed under the dual license of individual contract with EPL respectively.
 
-//** “®ìğŒ
+//** å‹•ä½œæ¡ä»¶
 ** (G)Operating condition
 
-//*** OpenRTM-aist (C++”Å)
+//*** OpenRTM-aist (C++ç‰ˆ)
 *** (G)OpenRTM-aist (C++ version)
 
 //|CENTER:200|LEFT|c
-//| ƒRƒ“ƒpƒCƒ‰     | gcc 3.x ˆÈãAVisual C++ 2005A2008 |
-//| OS             | LinuxAFreeBSDAWindowsAMac OS XATOPPERS ASP |
-//| CPU            | i386Ax86_64AppcAarm |
-//| ˆË‘¶ƒ‰ƒCƒuƒ‰ƒŠ | omniORB 4.0 ˆÈãAlibuuid (Linux) |
+//| ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©     | gcc 3.x ä»¥ä¸Šã€Visual C++ 2005ã€2008 |
+//| OS             | Linuxã€FreeBSDã€Windowsã€Mac OS Xã€TOPPERS ASP |
+//| CPU            | i386ã€x86_64ã€ppcã€arm |
+//| ä¾å­˜ãƒ©ã‚¤ãƒ–ãƒ©ãƒª | omniORB 4.0 ä»¥ä¸Šã€libuuid (Linux) |
 |CENTER:200|LEFT|c
 | Compiler | gcc 3.x or higher, Visual C++ 2005, 2008 |
 | OS | Linux, FreeBSD, Windows, Mac OS X, TOPPERS ASP |
 | CPU | i386, x86_64, ppc, arm |
 | Dependent library | omniORB 4.0 or higher, libuuid (Linux) |
 
-//*** OpenRTM-aist (Python”Å)
+//*** OpenRTM-aist (Pythonç‰ˆ)
 *** (G)OpenRTM-aist (Python version)
 
 //|CENTER:200|LEFT|c
-//| Python | Python 2.3 ˆÈã |
-//| ˆË‘¶ƒ‰ƒCƒuƒ‰ƒŠ | omniORBpy-2.3ˆÈã |
+//| Python | Python 2.3 ä»¥ä¸Š |
+//| ä¾å­˜ãƒ©ã‚¤ãƒ–ãƒ©ãƒª | omniORBpy-2.3ä»¥ä¸Š |
 |CENTER:200|LEFT|c
 | Python | Python 2.3 and higher |
 | Dependent library | omniORBpy - 2.3 or higher |
 
-//*** OpenRTM-aist (Java”Å)
+//*** OpenRTM-aist (Javaç‰ˆ)
 *** (G)OpenRTM-aist (Java version)
 
 //|CENTER:200|LEFT|c
-//| Java | JDK5 ˆÈã |
-//| ˆË‘¶ƒ‰ƒCƒuƒ‰ƒŠ | JDK ‚ÉŠÜ‚Ü‚ê‚é Java IDL |
+//| Java | JDK5 ä»¥ä¸Š |
+//| ä¾å­˜ãƒ©ã‚¤ãƒ–ãƒ©ãƒª | JDK ã«å«ã¾ã‚Œã‚‹ Java IDL |
 |CENTER:200|LEFT|c
 | Java | JDK 5 or higher |
 | Dependent library | Java IDL included in JDK |
@@ -104,9 +104,9 @@ CENTER: '' Configuration of OpenRTM-aist ''
 *** (G)RTCBuilder/RTSystemEditor
 
 //|CENTER:200|LEFT|c
-//| Eclipse | 3.4 ˆÈã |
-//| Java    | JDK6 ˆÈã |
-//| ˆË‘¶ƒ‰ƒCƒuƒ‰ƒŠ | Eclipse EMF 2.2ˆÈã(SDO,XSDŠÜ‚Ş)A&br; Eclipse GEF 3.2ˆÈã(Draw2DŠÜ‚Ş) |
+//| Eclipse | 3.4 ä»¥ä¸Š |
+//| Java    | JDK6 ä»¥ä¸Š |
+//| ä¾å­˜ãƒ©ã‚¤ãƒ–ãƒ©ãƒª | Eclipse EMF 2.2ä»¥ä¸Š(SDO,XSDå«ã‚€)ã€&br; Eclipse GEF 3.2ä»¥ä¸Š(Draw2Då«ã‚€) |
 |CENTER:200|LEFT|c
 | Eclipse | 3.4 or more |
 | Java | JDK 6 or higher |
@@ -115,8 +115,8 @@ CENTER: '' Configuration of OpenRTM-aist ''
 *** (G)rtcshell/rtsshell
 
 //|CENTER:200|LEFT|c
-//| Python | Python 2.6 ˆÈã |
-//| ˆË‘¶ƒ‰ƒCƒuƒ‰ƒŠ | omniORBpy-2.3 ˆÈã |
+//| Python | Python 2.6 ä»¥ä¸Š |
+//| ä¾å­˜ãƒ©ã‚¤ãƒ–ãƒ©ãƒª | omniORBpy-2.3 ä»¥ä¸Š |
 |CENTER:200|LEFT|c
 | Python | Python 2.6 and higher |
 | Dependent library | omniORBpy - 2.3 or higher |

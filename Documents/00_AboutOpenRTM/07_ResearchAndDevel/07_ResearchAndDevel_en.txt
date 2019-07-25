@@ -1,84 +1,84 @@
-#contents
+ï»¿#contents
 
-//** ŠJ”­‚ÌŒoˆÜ
+//** é–‹ç™ºã®çµŒç·¯
 ** (G)History of development
 
-//RTƒ~ƒhƒ‹ƒEƒGƒA‚ÍA(“Æ)VƒGƒlƒ‹ƒM[EY‹Æ‹Zp‘‡ŠJ”­‹@\(NEDO)‚Ì21¢‹Iƒƒ{ƒbƒgƒ`ƒƒƒŒƒ“ƒWƒvƒƒOƒ‰ƒ€(2002`2004”N“x) ‚ÌƒvƒƒWƒFƒNƒg‚É‚¨‚¢‚ÄA‚»‚ÌƒRƒ“ƒZƒvƒg‚ª’ñ¥‚³‚êA(“Æ)Y‹Æ‹Zp‘‡Œ¤‹†Š(Y‘Œ¤)A¼‰º“dH(Œ»ƒpƒiƒ\ƒjƒbƒN“dHŠ”®‰ïĞ), (Ğ)“ú–{ƒƒ{ƒbƒgH‹Æ‰ï‚É‚æ‚èŒ¤‹†EŠJ”­E•W€‰»‚ªs‚í‚ê‚Ü‚µ‚½B
+//RTãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ã¯ã€(ç‹¬)æ–°ã‚¨ãƒãƒ«ã‚®ãƒ¼ãƒ»ç”£æ¥­æŠ€è¡“ç·åˆé–‹ç™ºæ©Ÿæ§‹(NEDO)ã®21ä¸–ç´€ãƒ­ãƒœãƒƒãƒˆãƒãƒ£ãƒ¬ãƒ³ã‚¸ãƒ—ãƒ­ã‚°ãƒ©ãƒ (2002ï½2004å¹´åº¦) ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã«ãŠã„ã¦ã€ãã®ã‚³ãƒ³ã‚»ãƒ—ãƒˆãŒæå”±ã•ã‚Œã€(ç‹¬)ç”£æ¥­æŠ€è¡“ç·åˆç ”ç©¶æ‰€(ç”£ç·ç ”)ã€æ¾ä¸‹é›»å·¥(ç¾ãƒ‘ãƒŠã‚½ãƒ‹ãƒƒã‚¯é›»å·¥æ ªå¼ä¼šç¤¾), (ç¤¾)æ—¥æœ¬ãƒ­ãƒœãƒƒãƒˆå·¥æ¥­ä¼šã«ã‚ˆã‚Šç ”ç©¶ãƒ»é–‹ç™ºãƒ»æ¨™æº–åŒ–ãŒè¡Œã‚ã‚Œã¾ã—ãŸã€‚
 (G)RT Middleware was proposed by the New Energy and Industrial Technology Development Organization (NEDO) in the project of the 21st Century Robot Challenge Program (2002 - 2004), its concept was proposed, and the National Institute of Advanced Industrial Science and Technology Research, development and standardization were conducted by Matsushita Electric Works (now Panasonic Electric Works Co., Ltd.), Japan Robot Industry Association.
 
-//ƒvƒƒWƒFƒNƒg‚Ì¬‰Ê‚Æ‚µ‚ÄARTƒ~ƒhƒ‹ƒEƒGƒA‚ÌQÆÀ‘•FOpenRTM-aist-0.2 ‚¨‚æ‚Ñ‚»‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXd—l‚ªŒöŠJ‚³‚ê‚Ü‚µ‚½B‚»‚ÌŒãA ‘Û•W€‰»’c‘Ì OMG (Object Manegement Group: http://www.omg.org ) ‚É‚¨‚¢‚ÄRTCƒCƒ“ƒ^[ƒtƒF[ƒXd—l‚Ì•W€‰»‚ªi‚ß‚ç‚êA2008”N4Œ‚É OMG Œö®•W€d—l‚Æ‚È‚è‚Ü‚µ‚½B‚±‚Ì•W€‚É€‹’‚µ‚½ RTƒ~ƒhƒ‹ƒEƒGƒAÀ‘•‚Ìˆê‚Â‚ª2010”N1Œ‚É ŒöŠJ‚³‚ê‚½ OpenRTM-aist-1.0 ‚Å‚·B
+//ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®æˆæœã¨ã—ã¦ã€RTãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ã®å‚ç…§å®Ÿè£…ï¼šOpenRTM-aist-0.2 ãŠã‚ˆã³ãã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ä»•æ§˜ãŒå…¬é–‹ã•ã‚Œã¾ã—ãŸã€‚ãã®å¾Œã€ å›½éš›æ¨™æº–åŒ–å›£ä½“ OMG (Object Manegement Group: http://www.omg.org ) ã«ãŠã„ã¦RTCã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ä»•æ§˜ã®æ¨™æº–åŒ–ãŒé€²ã‚ã‚‰ã‚Œã€2008å¹´4æœˆã« OMG å…¬å¼æ¨™æº–ä»•æ§˜ã¨ãªã‚Šã¾ã—ãŸã€‚ã“ã®æ¨™æº–ã«æº–æ‹ ã—ãŸ RTãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢å®Ÿè£…ã®ä¸€ã¤ãŒ2010å¹´1æœˆã« å…¬é–‹ã•ã‚ŒãŸ OpenRTM-aist-1.0 ã§ã™ã€‚
 (G)As a result of the project, reference implementation of RT middleware: OpenRTM-aist-0.2 and its interface specification was released. After that, standardization of the RTC interface specification was advanced in the International Standards Organization OMG (Object Manegement Group: http://www.omg.org), and became OMG official standard specification in April 2008.
 One of RT Middleware implementations conforming to this standard is OpenRTM-aist-1.0 published in January 2010.
 
-//}‚ÉŒ»İ‚ÌŒ¤‹†EŠJ”­E•W€‰»‘Ì§‚ğ¦‚µ‚Ü‚·B
+//å›³ã«ç¾åœ¨ã®ç ”ç©¶ãƒ»é–‹ç™ºãƒ»æ¨™æº–åŒ–ä½“åˆ¶ã‚’ç¤ºã—ã¾ã™ã€‚
 (G)The figure shows the current research, development and standardization system.
 
 #ref(rtm_randd_en.png,30%,center)
-//CENTER: ''OpenRTM-aist‚ÌŒ¤‹†EŠJ”­E•W€‰»‘Ì§''
+//CENTER: ''OpenRTM-aistã®ç ”ç©¶ãƒ»é–‹ç™ºãƒ»æ¨™æº–åŒ–ä½“åˆ¶''
 CENTER: ''OpenRTM-aist research / development / standardization system''
 
-//RTƒ~ƒhƒ‹ƒEƒGƒA‚ÉŠÖ‚·‚éŒ¤‹†ŠJ”­‚ÍA2002”N‚Ì RTƒ~ƒhƒ‹ƒEƒGƒAƒvƒƒWƒFƒNƒg‚Én‚Ü‚èA—lX‚ÈƒvƒƒWƒFƒNƒg‚Åü•Ó‹Zp‚Ì[À‚ğ}‚è‚È‚ª‚çA2007”N‚©‚ç‚Ì NEDO ’m”\‰»ƒvƒƒWƒFƒNƒg‚Ü‚ÅŒp‘±“I‚És‚í‚ê‚Ä‚«‚Ü‚µ‚½(‰º})B
+//RTãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ã«é–¢ã™ã‚‹ç ”ç©¶é–‹ç™ºã¯ã€2002å¹´ã® RTãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã«å§‹ã¾ã‚Šã€æ§˜ã€…ãªãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã§å‘¨è¾ºæŠ€è¡“ã®å……å®Ÿã‚’å›³ã‚ŠãªãŒã‚‰ã€2007å¹´ã‹ã‚‰ã® NEDO çŸ¥èƒ½åŒ–ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¾ã§ç¶™ç¶šçš„ã«è¡Œã‚ã‚Œã¦ãã¾ã—ãŸ(ä¸‹å›³)ã€‚
 (G)Research and development on RT middleware started from the RT middleware project in 2002 and continued until the NEDO Intelligence Project from 2007, while seeking to enhance peripheral technologies in various projects (lower figure) .
 
 #ref(rtm_projects_en.png,30%,center)
-//CENTER: ''OpenRTM-aist‚ÉŠÖ˜A‚µ‚½—lX‚ÈƒvƒƒWƒFƒNƒg''
+//CENTER: ''OpenRTM-aistã«é–¢é€£ã—ãŸæ§˜ã€…ãªãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ''
 CENTER: '' Various projects related to OpenRTM-aist ''
 
-//ˆÈ‰º‚Å‚Í‚±‚ê‚Ü‚Å‚Ìå‚ÈƒvƒƒWƒFƒNƒg‚ÌŠT—v‚ğà–¾‚µ‚Ü‚·B
+//ä»¥ä¸‹ã§ã¯ã“ã‚Œã¾ã§ã®ä¸»ãªãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®æ¦‚è¦ã‚’èª¬æ˜ã—ã¾ã™ã€‚
 (G)Below we outline the main projects so far.
 
-//** RTƒ~ƒhƒ‹ƒEƒGƒAŠÖ˜AƒvƒƒWƒFƒNƒg
+//** RTãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢é–¢é€£ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ
 ** (G)RT Middleware related project
 
-//*** RTƒ~ƒhƒ‹ƒEƒGƒAƒvƒƒWƒFƒNƒg
+//*** RTãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ
 *** (G)RT middleware project
 
-//“Æ—§s­–@lVƒGƒlƒ‹ƒM[EY‹Æ‹Zp“‡ŠJ”­‹@\ (NEDO) 21¢‹Iƒƒ{ƒbƒgƒ`ƒƒƒŒƒ“ƒWƒvƒƒOƒ‰ƒ€ (2002`2004”N“x) ‚É‚¨‚¢‚Äuƒƒ{ƒbƒg‹@”\”­Œ»‚Ì‚½‚ß‚É•K—v‚È—v‘f‹ZpŠJ”­vƒvƒƒWƒFƒNƒg (’ÊÌFRTƒ~ƒhƒ‹ƒEƒGƒAƒvƒƒWƒFƒNƒg)‚ªs‚í‚ê‚Ü‚µ‚½B‚±‚ÌƒvƒƒWƒFƒNƒg‚Å‚ÍAƒƒ{ƒbƒg—p•ªUƒ~ƒhƒ‹ƒEƒFƒA (RTƒ~ƒhƒ‹ƒEƒGƒA) ‚ÌŒ¤‹†ŠJ”­‚ªs‚í‚ê‚Ü‚µ‚½B‚»‚Ì¬‰Ê‚Æ‚µ‚ÄAƒ~ƒhƒ‹ƒEƒGƒA‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXd—l‚ªô’è‚³‚êA‚»‚Ìd—l‚ÉŠî‚Ã‚¢‚½À‘• OpenRTM-aist-0.2.0 ‚ªƒŠƒŠ[ƒX‚³‚ê‚Ü‚µ‚½B
+//ç‹¬ç«‹è¡Œæ”¿æ³•äººæ–°ã‚¨ãƒãƒ«ã‚®ãƒ¼ãƒ»ç”£æ¥­æŠ€è¡“çµ±åˆé–‹ç™ºæ©Ÿæ§‹ (NEDO) 21ä¸–ç´€ãƒ­ãƒœãƒƒãƒˆãƒãƒ£ãƒ¬ãƒ³ã‚¸ãƒ—ãƒ­ã‚°ãƒ©ãƒ  (2002ï½2004å¹´åº¦) ã«ãŠã„ã¦ã€Œãƒ­ãƒœãƒƒãƒˆæ©Ÿèƒ½ç™ºç¾ã®ãŸã‚ã«å¿…è¦ãªè¦ç´ æŠ€è¡“é–‹ç™ºã€ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ (é€šç§°ï¼šRTãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ)ãŒè¡Œã‚ã‚Œã¾ã—ãŸã€‚ã“ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã§ã¯ã€ãƒ­ãƒœãƒƒãƒˆç”¨åˆ†æ•£ãƒŸãƒ‰ãƒ«ã‚¦ã‚§ã‚¢ (RTãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢) ã®ç ”ç©¶é–‹ç™ºãŒè¡Œã‚ã‚Œã¾ã—ãŸã€‚ãã®æˆæœã¨ã—ã¦ã€ãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ä»•æ§˜ãŒç­–å®šã•ã‚Œã€ãã®ä»•æ§˜ã«åŸºã¥ã„ãŸå®Ÿè£… OpenRTM-aist-0.2.0 ãŒãƒªãƒªãƒ¼ã‚¹ã•ã‚Œã¾ã—ãŸã€‚
 (G)"Necessary element technology development for robot function development" project (common name: RT middleware project) is conducted in the 21st Century Robot Challenge Program (NEDO) New Integrated Development Organization New Energy and Industrial Technology Development Organization (NEDO) I was told. In this project, research and development of Distributed Middleware (RT middleware) for robots was conducted. As a result, middleware interface specification was developed, and implementation based on the specification OpenRTM-aist-0.2.0 was released.
 
-//*** •ªUƒRƒ“ƒ|[ƒlƒ“ƒgŒ^ƒƒ{ƒbƒgƒVƒ~ƒ…ƒŒ[ƒ^[
+//*** åˆ†æ•£ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå‹ãƒ­ãƒœãƒƒãƒˆã‚·ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚¿ãƒ¼
 *** (G)Distributed component type robot simulator
 
-//‰ÈŠwU‹»’²®”ï‚É‚æ‚è 2005`2007”N“x ‚É‚©‚¯‚Äs‚í‚ê‚½‚±‚ÌƒvƒƒWƒFƒNƒg‚ÍAƒƒ{ƒbƒgƒ\ƒtƒgƒEƒFƒA‚Ì’~Ï‚É“K‚µ‚½•ªUƒRƒ“ƒ|[ƒlƒ“ƒgƒtƒŒ[ƒ€ƒ[ƒN‚ÆA‚±‚Ìã‚É\’z‚³‚ê‚½ƒƒ{ƒbƒgƒ[ƒ‹ƒhƒVƒ~ƒ…ƒŒ[ƒ^[‚ğŠJ”­‚·‚é‚±‚Æ‚É‚æ‚èAŠî”Õƒ\ƒtƒgƒEƒFƒA‚ÌÄ—˜—p‚ğ‘£i‚µAŸ¢‘ãƒƒ{ƒbƒg‚ÌŠJ”­‚ğŒø—¦‰»‚·‚é‚±‚Æ‚ğ–Ú“I‚Æ‚µ‚Ä‚¢‚Ü‚·B
+//ç§‘å­¦æŒ¯èˆˆèª¿æ•´è²»ã«ã‚ˆã‚Š 2005ï½2007å¹´åº¦ ã«ã‹ã‘ã¦è¡Œã‚ã‚ŒãŸã“ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ã€ãƒ­ãƒœãƒƒãƒˆã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®è“„ç©ã«é©ã—ãŸåˆ†æ•£ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã¨ã€ã“ã®ä¸Šã«æ§‹ç¯‰ã•ã‚ŒãŸãƒ­ãƒœãƒƒãƒˆãƒ¯ãƒ¼ãƒ«ãƒ‰ã‚·ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚¿ãƒ¼ã‚’é–‹ç™ºã™ã‚‹ã“ã¨ã«ã‚ˆã‚Šã€åŸºç›¤ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®å†åˆ©ç”¨ã‚’ä¿ƒé€²ã—ã€æ¬¡ä¸–ä»£ãƒ­ãƒœãƒƒãƒˆã®é–‹ç™ºã‚’åŠ¹ç‡åŒ–ã™ã‚‹ã“ã¨ã‚’ç›®çš„ã¨ã—ã¦ã„ã¾ã™ã€‚
 (G)This project, which was carried out from 2005 to 2007 by the Science Promotion Adjustment Fee, develops a distributed component framework suitable for the accumulation of robot software and a robot world simulator built on it, thereby reusing the foundation software To promote the development of next-generation robots more efficiently.
 
 #ref(openhrp_openrtm_en.png,60%,center)
-//CENTER: ''•ªUƒRƒ“ƒ|[ƒlƒ“ƒgŒ^ƒƒ{ƒbƒgƒVƒ~ƒ…ƒŒ[ƒ^[''
+//CENTER: ''åˆ†æ•£ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå‹ãƒ­ãƒœãƒƒãƒˆã‚·ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚¿ãƒ¼''
 CENTER: ''Distributed component type robot simulator''
 
-//‚±‚ÌƒvƒƒWƒFƒNƒg‚É‚æ‚èA‚±‚ê‚Ü‚ÅY‘Œ¤‚É‚¨‚¢‚Ä•ÊX‚ÉŠJ”­‚³‚ê‚Ä‚¢‚½Aƒƒ{ƒbƒg—p“®—ÍŠwƒVƒ~ƒ…ƒŒ[ƒ^‚Å‚ ‚é OpenHRP3 ‚ÆAOpenRTM-aist ‚ª“‡‚³‚ê‚é‚±‚Æ‚É‚È‚è‚Ü‚µ‚½B
+//ã“ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã«ã‚ˆã‚Šã€ã“ã‚Œã¾ã§ç”£ç·ç ”ã«ãŠã„ã¦åˆ¥ã€…ã«é–‹ç™ºã•ã‚Œã¦ã„ãŸã€ãƒ­ãƒœãƒƒãƒˆç”¨å‹•åŠ›å­¦ã‚·ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚¿ã§ã‚ã‚‹ OpenHRP3 ã¨ã€OpenRTM-aist ãŒçµ±åˆã•ã‚Œã‚‹ã“ã¨ã«ãªã‚Šã¾ã—ãŸã€‚
 (G)This project has resulted in the integration of OpenRTM-aist with OpenHRP 3, which is a robot dynamics simulator developed separately at AIST.
 
-//ƒVƒ~ƒ…ƒŒ[ƒ^[“à‚Ì‘ÎÛƒVƒXƒeƒ€‚¨‚æ‚ÑAŠO•”‚ÌƒRƒ“ƒgƒ[ƒ‰[ƒ‚ƒWƒ…[ƒ‹“™‚ğARTƒRƒ“ƒ|[ƒlƒ“ƒg‚Æ‚µ‚ÄŠJ”­‚µA‚©‚ÂAƒRƒ“ƒgƒ[ƒ‰[ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğƒVƒ~ƒ…ƒŒ[ƒ^[EÀ‹@‚Æ‚à‚ÉÄƒRƒ“ƒpƒCƒ‹‚·‚é‚±‚Æ‚È‚µ‚ÉÄ—˜—p‚Å‚«‚é‚æ‚¤ARTƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒƒWƒbƒN‹ì“®å‘Ì‚Å‚ ‚éÀsƒRƒ“ƒeƒLƒXƒg‚ªŠg’£‚³‚ê‚Ü‚µ‚½B
+//ã‚·ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚¿ãƒ¼å†…ã®å¯¾è±¡ã‚·ã‚¹ãƒ†ãƒ ãŠã‚ˆã³ã€å¤–éƒ¨ã®ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ç­‰ã‚’ã€RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¨ã—ã¦é–‹ç™ºã—ã€ã‹ã¤ã€ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ã‚·ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚¿ãƒ¼ãƒ»å®Ÿæ©Ÿã¨ã‚‚ã«å†ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ã“ã¨ãªã—ã«å†åˆ©ç”¨ã§ãã‚‹ã‚ˆã†ã€RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ­ã‚¸ãƒƒã‚¯é§†å‹•ä¸»ä½“ã§ã‚ã‚‹å®Ÿè¡Œã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãŒæ‹¡å¼µã•ã‚Œã¾ã—ãŸã€‚
 (G)In order to develop the target system in the simulator and the external controller module etc. as RT component and to reuse the controller component without recompiling both the simulator and the actual machine, the execution context which is the logic driving entity of the RT component Has been expanded.
 
-//*** Y‘Œ¤Y‹Æ•ÏŠvŒ¤‹†ƒCƒjƒVƒAƒeƒBƒu
+//*** ç”£ç·ç ”ç”£æ¥­å¤‰é©ç ”ç©¶ã‚¤ãƒ‹ã‚·ã‚¢ãƒ†ã‚£ãƒ–
 *** (G)AIST Industry Innovation Research Initiative
 
-//Y‘Œ¤‚Í“Æ©‚ÌƒvƒƒWƒFƒNƒg‚Æ‚µ‚ÄA2006`2008”N“x‚É‚©‚¯‚ÄAuY‘Œ¤Y‹Æ•ÏŠvŒ¤‹†ƒCƒjƒVƒAƒeƒBƒuv‚ÆŒÄ‚Î‚ê‚éYŠwŠ¯˜AŒgƒvƒƒWƒFƒNƒg‚ğÀ{‚µ‚Ü‚µ‚½B
+//ç”£ç·ç ”ã¯ç‹¬è‡ªã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦ã€2006ï½2008å¹´åº¦ã«ã‹ã‘ã¦ã€ã€Œç”£ç·ç ”ç”£æ¥­å¤‰é©ç ”ç©¶ã‚¤ãƒ‹ã‚·ã‚¢ãƒ†ã‚£ãƒ–ã€ã¨å‘¼ã°ã‚Œã‚‹ç”£å­¦å®˜é€£æºãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å®Ÿæ–½ã—ã¾ã—ãŸã€‚
 (G)As an independent project, AIST conducted an industry-academia collaboration project called "AIST Industrial Innovation Research Initiative" from 2006 to 2008.
 
-//•¡”‚ÌŸ¢‘ãŒ^ƒƒ{ƒbƒg‚Ìƒvƒƒgƒ^ƒCƒvŠJ”­‚ğ’Ê‚¶‚ÄAƒƒ{ƒbƒg—v‘f‹Zp‚ğ RTƒ~ƒhƒ‹ƒEƒFƒA‚ÅÄ—˜—p‰Â”\‚Èƒƒ{ƒbƒg‹@”\•”•i‚Æ‚µ‚Äƒ‚ƒWƒ…[ƒ‹‰»‚µA‚±‚ê‚ç‚Ì‘g‚İ‡‚í‚¹‚É‚æ‚Á‚ÄV‚½‚Èƒƒ{ƒbƒg»•i‚ªŒø—¦—Ç‚­ŠJ”­‚Å‚«‚éŠÂ‹«‚ğ®‚¦‚é‚±‚Æ‚ğ–Úw‚µ‚Ü‚µ‚½B
+//è¤‡æ•°ã®æ¬¡ä¸–ä»£å‹ãƒ­ãƒœãƒƒãƒˆã®ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—é–‹ç™ºã‚’é€šã˜ã¦ã€ãƒ­ãƒœãƒƒãƒˆè¦ç´ æŠ€è¡“ã‚’ RTãƒŸãƒ‰ãƒ«ã‚¦ã‚§ã‚¢ã§å†åˆ©ç”¨å¯èƒ½ãªãƒ­ãƒœãƒƒãƒˆæ©Ÿèƒ½éƒ¨å“ã¨ã—ã¦ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«åŒ–ã—ã€ã“ã‚Œã‚‰ã®çµ„ã¿åˆã‚ã›ã«ã‚ˆã£ã¦æ–°ãŸãªãƒ­ãƒœãƒƒãƒˆè£½å“ãŒåŠ¹ç‡è‰¯ãé–‹ç™ºã§ãã‚‹ç’°å¢ƒã‚’æ•´ãˆã‚‹ã“ã¨ã‚’ç›®æŒ‡ã—ã¾ã—ãŸã€‚
 (G)Through prototype development of multiple next generation robots, we aimed to create an environment in which robot element technology is modularized as a reusable robot functional part in RT middleware and a combination of these modules can efficiently develop a new robot product .
 
-//-Y‘Œ¤ƒvƒŒƒX”­•\: [[¡YŠwŠ¯˜AŒgƒvƒƒWƒFƒNƒguƒ†[ƒU[wŒüƒƒ{ƒbƒgƒI[ƒvƒ“ƒA[ƒLƒeƒNƒ`ƒƒ‚ÌŠJ”­v‚ğŠJn:http://www.aist.go.jp/aist_j/press_release/pr2006/pr20060627/pr20060627.html]]
-//(G)- AIST Press announcement: [[¡Industry-academic-government cooperation project "Development of user-oriented robot open architecture" started:http://www.aist.go.jp/aist_j/press_release/pr2006/pr20060627/pr20060627.html]]
+//-ç”£ç·ç ”ãƒ—ãƒ¬ã‚¹ç™ºè¡¨: [[â– ç”£å­¦å®˜é€£æºãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã€Œãƒ¦ãƒ¼ã‚¶ãƒ¼æŒ‡å‘ãƒ­ãƒœãƒƒãƒˆã‚ªãƒ¼ãƒ—ãƒ³ã‚¢ãƒ¼ã‚­ãƒ†ã‚¯ãƒãƒ£ã®é–‹ç™ºã€ã‚’é–‹å§‹:http://www.aist.go.jp/aist_j/press_release/pr2006/pr20060627/pr20060627.html]]
+//(G)- AIST Press announcement: [[â– Industry-academic-government cooperation project "Development of user-oriented robot open architecture" started:http://www.aist.go.jp/aist_j/press_release/pr2006/pr20060627/pr20060627.html]]
 
-//‚±‚ê‚Ü‚ÅY‘Œ¤‚É‚¨‚¢‚ÄŠJ”­‚³‚ê‚Ä‚«‚½ƒƒ{ƒbƒg—pÈ“d—Í‚«”\ƒvƒƒZƒbƒTAÀŠÔLinuxA•ªUƒRƒ“ƒ|[ƒlƒ“ƒgŒ^ƒVƒ~ƒ…ƒŒ[ƒ^[AƒAƒNƒeƒBƒuRF-IDA3ŸŒ³‹ŠoAG‰¹‰º‚Å‚Ì‰¹º”F¯A2‘«•às‹Zp‚È‚Ç‚Ìƒƒ{ƒbƒg—v‘f‹Zp‚ğ RTƒ~ƒhƒ‹ƒEƒGƒA‚ğ—p‚¢‚Äƒ‚ƒWƒ…[ƒ‹‰»‚µA‚»‚ê‚ğ‘g‚İ‡‚í‚¹‚é‚±‚Æ‚É‚æ‚èAˆÙ‚È‚éŸ¢‘ãƒƒ{ƒbƒg‚Ìƒvƒƒgƒ^ƒCƒv‚ğŠJ”­‚µ‚Ü‚·B–{Œ¤‹†‚ÅŠJ”­‚³‚ê‚½ RTƒ~ƒhƒ‹ƒEƒGƒA‚ğŠî”Õ‚Æ‚µ‚½ƒƒ{ƒbƒgƒVƒXƒeƒ€ƒA[ƒLƒeƒNƒ`ƒƒ‚ğƒ†[ƒU[wŒüƒƒ{ƒbƒgƒI[ƒvƒ“ƒA[ƒLƒeƒNƒ`ƒƒ UCROAiUser Centered Robot Open Architecturej‚ÆÌ‚µ‚Ü‚·B
+//ã“ã‚Œã¾ã§ç”£ç·ç ”ã«ãŠã„ã¦é–‹ç™ºã•ã‚Œã¦ããŸãƒ­ãƒœãƒƒãƒˆç”¨çœé›»åŠ›é«˜æ€§èƒ½ãƒ—ãƒ­ã‚»ãƒƒã‚µã€å®Ÿæ™‚é–“Linuxã€åˆ†æ•£ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå‹ã‚·ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚¿ãƒ¼ã€ã‚¢ã‚¯ãƒ†ã‚£ãƒ–RF-IDã€3æ¬¡å…ƒè¦–è¦šã€é›‘éŸ³ä¸‹ã§ã®éŸ³å£°èªè­˜ã€2è¶³æ­©è¡ŒæŠ€è¡“ãªã©ã®ãƒ­ãƒœãƒƒãƒˆè¦ç´ æŠ€è¡“ã‚’ RTãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ã‚’ç”¨ã„ã¦ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«åŒ–ã—ã€ãã‚Œã‚’çµ„ã¿åˆã‚ã›ã‚‹ã“ã¨ã«ã‚ˆã‚Šã€ç•°ãªã‚‹æ¬¡ä¸–ä»£ãƒ­ãƒœãƒƒãƒˆã®ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—ã‚’é–‹ç™ºã—ã¾ã™ã€‚æœ¬ç ”ç©¶ã§é–‹ç™ºã•ã‚ŒãŸ RTãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ã‚’åŸºç›¤ã¨ã—ãŸãƒ­ãƒœãƒƒãƒˆã‚·ã‚¹ãƒ†ãƒ ã‚¢ãƒ¼ã‚­ãƒ†ã‚¯ãƒãƒ£ã‚’ãƒ¦ãƒ¼ã‚¶ãƒ¼æŒ‡å‘ãƒ­ãƒœãƒƒãƒˆã‚ªãƒ¼ãƒ—ãƒ³ã‚¢ãƒ¼ã‚­ãƒ†ã‚¯ãƒãƒ£ UCROAï¼ˆUser Centered Robot Open Architectureï¼‰ã¨ç§°ã—ã¾ã™ã€‚
 (G)Robot elements such as power-saving high performance processor for robot developed so far at AIST, real-time Linux, distributed component simulator, active RF-ID, 3-dimensional vision, speech recognition under noisy, bipedal walking technology Modularize the technology using RT middleware and combine it to develop prototypes of different next generation robots. The robot system architecture based on RT middleware developed in this research is called user oriented robot open architecture UCROA (User Centered Robot Open Architecture).
 
 #ref(ucroa_en.png,80%,center)
 CENTER: ''UCROA (User Centered Robot Open Architecture)''
 
-//‚±‚ÌŒ¤‹†EŠJ”­ƒvƒƒWƒFƒNƒg‚Å‚ÍAˆÈ‰º‚Ì3ƒ^ƒCƒv‚Ìƒƒ{ƒbƒgƒVƒXƒeƒ€‚ÌŠJ”­‚ğ–Úw‚µAÅI“I‚ÉˆÈ‰º‚Ì‚æ‚¤‚È¬‰Ê‚ğ‚ ‚°‚Ü‚µ‚½B
+//ã“ã®ç ”ç©¶ãƒ»é–‹ç™ºãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã§ã¯ã€ä»¥ä¸‹ã®3ã‚¿ã‚¤ãƒ—ã®ãƒ­ãƒœãƒƒãƒˆã‚·ã‚¹ãƒ†ãƒ ã®é–‹ç™ºã‚’ç›®æŒ‡ã—ã€æœ€çµ‚çš„ã«ä»¥ä¸‹ã®ã‚ˆã†ãªæˆæœã‚’ã‚ã’ã¾ã—ãŸã€‚
 (G)In this research and development project, we aimed to develop the following three types of robot systems and eventually achieved the following results.
 
-//- •¨—¬x‰‡ƒƒ{ƒbƒg
-//-- [[•¨—¬x‰‡ƒƒ{ƒbƒg:http://www.is.aist.go.jp/ufrg/initiative/iagv.htm]]
-//- ‘ÎlƒT[ƒrƒXƒƒ{ƒbƒg
-//-- [[ƒvƒŒƒX”­•\ (2009”N9Œ28“ú):http://www.aist.go.jp/aist_j/press_release/pr2009/pr20090928/pr20090928.html]]
-//- ƒTƒCƒoƒlƒeƒBƒbƒNƒqƒ…[ƒ}ƒ“
-//-- [[ƒvƒŒƒX”­•\ (2009”N3Œ16“ú):http://www.aist.go.jp/aist_j/press_release/pr2009/pr20090316/pr20090316.html]]
+//- ç‰©æµæ”¯æ´ãƒ­ãƒœãƒƒãƒˆ
+//-- [[ç‰©æµæ”¯æ´ãƒ­ãƒœãƒƒãƒˆ:http://www.is.aist.go.jp/ufrg/initiative/iagv.htm]]
+//- å¯¾äººã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒœãƒƒãƒˆ
+//-- [[ãƒ—ãƒ¬ã‚¹ç™ºè¡¨ (2009å¹´9æœˆ28æ—¥):http://www.aist.go.jp/aist_j/press_release/pr2009/pr20090928/pr20090928.html]]
+//- ã‚µã‚¤ãƒãƒãƒ†ã‚£ãƒƒã‚¯ãƒ’ãƒ¥ãƒ¼ãƒãƒ³
+//-- [[ãƒ—ãƒ¬ã‚¹ç™ºè¡¨ (2009å¹´3æœˆ16æ—¥):http://www.aist.go.jp/aist_j/press_release/pr2009/pr20090316/pr20090316.html]]
 
 - Logistics support robot
 - Interpersonal service robot
@@ -86,34 +86,34 @@ CENTER: ''UCROA (User Centered Robot Open Architecture)''
 - Cybernetic Human
 -- [[press release (March 16, 2009):http://www.aist.go.jp/aist_j/press_release/pr2009/pr20090316/pr20090316.html]]
 
-//*** Ÿ¢‘ãƒƒ{ƒbƒg’m”\‰»‹ZpŠJ”­ƒvƒƒWƒFƒNƒg
+//*** æ¬¡ä¸–ä»£ãƒ­ãƒœãƒƒãƒˆçŸ¥èƒ½åŒ–æŠ€è¡“é–‹ç™ºãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ
 *** (G)Next generation robot intelligent technology development project
 
-//ŒoÏY‹ÆÈ‚¨‚æ‚Ñ NEDO ‚É‚æ‚éuŸ¢‘ãƒƒ{ƒbƒg’m”\‰»‹ZpŠJ”­ƒvƒƒWƒFƒNƒgv(2007`2011”N“x) ‚ÍA5”NŠÔ‚Å‘Šz70‰­(—\‘z)‚Ì‘å‹K–ÍƒvƒƒWƒFƒNƒg‚Å‚·BŸ¢‘ãƒƒ{ƒbƒgƒVƒXƒeƒ€‚Ì‚½‚ß‚Ì—v‘f‹Zp‚ğARTƒRƒ“ƒ|[ƒlƒ“ƒg‚Æ‚µ‚Äì¬E’~Ï‚µAÄ—˜—p‚Ì•û–@‚âƒCƒ“ƒ^[ƒtƒF[ƒX‚Ì‹¤’Ê‰»‚ÉŠÖ‚·‚é‹c˜_‚ğ’Ê‚µ‚ÄAŸ¢‘ãƒƒ{ƒbƒg‚ÌİŒvEÀ‘•‚·‚é‚½‚ß‚Ì•û–@˜_‚ğŠm—§‚·‚é‚Æ‚Æ‚à‚ÉAÀÛ‚Ég‚¦‚é‘½‚­‚Ì RTƒRƒ“ƒ|[ƒlƒ“ƒgŒQ‚ğ’~Ï‚·‚é‚±‚Æ‚ğ–Ú“I‚Æ‚µ‚Ä‚¢‚Ü‚·B
+//çµŒæ¸ˆç”£æ¥­çœãŠã‚ˆã³ NEDO ã«ã‚ˆã‚‹ã€Œæ¬¡ä¸–ä»£ãƒ­ãƒœãƒƒãƒˆçŸ¥èƒ½åŒ–æŠ€è¡“é–‹ç™ºãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã€(2007ï½2011å¹´åº¦) ã¯ã€5å¹´é–“ã§ç·é¡70å„„(äºˆæƒ³)ã®å¤§è¦æ¨¡ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã§ã™ã€‚æ¬¡ä¸–ä»£ãƒ­ãƒœãƒƒãƒˆã‚·ã‚¹ãƒ†ãƒ ã®ãŸã‚ã®è¦ç´ æŠ€è¡“ã‚’ã€RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¨ã—ã¦ä½œæˆãƒ»è“„ç©ã—ã€å†åˆ©ç”¨ã®æ–¹æ³•ã‚„ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®å…±é€šåŒ–ã«é–¢ã™ã‚‹è­°è«–ã‚’é€šã—ã¦ã€æ¬¡ä¸–ä»£ãƒ­ãƒœãƒƒãƒˆã®è¨­è¨ˆãƒ»å®Ÿè£…ã™ã‚‹ãŸã‚ã®æ–¹æ³•è«–ã‚’ç¢ºç«‹ã™ã‚‹ã¨ã¨ã‚‚ã«ã€å®Ÿéš›ã«ä½¿ãˆã‚‹å¤šãã® RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆç¾¤ã‚’è“„ç©ã™ã‚‹ã“ã¨ã‚’ç›®çš„ã¨ã—ã¦ã„ã¾ã™ã€‚
 (G)"Next Generation Robot Intelligence Technology Development Project" (2007 - 2011) by the Ministry of Economy, Trade and Industry and NEDO is a large-scale project totaling 7 billion (forecast) over 5 years.
 We create and store element technologies for next-generation robot systems as RT components, establish methodologies for designing and implementing next-generation robots through discussions on common methods of reuse and interfaces, and in fact It is aimed at accumulating a lot of usable RT component groups.
 
-//‚Ü‚½Aƒƒ{ƒbƒgƒVƒXƒeƒ€ŠJ”­‚Ì—lX‚ÈƒtƒF[ƒY‚Å—˜—p‚Å‚«‚éŠeíƒc[ƒ‹ŒQAƒ~ƒhƒ‹ƒEƒGƒAAƒ‰ƒCƒuƒ‰ƒŠ‚ğŠÜ‚Ş RTƒVƒXƒeƒ€ŠJ”­‚Ì‚½‚ß‚Ìƒvƒ‰ƒbƒgƒtƒH[ƒ€(OpenRT ƒvƒ‰ƒbƒgƒtƒH[ƒ€ (OpenRTP) ‚ÆŒÄ‚Ô)‚ğ OpenRTM-aist ‚Ìã‚É\’z‚µ‚Ü‚µ‚½BŠJ”­ƒc[ƒ‹ŒQ‚ÍAEclipse ‚Ìƒvƒ‰ƒOƒCƒ“‚Æ‚µ‚ÄÀ‘•‚³‚êAˆê˜A‚Ìì‹Æ‚ğ“¯ˆê‚ÌŠJ”­ŠÂ‹«‚Ås‚¤‚±‚Æ‚Ì‚Å‚«‚éƒc[ƒ‹ƒ`ƒF[ƒ“‚Æ‚È‚Á‚Ä‚¢‚Ü‚·B
+//ã¾ãŸã€ãƒ­ãƒœãƒƒãƒˆã‚·ã‚¹ãƒ†ãƒ é–‹ç™ºã®æ§˜ã€…ãªãƒ•ã‚§ãƒ¼ã‚ºã§åˆ©ç”¨ã§ãã‚‹å„ç¨®ãƒ„ãƒ¼ãƒ«ç¾¤ã€ãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ã€ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’å«ã‚€ RTã‚·ã‚¹ãƒ†ãƒ é–‹ç™ºã®ãŸã‚ã®ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ (OpenRT ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ  (OpenRTP) ã¨å‘¼ã¶)ã‚’ OpenRTM-aist ã®ä¸Šã«æ§‹ç¯‰ã—ã¾ã—ãŸã€‚é–‹ç™ºãƒ„ãƒ¼ãƒ«ç¾¤ã¯ã€Eclipse ã®ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã¨ã—ã¦å®Ÿè£…ã•ã‚Œã€ä¸€é€£ã®ä½œæ¥­ã‚’åŒä¸€ã®é–‹ç™ºç’°å¢ƒã§è¡Œã†ã“ã¨ã®ã§ãã‚‹ãƒ„ãƒ¼ãƒ«ãƒã‚§ãƒ¼ãƒ³ã¨ãªã£ã¦ã„ã¾ã™ã€‚
 (G)We also built a platform (called the OpenRT platform (OpenRTP)) for developing RT systems including various tools, middleware, and libraries that can be used in various phases of robot system development on OpenRTM-aist. The development tool suite is implemented as a plug-in of Eclipse, and it is a tool chain that can do a series of work in the same development environment.
 
 #ref(openrtp_en.png,50%,center)
-//CENTER: ''OpenRT ƒvƒ‰ƒbƒgƒtƒH[ƒ€ (OpenRTP)''
+//CENTER: ''OpenRT ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ  (OpenRTP)''
 CENTER: ''OpenRT platform (OpenRTP)''
 
-//ƒc[ƒ‹ƒ`ƒF[ƒ“ŠÔ‚Ìƒf[ƒ^‚ÍARTƒRƒ“ƒ|[ƒlƒ“ƒg‚ğŠî”Õ‚Æ‚µ‚½ƒ‚ƒWƒ…[ƒ‹d—l‹Lq•û®‚âƒVƒXƒeƒ€d—l‹Lq•û® (UMLƒ‚ƒfƒ‹‚ÆXMLƒXƒL[ƒ}‚©‚ç¬‚éB) ‚ÉŠî‚Ã‚¢‚½ƒtƒH[ƒ}ƒbƒg‚Å‹Lq‚³‚êAƒc[ƒ‹ŠÔ‚Ì˜AŒg‚ğ‚æ‚èŠm‚©‚È‚à‚Ì‚É‚·‚é‚Æ‚Æ‚à‚ÉA«—ˆ“I‚É‚Í•W€‰»‚à–Úw‚µ‚Ä‚¢‚Ü‚·BƒvƒƒWƒFƒNƒg‚ÌÅI¬‰Ê‚Æ‚µ‚ÄAì¬‚µ‚½‘½‚­‚ÌRTƒRƒ“ƒ|[ƒlƒ“ƒgŒQ‚âƒc[ƒ‹ŒQ‚ğƒ\[ƒXƒR[ƒhŒöŠJ‚ÌãƒI[ƒvƒ“‰»A‚ ‚é‚¢‚Í–‹Æ‰»‚É‚Â‚¢‚Ä‚àŒŸ“¢‚³‚ê‚Ä‚¢‚Ü‚·B
+//ãƒ„ãƒ¼ãƒ«ãƒã‚§ãƒ¼ãƒ³é–“ã®ãƒ‡ãƒ¼ã‚¿ã¯ã€RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’åŸºç›¤ã¨ã—ãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ä»•æ§˜è¨˜è¿°æ–¹å¼ã‚„ã‚·ã‚¹ãƒ†ãƒ ä»•æ§˜è¨˜è¿°æ–¹å¼ (UMLãƒ¢ãƒ‡ãƒ«ã¨XMLã‚¹ã‚­ãƒ¼ãƒã‹ã‚‰æˆã‚‹ã€‚) ã«åŸºã¥ã„ãŸãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã§è¨˜è¿°ã•ã‚Œã€ãƒ„ãƒ¼ãƒ«é–“ã®é€£æºã‚’ã‚ˆã‚Šç¢ºã‹ãªã‚‚ã®ã«ã™ã‚‹ã¨ã¨ã‚‚ã«ã€å°†æ¥çš„ã«ã¯æ¨™æº–åŒ–ã‚‚ç›®æŒ‡ã—ã¦ã„ã¾ã™ã€‚ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®æœ€çµ‚æˆæœã¨ã—ã¦ã€ä½œæˆã—ãŸå¤šãã®RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆç¾¤ã‚„ãƒ„ãƒ¼ãƒ«ç¾¤ã‚’ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰å…¬é–‹ã®ä¸Šã‚ªãƒ¼ãƒ—ãƒ³åŒ–ã€ã‚ã‚‹ã„ã¯äº‹æ¥­åŒ–ã«ã¤ã„ã¦ã‚‚æ¤œè¨ã•ã‚Œã¦ã„ã¾ã™ã€‚
 (G)Data between tool chains is described in a format based on the RT component-based module specification description method and system specification description method (composed of UML model and XML schema), and the cooperation between the tools is made more reliable We are also aiming for standardization in the future. As the final result of the project, we are considering openness or commercialization of many RT component groups and tools created by publishing source code.
 
-//*** ƒI[ƒvƒ“ƒCƒmƒx[ƒVƒ‡ƒ“‘£iƒvƒƒWƒFƒNƒg
+//*** ã‚ªãƒ¼ãƒ—ãƒ³ã‚¤ãƒãƒ™ãƒ¼ã‚·ãƒ§ãƒ³ä¿ƒé€²ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ
 *** (G)Open Innovation Promotion Project
 
-//NEDO‚É‚æ‚è2008”N‚©‚ç3”NŠÔÀ{‚³‚ê‚½uŠî”Õƒƒ{ƒbƒg‹ZpŠˆ—pŒ^ƒI[ƒvƒ“ƒCƒmƒx[ƒVƒ‡ƒ“‘£iƒvƒƒWƒFƒNƒgv‚Å‚·B‚±‚ÌƒvƒƒWƒFƒNƒg‚Å‚ÍAŠù‘¶‚Ì—v‘f•”•i‚ğ—eˆÕ‚É RTƒRƒ“ƒ|[ƒlƒ“ƒg‰»‚·‚é‚½‚ßAˆÀ‰¿‚Å¬Œ^‚ÈŠî”Õ’ÊMƒ‚ƒWƒ…[ƒ‹‚ğŠJ”­‚·‚é‚±‚Æ‚ğ–Úw‚µ‚Ä‚¢‚Ü‚·B‚³‚ç‚ÉA‚±‚ÌŠî”Õ’ÊMƒ‚ƒWƒ…[ƒ‹‚ğ—˜—p‚µ‚ÄAÀÛ‚É‰Æ‰®‚Ì—lX‚È•”•ª‚ÉAƒZƒ“ƒT[‚âƒAƒNƒ`ƒ…ƒG[ƒ^[‚ğ”z’u‚µA‘½—l‚ÈƒfƒoƒCƒX‚ª˜AŒg‚µ‚ÄˆÀSEˆÀ‘SE‰õ“K‚È‹Z‹óŠÔ‚ğì‚èo‚·’m”\‰»Z‘î‚ğÀØƒVƒXƒeƒ€‚Æ‚µ‚Ä\’z‚µ‚Ü‚µ‚½B
+//NEDOã«ã‚ˆã‚Š2008å¹´ã‹ã‚‰3å¹´é–“å®Ÿæ–½ã•ã‚ŒãŸã€ŒåŸºç›¤ãƒ­ãƒœãƒƒãƒˆæŠ€è¡“æ´»ç”¨å‹ã‚ªãƒ¼ãƒ—ãƒ³ã‚¤ãƒãƒ™ãƒ¼ã‚·ãƒ§ãƒ³ä¿ƒé€²ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã€ã§ã™ã€‚ã“ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã§ã¯ã€æ—¢å­˜ã®è¦ç´ éƒ¨å“ã‚’å®¹æ˜“ã« RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåŒ–ã™ã‚‹ãŸã‚ã€å®‰ä¾¡ã§å°å‹ãªåŸºç›¤é€šä¿¡ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’é–‹ç™ºã™ã‚‹ã“ã¨ã‚’ç›®æŒ‡ã—ã¦ã„ã¾ã™ã€‚ã•ã‚‰ã«ã€ã“ã®åŸºç›¤é€šä¿¡ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’åˆ©ç”¨ã—ã¦ã€å®Ÿéš›ã«å®¶å±‹ã®æ§˜ã€…ãªéƒ¨åˆ†ã«ã€ã‚»ãƒ³ã‚µãƒ¼ã‚„ã‚¢ã‚¯ãƒãƒ¥ã‚¨ãƒ¼ã‚¿ãƒ¼ã‚’é…ç½®ã—ã€å¤šæ§˜ãªãƒ‡ãƒã‚¤ã‚¹ãŒé€£æºã—ã¦å®‰å¿ƒãƒ»å®‰å…¨ãƒ»å¿«é©ãªå±…ä½ç©ºé–“ã‚’ä½œã‚Šå‡ºã™çŸ¥èƒ½åŒ–ä½å®…ã‚’å®Ÿè¨¼ã‚·ã‚¹ãƒ†ãƒ ã¨ã—ã¦æ§‹ç¯‰ã—ã¾ã—ãŸã€‚
 (G)It is "open innovation promotion project utilizing foundation robot technology" conducted by NEDO for 3 years from 2008. In this project, we aim to develop inexpensive and compact base communication modules in order to easily make existing component parts into RT component. Furthermore, utilizing this infrastructure communication module, we have installed an intelligent housing that actually arranges sensors and actuators in various parts of houses and cooperates with diverse devices to create a safe, secure and comfortable living space We built it.
 
-//** ‚»‚Ì‘¼
+//** ãã®ä»–
 ** (G)Other
 
-//ƒvƒƒWƒFƒNƒgˆÈŠO‚É‚¨‚¢‚Ä‚àAOpenRTM-aist ‚ÌŒ¤‹†EŠJ”­E•‹y‚Ì‚½‚ß‚ÌŠˆ“®‚ğs‚Á‚Ä‚¢‚Ü‚·B
+//ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆä»¥å¤–ã«ãŠã„ã¦ã‚‚ã€OpenRTM-aist ã®ç ”ç©¶ãƒ»é–‹ç™ºãƒ»æ™®åŠã®ãŸã‚ã®æ´»å‹•ã‚’è¡Œã£ã¦ã„ã¾ã™ã€‚
 (G)Even outside the project, we are engaged in research, development and dissemination of OpenRTM-aist.
 
-//*** uK‰ï
+//*** è¬›ç¿’ä¼š
 *** (G)Training session
