@@ -1,30 +1,19 @@
 #contents
 
-OpenRTM-aistは、RTコンポーネントフレームワーク、RTミドルウエア、基本RT
-コンポーネント群、ライブラリ、基本サービス群、基本ツール群等から構成さ
-れています。RTコンポーネントフレームワークは、RTコンポーネントを作るた
-めの基本クラスであり、すべてのRTコンポーネントはこの基本クラスのサブク
-ラスとして作成されます。RTミドルウエアは、フレームワークに基づいて作成
-されたRTコンポーネントのモジュールのロードや、インスタンスの生成・解体
-等のライフサイクルの管理、コンポーネントのネームサービスへの登録等を行
-う部分です。
+OpenRTM-aist は、RTコンポーネントフレームワーク、RTミドルウエア、基本RTコンポーネント群、ライブラリ、基本サービス群、基本ツール群等から構成されています。
+RTコンポーネントフレームワークは、RTコンポーネントを作るための基本クラスであり、すべての RTコンポーネントはこの基本クラスのサブクラスとして作成されます。
+RTミドルウエアは、フレームワークに基づいて作成された RTコンポーネントのモジュールのロードや、インスタンスの生成・解体等のライフサイクルの管理、コンポーネントのネームサービスへの登録等を行う部分です。
 
-現在のところ、OpenRTM-aist は C++、Python、Java の各言語をサポートして
-おり、Windows 、UNIX 系 OS、$\mu$ITRON (C++のみ対応) 系の各 OS 上で動作
-可能です。さらに、株式会社セックが OpenRTM-aist 互換のミドルウエア:
-OpenRTM.NET を公開しており、C# を始めとする.NET 環境でRTCを作成・実行す
-ることができます。異なる言語で作成されたり、異なるOS上で動作するRTC同士
-は相互に接続し、連携が可能です。
+現在のところ、OpenRTM-aist は C++、Python、Java の各言語をサポートしており、Windows、UNIX 系 OS、μITRON (C++のみ対応) 系の各 OS 上で動作可能です。
+さらに、株式会社セックが OpenRTM-aist 互換のミドルウエア:OpenRTM.NET を公開しており、C# を始めとする.NET 環境でRTCを作成・実行することができます。
+異なる言語で作成されたり、異なる OS 上で動作する RTC 同士は相互に接続し、連携が可能です。
 
-この他、ユーザの利便性を向上させるライブラリ、RTコンポーネントの登録検
-索等の基本的サービス (現在は CORBA の Naming Service を利用)、RTコンポー
-ネントの雛型コードを生成するRTCBuilder、RTコンポーネントの接続・制御等
-を行うRTSystemEditor等のツール群から構成されています。
+この他、ユーザーの利便性を向上させるライブラリ、RTコンポーネントの登録検索等の基本的サービス (現在は CORBA の Naming Service を利用)、RTコンポーネントの雛型コードを生成する RTCBuilder、RTコンポーネントの接続・制御等を行う RTSystemEditor 等のツール群から構成されています。
 
 ** インターフェース仕様
 
 - OMG Robotic Technology Component Specification 1.0 準拠
--- [[OMG仕様書 formal/08-04-04:http://www.omg.org/spec/RTC/1.0/]]
+-- [[OMG仕様書 formal/12-09-01:https://www.omg.org/spec/RTC/1.1/]]
 - OMG Super Distributed Object Specification 1.1 準拠
 -- [[OMG仕様書 formal/08-10-01:http://www.omg.org/spec/SDO/1.1/]]
 
@@ -32,26 +21,23 @@ OpenRTM.NET を公開しており、C# を始めとする.NET 環境でRTCを作成・実行す
 
 - [[OMG (Object Management Group):http://www.omg.org]]
 - [[OMG Specifications:http://www.omg.org/technology/documents/spec_catalog.htm]]
-- [[OMG Domain Specifications:http://www.omg.org/technology/documents/domain_spec_catalog.htm]]
 
 ** 構成
 
-OpenRTM-aist は以下の各言語版のミドルウエアライブラリおよびツール群から
-構成されています。
+OpenRTM-aist は以下の各言語版のミドルウエアライブラリおよびツール群から構成されています。
 
 CENTER:''OpenRTM-aistの構成''
-|CENTER:200|LEFT|c
+|CENTER:170|LEFT:350|c
 | 名前 | 概要 |
 | OpenRTM-aist (C++版)    | C++言語でRTコンポーネントを作成するためのコンポーネントフレームワークとミドルウエアライブラリおよびコマンド群 |
 | OpenRTM-aist (Python版) | Python言語でRTコンポーネントを作成するためのコンポーネントフレームワークとミドルウエアライブラリおよびコマンド群 |
 | OpenRTM-aist (Java版)   | Java言語でRTコンポーネントを作成するためのコンポーネントフレームワークとミドルウエアライブラリおよびコマンド群 |
 | RTCBuilder              | RTコンポーネントの設計、コード生成を行うための Eclipse プラグイン |
 | RTSystemEditor          | RTコンポーネントの操作およびRTシステムの設計・操作を行うための Eclipse プラグイン |
-| rtcshell/rtsshell       | RTコンポーネント、RTシステムの操作をCUIから行うためのコマンド群 |
+| rtshell       | RTコンポーネント、RTシステムの操作をCUIから行うためのコマンド群 |
 
 
-これらの配布物はそれぞれ EPL と 個別契約のデュアルライセンスの元配布さ
-れています。
+これらの配布物はそれぞれ EPL と個別契約のデュアルライセンスの元配布されています。
 
 
 ** 動作条件
@@ -59,15 +45,15 @@ CENTER:''OpenRTM-aistの構成''
 *** OpenRTM-aist (C++版)
 
 |CENTER:200|LEFT|c
-| コンパイラ     | gcc 3.x 以上, Visual C++ 2005, 2008 |
-| OS             | Linux, FreeBSD, Windows, Mac OS X, TOPPERS ASP |
-| CPU            | i386, x86_64, ppc, arm |
-| 依存ライブラリ | omniORB 4.0 以上, libuuid (Linux) |
+| コンパイラ     | gcc 3.x 以上、Visual C++ 2008、2010、2012、2013、2015、2017、2019 |
+| OS             | Linux、FreeBSD、Windows、Mac OS X、TOPPERS ASP |
+| CPU            | i386、x86_64、ppc、arm |
+| 依存ライブラリ | omniORB 4.0 以上、libuuid (Linux) |
 
 *** OpenRTM-aist (Python版)
 
 |CENTER:200|LEFT|c
-| Python | Python 2.3 以上 |
+| Python | Python 2.7、Python3.6、Python 3.7 |
 | 依存ライブラリ | omniORBpy-2.3以上 |
 
 
@@ -82,10 +68,10 @@ CENTER:''OpenRTM-aistの構成''
 |CENTER:200|LEFT|c
 | Eclipse | 3.4 以上 |
 | Java    | JDK6 以上 |
-| 依存ライブラリ | Eclipse EMF 2.2以上(SDO,XSD含む), &br; Eclipse GEF 3.2以上(Draw2D含む) |
+| 依存ライブラリ | Eclipse EMF 2.2以上(SDO,XSD含む)、&br; Eclipse GEF 3.2以上(Draw2D含む) |
 
-*** rtcshell/rtsshell
+*** rtshell
 
 |CENTER:200|LEFT|c
-| Python | Python 2.6 以上 |
+| Python | Python 2.7、Python3.6、Python 3.7 |
 | 依存ライブラリ | omniORBpy-2.3 以上 |

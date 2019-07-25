@@ -1,0 +1,122 @@
+#contents
+
+//OpenRTM-aist は、RTコンポーネントフレームワーク、RTミドルウエア、基本RTコンポーネント群、ライブラリ、基本サービス群、基本ツール群等から構成されています。
+//RTコンポーネントフレームワークは、RTコンポーネントを作るための基本クラスであり、すべての RTコンポーネントはこの基本クラスのサブクラスとして作成されます。
+//RTミドルウエアは、フレームワークに基づいて作成された RTコンポーネントのモジュールのロードや、インスタンスの生成・解体等のライフサイクルの管理、コンポーネントのネームサービスへの登録等を行う部分です。
+(G)OpenRTM-aist consists of RT component framework, RT middleware, basic RT component group, library, basic service group, basic tools group and so on.
+The RT component framework is the base class for creating RT components, and all RT components are created as subclasses of this base class.
+RT middleware is a part that loads modules of RT component created based on framework, management of life cycle such as creation and disassembly of instances, registration of components to name service, etc.
+
+//現在のところ、OpenRTM-aist は C++、Python、Java の各言語をサポートしており、Windows、UNIX 系 OS、$\mu$ITRON (C++のみ対応) 系の各 OS 上で動作可能です。
+//さらに、株式会社セックが OpenRTM-aist 互換のミドルウエア:OpenRTM.NET を公開しており、C# を始めとする.NET 環境でRTCを作成・実行することができます。
+//異なる言語で作成されたり、異なる OS 上で動作する RTC 同士は相互に接続し、連携が可能です。
+(G)At present, OpenRTM-aist supports C++, Python, Java languages, it can run on Windows, UNIX based OS, $ \ mu $ ITRON (C++ only) based OS.
+In addition, SEC Corporation has released OpenRTM-aist compatible middleware: OpenRTM.NET, and it can create and execute RTC in .NET environment including C #.
+RTCs that are created in different languages or operate on different OSs can be connected to each other and linked together.
+
+//この他、ユーザーの利便性を向上させるライブラリ、RTコンポーネントの登録検索等の基本的サービス (現在は CORBA の Naming Service を利用)、RTコンポーネントの雛型コードを生成する RTCBuilder、RTコンポーネントの接続・制御等を行う RTSystemEditor 等のツール群から構成されています。
+(G)In addition to this, basic services (currently using CORBA's Naming Service) such as library and RT component registration search for improving user convenience, RTC Builder for generating RTC component model code, RT component connection / control It consists of a tool group such as RTSystemEditor which does the above.
+
+//** インターフェース仕様
+** (G)Interface Specification
+
+//- OMG Robotic Technology Component Specification 1.0 準拠
+//-- [[OMG仕様書 formal/08-04-04:http://www.omg.org/spec/RTC/1.0/]]
+//- OMG Super Distributed Object Specification 1.1 準拠
+//-- [[OMG仕様書 formal/08-10-01:http://www.omg.org/spec/SDO/1.1/]]
+- Compliant with OMG Robotic Technology Component Specification 1.0
+-- [[OMG specification sheet formal/08-04-04:http://www.omg.org/spec/RTC/1.0/]]
+- Compliant with OMG Super Distributed Object Specification 1.1
+-- [[OMG specification sheet formal/08-10-01:http://www.omg.org/spec/SDO/1.1/]]
+
+//***参考
+***(G)reference
+
+- [[OMG (Object Management Group):http://www.omg.org]]
+- [[OMG Specifications:http://www.omg.org/technology/documents/spec_catalog.htm]]
+
+
+//** 構成
+** (G)Constitution
+
+//OpenRTM-aist は以下の各言語版のミドルウエアライブラリおよびツール群から構成されています。
+(G)OpenRTM-aist consists of the following middle language libraries and tools of each language version.
+
+//CENTER:''OpenRTM-aistの構成''
+//|CENTER:170|LEFT:350|c
+//| 名前 | 概要 |
+//| OpenRTM-aist (C++版)    | C++言語でRTコンポーネントを作成するためのコンポーネントフレームワークとミドルウエアライブラリおよびコマンド群 |
+//| OpenRTM-aist (Python版) | Python言語でRTコンポーネントを作成するためのコンポーネントフレームワークとミドルウエアライブラリおよびコマンド群 |
+//| OpenRTM-aist (Java版)   | Java言語でRTコンポーネントを作成するためのコンポーネントフレームワークとミドルウエアライブラリおよびコマンド群 |
+//| RTCBuilder              | RTコンポーネントの設計、コード生成を行うための Eclipse プラグイン |
+//| RTSystemEditor          | RTコンポーネントの操作およびRTシステムの設計・操作を行うための Eclipse プラグイン |
+//| rtcshell/rtsshell       | RTコンポーネント、RTシステムの操作をCUIから行うためのコマンド群 |
+CENTER: '' Configuration of OpenRTM-aist ''
+|CENTER:170|LEFT:350|c
+| Name | Summary |
+| OpenRTM-aist (C++ version) | Component framework and middleware libraries and commands for creating RT components in C++ language |
+| OpenRTM-aist (Python version) | Component framework and middleware library and commands for creating RT components in Python language |
+| OpenRTM-aist (Java version) | Component framework and middleware library and commands for creating RT components in Java language |
+| RTCBuilder | Eclipse plugin for RT component design and code generation |
+| RTSystemEditor | Eclipse plugin for RT component operation and RT system design / operation |
+| rtcshell / rtsshell | command group for performing RT component and RT system operations from CUI |
+
+//これらの配布物はそれぞれ EPL と個別契約のデュアルライセンスの元配布されています。
+(G)Each of these distributions is distributed under the dual license of individual contract with EPL respectively.
+
+//** 動作条件
+** (G)Operating condition
+
+//*** OpenRTM-aist (C++版)
+*** (G)OpenRTM-aist (C++ version)
+
+//|CENTER:200|LEFT|c
+//| コンパイラ     | gcc 3.x 以上、Visual C++ 2005、2008 |
+//| OS             | Linux、FreeBSD、Windows、Mac OS X、TOPPERS ASP |
+//| CPU            | i386、x86_64、ppc、arm |
+//| 依存ライブラリ | omniORB 4.0 以上、libuuid (Linux) |
+|CENTER:200|LEFT|c
+| Compiler | gcc 3.x or higher, Visual C++ 2005, 2008 |
+| OS | Linux, FreeBSD, Windows, Mac OS X, TOPPERS ASP |
+| CPU | i386, x86_64, ppc, arm |
+| Dependent library | omniORB 4.0 or higher, libuuid (Linux) |
+
+//*** OpenRTM-aist (Python版)
+*** (G)OpenRTM-aist (Python version)
+
+//|CENTER:200|LEFT|c
+//| Python | Python 2.3 以上 |
+//| 依存ライブラリ | omniORBpy-2.3以上 |
+|CENTER:200|LEFT|c
+| Python | Python 2.3 and higher |
+| Dependent library | omniORBpy - 2.3 or higher |
+
+//*** OpenRTM-aist (Java版)
+*** (G)OpenRTM-aist (Java version)
+
+//|CENTER:200|LEFT|c
+//| Java | JDK5 以上 |
+//| 依存ライブラリ | JDK に含まれる Java IDL |
+|CENTER:200|LEFT|c
+| Java | JDK 5 or higher |
+| Dependent library | Java IDL included in JDK |
+
+*** (G)RTCBuilder/RTSystemEditor
+
+//|CENTER:200|LEFT|c
+//| Eclipse | 3.4 以上 |
+//| Java    | JDK6 以上 |
+//| 依存ライブラリ | Eclipse EMF 2.2以上(SDO,XSD含む)、&br; Eclipse GEF 3.2以上(Draw2D含む) |
+|CENTER:200|LEFT|c
+| Eclipse | 3.4 or more |
+| Java | JDK 6 or higher |
+| Dependent library | Eclipse EMF 2.2 or higher (including SDO and XSD), Eclipse GEF 3.2 or higher (including Draw 2D) |
+
+*** (G)rtcshell/rtsshell
+
+//|CENTER:200|LEFT|c
+//| Python | Python 2.6 以上 |
+//| 依存ライブラリ | omniORBpy-2.3 以上 |
+|CENTER:200|LEFT|c
+| Python | Python 2.6 and higher |
+| Dependent library | omniORBpy - 2.3 or higher |
