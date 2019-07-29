@@ -2,26 +2,27 @@
 #clear
 
 //** RTミドルウエア (RTM)
-** (G)RT-Middleware  (RTM)
+** RT-Middleware  (RTM)
 
 //RTミドルウエア (RT-Middleware: RTM) とは、ロボット機能要素 (RT機能要素)のソフトウエアモジュールを複数組み合わせてロボットシステム (RTシステム)を構築する為のソフトウエアプラットフォームを指す一般名称です。
 //OpenRTM-aist は RTミドルウエア実装の一つであり、''Open''-source and open architecture ''R''obot ''T''echnology ''M''iddleware implemented by ''AIST'' (産業技術総合研究所) の略称です。
-(G)RT Middleware (RT-Middleware: RTM) is a generic name that refers to a software platform for constructing a robot system (RT system) by combining multiple software modules of robot functional elements (RT function elements).
-OpenRTM-aist is one of RT middleware implementations, '' Open '' - source and open architecture '' R''obot '' T''chnology '' M '' iddleware implemented by '' AIST '' ( National Institute of Advanced Industrial Science and Technology).
+RT Middleware (RT-Middleware: RTM) is a name that refers to a software platform for constructing a robot system (RT system) by combining multiple software modules of robot functional elements (RT function elements).
+OpenRTM-aist is one of RT middleware implementations, It stands for '' Open '' - source and open architecture '' R''obot '' T''chnology '' M '' iddleware implemented by '' AIST '' ( National Institute of Advanced Industrial Science and Technology).
 
 //RTシステムを構成するRT機能要素とは、あるまとまった機能を提供するロボット構成要素で、例えばサーボモーターやセンサー、カメラといったデバイス単位であったり、あるいはこうしたデバイスの組み合わせにより実現される移動台車、アームなども RT機能要素として捉える事ができるでしょう。
-(G)The RT function element constituting the RT system is a robot component that provides a certain function, for example, a unit of a device such as a servo motor, a sensor, a camera, or the like, or a combination of such a mobile cart, arm You can also capture it as an RT function element.
+The RT function elements in the RT system are robot components - each one provides a certain function. For example, a component handle a device such as a servo motor, a sesor, a camera or th the like. Also a convination of the such devices like a mobile car or a robot arm  also can be implemented as a RT function element.
 
 //また、ハードウエアに結びついているものだけでなく、制御アルゴリズム、画像処理アルゴリズムといった、ソフトウエアのみで構成されるものも RT機能要素と考えることができます。
 //下図に示すように、モジュール化された RT機能要素を階層的に組み合わせることで、ロボットシステム構築を容易にするためのプラットフォームが RTミドルウエアです。
-(G)Mata, hādouea ni musubitsuite iru mono dakedenaku, seigyo arugorizumu, gazō shori arugorizumu to itta, sofutōea nomi de kōsei sa reru mono mo RT kinō yōso to kangaeru koto ga dekimasu. Shitazu ni shimesu yō ni, mojūru-ka sa reta RT kinō yōso o kaisō-teki ni kumiawaseru koto de, robotto shisutemu kōchiku o yōi ni suru tame no purattofōmu ga RT midoruueadesu.
-In addition to what is tied to hardware, what can be thought of as an RT function element is one composed only of software such as a control algorithm and an image processing algorithm.
-RT Middleware is a platform for facilitating robot system construction by hierarchically combining modularized RT function elements as shown below.
+In addition to what is tied to hardware, RT function element can be tied only to software such as a control algorithm and an image processing algorithm.
+RT Middleware is a platform for supporting easy construction of robot systems by combining hierarchically modularized RT function elements as shown below.
 
 #ref(rtsystem_integration_en.png,50%,center)
 //CENTER: ''RTミドルウエアによるRTシステムインテグレーション''
 CENTER: ''RT system integration by RT middleware''
 
+//25th July ここまで
+//
 //** RT コンポーネント (RTC)
 ** (G)RT Component (RTC)
 
