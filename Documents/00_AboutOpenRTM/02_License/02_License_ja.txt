@@ -1,91 +1,56 @@
-#contents
+﻿#contents
 
-OpenRTM-aist �́A�e����� (C++, Java, Python) �̃~�h���E�G�A���C�u����
-�ƁARTCBuilder, RTSystemEditor �Ȃǃc�[������\������Ă���A���ꂼ��
+OpenRTM-aist は、各言語版 (C++、Java、Python) のミドルウエアライブラリと、RTCBuilder、RTSystemEditor などツールから構成されており、それぞれ
+- OpenRTM-aist (C++、Java、Python版)は ''LGPL と個別契約のデュアルライセンス''
+- RTSystemEditor、RTCBuilder は ''EPL と個別契約のデュアルライセンス''
 
-- OpenRTM-aist (C++, Java, Python��)�� ''LGPL�ƌʌ_��̃f���A�����C�Z���X''
-- RTSystemEditor, RTCBuilder��''EPL�ƌʌ_��̃f���A�����C�Z���X''
+のもとでオープンソース形式で配布しています。
 
-�̂��ƂŃI�[�v���\�[�X�`���Ŕz�z���Ă��܂��B
+LGPL (GNU Lesser General Public License) はフリーソフトウェア財団（Free Software Foundation、以下FSFと略称）が公開しているコピーレフト型のフリーソフトウェアライセンスです。
 
-LGPL (GNU Lesser General Public License) �̓t���[�\�t�g�E�F�A���c
-�iFree Software Foundation�A�ȉ�FSF�Ɨ��́j�����J���Ă���R�s�[���t�g�^
-�̃t���[�\�t�g�E�F�A���C�Z���X�ł��B
 
-EPL (Eclipse Public License) �� Free Software Foundation (FSF)�ɂ����
-�F�߂��Ă���u�t���[�\�t�g�E�F�A���C�Z���X�v��1�ł���ACPL (�ꕔ��
-LGPL) ���Ǝ������C�Z���X�`�Ԃł���A��菤�Ɨ��p�𑣐i������̂ƂȂ���
-���܂��B
+EPL (Eclipse Public License) は FSFによって認められている「フリーソフトウェアライセンス」の1つであり、CPL (一部はLGPL) 等と似たライセンス形態であり、より商業利用を促進するものとなっています。
 
-�����̃��C�Z���X�́A(i) �ʃ��W���[���Ƃ��ĔЕz�����\�t�g�E�G�A��A
-(ii) �v���O�����̔h�����łȂ����́A�ɂ͋y�т܂���B�܂�EPL���C�Z���X�́A
-�����Ɋւ���������܂܂�Ă���A�R���g���r���[�^�������������Y�\�t�g
-�E�G�A�ɉe�����Ȃ� (�g�p�҂ɂ͎g�p�������̓������C�Z���X���t�^�����)
-�`�ԂƂȂ��Ă��܂��B
+これらのライセンスは、(i) 別モジュールとして頒布されるソフトウエアや、(ii) プログラムの派生物でないものには及びません。またEPLライセンスは、特許に関する条項が含まれており、コントリビューターが持つ特許が当該ソフトウエアに影響しない (使用者には使用料無料の特許ライセンスが付与される) 形態となっています。
 
-�Ȃ��ALGPL���C�Z���X�̏ڍׂɂ��ẮA
+なお、LGPLライセンスの詳細については、
 - http://www.gnu.org/copyleft/lesser.html
-���AEPL���C�Z���X�̏ڍׂɂ��ẮA
+を、EPLライセンスの詳細については、
 - http://opensource.org/licenses/eclipse-1.0.php
-- http://sourceforge.jp/projects/opensource/wiki/licenses%2FEclipse_Public_License (���{���)
-���Q�Ƃ��Ă��������B
+- http://sourceforge.jp/projects/opensource/wiki/licenses%2FEclipse_Public_License (日本語訳)
+を参照してください。
 
-�ȉ��A��̓I���p��Ɋ�Â����C�Z���X�Ɛ��������������܂��B
+以下、具体的利用例に基づくライセンスと制約条件を説明します。
 
-** RT�R���|�[�l���g�J���E�z�z
+** RTコンポーネント開発・配布
 
-OpenRTM-ais�̃��C�Z���X�́A�X��RT�R���|�[�l���g�ɂ͋y�т܂���B��������
-�āA''RT�R���|�[�l���g�̍쐬�҂́A���R�ȃ��C�Z���X�Ŕz�z�E�̔����邱��
-���ł��܂�''�B
+OpenRTM-aisのライセンスは、個々のRTコンポーネントには及びません。したがって、''RTコンポーネントの作成者は、自由なライセンスで配布・販売することができます''。
 
-RT�R���|�[�l���g�́AOpenRTM-aist ��libRTC.so (�܂���RTC.DLL) �Ɠ��I����
-�N����Ă���A�܂��ART�R���|�[�l���g���̂����L�I�u�W�F�N�g (�܂��̓_�C
-�i�~�b�N�����N���C�u����) �Ƃ��Ĕz�z�\�ł��B���������āART�R���|�[�l
-���g���̂̓��C�Z���X����߂�h�����Ƃ݂͂Ȃ��ꂸ�ALGPL ���C�Z���X�͋y��
-�܂���B
+RTコンポーネントは、OpenRTM-aist の libRTC.so (またはRTC.DLL) と動的リンクされており、また、RTコンポーネント自体も共有オブジェクト (またはダイナミックリンクライブラリ) として配布可能です。したがって、RTコンポーネント自体はライセンスが定める派生物とはみなされず、LGPL ライセンスは及びません。
 
 #ref(license_for_rtcs_ja.png,50%,center)
-CENTER: ''RT�R���|�[�l���g�̃��C�Z���X''
+CENTER: ''RTコンポーネントのライセンス''
 
-RT�R���|�[�l���g���쐬���Ĕz�z������́A�C�ӂ̃��C�Z���X�̌���RT�R���|�[
-�l���g��z�z�܂��͔̔����邱�Ƃ��ł��A�\�[�X�R�[�h���I�[�v���ɂ��邩�N���[�Y
-�ɂ��邩�����R�ɑI�Ԃ��Ƃ��ł��܂��B
+RTコンポーネントを作成して配布する方は、任意のライセンスの元でRTコンポーネントを配布または販売することができ、ソースコードをオープンにするかクローズにするかを自由に選ぶことができます。
 
-** LGPL�Ɋ�Â�OpenRTM-aist�̉��҂ƍĔz�z
+** LGPLに基づくOpenRTM-aist の改編と再配布
 
-�Y���������J���� OpenRTM-aist �� LGPL �Ɋ�Â����p����ꍇ�A�Y�����͗��p
-�҂ɑ΂��āAOpenRTM-aist �����s�A���ҁA�Ĕz�z�A�����g�p���郉�C�Z���X��
-�t�^���܂��B�������ALGPL �ł͍Ĕz�z����ꍇ�ɁA�Ĕz�z����v���O�����ɂ�
-���āALGPL�Ɩ������Ȃ����Ƃ�v�����Ă���A���̒��ɂ͉��҂��ꂽ�\�[�X�R�[
-�h���O�҂�����\�ł��邱�Ƃ��܂܂�Ă��܂��B���������āALGPL �̂���
-��OpenRTM-aist�����҂��čĔz�z������̔�����ꍇ�ɂ́A�\�[�X�R�[�h���J
-�����邱�Ƃ��v������܂��B
+産総研が公開する OpenRTM-aist を LGPL に基づき利用する場合、産総研は利用者に対して、OpenRTM-aist を実行、改編、再配布、無料使用するライセンスを付与します。
+ただし、LGPL では再配布する場合に、再配布するプログラムについて、LGPLと矛盾しないことを要求しており、その中には改編されたソースコードを第三者が入手可能であることも含まれています。
+したがって、LGPL のもとに OpenRTM-aist を改編して再配布したり販売する場合には、ソースコードを開示することが要求されます。
 
-�g���݃V�X�e���Ȃǂɂ����ẮA�\�[�X�R�[�h�����҂����Ƀ^�[�Q�b�g�ɓK�p
-���邱�Ƃ�����ȏꍇ������������A����̓��{�b�g�����Ɖ���������Г���
-�Ƃ��Ă͕s�s���ȏꍇ������܂��B���������ꍇ���l�����āAOpenRTM-aist ��
-���ɐ�������A�ʌ_��Ɋ�Â����C�Z���X�t�^�̌`�Ԃ��Ƃ��悤�A�f���A
-�����C�Z���X�`���ƂȂ��Ă��܂��B
+組込みシステムなどにおいては、ソースコードを改編せずにターゲットに適用することが困難な場合が数多くあり、これはロボットを事業化したい会社等にとっては不都合な場合があります。
+こうした場合を考慮して、OpenRTM-aist は次に説明する、個別契約に基づくライセンス付与の形態もとれるよう、デュアルライセンス形式となっています。
 
 
-** �ʌ_��Ɋ�Â�OpenRTM-aist�̉��҂ƍĔz�z
+** 個別契約に基づくOpenRTM-aist の改編と再配布
 
-��L�̏ꍇ�̂悤�ɁA���{�b�g�V�X�e�������Ɖ�����ۂɁA�\�[�X�R�[�h����
-�҂��A�Z�p�̗��o��h�����߂Ƀ\�[�X�R�[�h���N���[�Y�ɂ������ꍇ�A
-LGPL��EPL�ł͂Ȃ��A�ʌ_��̃��C�Z���X�Ƃ��邱�Ƃ��ł��܂��B
+上記の場合のように、ロボットシステムを商業化する際に、ソースコードを改編しつつ、技術の流出を防ぐためにソースコードをクローズにしたい場合、LGPLやEPLではなく、個別契約のライセンスとすることができます。
 
-�ʌ_��ɂ��OpenRTM-aist�����ҁA�Ĕz�z����ꍇ�A�Y�����̒m�I���Y����
-�Ƌ��c�̂����A���p�`�ԁA�\�[�X�R�[�h�̉��҂̓x�����◼�҂̒m�I���Y�̊�
-�����ɉ����āA�Y�������痘�p�҂ɑ΂��Ĕ�LGPL�E��EPL�̃��C�Z���X��t�^���邱�Ƃ�
-�ł��܂��B�\�[�X�R�[�h�̗��p�� (���{��) �⃉�C�Z���X����͈͓��ɂ���
-�͌ʂɋ��c�̂����ڍׂ����肵�܂��B�������A�Y�����͎Y�ƐU����ړI�Ƃ�
-���c���@�l�ł���A�����Ȏ��{���ŗ��p���邱�Ƃ��ł��܂��B
+個別契約により OpenRTM-aist を改編、再配布する場合、産総研の知的財産部門と協議のうえ、利用形態、ソースコードの改編の度合いや両者の知的財産の割合等に応じて、産総研から利用者に対して非LGPL・非EPLのライセンスを付与することができます。
+ソースコードの利用料 (実施料) やライセンスする範囲等については個別に協議のうえ詳細を決定します。ただし、産総研は産業振興を目的とする非営利法人であり、安価な実施料で利用することができます。
 
 #ref(license_for_rtms_ja.png,50%,center)
-CENTER: ''RT�~�h���E�G�A�̃��C�Z���X''
+CENTER: ''RTミドルウエアのライセンス''
 
-���łɁARtcLink�ARtcTemplate (RTSystemEditor, RTCBuilder�̈ȑO�̃o�[�W��
-��) ����� OpenRTM-aist (Java��) �ɂ��ẮA�\�[�X�R�[�h�̊J������ю�
-�{ (���i�ւ̗��p) �ɂ��Čʌ_��ɂ�郉�C�Z���X���s�������т������
-���B
-
+すでに、RtcLink、RtcTemplate (RTSystemEditor、RTCBuilderの以前のバージョン) および OpenRTM-aist (Java版) については、ソースコードの開示および実施 (製品への利用) について個別契約によるライセンスを行った実績があります。

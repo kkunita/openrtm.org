@@ -1,0 +1,38 @@
+﻿#contents
+
+//ここでは、作成した RTC を複数組み合わせて, システムを構築する手法について説明します。
+(G)In this section, we will explain how to build a system by combining multiple RTCs created.
+
+//** ネームサービス
+** (G)Name service
+
+//分散オブジェクトミドルウエアは、任意の場所にある計算機上のオブジェクトに対して参照を保持する代理オブジェクトを介して透過的アクセスを提供します。この参照は CORBA では IOR (Interoperable Object Reference) と呼ばれ、実体はオブジェクトが存在する計算機のアドレスやポート、オブジェクト固有のキー等がエンコードされたものです。 あるオブジェクトの IOR を別の計算機上のプログラムから利用する方法としては、ネットワーク上のサーバー上に登録する方法があります。この参照を登録したり取得したりするサービスがネームサービスです。ネームサービスは CORBA で標準的に定義されているサービスの一つであり、OpenRTM-aist では、''rtm-naming'' というラッパーコマンドが提供されています。
+(G)Distributed Object Middleware provides transparent access via proxy objects that hold references to objects on the computer at arbitrary locations.
+This reference is called IOR (Interoperable Object Reference) in CORBA, and the entity is the encoded address and port of the computer where the object exists and the key unique to the object. As a method of using the IOR of an object from a program on another computer, there is a method of registering it on a server on the network. A service that registers and acquires this reference is a name service. The name service is one of the standard services defined by CORBA, and in OpenRTM-aist, a wrapper command '' rtm-naming '' is provided.
+
+//システムを起動する前に、RTC を登録するネームサーバーを起動させる必要があります。また、各 RTC に対しては、ネームサーバーの場所を設定ファイル ''rtc.conf'' に記載して予め与える必要があります。例えば、ネームサーバーをホスト名 ''openrtm.mydomain.net'' 上で起動した場合、全ての RTC には、以下のように記載した rtc.conf を与える必要があります。
+(G)Before starting up the system, you need to start the name server registering RTC. In addition, for each RTC, it is necessary to give the name server location in advance in the configuration file '' rtc.conf ''. For example, if you start a name server on the host name '' openrtm.mydomain.net '', you need to give rtc.conf to all the RTCs as described below.
+
+ corba.nameservers: openrtm.mydomain.net
+
+//また、ネームサーバーはIPアドレスでも与えることができ、「 , 」で区切ることで複数のサーバーに同時に RTC を登録することができます。ネームサーバーは、通常長時間起動したままでよく、システムにおいて固定的であるので、設定ファイルを頻繁に書き換える必要はありません。
+(G)In addition, the name server can also be given as an IP address, and by separating it with "," you can register RTC to multiple servers at the same time. Normally, it is not necessary to frequently rewrite the configuration file, since the name server can usually be kept running for a long time and it is fixed in the system.
+
+//** RTSystemEditor によるシステム構築
+** (G)System construction with RTSystemEditor
+
+//作成されたいくつかの RTC を実行し、それらのポートを接続し、アクティブ化することでシステムが動作します。RTC 同士の接続や RTC に対してアクティブ化や非アクティブ化のコマンドを送り、システムを起動するためのツールとして RTSystemEditor が提供されています。
+The system runs by running some created RTCs, connecting and activating those ports. RTSystemEditor is provided as a tool for sending activation and deactivation commands to RTC's connection and RTC and starting up the system.
+
+#ref(rtse_en.png,40%,center)
+//CENTER: ''RTSystemEditorによるシステム構築''
+CENTER: ''System construction with RTSystemEditor''
+
+//RTC は起動されると、図左のネームサービスビューに表示されます。 ネームサービスビュー上の RTC を中央のエディタにドラッグアンドドロップすると、RTC がシステムエディタ内にアイコンで表示されます。 長方形の辺上の凸部がポートを表しており、これら RTC 間のポートを接続することでシステムを構築します。また、画面中央下部には RTC のコンフィギュレーションビューが表示されており、ここで任意の RTC のパラメーターを編集することができるようになっています。
+(G)When RTC is started, it is displayed in the name service view on the left of the figure. When RTC on the name service view is dragged and dropped to the central editor, the RTC is displayed as an icon in the system editor. The protrusion on the side of the rectangle represents the port, and the system is constructed by connecting the ports between these RTCs. In addition, the RTC configuration view is displayed at the lower center of the screen, so you can edit parameters of any RTC here.
+
+//システムを構築したら、エディタ上で右クリックし「All Activate」を選択することで、全ての RTC をアクティブ化することが可能です。また、エディタ上で右クリックし「Save as」を選択することで、システムの構成情報を保存することができます。保存したシステム構成情報は、再度呼び出すことでシステムの接続情報、コンフィギュレーションの情報等を復元することが可能です。
+(G)After building the system, it is possible to activate all the RTC by right-clicking on the editor and selecting "All Activate". You can also save the system configuration information by right-clicking on the editor and selecting "Save as". By saving the system configuration information again, it is possible to restore system connection information, configuration information and so on.
+
+//現在のところ、システム構成情報を復元する際には予め RTC を起動しておく必要がありますが、将来的には RTC の起動から接続復元までが自動で行えるようになる予定です。
+(G)Currently, it is necessary to start up RTC beforehand when restoring the system configuration information, but in future it will be possible to automatically start from RTC startup to connection restoration.

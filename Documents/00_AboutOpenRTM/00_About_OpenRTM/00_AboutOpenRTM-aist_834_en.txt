@@ -1,25 +1,8 @@
-#ref(rtm_logo.png,right,around,url=/en/node/834)
-OpenRTM-aist is a software platform to develop the robotic system in
-component-oriented.
+﻿#ref(rtm_logo.png,right,around,url=/en/node/834)
+OpenRTM-aist is a software platform for robote systems. It is based on component-oriented development.
 
-In OpenRTM-aist, the robot system system can be constructed by making the
-program of each functional element (This is called RT-Component:RTC), and
-connecting those RT-Components. The RT component can develop in ''C++'',
-''Python'', and ''Java'' language, and supports main OS(Linux/Unix, Windows,
-Mac OS X).''Eclipse'' tools and the tool of the command line can be used for
-the component development and the system development using the component. 
+OpenRTM-aist builds a system by creating software modules called "RT coponent (RTC)" for each functional elements and connecting the RT components to build the robot system. The RT component can be developed by using ''C++'', ''Python'', ''Java'' language and work on major OSs (Linux / Unix, Windows, Mac OS X). Eclipse tool and command line tool can be used for component development and system development using components.
 
-Some functions are equipped in RT-Component. 
--Function that is called port to exchange data and command with other components
--Basic state transition that is called activity to unite behavior
--Function of configuration that can operate parameter from the outside
+The RT component has functions called "ports" for exchanging data and commands with other components, basic state transitions called "activities" for unifying behaviors, and functions called "configuration" that can externally manipulate parameters. By using these functions, you can easily create modules with high independence and reusability. By using existing components, you can build a system with just the minimum effort.
 
-A module that becomes independent, recycles, and is high can be easily made
-by using these functions. You can construct the system only with making a
-minimum programming by using the component that someone made. 
-
-
-OpenRTM-aist is implemented by using CORBA that is the distributed object
-middleware because the network permeability, OS non-dependency, and language
-independence are valued. 
-
+OpenRTM-aist is implemented based on CORBA distributed object Architecture, to emphasis network transparency, OS independency, and language independency. Currently, OpenRTM-aist provides implementations on C++, Python and Java languages.

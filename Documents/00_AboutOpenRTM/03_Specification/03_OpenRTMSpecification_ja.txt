@@ -1,91 +1,77 @@
-#contents
+﻿#contents
 
-OpenRTM-aist�́ART�R���|�[�l���g�t���[�����[�N�ART�~�h���E�G�A�A��{RT
-�R���|�[�l���g�Q�A���C�u�����A��{�T�[�r�X�Q�A��{�c�[���Q������\����
-��Ă��܂��BRT�R���|�[�l���g�t���[�����[�N�́ART�R���|�[�l���g����邽
-�߂̊�{�N���X�ł���A���ׂĂ�RT�R���|�[�l���g�͂��̊�{�N���X�̃T�u�N
-���X�Ƃ��č쐬����܂��BRT�~�h���E�G�A�́A�t���[�����[�N�Ɋ�Â��č쐬
-���ꂽRT�R���|�[�l���g�̃��W���[���̃��[�h��A�C���X�^���X�̐����E���
-���̃��C�t�T�C�N���̊Ǘ��A�R���|�[�l���g�̃l�[���T�[�r�X�ւ̓o�^�����s
-�������ł��B
+OpenRTM-aist は、RTコンポーネントフレームワーク、RTミドルウエア、基本RTコンポーネント群、ライブラリ、基本サービス群、基本ツール群等から構成されています。
+RTコンポーネントフレームワークは、RTコンポーネントを作るための基本クラスであり、すべての RTコンポーネントはこの基本クラスのサブクラスとして作成されます。
+RTミドルウエアは、フレームワークに基づいて作成された RTコンポーネントのモジュールのロードや、インスタンスの生成・解体等のライフサイクルの管理、コンポーネントのネームサービスへの登録等を行う部分です。
 
-���݂̂Ƃ���AOpenRTM-aist �� C++�APython�AJava �̊e������T�|�[�g����
-����AWindows �AUNIX �n OS�A$\mu$ITRON (C++�̂ݑΉ�) �n�̊e OS ��œ���
-�\�ł��B����ɁA������ЃZ�b�N�� OpenRTM-aist �݊��̃~�h���E�G�A:
-OpenRTM.NET �����J���Ă���AC# ���n�߂Ƃ���.NET ����RTC���쐬�E���s��
-�邱�Ƃ��ł��܂��B�قȂ錾��ō쐬���ꂽ��A�قȂ�OS��œ��삷��RTC���m
-�͑��݂ɐڑ����A�A�g���\�ł��B
+現在のところ、OpenRTM-aist は C++、Python、Java の各言語をサポートしており、Windows、UNIX 系 OS、μITRON (C++のみ対応) 系の各 OS 上で動作可能です。
+さらに、株式会社セックが OpenRTM-aist 互換のミドルウエア:OpenRTM.NET を公開しており、C# を始めとする.NET 環境でRTCを作成・実行することができます。
+異なる言語で作成されたり、異なる OS 上で動作する RTC 同士は相互に接続し、連携が可能です。
 
-���̑��A���[�U�̗��֐������コ���郉�C�u�����ART�R���|�[�l���g�̓o�^��
-�����̊�{�I�T�[�r�X (���݂� CORBA �� Naming Service �𗘗p)�ART�R���|�[
-�l���g�̐��^�R�[�h�𐶐�����RTCBuilder�ART�R���|�[�l���g�̐ڑ��E���䓙
-���s��RTSystemEditor���̃c�[���Q����\������Ă��܂��B
+この他、ユーザーの利便性を向上させるライブラリ、RTコンポーネントの登録検索等の基本的サービス (現在は CORBA の Naming Service を利用)、RTコンポーネントの雛型コードを生成する RTCBuilder、RTコンポーネントの接続・制御等を行う RTSystemEditor 等のツール群から構成されています。
 
-** �C���^�[�t�F�[�X�d�l
+** インターフェース仕様
 
-- OMG Robotic Technology Component Specification 1.0 ����
--- [[OMG�d�l�� formal/08-04-04:http://www.omg.org/spec/RTC/1.0/]]
-- OMG Super Distributed Object Specification 1.1 ����
--- [[OMG�d�l�� formal/08-10-01:http://www.omg.org/spec/SDO/1.1/]]
+- OMG Robotic Technology Component Specification 1.0 準拠
+-- [[OMG仕様書 formal/12-09-01:https://www.omg.org/spec/RTC/1.1/]]
+- OMG Super Distributed Object Specification 1.1 準拠
+-- [[OMG仕様書 formal/08-10-01:http://www.omg.org/spec/SDO/1.1/]]
 
-***�Q�l
+***参考
 
 - [[OMG (Object Management Group):http://www.omg.org]]
 - [[OMG Specifications:http://www.omg.org/technology/documents/spec_catalog.htm]]
-- [[OMG Domain Specifications:http://www.omg.org/technology/documents/domain_spec_catalog.htm]]
 
-** �\��
+** 構成
 
-OpenRTM-aist �͈ȉ��̊e����ł̃~�h���E�G�A���C�u��������уc�[���Q����
-�\������Ă��܂��B
+OpenRTM-aist は以下の各言語版のミドルウエアライブラリおよびツール群から構成されています。
 
-CENTER:''OpenRTM-aist�̍\��''
-|CENTER:200|LEFT|c
-| ���O | �T�v |
-| OpenRTM-aist (C++��)    | C++�����RT�R���|�[�l���g���쐬���邽�߂̃R���|�[�l���g�t���[�����[�N�ƃ~�h���E�G�A���C�u��������уR�}���h�Q |
-| OpenRTM-aist (Python��) | Python�����RT�R���|�[�l���g���쐬���邽�߂̃R���|�[�l���g�t���[�����[�N�ƃ~�h���E�G�A���C�u��������уR�}���h�Q |
-| OpenRTM-aist (Java��)   | Java�����RT�R���|�[�l���g���쐬���邽�߂̃R���|�[�l���g�t���[�����[�N�ƃ~�h���E�G�A���C�u��������уR�}���h�Q |
-| RTCBuilder              | RT�R���|�[�l���g�̐݌v�A�R�[�h�������s�����߂� Eclipse �v���O�C�� |
-| RTSystemEditor          | RT�R���|�[�l���g�̑��삨���RT�V�X�e���̐݌v�E������s�����߂� Eclipse �v���O�C�� |
-| rtcshell/rtsshell       | RT�R���|�[�l���g�ART�V�X�e���̑����CUI����s�����߂̃R�}���h�Q |
+CENTER:''OpenRTM-aistの構成''
+|CENTER:170|LEFT:350|c
+| 名前 | 概要 |
+| OpenRTM-aist (C++版)    | C++言語でRTコンポーネントを作成するためのコンポーネントフレームワークとミドルウエアライブラリおよびコマンド群 |
+| OpenRTM-aist (Python版) | Python言語でRTコンポーネントを作成するためのコンポーネントフレームワークとミドルウエアライブラリおよびコマンド群 |
+| OpenRTM-aist (Java版)   | Java言語でRTコンポーネントを作成するためのコンポーネントフレームワークとミドルウエアライブラリおよびコマンド群 |
+| RTCBuilder              | RTコンポーネントの設計、コード生成を行うための Eclipse プラグイン |
+| RTSystemEditor          | RTコンポーネントの操作およびRTシステムの設計・操作を行うための Eclipse プラグイン |
+| rtshell       | RTコンポーネント、RTシステムの操作をCUIから行うためのコマンド群 |
 
 
-�����̔z�z���͂��ꂼ�� EPL �� �ʌ_��̃f���A�����C�Z���X�̌��z�z��
-��Ă��܂��B
+これらの配布物はそれぞれ EPL と個別契約のデュアルライセンスの元配布されています。
 
 
-** �������
+** 動作条件
 
-*** OpenRTM-aist (C++��)
+*** OpenRTM-aist (C++版)
 
 |CENTER:200|LEFT|c
-| �R���p�C��     | gcc 3.x �ȏ�, Visual C++ 2005, 2008 |
-| OS             | Linux, FreeBSD, Windows, Mac OS X, TOPPERS ASP |
-| CPU            | i386, x86_64, ppc, arm |
-| �ˑ����C�u���� | omniORB 4.0 �ȏ�, libuuid (Linux) |
+| コンパイラ     | gcc 3.x 以上、Visual C++ 2008、2010、2012、2013、2015、2017、2019 |
+| OS             | Linux、FreeBSD、Windows、Mac OS X、TOPPERS ASP |
+| CPU            | i386、x86_64、ppc、arm |
+| 依存ライブラリ | omniORB 4.0 以上、libuuid (Linux) |
 
-*** OpenRTM-aist (Python��)
-
-|CENTER:200|LEFT|c
-| Python | Python 2.3 �ȏ� |
-| �ˑ����C�u���� | omniORBpy-2.3�ȏ� |
-
-
-*** OpenRTM-aist (Java��)
+*** OpenRTM-aist (Python版)
 
 |CENTER:200|LEFT|c
-| Java | JDK5 �ȏ� |
-| �ˑ����C�u���� | JDK �Ɋ܂܂�� Java IDL |
+| Python | Python 2.7、Python3.6、Python 3.7 |
+| 依存ライブラリ | omniORBpy-2.3以上 |
+
+
+*** OpenRTM-aist (Java版)
+
+|CENTER:200|LEFT|c
+| Java | JDK5 以上 |
+| 依存ライブラリ | JDK に含まれる Java IDL |
 
 *** RTCBuilder/RTSystemEditor
 
 |CENTER:200|LEFT|c
-| Eclipse | 3.4 �ȏ� |
-| Java    | JDK6 �ȏ� |
-| �ˑ����C�u���� | Eclipse EMF 2.2�ȏ�(SDO,XSD�܂�), &br; Eclipse GEF 3.2�ȏ�(Draw2D�܂�) |
+| Eclipse | 3.4 以上 |
+| Java    | JDK6 以上 |
+| 依存ライブラリ | Eclipse EMF 2.2以上(SDO,XSD含む)、&br; Eclipse GEF 3.2以上(Draw2D含む) |
 
-*** rtcshell/rtsshell
+*** rtshell
 
 |CENTER:200|LEFT|c
-| Python | Python 2.6 �ȏ� |
-| �ˑ����C�u���� | omniORBpy-2.3 �ȏ� |
+| Python | Python 2.7、Python3.6、Python 3.7 |
+| 依存ライブラリ | omniORBpy-2.3 以上 |

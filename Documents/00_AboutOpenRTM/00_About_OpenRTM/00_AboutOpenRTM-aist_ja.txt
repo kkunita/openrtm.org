@@ -1,26 +1,12 @@
-#contents
+﻿#ref(piping_rtm_logo2.png,right,around,url=/ja/node/833)
 
-** OpenRTM-aist�Ƃ�
+OpenRTM-aist はロボットシステムをコンポーネント指向開発するためのソフトウエアプラットフォームです。
+<!--break-->
+OpenRTM-aist では、ロボットシステムを作る際に、機能要素ごとにソフトウェア ― RTコンポーネント(RTCと呼ぶ)を作成し、それらをつなぎ合わせることでシステムを構築します。RTコンポーネントは、''C++''、''Python''、''Java'' 言語で開発することができ、主要なOS(Linux/Unix、Windows、Mac OS X)をサポートしています。
+コンポーネント開発や、コンポーネントを利用したシステム開発には、''Eclipse'' ツールおよび、コマンドラインのツールを利用することができます。
 
-OpenRTM-aist �̓��{�b�g�V�X�e�����R���|�[�l���g�w���J�����邽�߂̃\�t�g
-�E�G�A�v���b�g�t�H�[���ł��B
 
-OpenRTM-aist �ł́A���{�b�g�V�X�e�������ۂɁA�@�\�v�f (�����RT�R���|�[
-�l���g: RTC�ƌĂ�) ���ƂɃv���O�������쐬���ART�R���|�[�l���g���Ȃ���
-�킹�邱�ƂŃV�X�e�����\�z���܂��BRT�R���|�[�l���g�́A''C++'',
-''Python'', ''Java'' ����ŊJ�����邱�Ƃ��ł��A��v��OS (Linux/Unix,
-Windows, Mac OS X) ���T�|�[�g���Ă��܂��B�R���|�[�l���g�J����A�R���|�[
-�l���g�𗘗p�����V�X�e���J���ɂ́A''Eclipse'' �c�[������сA�R�}���h��
-�C���̃c�[���𗘗p���邱�Ƃ��ł��܂��B
+RTコンポーネントは、コンポーネント間でデータやコマンドのやり取りをするためのポートと呼ばれる機能や、振る舞いを統一するためのアクティビティと呼ばれる基本的な状態遷移および、パラメーターを外部から操作可能なコンフィギュレーションといった機能が備わっています。
+これらの機能を利用することで、独立性や再利用性の高いモジュールを容易に作成することができます。既存のコンポーネントを利用することで、最小限のプログラミングでシステムを構築することができるよういなります。
 
-RT�R���|�[�l���g�́A���̃R���|�[�l���g�ƃf�[�^��R�}���h�̂�������
-�邽�߂̃|�[�g�ƌĂ΂��@�\��A�U�镑���𓝈ꂷ�邽�߂̃A�N�e�B�r�e�B
-�ƌĂ΂���{�I�ȏ�ԑJ�ڂ���сA�p�����[�^���O�����瑀��\�ȃR���t�B
-�M�����[�V�����Ƃ������@�\��������Ă��܂��B�����̋@�\�𗘗p���邱��
-�ŁA�Ɨ�����ė��p���̍������W���[����e�Ղɍ쐬���邱�Ƃ��ł��܂��B��
-�łɒN����������R���|�[�l���g�𗘗p���邱�ƂŁA�Œ���̃v���O���~���O
-�����邾���ŃV�X�e�����\�z���邱�Ƃ��ł��܂��B
-
-OpenRTM-aist �́A�l�b�g���[�N���ߐ��AOS��ˑ����A�����ˑ������d������
-���U�I�u�W�F�N�g�~�h���E�G�A�ł���CORBA��p���Ď�������Ă��܂��B���݂�
-�Ƃ���AOpenRTM-aist��C++���ꂨ���Python����p�̎�����񋟂��Ă��܂��B
+OpenRTM-aist は、ネットワーク透過性、OSやプログラミング言語に対する非依存性を重視して分散オブジェクト規格 CORBA を用いて実装されています。現在のところ、OpenRTM-aist は C++、Python、およびJava言語での実装が提供されています。

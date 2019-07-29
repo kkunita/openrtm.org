@@ -1,83 +1,49 @@
-#contents
+﻿#contents
 
-�{�߂ł́ART�~�h���E�G�A�FOpenRTM-aist �𗘗p�����ART�R���|�[�l���g�̊J
-�����@�ɂ��Đ������܂��B
+本節では、RTミドルウエア (OpenRTM-aist) を利用した、RTコンポーネントの開発方法について説明します。
 
-** �J���̗���
+** 開発の流れ
 
-OpenRTM-aist�̓R���|�[�l���g���̂��߂̃t���[�����[�N�ƁA�R���|�[�l���g
-���Ǘ��E���s���邽�߂̃~�h���E�G�A����\������Ă��܂��B
+OpenRTM-aist は、コンポーネント化のためのフレームワークと、コンポーネントを管理・実行するためのミドルウエアから構成されています。
 
-OpenRTM-aist �́A�R���|�[�l���g���J�����������[�U (�R���|�[�l���g�f�x���b
-�p) ���������̃\�t�g�E�G�A���Y�A���邢�͐V���ɍ쐬�����\�t�g�E�G�A��
-�e�Ղ�RTC�����邽�߂̃t���[�����[�N��񋟂��܂��B�R���|�[�l���g�쐬�̑�
-�܂��ȗ���͉��}�̂悤�ɂȂ�܂��B
+OpenRTM-aist は、コンポーネントを開発したいユーザー (コンポーネントデベロッパ) が持つ既存のソフトウエア資産、あるいは新たに作成したソフトウエアを容易に RTC 化するためのフレームワークを提供します。コンポーネント作成の大まかな流れは下図のようになります。
 
 #ref(rtc_devel_flow_ja.png,40%,center)
-CENTER: ''RTC�����RT�V�X�e���J���̗���''
+CENTER: ''RTC および RTシステム開発の流れ''
 
-��q�����悤�ɁART�R���|�[�l���g�������ʃC���^�[�t�F�[�X�Ɋւ���R�[
-�h�A���̃R���|�[�l���g�Ƃ̃f�[�^�̂����̏����Ȃǂ́ART�R���|�[�l��
-�g�t���[�����[�N�ɂ��B������Ă��܂��B�����̏����͋��ʂł��邽�߁A��
-���̕����̓��C�u�������⎩���������\�ł��BOpenRTM-aist�ł�RTC�̐��^
-�𐶐����邽�߂̃c�[���Ƃ���RTCBuilder��񋟂��Ă��܂��B
+上述したように、RTコンポーネントが持つ共通インターフェースに関するコード、他のコンポーネントとのデータのやり取りの処理などは、RTコンポーネントフレームワークにより隠蔽されています。これらの処理は共通であるため、多くの部分はライブラリ化や自動生成が可能です。OpenRTM-aist では RTC の雛型を生成するためのツールとして RTCBuilder を提供しています。
 
-RTC�J���҂́A�������J�����������̃v���O�������R���|�[�l���g�t���[�����[
-�N�ɑg�ݍ��ނ��Ƃ�RT�R���|�[�l���g���쐬���A������RTC��g���킹�ă��{�b
-�g�V�X�e�����\�z���܂��B�����̃\�t�g�E�G�A�������\�t�g�E�G�A���i�ł���RT
-�R���|�[�l���g�Ƃ��č쐬���Ă����΁A�l�X�ȏ�ʂł̍ė��p���e�ՂɂȂ�܂��B
-�쐬���ꂽRTC�́A�l�b�g���[�N��̓K���ȏꏊ�ɔz�u���A�C�ӂ̏ꏊ���痘�p
-���邱�Ƃ��ł��܂��B
+RTC 開発者は、自分が開発した既存のプログラムをコンポーネントフレームワークに組み込むことで RTコンポーネントを作成し、複数の RTC を組合わせてロボットシステムを構築します。既存のソフトウエア資源をソフトウエア部品である RTコンポーネントとして作成しておけば、様々な場面での再利用が容易になります。作成された RTC は、ネットワーク上の適当な場所に配置し、任意の場所から利用することができます。
 
-RTC�t���[�����[�N�ɑ����č쐬���ꂽRTC�͑傫��������2��ނ̌`�Ԃ������
-���B  �X�^���h�A����RTC (Standalone RT-Component) �́A�P��̎��s�`����
-�o�C�i���A���[�_�u�����W���[��RTC (Loadable Module RT-Component) �͓��I
-�Ƀ��[�h�\�ȃo�C�i���t�@�C���ł���A1�v���Z�X�ŕ�����ނ�RTC�𓯎��N
-������ۓ��ɗ��p����܂��B
+RTC フレームワークに則って作成された RTC は大きく分けて2種類の形態があります。スタンドアロンRTC (Standalone RT-Component) は、単一の実行形式のバイナリ、ローダブルモジュールRTC (Loadable Module RT-Component) は動的にロード可能なバイナリファイルであり、1プロセスで複数種類の RTC を同時起動する際等に利用されます。
 
-** RTCBuilder�ɂ��ЂȌ`�R�[�h�̍쐬
+** RTCBuilder によるひな形コードの作成
 
-RTCBuilder �� RT�R���|�[�l���g�̐��^�R�[�h��������������J���c�[���ł��B
-RTC�̊�{�v���t�@�C����f�[�^�|�[�g�A�T�[�r�X�|�[�g�A�R���t�B�M�����[�V��
-���Ɋւ��������͂��邱�Ƃő唼�̃R�[�h�������������܂��B�Ή����Ă�
-�錾��́AC++�AJava�APython�AC#�ł��B  �R���|�[�l���g���쐬����O�ɁA��
-���悻�ȉ��̂��Ƃ����߂Ă����܂��B
+RTCBuilder は RTコンポーネントの雛型コードを自動生成する開発ツールです。
+RTC の基本プロファイルやデータポート、サービスポート、コンフィギュレーションに関する情報を入力することで大半のコードを自動生成します。対応している言語は、C++、Java、Python、C#です。  コンポーネントを作成する前に、おおよそ以下のことを決めておきます。
 
-- �v���t�@�C�� (���O�A�J�e�S�����A�o�[�W������)
-- �f�[�^�|�[�g (InPort�EOutPort�A�|�[�g���A�f�[�^�^)
-- �T�[�r�X�|�[�g  (�|�[�g���A�T�[�r�X�C���^�[�t�F�[�X)
-- �R���t�B�M�����[�V���� (�ϐ��̖��O�A�ϐ��̌^)
+- プロファイル (名前、カテゴリ名、バージョン等)
+- データポート (InPort・OutPort、ポート名、データ型)
+- サービスポート  (ポート名、サービスインターフェース)
+- コンフィギュレーション (変数の名前、変数の型)
 
-Eclipse���j���[�́u�t�@�C���v�u�V�K�v�Ń_�C�A���O���J���A�u���̑��v����
-�uRTCBUilder�v�v���W�F�N�g��I�����v���W�F�N�g������͂���ƁA�}�̉��
-������܂��BRTCBuilder�ɂ́A�u��{�v�u�A�N�e�B�r�e�B�v�u�f�[�^�|�[�g�v
-�u�T�[�r�X�|�[�g�v�u�R���t�B�M�����[�V�����v�u�h�L�������g�����v�u����E
-���v�uRTC.xml�v�̃^�u������A�u��{�v����u����E���v�܂ł̃^�u�ŏ�
-�ɕK�v�ɉ����č��ڂ𖄂߂Ă����A�Ō�ɁA�u��{�v�^�u�ɂ���AOutput
-Project�Ő�قǓ��͂����v���W�F�N�g����I�����A�u�R�[�h�����v�{�^������
-�����ƂŁA���^�R�[�h����������܂��B�������ꂽ�R�[�h�́AEclipse�N������
-�w�肵�����[�N�X�y�[�X���̃v���W�F�N�g���f�B���N�g���ɕۑ�����܂��B
+Eclipseメニューの [ファイル] > [新規] > [その他] を選択してダイアログを開き、「その他」から「RTCBuilder」選択して [次へ] をクリックする。プロジェクト名を入力して [終了] をクリックします。図の画面が表示され、RTCBuilderには、「基本」「アクティビティ」「データポート」「サービスポート」「コンフィギュレーション」「ドキュメント生成」「言語・環境」「RTC.xml」のタブがあります。「基本」から「言語・環境」までのタブで順に必要に応じて項目を埋めていき、最後に、「基本」タブにある、「Output Project」 で先ほど入力したプロジェクト名を選択し、[コード生成] ボタンをクリックすることで、雛型コードが生成されます。生成されたコードは、Eclipse 起動時に指定したワークスペース内にあるプロジェクト名のフォルダーに保存されます。
 
 #ref(rtcbuilder_ja.png,30%,center)
-CENTER: ''RTCBuilder�̊J�����''
+CENTER: ''RTCBuilder の開発画面''
 
-** RTC�̎���
+** RTC の実装
 
-RT�R���|�[�l���g�̃v���O�����ɂ͒ʏ�̃v���O�����Ƃ͈قȂ�Amain�֐���
-���ڏ������������邱�Ƃ͂���܂���B�����ł́A��Ƃ���C++�ł̎����ɂ��ďq��
-�܂��B
+RTコンポーネントのプログラムには通常のプログラムとは異なり、main関数に直接処理を実装することはありません。ここでは、例として C++版の実装について述べます。
 
-RT�R���|�[�l���g�́A������N���X���p��������̃N���X�Ƃ��Ď�������
-�܂��B RT�R���|�[�l���g�ɂ����ă��W�b�N���s�������́A���̊��N���X�̃���
-�o�֐�(���\�b�h)���I�[�o�[���C�h����`�ŋL�q���܂��B�Ⴆ�΁A���������ɍs
-�������́A''onInitialize'' �֐��̒��ɁARTC���A�N�e�B�u���Ɏ����I�ɏ�
-�����������e�� ''onExecute'' �֐��ɋL�q����B 
+RTコンポーネントは、ある基底クラスを継承した一つのクラスとして実装されます。 RTコンポーネントにおいてロジックが行う処理は、その基底クラスのメンバ関数(メソッド)をオーバーライドする形で記述します。例えば、初期化時に行う処理は、''onInitialize'' 関数の中に、RTC がアクティブ時に周期的に処
+理したい内容は ''onExecute'' 関数に記述する。 
 
  class MyComponent
   : public DataflowComponentBase
  {
  public:
-   // ���������Ɏ��s����������
+   // 初期化時に実行したい処理
    virtual ReturnCode_t onInitialize()
    {
      if (mylogic.init())
@@ -85,7 +51,7 @@ RT�R���|�[�l���g�́A������N���X���p��������̃N���X�Ƃ��Ď�������
      return RTC::RTC_ERROR;
    }
  
-   // �����I�Ɏ��s����������
+   // 周期的に実行したい処理
    virtual ReturnCode_t onExecute(RTC::UniqueId ec_id)
    {
      if (mylogic.do_someting())
@@ -95,56 +61,43 @@ RT�R���|�[�l���g�́A������N���X���p��������̃N���X�Ƃ��Ď�������
  
  private:
    MyLogic mylogic;
-   // �|�[�g���̐錾
-   //   �F
+   // ポート等の宣言
+   //   ：
  };
 
-��L��C++�ł̎�����ł��B ���̗�ł́A�N���X�錾�Ǝ�������̂ƂȂ��Ă�
-�܂����A���ۂɂ̓w�b�_�t�@�C�� (.h) �Ǝ����t�@�C��(.cpp) �ɕ�������ăR�[
-�h����������܂��B MyLogic �N���X�̃I�u�W�F�N�gmylogic �́A���̃R���|�[
-�l���g�����ۂɍs���R�A���W�b�N���������ꂽ�N���X�ł��B��ł́A���Ɋ�
-����mylogic�̊֐����ĂԂ��Ƃ�RTC����������Ă��܂����A���ۂ̎����ł��A
-�R�A���W�b�N��\�߂��̒��x�ȒP�ɗ��p�ł���N���X�����Ă����ARTC���ł̌�
-�яo���͍Œ���ɂ�������悢�ł��傤�B
+上記は C++ での実装例です。 この例では、クラス宣言と実装が一体となっていますが、実際にはヘッダファイル (.h) と実装ファイル(.cpp) に分割されてコードが生成されます。 MyLogic クラスのオブジェクト mylogic は、このコンポーネントが実際に行うコアロジックが実装されたクラスです。
+例では、非常に簡潔に mylogic の関数を呼ぶことで RTC が実装されていますが、実際の実装でも、コアロジックを予めこの程度簡単に利用できるクラス化しておき、RTC 内での呼び出しは最低限にする方がよいでしょう。
 
-RTCBuilder �ɂ�蓯���ɐ�������� Makefile ��v���W�F�N�g�t�@�C���ł���
-�R�[�h���R���p�C�����邱�ƂŁA���s�t�@�C���ƁA���L�I�u�W�F�N�g(����
-DLL)�����������B
+RTCBuilder により同時に生成される Makefile やプロジェクトファイルでこのコードをコンパイルすることで、実行ファイルと共有オブジェクト(又はDLL)が生成される。
 
-** RTC���C�t�T�C�N��
+** RTC ライフサイクル
 
-��q�����悤�ɁARTC�̎����ł́A�\�ߌ��߂�ꂽ�֐� (�R�[���o�b�N�֐�) ��
-�������L�q���邱�ƂŁA�R���|�[�l���g���쐬���܂��B �ǂ̂悤�Ȋ֐�������A
-�ǂ��������^�C�~���O�ŌĂ΂��̂���m�邽�߂ɂ́ARTC�̏�ԑJ�ڂ��Ȃ킿
-���C�t�T�C�N���𗝉�����K�v������܂��B���}�ɁARTC�̏�ԑJ�ڐ}��������
-���B
+上述したように、RTC の実装では、予め決められた関数 (コールバック関数) に処理を記述することで、コンポーネントを作成します。 どのような関数があり、どういったタイミングで呼ばれるのかを知るためには、RTC の状態遷移すなわちライフサイクルを理解する必要があります。下図に、RTC の状態遷移図を示します。
 
 #ref(rtc_state_machine_ja.png,40%,center)
-CENTER: ''RTC���C�t�T�C�N�� (UML �X�e�[�g�}�V���})''
+CENTER: ''RTC ライフサイクル (UML ステートマシン図)''
 
-�R���|�[�l���g�͊�{�I�Ɉȉ��̏�Ԃ����B 
+コンポーネントは基本的に以下の状態を持つ。 
 
-- �������(Created)
-- �������(Alive)
--- ��A�N�e�B�u��� (Inactive)
--- �A�N�e�B�u��� (Active)
--- �G���[��� (Error)
-- �I�����
+- 生成状態(Created)
+- 活動状態(Alive)
+-- 非アクティブ状態 (Inactive)
+-- アクティブ状態 (Active)
+-- エラー状態 (Error)
+- 終了状態
 
-�����̊e��Ԃ�J�ڎ��ɂ́A�\�ߌ��߂�ꂽ�֐� (�R�[���o�b�N�֐�) ��EC
-�ɂ���ČĂяo����܂��B �\�ɁA�R�[���o�b�N�֐��Ƃ��ꂼ�ꂪ�Ă΂��^�C
-�~���O�������܂��B
+これらの各状態や遷移時には、予め決められた関数 (コールバック関数) が EC によって呼び出されます。 表に、コールバック関数とそれぞれが呼ばれるタイミングを示します。
 
-| �֐���        | �T�v                                       |
-| onInitialize  | ���C�t�T�C�N������������1�x�����Ă΂��B  |
-| onActivated   | �A�N�e�B�u������ۂ�1��Ă΂��B          |
-| onDeactivated | ��A�N�e�B�u������ۂ�1��Ă΂��B        |
-| onExecute     | �A�N�e�B�u��Ԃɂ���Ƃ������I�ɌĂ΂��B |
-| onStateUpdate | onExecute �̌�ɖ���Ă΂��B             |
-| onAborting    | �G���[��ԂɈڍs����ۂ�1��Ă΂��B      |
-| onError       | �G���[��Ԃɂ���Ƃ������I�ɌĂ΂��B     |
-| onReset       | �G���[��Ԃ��畜�A����ۂ�1��Ă΂��B    |
-| onShutdown    | EC�̋쓮����~����ۂ�1��Ă΂��B        |
-| onStartup     | EC�̋쓮���J�n����ۂ�1��Ă΂��B        |
-| onFinalize    | ���C�t�T�C�N���I������1�x�����Ă΂��B    |
+| 関数名        | 概要                                       |
+| onInitialize  | ライフサイクル初期化時に1度だけ呼ばれる。  |
+| onActivated   | アクティブ化する際に1回呼ばれる。          |
+| onDeactivated | 非アクティブ化する際に1回呼ばれる。        |
+| onExecute     | アクティブ状態にあるとき周期的に呼ばれる。 |
+| onStateUpdate | onExecute の後に毎回呼ばれる。             |
+| onAborting    | エラー状態に移行する際に1回呼ばれる。      |
+| onError       | エラー状態にあるとき周期的に呼ばれる。     |
+| onReset       | エラー状態から復帰する際に1回呼ばれる。    |
+| onShutdown    | ECの駆動が停止する際に1回呼ばれる。        |
+| onStartup     | ECの駆動が開始する際に1回呼ばれる。        |
+| onFinalize    | ライフサイクル終了時に1度だけ呼ばれる。    |
 

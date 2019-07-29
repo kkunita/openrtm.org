@@ -1,58 +1,27 @@
-#contents
+﻿#contents
 
-�����ł́A�쐬����RTC�𕡐��g�ݍ��킹��, �V�X�e�����\�z�����@�ɂ���
-�������܂��B
+ここでは、作成した RTC を複数組み合わせて, システムを構築する手法について説明します。
 
-** �l�[���T�[�r�X
+** ネームサービス
 
-���U�I�u�W�F�N�g�~�h���E�G�A�́A�C�ӂ̏ꏊ�̌v�Z�@��̃I�u�W�F�N�g�ɑ�
-���ĎQ�Ƃ�ێ�����㗝�I�u�W�F�N�g����ē��ߓI�A�N�Z�X��񋟂��܂��B
-���̎Q�Ƃ�CORBA�ł� IOR (Interoperable Object Reference) �ƌĂ΂�A����
-�̓I�u�W�F�N�g�����݂���v�Z�@�̃A�h���X��|�[�g�A�I�u�W�F�N�g�ŗL�̃L�[
-�����G���R�[�h���ꂽ���̂ł��B ����I�u�W�F�N�g��IOR��ʂ̌v�Z�@��̃v
-���O�������痘�p������@�Ƃ��ẮA�l�b�g���[�N��̃T�[�o��ɓo�^�����
-�@������܂��B���̎Q�Ƃ�o�^������擾�����肷��T�[�r�X���l�[���T�[�r
-�X�ł��B�l�[���T�[�r�X��CORBA�ŕW���I�ɒ�`����Ă���T�[�r�X�̈�ł�
-��AOpenRTM-aist�ł́A''rtm-naming'' �Ƃ������b�p�[�R�}���h���񋟂����
-���܂��B
+分散オブジェクトミドルウエアは、任意の場所にある計算機上のオブジェクトに対して参照を保持する代理オブジェクトを介して透過的アクセスを提供します。
+この参照は CORBA では IOR (Interoperable Object Reference) と呼ばれ、実体はオブジェクトが存在する計算機のアドレスやポート、オブジェクト固有のキー等がエンコードされたものです。 あるオブジェクトの IOR を別の計算機上のプログラムから利用する方法としては、ネットワーク上のサーバー上に登録する方法があります。この参照を登録したり取得したりするサービスがネームサービスです。ネームサービスは CORBA で標準的に定義されているサービスの一つであり、OpenRTM-aist では、''rtm-naming'' というラッパーコマンドが提供されています。
 
-�V�X�e�����N������O�ɁARTC��o�^����l�[���T�[�o���N��������K�v������
-�܂��B�܂��A�eRTC�ɑ΂��ẮA�l�[���T�[�o�̏ꏊ��ݒ�t�@�C��
-''rtc.conf'' �ɋL�ڂ��ė\�ߗ^����K�v������܂��B�Ⴆ�΁A�l�[���T�[�o��
-�z�X�g��''openrtm.mydomain.net'' ��ŋN�������ꍇ�A�S�Ă�RTC�ɂ́A�ȉ�
-�̂悤�ɋL�ڂ��� rtc.conf ��^����K�v������܂��B
+システムを起動する前に、RTC を登録するネームサーバーを起動させる必要があります。また、各 RTC に対しては、ネームサーバーの場所を設定ファイル ''rtc.conf'' に記載して予め与える必要があります。例えば、ネームサーバーをホスト名 ''openrtm.mydomain.net'' 上で起動した場合、全ての RTC には、以下のように記載した rtc.conf を与える必要があります。
 
  corba.nameservers: openrtm.mydomain.net
 
-�܂��A�l�[���T�[�o��IP�A�h���X�ł��^���邱�Ƃ��ł��A'',''�ŋ�؂邱�Ƃ�
-�����̃T�[�o�ɓ�����RTC��o�^���邱�Ƃ��ł��܂��B�l�[���T�[�o�́A�ʏ풷��
-�ԋN�������܂܂ł悭�A�V�X�e���ɂ����ČŒ�I�ł���̂ŁA�ݒ�t�@�C����
-�p�ɂɏ���������K�v�͂���܂���B
+また、ネームサーバーはIPアドレスでも与えることができ、「 , 」で区切ることで複数のサーバーに同時に RTC を登録することができます。ネームサーバーは、通常長時間起動したままでよく、システムにおいて固定的であるので、設定ファイルを頻繁に書き換える必要はありません。
 
-** RTSystemEditor�ɂ��V�X�e���\�z
+** RTSystemEditor によるシステム構築
 
-�쐬���ꂽ��������RTC�����s���A�����̃|�[�g��ڑ����A�A�N�e�B�u����
-�邱�ƂŃV�X�e�������삵�܂��BRTC���m�̐ڑ���RTC�ɑ΂��ăA�N�e�B�u�����
-�A�N�e�B�u���̃R�}���h�𑗂�V�X�e�����N�����邽�߂̃c�[���Ƃ���
-RTSystemEditor���񋟂���Ă���܂��B
+作成されたいくつかの RTC を実行し、それらのポートを接続し、アクティブ化することでシステムが動作します。RTC 同士の接続や RTC に対してアクティブ化や非アクティブ化のコマンドを送り、システムを起動するためのツールとして RTSystemEditor が提供されています。
 
 #ref(rtse_ja.png,40%,center)
-CENTER: ''RTSystemEditor�ɂ��V�X�e���\�z''
+CENTER: ''RTSystemEditorによるシステム構築''
 
-RTC�͋N�������ƁA�}���� �l�[���T�[�r�X�r���[�Ɍ���܂��B �l�[���T�[�r
-�X�r���[���RTC�𒆉��̃G�f�B�^�Ƀh���b�O�A���h�h���b�v����ƁARTC���V
-�X�e���G�f�B�^���Ɏ������A�C�R���ŕ\������܂��B �����`�̕ӏ�̓ʕ���
-�|�[�g��\���Ă���A�����RTC�Ԃ̃|�[�g��ڑ����邱�ƂŃV�X�e�����\�z��
-�܂��B�܂��A��ʒ��������ɂ�RTC�̃R���t�B�M�����[�V�����r���[���\������
-�Ă���A�����ŔC�ӂ�RTC�̃p�����[�^��ҏW���邱�Ƃ��ł���悤�ɂȂ��Ă�
-�܂��B
+RTC は起動されると、図左のネームサービスビューに表示されます。 ネームサービスビュー上の RTC を中央のエディタにドラッグアンドドロップすると、RTC がシステムエディタ内にアイコンで表示されます。 長方形の辺上の凸部がポートを表しており、これら RTC 間のポートを接続することでシステムを構築します。また、画面中央下部には RTC のコンフィギュレーションビューが表示されており、ここで任意の RTC のパラメーターを編集することができるようになっています。
 
-�V�X�e�����\�z������A�G�f�B�^��ŉE�N���b�N�� ''All Activate'' ��I��
-���邱�ƂŁA�S�Ă�RTC���A�N�e�B�u�����邱�Ƃ��\�ł��B�܂��A�G�f�B�^��
-�ŉE�N���b�N���A ''Save as'' ��I�����邱�ƂŁA�V�X�e���̍\������ۑ�
-���邱�Ƃ��ł��܂��B�ۑ������V�X�e���\�����́A�ēx�Ăяo�����ƂŃV�X�e
-���̐ڑ����A�R���t�B�M�����[�V�����̏�񓙂𕜌����邱�Ƃ��\�ł��B
+システムを構築したら、エディタ上で右クリックし「All Activate」を選択することで、全ての RTC をアクティブ化することが可能です。また、エディタ上で右クリックし「Save as」を選択することで、システムの構成情報を保存することができます。保存したシステム構成情報は、再度呼び出すことでシステムの接続情報、コンフィギュレーションの情報等を復元することが可能です。
 
-���݂̂Ƃ���A�V�X�e���\�����𕜌�����ۂɂ͗\��RTC���N�����Ă����K�v
-������܂����A�����I�ɂ�RTC�̋N������ڑ������܂ł������ōs����悤�ɂ�
-��\��ł��B
+現在のところ、システム構成情報を復元する際には予め RTC を起動しておく必要がありますが、将来的には RTC の起動から接続復元までが自動で行えるようになる予定です。
