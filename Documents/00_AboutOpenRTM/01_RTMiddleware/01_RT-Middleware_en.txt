@@ -60,8 +60,8 @@ The dialogue / recognition component is a component that has the function of rec
 - Face recognition component
 - Microphone component
 - Speech recognition component
-- interactive component
-- Head and arm components
+- interaction component
+- Head/arm control components
 - Speech synthesis component
 
 #ref(rtcbased_hri_system_en.png,50%,center)
