@@ -14,10 +14,10 @@ EPL(Eclipse Public License)はFSFによって認められている「フリー�
 これらのライセンスは、(i) 別モジュールとして頒布されるソフトウエアや、(ii) 許諾プログラムの派生物でないもの　には及びません。またEPLライセンスは、特許に関する条項が含まれており、コントリビューターが持つ特許が当該ソフトウエアに影響しない (使用者には使用料無料の特許ライセンスが付与される)形態となっています。
 
 なお、LGPLライセンスの詳細については、
-- http://www.gnu.org/copyleft/lesser.html
+- http://www.gnu.org/copyleft/lesser.html:http://www.gnu.org/copyleft/lesser.html
 を、EPLライセンスの詳細については、
 - http://opensource.org/licenses/eclipse-1.0.php
-- http://sourceforge.jp/projects/opensource/wiki/licenses%2FEclipse_Public_License(日本語訳)
+- http://sourceforge.jp/projects/opensource/wiki/licenses%2FEclipse_Public_License (日本語訳)
 を参照してください。
 
 以下、具体的利用例に基づくライセンスと制約条件を説明します。
