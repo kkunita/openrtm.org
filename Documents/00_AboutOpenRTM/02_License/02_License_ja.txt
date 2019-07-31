@@ -1,20 +1,17 @@
 ﻿#contents
 
 OpenRTM-aistは、各言語版(C++、Java、Python)のミドルウエアライブラリと、RTCBuilder、RTSystemEditorなどツールから構成されており、それぞれ
-`
+
 - OpenRTM-aist (C++、Java、Python版)は ''LGPL `または個別契約のデュアルライセンス''
 - RTSystemEditor、RTCBuilderは ''EPLまたは個別契約のデュアルライセンス''
-`
 
 のもとでオープンソース形式で配布しています。
 
 LGPL(GNU Lesser General Public License)はフリーソフトウェア財団(Free Software Foundation、以下FSFと略称)が提唱しているコピーレフト型のフリーソフトウェアライセンスです。
 
-
 EPL(Eclipse Public License)はFSFによって認められている「フリーソフトウェアライセンス」の1つであり、CPL(一部はLGPL)等と似たライセンス形態であり、より商業利用を促進するものとなっています。
 
 これらのライセンスは、(i) 別モジュールとして頒布されるソフトウエアや、(ii) 許諾プログラムの派生物でないもの　には及びません。またEPLライセンスは、特許に関する条項が含まれており、コントリビューターが持つ特許が当該ソフトウエアの使用に影響しない(使用者には使用料無料の特許ライセンスが付与される)形態となっています。
-
 
 なお、LGPLライセンスの詳細については、
 - http://www.gnu.org/copyleft/lesser.html
@@ -56,4 +53,4 @@ RTコンポーネントを作成して配布する場合、任意のライセン
 #ref(license_for_rtms_ja.png,50%,center)
 CENTER: ''RTミドルウエアのライセンス''
 
-RtcLink、RtcTemplate(RTSystemEditor、RTCBuilderの以前のバージョン)およびOpenRTM-aist(Java版)については、ソースコードの開示および実施(製品への利用)について個別契約によるライセンスを行った実績があります。
+RtcLink、RtcTemplate(RTSystemEditor、RTCBuilderの以前のバージョン)およびOpenRTM-aist(Java版)については、ソースコードの開示および実施(製品への利用)について個別契約によるライセンス提供の実績があります。
