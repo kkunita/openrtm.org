@@ -5,7 +5,7 @@
 //- RTSystemEditor、RTCBuilder は ''EPL と個別契約のデュアルライセンス''
 
 //のもとでオープンソース形式で配布しています。
-(G)OpenRTM-aist consists of middleware libraries of various languages (C ++, Java, Python), tools such as RTCBuilder, RTSystemEditor, etc.
+OpenRTM-aist consists of middleware libraries of various languages (C ++, Java, Python), tools such as RTCBuilder, RTSystemEditor, etc.
 - OpenRTM-aist (C ++, Java, Python version) '' LGPL and individual contract dual license ''
 - RTSystemEditor, RTCBuilder '' EPL and individual contract dual license ''
 
