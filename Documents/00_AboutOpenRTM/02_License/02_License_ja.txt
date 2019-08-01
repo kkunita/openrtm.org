@@ -2,8 +2,8 @@
 
 OpenRTM-aistは、各言語版(C++、Java、Python)のミドルウエアライブラリと、RTCBuilder、RTSystemEditorなどツールから構成されており、それぞれ
 
-- OpenRTM-aist (C++、Java、Python版)は ''LGPL `または個別契約のデュアルライセンス''
-- RTSystemEditor、RTCBuilderは ''EPLまたは個別契約のデュアルライセンス''
+- OpenRTM-aist (C++、Java、Python版)は ''LGPLと個別契約のデュアルライセンス''
+- RTSystemEditor、RTCBuilderは ''EPLと個別契約のデュアルライセンス''
 
 のもとでオープンソース形式で配布しています。
 

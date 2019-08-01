@@ -26,6 +26,7 @@ These licenses can not be applied to (i) software that is distributed as a separ
 
 For details of the LGPL license, please refer to
 - http://www.gnu.org/copyleft/lesser.html
+
 For details on the EPL license, please refer to
 - https://opensource.org/licenses/eclipse-1.0.php
 - https://sourceforge.jp/projects/opensource/wiki/licenses/Eclipse_Public_License (Japanese translation)
@@ -37,7 +38,7 @@ In the following, the Licenses and the constraints related to the examples of Op
 ** RT Component Development/Distribution
 
 //OpenRTM-aisのライセンスは、個々のRTコンポーネントには及びません。したがって、''RTコンポーネントの作成者は、自由なライセンスで配布・販売することができます''。
-The OpenRTM-ais license does not apply to individual RT components. Therefore, '' RT component creator can distribute/sell their products with any license '' '.
+The OpenRTM-ais license does not apply to individual RT components. Therefore, '' RT component creator can distribute/sell their products with any license ''.
 
 //RTコンポーネントは、OpenRTM-aist の libRTC.so (またはRTC.DLL) と動的リンクされており、また、RTコンポーネント自体も共有オブジェクト (またはダイナミックリンクライブラリ) として配布可能です。したがって、RTコンポーネント自体はライセンスが定める派生物とはみなされず、LGPL ライセンスは及びません。
 The RT component is dynamically linked with libRTC.so (or RTC.DLL) of OpenRTM-aist, and the RT component itself can also be distributed as a shared object (or dynamic link library). Therefore, the RT component itself is not regarded as a derivative defined by the license, and it does not include the LGPL license.
@@ -68,12 +69,12 @@ In consideration of these cases, OpenRTM - aist is a dual license format so that
 ** Modification and redistribution of OpenRTM-aist based on an individual contract
 
 //上記の場合のように、ロボットシステムを商業化する際に、ソースコードを改編しつつ、技術の流出を防ぐためにソースコードをクローズにしたい場合、LGPLやEPLではなく、個別契約のライセンスとすることができます。
-As in the above cases, if you do not want to disclose the modified source code to prevent leakage of the technology in case of commercializing a robot system, you can select an individual license instead of LGL or EPL.  
+As in the above cases, if you do not want to disclose the modified source code to prevent leakage of the technology in case of commercializing a robot system, you can select an individual license instead of LGPL or EPL.  
 
 //OpenRTM-aistを改編、再配布する場合、産総研の知的財産部門と個別に協議のうえ、個別契約として産総研から利用者に対して非LGPL・非EPLのライセンスを付与することができます。
 //その場合のソースコードの利用料(実施料)やライセンスの範囲等の条件については、利用形態、ソースコードの改編の度合いや両者の知的財産の割合等に応じて、詳細を決定します。ただし、産総研は産業振興を目的とする非営利法人であり、その実施料は高価なものにはならないはずです。
 It is possible to provide a non-LGPL/EPL license for you based on an individual contract when you want to modify/re-distribute OpenRTM-aist after the intellectual property division of AIST discuss with you individually.
-In that case, the condition like the fee for using the source code and giving rights will be defined based on your usage, how much/what you modify the source code and your intellectual property inclusion after discussion between you and the intellectual property division of AIST., range based AIST might be able to license you to modify and to re-distribute OpenRTM-aist with individual special license. The condition might be defined by a discussion between you and the Intellectually property division of AIST. However, since AIST is a nonprofit organization for industrial promotion, the fee might not be expensive.
+In that case, the condition like the fee for using the source code and the giving rights will be defined based on your usage, how much/what you modify the source code and your own intellectual property inclusion after discussion between you and the intellectual property division of AIST. However, since AIST is a nonprofit organization for industrial promotion, the fee might not be expensive.
 
 #ref(license_for_rtms_en.png,50%,center)
 //CENTER: ''RTミドルウエアのライセンス''
