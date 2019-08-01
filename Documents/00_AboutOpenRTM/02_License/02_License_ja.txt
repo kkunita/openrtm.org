@@ -17,7 +17,7 @@ EPL(Eclipse Public License)はFSFによって認められている「フリー�
 - http://www.gnu.org/copyleft/lesser.html
 を、EPLライセンスの詳細については、
 - http://opensource.org/licenses/eclipse-1.0.php
-- http://sourceforge.jp/projects/opensource/wiki/licenses%2FEclipse_Public_License(日本語訳)
+- http://sourceforge.jp/projects/opensource/wiki/licenses/Eclipse_Public_License (日本語訳)
 を参照してください。
 
 以下、OpenRTM-aistを用いた生成物の例に関連するライセンスと制約条件を説明します。
@@ -47,8 +47,8 @@ RTコンポーネントを作成して配布する場合、任意のライセン
 
 上記の場合のように、ロボットシステムを商業化する際に、ソースコードを改編しつつ、技術の流出を防ぐためにソースコードをクローズにしたい場合、LGPLやEPLではなく、個別契約のライセンスを用いることができます。
 
-個別契約によりOpenRTM-aistを改編、再配布する場合、産総研の知的財産部門と協議のうえ、利用形態、ソースコードの改編の度合いや両者の知的財産の割合等に応じて、産総研から利用者に対して非LGPL・非EPLのライセンスを付与することができます。
-ソースコードの利用料(実施料)やライセンスする範囲等については個別に協議のうえ詳細を決定します。ただし、産総研は産業振興を目的とする非営利法人であり、その実施料は高価なものにはならないはずです。
+OpenRTM-aistを改編、再配布する場合、産総研の知的財産部門と個別に協議のうえ、個別契約として産総研から利用者に対して非LGPL・非EPLのライセンスを付与することができます。
+その場合のソースコードの利用料(実施料)やライセンスの範囲等の条件については、利用形態、ソースコードの改編の度合いや両者の知的財産の割合等に応じて、詳細を決定します。ただし、産総研は産業振興を目的とする非営利法人であり、その実施料は高価なものにはならないはずです。
 
 #ref(license_for_rtms_ja.png,50%,center)
 CENTER: ''RTミドルウエアのライセンス''
