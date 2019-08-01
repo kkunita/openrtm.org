@@ -68,16 +68,16 @@ In consideration of these cases, OpenRTM - aist is a dual license format so that
 ** Reorganization and redistribution of OpenRTM-aist based on individual contract
 
 //上記の場合のように、ロボットシステムを商業化する際に、ソースコードを改編しつつ、技術の流出を防ぐためにソースコードをクローズにしたい場合、LGPLやEPLではなく、個別契約のライセンスとすることができます。
-(G)As in the above cases, when commercializing the robot system, if you want to close the source code in order to prevent leakage of technology while reforming the source code, not to LGPL or EPL but to make a license for individual contract I can.
+As in the above cases, if you do not want to disclose the modified source code in order to prevent leakage of the technology in case of commersializing a robot system, you can select indivisual license instead of LGL or EPL. 
 
-//個別契約により OpenRTM-aist を改編、再配布する場合、産総研の知的財産部門と協議のうえ、利用形態、ソースコードの改編の度合いや両者の知的財産の割合等に応じて、産総研から利用者に対して非LGPL・非EPLのライセンスを付与することができます。
-//ソースコードの利用料 (実施料) やライセンスする範囲等については個別に協議のうえ詳細を決定します。ただし、産総研は産業振興を目的とする非営利法人であり、安価な実施料で利用することができます。
-(G)When reorganizing and redistributing OpenRTM-aist by individual contract, after consultation with the intellectual property department of AIST, depending on the usage form, the degree of reorganization of source code, the ratio of intellectual property of both, etc., AIST You can grant non-LGPL / non-EPL licenses from users to users.
-We will discuss the source code usage fee (royalty fee) and the scope of licensing separately after consultation. However, AIST is a non-profit corporation aiming at industrial promotion, and it can be used with cheap implementation fee.
+//OpenRTM-aistを改編、再配布する場合、産総研の知的財産部門と個別に協議のうえ、個別契約として産総研から利用者に対して非LGPL・非EPLのライセンスを付与することができます。
+//その場合のソースコードの利用料(実施料)やライセンスの範囲等の条件については、利用形態、ソースコードの改編の度合いや両者の知的財産の割合等に応じて、詳細を決定します。ただし、産総研は産業振興を目的とする非営利法人であり、その実施料は高価なものにはならないはずです。
+It is possible to provide a non-LGPL/EPL license for you based on an indivisual contract when you want to modify/re-distribute OpenRTM-aist after the intellectual property division of AIST discuss with you indivisually.
+In that case, the codition like the fee for using the source code and giving rights will be defined based on your usage, how much/what you modify the source code and your intellectual property inclusion after discussion between you and the intellectual property division of AIST., range based AIST might be able to license you to modify and to re-distribute OpenRTM-aist with indivisual special license. The condition might be defined by discussion between you and Intellectualy propery division of AIST. However, since AIST is a nonprofit organization for corporation for industrial promotion, the fee might not be expense.
 
 #ref(license_for_rtms_en.png,50%,center)
 //CENTER: ''RTミドルウエアのライセンス''
 CENTER: '' RT Middleware License ''
 
 //すでに、RtcLink、RtcTemplate (RTSystemEditor、RTCBuilderの以前のバージョン) および OpenRTM-aist (Java版) については、ソースコードの開示および実施 (製品への利用) について個別契約によるライセンスを行った実績があります。
-(G)We already have licensed individual contracts for RtcLink, RtcTemplate (RTSystemEditor, previous version of RTCBuilder) and OpenRTM - aist (Java version) for disclosure and implementation (source use) of source code.
+There were indivisual contracts to license the redistribution and the source code disclosure for (former RTSystem Editor), RtcTemplate(former RTC Builder) and OpenRTM-aist (Java version).
