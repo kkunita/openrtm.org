@@ -5,7 +5,7 @@
 //- RTSystemEditor、RTCBuilderは ''EPLと個別契約のデュアルライセンス''
 //のもとでオープンソース形式で配布しています。
 OpenRTM-aist consists of middleware libraries of various languages (C ++, Java, Python), tools such as RTCBuilder, RTSystemEditor, etc. We distributed them in open source format under:
-- OpenRTM-aist (C ++, Java, Python version) ''LGPL or individual contract dual license''
+- OpenRTM-aist (C++, Java, Python version) ''LGPL or individual contract dual license''
 - RTSystemEditor, RTCBuilder ''EPL or individual contract dual license''
 
 //LGPL (GNU Lesser General Public License) はフリーソフトウェア財団（Free Software Foundation、以下FSFと略称）が公開しているコピーレフト型のフリーソフトウェアライセンスです。
