@@ -5,15 +5,15 @@
 //これらの中には、ユーザーの利便性を向上させるライブラリ、RTコンポーネントの登録検索等の基本的サービス(現在はCORBAのNaming Serviceを利用)、RTコンポーネントの雛型コードを生成するRTCBuilder、RTコンポーネントの接続・制御等を行うRTSystemEditor等のツール群が含まれています。
 OpenRTM-aist consists of RT component framework, RT middleware, basic RT components, libraries, basic services, basic tools and so on.
 The RT component framework consists of the base classes for creating RT components, and all RT components are created as subclasses of the base classes.
-RT middleware handles RT component modules which are made based on the framework loads, instances life cycle such like construction/destruction, registering the components to the name service, etc.
+RT middleware loads RT component modules which are made based on the framework, handles the instances life cycle such as construction/destruction, registers the components to the name service, etc.
 OpenRTM-aist also includes libraries for user convenience, basic services like component registering/searching (currently CORBA Naming Service is used), tools like RTCbuilder which generate base code, RTSystemEditor which connects and control RT components.
 
 //現在のところ、OpenRTM-aistは C++、Python、Javaの各言語をサポートしており、Windows、UNIX系OS、μITRON(C++のみ対応)系の各OS上で動作可能です。
 //さらに、株式会社セックがOpenRTM-aist互換のミドルウエア:OpenRTM .NETを公開しており、C#を始めとする.NET環境でRTCを作成・実行することができます。
 //異なる言語で作成したRTCや異なるOS上で動作するRTCを相互に接続し連携させることが可能です。
-At present, OpenRTM-aist supports C++, Python and Java languages. It can run on Windows, UNIX based OS, $ \ mu $ ITRON (C++ only) based OS.
+At present, OpenRTM-aist supports C++, Python and Java languages. It can run on Windows, UNIX based OS, &micro;ITRON (C++ only) based OS.
 In addition, System Engineering Consultants Co, LTD. has released OpenRTM-aist compatible middleware: OpenRTM .NET. It can create and execute RTC in .NET environment including C# use.
-RTCs that are created in different languages or work on different OSs can be connected to each other and operate together.
+RTCs that are created in different languages or work on different OSs can be connected and operate together.
 
 
 //** インターフェース仕様
@@ -58,7 +58,7 @@ CENTER: '' Configuration of OpenRTM-aist ''
 | OpenRTM-aist (Python version) | Component framework and middleware library and commands for creating RT components in Python language |
 | OpenRTM-aist (Java version) | Component framework and middleware library and commands for creating RT components in Java language |
 | RTCBuilder | Eclipse plugin for RT component design and code generation |
-| RTSystemEditor | Eclipse plugin for RT component operation and RT system design / operation |
+| RTSystemEditor | Eclipse plugin for RT component operation and RT system design/operation |
 | rtshell       | A set of commands which can be used to control RT component and RT system |
 
 
@@ -93,7 +93,7 @@ Each of these distributions is distributed under the dual licenses - individual 
 | Dependent library | omniORBpy - 2.3 or higher |
 
 //*** OpenRTM-aist (Java版)
-*** (G)OpenRTM-aist (Java version)
+*** OpenRTM-aist (Java version)
 
 //|CENTER:200|LEFT|c
 //| Java | JDK5 以上 |
@@ -102,7 +102,7 @@ Each of these distributions is distributed under the dual licenses - individual 
 | Java | JDK 5 or higher |
 | Dependent library | Java IDL included in JDK |
 
-*** (G)RTCBuilder/RTSystemEditor
+*** RTCBuilder/RTSystemEditor
 
 //|CENTER:200|LEFT|c
 //| Eclipse | 3.4 以上 |
@@ -113,7 +113,7 @@ Each of these distributions is distributed under the dual licenses - individual 
 | Java | JDK 6 or higher |
 | Dependent library | Eclipse EMF 2.2 or higher (including SDO and XSD), Eclipse GEF 3.2 or higher (including Draw 2D) |
 
-*** (G)rtcshell/rtsshell
+*** rtcshell/rtsshell
 
 //|CENTER:200|LEFT|c
 //| Python | Python 2.6 以上 |
