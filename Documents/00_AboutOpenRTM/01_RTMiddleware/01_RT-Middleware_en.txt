@@ -100,7 +100,7 @@ One of the merits of standardization is that many vendors and developers can fre
 //|LEFT:120|LEFT:150|LEFT:350|c
 //| 名称 | ベンダー名 | 概要 |
 //| OpenRTM-aist | 産総研 | C++、Python、Java の3種類 |
-//| OpenRTM .NET | (株)セック | .NET による実装、OpenRTM-aistと互換性あり |
+//| OpenRTM.NET | (株)セック | .NET による実装、OpenRTM-aistと互換性あり |
 //| OPRoS Project | 韓国 ETRI | 独自ミドルウエア上の実装 |
 //| PALRO(パルロ) | 富士ソフト株式会社 | 小型人型ロボットPARLO(パルロ)の制御ソフトウエアがC++言語レベルで互換 |
 //| GostaiRTC | GOSTAI/Thales | OMG RTC Local PSMに準拠 |
@@ -108,14 +108,14 @@ CENTER: '' OMG RTC compliant middleware list ''
 |LEFT:120|LEFT:150|LEFT:350|c
 | Name | Vendor name | Overview |
 | OpenRTM-aist | AIST | Three types of C ++, Python, Java |
-| OpenRTM .NET | System Engineering Consultation Co.,Ltd. | .NET implementation, compatible with OpenRTM-aist |
+| OpenRTM.NET | System Engineering Consultation Co.,Ltd. | .NET implementation, compatible with OpenRTM-aist |
 | OPRoS Project | Korea ETRI | Implementation on original middleware |
 | PALRO (Palo) | Fuji Software Co., Ltd. | Compact humanoid robot PARLO (Palo) control software is compatible at C ++ language level |
 | GostaiRTC | GOSTAI / Thales | OMG RTC Complies with Local PSM |
 
 #br
 
-//このうち、通信を介して互換性がある物は、OpenRTM-aist と OpenRTM .NET のみですが、他の実装とは内部モデルが同一であるため、ブリッジ等を作り連携させた際にも、全体としての整合性に矛盾が生じることは少なくなります。
+//このうち、通信を介して互換性がある物は、OpenRTM-aist と OpenRTM.NET のみですが、他の実装とは内部モデルが同一であるため、ブリッジ等を作り連携させた際にも、全体としての整合性に矛盾が生じることは少なくなります。
 //また、複数の組織による多様な実装が存在することで、用途に応じて適切な言語やライセンスを選択することも可能であり、ミドルウエアそのものの永続性も高くなります。
-Among these, only compatible objects via network communication are OpenRTM-aist and OpenRTM .NET, but since the internal model is the same as other implementations, if you are using a bridge or similar technique to link them, you can expect good consistency. 
+Among these, only compatible objects via network communication are OpenRTM-aist and OpenRTM.NET, but since the internal model is the same as other implementations, if you are using a bridge or similar technique to link them, you can expect good consistency. 
 Also, since there are various implementations by multiple organizations, you can select the appropriate computer language and the license depends on the usage. Also, it may make the durability of the middleware better.
