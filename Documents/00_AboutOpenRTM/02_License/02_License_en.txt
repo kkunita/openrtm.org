@@ -62,7 +62,7 @@ Therefore, when modifying and selling OpenRTM-aist under LGPL, it is required to
 
 //組込みシステムなどにおいては、ソースコードを改編せずにターゲットに適用することが困難で、改変したソースを開示することに抵抗がある場合が数多くあり、これはロボットを事業化したい会社等にとっては不都合であると言えます。
 //こうした場合を考慮して、OpenRTM-aist は次に説明する、個別契約に基づくライセンス付与の形態もとれるよう、デュアルライセンス形式となっています。
-In embedded systems, there are many cases where it is difficult to apply software to a target without modifying the source code and it might not be good for the vendor to open the modified, which may be inconvenient for companies that want to commercialize the robot.
+In many case embedded systems,it is difficult to apply software to a target without modifying the source code and it might not be good for the vendor to open the modified source code. It may be inconvenient for companies that want to commercialize the robot.
 In consideration of these cases, OpenRTM - aist is a dual license format so that it can take the form of licensing based on individual contract as described below.
 
 //** 個別契約に基づくOpenRTM-aist の改編と再配布
@@ -81,4 +81,4 @@ In that case, the condition like the fee for using the source code and the givin
 CENTER: '' RT Middleware License ''
 
 //すでに、RtcLink、RtcTemplate (RTSystemEditor、RTCBuilderの以前のバージョン) および OpenRTM-aist (Java版) については、ソースコードの開示および実施 (製品への利用) について個別契約によるライセンスを行った実績があります。
-There were individual contracts to license the redistribution and the source code disclosure for (former RTSystem Editor), RtcTemplate (former RTC Builder) and OpenRTM-aist (Java version).
+There were individual contracts to license the redistribution and the source code disclosure for RtcLink(former RTSystem Editor), RtcTemplate (former RTC Builder) and OpenRTM-aist (Java version).
