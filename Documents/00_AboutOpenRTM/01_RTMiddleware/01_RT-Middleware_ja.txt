@@ -3,7 +3,7 @@
 
 ** RTミドルウエア (RTM)
 
-RTミドルウエア(RT-Middleware: RTM)とは、ロボットの機能要素(RT機能要素)ごとにソフトウエアモジュールを作りそれを複数組み合わせてロボットシステム(RTシステム)を構築する為のソフトウエアプラットフォームを指す名前です。
+RTミドルウエア(RT-Middleware: RTM)とは、ロボットの機能要素(RT機能要素)ごとにソフトウエアモジュールを作り、それを複数組み合わせてロボットシステム(RTシステム)を構築する為のソフトウエアプラットフォームを指す名前です。
 OpenRTM-aistはRTミドルウエア実装の一つであり、''Open''-source and open architecture ''R''obot ''T''echnology ''M''iddleware implemented by ''AIST'' (産業技術総合研究所)を意味します。
 
 
