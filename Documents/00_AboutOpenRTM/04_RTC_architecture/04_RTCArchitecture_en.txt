@@ -49,8 +49,7 @@ CENTER: '' Get meta information ''
 //*** アクティビティ
 *** Activity
 
-//
-コンポーネン内での主要なロジック実現のための実行行為そのもの。RTCの統一的管理のため、Inactive(OFF状態)、Active(ON状態)、Error(エラー状態)といった共通の状態が決められています。RTC開発者は、主に、それぞれの状態や状態遷移イベントに割り当てられた関数(コールバック関数)に実現したい機能を実装することでRTCを作成します。
+//コンポーネン内での主要なロジック実現のための実行行為そのもの。RTCの統一的管理のため、Inactive(OFF状態)、Active(ON状態)、Error(エラー状態)といった共通の状態が決められています。RTC開発者は、主に、それぞれの状態や状態遷移イベントに割り当てられた関数(コールバック関数)に実現したい機能を実装することでRTCを作成します。
 Execution itself to implement major functions into a component. Common states such as Inactive (OFF state), Active (ON state), Error (Error state), etc are defined for unified management of RTC. An RTC developer creates an RTC by mainly implementing the desired feature into the function (callback function) assigned to each state and each state transition event.
 
 #ref(rtc_arch_activity_en.png,40%,center)
