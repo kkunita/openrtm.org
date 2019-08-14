@@ -137,7 +137,7 @@ At each of these states and transitions, a predetermined function (callback func
 | Function name | Overview |
 | onInitialize | Called only once at the life cycle initialization.|
 | onActivated | Called once when activated. |
-| onDeactivated | Called once to deactivated.|
+| onDeactivated | Called once when deactivated.|
 | onExecute | Called periodically in active state.|
 | onStateUpdate | Called after every onExecute. |
 | onAborting | Called once when enter to the error state.|
