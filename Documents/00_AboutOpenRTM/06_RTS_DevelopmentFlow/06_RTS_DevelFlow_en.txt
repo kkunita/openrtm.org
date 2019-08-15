@@ -5,13 +5,13 @@
 In this section, we will explain how to build a system by combining multiple RTCs created.
 
 //** ネームサービス
-** Name service
+** Name Service
 
 //分散オブジェクトミドルウエアは、任意の場所にある計算機上のオブジェクトに対して、参照を保持する代理オブジェクトを介して透過的アクセスを提供します。この参照は CORBAではIOR(Interoperable Object Reference)と呼ばれ、実体はオブジェクトが存在するコンピュータのネットワークアドレスやポート番号、オブジェクト固有のキー等がエンコードされたものです。 あるオブジェクトのIORを別のコンピュータ上のプログラムから利用する方法としては、ネットワーク上のサーバー上にIORを登録するのが一つの方法です。この参照を登録したり取得したりするサービスがネームサービスです。ネームサービスはCORBAで標準的に定義されているサービスの一つであり、OpenRTM-aistでは、''rtm-naming''というラッパーコマンドとして提供されています。
-Distributed Object Middleware provides transparent access via proxy objects that hold References to objects on the computer at some location. The Reference is called IOR (Interoperable Object Reference) in CORBA, and the actual entity is the one in which the network address, the port number of the computer, the unique keys for the object, etc are encoded.  To use IOR to an object from the program on the other computer, it is one method to register the IOR to a server on the network. This service on the server is Name service. The name service is one of the standard services defined in CORBA, and in OpenRTM-aist, it is provided as a wrapper command ''rtm-naming ''.
+''Distributed Object Middleware'' provides transparent access via proxy objects that hold ''References'' to objects on the computer at some locations. The reference is called ''IOR (Interoperable Object Reference)'' in CORBA, and the actual entity is a character string that encodes the IP address, port number, and object-specific key of the computer where the object exists. One way for a program on another computer to know the IOR of an object is to register the IOR on a server on the network. The service that registers and obtains this reference is ''the Name Service''. The name service is one of the standard services defined in CORBA standards, and it is provided as a wrapper command ''rtm-naming '' in OpenRTM-aist.
 
 //RTシステムを起動する前に、RTCを登録するネームサーバーを起動させる必要があります。また、各RTCに対しては、ネームサーバーの場所を前もって調べておく必要があり、そのために設定ファイル''rtc.conf''にその情報を指定します。例えば、ネームサーバーをホスト名''openrtm.mydomain.net''上で起動した場合、全てのRTCにはそれに対応したrtc.confに以下の内容を書く必要があります。
-Before starting up your RT systems, you need to start the name server for registering RTCs. Also, for each RTC, it is necessary to give the name server location in advance in the configuration file '' rtc.conf ''. For example, if you start a name server on the hostname ''openrtm.mydomain.net'', you need to provide rtc.conf which has the following line for all the RTCs.
+Before starting up your RT systems, you need to start the name server for registering RTCs. Also, for each RTC, it is necessary to give the name server location in advance in the configuration file ''rtc.conf'. For example, if you start a name server on the hostname ''openrtm.mydomain.net'', you need to provide rtc.conf which has the following line for all the RTCs.
 
  corba.nameservers: openrtm.mydomain.net
 
