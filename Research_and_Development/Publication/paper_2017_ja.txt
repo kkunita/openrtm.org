@@ -1,3 +1,6 @@
+// Title: 論文 (2017年)
+#contents
+
 ** 論文誌
 
 + Ryo Hasegawa, Naofumi Yawata, Noriaki ANDO, Nobuhiko Nishio, Takuya Azumi, "Embedded Component-based Framework for Robot Technology Middleware", Journal of Information Processing, Vol.25, pp.811-819, 2017

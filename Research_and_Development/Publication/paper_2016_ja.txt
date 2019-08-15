@@ -1,3 +1,6 @@
+// Title: 論文 (2016年)
+#contents
+
 ** 国際学会
 + Geoffrey BIGGS, Noriaki ANDO, "A formal specification of the RT-Middleware data transfer protocol", International Conference on SIMULATION, MODELING and PROGRAMMING for AUTONOMOUS ROBOTS (SIMPAR 2016), 2016.12
 
