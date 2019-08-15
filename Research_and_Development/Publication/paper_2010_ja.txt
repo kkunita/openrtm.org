@@ -1,24 +1,24 @@
-// Title: ˜_•¶ (2010”N)
+// Title: è«–æ–‡ (2010å¹´)
 #contents
 
-** ˜_•¶Ž
-+‰i“c ˜a”V, ˜e“c —Dm, ŽR–ì•Ó ‰ÄŽ÷, ˆÀ“¡ Œcº, "OpenRTM-aist‚É‚æ‚é¶ŠˆŽx‰‡ƒƒ{ƒbƒg‚Ì‚½‚ß‚Ìƒƒ{ƒbƒgƒA[ƒ€‚¨‚æ‚Ñƒ}ƒ“ƒ}ƒVƒ“ƒCƒ“ƒ^ƒtƒF[ƒX‚Ì‚q‚sƒRƒ“ƒ|[ƒlƒ“ƒgŠJ”­", “ú–{‹@ŠBŠw‰ï˜_•¶W (C•Ò), Vol.76, No.766, pp.27-34, 2010.06
+** è«–æ–‡èªŒ
++æ°¸ç”° å’Œä¹‹, è„‡ç”° å„ªä», å±±é‡Žè¾º å¤æ¨¹, å®‰è—¤ æ…¶æ˜­, "OpenRTM-aistã«ã‚ˆã‚‹ç”Ÿæ´»æ”¯æ´ãƒ­ãƒœãƒƒãƒˆã®ãŸã‚ã®ãƒ­ãƒœãƒƒãƒˆã‚¢ãƒ¼ãƒ ãŠã‚ˆã³ãƒžãƒ³ãƒžã‚·ãƒ³ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®ï¼²ï¼´ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆé–‹ç™º", æ—¥æœ¬æ©Ÿæ¢°å­¦ä¼šè«–æ–‡é›† (Cç·¨), Vol.76, No.766, pp.27-34, 2010.06
 
-** ‘“àŠw‰ï
+** å›½å†…å­¦ä¼š
 
-+ˆÀ“¡ Œcº, ŒIŒ´ áÁ“ñ, ƒrƒOƒY ƒWƒFƒt, _“¿ “O—Y, "OpenRTM-aist-1.0 ‚É‚¨‚¯‚éRTƒRƒ“ƒ|[ƒlƒ“ƒgƒ}ƒl[ƒWƒƒ", “ú–{‹@ŠBŠw‰ï ƒƒ{ƒeƒBƒNƒXEƒƒJƒgƒƒjƒNƒXu‰‰‰ï2010, p.2A1-G02, 2010.06, –kŠC“¹, ˆ®ìŽs &ref(ROBOMEC2010_Ando_rtcd_2A1-G02.pdf,[PDF]);
-+ˆÀ“¡ Œcº, ŒIŒ´ áÁ“ñ, •ÐŒ© „l, â–{ •Žu, "OpenRTM-aist-1.0 ‚É‚¨‚¯‚éV‚µ‚¢ƒT[ƒrƒXƒ|[ƒg‚ÌŽÀ‘•", “ú–{‹@ŠBŠw‰ï ƒƒ{ƒeƒBƒNƒXEƒƒJƒgƒƒjƒNƒXu‰‰‰ï2010, p.2A1-G01, 2010.06, –kŠC“¹, ˆ®ìŽs &ref(ROBOMEC2010_Ando_svcport_2A1-G01.pdf,[PDF]);
-+’£ •q_, —› Œ«“¿, ‹à ÃÉ, ŒIŒ´ áÁ“ñ, ƒrƒOƒY ƒWƒFƒt, ˆÀ“¡ Œcº, "ARToolKit ‚ð—p‚¢‚½Šg’£Œ»ŽÀƒVƒXƒeƒ€‚Ì‚½‚ß‚ÌRTƒRƒ“ƒ|[ƒlƒ“ƒg", “ú–{‹@ŠBŠw‰ï ƒƒ{ƒeƒBƒNƒXEƒƒJƒgƒƒjƒNƒXu‰‰‰ï2010, p.2P1-B03, 2010.06, –kŠC“¹, ˆ®ìŽs &ref(ROBOMEC2010_Chang_2P1-B03.pdf,[PDF]);
-+Geoffrey BIGGS, Noriaki ANDO, Tetsuo KOTOKU, "rtcshell: Command-line tools for OpenRTM-aist", “ú–{‹@ŠBŠw‰ï ƒƒ{ƒeƒBƒNƒXEƒƒJƒgƒƒjƒNƒXu‰‰‰ï2010, p.2P1-A23, 2010.06, –kŠC“¹, ˆ®ìŽs &ref(ROBOMEC2010_Geoff_2P1-A23.pdf,[PDF]);
-+—› Œ«“¿, ‹à ÃÉ, ’£ •q_, ˆÀ“¡ Œcº, "OpenRTM-aist ‚ÆTECS (TOPPERS Embedded Component System) ‚Ì˜AŒg‚ÉŠÖ‚·‚élŽ@", “ú–{‹@ŠBŠw‰ï ƒƒ{ƒeƒBƒNƒXEƒƒJƒgƒƒjƒNƒXu‰‰‰ï2010, p.2P1-B04, 2010.06, –kŠC“¹, ˆ®ìŽs &ref(ROBOMEC2010_Kim_2P1-B04.pdf,[PDF]);
-+¬“‡ ˆê_, ˆÀ“¡ Œcº, ’Jì –¯¶, _“¿ “O—Y, "ƒI[ƒvƒ“ƒ\[ƒXƒn[ƒhƒEƒFƒA‚É‚æ‚éW‡’mƒZƒ“ƒTƒlƒbƒgƒ[ƒN‚Ì\’z‚ÆƒfƒoƒCƒXŠJ”­", “ú–{‹@ŠBŠw‰ï ƒƒ{ƒeƒBƒNƒXEƒƒJƒgƒƒjƒNƒXu‰‰‰ï2010, p.2P1-B05, 2010.06, –kŠC“¹, ˆ®ìŽs &ref(ROBOMEC2010_Kojima_2P1-B05.pdf,[PDF]);
-+ŒIŒ´ áÁ“ñ, •ÐŒ© „l, ”’“c _º, ‹{–{ °”ü, â–{ •Žu, ˆÀ“¡ Œcº, "OpenRTM-aist-1.0 ‚É‚¨‚¯‚éV‚µ‚¢ƒf[ƒ^ƒ|[ƒg‚ÌŽÀ‘•", “ú–{‹@ŠBŠw‰ï ƒƒ{ƒeƒBƒNƒXEƒƒJƒgƒƒjƒNƒXu‰‰‰ï2010, p.2A1-G03, 2010.06, –kŠC“¹, ˆ®ìŽs &ref(ROBOMEC2010_Kurihara_2A1-G03.pdf,[PDF]);
-+‹à ÃÉ, —› Œ«“¿, —« œ¨‘z, ŒIŒ´ áÁ“ñ, ƒrƒOƒY ƒWƒFƒt, ˆÀ“¡ Œcº, "OpenCV 2.0 ‚ð—p‚¢‚½‰f‘œˆ—ƒVƒXƒeƒ€‚Ì‚½‚ß‚ÌRTƒRƒ“ƒ|[ƒlƒ“ƒgŒQ", “ú–{‹@ŠBŠw‰ï ƒƒ{ƒeƒBƒNƒXEƒƒJƒgƒƒjƒNƒXu‰‰‰ï2010, p.2P1-A21, 2010.06, –kŠC“¹, ˆ®ìŽs &ref(ROBOMEC2010_Lee_OpenCV_2P1-A21.pdf,[PDF]);
++å®‰è—¤ æ…¶æ˜­, æ —åŽŸ çœžäºŒ, ãƒ“ã‚°ã‚º ã‚¸ã‚§ãƒ•, ç¥žå¾³ å¾¹é›„, "OpenRTM-aist-1.0 ã«ãŠã‘ã‚‹RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãƒžãƒãƒ¼ã‚¸ãƒ£", æ—¥æœ¬æ©Ÿæ¢°å­¦ä¼š ãƒ­ãƒœãƒ†ã‚£ã‚¯ã‚¹ãƒ»ãƒ¡ã‚«ãƒˆãƒ­ãƒ‹ã‚¯ã‚¹è¬›æ¼”ä¼š2010, p.2A1-G02, 2010.06, åŒ—æµ·é“, æ—­å·å¸‚ &ref(ROBOMEC2010_Ando_rtcd_2A1-G02.pdf,[PDF]);
++å®‰è—¤ æ…¶æ˜­, æ —åŽŸ çœžäºŒ, ç‰‡è¦‹ å‰›äºº, å‚æœ¬ æ­¦å¿—, "OpenRTM-aist-1.0 ã«ãŠã‘ã‚‹æ–°ã—ã„ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒˆã®å®Ÿè£…", æ—¥æœ¬æ©Ÿæ¢°å­¦ä¼š ãƒ­ãƒœãƒ†ã‚£ã‚¯ã‚¹ãƒ»ãƒ¡ã‚«ãƒˆãƒ­ãƒ‹ã‚¯ã‚¹è¬›æ¼”ä¼š2010, p.2A1-G01, 2010.06, åŒ—æµ·é“, æ—­å·å¸‚ &ref(ROBOMEC2010_Ando_svcport_2A1-G01.pdf,[PDF]);
++å¼µ æ•æµ©, æŽ è³¢å¾³, é‡‘ æ¹˜å®°, æ —åŽŸ çœžäºŒ, ãƒ“ã‚°ã‚º ã‚¸ã‚§ãƒ•, å®‰è—¤ æ…¶æ˜­, "ARToolKit ã‚’ç”¨ã„ãŸæ‹¡å¼µç¾å®Ÿã‚·ã‚¹ãƒ†ãƒ ã®ãŸã‚ã®RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ", æ—¥æœ¬æ©Ÿæ¢°å­¦ä¼š ãƒ­ãƒœãƒ†ã‚£ã‚¯ã‚¹ãƒ»ãƒ¡ã‚«ãƒˆãƒ­ãƒ‹ã‚¯ã‚¹è¬›æ¼”ä¼š2010, p.2P1-B03, 2010.06, åŒ—æµ·é“, æ—­å·å¸‚ &ref(ROBOMEC2010_Chang_2P1-B03.pdf,[PDF]);
++Geoffrey BIGGS, Noriaki ANDO, Tetsuo KOTOKU, "rtcshell: Command-line tools for OpenRTM-aist", æ—¥æœ¬æ©Ÿæ¢°å­¦ä¼š ãƒ­ãƒœãƒ†ã‚£ã‚¯ã‚¹ãƒ»ãƒ¡ã‚«ãƒˆãƒ­ãƒ‹ã‚¯ã‚¹è¬›æ¼”ä¼š2010, p.2P1-A23, 2010.06, åŒ—æµ·é“, æ—­å·å¸‚ &ref(ROBOMEC2010_Geoff_2P1-A23.pdf,[PDF]);
++æŽ è³¢å¾³, é‡‘ æ¹˜å®°, å¼µ æ•æµ©, å®‰è—¤ æ…¶æ˜­, "OpenRTM-aist ã¨TECS (TOPPERS Embedded Component System) ã®é€£æºã«é–¢ã™ã‚‹è€ƒå¯Ÿ", æ—¥æœ¬æ©Ÿæ¢°å­¦ä¼š ãƒ­ãƒœãƒ†ã‚£ã‚¯ã‚¹ãƒ»ãƒ¡ã‚«ãƒˆãƒ­ãƒ‹ã‚¯ã‚¹è¬›æ¼”ä¼š2010, p.2P1-B04, 2010.06, åŒ—æµ·é“, æ—­å·å¸‚ &ref(ROBOMEC2010_Kim_2P1-B04.pdf,[PDF]);
++å°å³¶ ä¸€æµ©, å®‰è—¤ æ…¶æ˜­, è°·å· æ°‘ç”Ÿ, ç¥žå¾³ å¾¹é›„, "ã‚ªãƒ¼ãƒ—ãƒ³ã‚½ãƒ¼ã‚¹ãƒãƒ¼ãƒ‰ã‚¦ã‚§ã‚¢ã«ã‚ˆã‚‹é›†åˆçŸ¥ã‚»ãƒ³ã‚µãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã®æ§‹ç¯‰ã¨ãƒ‡ãƒã‚¤ã‚¹é–‹ç™º", æ—¥æœ¬æ©Ÿæ¢°å­¦ä¼š ãƒ­ãƒœãƒ†ã‚£ã‚¯ã‚¹ãƒ»ãƒ¡ã‚«ãƒˆãƒ­ãƒ‹ã‚¯ã‚¹è¬›æ¼”ä¼š2010, p.2P1-B05, 2010.06, åŒ—æµ·é“, æ—­å·å¸‚ &ref(ROBOMEC2010_Kojima_2P1-B05.pdf,[PDF]);
++æ —åŽŸ çœžäºŒ, ç‰‡è¦‹ å‰›äºº, ç™½ç”° æµ©æ˜­, å®®æœ¬ æ™´ç¾Ž, å‚æœ¬ æ­¦å¿—, å®‰è—¤ æ…¶æ˜­, "OpenRTM-aist-1.0 ã«ãŠã‘ã‚‹æ–°ã—ã„ãƒ‡ãƒ¼ã‚¿ãƒãƒ¼ãƒˆã®å®Ÿè£…", æ—¥æœ¬æ©Ÿæ¢°å­¦ä¼š ãƒ­ãƒœãƒ†ã‚£ã‚¯ã‚¹ãƒ»ãƒ¡ã‚«ãƒˆãƒ­ãƒ‹ã‚¯ã‚¹è¬›æ¼”ä¼š2010, p.2A1-G03, 2010.06, åŒ—æµ·é“, æ—­å·å¸‚ &ref(ROBOMEC2010_Kurihara_2A1-G03.pdf,[PDF]);
++é‡‘ æ¹˜å®°, æŽ è³¢å¾³, åŠ‰ æƒ æƒ³, æ —åŽŸ çœžäºŒ, ãƒ“ã‚°ã‚º ã‚¸ã‚§ãƒ•, å®‰è—¤ æ…¶æ˜­, "OpenCV 2.0 ã‚’ç”¨ã„ãŸæ˜ åƒå‡¦ç†ã‚·ã‚¹ãƒ†ãƒ ã®ãŸã‚ã®RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆç¾¤", æ—¥æœ¬æ©Ÿæ¢°å­¦ä¼š ãƒ­ãƒœãƒ†ã‚£ã‚¯ã‚¹ãƒ»ãƒ¡ã‚«ãƒˆãƒ­ãƒ‹ã‚¯ã‚¹è¬›æ¼”ä¼š2010, p.2P1-A21, 2010.06, åŒ—æµ·é“, æ—­å·å¸‚ &ref(ROBOMEC2010_Lee_OpenCV_2P1-A21.pdf,[PDF]);
 
-**˜_•¶ŒöŠJ‹K’è‚É‚Â‚¢‚Ä 
-–{ƒy[ƒW‚Å‚ÍAŠeŠw‰ï‚Ì˜_•¶ŒöŠJ‹K’è‚É]‚Á‚Ä‰Â”\‚ÈŒÀ‚è˜_•¶Œ´e‚ÌŒöŠJ‚ðs‚Á‚Ä‚¨‚è‚Ü‚·B
+**è«–æ–‡å…¬é–‹è¦å®šã«ã¤ã„ã¦ 
+æœ¬ãƒšãƒ¼ã‚¸ã§ã¯ã€å„å­¦ä¼šã®è«–æ–‡å…¬é–‹è¦å®šã«å¾“ã£ã¦å¯èƒ½ãªé™ã‚Šè«–æ–‡åŽŸç¨¿ã®å…¬é–‹ã‚’è¡Œã£ã¦ãŠã‚Šã¾ã™ã€‚
 
--[[ƒƒ{ƒbƒgŠw‰ï:http://www.rsj.or.jp/JRSJ/kaitei_20060215.html]]
---–{l‚ªŽ©g‚¨‚æ‚ÑŠ‘®‹@ŠÖ‚ÌWebƒy[ƒW‚ÅŒöŠJ‚·‚éŒÀ‚è‹–‘ø‚³‚ê‚éB
--[[“ú–{‹@ŠBŠw‰ï:http://www.jsme.or.jp/publish/yoko/yokob_t.htm]]
---–{l‚ªŽ©g‚¨‚æ‚ÑŠ‘®‹@ŠÖ‚ÌWebƒy[ƒW‚ÅŒöŠJ‚·‚éŒÀ‚è‹–‘ø‚³‚ê‚éB
+-[[ãƒ­ãƒœãƒƒãƒˆå­¦ä¼š:http://www.rsj.or.jp/JRSJ/kaitei_20060215.html]]
+--æœ¬äººãŒè‡ªèº«ãŠã‚ˆã³æ‰€å±žæ©Ÿé–¢ã®Webãƒšãƒ¼ã‚¸ã§å…¬é–‹ã™ã‚‹é™ã‚Šè¨±è«¾ã•ã‚Œã‚‹ã€‚
+-[[æ—¥æœ¬æ©Ÿæ¢°å­¦ä¼š:http://www.jsme.or.jp/publish/yoko/yokob_t.htm]]
+--æœ¬äººãŒè‡ªèº«ãŠã‚ˆã³æ‰€å±žæ©Ÿé–¢ã®Webãƒšãƒ¼ã‚¸ã§å…¬é–‹ã™ã‚‹é™ã‚Šè¨±è«¾ã•ã‚Œã‚‹ã€‚

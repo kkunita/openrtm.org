@@ -1,30 +1,30 @@
-// Title: ˜_•¶ (2008”N)
+// Title: è«–æ–‡ (2008å¹´)
 #contents
 
-** ˜_•¶Ž
-+ˆÀ“¡ Œcº, ’†‰ªTˆê˜Y, _“¿“O—Y, "•ªŽUƒRƒ“ƒ|[ƒlƒ“ƒgŒ^ƒƒ{ƒbƒgƒVƒ~ƒ…ƒŒ[ƒ^EƒA[ƒLƒeƒNƒ`ƒƒ-RTƒRƒ“ƒ|[ƒlƒ“ƒg‚ð—p‚¢‚½ŽÀ‹@‚Æ‰ÂŠ·‚È§Œäƒ\ƒtƒgƒEƒFƒAŠJ”­‹@”\-", “ú–{ƒƒ{ƒbƒgŠw‰ïŽ, Vol.26, No.5, pp.19-22, 2008.06, 0289-1824 &ref(RSJ_Vol_26_No_05_2605B019.pdf,[PDF]);
+** è«–æ–‡èªŒ
++å®‰è—¤ æ…¶æ˜­, ä¸­å²¡æ…Žä¸€éƒŽ, ç¥žå¾³å¾¹é›„, "åˆ†æ•£ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåž‹ãƒ­ãƒœãƒƒãƒˆã‚·ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚¿ãƒ»ã‚¢ãƒ¼ã‚­ãƒ†ã‚¯ãƒãƒ£-RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ç”¨ã„ãŸå®Ÿæ©Ÿã¨å¯æ›ãªåˆ¶å¾¡ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢é–‹ç™ºæ©Ÿèƒ½-", æ—¥æœ¬ãƒ­ãƒœãƒƒãƒˆå­¦ä¼šèªŒ, Vol.26, No.5, pp.19-22, 2008.06, 0289-1824 &ref(RSJ_Vol_26_No_05_2605B019.pdf,[PDF]);
 
-** ‘ÛŠw‰ï
+** å›½éš›å­¦ä¼š
 
 +Noriaki ANDO, Takashi SUEHIRO, Tetsuo KOTOKU, "A Software Platform for Component Based RT-System Development: OpenRTM-Aist", International Conference on SIMULATION, MODELING and PROGRAMMING for AUTONOMOUS ROBOTS (SIMPAR 2008), pp.87-98, 2008.11, Venice, Italy, ISSN 0302-9743 &ref(SIMPAR2008_Ando.pdf,[PDF]);
 +Yujin Wakita, Natsuki Yamanobe, Kazuyuki Nagata, Noriaki ANDO, Clerc Mathias, "Development of User Interface with Single Switch Scanning for Robot Arm to Help Disabled People Using RT-Middleware ", Proceedings of The 10th International Conference on Control, Automation, Robotics and Vision, ICARCV 2008, pp.1515-1520, 2008.12, Hanoi, Vietnam &ref(ICARCV2008_Wakita.pdf,[PDF]);
 
 
-** ‘“àŠw‰ï
+** å›½å†…å­¦ä¼š
 
-+ˆÀ“¡ Œcº, ´… ¹K, _“¿ “O—Y, "RTƒRƒ“ƒ|[ƒlƒ“ƒgŠÔ‚Ìƒf[ƒ^‘—ŽóM•û–@‚ÉŠÖ‚·‚élŽ@", “ú–{‹@ŠBŠw‰ï ƒƒ{ƒeƒBƒNƒXEƒƒJƒgƒƒjƒNƒXu‰‰‰ï2008, p.1P1-E08, 2008.06, ’·–ì &ref(ROBOMEC08_Ando_1P1-E08.pdf,[PDF]);
-+‰i“c ˜a”V, ˜e“c —Dm, ŽR–ì•Ó ‰ÄŽ÷, ˆÀ“¡ Œcº, "OpenRTM-aist ‚É‚æ‚é‰î•ƒƒ{ƒbƒg‘€ìƒCƒ“ƒ^ƒtƒF[ƒXƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌŠJ”­", “ú–{‹@ŠBŠw‰ï ƒƒ{ƒeƒBƒNƒXEƒƒJƒgƒƒjƒNƒXu‰‰‰ï2008, p.2P2-F18, 2008.06, ’·–ì &ref(ROBOMEC08_Nagata_2P2-F18.pdf,[PDF]);
-+´… ¹K, ›š —Sª, ‰¹“c O, ˆÀ“¡ Œcº, _“¿ “O—Y, "RTƒRƒ“ƒ|[ƒlƒ“ƒg‚É‚æ‚éÄ—˜—p‰Â”\‚Èì‹ÆƒXƒLƒ‹‚ÌŽÀŒ»", “ú–{‹@ŠBŠw‰ï ƒƒ{ƒeƒBƒNƒXEƒƒJƒgƒƒjƒNƒXu‰‰‰ï2008, p.1P2-E14, 2008.06, ’·–ì &ref(ROBOMEC08_Shimizu_1P1-E14.pdf,[PDF]);
-+ˆÀ“¡ Œcº, â–{•Žu, ’†–{Œ[”V, "OpenRT Platform/RTƒ~ƒhƒ‹ƒEƒGƒAEƒc[ƒ‹ƒ`ƒF[ƒ“‚Ì‚½‚ß‚Ìƒ‚ƒWƒ…[ƒ‹‚¨‚æ‚ÑƒVƒXƒeƒ€Žd—l‹Lq•ûŽ®", ‘æ26‰ñ “ú–{ƒƒ{ƒbƒgŠw‰ïŠwpu‰‰‰ï—\eW, p.1F1-03, 2008.09 &ref(RSJ2008_Ando_1F1-03.pdf,[PDF]);
-+ˆÀ“¡ Œcº, ’†‰ªTˆê˜Y, _“¿ “O—Y, ”ä—¯ì”Ž‹v, "RTƒRƒ“ƒ|[ƒlƒ“ƒg‚É‚æ‚éOpenHRP3§Œäƒ\ƒtƒgƒEƒGƒAŠJ”­ -RTƒ~ƒhƒ‹ƒEƒGƒA‚ðŠî”Õ‚Æ‚µ‚½•ªŽUƒRƒ“ƒ|[ƒlƒ“ƒgŒ^ƒƒ{ƒbƒgƒVƒ~ƒ…ƒŒ[ƒ^-", ‘æ26‰ñ “ú–{ƒƒ{ƒbƒgŠw‰ïŠwpu‰‰‰ï—\eW, p.3G3-03, 2008.09 &ref(RSJ2008_Ando_3G3-03.pdf,[PDF]);
-+Masayoshi Yokomachi, Makoto Mizukawa, Shigeoki Hirai, Takashi Suehiro, Tetsuo Kotoku, Noriaki Ando, "RT middleware and it's International Standardization Activity in OMG", ‘æ26‰ñ “ú–{ƒƒ{ƒbƒgŠw‰ïŠwpu‰‰‰ï—\eW, p.2G1-05, 2008.09 &ref(RSJ2008_Yokomachi_2G1-05.pdf,[PDF]);
-+ˆÀ“¡ Œcº, "OpenRTM-aist-1.0‚ÌV‹@”\", Œv‘ªŽ©“®§ŒäŠw‰ï ƒVƒXƒeƒ€ƒCƒ“ƒeƒOƒŒ[ƒVƒ‡ƒ“•”–å u‰‰‰ï 2008 (SI2008), p.2L1-3, 2008.12, Šò•ŒŒ§ &ref(SI2008_Ando_2L1_3.pdf,[PDF]);
-+_“¿ “O—Y, ”ä—¯ì”Ž‹v, ’†‰ªTˆê˜Y, ––œA ®Žm, ˆÀ“¡ Œcº, ’†‘ºm•F, ŽRªŽ, âV“¡Œ³CìŠp—Sˆê˜Y, "•ªŽUƒRƒ“ƒ|[ƒlƒ“ƒgŒ^ƒƒ{ƒbƒgƒVƒ~ƒ…ƒŒ[ƒ^OpenHRP3", Œv‘ªŽ©“®§ŒäŠw‰ï ƒVƒXƒeƒ€ƒCƒ“ƒeƒOƒŒ[ƒVƒ‡ƒ“•”–å u‰‰‰ï 2008 (SI2008), p.1L2-5, 2008.12, Šò•ŒŒ§ &ref(SI2008_Kotoku_1L2_5.pdf,[PDF]);
++å®‰è—¤ æ…¶æ˜­, æ¸…æ°´ æ˜Œå¹¸, ç¥žå¾³ å¾¹é›„, "RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆé–“ã®ãƒ‡ãƒ¼ã‚¿é€å—ä¿¡æ–¹æ³•ã«é–¢ã™ã‚‹è€ƒå¯Ÿ", æ—¥æœ¬æ©Ÿæ¢°å­¦ä¼š ãƒ­ãƒœãƒ†ã‚£ã‚¯ã‚¹ãƒ»ãƒ¡ã‚«ãƒˆãƒ­ãƒ‹ã‚¯ã‚¹è¬›æ¼”ä¼š2008, p.1P1-E08, 2008.06, é•·é‡Ž &ref(ROBOMEC08_Ando_1P1-E08.pdf,[PDF]);
++æ°¸ç”° å’Œä¹‹, è„‡ç”° å„ªä», å±±é‡Žè¾º å¤æ¨¹, å®‰è—¤ æ…¶æ˜­, "OpenRTM-aist ã«ã‚ˆã‚‹ä»‹åŠ©ãƒ­ãƒœãƒƒãƒˆæ“ä½œã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®é–‹ç™º", æ—¥æœ¬æ©Ÿæ¢°å­¦ä¼š ãƒ­ãƒœãƒ†ã‚£ã‚¯ã‚¹ãƒ»ãƒ¡ã‚«ãƒˆãƒ­ãƒ‹ã‚¯ã‚¹è¬›æ¼”ä¼š2008, p.2P2-F18, 2008.06, é•·é‡Ž &ref(ROBOMEC08_Nagata_2P2-F18.pdf,[PDF]);
++æ¸…æ°´ æ˜Œå¹¸, å°¹ ç¥æ ¹, éŸ³ç”° å¼˜, å®‰è—¤ æ…¶æ˜­, ç¥žå¾³ å¾¹é›„, "RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«ã‚ˆã‚‹å†åˆ©ç”¨å¯èƒ½ãªä½œæ¥­ã‚¹ã‚­ãƒ«ã®å®Ÿç¾", æ—¥æœ¬æ©Ÿæ¢°å­¦ä¼š ãƒ­ãƒœãƒ†ã‚£ã‚¯ã‚¹ãƒ»ãƒ¡ã‚«ãƒˆãƒ­ãƒ‹ã‚¯ã‚¹è¬›æ¼”ä¼š2008, p.1P2-E14, 2008.06, é•·é‡Ž &ref(ROBOMEC08_Shimizu_1P1-E14.pdf,[PDF]);
++å®‰è—¤ æ…¶æ˜­, å‚æœ¬æ­¦å¿—, ä¸­æœ¬å•“ä¹‹, "OpenRT Platform/RTãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ãƒ»ãƒ„ãƒ¼ãƒ«ãƒã‚§ãƒ¼ãƒ³ã®ãŸã‚ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŠã‚ˆã³ã‚·ã‚¹ãƒ†ãƒ ä»•æ§˜è¨˜è¿°æ–¹å¼", ç¬¬26å›ž æ—¥æœ¬ãƒ­ãƒœãƒƒãƒˆå­¦ä¼šå­¦è¡“è¬›æ¼”ä¼šäºˆç¨¿é›†, p.1F1-03, 2008.09 &ref(RSJ2008_Ando_1F1-03.pdf,[PDF]);
++å®‰è—¤ æ…¶æ˜­, ä¸­å²¡æ…Žä¸€éƒŽ, ç¥žå¾³ å¾¹é›„, æ¯”ç•™å·åšä¹…, "RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«ã‚ˆã‚‹OpenHRP3åˆ¶å¾¡ã‚½ãƒ•ãƒˆã‚¦ã‚¨ã‚¢é–‹ç™º -RTãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ã‚’åŸºç›¤ã¨ã—ãŸåˆ†æ•£ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåž‹ãƒ­ãƒœãƒƒãƒˆã‚·ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚¿-", ç¬¬26å›ž æ—¥æœ¬ãƒ­ãƒœãƒƒãƒˆå­¦ä¼šå­¦è¡“è¬›æ¼”ä¼šäºˆç¨¿é›†, p.3G3-03, 2008.09 &ref(RSJ2008_Ando_3G3-03.pdf,[PDF]);
++Masayoshi Yokomachi, Makoto Mizukawa, Shigeoki Hirai, Takashi Suehiro, Tetsuo Kotoku, Noriaki Ando, "RT middleware and it's International Standardization Activity in OMG", ç¬¬26å›ž æ—¥æœ¬ãƒ­ãƒœãƒƒãƒˆå­¦ä¼šå­¦è¡“è¬›æ¼”ä¼šäºˆç¨¿é›†, p.2G1-05, 2008.09 &ref(RSJ2008_Yokomachi_2G1-05.pdf,[PDF]);
++å®‰è—¤ æ…¶æ˜­, "OpenRTM-aist-1.0ã®æ–°æ©Ÿèƒ½", è¨ˆæ¸¬è‡ªå‹•åˆ¶å¾¡å­¦ä¼š ã‚·ã‚¹ãƒ†ãƒ ã‚¤ãƒ³ãƒ†ã‚°ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³éƒ¨é–€ è¬›æ¼”ä¼š 2008 (SI2008), p.2L1-3, 2008.12, å²é˜œçœŒ &ref(SI2008_Ando_2L1_3.pdf,[PDF]);
++ç¥žå¾³ å¾¹é›„, æ¯”ç•™å·åšä¹…, ä¸­å²¡æ…Žä¸€éƒŽ, æœ«å»£ å°šå£«, å®‰è—¤ æ…¶æ˜­, ä¸­æ‘ä»å½¦, å±±æ ¹å…‹, é½‹è—¤å…ƒï¼Œå·è§’ç¥ä¸€éƒŽ, "åˆ†æ•£ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåž‹ãƒ­ãƒœãƒƒãƒˆã‚·ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚¿OpenHRP3", è¨ˆæ¸¬è‡ªå‹•åˆ¶å¾¡å­¦ä¼š ã‚·ã‚¹ãƒ†ãƒ ã‚¤ãƒ³ãƒ†ã‚°ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³éƒ¨é–€ è¬›æ¼”ä¼š 2008 (SI2008), p.1L2-5, 2008.12, å²é˜œçœŒ &ref(SI2008_Kotoku_1L2_5.pdf,[PDF]);
 
-**˜_•¶ŒöŠJ‹K’è‚É‚Â‚¢‚Ä 
-–{ƒy[ƒW‚Å‚ÍAŠeŠw‰ï‚Ì˜_•¶ŒöŠJ‹K’è‚É]‚Á‚Ä‰Â”\‚ÈŒÀ‚è˜_•¶Œ´e‚ÌŒöŠJ‚ðs‚Á‚Ä‚¨‚è‚Ü‚·B
+**è«–æ–‡å…¬é–‹è¦å®šã«ã¤ã„ã¦ 
+æœ¬ãƒšãƒ¼ã‚¸ã§ã¯ã€å„å­¦ä¼šã®è«–æ–‡å…¬é–‹è¦å®šã«å¾“ã£ã¦å¯èƒ½ãªé™ã‚Šè«–æ–‡åŽŸç¨¿ã®å…¬é–‹ã‚’è¡Œã£ã¦ãŠã‚Šã¾ã™ã€‚
 
--[[ƒƒ{ƒbƒgŠw‰ï:http://www.rsj.or.jp/JRSJ/kaitei_20060215.html]]
---–{l‚ªŽ©g‚¨‚æ‚ÑŠ‘®‹@ŠÖ‚ÌWebƒy[ƒW‚ÅŒöŠJ‚·‚éŒÀ‚è‹–‘ø‚³‚ê‚éB
--[[“ú–{‹@ŠBŠw‰ï:http://www.jsme.or.jp/publish/yoko/yokob_t.htm]]
---–{l‚ªŽ©g‚¨‚æ‚ÑŠ‘®‹@ŠÖ‚ÌWebƒy[ƒW‚ÅŒöŠJ‚·‚éŒÀ‚è‹–‘ø‚³‚ê‚éB
+-[[ãƒ­ãƒœãƒƒãƒˆå­¦ä¼š:http://www.rsj.or.jp/JRSJ/kaitei_20060215.html]]
+--æœ¬äººãŒè‡ªèº«ãŠã‚ˆã³æ‰€å±žæ©Ÿé–¢ã®Webãƒšãƒ¼ã‚¸ã§å…¬é–‹ã™ã‚‹é™ã‚Šè¨±è«¾ã•ã‚Œã‚‹ã€‚
+-[[æ—¥æœ¬æ©Ÿæ¢°å­¦ä¼š:http://www.jsme.or.jp/publish/yoko/yokob_t.htm]]
+--æœ¬äººãŒè‡ªèº«ãŠã‚ˆã³æ‰€å±žæ©Ÿé–¢ã®Webãƒšãƒ¼ã‚¸ã§å…¬é–‹ã™ã‚‹é™ã‚Šè¨±è«¾ã•ã‚Œã‚‹ã€‚
