@@ -1,4 +1,5 @@
-﻿#contents
+﻿
+#contents
 
 //こでは、作成したRTCを複数組み合わせて, システムを構築する手法について説明します。
 
@@ -32,7 +33,7 @@ CENTER: ''System construction with RTSystemEditor''
 When RTC is started, it is displayed in the name service view on the left pane. When RTCs are on the name service view, RTCs can be dragged and dropped to the central editor area. The dropped RTC is displayed as an icon in the system editor. The protrusion on the side of the rectangle represents the port and the system is constructed by connecting the ports between the RTCs. Also, the RTC configuration view is displayed at the lower center of the screen, so you can edit the parameters of the RTC.
 
 //システムを構築したら、エディタ上で右クリックし「All Activate」を選択することで、全てのRTCをアクティブ化することが可能です。また、エディタ上で右クリックし「Save as」を選択することで、システムの構成情報を保存することができます。保存したシステム構成情報は、再度呼び出すことでシステムの接続情報、コンフィギュレーションの情報等を復元することが可能です。
-After building the system, it is possible to activate all the RTC by right-clicking on the editor and selecting "All Activate". You can also save the system configuration information by right-clicking on the editor and selecting "Save as". By saving the system configuration information again, it is possible to restore system connection information, configuration information and so on.
+After building the system, it is possible to activate all the RTC by right-clicking on the editor and selecting ''All Activate''. You can also save the system configuration information by right-clicking on the editor and selecting ''Save as''. By saving the system configuration information again, it is possible to restore system connection information, configuration information and so on.
 
 //現在のところ、システム構成情報を復元する際には予めRTCを起動しメモリにロードしておく必要がありますが、将来的にはRTCの起動から接続復元までが自動で行えるようになる予定です。
 Currently, it is necessary to start up RTC beforehand when restoring the system configuration information, but in the future it will be possible to restore all elements from RTC startup to connection restoration.
