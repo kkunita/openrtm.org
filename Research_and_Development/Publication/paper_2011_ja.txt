@@ -1,3 +1,6 @@
+// Title: 論文 (2011年)
+#contents
+
 ** 論文誌
 
 + Noriaki ANDO, Shinji KURIHARA, Geoffrey BIGGS, Takeshi SAKAMOTO, Hiroyuki NAKAMOTO, "Software Deployment Infrastructure for Component Based RT-Systems", Journal of Robotics and Mechatronics, Vol.23, No.3, pp.350-359, 2011.06 &ref(JRM_Vol23_No3_ Jun_2011_pp.350-359.pdf, [PDF]);

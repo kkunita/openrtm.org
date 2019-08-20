@@ -1,77 +1,80 @@
-﻿#contents
+// Title: Research and Development
+#contents
 
 //** 開発の経緯
-** (G)History of development
+** History of development
 
-//RTミドルウエアは、(独)新エネルギー・産業技術総合開発機構(NEDO)の21世紀ロボットチャレンジプログラム(2002～2004年度) のプロジェクトにおいて、そのコンセプトが提唱され、(独)産業技術総合研究所(産総研)、松下電工(現パナソニック電工株式会社), (社)日本ロボット工業会により研究・開発・標準化が行われました。
-(G)RT Middleware was proposed by the New Energy and Industrial Technology Development Organization (NEDO) in the project of the 21st Century Robot Challenge Program (2002 - 2004), its concept was proposed, and the National Institute of Advanced Industrial Science and Technology Research, development and standardization were conducted by Matsushita Electric Works (now Panasonic Electric Works Co., Ltd.), Japan Robot Industry Association.
+//RTミドルウエアは、(独)新エネルギー・産業技術総合開発機構(NEDO)の21世紀ロボットチャレンジプログラム(2002～2004年度)のプロジェクトにおいて、そのコンセプトが提唱され、(独)産業技術総合研究所(産総研)、松下電工(現パナソニック電工株式会社), (社)日本ロボット工業会により研究・開発・標準化が行われました。
+The concept of RT-Middleware was proposed at the 21st-century Robot challenge program (2002-2004 fiscal year) bu New Energy and Industrial Technology Development Organization (NEDO). National Institute of Advanced Industrial Science and Technology (AIST), Matsushita Electric Works (now Life Solutions Company in Panasonic Cooperation), and Japan Robot Association
+ (JARA) conducted the research, the development, and the standardization.
 
-//プロジェクトの成果として、RTミドルウエアの参照実装：OpenRTM-aist-0.2 およびそのインターフェース仕様が公開されました。その後、 国際標準化団体 OMG (Object Manegement Group: http://www.omg.org ) においてRTCインターフェース仕様の標準化が進められ、2008年4月に OMG 公式標準仕様となりました。この標準に準拠した RTミドルウエア実装の一つが2010年1月に 公開された OpenRTM-aist-1.0 です。
-(G)As a result of the project, reference implementation of RT middleware: OpenRTM-aist-0.2 and its interface specification was released. After that, standardization of the RTC interface specification was advanced in the International Standards Organization OMG (Object Manegement Group: http://www.omg.org), and became OMG official standard specification in April 2008.
-One of RT Middleware implementations conforming to this standard is OpenRTM-aist-1.0 published in January 2010.
+//プロジェクトの成果として、RTミドルウエアの参照実装: OpenRTM-aist-0.2およびそのインターフェース仕様が公開されました。その後、国際標準化団体OMG (Object Management Group: https://www.omg.org )においてRTCインターフェース仕様の標準化が進められ、2008年4月にOMG公式標準仕様となりました。この標準に準拠したRTミドルウエア実装の一つが2010年1月に公開されたOpenRTM-aist-1.0です。
+As a result of the project, a reference implementation of RT-Middleware: OpenRTM-aist-0.2 and its interface specification were released. After that, standardization of the RTC interface specification was being made in an international standards organization: OMG (Object Management Group: http://www.omg.org), and became OMG official standard specification in April 2008.
+One of RT-Middleware implementations conforming to the standard is OpenRTM-aist-1.0 released in January 2010.
 
-//図に現在の研究・開発・標準化体制を示します。
-(G)The figure shows the current research, development and standardization system.
+//図に現在の研究/開発/標準化体制を示します。
+The figure shows the current research/development/standardization system.
 
 #ref(rtm_randd_en.png,30%,center)
-//CENTER: ''OpenRTM-aistの研究・開発・標準化体制''
-CENTER: ''OpenRTM-aist research / development / standardization system''
+//CENTER: ''OpenRTM-aistの研究/開発/標準化体制''
+CENTER: ''OpenRTM-aist research/development/standardization system''
 
-//RTミドルウエアに関する研究開発は、2002年の RTミドルウエアプロジェクトに始まり、様々なプロジェクトで周辺技術の充実を図りながら、2007年からの NEDO 知能化プロジェクトまで継続的に行われてきました(下図)。
-(G)Research and development on RT middleware started from the RT middleware project in 2002 and continued until the NEDO Intelligence Project from 2007, while seeking to enhance peripheral technologies in various projects (lower figure) .
+//RTミドルウエアに関する研究開発は、2002年のRTミドルウエアプロジェクトに始まり、様々なプロジェクトで周辺技術の充実を図りながら、2007年からのNEDO知能化プロジェクトへと継続的に行われてきました(下図)。
+Research and development for RT-Middleware started as the RT-Middleware project in 2002 and then it was continued as various projects (the following figure) including NEDO's daily life support robot realizing project.
 
 #ref(rtm_projects_en.png,30%,center)
 //CENTER: ''OpenRTM-aistに関連した様々なプロジェクト''
-CENTER: '' Various projects related to OpenRTM-aist ''
+CENTER: ''Various projects related to OpenRTM-aist ''
 
 //以下ではこれまでの主なプロジェクトの概要を説明します。
-(G)Below we outline the main projects so far.
+The following shows the overview of our major projects so far.
 
 //** RTミドルウエア関連プロジェクト
-** (G)RT Middleware related project
+** RT Middleware related project
 
 //*** RTミドルウエアプロジェクト
-*** (G)RT middleware project
+*** RT middleware project
 
-//独立行政法人新エネルギー・産業技術統合開発機構 (NEDO) 21世紀ロボットチャレンジプログラム (2002～2004年度) において「ロボット機能発現のために必要な要素技術開発」プロジェクト (通称：RTミドルウエアプロジェクト)が行われました。このプロジェクトでは、ロボット用分散ミドルウェア (RTミドルウエア) の研究開発が行われました。その成果として、ミドルウエアのインターフェース仕様が策定され、その仕様に基づいた実装 OpenRTM-aist-0.2.0 がリリースされました。
-(G)"Necessary element technology development for robot function development" project (common name: RT middleware project) is conducted in the 21st Century Robot Challenge Program (NEDO) New Integrated Development Organization New Energy and Industrial Technology Development Organization (NEDO) I was told. In this project, research and development of Distributed Middleware (RT middleware) for robots was conducted. As a result, middleware interface specification was developed, and implementation based on the specification OpenRTM-aist-0.2.0 was released.
+//独立行政法人新エネルギー・産業技術統合開発機構(NEDO)21世紀ロボットチャレンジプログラム(2002～2004年度)において「ロボット機能発現のために必要な要素技術開発」プロジェクト(通称:RTミドルウエアプロジェクト)が行われました。このプロジェクトでは、ロボット用分散ミドルウェア(RTミドルウエア)の研究開発が行われました。その成果として、ミドルウエアのインターフェース仕様が策定され、その仕様に基づいた実装OpenRTM-aist-0.2.0がリリースされました。
+"Development for required underlying technology for Robot function discovery" project (common name: RT middleware project) is conducted in the 21st Century Robot Challenge Program by  New Energy and Industrial Technology Development Organization (NEDO). In this project, the research and the development of Distributed Middleware for robots (RT middleware) were conducted. As a result, a middleware interface specification was developed, and an implementation based on the specification OpenRTM-aist-0.2.0 was released.
 
 //*** 分散コンポーネント型ロボットシミュレーター
-*** (G)Distributed component type robot simulator
+*** Distributed component type robot simulator
 
 //科学振興調整費により 2005～2007年度 にかけて行われたこのプロジェクトは、ロボットソフトウェアの蓄積に適した分散コンポーネントフレームワークと、この上に構築されたロボットワールドシミュレーターを開発することにより、基盤ソフトウェアの再利用を促進し、次世代ロボットの開発を効率化することを目的としています。
-(G)This project, which was carried out from 2005 to 2007 by the Science Promotion Adjustment Fee, develops a distributed component framework suitable for the accumulation of robot software and a robot world simulator built on it, thereby reusing the foundation software To promote the development of next-generation robots more efficiently.
+The purpose of the project, which was carried out from 2005 to 2007 fiscal year by using the Special Coordination Funds for Promoting Science and Technology, was developing a more effective way to develop next-generation robots by developing a distributed component framework which enables to increase software property for robot and a robot simulator made on the framework. 
 
 #ref(openhrp_openrtm_en.png,60%,center)
 //CENTER: ''分散コンポーネント型ロボットシミュレーター''
 CENTER: ''Distributed component type robot simulator''
 
-//このプロジェクトにより、これまで産総研において別々に開発されていた、ロボット用動力学シミュレータである OpenHRP3 と、OpenRTM-aist が統合されることになりました。
-(G)This project has resulted in the integration of OpenRTM-aist with OpenHRP 3, which is a robot dynamics simulator developed separately at AIST.
+//このプロジェクトにより、これまで産総研において別々に開発されていた、ロボット用動力学シミュレータであるOpenHRP3と、OpenRTM-aistが統合されることになりました。
+As a result of the project, we integrated OpenRTM-aist and OpenHRP3 which is a robot dynamics simulator. Those were developed separately at AIST.
 
-//シミュレーター内の対象システムおよび、外部のコントローラーモジュール等を、RTコンポーネントとして開発し、かつ、コントローラーコンポーネントをシミュレーター・実機ともに再コンパイルすることなしに再利用できるよう、RTコンポーネントのロジック駆動主体である実行コンテキストが拡張されました。
-(G)In order to develop the target system in the simulator and the external controller module etc. as RT component and to reuse the controller component without recompiling both the simulator and the actual machine, the execution context which is the logic driving entity of the RT component Has been expanded.
+//シミュレーター内の対象システムおよび、外部のコントローラーモジュール等を、RTコンポーネントとして開発し、かつ、コントローラーコンポーネントをシミュレーター/実機ともに再コンパイルすることなしに再利用できるよう、RTコンポーネントのロジック駆動主体である実行コンテキストが拡張されました。
+We developed a target system in the simulator, external controller module, etc as RT components. And we enhanced Execution Context function which is the main logic driving entity of RT component to be usable without the re-compilation of the controller components both on the real system and the simulator. 
 
 //*** 産総研産業変革研究イニシアティブ
-*** (G)AIST Industry Innovation Research Initiative
+*** AIST Industry Innovation Research Initiative
 
 //産総研は独自のプロジェクトとして、2006～2008年度にかけて、「産総研産業変革研究イニシアティブ」と呼ばれる産学官連携プロジェクトを実施しました。
-(G)As an independent project, AIST conducted an industry-academia collaboration project called "AIST Industrial Innovation Research Initiative" from 2006 to 2008.
+As an independent project, AIST conducted an industry-academia collaboration project called "AIST Industrial Innovation Research Initiative" from 2006 to 2008 fiscal year.
 
 //複数の次世代型ロボットのプロトタイプ開発を通じて、ロボット要素技術を RTミドルウェアで再利用可能なロボット機能部品としてモジュール化し、これらの組み合わせによって新たなロボット製品が効率良く開発できる環境を整えることを目指しました。
-(G)Through prototype development of multiple next generation robots, we aimed to create an environment in which robot element technology is modularized as a reusable robot functional part in RT middleware and a combination of these modules can efficiently develop a new robot product .
+We tried to achieve our purpose to make a development environment which can allow the user to develop new robot product effectively and quickly through developing prototypes of next-generation robots. For this, we modulized underlaying technology for robots as re-usable robot functional parts and combined them on RT middleware.
 
-//-産総研プレス発表: [[■産学官連携プロジェクト「ユーザー指向ロボットオープンアーキテクチャの開発」を開始:http://www.aist.go.jp/aist_j/press_release/pr2006/pr20060627/pr20060627.html]]
-//(G)- AIST Press announcement: [[■Industry-academic-government cooperation project "Development of user-oriented robot open architecture" started:http://www.aist.go.jp/aist_j/press_release/pr2006/pr20060627/pr20060627.html]]
+//産総研プレス発表: [[■産学官連携プロジェクト「ユーザー指向ロボットオープンアーキテクチャの開発」を開始:https://www.aist.go.jp/aist_j/news/pr20060627.html]]
 
-//これまで産総研において開発されてきたロボット用省電力高性能プロセッサ、実時間Linux、分散コンポーネント型シミュレーター、アクティブRF-ID、3次元視覚、雑音下での音声認識、2足歩行技術などのロボット要素技術を RTミドルウエアを用いてモジュール化し、それを組み合わせることにより、異なる次世代ロボットのプロトタイプを開発します。本研究で開発された RTミドルウエアを基盤としたロボットシステムアーキテクチャをユーザー指向ロボットオープンアーキテクチャ UCROA（User Centered Robot Open Architecture）と称します。
-(G)Robot elements such as power-saving high performance processor for robot developed so far at AIST, real-time Linux, distributed component simulator, active RF-ID, 3-dimensional vision, speech recognition under noisy, bipedal walking technology Modularize the technology using RT middleware and combine it to develop prototypes of different next generation robots. The robot system architecture based on RT middleware developed in this research is called user oriented robot open architecture UCROA (User Centered Robot Open Architecture).
+//AIST Press release: [[■Industry-academic-government cooperation project "Development of user-oriented robot open architecture" started:http://www.aist.go.jp/aist_j/press_release/pr2006/pr20060627/pr20060627.html]]
+
+//これまで産総研において開発されてきたロボット用省電力高性能プロセッサ、実時間Linux、分散コンポーネント型シミュレーター、アクティブRF-ID、3次元視覚、雑音下での音声認識、2足歩行技術などのロボット要素技術を RTミドルウエアを用いてモジュール化し、それを組み合わせることにより、異なる次世代ロボットのプロトタイプを開発します。本研究で開発された RTミドルウエアを基盤としたロボットシステムアーキテクチャをユーザー指向ロボットオープンアーキテクチャUCROA (User Centered Robot Open Architecture)と称します。
+By using RTiddleware, we modularized underlay robot technologies which were developed in AIST. The technologies are low energy consumption high-performance processor for robots, real-time Linux, distributed component base simulator, active RF-ID, 3D vision, voice recognition in a noisy environment, bipedal walking, etc. Then combining the modules, we develop the next-generation robot proto-types. We call the architecture "UCROA (User Centered Robot Open Architecture)" for the robot system architecture based on RT middleware developed by this research. 
 
 #ref(ucroa_en.png,80%,center)
 CENTER: ''UCROA (User Centered Robot Open Architecture)''
 
-//この研究・開発プロジェクトでは、以下の3タイプのロボットシステムの開発を目指し、最終的に以下のような成果をあげました。
-(G)In this research and development project, we aimed to develop the following three types of robot systems and eventually achieved the following results.
+//この研究/開発プロジェクトでは、以下の3タイプのロボットシステムの開発を目指し、最終的に以下のような成果をあげました。
+In this research/development project, we aimed to develop the following three types of robot systems and resulted following things:
 
 //- 物流支援ロボット
 //-- [[物流支援ロボット:http://www.is.aist.go.jp/ufrg/initiative/iagv.htm]]
@@ -81,39 +84,46 @@ CENTER: ''UCROA (User Centered Robot Open Architecture)''
 //-- [[プレス発表 (2009年3月16日):http://www.aist.go.jp/aist_j/press_release/pr2009/pr20090316/pr20090316.html]]
 
 - Logistics support robot
-- Interpersonal service robot
+- Interactive service robot
 -- [[Press announcement (September 28, 2009):http://www.aist.go.jp/aist_j/press_release/pr2009/pr20090928/pr20090928.html]]
 - Cybernetic Human
 -- [[press release (March 16, 2009):http://www.aist.go.jp/aist_j/press_release/pr2009/pr20090316/pr20090316.html]]
 
 //*** 次世代ロボット知能化技術開発プロジェクト
-*** (G)Next generation robot intelligent technology development project
+*** Next-generation robot intelligent technology development project
 
-//経済産業省および NEDO による「次世代ロボット知能化技術開発プロジェクト」(2007～2011年度) は、5年間で総額70億(予想)の大規模プロジェクトです。次世代ロボットシステムのための要素技術を、RTコンポーネントとして作成・蓄積し、再利用の方法やインターフェースの共通化に関する議論を通して、次世代ロボットの設計・実装するための方法論を確立するとともに、実際に使える多くの RTコンポーネント群を蓄積することを目的としています。
-(G)"Next Generation Robot Intelligence Technology Development Project" (2007 - 2011) by the Ministry of Economy, Trade and Industry and NEDO is a large-scale project totaling 7 billion (forecast) over 5 years.
-We create and store element technologies for next-generation robot systems as RT components, establish methodologies for designing and implementing next-generation robots through discussions on common methods of reuse and interfaces, and in fact It is aimed at accumulating a lot of usable RT component groups.
+//経済産業省およびNEDOによる「次世代ロボット知能化技術開発プロジェクト」(2007～2011年度)は、5年間で総額70億(予想)の大規模プロジェクトです。次世代ロボットシステムのための要素技術を、RTコンポーネントとして作成・蓄積し、再利用の方法やインターフェースの共通化に関する議論を通して、次世代ロボットの設計・実装するための方法論を確立するとともに、実際に使える多くのRTコンポーネント群を蓄積することを目的としています。
+"Next-Generation Robot Intelligence Technology Development Project" (2007 - 2011 fiscal year) by the Ministry of Economy, Trade and Industry and NEDO is a large-scale project that cost a totally of 7 billion yen (forecast) over 5 years. The purpose of the project was making methodology to design/implementation of the next-generation robot and accumulating RT components which can be used in an actual robot system. The components would be developed through the discussion about the re-use method, interface unifying. 
 
-//また、ロボットシステム開発の様々なフェーズで利用できる各種ツール群、ミドルウエア、ライブラリを含む RTシステム開発のためのプラットフォーム(OpenRT プラットフォーム (OpenRTP) と呼ぶ)を OpenRTM-aist の上に構築しました。開発ツール群は、Eclipse のプラグインとして実装され、一連の作業を同一の開発環境で行うことのできるツールチェーンとなっています。
-(G)We also built a platform (called the OpenRT platform (OpenRTP)) for developing RT systems including various tools, middleware, and libraries that can be used in various phases of robot system development on OpenRTM-aist. The development tool suite is implemented as a plug-in of Eclipse, and it is a tool chain that can do a series of work in the same development environment.
+//また、ロボットシステム開発の様々なフェーズで利用できる各種ツール群、ミドルウエア、ライブラリを含むRTシステム開発のためのプラットフォーム(OpenRT プラットフォーム(OpenRTP)と呼ぶ)をOpenRTM-aistの上に構築しました。開発ツール群は、Eclipseのプラグインとして実装され、一連の作業を同一の開発環境で行うことのできるツールチェーンとなっています。
+Also, a platform called "OpenRTP" was constructed on OpenRTM-aist. The platform is including various tools which can be used in the various development phase for a robot system, a middleware, libraries. The tools were implemented as Eclipse plug-in and it is a toolchain that can allow the user to do a series of work in a single development environment.
 
 #ref(openrtp_en.png,50%,center)
 //CENTER: ''OpenRT プラットフォーム (OpenRTP)''
 CENTER: ''OpenRT platform (OpenRTP)''
 
-//ツールチェーン間のデータは、RTコンポーネントを基盤としたモジュール仕様記述方式やシステム仕様記述方式 (UMLモデルとXMLスキーマから成る。) に基づいたフォーマットで記述され、ツール間の連携をより確かなものにするとともに、将来的には標準化も目指しています。プロジェクトの最終成果として、作成した多くのRTコンポーネント群やツール群をソースコード公開の上オープン化、あるいは事業化についても検討されています。
-(G)Data between tool chains is described in a format based on the RT component-based module specification description method and system specification description method (composed of UML model and XML schema), and the cooperation between the tools is made more reliable We are also aiming for standardization in the future. As the final result of the project, we are considering openness or commercialization of many RT component groups and tools created by publishing source code.
+//ツール間のデータは、RTコンポーネントを基盤としたモジュール仕様記述方式やシステム仕様記述方式 (UMLモデルとXMLスキーマから成る。) に基づいたフォーマットで記述され、ツール間の連携をより確かなものにするとともに、将来的には標準化も目指しています。プロジェクトの最終成果として、作成した多くのRTコンポーネント群やツール群をソースコード公開の上オープン化、あるいは事業化についても検討されています。
+Data between the tools are written with the format which is defined based on the module and system specification description method (defined by UML model and XML schema). This provides better co-working between tools. We also considering to standardize it in the future. Also, we are considering to make the big collection of RT components and the tools open-source and do business with them.   
 
 //*** オープンイノベーション促進プロジェクト
-*** (G)Open Innovation Promotion Project
+*** Open Innovation Promotion Project
 
 //NEDOにより2008年から3年間実施された「基盤ロボット技術活用型オープンイノベーション促進プロジェクト」です。このプロジェクトでは、既存の要素部品を容易に RTコンポーネント化するため、安価で小型な基盤通信モジュールを開発することを目指しています。さらに、この基盤通信モジュールを利用して、実際に家屋の様々な部分に、センサーやアクチュエーターを配置し、多様なデバイスが連携して安心・安全・快適な居住空間を作り出す知能化住宅を実証システムとして構築しました。
-(G)It is "open innovation promotion project utilizing foundation robot technology" conducted by NEDO for 3 years from 2008. In this project, we aim to develop inexpensive and compact base communication modules in order to easily make existing component parts into RT component. Furthermore, utilizing this infrastructure communication module, we have installed an intelligent housing that actually arranges sensors and actuators in various parts of houses and cooperates with diverse devices to create a safe, secure and comfortable living space We built it.
+Open innovation promoting project using underlay Robot technology were performed by NEDO for 3 years from 2008. In the project, to make existing elementally function parts to RT components, the development of cheap and compact base communication module was targeted. Also using the base communication module, an intelligent house in which various sensors and actuators are installed on various parts of the house and the devices are co-worked were built as a POC system.
 
 //** その他
-** (G)Other
+** Other
 
-//プロジェクト以外においても、OpenRTM-aist の研究・開発・普及のための活動を行っています。
-(G)Even outside the project, we are engaged in research, development and dissemination of OpenRTM-aist.
+//プロジェクト以外においても、OpenRTM-aistの研究/開発/普及のための活動を行っています。
+We are also doing OpenRTM-aist research/development/promotion activity other than the projects. 
 
 //*** 講習会
-*** (G)Training session
+*** Training session
+
+//不定期ですが、年に数回のペースで実習形式の講習会を様々な場所で行っています。特に、機械学会ロボティクス・メカトロニクス講演会においては、チュートリアルとして毎年講習会を実施しています。
+In The Robotics and Mechatronics Conference (by the Japan Society of Mechanical Engineers) we are holding a lecture yearly base as a tutorial session. Also, several workshop style lectures are being held in various place in indeterminate matter.  
+
+//*** RTMコンテスト
+*** RTM Contest
+//ロボットビジネス推進協議会の主催、SICEシステムインテグレーション部門講演会の併設行事として、RTミドルウエアやRTコンポーネントの作品を募集しコンペティションを行うRTミドルウエアコンテストを行っています。
+The Robot business promotion association is holding RT-Middleware contest as an event in SICE system integration division conference. In the contest, competitions of RT-Middleware based products are being performed.  
