@@ -1,15 +1,16 @@
-//title Research and Development
+// Title: Research and Development
 #contents
 
 //** 開発の経緯
 ** History of development
 
 //RTミドルウエアは、(独)新エネルギー・産業技術総合開発機構(NEDO)の21世紀ロボットチャレンジプログラム(2002～2004年度)のプロジェクトにおいて、そのコンセプトが提唱され、(独)産業技術総合研究所(産総研)、松下電工(現パナソニック電工株式会社), (社)日本ロボット工業会により研究・開発・標準化が行われました。
-The concept of RT Middleware was proposed at the 21st-century Robot challenge program (2002-2004 fiscal year) of New Energy and Industrial Technology Development Organization (NEDO). The National Institute of Advanced Industrial Science and Technology (AIST), Matsushita Electric Works (now Panasonic Electric Works Co., Ltd., and Japan Robot Industry Association conducted the research, the development, and the standardization.
+The concept of RT-Middleware was proposed at the 21st-century Robot challenge program (2002-2004 fiscal year) bu New Energy and Industrial Technology Development Organization (NEDO). National Institute of Advanced Industrial Science and Technology (AIST), Matsushita Electric Works (now Life Solutions Company in Panasonic Cooperation), and Japan Robot Association
+ (JARA) conducted the research, the development, and the standardization.
 
-//プロジェクトの成果として、RTミドルウエアの参照実装: OpenRTM-aist-0.2およびそのインターフェース仕様が公開されました。その後、国際標準化団体OMG(Object Management Group: https://www.omg.org )においてRTCインターフェース仕様の標準化が進められ、2008年4月にOMG公式標準仕様となりました。この標準に準拠したRTミドルウエア実装の一つが2010年1月に公開されたOpenRTM-aist-1.0です。
-As a result of the project, a reference implementation of RT middleware: OpenRTM-aist-0.2 and its interface specification were released. After that, standardization of the RTC interface specification was being made in the International Standards Organization OMG (Object Management Group: http://www.omg.org), and became OMG official standard specification in April 2008.
-One of RT Middleware implementations conforming to the standard is OpenRTM-aist-1.0 published in January 2010.
+//プロジェクトの成果として、RTミドルウエアの参照実装: OpenRTM-aist-0.2およびそのインターフェース仕様が公開されました。その後、国際標準化団体OMG (Object Management Group: https://www.omg.org )においてRTCインターフェース仕様の標準化が進められ、2008年4月にOMG公式標準仕様となりました。この標準に準拠したRTミドルウエア実装の一つが2010年1月に公開されたOpenRTM-aist-1.0です。
+As a result of the project, a reference implementation of RT-Middleware: OpenRTM-aist-0.2 and its interface specification were released. After that, standardization of the RTC interface specification was being made in an international standards organization: OMG (Object Management Group: http://www.omg.org), and became OMG official standard specification in April 2008.
+One of RT-Middleware implementations conforming to the standard is OpenRTM-aist-1.0 released in January 2010.
 
 //図に現在の研究/開発/標準化体制を示します。
 The figure shows the current research/development/standardization system.
@@ -19,7 +20,7 @@ The figure shows the current research/development/standardization system.
 CENTER: ''OpenRTM-aist research/development/standardization system''
 
 //RTミドルウエアに関する研究開発は、2002年のRTミドルウエアプロジェクトに始まり、様々なプロジェクトで周辺技術の充実を図りながら、2007年からのNEDO知能化プロジェクトへと継続的に行われてきました(下図)。
-Research and development for RT middleware started as the RT middleware project in 2002 and then it was continued as various projects (the following figure) including NEDO daily life support robot realizing project.
+Research and development for RT-Middleware started as the RT-Middleware project in 2002 and then it was continued as various projects (the following figure) including NEDO's daily life support robot realizing project.
 
 #ref(rtm_projects_en.png,30%,center)
 //CENTER: ''OpenRTM-aistに関連した様々なプロジェクト''
@@ -48,7 +49,7 @@ The purpose of the project, which was carried out from 2005 to 2007 fiscal year 
 CENTER: ''Distributed component type robot simulator''
 
 //このプロジェクトにより、これまで産総研において別々に開発されていた、ロボット用動力学シミュレータであるOpenHRP3と、OpenRTM-aistが統合されることになりました。
-As a result of the project, we integrated OpenRTM-aist and OpenHRP 3 which is a robot dynamics simulator. Those were developed separately at AIST.
+As a result of the project, we integrated OpenRTM-aist and OpenHRP3 which is a robot dynamics simulator. Those were developed separately at AIST.
 
 //シミュレーター内の対象システムおよび、外部のコントローラーモジュール等を、RTコンポーネントとして開発し、かつ、コントローラーコンポーネントをシミュレーター/実機ともに再コンパイルすることなしに再利用できるよう、RTコンポーネントのロジック駆動主体である実行コンテキストが拡張されました。
 We developed a target system in the simulator, external controller module, etc as RT components. And we enhanced Execution Context function which is the main logic driving entity of RT component to be usable without the re-compilation of the controller components both on the real system and the simulator. 
@@ -67,7 +68,7 @@ We tried to achieve our purpose to make a development environment which can allo
 //AIST Press release: [[■Industry-academic-government cooperation project "Development of user-oriented robot open architecture" started:http://www.aist.go.jp/aist_j/press_release/pr2006/pr20060627/pr20060627.html]]
 
 //これまで産総研において開発されてきたロボット用省電力高性能プロセッサ、実時間Linux、分散コンポーネント型シミュレーター、アクティブRF-ID、3次元視覚、雑音下での音声認識、2足歩行技術などのロボット要素技術を RTミドルウエアを用いてモジュール化し、それを組み合わせることにより、異なる次世代ロボットのプロトタイプを開発します。本研究で開発された RTミドルウエアを基盤としたロボットシステムアーキテクチャをユーザー指向ロボットオープンアーキテクチャUCROA (User Centered Robot Open Architecture)と称します。
-By using RT middleware, we modularized underlay robot technologies which were developed in AIST. The technologies are low energy consumption high-performance processor for robots, real-time Linux, distributed component base simulator, active RF-ID, 3D vision, voice recognition in a noisy environment, bipedal walking, etc. Then combining the modules, we develop the next-generation robot proto-types. We call the architecture "UCROA (User Centered Robot Open Architecture)" for the robot system architecture based on RT middleware developed by this research. 
+By using RTiddleware, we modularized underlay robot technologies which were developed in AIST. The technologies are low energy consumption high-performance processor for robots, real-time Linux, distributed component base simulator, active RF-ID, 3D vision, voice recognition in a noisy environment, bipedal walking, etc. Then combining the modules, we develop the next-generation robot proto-types. We call the architecture "UCROA (User Centered Robot Open Architecture)" for the robot system architecture based on RT middleware developed by this research. 
 
 #ref(ucroa_en.png,80%,center)
 CENTER: ''UCROA (User Centered Robot Open Architecture)''
@@ -125,4 +126,4 @@ In The Robotics and Mechatronics Conference (by the Japan Society of Mechanical 
 //*** RTMコンテスト
 *** RTM Contest
 //ロボットビジネス推進協議会の主催、SICEシステムインテグレーション部門講演会の併設行事として、RTミドルウエアやRTコンポーネントの作品を募集しコンペティションを行うRTミドルウエアコンテストを行っています。
-The Robot business promotion association is holding RT middleware contest as an event in SICE system integration division conference. In the contest, competitions of RT middleware based products are being performed.  
+The Robot business promotion association is holding RT-Middleware contest as an event in SICE system integration division conference. In the contest, competitions of RT-Middleware based products are being performed.  
