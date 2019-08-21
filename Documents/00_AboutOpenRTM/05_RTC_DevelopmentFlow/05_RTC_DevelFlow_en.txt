@@ -1,4 +1,5 @@
-﻿#contents
+﻿﻿// Title: Flow of RTC development
+#contents
 
 //本節では、RTミドルウエア (OpenRTM-aist) を利用した、RTコンポーネントの開発方法について説明します。
 This section explains how to develop RT-Components using RT-Middleware (OpenRTM-aist).

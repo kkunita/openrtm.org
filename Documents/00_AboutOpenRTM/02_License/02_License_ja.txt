@@ -1,4 +1,5 @@
-﻿#contents
+﻿// Title: ライセンス
+#contents
 
 OpenRTM-aistは、各言語版(C++、Java、Python)のミドルウエアライブラリと、RTCBuilder、RTSystemEditorなどツールから構成されており、それぞれ
 

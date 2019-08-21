@@ -1,4 +1,5 @@
-﻿#contents
+﻿// Title: License
+#contents
 
 //OpenRTM-aistは、各言語版(C++、Java、Python)のミドルウエアライブラリと、RTCBuilder、RTSystemEditorなどツールから構成されており、それぞれ
 //- OpenRTM-aist (C++、Java、Python版)は ''LGPLと個別契約のデュアルライセンス''
@@ -76,7 +77,7 @@ As in the above cases, if you do not want to disclose the modified source code t
 It is possible to provide a non-LGPL/EPL license for you based on an individual contract when you want to modify/re-distribute OpenRTM-aist after the intellectual property division of AIST discuss with you individually.
 In that case, the condition like the fee for using the source code and the giving rights will be defined based on your usage, how much/what you modify the source code and your own intellectual property inclusion after discussion between you and the intellectual property division of AIST. However, since AIST is a nonprofit organization for industrial promotion, the fee might not be expensive.
 
-#ref(license_for_rtms_en.png,50%,center)
+#ref(license_for_rtms_en2.png,50%,center)
 //CENTER: ''RTミドルウエアのライセンス''
 CENTER: '' RT Middleware License ''
 
