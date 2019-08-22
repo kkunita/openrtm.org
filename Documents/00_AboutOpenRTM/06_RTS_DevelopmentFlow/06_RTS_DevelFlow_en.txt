@@ -1,4 +1,4 @@
-﻿
+﻿// Title: Flow of RT system development
 #contents
 
 //こでは、作成したRTCを複数組み合わせて, システムを構築する手法について説明します。

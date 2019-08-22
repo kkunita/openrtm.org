@@ -1,4 +1,5 @@
-#contents
+﻿// Title: RTC開発の流れ
+﻿#contents
 
 本節では、RTミドルウエア(OpenRTM-aist)を利用した、RTコンポーネントの開発方法について説明します。
 
@@ -99,5 +100,4 @@ CENTER: ''RTC ライフサイクル (UML ステートマシン図)''
 | onShutdown    | ECの駆動が停止する際に1回呼ばれる。        |
 | onStartup     | ECの駆動が開始する際に1回呼ばれる。        |
 | onFinalize    | ライフサイクル終了時に1度だけ呼ばれる。    |
-
 

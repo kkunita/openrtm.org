@@ -1,4 +1,5 @@
-﻿#contents
+﻿// Title: RT Component architecture
+#contents
 
 //** RTコンポーネントフレームワーク
 ** RT Component Framework
