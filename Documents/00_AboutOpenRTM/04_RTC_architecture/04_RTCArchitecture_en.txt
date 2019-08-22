@@ -10,7 +10,7 @@ RT Component Framework is a framework for creating RT Components.
 //ロボットシステムを構成する要素をモジュール化するとき、様々な粒度でのモジュール化が考えられます。たとえば、モーターやセンサーといった単機能のデバイス、移動ロボットやアームなど複合的なシステム、あるいは様々な処理を行うアルゴリズムといった単位が考えられ、それらの階層的な集積によりシステムが構築されます。RTミドルウエアでは、これらのRT機能要素の本質的なソフトウエア部分をコアロジックと呼びます。RTコンポーネントフレームワークは、コアロジックに共通のインターフェースという皮を被せて、これらのモジュールを統一的に扱うことができるようにするための仕組みです。
 To modularize the elements which are constructing a robot system, there are many types of granularity of the modularization. For example, a single function device like a motor/sensor, a compound function device like a moving cart robot, robot arm and a set of algorithm which handle various processes are considerable. A system would be built up by hierarchical integration of them. In RT middleware, the software part of the fundamental functional elements is called as "Core logic". RT component framework is a mechanism for covering the Core Logic by common interface and make the user be able to use the modules uniformly.
 
-#ref(RTCFrameWorkAndCoreLogic_en.png,40%,center)
+#ref(rtc_framework_en.png,40%,center)
 //CENTER: ''RT RTコンポーネントフレームワークとコアロジック''
 CENTER: ''RT Component Framework and Core Logic''
 
@@ -29,7 +29,7 @@ To modularize these functional elements, the RT component provides a framework b
 //図に RTC の基本的なアーキテクチャを示します。RTC の主な機能としては以下のものがあります。
 The figure shows the basic architecture of RTC. The main functions of RTC are as follows.
 
-#ref(RTCArchitecture_en.png,40%,center)
+#ref(rtc_architecture_en.png,40%,center)
 //CENTER: ''RTコンポーネントアーキテクチャ''
 CENTER: '' RT Component architecture ''
 
