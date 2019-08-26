@@ -1,0 +1,144 @@
+// Title: 一括インストール・スクリプト
+#contents(5)
+
+
+openrtm.org が提供するインストール・スクリプトをダウンロードページからダウンロードし、root 権限で実行します。このスクリプトは、必要なパッケージを順次 apt-get でインストールしていきます。
+
+// -[[パッケージインストールスクリプト:http://www.openrtm.org/pub/OpenRTM-aist/cxx/install_scripts/]]
+// -[[ソースコードリポジトリの最新スクリプト:http://svn.openrtm.org/OpenRTM-aist/trunk/OpenRTM-aist/build/pkg_install100_ubuntu.sh]]
+
+//-[[一括インストールスクリプト(Ubuntu):http://svn.openrtm.org/OpenRTM-aist/tags/RELEASE_1_1_1/OpenRTM-aist/build/pkg_install_ubuntu.sh]]
+//-[[一括インストールスクリプト(Debian):http://svn.openrtm.org/OpenRTM-aist/tags/RELEASE_1_1_1/OpenRTM-aist/build/pkg_install_debian.sh]]
+
+-[[一括インストールスクリプト(Ubuntu):https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_ubuntu.sh]]
+-[[一括インストールスクリプト(Debian):https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_debian.sh]]
+-[[一括インストールスクリプト(Raspbian):https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_raspbian.sh]]
+-[[一括インストールスクリプト(Fedora):https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_fedora.sh]]
+
+//初めて OpenRTM-aist をインストールしてみる方にお勧めします。
+オプションを指定することで、目的に合わせたパッケージをインストールできるようになったので、
+初めて OpenRTM-aist をインストールしてみる方にもソースをコンパイルしてみる方にもお勧めします。
+
+ただし、OpenRTM-aist 関係のすべてのパッケージをインストールするので、必要ないものもインストールされる可能性があります。
+詳しく理解している人は、手動でインストールした方がよいでしょう。
+
+
+** pkg_install_（ubuntu / debian / raspbian）.sh
+
+現在 オプション ''all'' 、''java''は未対応です。インストールできるのは、OpenRTM-aist 1.2.0版以降となります。
+
+オプションの設定は同じですが、pkg_install_raspbian.shはopenrtp・rtshellに関するオプションが未対応です。
+
+
+*** オプション一覧
+ $ ./pkg_install_ubuntu.sh --help
+  Usage:
+ 
+    pkg_install_ubuntu.sh [-l all/c++] [-r/-d/-s/-c] [-u]
+    pkg_install_ubuntu.sh [-l python/java] [-r/-d/-c] [-u]
+    pkg_install_ubuntu.sh [-l openrtp/rtshell] [-d] [-u]
+ 
+  Example:
+    pkg_install_ubuntu.sh  [= pkg_install_ubuntu.sh -l c++ -d]
+    pkg_install_ubuntu.sh -l all -d  [= -l c++ -l python -l java -l openrtp -l rtshell -d]
+    pkg_install_ubuntu.sh -l c++ -l python -c --yes
+ 
+  Options:
+    -l <argument>  language or tool [c++/python/java/openrtp/rtshell]
+    -r             install robot component runtime
+    -d             install robot component developer [default]
+    -s             install tool_packages for build source packages
+    -c             install tool_packages for core developer
+    -u             uninstall
+    --yes          force yes
+    --help, -h     print this
+
+*** インストールdebパッケージ一覧
+
+オプションを指定して実行することで、次のパッケージをインストールします。
+
+赤字は -u 指定時にアンインストールされるパッケージです。
+
+#ref(deb-list.png,nolink,right,center)
+
+
+** pkg_install_fedora.sh
+
+//pkg_install_fedora.shは次のパッケージに対応していません。
+
+//- OpenRTM-aist-1.1.2-RELEASE
+//- rtshell
+
+現在 オプション all 、javaは未対応です。インストールできるのは、OpenRTM-aist 1.2.0版以降となります。
+
+*** オプション一覧
+ $ ./pkg_install_fedora.sh --help
+  Usage:
+ 
+    pkg_install_fedora.sh [-l all/c++] [-r/-d/-s/-c] [-u]
+    pkg_install_fedora.sh [-l python/java] [-r/-d/-c] [-u]
+    pkg_install_fedora.sh [-l openrtp] [-d] [-u]
+ 
+  Example:
+    pkg_install_fedora.sh  [= pkg_install_fedora19.sh -l c++ -d]
+    pkg_install_fedora.sh -l all -d  [= -l c++ -l python -l java -l openrtp -d]
+    pkg_install_fedora.sh -l c++ -l python -c --yes
+ 
+  Options:
+    -l <argument>  language or tool [c++/python/java/openrtp]
+    -r             install robot component runtime
+    -d             install robot component developer [default]
+    -s             install tool_packages for build source packages
+    -c             install tool_packages for core developer
+    -u             uninstall
+    --yes          force yes
+    --help, -h     print this
+
+*** インストールパッケージ一覧
+
+赤字は -u 指定時にアンインストールされるパッケージです。
+
+#ref(rpm-list.png,nolink,right,center)
+
+** 一括インストール・スクリプトを使う方法
+
+以下、一括インストールスクリプトを使用したダウンロードとインストール方法です。
+
+お使いの環境に合わせた一括インストールスクリプトを次のコマンドでダウンロードします。
+
+ > wget [pkg_install_ubuntu.sh のダウンロードURL]
+
+
+**** C++ 版をインストールする
+
+初めてインストールする方にお勧めします。オプション "-l" を追加することで目的の言語を指定し、オプション "-ｄ" を追加することでデフォルトインストールします。（このオプションは省略可能です。）
+
+ > su
+ # ./pkg_install_ubuntu.sh -l c++
+ //途中、いくつかの質問をたずねられるので、''y'' あるいは ''Y'' を入力しながら完了させる。
+
+
+**** Python 版をインストールする("Y" の入力を省略する)
+
+初めてインストールする方にお勧めします。オプション "--yes" を追加することで、インストールを確認する質問と "Y" の入力を省略できます。
+
+ > su
+ # ./pkg_install_ubuntu.sh -l python --yes
+ 
+
+**** C++ 版・Python 版とコア開発に必要なパッケージをインストールする
+
+オプション "-c" を追加することでコア開発に必要なペッケージをインストールし、オプション "--yes" で "Y" の入力を省略します。
+
+ > su
+ # ./pkg_install_ubuntu.sh -l c++ -l python -c --yes
+
+
+**** C++ 版をアンインストールする
+
+オプション "-u" を追加することで、C++版をアンインストールします。
+
+アンインストールするパッケージは、[[インストールdebパッケージ一覧 :#toc2]] をご確認ください。
+
+ > su
+ # ./pkg_install_ubuntu.sh -l c++ -u

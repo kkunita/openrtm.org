@@ -1,0 +1,18 @@
+// Title: Fedoraへのインストール
+#ref(fedora_logo.png,around,40%,right)
+
+Python版 OpenRTM-aist は Fedora Linux で利用可能な RPM パッケージが提供されています。
+対応している Fedora Linux のバージョンは、ダウンロードページから確認できます。
+Fedora Linux への対応およびそのバージョンは、予告なしに変更または停止されることがありますので、予めご了承ください。
+
+#contents
+
+**一括インストール・スクリプト
+加筆をお願いします。
+
+
+***インストールの確認
+加筆をお願いします。
+
+**パッケージの詳細
+加筆をお願いします。

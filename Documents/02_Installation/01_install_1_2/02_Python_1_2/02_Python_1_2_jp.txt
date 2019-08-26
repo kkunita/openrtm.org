@@ -1,0 +1,2 @@
+// Title: OpenRTM-aist(Python版) 1.2系のインストール
+ここでは OpenRTM-aist (Python) の Windows へのインストール方法を説明します。

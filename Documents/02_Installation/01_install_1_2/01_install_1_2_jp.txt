@@ -1,0 +1,4 @@
+// Title: OpenRTM-aist 1.2Œn‚ÌƒCƒ“ƒXƒg[ƒ‹
+- [[C++”Å 1.2Œn>/ja/node/6600]]
+- [[Python”Å 1.2Œn>/ja/node/6601]]
+- [[Java”Å 1.2Œn>/ja/node/6602]]

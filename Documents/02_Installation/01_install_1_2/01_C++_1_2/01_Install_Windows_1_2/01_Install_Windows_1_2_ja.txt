@@ -1,0 +1,20 @@
+﻿// Title: Windowsへのインストール
+#contents
+
+** OpenRTM-aistのインストール
+msiインストーラーによるOpenRTM-aistのインストール手順については下記のページに記載。
+
+- [[OpenRTM-aist 1.2系のインストール(Windows、msiインストーラー使用):/ja/node/6652]]
+
+
+** 開発に必要なソフトウェアのインストール
+RTCの開発にはCMake、Doxygen、Visual Studioのインストールが必要です。
+
+- [[CMake(3.11以上推奨):https://cmake.org/download/]]
+- [[Doxygen:http://doxygen.nl/files/doxygen-1.8.14-setup.exe]]
+- [[Visual Studio:/ja/node/6649]]
+
+** インストーラーの作業内容
+加筆をお願いします。
+** インストールされるファイル
+加筆をお願いします。

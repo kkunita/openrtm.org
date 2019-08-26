@@ -1,0 +1,74 @@
+// Title: RTCBuilderのインストール
+#contents
+**RTCBuilder とは 
+RTCBuilder は RTコンポーネントのテンプレートを生成する開発ツールです。パラメーターを基に RTコンポーネントのテンプレートを生成する機能を持っています。
+また、RTCBuilder は Eclipse にて動作し、直感的な操作と他の Eclipse プラグインとのシームレスな連携が可能です。~
+
+
+***機能概要
+提供される機能の一覧は以下のとおりです。
+| № | 画面要素名 | 説明 |
+|１|RTC プロファイルエディタ|RTコンポーネントの仕様であるプロファイル、データポート定義、サービスポート定義、コンフィギュレーション定義、その他拡張プロファイルを編集します。|
+|２|ビルドビュー|編集中の RTコンポーネントおよびデータポート、サービスポート、サービスインターフェースをアイコンでグラフィカルに表示します。|
+|３|リポジトリビュー|選択した RTリポジトリの情報を表示します。|
+
+***動作環境
+RTCBuilderの動作に必要な環境は以下のとおりです。
+
+
+|№|環境|備考|
+|１|[[Java Runtime Environment 8:https://docs.aws.amazon.com/ja_jp/corretto/latest/corretto-8-ug/downloads-list.html]]|;|
+|２|Eclipse 3.4.2以上 &br; http://www.eclipse.org/downloads/index.php &br; http://archive.eclipse.org/eclipse/downloads/index.php|Eclipse本体|
+|３|[[Eclipse EMF 2.2以上(SDO,XSD含む):http://www.eclipse.org/modeling/emf/downloads/]]|RTCBuilderが依存するEclipseプラグイン &br; ''※''ご使用になられる Eclipse のバージョンに合ったものをご使用ください。|
+|４|[[Eclipse GEF 3.2以上(Draw2D含む):http://www.eclipse.org/gef/downloads/]]|RTCBuilderが依存する Eclipse プラグイン &br; ''※''ご使用になられる Eclipse のバージョンに合ったものをご使用ください。|
+|５|[[Eclipse Java development tools(JDT)>http://www.eclipse.org/projects/project_summary.php?projectid=eclipse.jdt]]|''※''ご使用になられる Eclipse のバージョンに合ったものをご使用ください。|
+
+
+
+また以下の開発を行う言語によっては以下の環境をインストールしておくと便利です。
+|№|環境|備考|
+|１|[[Eclipse CDT:http://www.eclipse.org/cdt/downloads.php]]|C++用の開発環境|
+|２|[[Pydev for Eclipse:http://pydev.org/]]|python用の開発環境|
+
+**RTCBuilder のインストール
+
+RTCBuilder は Eclipse プラグインであるため、 Eclipse 本体をインストールする必要があります。
+さらに、Eclipse は Java アプリケーションなので、Eclipse 本体をインストールする前に Java 実行環境（あるいはJDK：Java開発環境でもよい）をインストールする必要があります。
+-Java 実行環境のインストールについては、[[Eclipseについて の JDK(Java Development Kit)のインストール:/node/6656#jdk_install]] を参照してください。
+-Eclipseのインストールについては、[[Eclipseについて の Eclipseのインストール:/node/6656#eclipse_install]] を参照してください。
+
+*** RTC Builderのビルド
+Eclipseを直接導入した場合はRTC Builderのビルドが必要です。
+以下のページの手順でプラグインの生成、導入を行ってください。
+
+- [[RTC Builder、RT System Editorのビルド:https://openrtm.org/openrtm/ja/build_12_openrtp]]
+
+*** RTC Builderの起動
+
+Eclipse を起動し、メニューから [ウインドウ] > [パースペクティブを開く] > [その他] を選択すると、 次のようなパースペクティブ選択画面が表示されます。
+#br
+
+#ref(fig2-3PerspectiveSelection_ja.png,/ja/node/678,50%,center)
+//CENTER:''ツールバーからの起動''
+#br
+パースペクティブ一覧にある RTC Builder を選択すると、次のような画面が表示されて RTCBuilder が起動されます。
+#br
+
+
+#ref(fig2-4RTCBuilderInit_ja.png,60%,/ja/node/678,center)
+#br
+~ツールバーの [Open New RTC Builder Editor] ボタンをクリックするか、メニューバーの [ファイル] > [Open New Builder Editor] を選択することで、Builder エディタが起動します。
+#br
+
+#ref(fig2-9ToolsBarOpenNewRtcBuilder_ja.png,/ja/node/678,nolink,center)
+#br
+
+#ref(fig2-10FileMenuOpenNewBuilder_ja.png,/ja/node/678,80%,center)
+#br
+
+//#ref(fig2-4RTCBuilderInit.png,/ja/node/678,80%,center)
+#br
+
+参考：[[''FAQ:'' Eclipseの起動方法 >/ja/node/248#eclipse]]
+#br
+#br
