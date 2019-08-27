@@ -45,7 +45,7 @@ The purpose of the project, which was carried out from 2005 to 2007 fiscal year 
 
 #ref(openhrp_openrtm_en.png,60%,center)
 //CENTER: ''分散コンポーネント型ロボットシミュレーター''
-CENTER: ''Distributed component type robot simulator''
+CENTER: ''Distributed Component based Robot Simulator''
 
 //このプロジェクトにより、これまで産総研において別々に開発されていた、ロボット用動力学シミュレータであるOpenHRP3と、OpenRTM-aistが統合されることになりました。
 As a result of the project, we integrated OpenRTM-aist and OpenHRP3 which is a robot dynamics simulator. Those were developed separately at AIST.
@@ -54,10 +54,10 @@ As a result of the project, we integrated OpenRTM-aist and OpenHRP3 which is a r
 We developed a target system in the simulator, external controller module, etc as RT components. And we enhanced Execution Context function which is the main logic driving entity of RT component to be usable without the re-compilation of the controller components both on the real system and the simulator. 
 
 //*** 次世代ロボット知能化技術開発プロジェクト
-*** Next-generation robot intelligent technology development project
+*** Next-generation Robot Intelligent RT Software Project
 
 //経済産業省およびNEDOによる「次世代ロボット知能化技術開発プロジェクト」(2007～2011年度)は、5年間で総額70億(予想)の大規模プロジェクトです。次世代ロボットシステムのための要素技術を、RTコンポーネントとして作成・蓄積し、再利用の方法やインターフェースの共通化に関する議論を通して、次世代ロボットの設計・実装するための方法論を確立するとともに、実際に使える多くのRTコンポーネント群を蓄積することを目的としています。
-"Next-Generation Robot Intelligence Technology Development Project" (2007 - 2011 fiscal year) by the Ministry of Economy, Trade and Industry and NEDO is a large-scale project that cost a totally of 7 billion yen (forecast) over 5 years. The purpose of the project was making methodology to design/implementation of the next-generation robot and accumulating RT components which can be used in an actual robot system. The components would be developed through the discussion about the re-use method, interface unifying. 
+"Next-Generation Robot Intelligent RT Software Project" (2007 - 2011 fiscal year) by the Ministry of Economy, Trade and Industry and NEDO is a large-scale project that cost a totally of 7 billion yen (forecast) over 5 years. The purpose of the project was making methodology to design/implementation of the next-generation robot and accumulating RT components which can be used in an actual robot system. The components would be developed through the discussion about the re-use method, interface unifying. 
 
 //また、ロボットシステム開発の様々なフェーズで利用できる各種ツール群、ミドルウエア、ライブラリを含むRTシステム開発のためのプラットフォーム(OpenRT プラットフォーム(OpenRTP)と呼ぶ)をOpenRTM-aistの上に構築しました。開発ツール群は、Eclipseのプラグインとして実装され、一連の作業を同一の開発環境で行うことのできるツールチェーンとなっています。
 Also, a platform called "OpenRTP" was constructed on OpenRTM-aist. The platform is including various tools which can be used in the various development phase for a robot system, a middleware, libraries. The tools were implemented as Eclipse plug-in and it is a toolchain that can allow the user to do a series of work in a single development environment.
@@ -73,7 +73,7 @@ Data between the tools are written with the format which is defined based on the
 *** Open Innovation Promotion Project
 
 //NEDOにより2008年から3年間実施された「基盤ロボット技術活用型オープンイノベーション促進プロジェクト」です。このプロジェクトでは、既存の要素部品を容易に RTコンポーネント化するため、安価で小型な基盤通信モジュールを開発することを目指しています。さらに、この基盤通信モジュールを利用して、実際に家屋の様々な部分に、センサーやアクチュエーターを配置し、多様なデバイスが連携して安心・安全・快適な居住空間を作り出す知能化住宅を実証システムとして構築しました。
-Open innovation promoting project using underlay Robot technology were performed by NEDO for 3 years from 2008. In the project, to make existing elementally function parts to RT components, the development of cheap and compact base communication module was targeted. Also using the base communication module, an intelligent house in which various sensors and actuators are installed on various parts of the house and the devices are co-worked were built as a POC system.
+Fundamental Robot Technology-based Open Innovation Promotion Project were funded by NEDO for 3 years from 2008. In the project, to make existing elementally function parts to RT components, the development of cheap and compact base communication module was targeted. Also using the base communication module, an intelligent house in which various sensors and actuators are installed on various parts of the house and the devices are co-worked were built as a POC system.
 
 //** その他
 ** Other
@@ -90,4 +90,4 @@ In The Robotics and Mechatronics Conference (by the Japan Society of Mechanical 
 //*** RTMコンテスト
 *** RTM Contest
 //ロボットビジネス推進協議会の主催、SICEシステムインテグレーション部門講演会の併設行事として、RTミドルウエアやRTコンポーネントの作品を募集しコンペティションを行うRTミドルウエアコンテストを行っています。
-The Robot business promotion association is holding RT-Middleware contest as an event in SICE system integration division conference. In the contest, competitions of RT-Middleware based products are being performed.  
+The Robot Business Promotion Council is holding RT-Middleware contest as an event in SICE system integration division conference. In the contest, competitions of RT-Middleware based products are being performed.  
