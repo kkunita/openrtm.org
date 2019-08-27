@@ -1,33 +1,33 @@
-// Title: Ubuntu/Debian�ւ̃C���X�g�[��
+﻿// Title: Ubuntu/Debianへのインストール
 #ref(ubuntu_logo2.png,/ja/node/1182,around,right)
 
 
-Python�ł� OpenRTM-aist �́AUbuntu �� Debian GNU Linux �ŗ��p�\�� deb �p�b�P�[�W���񋟂���Ă��܂��B
-�Ή����Ă���f�B�X�g���r���[�V�����̃o�[�W�����́A�_�E�����[�h�y�[�W����m�F�ł��܂��B
-Ubuntu/Debian GNU Linux �ւ̑Ή�����т��̃o�[�W�����́A�\���Ȃ��ɕύX�܂��͒�~����邱�Ƃ�����܂��̂ŁA�\�߂��������������B
+Python版の OpenRTM-aist は、Ubuntu や Debian GNU Linux で利用可能な deb パッケージが提供されています。
+対応しているディストリビューションのバージョンは、ダウンロードページから確認できます。
+Ubuntu/Debian GNU Linux への対応およびそのバージョンは、予告なしに変更または停止されることがありますので、予めご了承ください。
 
 #contents
 
-** �ꊇ�C���X�g�[���X�N���v�g
-���M�����肢���܂��B
+** 一括インストールスクリプト
+加筆をお願いします。
 
 
-***�C���X�g�[���̊m�F
-�C���X�g�[�����m�F���܂��B
+***インストールの確認
+インストールを確認します。
 
  $ dpkg -l 'openrtm*'
- �v�]=(U)�s��/(I)�C���X�g�[��/(R)�폜/(P)���S�폜/(H)�ێ�
- | ���=(N)��/(I)�C���X�g�[����/(C)�ݒ�/(U)�W�J/(F)�ݒ莸�s/(H)���C���X�g�[��/(W)�g���K�҂�/(T)�g���K�ۗ�
- |/ �G���[?=(��)��/(R)�v�ăC���X�g�[�� (���,�G���[�̑啶��=�ُ�)
- ||/ ���O           �o�[�W����   �A�[�L�e�N�` ����
+ 要望=(U)不明/(I)インストール/(R)削除/(P)完全削除/(H)保持
+ | 状態=(N)無/(I)インストール済/(C)設定/(U)展開/(F)設定失敗/(H)半インストール/(W)トリガ待ち/(T)トリガ保留
+ |/ エラー?=(空欄)無/(R)要再インストール (状態,エラーの大文字=異常)
+ ||/ 名前           バージョン   アーキテクチ 説明
  +++-==============-============-============-=================================
  ii  openrtm-aist-p 1.2.0-0      amd64        OpenRTM-aist, RT-Middleware distr
  ii  openrtm-aist-p 1.2.0-0      amd64        OpenRTM-aist-Python examples
 
 
 
-**�p�b�P�[�W�̏ڍ�
-�e�p�b�P�[�W�̓��e�͈ȉ��̒ʂ�ł��B
+**パッケージの詳細
+各パッケージの内容は以下の通りです。
 
-���M�����肢���܂��B
+加筆をお願いします。
 

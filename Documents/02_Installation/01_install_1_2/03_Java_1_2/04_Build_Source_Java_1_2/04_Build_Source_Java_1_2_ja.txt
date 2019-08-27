@@ -1,98 +1,98 @@
-// Title: ƒ\[ƒX‚©‚ç‚Ìƒrƒ‹ƒh
+ï»¿// Title: ã‚½ãƒ¼ã‚¹ã‹ã‚‰ã®ãƒ“ãƒ«ãƒ‰
 #contents
 
-OpenRTM-aist-Java –{‘Ì‚Ìƒ\[ƒX‚ð•ÏX‚µ‚Ä—˜—p‚µ‚½‚¢ê‡‚É‚ÍAƒ\[ƒX‚©‚çƒRƒ“ƒpƒCƒ‹‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+OpenRTM-aist-Java æœ¬ä½“ã®ã‚½ãƒ¼ã‚¹ã‚’å¤‰æ›´ã—ã¦åˆ©ç”¨ã—ãŸã„å ´åˆã«ã¯ã€ã‚½ãƒ¼ã‚¹ã‹ã‚‰ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
 
-**”z•zƒ\[ƒX‚Ìƒrƒ‹ƒh
+**é…å¸ƒã‚½ãƒ¼ã‚¹ã®ãƒ“ãƒ«ãƒ‰
 
-OpenRTM-aist (Java”Å) ‚Í Eclipse ‚ð—˜—p‚µ‚½ƒrƒ‹ƒhŠÂ‹«‚ð’ñ‹Ÿ‚µ‚Ä‚¢‚Ü‚·B
-
-
-***ˆË‘¶ƒ‰ƒCƒuƒ‰ƒŠ
-
-OpenRTM-aist ‚Ìƒrƒ‹ƒh‚É‚Í‰º‹L‚ÌŠJ”­ŠÂ‹«‚¨‚æ‚Ñƒ‰ƒCƒuƒ‰ƒŠ‚ª•K—v‚Å‚·B
-
--Eclipse SDK 3.3.xˆÈã
--jdk1.7.0_xxˆÈã
+OpenRTM-aist (Javaç‰ˆ) ã¯ Eclipse ã‚’åˆ©ç”¨ã—ãŸãƒ“ãƒ«ãƒ‰ç’°å¢ƒã‚’æä¾›ã—ã¦ã„ã¾ã™ã€‚
 
 
+***ä¾å­˜ãƒ©ã‚¤ãƒ–ãƒ©ãƒª
 
-‚»‚ê‚¼‚ê‚Ìƒ‰ƒCƒuƒ‰ƒŠ“™‚ÌƒhƒLƒ…ƒƒ“ƒg‚É]‚¢ƒCƒ“ƒXƒg[ƒ‹‚ðs‚Á‚Ä‚­‚¾‚³‚¢B
+OpenRTM-aist ã®ãƒ“ãƒ«ãƒ‰ã«ã¯ä¸‹è¨˜ã®é–‹ç™ºç’°å¢ƒãŠã‚ˆã³ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŒå¿…è¦ã§ã™ã€‚
 
-***ƒ\[ƒX‚Ìƒ_ƒEƒ“ƒ[ƒh
+-Eclipse SDK 3.3.xä»¥ä¸Š
+-jdk1.7.0_xxä»¥ä¸Š
 
-OpenRTM-aist-Java ‚Ìƒ\[ƒX‚ðƒ_ƒEƒ“ƒ[ƒh‚µ‚Ü‚·B
+
+
+ãã‚Œãžã‚Œã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒªç­‰ã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã«å¾“ã„ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã‚’è¡Œã£ã¦ãã ã•ã„ã€‚
+
+***ã‚½ãƒ¼ã‚¹ã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰
+
+OpenRTM-aist-Java ã®ã‚½ãƒ¼ã‚¹ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¾ã™ã€‚
 
 
 -[[OpenRTM-aist-Java-1.2.0:https://github.com/OpenRTM/OpenRTM-aist-Java/releases/tag/v1.2.0]]
 
 
-***ƒ\[ƒXƒR[ƒh‚Ì“WŠJ 
+***ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã®å±•é–‹ 
 
-‚Ü‚¸ƒ\[ƒXƒR[ƒh‚ð“K“–‚ÈƒfƒBƒŒƒNƒgƒŠ[‚É“WŠJ‚µ‚Ü‚·B
-- Linux ‚Ìê‡
+ã¾ãšã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’é©å½“ãªãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ¼ã«å±•é–‹ã—ã¾ã™ã€‚
+- Linux ã®å ´åˆ
  $ tar xvzf OpenRTM-aist-Java-X.X.X.tar.gz
-- Windows ‚Ìê‡‚ÍAtgz ‚ð“WŠJ‚Å‚«‚éƒc[ƒ‹‚ðŽg—p‚µ‚Ä“WŠJ‚µ‚Ü‚·B
+- Windows ã®å ´åˆã¯ã€tgz ã‚’å±•é–‹ã§ãã‚‹ãƒ„ãƒ¼ãƒ«ã‚’ä½¿ç”¨ã—ã¦å±•é–‹ã—ã¾ã™ã€‚
 
-*** ƒrƒ‹ƒh 
-**** ƒvƒƒWƒFƒNƒg‚ÌƒCƒ“ƒ|[ƒg
-ƒrƒ‹ƒh•û–@‚ðà–¾‚µ‚Ü‚·Bi}‚Í Windows ”Å‚Ì Eclipse3.4.2 ‚Å‚·Bj
-Eclipse ‚ð‹N“®‚µAƒvƒƒWƒFƒNƒg‚ðƒ[ƒNƒXƒy[ƒX‚ÖƒCƒ“ƒ|[ƒg‚µ‚Ü‚·B
-[ƒtƒ@ƒCƒ‹] > [ƒCƒ“ƒ|[ƒg] ‚ð‘I‘ð‚µ‚Ü‚·B
+*** ãƒ“ãƒ«ãƒ‰ 
+**** ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
+ãƒ“ãƒ«ãƒ‰æ–¹æ³•ã‚’èª¬æ˜Žã—ã¾ã™ã€‚ï¼ˆå›³ã¯ Windows ç‰ˆã® Eclipse3.4.2 ã§ã™ã€‚ï¼‰
+Eclipse ã‚’èµ·å‹•ã—ã€ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ¯ãƒ¼ã‚¯ã‚¹ãƒšãƒ¼ã‚¹ã¸ã‚¤ãƒ³ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚
+[ãƒ•ã‚¡ã‚¤ãƒ«] > [ã‚¤ãƒ³ãƒãƒ¼ãƒˆ] ã‚’é¸æŠžã—ã¾ã™ã€‚
 #ref(rtm16.png,60%,center)
-CENTER: ''[ƒtƒ@ƒCƒ‹] > [ƒCƒ“ƒ|[ƒg]‚ð‘I‘ð''
-ƒCƒ“ƒ|[ƒg‚Ìu‘I‘ðvƒEƒBƒ“ƒhƒE‚ªŠJ‚«‚Ü‚·B‚±‚±‚ÅA[ˆê”Ê] > [Šù‘¶ƒvƒƒWƒFƒNƒg‚ðƒ[ƒNƒXƒy[ƒX‚Ö] ‚ð‘I‘ð‚µ‚Ä [ŽŸ‚Ö] ƒ{ƒ^ƒ“‚ðƒNƒŠƒbƒN‚µ‚Ü‚·B
+CENTER: ''[ãƒ•ã‚¡ã‚¤ãƒ«] > [ã‚¤ãƒ³ãƒãƒ¼ãƒˆ]ã‚’é¸æŠž''
+ã‚¤ãƒ³ãƒãƒ¼ãƒˆã®ã€Œé¸æŠžã€ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒé–‹ãã¾ã™ã€‚ã“ã“ã§ã€[ä¸€èˆ¬] > [æ—¢å­˜ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ¯ãƒ¼ã‚¯ã‚¹ãƒšãƒ¼ã‚¹ã¸] ã‚’é¸æŠžã—ã¦ [æ¬¡ã¸] ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¾ã™ã€‚
 #ref(rtm17.png,60%,center)
-CENTER: ''ƒCƒ“ƒ|[ƒg‚Ìu‘I‘ðvƒEƒBƒ“ƒhƒE''
-uƒvƒƒWƒFƒNƒg‚ÌƒCƒ“ƒ|[ƒgvƒEƒBƒ“ƒhƒE‚ªŠJ‚«‚Ü‚·Buƒ‹[ƒgEƒfƒBƒŒƒNƒgƒŠ[‚Ì‘I‘ðv‚Ö“WŠJ‚µ‚½ƒfƒBƒŒƒNƒgƒŠ[‚ðŽw’è‚µ‚Ä [Š®—¹] ƒ{ƒ^ƒ“‚ðƒNƒŠƒbƒN‚µ‚Ü‚·B
+CENTER: ''ã‚¤ãƒ³ãƒãƒ¼ãƒˆã®ã€Œé¸æŠžã€ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦''
+ã€Œãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ãƒãƒ¼ãƒˆã€ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒé–‹ãã¾ã™ã€‚ã€Œãƒ«ãƒ¼ãƒˆãƒ»ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ¼ã®é¸æŠžã€ã¸å±•é–‹ã—ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ¼ã‚’æŒ‡å®šã—ã¦ [å®Œäº†] ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¾ã™ã€‚
 #ref(rtm18.png,60%,center)
-CENTER: ''uƒvƒƒWƒFƒNƒg‚ÌƒCƒ“ƒ|[ƒgvƒEƒBƒ“ƒhƒE''
-‚±‚ê‚ÅAƒvƒƒWƒFƒNƒg‚ðƒ[ƒNƒXƒy[ƒX‚ÖƒCƒ“ƒ|[ƒg‚Å‚«‚Ü‚·B
+CENTER: ''ã€Œãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ãƒãƒ¼ãƒˆã€ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦''
+ã“ã‚Œã§ã€ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ¯ãƒ¼ã‚¯ã‚¹ãƒšãƒ¼ã‚¹ã¸ã‚¤ãƒ³ãƒãƒ¼ãƒˆã§ãã¾ã™ã€‚
 
-**** JDE‚ÌÝ’è
-ƒrƒ‹ƒh‚ÉŽg—p‚·‚éJDK‚ÌÝ’è‚ðs‚¢‚Ü‚·B
-‚Ü‚¸[ƒEƒBƒ“ƒhƒE > [Ý’è]‚ÅÝ’è‰æ–Ê‚ðŠJ‚«‚Ü‚·B
+**** JDEã®è¨­å®š
+ãƒ“ãƒ«ãƒ‰ã«ä½¿ç”¨ã™ã‚‹JDKã®è¨­å®šã‚’è¡Œã„ã¾ã™ã€‚
+ã¾ãš[ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ > [è¨­å®š]ã§è¨­å®šç”»é¢ã‚’é–‹ãã¾ã™ã€‚
 
 #ref(rtm19.png,60%,center)
-CENTER: ''[ƒEƒBƒ“ƒhƒE] > [Ý’è]‚ð‘I‘ð''
+CENTER: ''[ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦] > [è¨­å®š]ã‚’é¸æŠž''
 
-¶‘¤‚ÌƒcƒŠ[‚©‚ç[Java]  > [ƒCƒ“ƒXƒg[ƒ‹Ï‚Ý‚ÌJRE]‚ð‘I‘ð‚µ‚Ä’Ç‰Áƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚Ü‚·B
+å·¦å´ã®ãƒ„ãƒªãƒ¼ã‹ã‚‰[Java]  > [ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ¸ˆã¿ã®JRE]ã‚’é¸æŠžã—ã¦è¿½åŠ ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¾ã™ã€‚
 
 #ref(rtm20.png,60%,center)
-CENTER: ''ƒCƒ“ƒXƒg[ƒ‹Ï‚Ý‚ÌJRE''
+CENTER: ''ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ¸ˆã¿ã®JRE''
 
-•W€VM‚ð‘I‘ð‚µ‚ÄŽŸ‚Öi‚Ý‚Ü‚·B
+æ¨™æº–VMã‚’é¸æŠžã—ã¦æ¬¡ã¸é€²ã¿ã¾ã™ã€‚
 
 #ref(rtm21.png,60%,center)
-CENTER: ''JRE‚Ì’Ç‰Á''
+CENTER: ''JREã®è¿½åŠ ''
 
-JREƒz[ƒ€‚ÉJDKƒCƒ“ƒXƒg[ƒ‹ƒtƒHƒ‹ƒ_ˆÈ‰º‚ÌjreƒtƒHƒ‹ƒ_‚ÌƒpƒX‚ðŽw’è‚µ‚ÄŠ®—¹‚·‚éB
+JREãƒ›ãƒ¼ãƒ ã«JDKã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ãƒ•ã‚©ãƒ«ãƒ€ä»¥ä¸‹ã®jreãƒ•ã‚©ãƒ«ãƒ€ã®ãƒ‘ã‚¹ã‚’æŒ‡å®šã—ã¦å®Œäº†ã™ã‚‹ã€‚
 
 #ref(rtm22.png,60%,center)
-CENTER: ''JRE‚ÌÝ’è''
+CENTER: ''JREã®è¨­å®š''
 
-ƒCƒ“ƒXƒg[ƒ‹Ï‚ÝJRE‚ÅÝ’è‚µ‚½JDK‚Ìƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚ðƒIƒ“‚É‚·‚ê‚ÎŠ®—¹‚Å‚·B
+ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ¸ˆã¿JREã§è¨­å®šã—ãŸJDKã®ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ã‚’ã‚ªãƒ³ã«ã™ã‚Œã°å®Œäº†ã§ã™ã€‚
 
 #ref(rtm23.png,60%,center)
-CENTER: ''JDK‚ÌÝ’è''
+CENTER: ''JDKã®è¨­å®š''
 
-ƒpƒbƒP[ƒWEƒGƒNƒXƒvƒ[ƒ‰[‚©‚ç build.xml ‚ð‰EƒNƒŠƒbƒN‚µ‚Ä [ƒfƒoƒbƒO] > -[2 Antƒrƒ‹ƒh...] ‚ð‘I‘ð‚µ‚Ü‚·B
+ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãƒ»ã‚¨ã‚¯ã‚¹ãƒ—ãƒ­ãƒ¼ãƒ©ãƒ¼ã‹ã‚‰ build.xml ã‚’å³ã‚¯ãƒªãƒƒã‚¯ã—ã¦ [ãƒ‡ãƒãƒƒã‚°] > -[2 Antãƒ“ãƒ«ãƒ‰...] ã‚’é¸æŠžã—ã¾ã™ã€‚
 #ref(rtm24.png,60%,center)
-CENTER: ''[ƒfƒoƒbƒO] > -[2 Antƒrƒ‹ƒh...] ‚ð‘I‘ð''
-\¬•ÒW‚ÌƒEƒBƒ“ƒhƒE‚ª•\Ž¦‚³‚Ü‚·B‚±‚±‚ÅA''jar''A''idlCompile''A''idlCompileEtc''A''clean''A''compile_win''‚ð‘I‘ð‚µ‚Ä [ƒfƒoƒbƒO] ƒ{ƒ^ƒ“‚ðƒNƒŠƒbƒN‚µ‚Ü‚·B
+CENTER: ''[ãƒ‡ãƒãƒƒã‚°] > -[2 Antãƒ“ãƒ«ãƒ‰...] ã‚’é¸æŠž''
+æ§‹æˆç·¨é›†ã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒè¡¨ç¤ºã•ã¾ã™ã€‚ã“ã“ã§ã€''jar''ã€''idlCompile''ã€''idlCompileEtc''ã€''clean''ã€''compile_win''ã‚’é¸æŠžã—ã¦ [ãƒ‡ãƒãƒƒã‚°] ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¾ã™ã€‚
 #ref(rtm25.png,60%,center)
-CENTER: ''\¬•ÒW‚ÌƒEƒBƒ“ƒhƒE''
-ƒrƒ‹ƒh‚ªŽn‚Ü‚è‚Ü‚·B
+CENTER: ''æ§‹æˆç·¨é›†ã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦''
+ãƒ“ãƒ«ãƒ‰ãŒå§‹ã¾ã‚Šã¾ã™ã€‚
 #ref(rtm26.png,80%,center)
-CENTER: ''ƒrƒ‹ƒhŽÀsŒ‹‰Ê''
-ƒRƒ“ƒ\[ƒ‹ƒEƒBƒ“ƒhƒE‚ÉˆÈã‚Ì•\Ž¦‚ª‚Å‚ê‚ÎŠ®—¹‚Å‚·B #br
-“ú–{Œê‚ª•¶Žš‰»‚¯‚µ‚Ä‚¢‚éê‡‚ÍAƒƒjƒ…[‚ÌuŽÀsv¨uŠO•”ƒc[ƒ‹v¨uŠO•”ƒc[ƒ‹‚Ì\¬v‚Å‹¤’Êƒ^ƒu‚ðŠJ‚«A•¶ŽšƒR[ƒh‚ð MS932 ‚É•ÏXi‚»‚Ì‘¼‚Ì—“‚É“ü—Íj‚µ‚Ü‚·B
+CENTER: ''ãƒ“ãƒ«ãƒ‰å®Ÿè¡Œçµæžœ''
+ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«ä»¥ä¸Šã®è¡¨ç¤ºãŒã§ã‚Œã°å®Œäº†ã§ã™ã€‚ #br
+æ—¥æœ¬èªžãŒæ–‡å­—åŒ–ã‘ã—ã¦ã„ã‚‹å ´åˆã¯ã€ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®ã€Œå®Ÿè¡Œã€â†’ã€Œå¤–éƒ¨ãƒ„ãƒ¼ãƒ«ã€â†’ã€Œå¤–éƒ¨ãƒ„ãƒ¼ãƒ«ã®æ§‹æˆã€ã§å…±é€šã‚¿ãƒ–ã‚’é–‹ãã€æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’ MS932 ã«å¤‰æ›´ï¼ˆãã®ä»–ã®æ¬„ã«å…¥åŠ›ï¼‰ã—ã¾ã™ã€‚
 
 
 
-***‚»‚Ì‘¼‚Ìƒ^[ƒQƒbƒg‚Ìƒrƒ‹ƒh
+***ãã®ä»–ã®ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã®ãƒ“ãƒ«ãƒ‰
 **** createExe
-createExe‚Ìƒ^[ƒQƒbƒg‚ðƒrƒ‹ƒh‚·‚é‚½‚ß‚É‚Í[[JSmooth:https://ja.osdn.net/projects/sfnet_jsmooth/]] ‚ª•K—v‚Å‚·BƒCƒ“ƒXƒg[ƒ‹‚µ‚ÄŠÂ‹«•Ï” JSMOOTH_HOME ‚ðÝ’è‚µ‚Ä‚­‚¾‚³‚¢BJSMOOTH_HOME=C:\Program Files (x86)\JSmooth 0.9.9-7 ‚È‚Ç#br
+createExeã®ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‚’ãƒ“ãƒ«ãƒ‰ã™ã‚‹ãŸã‚ã«ã¯[[JSmooth:https://ja.osdn.net/projects/sfnet_jsmooth/]] ãŒå¿…è¦ã§ã™ã€‚ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦ç’°å¢ƒå¤‰æ•° JSMOOTH_HOME ã‚’è¨­å®šã—ã¦ãã ã•ã„ã€‚JSMOOTH_HOME=C:\Program Files (x86)\JSmooth 0.9.9-7 ãªã©#br
 
 **** junit
-‰Á•M‚ð‚¨Šè‚¢‚µ‚Ü‚·B
+åŠ ç­†ã‚’ãŠé¡˜ã„ã—ã¾ã™ã€‚

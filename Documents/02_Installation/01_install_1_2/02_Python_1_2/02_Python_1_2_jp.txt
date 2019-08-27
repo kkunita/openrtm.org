@@ -1,2 +1,2 @@
-// Title: OpenRTM-aist(Python”Å) 1.2Œn‚ÌƒCƒ“ƒXƒg[ƒ‹
-‚±‚±‚Å‚Í OpenRTM-aist (Python) ‚Ì Windows ‚Ö‚ÌƒCƒ“ƒXƒg[ƒ‹•û–@‚ðà–¾‚µ‚Ü‚·B
+ï»¿// Title: OpenRTM-aist(Pythonç‰ˆ) 1.2ç³»ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
+ã“ã“ã§ã¯ OpenRTM-aist (Python) ã® Windows ã¸ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ–¹æ³•ã‚’èª¬æ˜Žã—ã¾ã™ã€‚

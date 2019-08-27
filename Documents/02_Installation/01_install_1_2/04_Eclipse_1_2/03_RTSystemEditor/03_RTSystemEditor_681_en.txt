@@ -1,4 +1,4 @@
-#contents
+﻿#contents
 **RT System Editor 
 RT System Editor is one of the OpenRTM-aist development tools. It allows
 RT Components to be manipulated in real-time using a graphical interface. It
@@ -21,7 +21,7 @@ The following must be installed for RT System Editor to function.
 |Software|Remarks|
 |[[Java Development Kit 6:http://www.oracle.com/technetwork/java/javase/downloads/index.html]]|&color(Red){Note: Java1.5 (5.0) is not suitable.};|
 |[[Eclipse 3.4.2:http://archive.eclipse.org/eclipse/downloads/drops/R-3.2.1-200609210945/download.php?dropFile=eclipse-SDK-3.2.1-win32.zip]]|Eclipse itself|
-|Eclipse EMF 2.2.4 [[EMF�{SDO Runtime:http://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/downloads/drops/2.2.4/R200710030400/emf-sdo-runtime-2.2.4.zip]] and [[XSD Runtime:http://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/downloads/drops/2.2.4/R200710030400/xsd-runtime-2.2.4.zip]]|Eclipse plugin required by RT System Editor|
+|Eclipse EMF 2.2.4 [[EMF＋SDO Runtime:http://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/downloads/drops/2.2.4/R200710030400/emf-sdo-runtime-2.2.4.zip]] and [[XSD Runtime:http://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/downloads/drops/2.2.4/R200710030400/xsd-runtime-2.2.4.zip]]|Eclipse plugin required by RT System Editor|
 |[[Eclipse GEF 3.2.2:http://www.eclipse.org/downloads/download.php?file=/tools/gef/downloads/drops/3.2.2/R200702081315/GEF-runtime-3.2.2.zip]]|Eclipse plugin required by RT System Editor|
 
 

@@ -1,18 +1,18 @@
-// Title: Fedora�ւ̃C���X�g�[��
+﻿// Title: Fedoraへのインストール
 #ref(fedora_logo.png,around,40%,right)
 
-Python�� OpenRTM-aist �� Fedora Linux �ŗ��p�\�� RPM �p�b�P�[�W���񋟂���Ă��܂��B
-�Ή����Ă��� Fedora Linux �̃o�[�W�����́A�_�E�����[�h�y�[�W����m�F�ł��܂��B
-Fedora Linux �ւ̑Ή�����т��̃o�[�W�����́A�\���Ȃ��ɕύX�܂��͒�~����邱�Ƃ�����܂��̂ŁA�\�߂��������������B
+Python版 OpenRTM-aist は Fedora Linux で利用可能な RPM パッケージが提供されています。
+対応している Fedora Linux のバージョンは、ダウンロードページから確認できます。
+Fedora Linux への対応およびそのバージョンは、予告なしに変更または停止されることがありますので、予めご了承ください。
 
 #contents
 
-**�ꊇ�C���X�g�[���E�X�N���v�g
-���M�����肢���܂��B
+**一括インストール・スクリプト
+加筆をお願いします。
 
 
-***�C���X�g�[���̊m�F
-���M�����肢���܂��B
+***インストールの確認
+加筆をお願いします。
 
-**�p�b�P�[�W�̏ڍ�
-���M�����肢���܂��B
+**パッケージの詳細
+加筆をお願いします。

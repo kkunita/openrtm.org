@@ -1,73 +1,73 @@
-// Title: OpenRTP�̋N���菇(1.2�n�AWindows)
+﻿// Title: OpenRTPの起動手順(1.2系、Windows)
 #contents
 
-** OpenRTP�̋N��
-RTC�̑���ART�V�X�e���̍\�z���s�����߂̃c�[��RT System Editor���N�����܂��B
-RT System Editor��OpenRTP�Ƃ����c�[���̒��Ɋ܂܂�Ă��邽�߁A�܂���OpenRTP���N������K�v������܂��B
-�f�X�N�g�b�v�̃V���[�g�J�b�g���_�u���N���b�N���邩�AWindows 10�̏ꍇ�͍����́u�����ɓ��͂��Č����v��OpenRTP�Ɠ��͂��Č������ʂ�OpenRTP����N�����Ă��������B
+** OpenRTPの起動
+RTCの操作、RTシステムの構築を行うためのツールRT System Editorを起動します。
+RT System EditorはOpenRTPというツールの中に含まれているため、まずはOpenRTPを起動する必要があります。
+デスクトップのショートカットをダブルクリックするか、Windows 10の場合は左下の「ここに入力して検索」にOpenRTPと入力して検索結果のOpenRTPから起動してください。
 
 #ref(rtm1.png,/ja/node/6614,60%,center)
-CENTER:''�f�X�N�g�b�v�̃V���[�g�J�b�g''
+CENTER:''デスクトップのショートカット''
 
 
 #ref(rtm2.png,/ja/node/6614,60%,center)
-CENTER:''�����ɓ��͂��Č���''
+CENTER:''ここに入力して検索''
 
-*** RT System Editor (RTSE) �̋N��
+*** RT System Editor (RTSE) の起動
 
-OpenRTP�́u�p�[�X�y�N�e�B�u���J���v�{�^�����N���b�N���Ă��������B
+OpenRTPの「パースペクティブを開く」ボタンをクリックしてください。
 
 #ref(rtm3.png,/ja/node/6614,60%,center)
-CENTER:''�p�[�X�y�N�e�B�u���J�����N���b�N''
+CENTER:''パースペクティブを開くをクリック''
 
-�p�[�X�y�N�e�B�u���J���E�B���h�E����''RT System Editor''��I�����ĊJ���{�^�����N���b�N���Ă��������B
+パースペクティブを開くウィンドウから''RT System Editor''を選択して開くボタンをクリックしてください。
 
 #ref(rtm4.png,/ja/node/6614,60%,center)
-CENTER:''RT System Editor�̋N��''
+CENTER:''RT System Editorの起動''
 
-** �l�[���T�[�o�[�̋N��
-�܂��A�R���|�[�l���g�̎Q�Ƃ�o�^���邽�߂̃l�[���T�[�o�[���N�����܂��B
+** ネームサーバーの起動
+まず、コンポーネントの参照を登録するためのネームサーバーを起動します。
 
 #ref(rtm5.png,/ja/node/6614,60%,center)
-CENTER:''�l�[���T�[�o�[�̋N��''
+CENTER:''ネームサーバーの起動''
 
-�l�[���T�[�o�[�̋N���ɐ�������ƃl�[���T�[�r�X�r���[��''localhost''�ƕ\������܂��B
+ネームサーバーの起動に成功するとネームサービスビューに''localhost''と表示されます。
 
 #ref(rtm6.png,/ja/node/6614,60%,center)
-CENTER:''�l�[���T�[�o�[�̋N�����m�F''
+CENTER:''ネームサーバーの起動を確認''
 
-*** �l�[���T�[�o�[���N�����Ȃ��ꍇ
+*** ネームサーバーが起動しない場合
 
-**** omniORB ���C���X�g�[������Ă��Ȃ��B
+**** omniORB がインストールされていない。
 
-openrtm.org ���񋟂��� msi �C���X�g�[���[�ɂ� omniORB ���܂܂�Ă��܂����A�蓮�ŃC���X�g�[�������ꍇ�ɂ́AomniORB �������Ă��Ȃ��ꍇ���l�����܂��̂ŁAomniORB ���C���X�g�[������Ă��邩�m�F���Ă��������B
+openrtm.org が提供する msi インストーラーには omniORB が含まれていますが、手動でインストールした場合には、omniORB が入っていない場合も考えられますので、omniORB がインストールされているか確認してください。
 
 
-**** ���ϐ� OMNI_ROOT ���ݒ肳��Ă��Ȃ�
+**** 環境変数 OMNI_ROOT が設定されていない
 
-�uStart Naming Service�v�� %RTM_ROOT%\bin\rtm-naming.bat �ɂ���o�b�`�t�@�C������l�[���T�[�o�[ (omniNames.exe) ���N�����܂��B
-���̍ہAomniNames.exe ���Q�Ƃ��邽�߂Ɋ��ϐ� OMNI_NAMES �𗘗p���Ă��܂��B
-�ʏ�C���X�g�[���[�� OpenRTM-aist ���C���X�g�[�������ꍇ�ɂ́AOMNI_ROOT ���ϐ��������Őݒ肳��܂����A���炩�̗��R�Ŋ��ϐ��������ɂȂ��Ă�����A�蓮�ŃC���X�g�[�������ꍇ�Ȃǂ́A���ϐ����ݒ肳��Ă��Ȃ����Ƃ�����܂��B
+「Start Naming Service」は %RTM_ROOT%\bin\rtm-naming.bat にあるバッチファイルからネームサーバー (omniNames.exe) を起動します。
+この際、omniNames.exe を参照するために環境変数 OMNI_NAMES を利用しています。
+通常インストーラーで OpenRTM-aist をインストールした場合には、OMNI_ROOT 環境変数が自動で設定されますが、何らかの理由で環境変数が無効になっていたり、手動でインストールした場合などは、環境変数が設定されていないことがあります。
 
-���ϐ� OMNI_ROOT ���ݒ肳��Ă��邱�Ƃ��m�F���Ă��������B
-���ϐ��́A
--[�R���g���[���p�l��] > [�V�X�e��] > [�ڍאݒ�]�^�u > [���ϐ�]
--[�}�C�R���s���[�^�[] ���E�N���b�N�A[�v���p�e�B] ��I���A[�ڍאݒ�] �^�u > [���ϐ�] �Ȃǂ���Q�ƁE�ҏW���邱�Ƃ��ł��܂��B
+環境変数 OMNI_ROOT が設定されていることを確認してください。
+環境変数は、
+-[コントロールパネル] > [システム] > [詳細設定]タブ > [環境変数]
+-[マイコンピューター] を右クリック、[プロパティ] を選択、[詳細設定] タブ > [環境変数] などから参照・編集することができます。
 
-*** ���̑�
+*** その他
 
-���[�U�[����2�o�C�g�����̏ꍇ�A���O���o�͂���t�H���_�[��K�؂ɐݒ�ł����� omniNames.exe �̋N���Ɏ��s����ꍇ������܂��B
-���̏ꍇ�A���ϐ� TEMP ��2�o�C�g�������܂܂Ȃ��ꏊ�ɐݒ肷�邱�Ƃŉ��P����ꍇ������܂��B
-�K���ȃe���|�����f�B���N�g���[ (�ȉ��̃P�[�X�ł� C:\temp) ���쐬���A���������ϐ� TEMP ���w���悤�ɐݒ肵�ăl�[���T�[�o�[���N�����܂��B
+ユーザー名が2バイト文字の場合、ログを出力するフォルダーを適切に設定できずに omniNames.exe の起動に失敗する場合があります。
+その場合、環境変数 TEMP を2バイト文字を含まない場所に設定することで改善する場合があります。
+適当なテンポラリディレクトリー (以下のケースでは C:\temp) を作成し、そこを環境変数 TEMP が指すように設定してネームサーバーを起動します。
 
  set TEMP=C:\temp
  cmd /c rtm-naming.bat
 
 
 
-�܂��A�H�ȃP�[�X�ł����A�z�X�g����A�h���X�̐ݒ�̖��ŁA�N�������܂������Ȃ��P�[�X������܂��B
-���̏ꍇ�A���p���Ă��� PC �� IP�A�h���X �� omniNames.exe �ɋ����Ă�����Ƃ��܂������P�[�X����܂��B
-���ϐ� OMNIORB_USEHOSTNAME ���ȉ��̂悤�ɐݒ肵�܂� (�ȉ��͎��z�X�g�� IP�A�h���X�� 192.168.0.11 �̏ꍇ�̗�)�B
+また、稀なケースですが、ホスト名やアドレスの設定の問題で、起動がうまくいかないケースがあります。
+その場合、利用している PC の IPアドレス を omniNames.exe に教えてあげるとうまくいくケースがります。
+環境変数 OMNIORB_USEHOSTNAME を以下のように設定します (以下は自ホストの IPアドレスが 192.168.0.11 の場合の例)。
 
  set cosnames="omninames"
  set orb="omniORB"

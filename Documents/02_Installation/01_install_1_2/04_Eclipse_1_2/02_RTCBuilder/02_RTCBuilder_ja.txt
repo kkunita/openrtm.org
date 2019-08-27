@@ -1,63 +1,63 @@
-// Title: RTCBuilder‚ÌƒCƒ“ƒXƒg[ƒ‹
+ï»¿// Title: RTCBuilderã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 #contents
-**RTCBuilder ‚Æ‚Í 
-RTCBuilder ‚Í RTƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒeƒ“ƒvƒŒ[ƒg‚ð¶¬‚·‚éŠJ”­ƒc[ƒ‹‚Å‚·Bƒpƒ‰ƒ[ƒ^[‚ðŠî‚É RTƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒeƒ“ƒvƒŒ[ƒg‚ð¶¬‚·‚é‹@”\‚ðŽ‚Á‚Ä‚¢‚Ü‚·B
-‚Ü‚½ARTCBuilder ‚Í Eclipse ‚É‚Ä“®ì‚µA’¼Š´“I‚È‘€ì‚Æ‘¼‚Ì Eclipse ƒvƒ‰ƒOƒCƒ“‚Æ‚ÌƒV[ƒ€ƒŒƒX‚È˜AŒg‚ª‰Â”\‚Å‚·B~
+**RTCBuilder ã¨ã¯ 
+RTCBuilder ã¯ RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’ç”Ÿæˆã™ã‚‹é–‹ç™ºãƒ„ãƒ¼ãƒ«ã§ã™ã€‚ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã‚’åŸºã« RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’ç”Ÿæˆã™ã‚‹æ©Ÿèƒ½ã‚’æŒã£ã¦ã„ã¾ã™ã€‚
+ã¾ãŸã€RTCBuilder ã¯ Eclipse ã«ã¦å‹•ä½œã—ã€ç›´æ„Ÿçš„ãªæ“ä½œã¨ä»–ã® Eclipse ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã¨ã®ã‚·ãƒ¼ãƒ ãƒ¬ã‚¹ãªé€£æºãŒå¯èƒ½ã§ã™ã€‚~
 
 
-***‹@”\ŠT—v
-’ñ‹Ÿ‚³‚ê‚é‹@”\‚Ìˆê——‚ÍˆÈ‰º‚Ì‚Æ‚¨‚è‚Å‚·B
-| ‡‚ | ‰æ–Ê—v‘f–¼ | à–¾ |
-|‚P|RTC ƒvƒƒtƒ@ƒCƒ‹ƒGƒfƒBƒ^|RTƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌŽd—l‚Å‚ ‚éƒvƒƒtƒ@ƒCƒ‹Aƒf[ƒ^ƒ|[ƒg’è‹`AƒT[ƒrƒXƒ|[ƒg’è‹`AƒRƒ“ƒtƒBƒMƒ…ƒŒ[ƒVƒ‡ƒ“’è‹`A‚»‚Ì‘¼Šg’£ƒvƒƒtƒ@ƒCƒ‹‚ð•ÒW‚µ‚Ü‚·B|
-|‚Q|ƒrƒ‹ƒhƒrƒ…[|•ÒW’†‚Ì RTƒRƒ“ƒ|[ƒlƒ“ƒg‚¨‚æ‚Ñƒf[ƒ^ƒ|[ƒgAƒT[ƒrƒXƒ|[ƒgAƒT[ƒrƒXƒCƒ“ƒ^[ƒtƒF[ƒX‚ðƒAƒCƒRƒ“‚ÅƒOƒ‰ƒtƒBƒJƒ‹‚É•\Ž¦‚µ‚Ü‚·B|
-|‚R|ƒŠƒ|ƒWƒgƒŠƒrƒ…[|‘I‘ð‚µ‚½ RTƒŠƒ|ƒWƒgƒŠ‚Ìî•ñ‚ð•\Ž¦‚µ‚Ü‚·B|
+***æ©Ÿèƒ½æ¦‚è¦
+æä¾›ã•ã‚Œã‚‹æ©Ÿèƒ½ã®ä¸€è¦§ã¯ä»¥ä¸‹ã®ã¨ãŠã‚Šã§ã™ã€‚
+| â„– | ç”»é¢è¦ç´ å | èª¬æ˜Ž |
+|ï¼‘|RTC ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã‚¨ãƒ‡ã‚£ã‚¿|RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ä»•æ§˜ã§ã‚ã‚‹ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã€ãƒ‡ãƒ¼ã‚¿ãƒãƒ¼ãƒˆå®šç¾©ã€ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒˆå®šç¾©ã€ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³å®šç¾©ã€ãã®ä»–æ‹¡å¼µãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç·¨é›†ã—ã¾ã™ã€‚|
+|ï¼’|ãƒ“ãƒ«ãƒ‰ãƒ“ãƒ¥ãƒ¼|ç·¨é›†ä¸­ã® RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŠã‚ˆã³ãƒ‡ãƒ¼ã‚¿ãƒãƒ¼ãƒˆã€ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒˆã€ã‚µãƒ¼ãƒ“ã‚¹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ã‚¢ã‚¤ã‚³ãƒ³ã§ã‚°ãƒ©ãƒ•ã‚£ã‚«ãƒ«ã«è¡¨ç¤ºã—ã¾ã™ã€‚|
+|ï¼“|ãƒªãƒã‚¸ãƒˆãƒªãƒ“ãƒ¥ãƒ¼|é¸æŠžã—ãŸ RTãƒªãƒã‚¸ãƒˆãƒªã®æƒ…å ±ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚|
 
-***“®ìŠÂ‹«
-RTCBuilder‚Ì“®ì‚É•K—v‚ÈŠÂ‹«‚ÍˆÈ‰º‚Ì‚Æ‚¨‚è‚Å‚·B
-
-
-|‡‚|ŠÂ‹«|”õl|
-|‚P|[[Java Runtime Environment 8:https://docs.aws.amazon.com/ja_jp/corretto/latest/corretto-8-ug/downloads-list.html]]|;|
-|‚Q|Eclipse 3.4.2ˆÈã &br; http://www.eclipse.org/downloads/index.php &br; http://archive.eclipse.org/eclipse/downloads/index.php|Eclipse–{‘Ì|
-|‚R|[[Eclipse EMF 2.2ˆÈã(SDO,XSDŠÜ‚Þ):http://www.eclipse.org/modeling/emf/downloads/]]|RTCBuilder‚ªˆË‘¶‚·‚éEclipseƒvƒ‰ƒOƒCƒ“ &br; ''¦''‚²Žg—p‚É‚È‚ç‚ê‚é Eclipse ‚Ìƒo[ƒWƒ‡ƒ“‚É‡‚Á‚½‚à‚Ì‚ð‚²Žg—p‚­‚¾‚³‚¢B|
-|‚S|[[Eclipse GEF 3.2ˆÈã(Draw2DŠÜ‚Þ):http://www.eclipse.org/gef/downloads/]]|RTCBuilder‚ªˆË‘¶‚·‚é Eclipse ƒvƒ‰ƒOƒCƒ“ &br; ''¦''‚²Žg—p‚É‚È‚ç‚ê‚é Eclipse ‚Ìƒo[ƒWƒ‡ƒ“‚É‡‚Á‚½‚à‚Ì‚ð‚²Žg—p‚­‚¾‚³‚¢B|
-|‚T|[[Eclipse Java development tools(JDT)>http://www.eclipse.org/projects/project_summary.php?projectid=eclipse.jdt]]|''¦''‚²Žg—p‚É‚È‚ç‚ê‚é Eclipse ‚Ìƒo[ƒWƒ‡ƒ“‚É‡‚Á‚½‚à‚Ì‚ð‚²Žg—p‚­‚¾‚³‚¢B|
+***å‹•ä½œç’°å¢ƒ
+RTCBuilderã®å‹•ä½œã«å¿…è¦ãªç’°å¢ƒã¯ä»¥ä¸‹ã®ã¨ãŠã‚Šã§ã™ã€‚
 
 
+|â„–|ç’°å¢ƒ|å‚™è€ƒ|
+|ï¼‘|[[Java Runtime Environment 8:https://docs.aws.amazon.com/ja_jp/corretto/latest/corretto-8-ug/downloads-list.html]]|;|
+|ï¼’|Eclipse 3.4.2ä»¥ä¸Š &br; http://www.eclipse.org/downloads/index.php &br; http://archive.eclipse.org/eclipse/downloads/index.php|Eclipseæœ¬ä½“|
+|ï¼“|[[Eclipse EMF 2.2ä»¥ä¸Š(SDO,XSDå«ã‚€):http://www.eclipse.org/modeling/emf/downloads/]]|RTCBuilderãŒä¾å­˜ã™ã‚‹Eclipseãƒ—ãƒ©ã‚°ã‚¤ãƒ³ &br; ''â€»''ã”ä½¿ç”¨ã«ãªã‚‰ã‚Œã‚‹ Eclipse ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã«åˆã£ãŸã‚‚ã®ã‚’ã”ä½¿ç”¨ãã ã•ã„ã€‚|
+|ï¼”|[[Eclipse GEF 3.2ä»¥ä¸Š(Draw2Då«ã‚€):http://www.eclipse.org/gef/downloads/]]|RTCBuilderãŒä¾å­˜ã™ã‚‹ Eclipse ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ &br; ''â€»''ã”ä½¿ç”¨ã«ãªã‚‰ã‚Œã‚‹ Eclipse ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã«åˆã£ãŸã‚‚ã®ã‚’ã”ä½¿ç”¨ãã ã•ã„ã€‚|
+|ï¼•|[[Eclipse Java development tools(JDT)>http://www.eclipse.org/projects/project_summary.php?projectid=eclipse.jdt]]|''â€»''ã”ä½¿ç”¨ã«ãªã‚‰ã‚Œã‚‹ Eclipse ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã«åˆã£ãŸã‚‚ã®ã‚’ã”ä½¿ç”¨ãã ã•ã„ã€‚|
 
-‚Ü‚½ˆÈ‰º‚ÌŠJ”­‚ðs‚¤Œ¾Œê‚É‚æ‚Á‚Ä‚ÍˆÈ‰º‚ÌŠÂ‹«‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚¨‚­‚Æ•Ö—˜‚Å‚·B
-|‡‚|ŠÂ‹«|”õl|
-|‚P|[[Eclipse CDT:http://www.eclipse.org/cdt/downloads.php]]|C++—p‚ÌŠJ”­ŠÂ‹«|
-|‚Q|[[Pydev for Eclipse:http://pydev.org/]]|python—p‚ÌŠJ”­ŠÂ‹«|
 
-**RTCBuilder ‚ÌƒCƒ“ƒXƒg[ƒ‹
 
-RTCBuilder ‚Í Eclipse ƒvƒ‰ƒOƒCƒ“‚Å‚ ‚é‚½‚ßA Eclipse –{‘Ì‚ðƒCƒ“ƒXƒg[ƒ‹‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B
-‚³‚ç‚ÉAEclipse ‚Í Java ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚È‚Ì‚ÅAEclipse –{‘Ì‚ðƒCƒ“ƒXƒg[ƒ‹‚·‚é‘O‚É Java ŽÀsŠÂ‹«i‚ ‚é‚¢‚ÍJDKFJavaŠJ”­ŠÂ‹«‚Å‚à‚æ‚¢j‚ðƒCƒ“ƒXƒg[ƒ‹‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B
--Java ŽÀsŠÂ‹«‚ÌƒCƒ“ƒXƒg[ƒ‹‚É‚Â‚¢‚Ä‚ÍA[[Eclipse‚É‚Â‚¢‚Ä ‚Ì JDK(Java Development Kit)‚ÌƒCƒ“ƒXƒg[ƒ‹:/node/6656#jdk_install]] ‚ðŽQÆ‚µ‚Ä‚­‚¾‚³‚¢B
--Eclipse‚ÌƒCƒ“ƒXƒg[ƒ‹‚É‚Â‚¢‚Ä‚ÍA[[Eclipse‚É‚Â‚¢‚Ä ‚Ì Eclipse‚ÌƒCƒ“ƒXƒg[ƒ‹:/node/6656#eclipse_install]] ‚ðŽQÆ‚µ‚Ä‚­‚¾‚³‚¢B
+ã¾ãŸä»¥ä¸‹ã®é–‹ç™ºã‚’è¡Œã†è¨€èªžã«ã‚ˆã£ã¦ã¯ä»¥ä¸‹ã®ç’°å¢ƒã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦ãŠãã¨ä¾¿åˆ©ã§ã™ã€‚
+|â„–|ç’°å¢ƒ|å‚™è€ƒ|
+|ï¼‘|[[Eclipse CDT:http://www.eclipse.org/cdt/downloads.php]]|C++ç”¨ã®é–‹ç™ºç’°å¢ƒ|
+|ï¼’|[[Pydev for Eclipse:http://pydev.org/]]|pythonç”¨ã®é–‹ç™ºç’°å¢ƒ|
 
-*** RTC Builder‚Ìƒrƒ‹ƒh
-Eclipse‚ð’¼Ú“±“ü‚µ‚½ê‡‚ÍRTC Builder‚Ìƒrƒ‹ƒh‚ª•K—v‚Å‚·B
-ˆÈ‰º‚Ìƒy[ƒW‚ÌŽè‡‚Åƒvƒ‰ƒOƒCƒ“‚Ì¶¬A“±“ü‚ðs‚Á‚Ä‚­‚¾‚³‚¢B
+**RTCBuilder ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 
-- [[RTC BuilderART System Editor‚Ìƒrƒ‹ƒh:https://openrtm.org/openrtm/ja/build_12_openrtp]]
+RTCBuilder ã¯ Eclipse ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã§ã‚ã‚‹ãŸã‚ã€ Eclipse æœ¬ä½“ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
+ã•ã‚‰ã«ã€Eclipse ã¯ Java ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ãªã®ã§ã€Eclipse æœ¬ä½“ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹å‰ã« Java å®Ÿè¡Œç’°å¢ƒï¼ˆã‚ã‚‹ã„ã¯JDKï¼šJavaé–‹ç™ºç’°å¢ƒã§ã‚‚ã‚ˆã„ï¼‰ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
+-Java å®Ÿè¡Œç’°å¢ƒã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã«ã¤ã„ã¦ã¯ã€[[Eclipseã«ã¤ã„ã¦ ã® JDK(Java Development Kit)ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«:/node/6656#jdk_install]] ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
+-Eclipseã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã«ã¤ã„ã¦ã¯ã€[[Eclipseã«ã¤ã„ã¦ ã® Eclipseã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«:/node/6656#eclipse_install]] ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
 
-*** RTC Builder‚Ì‹N“®
+*** RTC Builderã®ãƒ“ãƒ«ãƒ‰
+Eclipseã‚’ç›´æŽ¥å°Žå…¥ã—ãŸå ´åˆã¯RTC Builderã®ãƒ“ãƒ«ãƒ‰ãŒå¿…è¦ã§ã™ã€‚
+ä»¥ä¸‹ã®ãƒšãƒ¼ã‚¸ã®æ‰‹é †ã§ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®ç”Ÿæˆã€å°Žå…¥ã‚’è¡Œã£ã¦ãã ã•ã„ã€‚
 
-Eclipse ‚ð‹N“®‚µAƒƒjƒ…[‚©‚ç [ƒEƒCƒ“ƒhƒE] > [ƒp[ƒXƒyƒNƒeƒBƒu‚ðŠJ‚­] > [‚»‚Ì‘¼] ‚ð‘I‘ð‚·‚é‚ÆA ŽŸ‚Ì‚æ‚¤‚Èƒp[ƒXƒyƒNƒeƒBƒu‘I‘ð‰æ–Ê‚ª•\Ž¦‚³‚ê‚Ü‚·B
+- [[RTC Builderã€RT System Editorã®ãƒ“ãƒ«ãƒ‰:https://openrtm.org/openrtm/ja/build_12_openrtp]]
+
+*** RTC Builderã®èµ·å‹•
+
+Eclipse ã‚’èµ·å‹•ã—ã€ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‹ã‚‰ [ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦] > [ãƒ‘ãƒ¼ã‚¹ãƒšã‚¯ãƒ†ã‚£ãƒ–ã‚’é–‹ã] > [ãã®ä»–] ã‚’é¸æŠžã™ã‚‹ã¨ã€ æ¬¡ã®ã‚ˆã†ãªãƒ‘ãƒ¼ã‚¹ãƒšã‚¯ãƒ†ã‚£ãƒ–é¸æŠžç”»é¢ãŒè¡¨ç¤ºã•ã‚Œã¾ã™ã€‚
 #br
 
 #ref(fig2-3PerspectiveSelection_ja.png,/ja/node/678,50%,center)
-//CENTER:''ƒc[ƒ‹ƒo[‚©‚ç‚Ì‹N“®''
+//CENTER:''ãƒ„ãƒ¼ãƒ«ãƒãƒ¼ã‹ã‚‰ã®èµ·å‹•''
 #br
-ƒp[ƒXƒyƒNƒeƒBƒuˆê——‚É‚ ‚é RTC Builder ‚ð‘I‘ð‚·‚é‚ÆAŽŸ‚Ì‚æ‚¤‚È‰æ–Ê‚ª•\Ž¦‚³‚ê‚Ä RTCBuilder ‚ª‹N“®‚³‚ê‚Ü‚·B
+ãƒ‘ãƒ¼ã‚¹ãƒšã‚¯ãƒ†ã‚£ãƒ–ä¸€è¦§ã«ã‚ã‚‹ RTC Builder ã‚’é¸æŠžã™ã‚‹ã¨ã€æ¬¡ã®ã‚ˆã†ãªç”»é¢ãŒè¡¨ç¤ºã•ã‚Œã¦ RTCBuilder ãŒèµ·å‹•ã•ã‚Œã¾ã™ã€‚
 #br
 
 
 #ref(fig2-4RTCBuilderInit_ja.png,60%,/ja/node/678,center)
 #br
-~ƒc[ƒ‹ƒo[‚Ì [Open New RTC Builder Editor] ƒ{ƒ^ƒ“‚ðƒNƒŠƒbƒN‚·‚é‚©Aƒƒjƒ…[ƒo[‚Ì [ƒtƒ@ƒCƒ‹] > [Open New Builder Editor] ‚ð‘I‘ð‚·‚é‚±‚Æ‚ÅABuilder ƒGƒfƒBƒ^‚ª‹N“®‚µ‚Ü‚·B
+~ãƒ„ãƒ¼ãƒ«ãƒãƒ¼ã® [Open New RTC Builder Editor] ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹ã‹ã€ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒãƒ¼ã® [ãƒ•ã‚¡ã‚¤ãƒ«] > [Open New Builder Editor] ã‚’é¸æŠžã™ã‚‹ã“ã¨ã§ã€Builder ã‚¨ãƒ‡ã‚£ã‚¿ãŒèµ·å‹•ã—ã¾ã™ã€‚
 #br
 
 #ref(fig2-9ToolsBarOpenNewRtcBuilder_ja.png,/ja/node/678,nolink,center)
@@ -69,6 +69,6 @@ Eclipse ‚ð‹N“®‚µAƒƒjƒ…[‚©‚ç [ƒEƒCƒ“ƒhƒE] > [ƒp[ƒXƒyƒNƒeƒBƒu‚ðŠJ‚­] > [‚»‚Ì‘¼
 //#ref(fig2-4RTCBuilderInit.png,/ja/node/678,80%,center)
 #br
 
-ŽQlF[[''FAQ:'' Eclipse‚Ì‹N“®•û–@ >/ja/node/248#eclipse]]
+å‚è€ƒï¼š[[''FAQ:'' Eclipseã®èµ·å‹•æ–¹æ³• >/ja/node/248#eclipse]]
 #br
 #br

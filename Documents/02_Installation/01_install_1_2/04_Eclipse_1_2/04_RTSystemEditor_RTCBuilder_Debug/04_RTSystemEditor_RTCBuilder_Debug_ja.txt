@@ -1,16 +1,16 @@
-#@// Title: RTSystemEditorARTCBuilder ‚ÌƒfƒoƒbƒO
+ï»¿#@// Title: RTSystemEditorã€RTCBuilder ã®ãƒ‡ãƒãƒƒã‚°
 #contents
 
-‚±‚Ìƒy[ƒW‚Å‚ÍRTSystemEditorARTCBuilder‚ÌƒfƒoƒbƒO‚ÌŽè‡‚ðà–¾‚µ‚Ü‚·B
+ã“ã®ãƒšãƒ¼ã‚¸ã§ã¯RTSystemEditorã€RTCBuilderã®ãƒ‡ãƒãƒƒã‚°ã®æ‰‹é †ã‚’èª¬æ˜Žã—ã¾ã™ã€‚
 
-** •K—v‚Èƒ\ƒtƒgƒEƒFƒA‚Ì“üŽè
+** å¿…è¦ãªã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®å…¥æ‰‹
 
 *** eclipse
 
-RTSystemEditorARTCBuilder‚Íeclipse‚Ìƒvƒ‰ƒOƒCƒ“‚Æ‚µ‚Ä“®ì‚µ‚Ü‚·B
-ˆÈ‰º‚ÌƒTƒCƒg‚©‚ç‚©‚çAeclipse‚ðƒ_ƒEƒ“ƒ[ƒh‚µ‚Ä‚­‚¾‚³‚¢B
-‚»‚ÌÛ‚ÉƒpƒbƒP[ƒW‚ÍUltimate‚ÌFull Edision‚ð‘I‘ð‚µ‚Ä‚­‚¾‚³‚¢B
-Standard Edition‚¾‚Æƒvƒ‰ƒOƒCƒ“ŠJ”­ŠÂ‹«‚ðŽè“®‚ÅƒCƒ“ƒXƒg[ƒ‹‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B
+RTSystemEditorã€RTCBuilderã¯eclipseã®ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã¨ã—ã¦å‹•ä½œã—ã¾ã™ã€‚
+ä»¥ä¸‹ã®ã‚µã‚¤ãƒˆã‹ã‚‰ã‹ã‚‰ã€eclipseã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¦ãã ã•ã„ã€‚
+ãã®éš›ã«ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã¯Ultimateã®Full Edisionã‚’é¸æŠžã—ã¦ãã ã•ã„ã€‚
+Standard Editionã ã¨ãƒ—ãƒ©ã‚°ã‚¤ãƒ³é–‹ç™ºç’°å¢ƒã‚’æ‰‹å‹•ã§ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
 
 
 - http://mergedoc.osdn.jp/
@@ -18,28 +18,28 @@ Standard Edition‚¾‚Æƒvƒ‰ƒOƒCƒ“ŠJ”­ŠÂ‹«‚ðŽè“®‚ÅƒCƒ“ƒXƒg[ƒ‹‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B
 
 *** JDK
 
-JRE 1.8ˆÈã‚ª•K—v‚È‚½‚ßAˆÈ‰º‚©‚çAmazon Corretto‚©Oracle Java‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B
+JRE 1.8ä»¥ä¸ŠãŒå¿…è¦ãªãŸã‚ã€ä»¥ä¸‹ã‹ã‚‰Amazon Correttoã‹Oracle Javaã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦ãã ã•ã„ã€‚
 
 - [[Amazon Corretto:https://aws.amazon.com/jp/corretto/]]
 - [[Oracle Java:https://www.oracle.com/technetwork/java/javase/downloads/index.html]]
 
 
-*** RTSystemEditorARTCBuilder‚Ìƒ\[ƒXƒR[ƒh
+*** RTSystemEditorã€RTCBuilderã®ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰
 
-ˆÈ‰º‚ÌƒŠƒ|ƒWƒgƒŠ‚©‚çOpenRTP‚Ìƒ\[ƒXƒR[ƒh‚ð“üŽè‚µ‚Ä‚­‚¾‚³‚¢B
+ä»¥ä¸‹ã®ãƒªãƒã‚¸ãƒˆãƒªã‹ã‚‰OpenRTPã®ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’å…¥æ‰‹ã—ã¦ãã ã•ã„ã€‚
 
 
 - [[OpenRTP-aist:https://github.com/OpenRTM/OpenRTP-aist/tree/RELENG_1_2]]
 
 
-** ƒrƒ‹ƒh
+** ãƒ“ãƒ«ãƒ‰
 
-eclipse.exe‚ðŽÀs‚µ‚Ä‚­‚¾‚³‚¢B
+eclipse.exeã‚’å®Ÿè¡Œã—ã¦ãã ã•ã„ã€‚
 
-*** JRE‚ÌÝ’è
-Žg—p‚·‚éJRE‚ðÝ’è‚µ‚Ü‚·B
+*** JREã®è¨­å®š
+ä½¿ç”¨ã™ã‚‹JREã‚’è¨­å®šã—ã¾ã™ã€‚
 
-uƒEƒCƒ“ƒhƒEv¨uÝ’èv¨uJavav¨uƒCƒ“ƒXƒg[ƒ‹Ï‚Ý‚ÌJREv‚ÅAu’Ç‰Áv¨u•W€ VMv‚ð‘I‘ðŒã‚ÉJRE‚ÌƒpƒX(—áFC:\Program Files (x86)\Java\jdk1.8.0_131\jre)‚ð’Ç‰ÁŒã‚Éƒ`ƒFƒbƒN‚ð“ü‚ê‚é
+ã€Œã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã€â†’ã€Œè¨­å®šã€â†’ã€ŒJavaã€â†’ã€Œã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ¸ˆã¿ã®JREã€ã§ã€ã€Œè¿½åŠ ã€â†’ã€Œæ¨™æº– VMã€ã‚’é¸æŠžå¾Œã«JREã®ãƒ‘ã‚¹(ä¾‹ï¼šC:\Program Files (x86)\Java\jdk1.8.0_131\jre)ã‚’è¿½åŠ å¾Œã«ãƒã‚§ãƒƒã‚¯ã‚’å…¥ã‚Œã‚‹
 
 #br
 
@@ -65,8 +65,8 @@ eclipse.exe‚ðŽÀs‚µ‚Ä‚­‚¾‚³‚¢B
 
 
 
-*** ƒRƒ“ƒpƒCƒ‰[€‹’ƒŒƒxƒ‹‚ÌÝ’è
-‰Šú‚Ìó‘Ô‚ÅƒRƒ“ƒpƒCƒ‰[€‹’ƒŒƒxƒ‹‚ª1.6‚ÉÝ’è‚³‚ê‚Ä‚¢‚éê‡‚ª‚ ‚é‚æ‚¤‚È‚Ì‚ÅAuƒEƒCƒ“ƒhƒEv¨uÝ’èv¨uJavav¨uƒRƒ“ƒpƒCƒ‰[v‚ÅƒRƒ“ƒpƒCƒ‰[€‹’ƒŒƒxƒ‹‚ð1.8‚ÉÝ’è‚µ‚Ä‚­‚¾‚³‚¢B
+*** ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ãƒ¼æº–æ‹ ãƒ¬ãƒ™ãƒ«ã®è¨­å®š
+åˆæœŸã®çŠ¶æ…‹ã§ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ãƒ¼æº–æ‹ ãƒ¬ãƒ™ãƒ«ãŒ1.6ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆãŒã‚ã‚‹ã‚ˆã†ãªã®ã§ã€ã€Œã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã€â†’ã€Œè¨­å®šã€â†’ã€ŒJavaã€â†’ã€Œã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ãƒ¼ã€ã§ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ãƒ¼æº–æ‹ ãƒ¬ãƒ™ãƒ«ã‚’1.8ã«è¨­å®šã—ã¦ãã ã•ã„ã€‚
 
 #br
 
@@ -75,9 +75,9 @@ eclipse.exe‚ðŽÀs‚µ‚Ä‚­‚¾‚³‚¢B
 #br
 
 
-*** RTSystemEditorARTCBuilderƒvƒƒWƒFƒNƒg‚ÌƒCƒ“ƒ|[ƒg
-RT System EditorARTC Builder‚ðŠJ”­ŠÂ‹«‚Ìeclipse‚ÉƒCƒ“ƒ|[ƒg‚µ‚Ü‚·B
-uƒtƒ@ƒCƒ‹v¨uƒCƒ“ƒ|[ƒgv¨uƒvƒ‰ƒOƒCƒ“ŠJ”­v¨uƒvƒ‰ƒOƒCƒ“‚¨‚æ‚Ñƒtƒ‰ƒOƒƒ“ƒgv‚ð‘I‘ðŒãuŽŸ‚Öv‚ð‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B
+*** RTSystemEditorã€RTCBuilderãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
+RT System Editorã€RTC Builderã‚’é–‹ç™ºç’°å¢ƒã®eclipseã«ã‚¤ãƒ³ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚
+ã€Œãƒ•ã‚¡ã‚¤ãƒ«ã€â†’ã€Œã‚¤ãƒ³ãƒãƒ¼ãƒˆã€â†’ã€Œãƒ—ãƒ©ã‚°ã‚¤ãƒ³é–‹ç™ºã€â†’ã€Œãƒ—ãƒ©ã‚°ã‚¤ãƒ³ãŠã‚ˆã³ãƒ•ãƒ©ã‚°ãƒ¡ãƒ³ãƒˆã€ã‚’é¸æŠžå¾Œã€Œæ¬¡ã¸ã€ã‚’æŠ¼ã—ã¦ãã ã•ã„ã€‚
 
 #br
 
@@ -91,7 +91,7 @@ RT System EditorARTC Builder‚ðŠJ”­ŠÂ‹«‚Ìeclipse‚ÉƒCƒ“ƒ|[ƒg‚µ‚Ü‚·B
 
 #br
 
-uƒCƒ“ƒ|[ƒgæv‚ÌuƒfƒBƒŒƒNƒgƒŠ[v‚ðƒIƒ“‚É‚µ‚ÄArtmtools‚ðƒ`ƒFƒbƒNƒAƒEƒg‚µ‚½ƒfƒBƒŒƒNƒgƒŠ‚ðÝ’è‚µ‚ÄŽŸ‚Öi‚ñ‚Å‚­‚¾‚³‚¢B
+ã€Œã‚¤ãƒ³ãƒãƒ¼ãƒˆå…ˆã€ã®ã€Œãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ¼ã€ã‚’ã‚ªãƒ³ã«ã—ã¦ã€rtmtoolsã‚’ãƒã‚§ãƒƒã‚¯ã‚¢ã‚¦ãƒˆã—ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®šã—ã¦æ¬¡ã¸é€²ã‚“ã§ãã ã•ã„ã€‚
 
 #br
 
@@ -99,7 +99,7 @@ RT System EditorARTC Builder‚ðŠJ”­ŠÂ‹«‚Ìeclipse‚ÉƒCƒ“ƒ|[ƒg‚µ‚Ü‚·B
 
 #br
 
-‘S‚Ä’Ç‰Á‚ð‘I‘ð‚µ‚ÄAŠ®—¹ƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B
+å…¨ã¦è¿½åŠ ã‚’é¸æŠžã—ã¦ã€å®Œäº†ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ãã ã•ã„ã€‚
 
 
 
@@ -110,9 +110,9 @@ RT System EditorARTC Builder‚ðŠJ”­ŠÂ‹«‚Ìeclipse‚ÉƒCƒ“ƒ|[ƒg‚µ‚Ü‚·B
 #br
 
 
-*** IDLƒRƒ“ƒpƒCƒ‹
-IDLƒtƒ@ƒCƒ‹‚ÌƒRƒ“ƒpƒCƒ‹‚ðs‚¢‚Ü‚·B
-ƒpƒbƒP[ƒWƒGƒNƒXƒvƒ[ƒ‰[‚Åjp.go.aist.rtm.toolscommonƒvƒƒWƒFƒNƒg‚ÌubuildForCliantv‚ð‰EƒNƒŠƒbƒN‚µ‚ÄuŽÀsv¨uAntƒrƒ‹ƒhv‚ð‘I‘ð‚·‚ê‚ÎŠJŽn‚µ‚Ü‚·B
+*** IDLã‚³ãƒ³ãƒ‘ã‚¤ãƒ«
+IDLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã‚’è¡Œã„ã¾ã™ã€‚
+ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚¨ã‚¯ã‚¹ãƒ—ãƒ­ãƒ¼ãƒ©ãƒ¼ã§jp.go.aist.rtm.toolscommonãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ã€ŒbuildForCliantã€ã‚’å³ã‚¯ãƒªãƒƒã‚¯ã—ã¦ã€Œå®Ÿè¡Œã€â†’ã€ŒAntãƒ“ãƒ«ãƒ‰ã€ã‚’é¸æŠžã™ã‚Œã°é–‹å§‹ã—ã¾ã™ã€‚
 
 
 #br
@@ -121,8 +121,8 @@ IDLƒtƒ@ƒCƒ‹‚ÌƒRƒ“ƒpƒCƒ‹‚ðs‚¢‚Ü‚·B
 
 #br
 
-**** Antƒrƒ‹ƒh‚Å•¶Žš‰»‚¯‚·‚éê‡
-Antƒrƒ‹ƒh‚Å•¶Žš‰»‚¯‚·‚éê‡‚ÍAuŽÀsv¨uŠO•”ƒc[ƒ‹v¨uŠO•”ƒc[ƒ‹‚Ì\¬v¨uAntƒrƒ‹ƒhv‚ðƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µ‚ÄAu‹¤’Êvƒ^ƒu¨uƒGƒ“ƒR[ƒhv‚Å‚»‚Ì‘¼uMS932v‚ÉÝ’è‚µ‚Ä‚­‚¾‚³‚¢B
+**** Antãƒ“ãƒ«ãƒ‰ã§æ–‡å­—åŒ–ã‘ã™ã‚‹å ´åˆ
+Antãƒ“ãƒ«ãƒ‰ã§æ–‡å­—åŒ–ã‘ã™ã‚‹å ´åˆã¯ã€ã€Œå®Ÿè¡Œã€â†’ã€Œå¤–éƒ¨ãƒ„ãƒ¼ãƒ«ã€â†’ã€Œå¤–éƒ¨ãƒ„ãƒ¼ãƒ«ã®æ§‹æˆã€â†’ã€ŒAntãƒ“ãƒ«ãƒ‰ã€ã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã—ã¦ã€ã€Œå…±é€šã€ã‚¿ãƒ–â†’ã€Œã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã€ã§ãã®ä»–ã€ŒMS932ã€ã«è¨­å®šã—ã¦ãã ã•ã„ã€‚
 
 
 #br
@@ -138,10 +138,10 @@ Antƒrƒ‹ƒh‚Å•¶Žš‰»‚¯‚·‚éê‡‚ÍAuŽÀsv¨uŠO•”ƒc[ƒ‹v¨uŠO•”ƒc[ƒ‹‚Ì\¬v¨
 #br
 
 
-*** ƒNƒ‰ƒXƒpƒX‚ÌC³
-ŠÂ‹«‚É‚æ‚Á‚Ä‚ÍƒNƒ‰ƒXƒpƒX‚ª³‚µ‚­Ý’è‚³‚ê‚È‚¢ê‡‚ª‚ ‚è‚Ü‚·B
-‚»‚Ìê‡‚ÍƒfƒoƒbƒOŽž‚ÉClassNotFoundException‚Ì—áŠO‚ª”­¶‚·‚é‚½‚ßArtmtools‚É‘¶Ý‚·‚éplugin.xml‘S‚Ä‚ðC³‚µ‚Ä‚­‚¾‚³‚¢B
-ƒpƒbƒP[ƒWƒGƒNƒXƒvƒ[ƒ‰[‚Åplugin.xml‚ðƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µ‚ÄAuƒ‰ƒ“ƒ^ƒCƒ€vƒ^ƒu‚©‚çuƒNƒ‰ƒXƒpƒXv‚Éu.v‚ð’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢B(uMANIFEST.MFv‚ÌuBundle-ClassPathv‚É’Ç‰Á‚µ‚Ä‚à‰Â)
+*** ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ã®ä¿®æ­£
+ç’°å¢ƒã«ã‚ˆã£ã¦ã¯ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ãŒæ­£ã—ãè¨­å®šã•ã‚Œãªã„å ´åˆãŒã‚ã‚Šã¾ã™ã€‚
+ãã®å ´åˆã¯ãƒ‡ãƒãƒƒã‚°æ™‚ã«ClassNotFoundExceptionã®ä¾‹å¤–ãŒç™ºç”Ÿã™ã‚‹ãŸã‚ã€rtmtoolsã«å­˜åœ¨ã™ã‚‹plugin.xmlå…¨ã¦ã‚’ä¿®æ­£ã—ã¦ãã ã•ã„ã€‚
+ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚¨ã‚¯ã‚¹ãƒ—ãƒ­ãƒ¼ãƒ©ãƒ¼ã§plugin.xmlã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã—ã¦ã€ã€Œãƒ©ãƒ³ã‚¿ã‚¤ãƒ ã€ã‚¿ãƒ–ã‹ã‚‰ã€Œã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ã€ã«ã€Œ.ã€ã‚’è¿½åŠ ã—ã¦ãã ã•ã„ã€‚(ã€ŒMANIFEST.MFã€ã®ã€ŒBundle-ClassPathã€ã«è¿½åŠ ã—ã¦ã‚‚å¯)
 
 
 #br
@@ -150,11 +150,11 @@ Antƒrƒ‹ƒh‚Å•¶Žš‰»‚¯‚·‚éê‡‚ÍAuŽÀsv¨uŠO•”ƒc[ƒ‹v¨uŠO•”ƒc[ƒ‹‚Ì\¬v¨
 
 #br
 
-‚±‚ê‚Å€”õŠ®—¹‚Å‚·B
+ã“ã‚Œã§æº–å‚™å®Œäº†ã§ã™ã€‚
 
 
-** ƒfƒoƒbƒOŽÀs
-ã•”‚Ì’Ž‚Ìƒ}[ƒN‚Ìƒ{ƒ^ƒ“‚©‚çAuƒfƒoƒbƒOv¨uEclipse ƒAƒvƒŠƒP[ƒVƒ‡ƒ“v‚ÅƒfƒoƒbƒO‚ªŠJŽn‚µ‚Ü‚·B
+** ãƒ‡ãƒãƒƒã‚°å®Ÿè¡Œ
+ä¸Šéƒ¨ã®è™«ã®ãƒžãƒ¼ã‚¯ã®ãƒœã‚¿ãƒ³ã‹ã‚‰ã€ã€Œãƒ‡ãƒãƒƒã‚°ã€â†’ã€ŒEclipse ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã€ã§ãƒ‡ãƒãƒƒã‚°ãŒé–‹å§‹ã—ã¾ã™ã€‚
 
 #br
 

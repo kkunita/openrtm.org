@@ -1,30 +1,30 @@
-// Title: Ubuntu/Debian�ւ̃C���X�g�[��
+﻿// Title: Ubuntu/Debianへのインストール
 #ref(ubuntu_logo2.png,around,right)
 
 
-Java�ł� OpenRTM-aist �́AUbuntu �� Debian GNU Linux �ŗ��p�\�� deb �p�b�P�[�W���񋟂���Ă��܂��B
-�Ή����Ă���f�B�X�g���r���[�V�����̃o�[�W�����́A�_�E�����[�h�y�[�W����m�F�ł��܂��B
-Ubuntu/Debian GNU Linux �ւ̑Ή�����т��̃o�[�W�����́A�\���Ȃ��ɕύX�܂��͒�~����邱�Ƃ�����܂��̂ŁA�\�߂��������������B
+Java版の OpenRTM-aist は、Ubuntu や Debian GNU Linux で利用可能な deb パッケージが提供されています。
+対応しているディストリビューションのバージョンは、ダウンロードページから確認できます。
+Ubuntu/Debian GNU Linux への対応およびそのバージョンは、予告なしに変更または停止されることがありますので、予めご了承ください。
 
 #contents
 
-** �ꊇ�C���X�g�[���X�N���v�g
-���M�����肢���܂��B
+** 一括インストールスクリプト
+加筆をお願いします。
 
 
-***�C���X�g�[���̊m�F
-�C���X�g�[�����m�F���܂��B
+***インストールの確認
+インストールを確認します。
 
  $ dpkg -l 'openrtm*'
- ||/ ���O           �o�[�W����   �A�[�L�e�N�` ����
+ ||/ 名前           バージョン   アーキテクチ 説明
  +++-==============-============-============-=================================
  ii  openrtm-aist-j 1.2.0-0      amd64        OpenRTM-aist, RT-Middleware distr
  ii  openrtm-aist-j 1.2.0-0      amd64        OpenRTM-aist-Java examples
 
 
 
-**�p�b�P�[�W�̏ڍ�
-�e�p�b�P�[�W�̓��e�͈ȉ��̒ʂ�ł��B
+**パッケージの詳細
+各パッケージの内容は以下の通りです。
 
-���M�����肢���܂��B
+加筆をお願いします。
 

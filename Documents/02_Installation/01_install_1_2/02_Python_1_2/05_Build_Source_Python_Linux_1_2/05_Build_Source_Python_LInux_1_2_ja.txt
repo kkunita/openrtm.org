@@ -1,64 +1,64 @@
-// Title: �\�[�X����̃r���h (Linux��)
+﻿// Title: ソースからのビルド (Linux編)
 #contents
 
-Linux ��Ń\�[�X�p�b�P�[�W����C���X�g�[���������ꍇ�AOpenRTM-aist-Python �������Ńr���h����K�v������܂��B
+Linux 上でソースパッケージからインストールしたい場合、OpenRTM-aist-Python を自分でビルドする必要があります。
 
-** �\�[�X�R�[�h
-�\�[�X�R�[�h�͈ȉ��̃��|�W�g���������ł��܂��B
+** ソースコード
+ソースコードは以下のリポジトリから入手できます。
 
-***�Ή� OS ����уf�B�X�g���r���[�V���� 
-OpenRTM-aist-Python �͉��L�� OS ����� Linux �f�B�X�g���r���[�V�����œ��삷�邱�Ƃ��m�F����Ă��܂��B
+***対応 OS およびディストリビューション 
+OpenRTM-aist-Python は下記の OS および Linux ディストリビューションで動作することが確認されています。
 
 - Fedora
 - Debian
 - Ubuntu
 
-����ȊO�̊��ł��A��ʓI�� Linux/UNIX ���ł���΁A�r���h�ł���\��������܂��B
+これ以外の環境でも、一般的な Linux/UNIX 環境であれば、ビルドできる可能性があります。
 
-***�ˑ����C�u����
+***依存ライブラリ
 
-OpenRTM-aist-Python-1.2.0 �̃C���X�g�[���ɂ͉��L�̊J��������у��C�u�������K�v�ł��B
+OpenRTM-aist-Python-1.2.0 のインストールには下記の開発環境およびライブラリが必要です。
 
--python: �r���h�c�[���𗘗p���邽�߂ɕK�v
--omniORBpy: OpenRTM-aist �̃r���h (IDL �R���p�C��) �ɕK�v
+-python: ビルドツールを利用するために必要
+-omniORBpy: OpenRTM-aist のビルド (IDL コンパイル) に必要
 
-���ꂼ��̃��C�u�������̃h�L�������g�ɏ]���C���X�g�[�����s���Ă��������B
-�����̃p�b�P�[�W���A�W���̃f�B���N�g���[(/usr�A/usr/lib/ ��)���ɃC���X�g�[������Ă���ƁA�ȍ~�� OpenRTM-aist-Python �̃r���h��Ƃ��r�I�ȒP�ɍs�����Ƃ��ł��܂��B
+それぞれのライブラリ等のドキュメントに従いインストールを行ってください。
+これらのパッケージが、標準のディレクトリー(/usr、/usr/lib/ 等)下にインストールされていると、以降の OpenRTM-aist-Python のビルド作業を比較的簡単に行うことができます。
 
-Ubuntu�ADebian�ł͈ȉ��̃R�}���h�ŃC���X�g�[���ł��܂��B
+Ubuntu、Debianでは以下のコマンドでインストールできます。
 
  sudo apt-get install python-omniorb-omg omniidl-python
 
-***�\�[�X�̃_�E�����[�h
+***ソースのダウンロード
 
-OpenRTM-aist-Python �̃\�[�X���_�E�����[�h���܂��B
+OpenRTM-aist-Python のソースをダウンロードします。
 
 -https://github.com/OpenRTM/OpenRTM-aist-Python/releases/tag/v1.2.0
 
-***�\�[�X�R�[�h�̓W�J 
+***ソースコードの展開 
 
-�܂��\�[�X�R�[�h OpenRTM-aist-Python-1.2.0.tar.gz ��K���ȃf�B���N�g���ɓW�J���܂��B
+まずソースコード OpenRTM-aist-Python-1.2.0.tar.gz を適当なディレクトリに展開します。
 
  $ tar xvzf OpenRTM-aist-Python-X.X.X.tar.gz
  $ cd OpenRTM-aist-Python-X.X.X
 
-*** �r���h 
+*** ビルド 
 
-OpenRTM-aist-Python �̓p�b�P�[�W�̃r���h�� distutils ���W���[�� ���g�p���Ă��܂��B
-�r���h�̎d���́A���� distutils ���g�p�����p�b�P�[�W�Ɠ��l�ɍs���܂��B
+OpenRTM-aist-Python はパッケージのビルドに distutils モジュール を使用しています。
+ビルドの仕方は、他の distutils を使用したパッケージと同様に行います。
 
  $ python setup.py build [options]
 
-[options]�Ŏg�p�\�ȃI�v�V������
+[options]で使用可能なオプションは
 
  $ python setup.py --help
 
-�ŎQ�Ƃ��ĉ������B
+で参照して下さい。
 
-*** �C���X�g�[��
+*** インストール
 
-�r���h ������ɏI��������APython ���W���[���A���[�e�B���e�B�R�}���h�Q���C���X�g�[�����܂��B
+ビルド が正常に終了したら、Python モジュール、ユーティリティコマンド群をインストールします。
 
  $ sudo python setup.py install
 
-�ȏ�ŁA�\�[�X�R�[�h����̃r���h����уC���X�g�[���͏I���ł��B
+以上で、ソースコードからのビルドおよびインストールは終了です。

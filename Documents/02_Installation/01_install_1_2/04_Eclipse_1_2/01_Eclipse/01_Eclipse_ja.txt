@@ -1,62 +1,62 @@
-// Title: Eclipse �ɂ���
+﻿// Title: Eclipse について
 #ref(eclipse_logo.png,around,left)
 #contents
-** Eclipse�̊T�v 
-[[Eclipse:http://www.eclipse.org/]] �� Eclipse Foundation ���J������I�[�v���\�[�X��Java ���ꂨ��т��̑��̌���̂��߂̓����J�������\�z���邽�߂̃t���[�����[�N�ł��B
-Eclipse �̊�{������ plug-in �����s���邽�߂̃v���b�g�t�H�[���ŁA �l�X�ȊJ�����͑�����plug-in �̏W���̂Ƃ��č\�z����܂��B
-�f�t�H���g�ŕt������Java �̊J�������̂�plug-in�Ƃ��Ď�������A plug-in ��ǉ����邱�Ƃŗl�X�Ȍ���̊J�����Ƃ��ėe�ՂɊg�����邱�Ƃ��ł��܂��B
+** Eclipseの概要 
+[[Eclipse:http://www.eclipse.org/]] は Eclipse Foundation が開発するオープンソースのJava 言語およびその他の言語のための統合開発環境を構築するためのフレームワークです。
+Eclipse の基本部分は plug-in を実行するためのプラットフォームで、 様々な開発環境は多くのplug-in の集合体として構築されます。
+デフォルトで付属するJava の開発環境自体もplug-inとして実現され、 plug-in を追加することで様々な言語の開発環境として容易に拡張することができます。
 #clear
-Eclipse �̓����Ƃ��āA
+Eclipse の特徴として、
 
--plug-in �@�\�ɂ��e�ՂɊg���\�ł���Aplug-in ���m�̘A�g���\�ł���B
--Rich Client Platform (RCP) �ƌĂ΂��d�g�݂ɂ��A plug-in ���X�^���h�A���������邱�Ƃ��e�Ղɂł���B
--Java �Ŏ�������Ă��邽�߁A�����̃v���b�g�t�H�[���œ��삷��B
+-plug-in 機構により容易に拡張可能であり、plug-in 同士の連携も可能である。
+-Rich Client Platform (RCP) と呼ばれる仕組みにより、 plug-in をスタンドアロン化することが容易にできる。
+-Java で実装されているため、多くのプラットフォームで動作する。
 
-�����������܂��B
-�������� Eclipse �̓������A���{�b�g�p�����J�������\�z�����ŗL�p�ł���Ɣ��f���AEclipse �� RT�~�h���E�G�A�̃c�[���̂��߂̃v���b�g�t�H�[���Ƃ��đI�����܂����B
+等が挙げられます。
+こうした Eclipse の特徴が、ロボット用統合開発環境を構築する上で有用であると判断し、Eclipse を RTミドルウエアのツールのためのプラットフォームとして選択しました。
 
-RTC Builder �� RT System Editor �𗘗p����ɂ� Eclipse ���C���X�g�[������K�v������܂��B
+RTC Builder と RT System Editor を利用するには Eclipse をインストールする必要があります。
 
 &aname(eclipse_install);
-** Eclipse�̃C���X�g�[��
-Eclipse��OpenRTM-aist�̃C���X�g�[���[�œ������邱�Ƃ��ł��܂��B
-OpenRTM-aist�̃C���X�g�[���[�A��������Pleiades All in One Eclipse�𓱓����Ă��������B
+** Eclipseのインストール
+EclipseはOpenRTM-aistのインストーラーで導入することもできます。
+OpenRTM-aistのインストーラー、もしくはPleiades All in One Eclipseを導入してください。
 
 
-*** OpenRTM-aist�̃C���X�g�[���[�ɂ�铱��
+*** OpenRTM-aistのインストーラーによる導入
 **** Windows
 
-- [[OpenRTM-aist 1.2�n�̃C���X�g�[��(Windows�Amsi�C���X�g�[���[�g�p):/ja/node/6652]]
+- [[OpenRTM-aist 1.2系のインストール(Windows、msiインストーラー使用):/ja/node/6652]]
 
 **** Ubuntu
 
-���M�����肢���܂��B
+加筆をお願いします。
 
 **** Fedora
 
-���M�����肢���܂��B
+加筆をお願いします。
 
-*** Pleiades All in One Eclipse�̓���
+*** Pleiades All in One Eclipseの導入
 
-�ȉ��̃v���O�C�������ς݂�eclipse�p�b�P�[�W���_�E�����[�h���ēK���ȏꏊ�ɓW�J���Ă��������B
+以下のプラグイン導入済みのeclipseパッケージをダウンロードして適当な場所に展開してください。
 
-- [[Pleiades All in One �_�E�����[�h:http://mergedoc.osdn.jp/]]
+- [[Pleiades All in One ダウンロード:http://mergedoc.osdn.jp/]]
 
-''Pleiades All in One Ultimate''�A''Full Edition''�̃p�b�P�[�W����肵�Ă��������B
+''Pleiades All in One Ultimate''、''Full Edition''のパッケージを入手してください。
 
-Pleiades All in One Eclipse�ɂ�Linux�ł͂Ȃ����߁A[[eclipse.org:https://www.eclipse.org/downloads/]]����eclipse�̃C���X�g�[���[����肵�ăC���X�g�[���A���{�ꉻ�A�v���O�C���̓������s���Ă��������B
+Pleiades All in One EclipseにはLinux版はないため、[[eclipse.org:https://www.eclipse.org/downloads/]]からeclipseのインストーラーを入手してインストール、日本語化、プラグインの導入を行ってください。
 
 &aname(jdk_install);
-**JDK(Java Development Kit)�̃C���X�g�[��
-RTC Builder�ART System Editor�̃r���h�ɂ�JDK���K�v�ł��B
-Amazon Corretto��Oracle Java���C���X�g�[�����Ă��������B
+**JDK(Java Development Kit)のインストール
+RTC Builder、RT System EditorのビルドにはJDKが必要です。
+Amazon CorrettoかOracle Javaをインストールしてください。
 
 - [[Amazon Corretto:https://aws.amazon.com/jp/corretto/]]
 - [[Oracle Java:https://www.oracle.com/technetwork/java/javase/downloads/index.html]]
 
 
-**�v���O�C���̃C���X�g�[��
-RTCBuilder �� RTSystemEditor  �͉��L�� Eclipse �v���O�C�����g�p���Ă��܂��BPleiades All in One���g�p����ꍇ�͓����ς݂ł��B
+**プラグインのインストール
+RTCBuilder と RTSystemEditor  は下記の Eclipse プラグインを使用しています。Pleiades All in Oneを使用する場合は導入済みです。
 
 -[[EMF (Eclipse Modeling Framework):http://www.eclipse.org/modeling/emf/]]
 -[[GEF (Graphical Editing Framework):http://www.eclipse.org/gef/]] 
@@ -64,16 +64,16 @@ RTCBuilder �� RTSystemEditor  �͉��L�� Eclipse �v���O�C�����g�p���Ă��܂��BPleia
 -[[SDO (EMF Service Data Objects):http://www.eclipse.org/modeling/emf/?project=sdo]]
 -[[JDT (Eclipse Java development tools):http://www.eclipse.org/projects/project_summary.php?projectid=eclipse.jdt]]
 
-�ȉ��̎菇�ŁA�����̃v���O�C�����C���X�g�[�����Ă��������B
+以下の手順で、これらのプラグインをインストールしてください。
 
-+Eclipse �̃��j���[���� [�w���v] > [�\�t�g�E�G�A�X�V] ��I�����܂��B
-+���̂悤�� �\�t�g�E�F�A�X�V����уA�h�C�� �E�B���h�E ���\������܂��̂ŁA�u�g�p�\�ȃ\�t�g�E�F�A�v�^�u��I�����܂��B
++Eclipse のメニューから [ヘルプ] > [ソフトウエア更新] を選択します。
++このような ソフトウェア更新およびアドイン ウィンドウ が表示されますので、「使用可能なソフトウェア」タブを選択します。
 #ref(eclipse_update_ja.png,60%,center)
-+Genymede Update Site ��W�J���ăv���O�C����I�����܂��B
++Genymede Update Site を展開してプラグインを選択します。
 #ref(eclipse_plugin_GEF_JDT_ja.png,60%,center)
 #ref(eclipse_plugin_EMF_SDO_ja.png,60%,center)
-+[�C���X�g�[��]���N���b�N���܂��B
++[インストール]をクリックします。
 #ref(eclipse_plugin2_ja.png,60%,center)
-+����ŁA�����̃v���O�C���������I�Ƀ_�E�����[�h����āA�C���X�g�[������܂��B
++これで、これらのプラグインが自動的にダウンロードされて、インストールされます。
 
-�C���X�g�[���� Eclipse ����U�I�����܂��B
+インストール後 Eclipse を一旦終了します。

@@ -1,11 +1,11 @@
-// Title: OpenRTM Eclipse tools �̃C���X�g�[�� 1.2�n
+﻿// Title: OpenRTM Eclipse tools のインストール 1.2系
 #ref(eclipse_logo.png,around,left)
 
-RTC �̊J�����x�����邽�߂ɁARTCBuilder �� RTSystemEditor ��񋟂��Ă���܂��B
-RTCBuilder �� RTSystemEditor �́AEclipse �����J�����̃v���O�C���Ƃ��č쐬���ꂽ�J���c�[���ł��B
-���̂��߁ARTCBuilder �� RTSystemEditor ���g�p����ɂ́AEclipse �� Java �̊J�������C���X�g�[������K�v������܂��B
+RTC の開発を支援するために、RTCBuilder と RTSystemEditor を提供しております。
+RTCBuilder と RTSystemEditor は、Eclipse 統合開発環境のプラグインとして作成された開発ツールです。
+そのため、RTCBuilder と RTSystemEditor を使用するには、Eclipse と Java の開発環境をインストールする必要があります。
 
-�����ł́A�����̃C���X�g�[�����@�ɂ��Đ������܂��B 
+ここでは、それらのインストール方法について説明します。 
 #clear
 ----
 

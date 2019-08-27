@@ -1,12 +1,12 @@
-// Title: Windows�ւ̃C���X�g�[��
+﻿// Title: Windowsへのインストール
 #contents
 
-** OpenRTM-aist�̃C���X�g�[��
-msi�C���X�g�[���[�ɂ��OpenRTM-aist�̃C���X�g�[���菇�ɂ��Ă͉��L�̃y�[�W�ɋL�ځB
+** OpenRTM-aistのインストール
+msiインストーラーによるOpenRTM-aistのインストール手順については下記のページに記載。
 
-- [[OpenRTM-aist 1.2�n�̃C���X�g�[��(Windows�Amsi�C���X�g�[���[�g�p):/ja/node/6652]]
+- [[OpenRTM-aist 1.2系のインストール(Windows、msiインストーラー使用):/ja/node/6652]]
 
-** �C���X�g�[���[�̍�Ɠ��e
-���M�����肢���܂��B
-** �C���X�g�[�������t�@�C��
-���M�����肢���܂��B
+** インストーラーの作業内容
+加筆をお願いします。
+** インストールされるファイル
+加筆をお願いします。
