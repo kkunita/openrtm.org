@@ -8,9 +8,9 @@
     - RTC開発の流れ: 05_RTC_DevelopmentFlow_ja.txt
     - RTS開発の流れ: 06_RTS_DevelopmentFlow_ja.txt
     - 研究開発: 07_ResearchAndDevel_ja.txt
-  - インストール
-    - OpenRTM-aistを10分で始めよう！
-    - 1.2系のインストール
+  - インストール : 02_Install_ja.txt
+    - OpenRTM-aistを10分で始めよう！: Lets_Start_jp.txt
+    - 1.2系のインストール: 01_install_1_2_ja.txt
       - C++版 1.2系: 01_C++1_2_ja.txt
         - Windowsへのインストール: 01_Install_Windows_1_2_ja.txt
           - Visual Studioのインストール: Visual_Studio_1_2_ja.txt
