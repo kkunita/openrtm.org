@@ -1,4 +1,4 @@
-﻿//title 研究開発
+// Title: 研究開発
 #contents
 
 ** 開発の経緯
