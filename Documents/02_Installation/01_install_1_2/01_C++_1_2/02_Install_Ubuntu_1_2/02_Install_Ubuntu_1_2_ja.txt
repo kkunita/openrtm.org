@@ -1,0 +1,35 @@
+﻿// Titile: Ubuntu/Debianへのインストール
+#ref(ubuntu_logo2.png,around,right)
+
+
+C++版の OpenRTM-aist は、Ubuntu や Debian GNU Linux で利用可能な deb パッケージが提供されています。
+対応しているディストリビューションのバージョンは、ダウンロードページから確認できます。
+Ubuntu/Debian GNU Linux への対応およびそのバージョンは、予告なしに変更または停止されることがありますので、予めご了承ください。
+
+#contents
+
+** 一括インストールスクリプト
+openrtm.org が提供するインストール・スクリプト ''pkg_install_ubuntu.sh'' または ''pkg_install_debian.sh'' をダウンロードページからダウンロードし、root 権限で実行します。このスクリプトは、必要なパッケージを順次 apt-get でインストールしていきます。
+
+オプションを指定することで、目的に合わせたパッケージをインストールできるようになったので、
+初めて OpenRTM-aist をインストールしてみる方にもソースをコンパイルしてみる方にもお勧めします。
+
+一括インストールスクリプトのダウンロード、及び、詳しいインストール方法や、オプション・パッケージの種類につきましては、「[[一括インストール・スクリプト:http://openrtm.org/openrtm/ja/node/6345]]」のページをご確認ください。
+
+
+***インストールの確認
+インストールを確認します。
+
+ $ dpkg -l 'openrtm*'
+ ||/ 名前           バージョン   アーキテクチ 説明
+ +++-==============-============-============-=================================
+ ii  openrtm-aist:a 1.2.0-0      amd64        OpenRTM-aist, RT-Middleware distr
+ ii  openrtm-aist-d 1.2.0-0      amd64        OpenRTM-aist headers for developm
+ ii  openrtm-aist-e 1.2.0-0      amd64        OpenRTM-aist examples
+
+
+**パッケージの詳細
+各パッケージの内容は以下の通りです。
+
+加筆をお願いします。
+
