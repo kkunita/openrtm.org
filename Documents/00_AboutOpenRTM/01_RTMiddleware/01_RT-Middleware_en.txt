@@ -1,4 +1,5 @@
-﻿#contents
+﻿// Title: RT-Middleware 
+#contents
 #clear
 
 //** RTミドルウエア (RTM)

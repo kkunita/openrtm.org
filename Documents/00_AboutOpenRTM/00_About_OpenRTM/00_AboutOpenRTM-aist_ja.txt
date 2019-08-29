@@ -1,4 +1,5 @@
-﻿#ref(piping_rtm_logo2.png,right,around,url=/ja/node/833)
+﻿// Title: OpenRTM-aistとは？
+#ref(piping_rtm_logo2.png,right,around,url=/ja/node/833)
 
 OpenRTM-aistはロボットシステムをコンポーネント指向開発するためのソフトウエアプラットフォームです。
 <!--break-->
