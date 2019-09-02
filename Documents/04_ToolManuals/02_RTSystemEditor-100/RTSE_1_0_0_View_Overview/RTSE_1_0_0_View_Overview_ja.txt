@@ -1,0 +1,445 @@
+﻿// Title: ビュー（概要）
+// #contents
+//
+// ここでは、 RTSystemEditor 内の各ビューについて説明します。
+// ***概要
+RTSystemEditor では、以下のようなビューを使用します。
+#br
+
+// #ref(fig6RTSystemEditorView.png,nolink,center)
+#ref(fig1InitialOfEclipseStart_1_ja.png,50%,center)
+#ref(fig6RTSystemEditorView_ja.png,50%,center)
+#ref(fig6RTSystemEditorView2_ja.png,50%,center)
+#br
+
+
+CENTER:''ビュー一覧''
+|№|ビュー名|説明|
+|１|ネームサービスビュー|RTCが登録されているネームサービスの内容をツリー表示します。|
+|２|コンフィグレーションビュー|選択されているRTCのコンフィグレーション情報を表示/編集します。|
+|３|マネージャコントロールビュー|選択されているマネージャを制御します。|
+|４|複合コンポーネントビュー|選択されている複合RTCのポート公開情報を表示/設定します。|
+|５|プロパティビュー|選択されているRTCのプロファイル情報を表示します。|
+|６|システムエディタ|RTCをグラフィカルに表示し、RTシステムを作成します。|
+|７|オフラインシステムエディタ|RTリポジトリやローカルのRTコンポーネント仕様ファイルの内容をグラフィカルに表示し、RTシステムを作成します。|
+
+
+この後の節では、各ビューについてそれぞれ解説していきます。
+// ***ネームサービスビュー
+// ここでは、ネームサービスビューについて解説します。&br;
+// #br
+// OpenRTM-aistではRTCを管理・公開するためにネームサービスが使用されており、ネームサービスビューでは、この内容を表示/編集することができます。
+// &br;
+// ****機能概要
+// ネームサービスビューは、RTCをリアルタイムにグラフィカル操作する機能を持っています。提供される機能の一覧は以下のとおりです。&br;
+// CENTER:''機能概要一覧''
+// |No.|機能名称|機能概要|
+// |1|ネームサーバ接続/編集機能|ネームサーバに接続し、登録されているコンポーネントをネームサービスビューにツリー形式で表示する。|
+// |2|コンポーネントプロファイル表示機能|選択したコンポーネントのプロファイル情報をプロパティビューに表示する。|
+// ****ネームサービスビューの起動
+// 
+// #ref(fig11InitialOfNameSeviceViewStart.png,nolink,center)&br;
+// #ref(fig11InitialOfNameServiceViewStart_ja.png,45%,center)
+// 
+// 
+// CENTER:''ビューの表示''&br;
+// #br
+// メニューから[ウィンドウ]-[ビューの表示]-[Name Service View]を指示すると、ネームサービスビューが表示されます。&br;
+// 
+// #ref(fig12InitialOfNameSeviceViewStart.png,nolink,center)&br;
+// #ref(fig12InitialOfNameServiceViewStart_ja.png,45%,center)
+// CENTER:''ネームサービスビューの初期起動時画面''
+// #br
+// 同様にEclipseの標準として用意されている「プロパティ」ビューも表示します。&br;
+// ****ネームサーバに接続するには
+// ネームサーバに接続するには、ネームサービスビューの上部に存在するボタンを押下するか、コンテキストメニューにて「ネームサーバを追加」を選択します。
+// #br
+// 
+// #ref(fig13ConnectNameService.png,nolink,center)&br;
+// #ref(fig13ConnectNameService_ja.png,64%,center)
+// 
+// CENTER:''ネームサーバに接続する''
+// #br
+// 
+// ネームサーバ接続ダイアログでは、IPアドレスおよびポート番号を入力します。（ポート番号が省略された場合には、設定画面で設定されたポート番号が使用されます。デフォルトのポート番号は2809番ポートです）
+// #br
+// 
+// #ref(fig14NameServerDialog.png,nolink,center)&br;
+// #ref(fig14NameServiceDialog_ja.png,80%,center)
+// 
+// 
+// CENTER:''ネームサーバの接続ダイアログ''
+// #br
+// ''※''Eclipseの（再）起動時には最後に接続したアドレスへ自動的に接続します。存在しない場合には、ローカルホストの2809番ポートに接続を試みます。
+// ****ネームサーバを画面から削除するには
+// 接続しているネームサーバを画面から削除するには、ネームサーバを選択し「ビューから削除」を実行します。
+// #br
+// 
+// #ref(fig15DeletefromView.png,nolink,center)&br;
+// #ref(fig15DeletefromView_ja.png,64%,center)
+// 
+// CENTER:''ネームサーバを画面から削除する''
+// #br
+// ****ネームサーバの内容を表示する
+// 接続したネームサーバにコンポーネントが登録されていると、以下のように登録内容がツリー形式で表示されます。
+// #br
+// 
+// #ref(fig16View.png,nolink,center)&br;
+// #ref(fig16View_ja.png,60%,center)&br;
+// 
+// CENTER:''ネームサービスビュー''
+// #br
+// 各アイコンの意味は以下のとおりです。
+// CENTER:''ネームサーバアイコンの一覧''
+// |№|アイコン|種類（KIND）|名前|
+// |1|
+// #ref(IconHostCxt.png,nolink,center)|host_cxt|ホストコンテキスト|
+// |2|
+// #ref(IconMgrCxt.png,nolink,center)|mgr_cxt|マネージャコンテキスト|
+// |3|
+// #ref(IconCateCxt.png,nolink,center)|cate_cxt|カテゴリコンテキスト|
+// |4|
+// #ref(IconModCxt.png,nolink,center)|mod_cxt|モジュールコンテキスト|
+// |5|
+// #ref(IconElse.png,nolink,center)|上記以外|フォルダ（上記以外のコンテキスト）|
+// |6|
+// #ref(IconRTC.png,nolink,center)|なし|RTC|
+// |7|
+// #ref(IconMgr.png,nolink,center)|なし|マネージャ|
+// |8|
+// #ref(IconObj.png,nolink,center)|なし|オブジェクト（RTC以外のオブジェクト）|
+// |9|
+// #ref(IconZombi.png,nolink,center)|なし|ネームサーバにエントリされてはいるが、実体のオブジェクトにアクセスできないゾンビオブジェクト|
+// 
+// ネームサービスビューは、接続先の各ネームサーバを常に監視し、表示の同期・更新を行っています。（監視の周期は、設定画面の[[接続周期:]]で変更することができます）。
+// また、明示的にネームサーバの内容を再取得する場合にはリフレッシュを行うことができます。リフレッシュを行うには、ネームサービスビューの上部に存在するボタンを押下するか、コンテキストメニューにて「更新」を選択します。
+// #br
+// 
+// #ref(fig17Refresh.png,nolink,center)&br;
+// #ref(fig17Refresh_ja.png,64%,center)
+// 
+// CENTER:''リフレッシュ''
+// #br
+// 
+// ****ネームサービスビューの表示範囲を変更する
+// ネームサービスビューでは、RTCの数が多くなることによって操作する範囲が煩雑化するのを防ぐために、表示ルートの位置を移動する機能があります。// &br;
+// 表示ルートを移動するには、移動する先を選択し、「次へジャンプ」で移動します。
+// #br
+// 
+// #ref(fig18ChangeView_ja.png,64%,center)
+// 
+// CENTER:''表示ルート変更''
+// #br
+// #br
+// 
+// #ref(fig19ChangeView.png,nolink,center)&br;
+// #ref(fig19ChangeView_ja.png,nolink,center)
+// CENTER:''表示ルート変更例''
+// #br
+// 移動後は、「戻る」で1階層上に上ることができます。また、「ホームへ戻る」で最上位の階層に戻ります。
+// 
+// ****ネームサービスビューの表示内容をフィルターする
+// 
+// ネームサービスビューでは、RTCの数が多くなることによって操作する範囲が煩雑化するのを防ぐための、もうひとつの方法として、フィルター（表示するエントリの種類を限定）する機能があります。&br;
+// フィルタを行うには、ネームサービスビューの上部に存在する「フィルタを設定」ボタンを押下します。&br;
+// #br
+// 
+// #ref(fig20NameServiceFilter.png,nolink,center)
+// #ref(fig20NameServiceFilter_ja.png,60%,center)
+// CENTER:''フィルターの指示''
+// #br
+// 「フィルタを設定」ダイアログでは、非表示にするエントリの種類を、「ビューから除外するエレメントを選択」欄から選択します。
+// #br
+// 
+// #ref(fig21FilterDialog.png,nolink,center)
+// #ref(fig21FilterDialog_ja.png,80%,center)
+// CENTER:''ネームサービスフィルタダイアログ''
+// #br
+// 
+// ネームサービスビューの表示から除外したい要素にチェックをつけると、ネームサービスビューに表示されなくなります。&br;
+// 「Naming object name」を有効にすると、オブジェクト名の条件に一致するものが非表示となります。&br;
+// オブジェクト名の条件は前方一致と部分一致が選択できます。
+// &br;
+// 
+// #br
+// 
+// #ref(fig22Filtering.png,nolink,center)&br;
+// #ref(fig22Filtering_ja.png,50%,center)
+// CENTER:''オブジェクト名によるフィルタリング''
+// #br
+// 
+// ****ネームサービスからエントリを削除する
+// ネームサービスビューでは、ネームサービスのネーミングオブジェクトのエントリを削除することができます。ネーミングオブジェクトを削除するには、コンテキストメニューにて「ネームサービスから削除」ボタンを押下します。&br;
+// #br
+// 
+// #ref(fig23DeleteFromNameService.png,nolink,center)&br;
+// #ref(fig23DeleteFromNameService_ja.png,60%,center)
+// CENTER:''ネームサービスから削除する''
+// #br
+// 
+// ****ネームサービスへオブジェクトを登録する
+// 
+// ネームサービスビューで、ネームサービスにオブジェクトのエントリを登録することができます。&br;
+// オブジェクトを登録するには、配下にオブジェクトを追加したいコンテキストおよびオブジェクトのコンテキストメニューから、「オブジェクトを追加」を指示します。&br;
+// 
+// #br
+// 
+// #ref(fig24AddObject.png,nolink,center)&br;
+// #ref(fig24AddObject_ja.png,60%,center)
+// CENTER:''オブジェクトを追加する''
+// #br
+// #br
+// 
+// #ref(fig25AddObjectDialog.png,nolink,center)&br;
+// #ref(fig25AddObjectDialog_ja.png,nolink,center)
+// CENTER:''オブジェクト追加ダイアログ''
+// #br
+// 「オブジェクトを追加」ダイアログでは、オブジェクトの名前(name)、種類(kind)、およびIORを指定します。
+// ****ネームサービスへコンテキストを登録する
+// ネームサービスビューで、ネームサービスにコンテキストのエントリを登録することができます。&br;
+// コンテキストを登録するには、配下にコンテキストを追加したいコンテキストのコンテキストメニューから、「コンテキストを追加」を指示します。&br;
+// 
+// #br
+// 
+// #ref(fig26AddContext.png,nolink,center)&br;
+// #ref(fig26AddContext_ja.png,60%,center)
+// CENTER:''コンテキストを追加する''
+// #br
+// #br
+// 
+// #ref(fig27AddContextDialog.png,nolink,center)&br;
+// #ref(fig27AddContextDialog_ja.png,80%,center)
+// CENTER:''コンテキスト追加ダイアログ''
+// #br
+// 
+// 「コンテキストを追加」ダイアログでは、コンテキストの名前(name)、種類(kind)を指定します。&br;
+// 種類(kind)には以下のいずれかの値を選択します。
+// 
+// CENTER:''コンテキストの種類(kind)の一覧''
+// |№|種類（KIND）|名前|
+// |1|host_cxt|ホストコンテキスト|
+// |2|mgr_cxt|マネージャコンテキスト|
+// |3|cate_cxt|カテゴリコンテキスト|
+// |4|mod_cxt|モジュールコンテキスト|
+// |5|上記以外を入力|フォルダ（上記以外のコンテキスト）|
+// 
+// ****ゾンビオブジェクトを削除する
+// ネームサービスビューには、ゾンビオブジェクトを一括して削除する機能があります。ゾンビオブジェクトをすべて削除するには、ネームサービスビューの上 部に存在するボタンを押下します。&br;
+// #br
+// 
+// #ref(fig28KillAllZonbies.png,nolink,center)
+// #ref(fig28KillAllZonbies_ja.png,60%,center)
+// CENTER:''ゾンビをクリア''
+// #br
+// ***コンフィギュレーションビュー 
+// ここでは、コンフィグレーションビューについて説明します。
+// #br
+// 
+// #ref(fig29WindowOfConfigurationView.png,nolink,center)
+// #ref(fig29WindowOfConfigurationView_ja.png,29%,center)
+// CENTER:''コンフィグレーションビューの位置''
+// #br
+// コンフィグレーションビューでは、選択されたRTCのコンフィグレーションを表示/編集することができます。左側にCofigurationSetのリストが表示され、右側にConfigurationSet内のプロパティが表示されます。
+// #br
+// 
+// #ref(fig30ConfigurationView.png,nolink,center)&br;
+// #ref(fig30ConfigurationView_ja.png,50%,center)
+// CENTER:''コンフィグレーションビュー''
+// #br
+// 
+// |No.|説明|
+// |①|選択されているコンポーネント名。|
+// |②|選択されているConfigurationSet名。|
+// |③|アクティブになっているConfigurationSet。また、アクティブなConfigurationSetを変更することができる。|
+// |④|ConfigurationSetのリスト。|
+// |⑤|左側で選択されているConfigurationSetのプロパティの名前。|
+// |⑥|左側で選択されているConfigurationSetのプロパティの値。|
+// |⑦|ConfigurationSetを追加/削除するボタン。|
+// |⑧|プロパティを追加/削除するボタン。|
+// |⑨|設定値の編集ダイアログを開くボタン、および変更内容を適用/キャンセルするボタン。|
+// コンフィグレーションビューで編集中の情報は、⑨の適用ボタンが押下されるまで適用されません。また、修正中(未適用)の情報は赤く表示されます。
+// #br
+// 
+// #ref(fig31ChangeConfigurationView.png,nolink,center)&br;
+// #ref(fig31ChangeConfigurationView_ja.png,nolink,center)
+// CENTER:''修正中のコンフィグレーションビュー''
+// #br
+// コンフィグレーションの設定値を編集するには⑨の「Edit Value」ボタンを押下し、編集用のダイアログを開いて編集を行います。
+// #br
+// 
+// #ref(fig32ConfigurationViewDialog.png,nolink,center)
+// #ref(fig32ConfigurationViewDialog_ja.png,40%,center)
+// CENTER:''コンフィグレーション編集ダイアログ''
+// #br
+// 複数のConfigurationSetがある場合は、ダイアログ上部のタブ（⑩）で編集対象を切替えることができます。&br;
+// コンフィグレーションの各パラメータには、編集用のwidgetを指定することができ、ConfigurationSetにwidget種別が定義されていれば、指定のwidgetでパラメータを編集できます（⑪）。widget種別にはスライダ、スピナ、およびラジオボタンがあり、widget種別の指定がない場合はデフォルトでテキストボックスを使用します。&br;
+// また、各パラメータには制約条件を指定することができ、widget種別がスライダ、スピンの場合は制約条件の指定が必須となります。該当のwidget種別が定義されていて、制約条件が指定されていない場合はデフォルトのテキストボックスとなります。&br;
+// CENTER:''widget種別一覧''
+// |widget種別|イメージ|説明|
+// |スライダ|
+// #ref(IconSlider.png,nolink,center)|制約条件で指定された最小値、最大値の範囲をスライダで選択します。テキストボックスへの入力も可能です。|
+// |スピナ|
+// #ref(IconSpinner.PNG,nolink,center)|制約条件で指定された最小値、最大値の範囲をスピナで選択します。小数の精度は制約条件の最小値、最大値の記述に準拠します。ただし、負数の指定はできません。例) 最大値が「10.00」の場合は小数２桁|
+// |ラジオボタン|
+// #ref(IconRadioButton.png,nolink,center)|ラジオボタンで値を選択します。|
+// |テキストボックス|
+// #ref(IconTextBox.png,nolink,center)|通常のテキスト入力で設定します。|
+// &br;
+// 各パラメータに制約条件が指定されていると入力値に対して制約条件のチェックが行われ、条件を満たさない場合はフォームを赤で示します。また、「OK」ボタンで編集確定時に変更のあったConfigurationSetの全パラメータに対して制約条件チェックを行い、制約条件を満たさないパラメータがあったときにはエラーダイアログを表示します。&br;
+// &br;
+// 
+// #ref(fig33ConfigurationError.png,nolink,center)&br;
+// CENTER:''制約条件チェックエラーの表示''&br;
+// #br
+// コンフィグレーション編集ダイアログの「Apply」チェックボックス（⑫）をチェックして「OK」ボタンをクリックすると、変更のあったConfigurationSetに対して編集内容の適用が行われます。（⑨と同様）&br;
+// コンフィグレーションビューに表示される情報は、RTC選択時に最新の情報をキャッシュして表示しています（コンフィグレーションの編集に備えるため）。このため、いつまでも同じRTCを選択し続けると、システムとの情報差が発生します。RTSystemEditorは編集の適用時に、この差を意識することなく編集中の情報を正として完全に上書きしますのでご注意ください。&br;
+// また、RTCの仕様上では、プロパティのValueにはあらゆるオブジェクトを登録可能ですが、RTSystemEditorから登録/編集できるのは文字列のみとなります。
+// &br;
+// &br;
+// ***マネージャコントロールビュー
+// ここではマネージャコントロールビューについて説明します。&br;
+// 
+// #ref(fig34ManagerControlView.png,nolink,center)&br;
+// #ref(fig34ManagerControlView_ja.png,29%,center)
+// CENTER:''マネージャコントロールビューの位置''
+// #br
+// ネームサービスビューでマネージャを選択すると、マネージャコントロールビューがアクティブになり、選択されたマネージャを制御できるようになります。&br;
+// 
+// #ref(fig35ManagerControlView.png,nolink,center)&br;
+// #ref(fig35ManagerControlView_ja.png,60%,center)&br;
+// CENTER:''マネージャコントロールビュー''
+// 
+// CENTER:''マネージャコントロールビューの画面構成''
+// 
+// |No.|説明|
+// |①|ロード可能モジュール一覧表示ボタン。|
+// |②|ロード済みモジュール一覧表示ボタン。|
+// |③|コンポーネント一覧表示ボタン。|
+// |④|コンポーネント生成ボタン。コンポーネント作成ダイアログを開き、新しくコンポーネントを生成します。生成されたコンポーネントは③のコンポーネント一覧表示で表示されます。|
+// |⑤|マネージャ複製ボタン。新しいマネージャを起動します。|
+// |⑥|マネージャ終了ボタン。選択中のマネージャを終了します。|
+// |⑦|モジュール、およびコンポーネントの一覧を表示するテーブル。|
+// |⑧|モジュールをURL指定でロードする場合にURLを指定します。|
+// |⑨|モジュールのロード、アンロードボタン。⑦のテーブルで選択中のモジュール、もしくはURLで指定したモジュールをロード、アンロードします。|
+// #br
+// マネージャにモジュールをロードするには「Loadable Modules」ボタンをクリックし、表示されたロード可能モジュールを選択すると、「Load」ボタンが有効になり、クリックするとモジュールがロードされます。&br;
+// また、「URL:」のテキストボックスにモジュールのURLを入力して「Load」ボタンをクリックすることにより、URL指定でモジュールを追加することもできます。&br;
+// 
+// #ref(fig36LoadModule.png,nolink,center)&br;
+// CENTER:''モジュールのロード''
+// #br
+// モジュールをアンロードするには「Loaded Modules」ボタンをクリックし、表示されたロード済みモジュールを選択すると、「Unload」ボタンが有効になり、クリックするとモジュールがアンロードされます。&br;
+// 
+// #ref(fig37UnLoadModule.png,nolink,center)
+// CENTER:''モジュールのアンロード''
+// #br
+// 新しくコンポーネントを生成するには「Create」ボタンをクリックして、コンポーネント生成ダイアログを開き、生成するコンポーネントの種別を選択し、「OK」をクリックするとコンポーネントが生成されます。&br;
+// 生成されたコンポーネントはマネージャによってネームサービスに登録され、「Active Components」ボタンで表示されるコンポーネント一覧に表示されるようになります。
+// &br;
+// 
+// #ref(fig38ComponentDialog.png,nolink,center)&br;
+// #ref(fig38ComponentDialog_ja.png,60%,center)
+// CENTER:''コンポーネント生成ダイアログ''
+// #br
+// コンポーネントの種別は、マネージャにロード済みのモジュールで定義されているコンポーネントから選択します。&br;
+// Parameterにはコンポーネント生成パラメータを指定することができ、「param1=value1&param2=value2」の形式で記述します。以下の共通パラメータは、すべてのコンポーネントで設定可能です。
+// &br;
+// CENTER:''コンポーネント生成の共通パラメータ''
+// |パラメーター名|説明|
+// |instance_name|コンポーネントのインスタンス名。&br;指定しない場合はコンポーネント種別(type_name)に通番を付与|
+// |type_name|コンポーネントの種別|
+// |description|コンポーネントの説明|
+// |version|コンポーネントのバージョン|
+// |vendor|コンポーネントの提供元|
+// |category|コンポーネントのカテゴリ|
+// &br;
+// また、コンポーネント生成パラメータでConfigurationSetの値も指定することができます。
+// ConfigurationSetのパラメータは「conf.NNNN.PPPP=VVVV」の形式で、NNNNにはConfigurationSet名、PPPPにはパラメータ名、VVVVには設定値をそれぞれ指定します。&br;
+// 例として、ConsoleInのコンポーネントを生成し、mode1という名前のConfigurationSetを作成し、input_mode、input_cycleというパラメータを指定する場合は以下のようになります。&br;
+// 
+// #ref(fig40ConfigurationSet.png,nolink,center)
+// CENTER:''コンポーネント生成時にConfigurationSetパラメータを指定''
+// #br
+// その他にも、コンポーネントによって任意のパラメータを指定することができます。&br
+// ***複合コンポーネントビュー
+// ここでは複合コンポーネントビューについて説明します。
+// 
+// #ref(fig41CompsiteComponentView.png,nolink,center)&br;
+// #ref(fig41CompositeComponentView_ja.png,29%,center)
+// CENTER:''複合コンポーネントビューの位置''
+// #br
+// 
+// 複合コンポーネントビューでは、選択された複合RTCのポート公開情報が表示され、ポートの公開/非公開を設定することができます。&br;
+// 
+// #ref(fig42CompsiteComponentView.png,nolink,center)&br;
+// #ref(fig42CompositeComponentView_ja.png,60%,center)
+// CENTER:''複合コンポーネントビュー''
+// 
+// CENTER:''複合コンポーネントビューの画面構成''
+// |No.|説明|
+// |①|複合RTCのインスタンス名。|
+// |②|複合RTCのタイプ名。|
+// |③|ポートの公開/非公開の状態。|
+// |④|複合RTCに含まれる子RTCのインスタンス名。|
+// |⑤|複合RTCに含まれる子RTCのポート名。|
+// |⑥|ポートの公開/非公開の変更を反映させます。|
+// |⑦|ポートの公開/非公開の変更をキャンセルします。|
+// 
+// 複合コンポーネントビューで編集中の情報は、⑥の適用ボタンが押下されるまで適用されません。また、修正中(未適用)の情報は薄い赤色で表示されます。また、システムエディタ上で選択したポートは薄い黄色で表示されます。&br;
+// 
+// #ref(fig43CompsiteComponentView.png,nolink,center)
+// CENTER:''ポート公開/非公開の編集中''
+// #br
+// 
+// #ref(fig44CompsiteComponentView.png,nolink,center)
+// CENTER:''システムエディタ上で選択中のポート''
+// #br
+// 
+// 複合コンポーネントのポートが、別のコンポーネントのポートと接続されている場合は、複合コンポーネントビューで該当のポートがグレイで表示され、編集不可となります。
+// 
+// #ref(fig45CompsiteComponentView.png,nolink,center)&br;
+// CENTER:''他のポートと接続中の場合''
+// #br
+// ***プロパティビュー
+// ここではプロパティビューについて説明します。
+// #br
+// 
+// #ref(fig46propertyView.png,nolink,center)&br;
+// #ref(fig46propertyView_ja.png,30%,center)
+// CENTER:''プロパティビューの位置''
+// #br
+// プロパティビューでは、 System Dialog で選択されたRTCやコネクタのプロファイル情報をリアルタイムに表示します。（ RTC の選択中であっても変更が検出されれば即座に反映されます）
+// #br
+// 
+// #ref(fig473TypePropertyView.png,nolink,center)&br;
+// 　　　　　　　　　　　　　　　RTCの場合　　　　　　　　　　　　　　　　　　　複合RTCの場合　　　　　　　　　　　　　　　　マネージャの場合&br;
+// |CENTER:RTCの場合|CENTER:複合RTCの場合|CENTER:マネージャの場合|
+// |
+// #ref(fig473TypePropertyView1_ja.png,80%,center)|
+// #ref(fig473TypePropertyView2_ja.png,80%,center)|
+// #ref(fig473TypePropertyView3_ja.png,80%,center)|
+// 
+// 
+// CENTER:''プロパティビュー''
+// #br
+// 表示されるアイコンの意味は以下のとおりです。
+// CENTER:''プロパティアイコンの一覧''
+// |No.|アイコン|名前|表示内容|
+// |１|
+// #ref(IconRTC2.png,nolink,center)|RTC|InstanceName、TypeName、Description、Vender、Category、State(※1番目のExecutionContextのLifeCycleStateを基にして表示される)|
+// |2|
+// #ref(IconExecContext.png,nolink,center)|ExecutionContext|State、Kind、Rate|
+// |3|
+// #ref(IconServicePort.png,nolink,center)|ServicePort|Name、プロパティ情報のリスト|
+// |4|
+// #ref(IconOutPort.png,nolink,center)|Outport|Name、プロパティ情報のリスト|
+// |5|
+// #ref(IconInPort.png,nolink,center)|Inport|Name、プロパティ情報のリスト|
+// |6|
+// #ref(IconPIP.png,nolink,center)|PortInterfaceProfile|InterfaceName、TypeName、PortInterfacePolarity|
+// |7|
+// #ref(IconMgr.png,nolink,center)|マネージャー|Components (生成したコンポーネント名のリスト)&br;Loadable Modules (ロード可能なモジュール名のリスト)&br;Loaded Modules (ロード済みのモジュール名のリスト)|
+// 
+// なお、RTCの仕様では、RTCのLifeCycleStateはExecutionContextごとに存在します。つまり状態は複数存在しますが、RT Name Service Viewでは1番目のExecutionContextのみを使用してSTATEを表示します。
+
+

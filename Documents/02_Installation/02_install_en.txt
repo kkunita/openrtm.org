@@ -1,0 +1,18 @@
+﻿// Title: Installation
+#ref(install.png,right,around,80%,url=/ja/node/111)
+***Let's start OpenRTM-aist in 10 minutes!
+-[[Let's start OpenRTM-aist in 10 minutes!:/en/node/6140]]
+
+***OpenRTM-aist-1.x series installation manual
+-[[C++:/en/node/1191]]
+-[[Python:/en/node/908]]
+-[[Java:/en/node/913]]
+-[[Eclipse tools:/en/node/680]]
+-[[Sample usage:/en/node/882]]
+-[[Installation of rtshell:/en/node/6464]]
+<!--break-->
+***Other
+-[[Installation on Kurobox HG:/en/node/436]]
+-[[Installation on Kurobx PRO:/en/node/437]]
+-[[Installation on Armadillo 240:/ja/node/170]]
+-[[Installation on Raspberry Pi:/ja/node/5269]]5269]]

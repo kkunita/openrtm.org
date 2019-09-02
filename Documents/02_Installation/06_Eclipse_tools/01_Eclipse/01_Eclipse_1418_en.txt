@@ -1,0 +1,94 @@
+#ref(eclipse_logo.png,around,left)
+[[Eclipse>http://www.eclipse.org/]] is an open-source Integrated Development Environment framework for developing in Java and other languages, developed by the Eclipse Foundation. Eclipse is, at its core, a platform for plugins to execute in, combining a wide variety of plugins to create various development environments. Even the default Java development environment is implemented as a plugin, and development environments for other languages can be created and expanded using other plugins.
+
+The characteristics of Eclipse include:
+-Easily extensible using plugins. Plugins can also cooperate.
+-Using the Rich Client Platform (RCP) structure, plugins can function standalone.
+-Because it is written in Java, it functions on many platforms.
+These characteristics are very useful for constructing a robot-oriented development environment. For this reason, it was selected as the platform for the RT Middleware tools.
+
+In order to use RT System Editor, Eclipse must first be installed. 
+// See the links below for instructions on installing Eclipse.
+// -[[http://eclipsewiki.net/eclipse/>http://eclipsewiki.net/eclipse/]]
+//-[[http://www13.plala.or.jp/observe/eclipse/install.html>http://www13.plala.or.jp/observe/eclipse/install.html]]
+#contents
+#clear
+
+&aname(jre_install);
+*** Installing the Java Runtime Environment (JRE) 
+Before installing Eclipse, install a suitable Java, such as Sun's [[Java Runtime Environment (JRE)>http://www.java.com/en/download/manual.jsp]]. If you already have a Java Development Environment (JDK) version 1.6 or above installed, there is no need to install a separate JRE. (If you will be generating Java code using RTC Builder, you will need to have a JDK installed; the JRE will not be sufficient.)
+-[[JRE download>http://www.java.com/en/download/manual.jsp]]
+-[[JRE (Windows) online installer>http://javadl.sun.com/webapps/download/AutoDL?BundleId=11145]]
+-[[JRE (Windows) online installer>http://javadl.sun.com/webapps/download/AutoDL?BundleId=11193]]
+-[[Java Development Kit 6:http://www.oracle.com/technetwork/java/javase/downloads/index.html]]
+
+Follow the displayed instructions to install after downloading.
+
+
+
+
+&aname(eclipse_install);
+*** Installing Eclipse 
+Download an Eclipse archive suitable for your platform from the [[Eclipse Download Site>http://www.eclipse.org/downloads/index.php]] and install it. The recommended version for RT System Editor is Eclipse v3.4.2
+-[[Eclipse 3.4.2 (Windows)>http://archive.eclipse.org/eclipse/downloads/drops/R-3.4.2-200902111700/eclipse-SDK-3.4.2-win32.zip]]
+-[[Eclipse 3.4.2 (Linux x86/GTK2)>http://archive.eclipse.org/eclipse/downloads/drops/R-3.4.2-200902111700/download.php?dropFile=eclipse-SDK-3.4.2-linux-gtk.tar.gz]]
+-[[Eclipse 3.4.2 (Linux x86/Motif)>http://archive.eclipse.org/eclipse/downloads/drops/R-3.4.2-200902111700/download.php?dropFile=eclipse-SDK-3.4.2-linux-motif.tar.gz]]
+
+Eclipse is also mirrored on the below ring servers, so it can also be downloaded from [[here>http://www.ring.gr.jp/pub/misc/eclipse/downloads/drops/]].
+-[[Ring Server Project>http://www.ring.gr.jp/pub/misc/eclipse/downloads/drops/]]
+-[[AIST Ring Server>http://ring.aist.go.jp/pub/misc/eclipse/downloads/drops/]]
+-[[RIKEN Ring Server>http://ring.riken.go.jp/pub/misc/eclipse/downloads/drops/]] 
+-[[Eclipse Project archived downloads>http://archive.eclipse.org/eclipse/downloads/]](Previous versions archive)
+
+#br
+
+
+#br
+
+Reference:
+- [[''FAQ:'' Method of starting Eclipse>/en/node/500#eclipse]]
+-Linux version of Eclipse3.4.2 does not work on Ubuntu8.04 and Ubuntu9.10 in some cases.
+--On Ubuntu8.04, please update xulrunner by ''apt-get install xulrunner-1.9.''
+--On Ubuntu9.10, please perform the following hack or use Eclipse3.3 or 3.5.
+ $ su
+ # vi /etc/apt/source.list
+  This line is added. Å® deb http://jp.archive.ubuntu.com/ubuntu/ jaunty main restricted
+ # apt-get update
+ # apt-get install xulrunner-1.9
+ # dpkg -l |grep xulrunner-1.9
+ ii  xulrunner-1.9                        1.9.0.8+nobinonly-0ubuntu2                 XUL +  XPCOM application runner
+ ii  xulrunner-1.9.1                      1.9.1.7+nobinonly-0ubuntu0.9.10.1          XUL + XPCOM application runner
+ ii  xulrunner-1.9.1-gnome-support        1.9.1.7+nobinonly-0ubuntu0.9.10.1          Support for GNOME in xulrunner-1.9.1 applica
+ 1.9.1 and 1.9 live together.
+ # exit
+ $ export GDK_NATIVE_WINDOWS=1
+ $ ./eclipse
+And, it is reported that it works by using xulrunner-1.9.1.8. Updating to 1.9.1.8 and starting eclipse via the following shell script, you can use it.
+ #/bin/sh
+ export GDK_NATIVE_WINDOWS=1
+ ./eclipse -vmargs -Dorg.eclipse.swt.browser.XULRunnerPath=/usr/lib/xulrunner-1.9.1.8/xulrunner
+
+
+
+***Installing plugins
+RT System Editor uses the following Eclipse plugins.
+-[[EMF (Eclipse Modeling Framework):http://www.eclipse.org/modeling/emf/]]
+-[[GEF (Graphical Editing Framework):http://www.eclipse.org/gef/]] 
+-[[XSD (XML Schema Infoset Model):http://www.eclipse.org/modeling/mdt/?project=xsd#xsd]] 
+-[[SDO (EMF Service Data Objects):http://www.eclipse.org/modeling/emf/?project=sdo]]
+-[[JDT (Eclipse Java development tools):http://www.eclipse.org/projects/project_summary.php?projectid=eclipse.jdt]]
+
+
+
++From the Eclipse Help menu, choose ''Software Updates...'' and then ''Find and Install.'' A dialog similar to that shown below will be displayed.
+#ref(eclipse_update_en.png,60%,center)
++Please develop ''Genymede Update Site'' and select the plug-in. 
+#ref(eclipse_plugin_GEF_JDT_en.png,60%,center)
+#ref(eclipse_plugin_EMF_SDO_en.png,60%,center)
++Please click''Installation(I)...''
+#ref(eclipse_plugin2_en.png,60%,center)
++These plug-ins are automatically downloaded, and installed by this. 
+
+Please end Eclipse the installation end once. 
+
+

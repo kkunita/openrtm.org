@@ -1,0 +1,195 @@
+
+#contents
+
+#ref(http://www.kuroutoshikou.com/products/kuro-box/kuro-box_hg.jpg,center)
+
+**玄箱/HGスペック
+|CPU|PowerPC 266MHz|
+|RAM|128MB|
+|Flash ROM|4MB|
+|LAN|1000BASE-T/100BASE-TX/10BASE-T×1ポート|
+|外部IO|USB2.0×2ポート|
+|HDD|3.5インチUltraATA 1個を別途用意．|
+|OS|デフォルトではMontavista Linux（Kernel2.4.17）|
+
+**インストールの流れ
+　Debian, Vine, GentooLinuxが動作するようであるが, パッケージの豊富さ、アップグレードのしやすさからDebianが最適でしょう.
+大まかな手順は以下の通りです.
+
++[[玄箱うぉううぉう♪:http://kuro.dsk.jp/]]からDebianイメージをダウンロード
++玄箱付属CDに同封されているKuroBoxSetup.exeを使ってイメージを玄箱へ展開
++この段階ではDebian3.0(Woody)なので、Debian3.1(Sarge)へアップグレードする。
++pkg_install_debianSarge.shでパッケージをインストール
++OpenRTM-aist-0.4.0をビルド, インストール
+
+このように、Debianインストール後は、i386のDebianと同じ手順でインストールすることができます.
+
+
+**OS入れ替え
+***カーネルイメージの入手 
+//　OSの入れ替え方法については[[玄箱ＨＧハック:http://kurobox.ath.cx/]](リンク切れ)の[[Debian化:http://kurobox.ath.cx/?Debian%B2%BD]](リンク切れ)がわかりやすい。ただし、[[玄箱うぉううぉう♪:http://kuro.dsk.jp/]]提供のイメージへのリンクが古いので、以下からダウンロードしてください。
+OSの入れ替え方法については、以下からダウンロードしてください。
+
+　ダウンロードしたイメージを、この後の手順に必要な名前にリネームしてZIP圧縮したものを以下に置きます。
+
+-[[image.zip>http://www.openrtm.org/OpenRTM-aist/download/KURO-BOX/image.zip]]
+--これを玄箱付属CD-ROM内のファイルimage.zipと入れ替える。
+-[[玄箱うぉううぉう♪:http://kuro.dsk.jp/]]さんオリジナル配布物
+--※玄箱うぉううぉう♪さんでは再配布推奨をしてるのでミラーしてます
+--[[debian_2006_06_10_dist.tar.gz>http://www.openrtm.org/OpenRTM-aist/download/KURO-BOX/debian_2006_06_10_dist.tgz]]
+--[[install_debian.txt>http://www.openrtm.org/OpenRTM-aist/download/KURO-BOX/install_debian.txt]]
+--[[install_debian_standalone.txt>http://www.openrtm.org/OpenRTM-aist/download/KURO-BOX/install_debian_standalone.txt]]
+
+***インストーラの準備
+　玄箱付属CD-ROMの内容を適当なディレクトリにコピーします。
+KuroBoxSetup.exeが存在する場所(CD-ROMのルート)にあるimage.zipをimage.zip.orgなどとリネームし、上記でダウンロードしたimage.zipを代わりにここに置きます。
+
+***EMモードにする
+　玄箱をEMモードにします.[[参考:http://www.yamasita.jp/linkstation/tips/em-mode.html]]
+
+　EMモードはインストーラが認識可能なモードで, KuroBoxSetup.exeを使ってイメージを転送するにはこのモードにする必要があります.
+購入直後, HDDを繋いだばかりのときはこのモードになっています.
+
+　すでに玄箱付属のLinuxをインストールしてしまっている場合は, 以下のようにEMモードにすることができます.
+
+ EMモードにする
+ # echo -n 'NGNG' > /dev/fl3
+   もしくは
+ # /usr/bin/write_ng
+ # reboot
+ 電源を切り, 再度電源を入れる
+
+ EMモードから戻る
+ # echo -n 'OKOK' > /dev/fl3
+   もしくは
+ # /usr/bin/write_ok
+ # reboot
+
+ あるいは, HDDのファイルシステムを破壊することで強制的にEMモードにすることができます.
+ # rm -rf /
+   あるいは
+ # dd if=/dev/zero of=/dev/hda bs=1024 count=1024
+
+***イメージの転送
+　玄箱がEMモードになったら, 先ほどDebianのイメージに入れ替えた玄箱インストーラのKuroBoxSetup.exeを起動して, 新しいイメージでセットアップします.
+KuroBoxSetup.exeを起動しても玄箱が見つかりませんなどというメッセージがでたら, EMモードになっていない可能性があります.
+何事もなければ, セットアップは完了して, 玄箱再起動後, 使用可能になります.
+
+***設定 
+　上記のDebianイメージに入れ替えた玄箱のデフォルトの設定は以下のようになっています.
+|>|デフォルトユーザ|
+|ユーザ名|tmp-kun|
+|パスワード|tmp-kun|
+|>|root|
+|ユーザ名|root|
+|パスワード|root|
+|>|ネットワーク設定|
+|IPアドレス|192.168.0.100|
+|Gatewayアドレス|192.168.0.1|
+|DNSアドレス|192.168.0.1|
+
+　IPアドレスは固定です.
+設定を行うPCにはターミナルソフトをインストールして, IPアドレスを玄箱につながるように(192.168.0.1 mask 255.255.255.0 など)設定してLANで接続します.
+
+ telnet 192.168.0.100
+ Debian GNU/Linux 3.0 KURO-BOX
+ KURO-BOX login: tmp-kun
+ Password: tmp-kun
+ 中略:
+ Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+ permitted by applicable law.
+ KURO-BOX:~> su
+ # 
+
+アカウントtmp-kun でログインし, rootになり設定を行います.
+
+たとえば, IPアドレスを設定するには,
+ # vi /etc/network/interfaces
+ IPアドレスを編集
+ 
+ # vi /etc/hosts.allow
+ hosts.allowを編集
+
+　IPアドレスを変更したとき、hosts.allowも忘れずに変更します.
+これを忘れてデフォルトと違うネットワークアドレスにすると二度とログインできなくなります.
+
+***Sargeをアップグレード
+　この段階ではDebian3.0(Woody)がインストールされている.
+　現行バージョン Debian3.1(Sarge) にアップグレードする.
+
+****/etc/apt/sources.listの編集
+デフォルトの/etc/apt/sources.lismaruiha\tはsources.list.orgなどにリネームし, 以下の2行をsources.listに新たに記述する.
+
+ deb http://cdn.debian.or.jp/debian/ sarge main contrib non-free
+ deb-src http://cdn.debian.or.jp/debian/ sarge main contrib non-free
+
+編集が終わったら,
+
+ apt-get update
+ apt-get dist-upgrade 
+
+アップグレードの際, いろいろと聞かれるが基本的にデフォルトでよい.
+ただし, /etc/init.d/haltが書き換えられてしまい, 電源ボタンによるshutdownが無効になってしまうので, /etc/init.d/haltのPATHの次の行に
+
+ PATH=/sbin:/bin:/usr/sbin:/usr/bin
+ echo -n "EEEE" > /dev/ttyS1
+ sleep 3
+
+のように2行追加する.
+
+***TIPS 
+xterm, kterm をインストールしておくと, リモートからアクセスするとき便利なのですが, デフォルトのままではxterm, ktermともにpty周りのエラーで立ち上がりません.
+/etc/fstabを以下のように変更する必要があります.
+ /etc/fstab
+ none   /dev/pts     devpts  gid=5,mode=20           0 0
+ ↓このように変更
+ none   /dev/pts     devpts  gid=5,mode=620          0 0
+
+xterm, kterm をインストールする. XLib関係も同時にインストールされるので, 容量に注意.
+ # apt-get install xterm
+ # apt-get install kterm
+
+**OpenRTM-aistのビルド
+***パッケージのインストール
+パッケージのインストールにはOpenRTM-aist-0.4.0付属のDebian用パッケージインストーラ(pkg_install_debianSarge.sh)がそのまま使えます.
+OpenRTM-aist-0.4.0のソース展開後, rootになりbuildディレクトリの下のpkg_install_debianSarge.shを実行するだけです.
+
+ > tar xvzf OpeNRTM-aist-0.4.0.tar.gz
+ > cd OpenRTM-aist-0.4.0
+ > cd build
+ > ls
+ 略
+ README.Debian  makewrapper.py             pkg_install_vl32.sh
+ autogen        pkg_install_debianSarge.sh  pkg_install_vl4.sh
+ 略
+ > su
+ # ./pkg_install_debianSarge.sh
+
+これでパッケージのインストールは完了です.
+
+***OpenRTM-aistのビルド
+以降は通常のPCと全く同じです.
+
+ > cd OpenRTM-aist-0.4.0
+ > ./configure
+ > make
+ > su
+ # make install
+
+ただし, ビルドにはかなりの時間(1時間45分前後)を要します.
+
+ > time make
+ 6048.130u 156.950s 1:43:36.53 99.8%     0+0k 0+0io 762267pf+0w
+
+
+**謝辞
+玄箱へのOpenRTM-aistのインストールにあたり、(株)前川製作所 技術研究所 基盤技術開発G 山下智輝氏のOpenRTM-aist-0.2.0インストールレポートが大変参考になりました。また、下記のWebページの参考にさせていただきました。ありがとうございました。
+
+** リンク
+-[[KURO-BOX/HG:http://www.kuroutoshikou.com/products/kuro-box/kuro-box_hgfset.html]]
+-[[玄箱うぉううぉう♪:http://kuro.dsk.jp/]]
+//-[[玄箱ＨＧハック:http://kurobox.ath.cx/]](リンク切れ)
+-[[玄人指向 KURO-BOX/HG Webページ:http://kuroutoshikou.com/modules/display/?iid=122]]
+-[[LinkStation／玄箱をハックしよう:http://www.yamasita.jp/linkstation/]]
+
+

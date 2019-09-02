@@ -1,0 +1,82 @@
+This sample is bundled to the C++ edition, the Python edition, and the Java
+edition of OpenRTM-aist.
+#contents
+**Introduction
+This sample shows how to use ServicePort. The service is defined using the
+following IDL.
+
+ typedef sequence<string> EchoList;
+ typedef sequence<float> ValueList;
+ 
+ interface MyService
+ {
+   string echo(in string msg);
+   EchoList get_echo_history();
+   void set_value(in float value);
+   float get_value();
+   ValueList get_value_history();
+ };
+
+Startup MyServiceConsumer.bat and MyServiceProvider.bat, then each sample
+component starts. Activate the component of Consumer, then command list is
+displayed so please try each command. (Please use RTSystemEditor to connect
+between Ports.)
+
+#br
+
+**Screen shots
+
+
+#ref(SimpleService_example_rtse_en.png,60%,center)
+CENTER:''Example to run SimpleService(RTSystemEditor connection)''
+#br
+
+
+
+#ref(MyService_example_en.png,60%,center)
+CENTER:''Example to run SimpleService''
+#br
+#br
+
+
+**Execution of RT-Component
+SimpleService is a sample to send the command from MyServiceConsumer, and to
+process it by MyServiceProvider. (The Consumer side parses the command and
+calls the function of the Provider side. )
+Please connect the port of MyServiceConsumer and the port of
+MyServiceProvider by RTSystemEditor.When both components are activated, the
+command list is displayed in the prompt on the Consumer side.Please input
+the command properly. The response of the Provider side can be observed on
+the prompt. 
+#br
+
+- You can execute this sample with the following procedures.
+-- Start RTSystemEditor.
+-- Run MyServiceConsumer and MyServiceProvider, then each sample component
+starts.The start of the component is different according to OS and the
+edition of OpenRTM-aist. Please refer to the following tables.
+|LEFT:40|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c
+||>|CENTER:Windows|>|CENTER:Linux|
+||MyServiceConsumer component|MyServiceProvider component|MyServiceConsumer component|MyServiceProvider component|
+|C++|MyServiceConsumerComp.exe|MyServiceProviderComp.exe|MyServiceConsumerComp|MyServiceProviderComp|
+|Python|MyServiceConsumer.py|MyServiceProvider.py|MyServiceConsumer.py|MyServiceProvider.py|
+|Java|MyServiceConsumer.bat|MyServiceProvider.bat|MyServiceConsumer.sh|MyServiceProvider.sh|
+-- Both components are displayed on NameServiceView of RTSystemEditor. To
+add a RTcomponent to the System Editor from the Name Service View into the
+System Editor.
+-- Drag and drop between two ports to connect them.
+-- RTcomponents Activate.
+-- Input command Consumer
+-- The input command and values of MyServiceConsumer are displayed in
+MyServiceProvider screen.
+#br
+
+- Command
+-- echo <message>：Displays message.
+-- set_value <value>：Sets optional value to the Provider side.
+-- get_value：Displays the value set on the Provider side. 
+-- get_echo_history：Displays messages that has been set on the Provider side. 
+-- get_value_history：Displays values that has been set on the Provider side. 
+
+
+

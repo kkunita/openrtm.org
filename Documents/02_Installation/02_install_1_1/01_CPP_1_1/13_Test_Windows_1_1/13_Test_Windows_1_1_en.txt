@@ -1,0 +1,168 @@
+﻿// Title: Testing operation in Windows
+#contents
+
+Once the installer has completed successfully, OpenRTM-aist can be tested using the included sample components. These are typically stored in one of the following locations:
+
+-The start menu: [Start] > [OpenRTM-aist] > [C++] > [Components] > [Examples]
+-C:\Program Files\OpenRTM-aist\1.0\examples\C++
+-OpenRTM-aist\examples (When building from source.)
+
+We will use the SimpleIO components to check that OpenRTM-aist has built and installed correctly.
+
+** SimpleIO sample component set
+
+This set contains the ConsoleInComp and ConsoleOutComp components. ConsoleInComp receives numbers as input from the console and sends them over an OutPort. ConsoleOutComp receives numbers via an InPort and prints them to the console. They use this very simple I/O to illustrate the basics of RT Components. Connect the OutPort of ConsoleInComp to the InPort of ConsoleOutComp and activate them.
+
+The explanation below assumes OpenRTM-aist has been installed using the MSI package and the sample components are available in the Start Menu. Right-clicking on the OpenRTM-aist entry in the Start Menu and selecting "Open" will make accessing these more convenient.
+
+
+#ref(win_start_menu_open_en.png,80%,center)
+CENTER: ''Opening the OpenRTM-aist Start Menu folder.''
+
+*** Start the name server
+
+First, a name server that the components can register on must be started. Start it using the shortcut in the Start Menu at [OpenRTM-aist 1.1] > [tools] > [Start Naming Service].
+
+
+#ref(win_start_openrtm_tool_en.png,center,80%)
+CENTER: ''The shortcut to the name server.''
+
+A console like the following will open.
+
+
+#ref(win_naming_service_en.png,80%,center)
+CENTER: ''The name server''
+
+**** When the console doesn't open
+
+Sometimes the name server console does not open. There are several possible causes for this, described below.
+
+***** omniORB is not installed
+
+If using the MSI package provided by openrtm.org and selecting a custom install, it is possible to install OpenRTM-aist without installing omniORB. This is also a possibility if installing OpenRTM-aist manually. Check that omniORB is installed.
+
+***** The OMNI_ROOT environment variable is not set
+
+The "Start Naming Service" shortcut executes a batch file located at %RTM_ROOT%\bin\rtm-naming.bat to start the name server. It uses the OMNI_ROOT environment variable to locate the omniNames.exe executable. When installed using the standard installer, OpenRTM-aist will set this variable correctly. It may not, for some reason, have been set. If you installed OpenRTM-aist manually, it will not be set. Confirm that the variable has been set and is pointing to the correct location. From the control panel, select "System" >> "Advanced system settings" >> "Environment variables" and check the variable is in one of the lists.
+
+**** Other
+
+If your user name contains two-byte characters, omniNames.exe may fail to start because it cannot create the log file folder. In this case, setting the TEMP environment variable to a location that does not include two-byte characters typically corrects the problem. For example, create a directory such as C:\temp and change TEMP to point to this folder. Then, edit rtm-naming.bat and add the following lines to the top.
+
+ set cosnames="omninames"
+ set orb="omniORB"
+ set port=%1
+ rem set OMNIORB_USEHOSTNAME=localhost
+ set PATH=%PATH%;%OMNI_ROOT%\bin\x86_win32
+ set TEMP=C:\temp
+
+In rare cases, the host name or address settings of the machine may be incorrect, causing the name server to start incorrectly. Informing omniNames.exe of the correct IP can resolve this problem. Set the OMNIORB_USEHOSTNAME environment variable in the following way (the example assumes the host's IP is 192.168.0.11):
+
+ set cosnames="omninames"
+ set orb="omniORB"
+ set port=%1
+ set OMNIORB_USEHOSTNAME=192.168.0.11
+ set PATH=%PATH%;%OMNI_ROOT%\bin\x86_win32
+
+*** Start the sample components
+
+After starting the name server, start some suitable components. The OpenRTM-aist start menu folder contains a sub-folder called "Examples," which contains many components as shown below.
+
+
+#ref(win_start_menu_comps_en.png,80%,center)
+CENTER:''Sample component folder''
+
+Start the ConsoleInComp.exe and ConsoleOutComp.exe executables, causing two consoles to open.
+
+
+#ref(win_consoleinout_window_en.png,60%,center)
+CENTER:''The ConsoleIn component and the ConsoleOut component.''
+
+**** When the components don't start
+
+Sometimes the component consoles do not open. There are several possible causes for this, described below.
+
+***** The console opens and immediately closes
+
+There may be an error in the rtc.conf file, preventing the components from starting. Confirm the contents of the rtc.conf file in the Start Menu folder, called "rtc.conf for examples." For example, the corba.endpoint/corba.endpoints settings should match the host address of the current computer.
+
+Try creating a minimal rtc.conf, as below.
+
+ corba.nameservers: localhost
+
+***** The components terminate with a runtime error
+
+If the libraries are not correctly installed or the settings are incorrect, it can cause a runtime error. Try completely uninstalling OpenRTM-aist and re-installing it.
+
+*** Start RTSystemEditor (RTSE)
+
+RTSystemEditor can be started from the Start Menu: "OpenRTM-aist" >> "C++" >> "Tools" >> "RTSystemEditor."
+
+#ref(rtse_start_en.png,40%,center)
+CENTER: ''Starting RTSystemEditor''
+
+**** Browsing the name server
+
+Connect to the name server and browse the registered components. You can connect to a name server using the Name Service View on the left side of RTSystemEditor. Click the plug icon to connect to a name server and enter its address (localhost or localhost:2809) in the dialog box. The default port for omniNames is 2809. 
+
+
+#ref(rtse_connect_dialog_en.png,100%,center)
+CENTER: ''Connecting to a name server''
+
+The name server running on localhost will appear in the Name Service View. Open the tree branches by clicking the arrows to find the two components you started.
+
+#ref(rtse_ns_connected_ja.png,100%,center)
+CENTER: ''Components registered on the name server''
+
+**** Adding components to the system
+
+Open a system editor using the new system editor button in the toolbar &ref(rtse_open_editor_icon_ja.png);. The editor will open in the central pane. Drag the components &ref(rtse_rtc_icon.png); from the name service view into the editor.
+
+#ref(rtse_dnd_rtcs_en.png,80%,center)
+CENTER: ''Adding components to the system''
+
+**** Connecting and activating
+
+The OutPort of ConsoleIn0 is displayed on its right-hand side &ref(rtse_outport_icon.png);. Drag from this to the InPort on the ConsoleOut0 component &ref(rtse_inport_icon.png); to connect these data ports. The connection dialog will be displayed. Click "OK" to accept the defaults and connect the components.
+
+#ref(rtse_portconnect_en.png,80%,center)
+CENTER: ''Connecting data ports.''
+
+
+#ref(rtse_portconnect_dialog_en.png,80%,center)
+CENTER: ''Data port connection dialog.''
+
+A line indicating the connection will appear between the two ports. Next, click the "Activate All" button &ref(rtse_all_actevate_icon.png); in the toolbar. This will activate all components in the editor at once. Active components will appear green.
+
+#ref(rtse_actevated_all_ja.png,center)
+CENTER: ''Activated components.''
+
+After connecting the ports of ConsoleInComp and ConsoleOutComp, the terminal for ConsoleInComp will display:
+
+ Please input number: 
+
+Enter a number and press enter. This number should fit within a short int. Look at the ConsoleOutComp terminal. The number you entered should have been printed out. If this is the case, OpenRTM-aist is functioning correctly.
+
+**** If the start of RTSystemEditorRCP (RTSE) does not start
+
+If the following message appears and RTSystemEditorRCP (RTSE) does not start up, you need to install the 32-bit Java operating environment (JRE) or Java development environment (JDK).
+If you select JRE for change installation, it will be installed. To uninstall or change the program in the control panel, right click on OpenRTM - aist and select "Change".
+For JRE selection on the installer screen, [[OpenRTM-aist in 10 minutes!:/en/node/6140]] page.
+// [[Java download: http://java.com/en/download/manual.jsp]]
+
+#ref(Clipboard01.jpg,center)
+CENTER: ''RTSystemEditorRCP(RTSE) startup error''
+
+** Other samples
+
+Other sample components are included in the installed OpenRTM-aist. They can all be used in the same way as the above example.
+
+|ConsoleInComp.exe|Receive numbers from the console and send them over an OutPort. Connect it to ConsoleOutComp.exe to use.|
+|ConsoleOutComp.exe|Receive numbers over an InPort and print them in a console. Connect it to ConsoleInComp.exe to use.|
+|SequenceInComp.exe|A component to output various simple data types (short, long, float, double, and sequences). Connect it to SequenceOutComp.exe to use.|
+|SequenceOutComp.exe|Display various simple data types received over an InPort. Connect it to SequenceInComp.exe to use.|
+|MyServiceProviderComp.exe|Provides a simple service, MyService. Connect it to MyServiceConsumerComp.exe to use.|
+|MyServiceConsumerComp.exe|Consumes a simple service, MyService. Connect it to MyServiceProviderComp.exe to use.|
+|ConfigSampleComp.exe|Sample demonstrating configuration parameters. Modify the configuration parameters in RTSystemEditor or with rtconf to see the effect.|
+|USBCameraAcquireComp.exe|Connect to a USB camera and acquire images, sending them over an OutPort. Use it with USBCameraMonitor.exe.|
+|USBCameraMonitor.exe|Receive images over an InPort and display them on screen. Use it with USBCameraAquire.exe.|

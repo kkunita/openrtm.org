@@ -1,0 +1,167 @@
+﻿// Title: Installation on Vine Linux
+#contents
+#ref(vine_logo_en.png,around,right,80%,nolink)
+RPM packages are provided for installing the C++ edition of OpenRTM-aist in Vine Linux. The supported distribution versions are listed on the download page. The corresponding versions may change or be discontinued without notice.
+
+There are two methods of installation available:
+
+-Use the provided install script.
+-Install via the apt-get package manager.
+
+** Vine Linux batch installation script
+//**Install script
+
+Download the installation script '' pkg_install [version number] _vine.sh '' provided by openrtm.org from the download page and execute it with root privilege.
+This script installs required packages sequentially with apt-get.
+
+- [[Package installation script:http://www.openrtm.org/pub/OpenRTM-aist/cxx/install_scripts/]]
+
+It is very convenient because it installs all necessary packages for developing and executing OpenRTM-aist. It is recommended for those who try installing OpenRTM-aist for the first time.
+However, since all the packages related to OpenRTM - aist are installed, there is a possibility that even unnecessary ones are installed. If you know more, you should install it manually.
+Below is the installation procedure using the batch installation script.
+
+//Download the appropriate build script for your distribution ("pkg_install[version]_vine.sh") from the download page and execute it with root permissions. This script will automatically install the necessary dependencies using apt-get.
+
+//This script is convenient for installing the many packages necessary for developing and executing OpenRTM-aist-based systems. It is recommended that first-time users of OpenRTM-aist use it. However, it installs all packages that may be needed for working with OpenRTM-aist, which may include packages that you do not specifically need. Experienced users of OpenRTM-aist should use another installation method.
+
+//The procedure for using the script is described below.
+
+ > wget [pkg_installXXX.sh download URL]
+ > su
+ # sh pkg_install1XX_vine.sh
+ // Questions will be asked during the procedure. Answer "y" or "Y" when appropriate.
+
+**Using rpm
+
+***Editing sources.list
+
+A package repository that can be used from apt-get is provided by openrtm.org. This is not included in the default package repositories, so it must be entered into the apt-get settings manually. Append one of the following lines to the file /etc/apt/sources.list:
+
+ rpm http://www.openrtm.org/pub/Linux/Vine/apt x.x/$(ARCH) main
+
+where "x.x" is the Vine version number, e.g. 5.0 for Vine 5.0.
+
+ rpm http://www.openrtm.org/pub/Linux/Vine/apt 5.0/$(ARCH) main
+
+After editing sources.list, follow the procedure given below to install.
+
+ > su
+ # apt-get update
+ # apt-get install gcc-c++ python
+ # apt-get install omniORB omniORB-devel omniORB-servers omniORB-doc
+ # apt-get install e2fsprogs e2fsprogs-devel
+ # apt-get install OpenRTM-aist OpenRTM-aist-devel OpenRTM-aist-doc OpenRTM-aist-example
+
+Answer "y" or "Y" to questions as appopriate.
+
+***Checking the install
+
+To confirm the installation succeeded, use the following command.
+
+ # rpm -q OpenRTM-aist
+ OpenRTM-aist-1.0.0-0.vl50
+
+**Package details
+
+***OpenRTM-aist
+openrtm-aistcontains the run-time libraries and commands.
+
+-Sample configuration file
+ /etc/rtc.conf.sample
+
+-Libraries
+ /usr/lib/libRTC-1.0.0.so.0
+ /usr/lib/libRTC-1.0.0.so.0.0.4
+ /usr/lib/libRTC.a
+ /usr/lib/libRTC.la
+ /usr/lib/libRTC.so
+ /usr/lib/libcoil.a
+ /usr/lib/libcoil.la
+ /usr/lib/libcoil.so
+ /usr/lib/libcoil.so.0
+ /usr/lib/libcoil.so.0.0.0
+
+***OpenRTM-aist-devel
+openrtm-aist-dev contains the commands and headers necessary for development with OpenRTM-aist.
+
+-Commands
+ /usr/bin/coil-config
+ /usr/bin/rtc-template
+ /usr/bin/rtcd
+ /usr/bin/rtcprof
+ /usr/bin/rtm-config
+ /usr/bin/rtm-naming
+ /usr/bin/rtm-skelwrapper
+
+-Headers
+ /usr/include/coil/Allocator.h
+ /usr/include/coil/Async.h
+ ...
+ /usr/include/coil/memory.h
+ /usr/include/coil/stringutil.h
+ ...
+ /usr/include/rtm/BufferBase.h
+ /usr/include/rtm/BufferStatus.h
+ ...
+ /usr/include/rtm/Typename.h
+ /usr/include/rtm/config_rtc.h
+
+-IDL, stubs and skeletons
+ /usr/include/rtm/idl/BasicDataType.hh
+ /usr/include/rtm/idl/BasicDataType.idl
+ ...
+ /usr/include/rtm/idl/device_interfaces/RFID.idl
+ /usr/include/rtm/idl/device_interfaces/Ranger.idl
+
+-Libraries
+ /usr/lib/OpenRTM-aist/py_helper/README_gen.py
+ /usr/lib/OpenRTM-aist/py_helper/README_gen.pyc
+ ...
+ /usr/lib/OpenRTM-aist/py_helper/yat.pyc
+ /usr/lib/OpenRTM-aist/py_helper/yat.pyo
+ /usr/lib/pkgconfig/libcoil.pc
+ /usr/lib/pkgconfig/openrtm-aist.pc
+
+
+***OpenRTM-aist-doc
+openrtm-aist-doc contains the class reference and IDL interfaces reference.
+
+-Class reference
+ /usr/share/OpenRTM-aist/docs/ClassReference/html/ConnectorBase_8h-source.html
+ /usr/share/OpenRTM-aist/docs/ClassReference/html/RTC_8h.html
+ ...
+ /usr/share/OpenRTM-aist/docs/ClassReference-en/html/ConnectorBase_8h-source.html
+ /usr/share/OpenRTM-aist/docs/ClassReference-en/html/RTC_8h.html
+ ...
+ /usr/share/OpenRTM-aist/docs/ClassReference-en/html/FactoryInit_8h-source.html
+
+-IDL reference
+ /usr/share/OpenRTM-aist/docs/IDLReference/html/BasicDataType_8idl-source.html
+ ...
+ /usr/share/OpenRTM-aist/docs/IDLReference-en/html/BasicDataType_8idl-source.html
+ /usr/share/OpenRTM-aist/docs/IDLReference-en/html/structRTC_1_1FsmProfile.html
+ ...
+ /usr/share/OpenRTM-aist/docs/IDLReference-en/html/interfaceOpenRTM_1_1InPortCdr-members.html
+
+***OpenRTM-aist-example
+openrtm-aist-example contains standalone and loadable sample RT Components and their source files.
+
+-Sample standalone components
+ /usr/share/OpenRTM-aist/examples/ConsoleOutComp
+ /usr/share/OpenRTM-aist/examples/ConsoleInComp
+ ...
+
+-Sample source files
+ /usr/share/OpenRTM-aist/examples/src/Composite/README.Motor
+ /usr/share/OpenRTM-aist/examples/src/Composite/Makefile.Sensor
+ /usr/share/OpenRTM-aist/examples/src/Composite/Motor.cpp
+ ...
+ /usr/share/OpenRTM-aist/examples/src/SimpleService/Makefile.MyServiceProvider
+ /usr/share/OpenRTM-aist/examples/src/SimpleService/rtc.conf
+
+-Sample loadable components
+ /usr/share/OpenRTM-aist/examples/rtcs/MyServiceConsumer.so.0.0.0
+ /usr/share/OpenRTM-aist/examples/rtcs/SeqIn.so.0.0.0
+ ...
+ /usr/share/OpenRTM-aist/examples/rtcs/ConfigSample.so.0.0.0
+ /usr/share/OpenRTM-aist/examples/rtcs/ConsoleOut.so.0.0.0

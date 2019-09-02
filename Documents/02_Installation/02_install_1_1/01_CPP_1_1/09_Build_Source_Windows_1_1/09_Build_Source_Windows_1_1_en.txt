@@ -1,0 +1,141 @@
+﻿// Title: Building from source in Windows
+If you want to use the OpenRTM-aist itself after adding it in Windows, you can build the source package for Windows yourself. This section explains how to acquire the source from the download page or repository and build OpenRTM-aist on Windows.
+
+Various knowledge on Windows such as setting up environment and building installer is required for build of OpenRTM-aist.
+Reader for this document is programmers who have basic knowledge for software development and building installer on Windows.
+
+
+#contents
+
+**Source code for Windows
+
+The source package for Windows is distributed separately from the source package for Linux. Although the actual source code is the same, the Windows source package contains the following:
+
+-Shift-JIS character encoding (Linux uses EUC).
+-A Visual Studio solution.
+-Visual C++ project files.
+-An environment to create an MSI installer package.
+
+***Source code organisation
+
+As shown in the diagram, the original source code is contained in a Subversion repository. From this, on Linux the following packages are created:
+
+-Linux/Unix source code distribution package.
+-Windows source code distribution package.
+
+#ref(openrtm_src_dist_en.png,70%,center,nolink)
+CENTER:''OpenRTM-aist source code organisation''
+
+To use source obtained from the repository on Windows, you must first make a source package in Linux.
+
+**Build environment
+
+The following environments and tools are necessary:
+
+-Visual C++ (or Visual C++ Express Edition)
+-omniORB
+
+*** Visual C++/Visual Studio
+
+In order to build the binary for Windows, the Visual C++ development environment is necessary.
+Currently supported Visual C++ is Visual C++ 2008, 2010, 2012, 2012, 2013.
+
+Visual C ++ Express Edition is a C++ development environment provided free of charge by Microsoft and MFC and ATL can not be used, but you can develop Windows applications (Win32 applications).
+Even in component development using OpenRTM-aist, components that do not use MFC, ATL, etc. can be developed only with Visual C++ Express Edition.
+Please download and install the ISO image from the link below, obtain the Microsoft Live ID and obtain the license (free).
+
+- [[Visual Studio download:https://www.visualstudio.com/ja/downloads/]]
+
+
+*** omniORB
+To build OpenRTM-aist, you need a library of omniORB 4.1.7 (as of March 31, 31/31).
+Prepared binary packages provided by openrtm.org are provided at the following link.
+Please download the appropriate one according to the environment and deploy it to the appropriate place (assuming C: \ distribution \ omniORB in the following).
+
+- [[binary package provided by openrtm.org:http://openrtm.org/pub/omniORB/win32/omniORB-4.1.7/]]
+
+
+**** Environment variable: OMNI_ROOT
+
+The OMNI_ROOT environment variable must be set. The directory structure of the location this points to must be as follows.
+
+ <OMNI_ROOT>
+  + bin
+  |  + scripts
+  |  + x86_win32
+  + idl
+  |  + COS
+  + include
+  |  + COS
+  |  + omniORB4
+  |  |  + internal
+  |  + omnithread
+  |  + omniVms
+  + lib
+  |  + python
+  |  |  + omniidl
+  |  |  + omniidl_be
+  |  |     + cxx
+  |  |        + dynskel
+  |  |        + header
+  |  |        + impl
+  |  |        + skel
+  |  + x86_win32
+
+
+*** WiX
+&color(red){1.1.1-RELEASE version does not maintain installer creation code included in source. };
+
+WiX (Windows Installer XML) is an open source project aiming to create Windows msi installer with command line based tools.
+
+- [[WiX official:http://wixtoolset.org/]]
+- [[WiX download page:http://wixtoolset.org/releases/]]
+
+OpenRTM-aist creates an installer for Windows using WiX.
+Please install WiX beforehand when creating up to the installer.
+
+
+*** Python
+Python 2.7 is required because some Python scripts are used during the build.
+Please obtain the latest version from the following site and install it.
+
+- [[Python Official Website:https://www.python.org/]]
+
+When launching the installer, there are some parts to select in the wizard,
+You can install by default.
+
+
+**Downloading a source package
+
+Download an appropriate source package, named similar to OpenRTM-aist-X.X.X-win32.zip, and extract it to a suitable location.
+
+-[[OpenRTM-aist-1.1.1-win32.zip:http://www.openrtm.org/pub/OpenRTM-aist/cxx/1.1.1/OpenRTM-aist-1.1.1-win32.zip]]
+
+*** Fix batch file
+
+The top of build.bat has the following part. Please check whether these are set to appropriate values respectively. &br;
+For the setting of ARCH and VC_VERSION, see the description in this batch file.
+
+ set RTM_ROOT=%~dp0
+ set COIL_ROOT=%RTM_ROOT%\coil
+ set OMNI_ROOT=C:\distribution\omniORB-4.1.7-win64-vc12
+ if not DEFINED ARCH       set ARCH=x86_64
+ if not DEFINED VC_VERSION set VC_VERSION=12
+ if not DEFINED PYTHON_DIR set PYTHON_DIR=C:\Python27_x64
+
+
+** Build
+
+Once your environment has been set up as above, you can build OpenRTM-aist. Execute autobuild_vc8.bat (for VC2005) or autobuild_vc9.bat (for VC2008), and the build should automatically start.
+
+You can also build from a solution file. Open the OpenRTM-aist_vc8.sln (for VC2005) or OpenRTM-aist_vc9.sln (for VC2008) and build it.
+
+** Installing
+
+Once everything has built successfully, install it using the following procedure.
+
+-Set the RTM_ROOT environment variable to the OpenRTM-aist directory.
+-Copy the DLL files into a directory included in the PATH environment variable. Alternatively, add %RTM_ROOT%\bin to the PATH environment variable.
+-Adding %RTM_ROOT%\utils\rtc-template to the PATH environment variable is also recommended.
+
+This completes the installation of OpenRTM-aist.

@@ -1,0 +1,79 @@
+This sample is bundled to the C++ edition, the Python edition, and the Java
+edition of OpenRTM-aist. 
+
+#contents
+
+**Introduction
+
+In this sample, we will create two components with data ports, and try to
+send and receive data between two components. You will connect the two
+components with RTSystemEditor or Connector.
+
+#br
+
+**Screen shots 
+
+
+#ref(java_simpleio0_en.png,center,70%)
+CENTER:''Example to run SimpleIO(RTSystemEditor)''
+#br
+#br
+
+
+#ref(open_simpleIO_en.png,60%,center)
+CENTER:''Example to run SimpleIO''
+#br
+
+**Execution of RT-Component
+
+This is a sample that transmits data by using the data port. 
+ConsoleIn sends ConsoleOut the input numerical value via the data port.
+ConsoleOut displays the numerical value. Please input the numerical value
+from the screen of ConsoleIn. Then, ConsoleOut displays the numerical value
+that you input to ConsoleIn. 
+
+#br
+
+- Use Connector.
+-- Run ConsoleIn component and ConsoleOut component, then each sample
+component starts.The start of the component is different according to OS and
+the edition of OpenRTM-aist. Please refer to the following tables. 
+|LEFT:40|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c
+||>|CENTER:Windows|>|CENTER:Linux|
+||ConsoleIn component|ConsoleOut component|ConsoleIn component|ConsoleOut component|
+|C++|ConsoleInComp.exe|ConsoleOutComp.exe|ConsoleInComp|ConsoleOutComp|
+|Python |ConsoleIn.py|ConsoleOut.py|ConsoleIn.py|ConsoleOut.py|
+|Java|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.sh|ConsoleOut.sh|
+-- Start Connector.bat.The start of Connector is also different according to
+OS and the edition of OpenRTM-aist. Please refer to the following tables. 
+|LEFT:40|LEFT:120|LEFT:120|c
+||CENTER:Windows|CENTER:Linux|
+|C++|Connector.exe|Connector|
+|Python|Connector.py|Connector.py|
+|Java|Connector.bat|Connector.sh|
+-- ConsoleIn display "Please input number:"
+-- The input numeric values of ConsoleIn are displayed in ConsoleOut screen. 
+#br
+
+- Use RTSystemEditor
+-- Start RTSystemEditor.
+-- Run ConsoleIn component and ConsoleOut component, then each sample
+component starts.The start of the component is different according to OS and
+the edition of OpenRTM-aist. Please refer to the following tables. 
+|LEFT:40|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c
+||>|CENTER:Windows|>|CENTER:Linux|
+||ConsoleIn component|ConsoleOut component|ConsoleIn component|ConsoleOut component|
+|C++|ConsoleInComp.exe|ConsoleOutComp.exe|ConsoleInComp|ConsoleOutComp|
+|Python |ConsoleIn.py|ConsoleOut.py|ConsoleIn.py|ConsoleOut.py|
+|Java|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.sh|ConsoleOut.sh|
+-- Both components are displayed on NameServiceView of RTSystemEditor. To
+add a RTcomponent to the System Editor from the Name Service View into the
+System Editor.
+-- Drag and drop between two ports to connect them.ÅiSee a imageSimpleIOÅj
+-- RTcomponents change Activate.
+-- ConsoleIn display "Please input number:"
+-- The input numeric values of ConsoleIn are displayed in ConsoleOut screen. 
+
+#br
+#br
+

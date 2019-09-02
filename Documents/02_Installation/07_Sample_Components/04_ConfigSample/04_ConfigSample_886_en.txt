@@ -1,0 +1,56 @@
+This sample is bundled to the C++ edition, the Python edition, and the Java
+edition of OpenRTM-aist.
+#contents
+**Introduction
+This sample shows how to use configuration set for RT-Components. Once you
+launch ConfigSample component, its sample component starts up. Once the
+component launches successfully, its configuration set has been set up on
+ahead. You may confirm the configuration by RTSystemEditor.
+
+Note: If an error "Specified path cannot be found." occurs, modify the value
+of "example.ConfigSample.config_file" in rtc.conf file under
+RTMExamples/ConfigSample directory.
+
+-Rewrite the path to:
+ .\\RTMExamples\\ConfigSample\\configsample.conf
+ 
+ (Any characters between folder names are represented by '\' and not '\\'.)
+
+-Or rewrite it to the full path of "configsample.conf". In this case, you
+need to specify '\\' as a folder separator, as well.
+
+#br
+
+**Screen shots
+
+
+#ref(ConfigSample_example_rtse_en.png,50%,center)
+
+CENTER:''Example to run ConfigSample''
+#br
+#br
+**Execution of RT-Component
+This sample keeps displaying the data set of ConfigrationSet set on ConfigrationView of RTSystemEditor in the prompt. 
+- You can execute this sample with the following procedures.
+-- Start RTSystemEditor.
+-- Run ConfigSample.The start of the component is different according to OS
+and the edition of OpenRTM-aist. Please refer to the following tables.
+|LEFT:110|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c
+||CENTER:Windows|CENTER:Linux|
+|C++|ConfigSampleComp.exe|ConfigSampleComp|
+|Python|ConfigSample.py|ConfigSample.py|
+|Java|ConfigSample.bat|ConfigSample.sh|
+-- Both components are displayed on NameServiceView of RTSystemEditor. To
+add a RTcomponent to the System Editor from the Name Service View into the
+System Editor
+
+#br
+
+- The sample can be operated with the following procedures. 
+-- Select ConfigrationSet Default, Mode0 and Mode1 in ConfigrationView of
+RTSystemEditor.
+-- Change value and click Apply Button.
+
+#br
+
+

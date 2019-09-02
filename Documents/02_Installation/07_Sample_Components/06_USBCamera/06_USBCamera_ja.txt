@@ -1,0 +1,52 @@
+//&br;
+#contents
+
+//**USBCamera 
+このサンプルは、OpenRTM-aist の C++版 Windowsインストーラ に同梱されています。
+OpenRTM-aist の C++版 Linuxパッケージ、Python版、Java版  には同梱されていませんのでご注意ください。
+
+&br;
+***概要 
+USBCameraAqcuireComp、USBCameraMonitorCompを起動することで、USBカメラの画像をモニタに表示します。画像処理を行うOpenCVサンプルRTCコンポーネントを接続し、エフェクトをかけられます。
+
+#br
+
+&br;
+***起動画面 
+
+#br
+
+#ref(USBCamera_example.png,60%,center)
+CENTER:''USBCameraAqcuireコンポーネントとUSBCameraMonitorコンポーネントの実行例''
+
+#br
+
+#ref(USBCamera_example_rtse_ja.png,60%,center)
+CENTER:''USBCamera実行例(RTSystemEditor)''
+
+#br
+
+#ref(CaptureImage.png,60%,center)
+CENTER:''USBCamera実行例(モニタ)''
+
+#br
+
+&br;
+***使い方
+USBCameraはUSBCameraAqcuireCompコンポーネントでUSBカメラの画像データを取得し、USBCameraMonitorCompコンポーネントでモニタ上に表示するサンプルです。OpenCVのRTサンプルコンポーネントを間に接続し、画像データにエフェクトをかけることもできます。
+
+--※使用するUSBカメラのドライバもインストールしてください。
+--※USBカメラを使用する場合、[[OpenCV>http://downloads.sourceforge.net/opencvlibrary/OpenCV_1.0.exe?modtime=1161287502&big_mirror=1]]をインストールしてください。
+--※OpenCVサンプルRTコンポーネントを使用する場合、[[こちらのインストーラ>http://www.openrtm.org/OpenRTM-aist/download/ROBOMEC2009/OpenCV_RTC-1.0_vc9_jp.msi]](VC2008用)からインストールしてください。
+
+#br
+
+- 手順
+-- RTSystemEditorを起動し、SystemEditorを用意します。→RTSystemEditorの使用方法の詳細については[[RTSystemEditor >/node/1175]]を参照
+-- USBCameraAqcuireCompとUSBCameraMonitorCompの両コンポーネントを起動します。
+---OpenCVサンプルRTコンポーネントを使用する場合は、インスストール後、スタート＞OpenRTM-aist>python>examplesから起動してください。
+-- RTSystemEditorのNameServiceViewにこれらのコンポーネントが現れるので、二つともSystemEditor上にドラッグします。
+-- 両コンポーネントの対応ポートを結びます。（上図RTSystemEditor実行例を参照）
+-- どちらかのコンポーネントを右クリックし、「All Activate」を選択します。
+
+
