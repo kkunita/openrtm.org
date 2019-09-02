@@ -1,0 +1,174 @@
+﻿// Title: ソースからのビルド (Windows編)
+OpenRTM-aist 本体に手を加えたうえで Windows 上で利用したい場合は、Windows 用ソースパッケージを自分でビルドするができます。 ここでは、ダウンロードページやリポジトリからソースを取得し Windows 上で OpenRTM-aist をビルドする方法を解説します。
+
+Windows 上での OpenRTM-aist のビルドは、環境の整備やインストーラの作成など、Windows 上での様々な知識が必要となります。 本ドキュメントは、Windows 上でのプログラム開発やバッチファイル等の基本的な知識がある方を対象としています。
+
+#contents
+
+//------------------------------------------------------------
+**Windows 用ソースコード
+
+Windows 用の OpenRTM-aist (C++版) ソースパッケージは Linux 用のソースとは別に配布されています。 ソースコードの内容は全く同じですが、以下の部分が異なっています。
+
+文字コード (Windows: Shift-JIS、Linux: EUC)
+Visual Studio のソリューションを含む
+Visual C++ のプロジェクトファイルを含む
+msi インストーラ作成環境を含む
+
+***ソースコードの構成
+
+図に示すように、オリジナルは subversion リポジトリのソースコードで、そのソースコードから、Linux上で、
+
+-Linux/Unix 用ソースコード配布パッケージ
+-Windows 用ソースコード配布パッケージ
+
+の2種類を作成する構成になっています。
+
+#ref(openrtm_src_dist_ja.png,/ja/node/793,70%,center,nolink)
+CENTER:''OpenRTM-aist のソースの構成''
+
+
+リポジトリから取得した最新のソースコードを Windows で利用する場合は、一旦 Linux で Windows 用のソースコードを生成する必要があります。
+
+//------------------------------------------------------------
+**ビルド環境
+
+ビルドに必要な環境、ライブラリは以下の通りです。
+
+-Visual C++
+-omniORB
+
+**** Visual C++/Visual Studio
+Windows 用のバイナリをビルドするためには、Visual C++ 開発環境が必要です。
+現在対応している Visual Studio は Visual C++ 2008、2010、2012、2013、2015、2017、2019 です。
+
+Visual Studio CommunityはMicrosoftが無償で提供する統合開発環境で、C++、C#、F#、Java、Python等多数の言語のプログラムを開発できます。
+Community版は有償のProfessional版とほぼ同等の機能ですが、個人開発者、大学関係者、非営利団体従事者、オープンソース開発者、開発者5名以下の中小企業以外は使用できません。
+
+以下の
+
+- [[Visual Studioのインストール手順:/ja/node/6649]]
+
+*** omniORB
+
+OpenRTM-aistのビルドにはomniORB 4.2.3 (2019/05/17現在) のライブラリが必要です。
+openrtm.org が提供するビルド済みバイナリパッケージを下記リンク先に用意してあります。
+環境に合わせて適切なものをダウンロードし、適当な場所 (以下では C:\workspace\omniORB を仮定) に展開してください。
+
+-[[openrtm.org提供バイナリパッケージ:http://openrtm.org/pub/omniORB/win32/]]
+
+
+**** 環境変数: OMNI_ROOT
+OMNI_ROOT に設定したディレクトリー以下は以下のような構造になっている必要があります。
+
+ <OMNI_ROOT>
+  + bin
+  |  + scripts
+  |  + x86_win32
+  + idl
+  |  + COS
+  + include
+  |  + COS
+  |  + omniORB4
+  |  |  + internal
+  |  + omnithread
+  |  + omniVms
+  + lib
+  |  + python
+  |  |  + omniidl
+  |  |  + omniidl_be
+  |  |     + cxx
+  |  |        + dynskel
+  |  |        + header
+  |  |        + impl
+  |  |        + skel
+  |  + x86_win32
+  + include
+  |  + COS
+  |  + omniORB4
+  |  + omnithread
+  |  + omniVms
+
+
+*** OpenSSL
+
+OpenRTM-aistのビルドにはOpenSSL 1.1.0 (2019/05/17現在) のライブラリが必要です。
+openrtm.org が提供するビルド済みバイナリパッケージを下記リンク先に用意してあります。
+環境に合わせて適切なものをダウンロードし、適当な場所 (以下では C:\workspace\OpenSSL を仮定) に展開してください。
+
+-[[openrtm.org提供バイナリパッケージ:https://openrtm.org/pub/OpenSSL/]]
+
+**** 環境変数: SSL_ROOT
+SSL_ROOT に設定したディレクトリー以下は以下のような構造になっている必要があります。
+
+ <SSL_ROOT>
+  + bin
+  |  + scripts
+  |  + x86_win32
+  + lib
+  |  + engines-1_1
+  + include
+  |  + openssl
+
+*** Python
+ビルドの途中でいくつかの Python スクリプトを利用するので Python 2.7 が必要になります。
+以下のサイトから最新のものを取得しインストールしてください。
+
+-[[Python Official Website:https://www.python.org/]]
+
+インストーラーを起動すると、ウィザードで幾つか選択する部分がありますが、
+デフォルトのままでインストールしてかまいません。
+
+** ソースパッケージの取得
+
+まずソースコード OpenRTM-aist-1.2.0-win32.zip をダウンロードし、適当なディレクトリーに展開します。
+
+- [[OpenRTM-aist 1.2.0:https://github.com/OpenRTM/OpenRTM-aist/releases/tag/v1.2.0]]
+
+
+** バッチファイルの修正
+
+build.batを実行するとビルドが始まりますが、その前にバッチファイルの''OMNI_ROOT''、''SSL_ROOT''を環境に合わせて変更してください。
+
+ set OMNI_ROOT=C:\workspace\omniORB-4.2.3-win64-vc141
+ set SSL_ROOT=C:\workspace\OpenSSL\build
+
+また以下の環境変数の設定を行います。
+
+
+ set VC_VERSION=141
+ set ARCH=x86_64
+ set PYTHON_DIR=C:\python27
+ set OMNI_VERSION=4.2.3
+ set OMNITHREAD_VERSION=4.1
+
+OMNI_ROOT、SSL_ROOTは前述の通りビルド済みバイナリパッケージを配置したパスを指定する。
+VC_VERSIONは対応するVisual Studioのバージョンを指定する。
+
+|Visual Studio 2008|9|
+|Visual Studio 2010|10|
+|Visual Studio 2012|11|
+|Visual Studio 2013|12|
+|Visual Studio 2015|14|
+|Visual Studio 2017|141|
+
+ARCHには32bitバイナリを作成する場合はx86、64bitバイナリを作成する場合はx86_64を設定する。
+PYTHON_DIRにはPythonをインストールしたパスを指定する。
+
+OMNI_VERSION、OMNITHREAD_VERSIONには対応するomniORB、omniThreadのバージョンを設定する。
+
+またCommunity版以外のVisual Studioを使用する場合はvcvarsallを実行しておく必要がある。
+
+ call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
+
+** ビルド
+以上の準備が完了したら、ビルドを行います。build.bat をダブルクリックし、起動すれば自動でビルドが始まります。
+
+** インストール
+すべてが正しくビルドできたら次のことを行い、インストールを完了させます。
+
+-''環境変数 RTM_ROOT を設定'': OpenRTM-aist のディレクトリーを環境変数 RTM_ROOT に設定してください。
+- ''DLL へのパスを通す'': DLL をパスの通った場所にコピーする、あるいは、環境変数 PATHに%RTM_ROOT%\bin を追加します。
+
+
+以上で、OpenRTM-aist のインストールは終了です。

@@ -1,0 +1,4 @@
+﻿// Title: OpenRTM-aist 1.2系のインストール
+- [[C++版 1.2系>/ja/node/6600]]
+- [[Python版 1.2系>/ja/node/6601]]
+- [[Java版 1.2系>/ja/node/6602]]
