@@ -1,0 +1,5 @@
+﻿// Title: OpenRTM-aist (Java版) 1.1系のインストール
+ここでは OpenRTM-aist (JAVA) のUNIX へのインストール方法を説明します。 ※以降の説明は便宜上 OpenRTM-aist-1.1.0 について書かれています。
+//OpenRTM-aist-0.4.x についても同様の手順でインストールできます。&br;
+
+
