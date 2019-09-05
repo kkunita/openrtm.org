@@ -1,4 +1,4 @@
-﻿// Title: RTSystemEditor のインストール
+﻿// Title: RTSystemEditorのインストール
 #contents
 ** RTSystemEditor とは
 RTSystemEditor は、OpenRTM-aist に含まれる開発ツールの１つであり、RTC をリアルタイムにグラフィカル操作する機能を持っています。また、Eclipse 統合開発環境のプラグインとして作成されており、Eclipse 上にて既存のプラグインとシームレスに操作を行うことができます。
