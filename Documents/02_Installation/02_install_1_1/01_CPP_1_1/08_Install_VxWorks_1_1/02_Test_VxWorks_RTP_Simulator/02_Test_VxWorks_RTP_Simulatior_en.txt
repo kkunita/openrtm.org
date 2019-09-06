@@ -1,0 +1,165 @@
+﻿// Title: OpenRTM-aist operation confirmation (VxWorks, RTP, when using a simulator)
+#contents
+
+This page explains the procedure for checking the operation of RTC real-time process (RTP) built for VxWorks using the Workbench simulator.
+//このページでは、Workbenchのシミュレータを用いてVxWorks用にビルドしたRTCのリアルタイムプロセス(RTP)の動作確認を行う手順を説明します。
+
+** (G)Setting up the simulator
+//** シミュレータの設定
+
+Follow the procedure below to set up the simulator.
+//以下の手順でシミュレータの設定を行ってください。
+
+- [[Setting up VxWorks simulator>/en/node/6378]]
+//-  [[VxWorksシミュレータの設定>/ja/node/6378]]
+
+** (G)Simulator connection
+//** シミュレータの接続
+
+After selecting the simulator with Workbench Remote System, press connect 'xxxxx' button to connect with the simulator.
+//WorkbenchのRemote Systemでシミュレータを選択後にconnect 'xxxxx'ボタンを押すとシミュレータと接続します。
+
+
+#br
+
+#ref(sim5.png,　/ja/node/6374, left)
+
+#br
+
+
+
+** (G)RTC execution
+*** (G)Launch Name Server
+//** RTC実行
+//*** ネームサーバー起動
+
+Start the name server on the VxWorks simulator.
+Since the name server starts up as a real time process (RTP), right click on the simulator from Remote Systems and click ''Run'' → ''VxWorks Real Time Process''.
+//VxWorksシミュレータ上にネームサーバーを起動します。
+//ネームサーバーはリアルタイムプロセス(RTP)として起動するため、Remote Systemsからシミュレータを右クリックして''Run''→''VxWorks Real Time Process''をクリックしてください。
+
+#br
+
+#ref(rtp.png,　/ja/node/6374, left)
+
+#br
+
+Please make various settings from the Launch Context tab of the Run Configurations window.
+//Run ConfigurationsウインドウのLaunch Contextタブから各種設定を行ってください。
+
+- Set up the system to run as a simulator
+- Path setting for omniNames.out
+- Setting command line arguments
+//- 実行するシステムをシミュレータに設定
+//- omniNames.outのパス設定
+//- コマンドライン引数の設定
+
+omniNames.out is generated in the omniORB build directory.
+If ''libc.so. '' does not exist in the path of the shared library, you will get an error, please copy it from the Workbench to the omniNames.out directory.
+//omniNames.outはomniORBのビルドディレクトリに生成されています。
+//共有ライブラリのパスに''libc.so.1''が無い場合はエラーとなるため、WorkbenchからomniNames.outのディレクトリにコピーしてください。
+
+ cp $WIND_BASE/target/lib/usr/root/SIMPENTIUMgnu/bin/libc.so.1 /home/openrtm/omniORB-4.2.2/bin/simpentium_vxWorks_RTP_6.9/
+
+If you can not build RTP, do not start the name server in VxWorks, but register RTC on the name server on Ubuntu.
+//RTPについてビルドできない場合は、VxWorksでネームサーバーは起動せずにUbuntu上のネームサーバーにRTCを登録するようにしてください。
+
+- Example：/home/openrtm/omniORB-4.2.2/bin/simpentium_vxWorks_RTP_6.9/omniNames.out
+
+Arguments is the port number of the name server.
+//Argumentsにはネームサーバーのポート番号を指定します。
+
+- Example：-start 2809
+
+After setting is completed, click the [Run] button to start the name server.
+//設定が完了後にRunボタンをクリックするとネームサーバーが起動します。
+
+
+#br
+
+#ref(nameserver.png,　/ja/node/6374, left)
+
+#br
+
+
+
+
+*** (G)Starting RTC
+//*** RTCの起動
+
+Run rtcd.vxe in the same procedure as starting name server.
+rtcd.vxe is generated under utils / rtcd in the OpenRTM-aist build directory.
+//ネームサーバーの起動と同じ手順でrtcd.vxeを実行します。
+//rtcd.vxeはOpenRTM-aistのビルドディレクトリのutils/rtcd以下に生成されています。
+
+
+- Example(ConsoleIn)：/home/openrtm/OpenRTM-aist/build_vxworks/examples/SimpleIO/ConsoleIn.vxe
+- Example(ConsoleOut)：/home/openrtm/OpenRTM-aist/build_vxworks/examples/SimpleIO/ConsoleOut.vxe
+
+You do not need to enter anything in Arguments, but add ''- o corba.nameservers:192.168.200.254'' to Arguments to start Ubuntu side name server.
+Please check the IP address of Ubuntu's tap 0 interface as appropriate.
+//Argumentsには何も入力しなくても大丈夫ですが、Ubuntu側のネームサーバーを起動する場合は、Argumentsに''-o corba.nameservers:192.168.200.254''を追加してください。
+//Ubuntuのtap0インターフェースのIPアドレスは適宜確認してください。
+
+
+
+Please check if RTC started in RT system editor started by Ubuntu.
+To the VxWorks name server, click the name service connection button, specify the IP address in the displayed window and click OK to connect.
+//Ubuntuで起動したRTシステムエディタでRTCが起動したかを確認してください。
+//VxWorksのネームサーバーにはネームサービス接続ボタンをクリック後、表示されたウインドウでIPアドレスを指定してOKをクリックすると接続します。
+
+
+#br
+
+#ref(ns1.png,　/ja/node/6374, left)
+
+#br
+
+
+#br
+
+#ref(ns2.png,　/ja/node/6374, left)
+
+#br
+
+Please check if the RTC started is registered.
+//起動したRTCが登録されているかを確認してください。
+
+
+#br
+
+#ref(ns3.png,　/ja/node/6374, left)
+
+#br
+
+Procedures such as RTC connection, activation, etc. are the same as when checking operation with Ubuntu.
+//RTCの接続、アクティブ化等の手順はUbuntuで動作確認する場合と同じです。
+
+- [[Operation check (Linux version)>/en/node/789]]
+//-  [[動作確認 (Linux編)>/ja/node/789]]
+
+*** (G)On command line operation
+//*** コマンドラインによる操作について
+
+After connecting the simulator, you can enter commands from the Target Console window.
+//シミュレータ接続後にTarget Consoleウインドウからコマンド入力ができます。
+
+
+#br
+
+#ref(sim6.png,　/ja/node/6374, left)
+
+#br
+
+The operation of RTC can be confirmed with the following command.
+Please change the path of Workbench, omniORB, openRTM-aist accordingly.
+//以下のコマンドでRTCの動作確認ができます。
+//Workbench、omniORB、openRTM-aistのパスは適宜変更してください。
+
+ cd "/home/openrtm/openrtm-build/omniORB/omniORB_69_rtp_sim/omniORB-4.2.2/bin/simpentium_vxWorks_RTP_6.9"
+ cp "/home/openrtm/WindRiver/vxworks-6.9/target/lib/usr/root/SIMPENTIUMgnu/bin/libc.so.1","./"
+ rtpSp "./omniNames.out -start 2809"
+ 
+ cd "/home/openrtm/openrtm-build/OpenRTM/OpenRTM_69_rtp_sim/OpenRTM-aist/build_vxworks/examples/SimpleIO"
+ cp "/home/openrtm/WindRiver/vxworks-6.9/target/lib/usr/root/SIMPENTIUMgnu/bin/libc.so.1","./"
+ rtpSp "./ConsoleOutComp.vxe"

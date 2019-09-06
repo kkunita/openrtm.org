@@ -1,0 +1,122 @@
+﻿// Title: Building from source in Linux
+#contents
+
+For distributions that do not yet have a pre-built package available, or for users who wish to alter the OpenRTM-aist source themselves, it is possible to build OpenRTM-aist from source.
+
+**Building the source
+
+The Python edition of OpenRTM-aist uses the distutils module to build, allowing it to be built in a variety of environments.
+
+***Supported operating systems and distributions
+
+OpenRTM-aist-Python has been tested and confirmed to work on the following distributions.
+
+- FreeBSD
+- Vine Linux
+- Fedora
+- Debian
+- Ubuntu
+
+It should be possible to build and use OpenRTM-aist-Python on other versions of Linux/UNIX.
+
+***Dependencies
+
+OpenRTM-aist-Python-1.0.0 depends on the folloowing environmental tools and libraries.
+
+-Python: required to use the build tool.
+-omniORBpy: Needed to compile the IDL files.
+
+Install these dependencies according to their individual documentations. Installing them into standard locations such as /usr and /usr/local will make compiling OpenRTM-aist-Python easier.
+
+***Download the source
+
+Download the OpenRTM-aist-Python source code from the download page.
+
+-http://www.openrtm.org/pub/OpenRTM-aist/python/
+
+***Extract the source
+
+Extract the source code from the OpenRTM-aist-Python-X.X.X.tar.gz file into a suitable location.
+
+ $ tar xvzf OpenRTM-aist-Python-X.X.X.tar.gz
+ $ cd OpenRTM-aist-Python-X.X.X
+
+*** Build 
+
+OpenRTM-aist uses autotools for building. It can be built in the same way as any other distutils-based package.
+
+ $ python setup.py build [options]
+
+The usable options are listed in the help:
+
+ $ python setup.py --help
+
+*** Install
+
+When the build completes successfully, use this command to install:
+
+ $  su
+ # python setup.py install
+
+This completes the installation.
+
+**Building from the repository
+
+The OpenRTM-aist-Python source code is stored in a publicly-available Subversion repository. This source code can be checked out and built.
+
+***Checkout the source
+
+Checkout the source from the repository as below.
+
+ $ svn co http://www.openrtp.jp/openrtm/svn/OpenRTM-aist-Python/trunk/OpenRTM-aist-Python
+ A    OpenRTM-aist-Python/OpenRTM_aist
+ A    OpenRTM-aist-Python/OpenRTM_aist/CorbaPort.py
+ A    OpenRTM-aist-Python/OpenRTM_aist/__init__.py
+ A    OpenRTM-aist-Python/OpenRTM_aist/Guard.py
+ A    OpenRTM-aist-Python/OpenRTM_aist/RTM_IDL
+ A    OpenRTM-aist-Python/OpenRTM_aist/RTM_IDL/RTC.idl
+ A    OpenRTM-aist-Python/OpenRTM_aist/RTM_IDL/Manager.idl
+ ...
+ A    OpenRTM-aist-Python/installer/WixUI_es-es.wxl
+ A    OpenRTM-aist-Python/installer/WixUI_fr-fr.wxl
+ A    OpenRTM-aist-Python/installer/WixUI_de-de.wxl
+ A    OpenRTM-aist-Python/installer/WixUI_cs-cz.wxl
+ A    OpenRTM-aist-Python/installer/WixUI_da-dk.wxl
+ Checked out revision 349.
+
+*** Build
+
+After checking out, a directory called OpenRTM-aist-Python will have been created. Change to this directory.
+
+ $ ls 
+ OpenRTM-aist-Python
+ $ cd OpenRTM-aist-Python
+ $ ls
+ MANIFEST.in           OpenRTM-aist.pth  README      setup.py
+ MANIFEST_examples.in  OpenRTM_aist/     installer/
+
+Use setup.py to build and install.
+
+ $ python setup.py build
+
+***Making a distributable source package
+
+By executing the command shown below, a source package such as those available at openrtm.org can be created. In order to make a distribution package, some additional tools are necessary, such as doxygen, latex, and qkc.
+
+ $ python setup.py sdist
+
+ $ ls -l dist/OpenRTM-aist-Python-*
+ -rw-rw-r-- 1 openrtm openrtm 2721202  2月 24 16:43 OpenRTM-aist-Python-1.1.0.tar.gz
+ -rw-rw-r-- 1 openrtm openrtm 4686452  2月 24 16:43 OpenRTM-aist-Python-1.1.0.zip
+// -rw-r--r-- 1 kurihara kurihara 425300 2010-07-29 22:06 dist/OpenRTM-aist-Python-1.0.0.tar.gz
+// -rw-r--r-- 1 kurihara kurihara 597929 2010-07-29 22:06 dist/OpenRTM-aist-Python-1.0.0.zip
+// -rw-r--r-- 1 kurihara kurihara  58071 2010-07-29 22:07 dist/OpenRTM-aist-Python-example-1.0.0.tar.gz
+
+The following packages are created:
+
+-OpenRTM-aist-Python-1.1.0.tar.gz: Generic source (gzipped)
+-OpenRTM-aist-Python-1.1.0.zip: Source for Windows
+
+//-OpenRTM-aist-Python-1.0.0.zip: Windows source
+//-OpenRTM-aist-Python-1.0.0.tar.gz: Generic source (gzipped)
+//-OpenRTM-aist-Python-example-1.0.0.tar.gz: Samples source (gzipped)

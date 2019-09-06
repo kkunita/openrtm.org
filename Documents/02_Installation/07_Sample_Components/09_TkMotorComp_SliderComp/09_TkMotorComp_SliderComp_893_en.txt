@@ -1,0 +1,34 @@
+#contents
+**TkMotorComp
+This Sample Component in OpenRTM-aist Python edition.Please note that this
+sample is not bundled to C++ edition, and the Java edition of OpenRTM-aist. 
+***Introduction
+This sample is RT component with the GUI screen. 
+This sample is a component that displays the data of the received sequence
+type. 
+#br
+
+***Screen shots
+#br
+
+#ref(TkMotorComp.png,center,70%)
+CENTER:''Example to run TkMotorComp''
+#br
+
+**SliderComp
+This Sample Component in OpenRTM-aist Python edition.Please note that this
+sample is not bundled to C++ edition, and the Java edition of OpenRTM-aist. 
+**Introduction
+This sample is RT component with the GUI screen. 
+This is a sample that stores the value of six sliders in the sequence type
+and transmits. 
+#br
+
+***Screen shots
+#br
+
+
+#ref(SliderComp.png,center)
+CENTER:''Example to run SliderComp''
+
+

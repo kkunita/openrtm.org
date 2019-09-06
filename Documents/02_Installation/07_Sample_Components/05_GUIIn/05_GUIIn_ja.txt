@@ -1,0 +1,38 @@
+#contents
+//**GUIIn
+このサンプルは、OpenRTM-aist の Java版 に同梱されています。 
+C++版、Python版 には同梱されていませんのでご注意ください。
+***概要・起動画面
+GUI画面を持ったRTコンポーネントのサンプルです。Windows の場合は GUIIn.bat、Linux の場合は GUIIn.sh を実行することでサンプル・コンポーネントが起動します。
+
+#br
+
+#ref(GUIIn_example.png,center)
+CENTER:''GUIIn実行例(GUIIn)''
+#br
+#br
+
+#ref(GUIIn_example_rtse_ja.png,60%,center)
+CENTER:''GUIIn実行例(RTSystemEditor接続画面)''
+#br
+
+各GUI要素とPort間の関係は以下のとおりです。
+-スライダ（上）: TimedLong型OutPort
+-テキスト・ボックス（中）: TimedString型OutPort
+-スピナ（下）: TimedDouble型OutPort
+
+各Portは該当するPort間を接続後、GUI要素横のチェックボックスをONにすることで、入力データを送信します。（Port間の接続にはRTSystemEditorをご利用ください。出力データの確認にはSeqInなどの他サンプルをご利用ください。）
+#br
+
+***使い方
+GUIInコンポーネントのGUI画面でチェックを入れたコントロール（スライダ、スピナ）を操作すると、その値の変化にしたがってSeqInのGUI画面上の値も変化します。
+#br
+
+- 手順
+-- RTSystemEditorを起動し、SystemEditorを用意します。→RTSystemEditorの使用方法の詳細については[[RTSystemEditor >/node/1175]]を参照
+-- GUIInとSeqInの両コンポーネントを起動します。 コンポーネントの起動はOSによってことなります。Windowsの場合はGUIIn.bat、Linuxの場合はGUIIn.shを起動します。
+-- RTSystemEditorのNameServiceViewにこれらのコンポーネントが現れるので、二つともSystemEditor上にドラッグします。
+-- 両コンポーネントの対応ポートを結びます。（上図GUIIn実行例を参照）
+-- どちらかのコンポーネントを右クリックし、「All Activate」を選択します。
+
+

@@ -1,0 +1,109 @@
+﻿// Title: System Editor Basic Operation
+#contents
+
+**Outline 
+The System Editor graphically displays the state of RTCs in real time. It also allows the ports to be connected and the state of RTCs to be controlled in order to build and contorl a complete system.
+
+#clear
+
+|
+#ref(fig50SystemEditer_en.png,30%,center)|
+#ref(fig51SystemEditer_en.png,80%,center)
+|
+|CENTER:''System Editor location''|CENTER:''System Editor''|
+#br
+
+**Basic operation
+The connection method between the ports of RTC and the method of performing RTCare explained.
+
+***Opening the System Editor
+To open a new System Editor, click the ''Open New System Editor'' button in the toolbar or select ''Open New System Editor'' from the File menu.
+#br
+
+|
+#ref(fig52OpenSystemEditor_en.png,40%,center)|
+#ref(fig53OpenSystemEditor_en.png,40%,center)|
+|CENTER:''Open New System Editor button''|CENTER:''Open New System Editor menu entry''|
+#br
+
+***Adding RTCs to the System Editor 
+To add an RTC to the System Editor, drag and drop them from the Name Service View into the System Editor.
+#br
+
+#ref(fig54SetComponentSystemEditor_en.png,50%,center)
+CENTER:''Adding an RTC''
+#br
+
+***Changing RTC States 
+Using the system diagram, the selected RTC can be moved between the various states - Activate, Deactivate, Reset, Finalize, Exit, Start and Stop. This can also be done through the Name Service View.
+#br
+
+
+|
+#ref(fig57RTCStatusChange_en.png,50%,center)|
+#ref(fig57RTCStatusChange2_en.png,50%,center)|
+
+CENTER:''Name Service View (left) and System Editor (right) RTC state management''
+#br
+The meaning of these actions is described below.
+
+|Action Name|target|meaning|
+|Activate|Begin executing the selected RTC using the first ExecutionContext|Enter the Active state|
+|Deactivate|~|Enter the Deactivate state|
+|Reset|~|Enter the Reset state|
+|Finalize|Selected RTC is executed|Enter the Finalize state|
+|Exit|~|Enter the Exit state|
+|Start|Begin executing the selected RTC using the first ExecutionContext|Enter the Start state|
+|Stop|~|Enter the Activate state|
+
+In addition, in order to easily manage an entire system, the System Editor allows all contained components to be activated, deactivated, started and stopped at once using buttons in the tool bar or the context menu.
+#br
+
+
+#ref(fig58AllExec_en.png,60%,center)
+CENTER:''Controlling all components''
+#br
+Using the "All" actions, ExecutionContexts other than the first can also be used. The result may differ from controlling each component individually.
+
+***Connecting Ports 
+The System Editor can be used to connect ports. Drag and drop between two ports to connect them.
+#br
+
+#ref(fig26ConnectPort.png,nolink,center)
+CENTER:''Connecting two ports''
+#br
+After dragging and dropping, a dialog will be displayed requesting the necessary information for the connection.
+#br
+
+
+#ref(fig27ConnectorProfileDialog_en.png,60%,center)
+CENTER:''Connector Profile dialog''
+#br
+This dialog is used to build a Connector Profile. The Connector Profile must meet the various conditions of the ports. This dialog only allows information that meets these conditions to be entered. If two ports cannot be connected due to conflicting conditions, this is indicated when attempting to drag a connetion between them.
+#br
+
+
+#ref(fig28ConnectedProhibitionMark_en.png,nolink,center)
+CENTER:''Forbidden connection''
+#br
+
+Port connections are broadly divided into data port connections and service port connections.
+for details, please refer to [[SystemEditor(PortConnection):/en/node/1430]].
+
+***Removing port connections 
+To remove the connection between two ports, select it and click the ''Delete'' button, or right-click it and select ''Delete'' from the context menu.
+#br
+
+
+#ref(fig60DeleteLink_en.png,60%,center)
+CENTER:''Deleting a connection''
+#br
+
+***Disconnecting all ports 
+To disconnect all ports at once, right click on a port and select ''All Disconnect''.
+#br
+
+
+#ref(fig61AllDisconnect_en.png,60%,center)
+CENTER:''Disconnecting all ports''
+#br

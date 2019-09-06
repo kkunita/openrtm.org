@@ -1,0 +1,52 @@
+﻿// Title: Installing RTSystemEditor
+#contents
+**RTSystemEditor 
+RTSystemEditor is one of the OpenRTM-aist development tools. It allows RT Components to be manipulated in real-time using a graphical interface. It is implemented as a plugin for the Eclipse IDE, allowing seamless operation from within Eclipse and integration with existing plugins.
+
+***Functional Overview 
+The functions offered by RTSystemEditor are given below.
+
+|Function|Overview|
+|Display and edit component configurations|The configuration profiles of the selected component is displayed in the Configuration View, and can be edited there.|
+|Change component behaviour|Select components and change their behaviour (active state, etc).|
+|Combine components|Retrieve components from a repository or load them from the file system and combine them together into a system using the System Editor.|
+|Save and open systems|Save the contents of the System Editor and load it again at a later date.|
+|Restore systems|Use saved System Editor states to restore a system of connected RT Components.|
+
+***Operating Environment
+The following must be installed for RTSystemEditor to function.
+
+|Software|Remarks|
+|[[Java Development Kit 6:http://www.oracle.com/technetwork/java/javase/downloads/index.html]]|&color(Red){Note: Java1.5 (5.0) is not suitable.};|
+|[[Eclipse 3.4.2:http://archive.eclipse.org/eclipse/downloads/drops/R-3.2.1-200609210945/download.php?dropFile=eclipse-SDK-3.2.1-win32.zip]]|Eclipse itself|
+|Eclipse EMF 2.2.4 [[EMF＋SDO Runtime:http://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/downloads/drops/2.2.4/R200710030400/emf-sdo-runtime-2.2.4.zip]] and [[XSD Runtime:http://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/downloads/drops/2.2.4/R200710030400/xsd-runtime-2.2.4.zip]]|Eclipse plugin required by RT System Editor|
+|[[Eclipse GEF 3.2.2:http://www.eclipse.org/downloads/download.php?file=/tools/gef/downloads/drops/3.2.2/R200702081315/GEF-runtime-3.2.2.zip]]|Eclipse plugin required by RT System Editor|
+
+
+**Installing RTSystemEditor
+Because RTSystemEditor is an Eclipse plugin, it requires Eclipse to be installed. Eclipse is written in Java, so it in turn requires a Java environment to be set up before it can be installed (such as the JDK).
+
+-Please refer to [["Installation of Java execution environment (JRE) of Eclipse":/en/node/1418#jre_install]] for the installation of the Java execution environment. 
+-Please refer to [["Installation of Eclipse of Eclipse":/en/node/1418#eclipse_install]] for the installation of Eclipse.  
+
+****Installation 
+
+*** Installing RT System Editor 
+Start Eclipse and select ''Open Perspective''->''Other'' from the ''Window'' menu. The perspective selection dialog will be displayed.
+
+
+#ref(fig4PerspectiveSelection_en.png,90%,center)
+
+Select RTSystemEditor from the list to open its perspective.
+
+#ref(fig5InitialOfRTSystemEditorstarts_en.png,80%,center)
+
+If RTSystemEditor is not available in the list of perspectives, check that EMF, GEF and XSD are all correctly installed, and that the RTSystemEditor plugin is in the correct directory.
+
+***Restart Eclipse 
+
+After confirming that RTSystemEditor starts, restart Eclipse using the same workspace. RTSystemEditor should be displayed as it was when you exited Eclipse.
+
+reference：[[''FAQ:'' How to start Eclipse >/en/content/tools-faq#toc9]]
+#br
+#br

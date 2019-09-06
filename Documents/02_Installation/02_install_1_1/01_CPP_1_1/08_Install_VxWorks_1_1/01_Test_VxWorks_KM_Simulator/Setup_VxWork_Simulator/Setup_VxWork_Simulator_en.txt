@@ -1,0 +1,76 @@
+﻿// Title: Setting up Vxworks simulator
+#contents
+
+This page explains the settings of the VxWorks simulator running on Wind River Workbench.
+//このページではWind River Workbench上で動作するVxWorksシミュレータの設定について説明します。
+
+** (G)Add simulator
+//** シミュレータの追加
+
+Workbench The default simulator is the linux_diab simulator.
+Since OpenRTM-aist uses the gnu compiler, you need to use the linux_gnu simulator.
+//Workbenchデフォルトのシミュレータはlinux_diabシミュレータです。
+//OpenRTM-aistはgnuコンパイラを使用しているため、linux_gnuシミュレータを使用する必要があります。
+
+Please press the [Define a connection to remote system] button and add the simulator.
+//Define a connection to remote systemボタンを押してシミュレータを追加してください。
+
+
+
+#br
+
+#ref(sim1.png, left)
+
+#br
+
+Select ''Wind River VxWorks 6.x Simulator Connection'' on the Select Remote System Type in the New Connection window and proceed to the next.
+//New ConnectionウインドウのSelect Remote System Typeで""Wind River VxWorks 6.x Simulator Connection""を選択して次へ進んでください。
+
+#br
+
+#ref(sim2.png, left)
+
+#br
+
+
+
+In VxWorks Boot parameters, specify linux_gnu simulator in Custom simulator.
+//VxWorks Boot parametersではCustom simulatorにlinux_gnuシミュレータを指定します。
+
+- Example：/home/openrtm/WindRiver/vxworks-6.9/target/proj/linux_gnu/default/vxWorks
+
+#br
+
+#ref(sim3.png, left)
+
+#br
+
+After going to Network Options, set the network to Full Network and set the IP address.
+Click the [Finish] button to create a simulator.
+//Network Optionsまで進んだら、ネットワークをFull Networkに設定してIPアドレスを設定してください。
+//Finishボタンをクリックするとシミュレータを作成します。
+
+
+#br
+
+#ref(sim4.png, left)
+
+#br
+
+** (G)Starting network interface
+//** ネットワークインターフェースの起動
+
+Launch the network interface for the simulator.
+Execute the following command.
+//シミュレータ用のネットワークインターフェースを起動します。
+//以下のコマンドを実行してください。
+
+ sudo ${WIND_BASE}/host/${WIND_HOST_TYPE}/bin/vxsimnetd
+
+A network interface called ''tap0'' will be added.
+//''tap0''というネットワークインターフェースが追加されます。
+
+To use the name server started on Ubuntu side, restart the name server with the following command.
+//Ubuntu側で起動したネームサーバーを使う場合は、以下のコマンドでネームサーバーを再起動してください。
+
+ sudo rtm-naming

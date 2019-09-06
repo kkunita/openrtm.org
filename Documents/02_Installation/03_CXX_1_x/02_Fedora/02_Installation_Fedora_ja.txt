@@ -1,0 +1,186 @@
+#ref(fedora_logo.png,around,40%,left)
+
+#contents
+
+C++版OpenRTM-aistはFedora Linuxで利用可能なRPMパッケージが提供されてい
+ます。対応しているFedora Linuxのバージョンは、ダウンロードページから確
+認できます。Fedora Linuxへの対応およびそのバージョンは、予告なしに変更
+または停止されることがありますので、予めご了承ください。
+
+Fedora Linuxへのインストールの方法には大きく分けて以下の二種類のインス
+トール方法があります。
+
+-openrtm.org が提供する一括インストールスクリプトを使用
+-yum パッケージマネージャを使用
+
+**一括インストール・スクリプト
+
+openrtm.org が提供するインストール・スクリプト ''pkg_install[バージョン
+番号]_fedora.sh'' をダウンロードページからダウンロードし、root権限で実
+行します。このスクリプトは、必要なパッケージを順次yumでインストールして
+いきます。
+
+-[[パッケージインストールスクリプト:http://www.openrtm.org/pub/OpenRTM-aist/cxx/install_scripts/]]
+
+OpenRTM-aistを開発・実行するために必要なパッケージをもれなくインストー
+ルしてくれるので大変便利です。初めてOpenRTM-aistをインストールしてみる
+方にお勧めします。
+ただし、OpenRTM-aist関係のすべてのパッケージをインストールするので、必
+要ないものもインストールされる可能性があります。より詳しくわかっている
+人は、手動でインストールした方がよいでしょう。
+以下、一括インストールスクリプトを使用したインストールの手順です。
+
+ > wget [pkg_installXXX.sh のダウンロードURL]
+ > su
+ # sh pkg_install1XX_fedora.sh
+ //途中、いくつかの質問をたずねられるので、''y'' あるいは ''Y'' を入力しながら完了させます。
+
+**yumを使う方法
+
+***/etc/yum.repos.d/openrtm.repoの作成
+
+openrtm.org では yum から利用可能なパッケージリポジトリを提供しています。
+ただし、デフォルトのパッケージリポジトリには含まれていませんので、yum
+の設定を変更する必要があります。
+
+以下のような設定を記録したファイル ''/etc/yum.repos.d/openrtm.repo'' を
+作成しておきます。作成には通常root権限が必要です。
+
+ [openrtm]
+ name=Fedora $releasever - $basearch
+ failovermethod=priority
+ baseurl=http://www.openrtm.org/pub/Linux/Fedora/releases/$releasever/Fedora/$basearch/os/Packages
+ enabled=1
+ gpgcheck=0
+ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora file:///etc/pki/rpm-gpg/RPM-GPG-KEY
+CENTER:''/etc/yum.repos.d/openrtm.repo''
+
+***yumによるインストール
+
+openrtm.repo を作成したら、次の手順でインストールを行います。
+途中、いくつかの応答を求められるので、''y'' を入力しながら完了させます。
+
+ > su
+ # yum install gcc-c++ python
+ # yum install omniORB omniORB-devel omniORB-doc omniORB-servers omniORB-utils omniORB-bootscripts
+ # yum install OpenRTM-aist OpenRTM-aist-devel OpenRTM-aist-doc OpenRTM-aist-example
+
+***インストールの確認
+
+最後に以下のコマンドでインストールの確認をします。
+
+ # rpm -q OpenRTM-aist
+ OpenRTM-aist-1.0.0-0.fcX
+
+
+**パッケージの詳細
+各パッケージの内容は以下の通りです
+
+***OpenRTM-aist
+openrtm-aist にはランタイムライブラリとコマンド群が含まれています。
+
+-サンプル設定ファイル
+ /etc/rtc.conf.sample
+
+-ライブラリ
+ /usr/lib/libRTC-1.0.0.so.0
+ /usr/lib/libRTC-1.0.0.so.0.0.4
+ /usr/lib/libRTC.a
+ /usr/lib/libRTC.la
+ /usr/lib/libRTC.so
+ /usr/lib/libcoil.a
+ /usr/lib/libcoil.la
+ /usr/lib/libcoil.so
+ /usr/lib/libcoil.so.0
+ /usr/lib/libcoil.so.0.0.0
+
+***OpenRTM-aist-devel
+openrtm-aist-devには、開発に必要なコマンド群とヘッダが含まれています。
+
+-コマンド
+ /usr/bin/coil-config
+ /usr/bin/rtc-template
+ /usr/bin/rtcd
+ /usr/bin/rtcprof
+ /usr/bin/rtm-config
+ /usr/bin/rtm-naming
+ /usr/bin/rtm-skelwrapper
+
+-ヘッダ
+ /usr/include/coil/Allocator.h
+ /usr/include/coil/Async.h
+ 中略
+ /usr/include/coil/memory.h
+ /usr/include/coil/stringutil.h
+ 中略
+ /usr/include/rtm/BufferBase.h
+ /usr/include/rtm/BufferStatus.h
+ 中略
+ /usr/include/rtm/Typename.h
+ /usr/include/rtm/config_rtc.h
+
+-IDLおよびスタブ・スケルトン
+ /usr/include/rtm/idl/BasicDataType.hh
+ /usr/include/rtm/idl/BasicDataType.idl
+ 中略
+ /usr/include/rtm/idl/device_interfaces/RFID.idl
+ /usr/include/rtm/idl/device_interfaces/Ranger.idl
+
+-ライブラリ
+ /usr/lib/OpenRTM-aist/py_helper/README_gen.py
+ /usr/lib/OpenRTM-aist/py_helper/README_gen.pyc
+ 中略
+ /usr/lib/OpenRTM-aist/py_helper/yat.pyc
+ /usr/lib/OpenRTM-aist/py_helper/yat.pyo
+ /usr/lib/pkgconfig/libcoil.pc
+ /usr/lib/pkgconfig/openrtm-aist.pc
+
+
+***OpenRTM-aist-doc
+openrtm-aist-docには、日本語と英語のクラスリファレンス、IDLインターフェース定義リファレンスが含まれています。
+
+-クラスリファレンス
+ /usr/share/OpenRTM-aist/docs/ClassReference/html/ConnectorBase_8h-source.html
+ /usr/share/OpenRTM-aist/docs/ClassReference/html/RTC_8h.html
+ 中略
+ /usr/share/OpenRTM-aist/docs/ClassReference/html/FactoryInit_8h-source.html
+
+-IDLリファレンス
+ /usr/share/OpenRTM-aist/docs/IDLReference/html/BasicDataType_8idl-source.html
+ 中略
+ /usr/share/OpenRTM-aist/docs/IDLReference/html/interfaceOpenRTM_1_1InPortCdr-members.html
+
+-クラスリファレンス(英語)
+ /usr/share/OpenRTM-aist/docs/ClassReference-en/html/ConnectorBase_8h-source.html
+ /usr/share/OpenRTM-aist/docs/ClassReference-en/html/RTC_8h.html
+ 中略
+ /usr/share/OpenRTM-aist/docs/ClassReference-en/html/FactoryInit_8h-source.html
+
+-IDLリファレンス(英語)
+ /usr/share/OpenRTM-aist/docs/IDLReference-en/html/BasicDataType_8idl-source.html
+ /usr/share/OpenRTM-aist/docs/IDLReference-en/html/structRTC_1_1FsmProfile.html
+ 中略
+ /usr/share/OpenRTM-aist/docs/IDLReference-en/html/interfaceOpenRTM_1_1InPortCdr-members.html
+
+***OpenRTM-aist-example
+openrtm-aist-exampleにはスタンドアロンRTC、ローダブルRTCそれぞれのサンプルと、サンプルRTCのソースが含まれています。
+
+-サンプル(スタンドアロンRTC)
+ /usr/share/OpenRTM-aist/examples/ConsoleOutComp
+ /usr/share/OpenRTM-aist/examples/ConsoleInComp
+ 中略
+
+-サンプル(ソース)
+ /usr/share/OpenRTM-aist/examples/src/Composite/README.Motor
+ /usr/share/OpenRTM-aist/examples/src/Composite/Makefile.Sensor
+ /usr/share/OpenRTM-aist/examples/src/Composite/Motor.cpp
+ 中略
+ /usr/share/OpenRTM-aist/examples/src/SimpleService/Makefile.MyServiceProvider
+ /usr/share/OpenRTM-aist/examples/src/SimpleService/rtc.conf
+
+-サンプル(ローダブルRTC)
+ /usr/share/OpenRTM-aist/examples/rtcs/MyServiceConsumer.so.0.0.0
+ /usr/share/OpenRTM-aist/examples/rtcs/SeqIn.so.0.0.0
+ 中略
+ /usr/share/OpenRTM-aist/examples/rtcs/ConfigSample.so.0.0.0
+ /usr/share/OpenRTM-aist/examples/rtcs/ConsoleOut.so.0.0.0

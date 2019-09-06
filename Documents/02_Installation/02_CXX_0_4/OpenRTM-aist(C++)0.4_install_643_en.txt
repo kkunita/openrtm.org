@@ -1,2 +1,0 @@
-The following explains about OpenRTM-aist-0.4.0. OpenRTM-aist-0.4.1 can be installed according to a similar procedure.
-
