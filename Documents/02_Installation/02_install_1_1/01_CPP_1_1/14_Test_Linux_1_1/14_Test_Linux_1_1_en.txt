@@ -1,4 +1,4 @@
-// Title: Testing operation in Linux
+﻿// Title: Testing operation in Linux
 Once the installer has completed successfully, OpenRTM-aist can be tested using the included sample components. These are typically stored in one of the following locations:
 
 -/usr/share/OpenRTM-aist/examples
