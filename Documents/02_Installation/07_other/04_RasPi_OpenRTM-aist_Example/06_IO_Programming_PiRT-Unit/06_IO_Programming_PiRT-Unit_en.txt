@@ -1,0 +1,75 @@
+﻿// Title: IO programming using PiRT-Unit
+#contents
+
+This Book explains how to combine Raspberry Pi and PiRT-Unit from OpenRTM-aist.
+//この Book では、Raspberry Pi と PiRT-Unit を組み合わせてOpenRTM-aist から利用する方法を解説します。
+
+** (G)Using PiRT-Unit
+//** PiRT-Unit を利用する
+
+PiRT-Unit is an IO expansion board for Raspberry Pi developed at AIST.
+It is on sale from Win electronics industry.
+//PiRT-Unit は産総研で開発された、Raspberry Pi用 IO拡張ボードです。
+//ウィン電子工業から発売中です。
+
+//ウィン電子工業から購入することができます。
+
+- Win electronics industry:  http://win-ei.com/
+-- Raspberry pie expansion board: http://cgi3.win-ei.com/wordpress/?page_id=135
+--- Item name：Pi RT-Unit
+--- Model name：RE-01
+--- price：¥6,615（税込）
+
+#clear
+#ref(pirt-unit.png,center,80%)
+CENTER: ''PiRT-Unit overview''
+//CENTER: ''PiRT-Unit概観''
+
+You can use AD (4ch), DA (2ch), PWM (1ch), I2C (1ch), RS232C/XBee (1ch) from PiRT-Unit respectively.
+//PiRT-Unit からは、AD (4ch)、DA (2ch)、PWM (1ch)、I2C (1ch)、RS232C/XBee (1ch) がそれぞれ利用できます。
+
+#ref(pirt-unit_connectors.png,center,80%)
+CENTER: ''PiRT-Unit I/O connector arrangement diagram''
+//CENTER: ''PiRT-Unit 入出力コネクタ配置図''
+
+*** (G)Features
+//*** 特長
+- Analog input (10bit ADC x 4ch) available
+- Analog output (12bit DAC x 2ch) available
+- PWM x 1 ch: RC servo motor available
+- I2C serial communication available
+- RS232C Dsub connector available
+- Connector for Xbee connection available (Selectable with RS232C above)
+- 5V dc input: can supply power to Raspberry Pi
+- You can use the AC adapter that can be purchased cheaply by Akizuki Electronics etc.
+//- アナログ入力 (10bit ADC x 4ch) 利用可能
+//- アナログ出力 (12bit DAC x 2ch) 利用可能
+//- PWM x1ch: RCサーボモーター利用可能
+//- I2C シリアル通信利用可能
+//- RS232C Dsub コネクタ利用可能
+//- Xbee接続用コネクタ利用可能（上記 RS232C との選択式）
+//- 5V DC入力： Raspberry Pi に電源供給可能
+//-- 秋月電子等で安価に購入可能な ACアダプタを利用できます
+
+*** (G)Specification
+//*** 仕様
+|>|CENTER: ''Raspberry Pi extended IO board'' |
+| AD converter | 10bit, 4ch & br; chip: ADC104S021 &br; sampling 200kHz |
+| DA converter | 12bit, 2ch & br; chip MCP4822 |
+| PWM output | 1ch, for RC servomotor drive &br; photo coupler insulation |
+| RS232C | D-SUB 9 pin connector &br; Switch with XBee and jumper |
+| XBee | XBee connection connector &br; XBee: Digi International made Zigbee module &br; Switch with XBee and jumper |
+| Power supply input | 5V DC input &br; Supply power to Raspberry Pi &br; Power supply from Raspberry Pi also works |
+//|>|CENTER: ''Raspberry Pi拡張IOボード''|
+//| ADコンバータ | 10bit, 4ch &br; チップ: ADC104S021 &br; サンプリング 200kHz |
+//| DAコンバータ | 12bit, 2ch &br; チップ MCP4822 |
+//| PWM出力 | 1ch, RCサーボモータードライブ用 &br; フォトカプラ絶縁 |
+//| RS232C  | D-SUB 9pinコネクタ &br; XBee とジャンパにて切り替え |
+//| XBee    | XBee接続コネクタ &br; XBee: Digi International 製 Zigbeeモジュール &br; XBee とジャンパにて切り替え |
+//| 電源入力 | 5V DC入力 &br; Raspberry Piに電源供給可能 &br; Raspberry Piからの電源供給でも動作 |
+
+
+#ref(pirtunit_blockdiagram.png,center,100%)
+CENTER: ''PiRT-Unit circuit block diagram''
+//CENTER: ''PiRT-Unit 回路ブロック図''
+

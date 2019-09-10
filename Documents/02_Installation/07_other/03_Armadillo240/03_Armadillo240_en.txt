@@ -1,0 +1,714 @@
+﻿// Title: Installation on Armadillo240
+#contents
+
+CENTER:&ref(http://www.atmark-techno.com/files/images/a220/a220-angle-250.jpg,80%); &ref(http://www.atmark-techno.com/files/images/a240/a240-long-150.jpg,150%);
+
+Armadillo240 is a compact CPU board that can be mounted on Linux with ARM, which is sold from [[At Mark Techno:http://www.atmark-techno.com/]].
+Three development tools from Atmark Techno, Inc., ATDE2 (Atmark Techno Development Environment), GNU cross development tool, AtmarkDist are provided, which makes cross development easy. &br;
+In this example, we will cross-develop the executable file of the RT component that can be executed by Armadillo. After that, after starting Armadillo, create an image file (romfs: root file system) that the RT component automatically starts up.
+//Armadillo240は　[[アットマークテクノ:http://www.atmark-techno.com/]]から販売されている、ARM を搭載した Linux 搭載可能な小型 CPU ボードです。
+//Atmark Techno, Inc.から、ATDE2 (Atmark Techno Development Environment)と、GNU クロス開発ツール、AtmarkDist という3つの開発ツールが提供され、簡単にクロス開発を行うことができます。&br;
+//ここでは、Armadillo で実行できる RTコンポーネントの実行ファイルをクロス開発します。 その後、Armadillo 起動後、RTコンポーネントが自動で起動するイメージファイル(romfs：ルートファイルシステム)を作成します。
+
+**(G)Workflow 
+- Development of cross development environment
+- Maintenance of ATDE2 (installation of necessary packages)
+- Cross compiling and installing of OpenRTM-aist
+- Cross compiling of RT components
+- Start executable file on Armadillo240
+- Create image file of Armadillo240
+- Operation confirmation on RtcLink
+//**作業の流れ 
+//-クロス開発環境の整備
+//-ATDE2 の整備（必要なパッケージのインストール）
+//-OpenRTM-aist のクロスコンパイルとインストール
+//-RTコンポーネントのクロスコンパイル
+//-Armadillo240 上で実行ファイルを起動
+//-Armadillo240 のイメージファイルを作成
+//-RtcLink 上で動作確認
+
+** (G)Building cross development environment
+Create an executable file of RT component that can be executed by Armadillo by cross-compiling. The development environment of Armadillo series is distributed from Atmark Techno, Inc. as a VM image, and necessary tools for cross development environment are pre-installed.
+//**クロス開発環境の構築 
+//Armadillo で実行できる RTコンポーネントの実行ファイルをクロスコンパイルで作成します。 Atmark Techno, Inc.から Armadilloシリーズの開発環境が VMイメージで配布されており、クロス開発環境に必要なツールが事前にインストールされています。
+
+*** (G)Downloading ATDE2 and VMware
+:''ATDE2'' | ATDE2(Atmark Techno Development Environment) is a virtual PC image for VMware for Admadillo cross development environment distributed from AtmarkTechno. The entity is Debian GNU Linux, and the tool chain necessary for cross development is installed in advance.
+-- [[here:http://armadillo.atmark-techno.com/downloads]] page for free.
+//***ATDE2 と VMware のダウンロード
+//:''ATDE2'' | ATDE2(Atmark Techno Development Environment)は AtmarkTechno から配布されている Admadillo のクロス開発環境のための VMware用の仮想PCイメージです。実体は Debian GNU Linux で、クロス開発に必要なツールチェーンがあらかじめインストールされています。
+//--[[こちら:http://armadillo.atmark-techno.com/downloads]]のページから無料で入手できます。
+
+: ''VMware Player'' | Virtual PC software freely distributed from VMware Inc. can execute VMware's virtual PC image. It is necessary to start ATDE2. Although there are Windows version and Linux version, we will proceed as below using VMware Player for Windows version.
+-- [[here:http://www.vmware.com/products/player/]] page for free.
+//:''VMware Player'' | VMware Inc. からフリーで配布されている仮想PCソフトで、VMware の仮想PCイメージを実行することができます。ATDE2 を起動するために必要です。Windows版と Linux版がありますが、以下、Windows版 の VMware Player を使用するものとして進めます。
+//--[[こちら:http://www.vmware.com/products/player/]]のページから無料で入手できます。
+
+*** (G)Activating ATDE2 and VMware
+- Start ATDE2 with VMware.
+//***ATDE2 と VMwareの起動 
+//-VMware で ATDE2 を起動します。
+
+Unzip ATDE2-20071018.zip, double click on ATDE2.vmx in the folder you unzipped, or select ATDE2.vmx from ATDE2-20071018 in the folder extracted from file > Open of VMware. &br;
+//※ATDE2-20071018.zip を解凍し、解凍したフォルダの中の ATDE2.vmx をダブルクリック、または VMwareのfile > Open から解凍したフォルダーの中の ATDE2-20071018のATDE2.vmx を選択してください。&br;
+
+#ref(ATDE.png,50%,nolink,center)
+CENTER: ''Start up ATDE2 with VMware''
+//CENTER:''VMwareでATDE2を起動''
+
+- Start up with "Start this virtual machine".
+- There is no login work and the Desktop of ATDE2 is displayed.
+//-”この仮想マシンを起動”で起動します。
+//-ログイン作業は無しで、ATDE2 の Desktop が表示されます。
+
+*** (G)Development of ATDE2 development environment
+ATDE2 already has a cross-compiling environment, but it is necessary to prepare an environment that allows cross-development of RT component of OpenRTM.
+On the started ATDE2 download the following source and shell script and place it in the appropriate working directory under the home directory.
+//***ATDE2 開発環境の整備 
+//ATDE2 はすでにクロスコンパイル環境が整っていますが、OpenRTM の RTコンポーネントをクロス開発できる環境に整える必要があります。
+//起動したATDE2 上で以下のソースとシェルスクリプトをダウンロードしホームディレクトリー以下の適当な作業ディレクトリーに入れておきます。
+
+-download
+--OpenRTM source code
+---[[OpenRTM-0.4.2.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/cxx/0.4.2/OpenRTM-aist-0.4.2-RELEASE.tar.gz]]
+---[[OpenRTM-1.0.0.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/cxx/1.0.0/OpenRTM-aist-1.0.0-RC1.tar.gz]]
+--[[config100.sh>http://www.openrtm.org/pub/OpenRTM-aist/armadillo/buildtools/config100.sh]] / [[config 042.sh>http://www.openrtm.org/pub/OpenRTM-aist/armadillo/buildtools/config042.sh]]
+---You can run it in the expanded OpenRTM-0.4.2.tar.gz, or OpenRTM-1.0.0.tar.gz, and specify configure options necessary for cross compiling.
+---It is divided into correspondence with OpenRTM-0.4.2 and OpenRTM-1.0.0 correspondence. 2010/01/21
+--[[arm-cross-install.sh:http://www.openrtm.org/pub/OpenRTM-aist/armadillo/buildtools/arm-cross-install.sh]]
+---OpenRTM-1.0.0 is now supported. 2009/12/28
+---Build OpenRTM's ARM cross-compilation environment on Debian host.
+//-ダウンロード
+//--OpenRTM ソースコード
+//---[[OpenRTM-0.4.2.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/cxx/0.4.2/OpenRTM-aist-0.4.2-RELEASE.tar.gz]]
+//---[[OpenRTM-1.0.0.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/cxx/1.0.0/OpenRTM-aist-1.0.0-RC1.tar.gz]]
+//--[[config100.sh>http://www.openrtm.org/pub/OpenRTM-aist/armadillo/buildtools/config100.sh]] ・ [[config042.sh>http://www.openrtm.org/pub/OpenRTM-aist/armadillo/buildtools/config042.sh]]
+//---展開した OpenRTM-0.4.2.tar.gz、又は OpenRTM-1.0.0.tar.gz の中で実行し、クロスコンパイルに必要なオプションを指定して configure を行うことができます。
+//---OpenRTM-0.4.2 対応、OpenRTM-1.0.0 対応に分けました。2010/01/21
+//--[[arm-cross-install.sh:http://www.openrtm.org/pub/OpenRTM-aist/armadillo/buildtools/arm-cross-install.sh]]
+//---OpenRTM-1.0.0対応になりました。2009/12/28 
+//---OpenRTMのARM クロスコンパイル環境を Debianホストに構築します。
+
+-arm-cross-install.sh downloads the deb package with the apt-get command.
+Add the URL containing the deb package to sources.list. Become root (password: root) with the su command and add the URL below to ''/etc/apt/sources.list''.
+ deb http://downloads.pylone.jp/cross-toolchain/deb ./
+ deb http://www.openrtm.org/pub/Linux/debian/ etch main
+-Leave root, install the package with the apt-get command.
+ # apt-get update
+ # apt-get install python-yaml (Please enter yes or Y to complete the installation.)
+The python-yaml package is required for rtc-template after installing OpenRTM.
+-Construct the OpenRTM-aist arm-cross-compilation environment with arm-cross-install.sh. Since a lot of data is downloaded, create an appropriate working directory and execute arm-cross-install.sh in it.
+ # sh arm-cross-install.sh (Please enter yes or Y to complete the installation.)
+--By running arm-cross-install.sh, packages necessary for cross-compiling OpenRTM-aist are downloaded and installed, but as a side effect, some packages such as gdm are deleted I will.
+When gdm is deleted, the graphical desktop screen will not be displayed. If you want to return it, reinstall gdm as follows.
+ # apt-get install gdm (Please enter yes or Y to complete the installation.)
+ # /etc/init.d/gdm start
+-The maintenance of the ATDE2 environment is completed with the above.
+//-arm-cross-install.shはapt-get コマンドで debパッケージをダウンロードします。
+//deb パッケージを置いている URL を sources.list に加えます。su コマンドで root (パスワード：root)になり、''/etc/apt/sources.list''に下の URL を加えてください。
+// deb http://downloads.pylone.jp/cross-toolchain/deb ./
+// deb http://www.openrtm.org/pub/Linux/debian/ etch main
+//-root のまま、apt-get コマンドでパッケージをインストールします。
+// # apt-get update
+// # apt-get install python-yaml  (yesまたはYを入力してインストールを完了してください。)
+//python-yaml パッケージは OpenRTM のインストール後、rtc-template で必要です。
+//-arm-cross-install.sh で OpenRTM-aist の ARM クロスコンパイル環境を構築します。多数のデータがダウンロードされるので適当な作業ディレクトリーを作成しその中で arm-cross-install.sh を実行してください。
+// # sh arm-cross-install.sh  (yesまたはYを入力してインストールを完了してください。)
+//--arm-cross-install.shを実行することでOpenRTM-aistをクロスコンパイルするために必要なパッケージ群がダウンロード・インストールされますが、その副作用としてgdmなどの一部のパッケージが削除されてしまいます。
+//gdmが削除されるとグラフィカルなデスクトップ画面が出なくなってしまいますので、戻したい場合は以下のようにgdmを再度インストールしなおします。
+// # apt-get install gdm　　 (yesまたはYを入力してインストールを完了してください。)
+// # /etc/init.d/gdm start
+//-以上でATDE2環境の整備は完了です。
+
+** (G)Cross compilation of OpenRTM-aist
+*** (G)Build OpenRTM-aist
+Deploy the OpenRTM-aist-0.4.2 source code to a suitable directory such as home directory. After deployment, go to the created directory.
+ # tar zxvf OpenRTM-aist-0.4.2.tar.gz
+ # cd OpenRTM-aist-0.4.2
+Normally we will run configure here, but to cross-compile OpenRTM you need to specify the appropriate options for configure.
+By using config.sh downloaded above, you can run configure by specifying options necessary for cross compiling, so use config.sh here.
+Copy config.sh to the current directory and execute it with the installation directory as an argument.
+ # cp ../config.sh ./
+ # sh config.sh/usr/arm-linux-gnu
+Please confirm that config.sh was completed normally.
+Make it when the build is completed normally.
+ # make
+In order to install it at least,
+ OpenRTM-aist-0.4.2/rtm
+ OpenRTM-aist-0.4.2/rtm/idl
+ OpenRTM-aist-0.4.2/utils/rtm-config
+ OpenRTM-aist-0.4.2/utils/rtm-naming
+ OpenRTM-aist-0.4.2/utils/rtc-template
+The following directories must be built successfully. Once the build is completed successfully, install header files, libraries, and utility commands.
+//**OpenRTM-aist のクロスコンパイル
+//***OpenRTM-aist のビルド
+//OpenRTM-aist-0.4.2 のソースコードをホームディレクトリーなどの適当なディレクトリーに展開してください。展開後、作成されたディレクトリーに移動します。
+// # tar zxvf OpenRTM-aist-0.4.2.tar.gz
+// # cd OpenRTM-aist-0.4.2
+//通常、ここで configure を実行しますが、OpenRTM をクロスコンパイルするには configure に適切なオプションを指定する必要があります。
+//上記でダウンロードした config.sh を使用すると、クロスコンパイルに必要なオプションを指定して configure を実行することができますので、ここでは config.sh を使用します。
+//config.sh をカレントディレクトリーにコピーし、インストール先ディレクトリーを引数に指定して実行します。
+// # cp ../config.sh ./
+// # sh config.sh /usr/arm-linux-gnu
+//config.sh が正常に終了したことを確認してください。
+//ビルドが正常に終了したら make します。
+// # make
+//インストールするためにはすくなくとも、
+// OpenRTM-aist-0.4.2/rtm
+// OpenRTM-aist-0.4.2/rtm/idl
+// OpenRTM-aist-0.4.2/utils/rtm-config
+// OpenRTM-aist-0.4.2/utils/rtm-naming
+// OpenRTM-aist-0.4.2/utils/rtc-template
+//以下のディレクトリーが正常にビルドされている必要があります。ビルドが正常に終了したら、ヘッダファイル、ライブラリ、ユーティリティーコマンド群をインストールします。
+
+*** (G)Installing OpenRTM-aist
+It is installed in /usr/arm-linux-gnu/specified in config.sh.
+ # make install
+A sample executable file is generated in /usr/arm-linux-gnu/share/examples/.
+** (G)Cross-development of RT components
+With this, the environment for cross development of the RT component is in place.
+Here, as an example, try cross-compiling using the source of SeqOutComp included in the sample.
+//***OpenRTM-aist のインストール
+//config.sh で指定した /usr/arm-linux-gnu/ にインストールされます。
+// # make install
+///usr/arm-linux-gnu/share/examples/ にサンプル実行ファイルが生成されてます。
+//**RTコンポーネントのクロス開発 
+//以上で、RTコンポーネントをクロス開発する環境が整いました。
+//ここでは例として、サンプルに含まれる SeqOutComp のソースを使用してクロスコンパイルしてみます。
+
+*** (G)RT component cross development
+- To cross-develop an RT component, you need to use the command for cross development, so pass it through the (/usr/arm-linux-gnu/bin) path as follows.
+Be careful that /usr/arm-linux-gnu/bin is at the beginning of PATH when passing through the path.
+ > export PATH=/usr/arm-linux-gnu/bin:$PATH
+//***RTコンポーネントのクロス開発する 
+//-RTコンポーネントをクロス開発するには、クロス開発用のコマンドを使用する必要があるので、以下のように（/usr/arm-linux-gnu/bin）パスを通します。
+//パスを通す際に、/usr/arm-linux-gnu/binがPATH の先頭になるよう注意してください。
+// > export PATH=/usr/arm-linux-gnu/bin:$PATH
+
+*** (G)Generate the RT component of SimpleIO with rtc-template.
+Create a suitable directory to create the sample and copy the following files contained in the OpenRTM sample SeqOut source into it.
+ SeqOutComp.cpp SeqOut.h SeqOut.cpp Makefile.SeqOut
+//***rtc-template で SimpleIO の RTコンポーネントを生成する。 
+//サンプルを作成するため適当なディレクトリーを作成し、そこに OpenRTM のサンプル SeqOut のソースに含まれる以下のファイルをコピーしてください。
+// SeqOutComp.cpp		SeqOut.h	SeqOut.cpp	Makefile.SeqOut
+
+ > mkdir test
+ > cp (installation directory)/OpenRTM-aist-0.4.2/examples/SeqIO/SeqOutComp.cpp ./test/
+  (Copy all with the above command)
+// > mkdir test
+// > cp (インストールディレクトリー)/OpenRTM-aist-0.4.2/examples/SeqIO/SeqOutComp.cpp　./test/
+// (上記のコマンドですべてコピーしてください)
+
+We create a component called SeqOutComp with eight OutPorts.
+//OutPort を八つ持つ SeqOutComp というコンポーネントを生成します。
+
+*** (G)Build RT component
+Please check the contents of the generated Makefile.SeqOut. If there is no line beginning with CXX =, you need to specify the cross compiler for the compiler as follows.
+//***RTコンポーネントのビルド 
+//生成された、Makefile.SeqOut の内容を確認してください。CXX=で始まる行がない場合、コンパイラにクロス用のコンパイラを以下のように指定する必要があります。
+
+Set environment variable and make make &br;
+//環境変数を設定し make する&br;
+ > CXX=arm-linux-gnu-g++ make -f Makefile.SeqOut
+　or
+ > export CXX=arm-linux-gnu-g++
+ > make -f Makefile.SeqOut
+
+When make completes normally, SeqOutComp executable file is generated.
+//make が正常に完了すると、SeqOutComp の実行ファイルが生成されます。
+
+** (G)Running the RT component
+Copy cross-developed executable files, libraries, etc. to USB memory and start up on Armadillo240.
+//**RTコンポーネントの実行 
+//クロス開発した実行ファイル、ライブラリ、などを USBメモリーにコピーし、Armadillo240 上で起動します。
+
+*** (G)Preparing the USB memory
+Copy and generate the files necessary for executing the RT component on the Armadillo240 to the USB memory.
+//***USBメモリーの準備 
+//Armadillo240 上で RTコンポーネントを実行するのに必要なファイルを USBメモリーにコピー、生成します。
+
+:''Executable file'' | Executable file of the RT component you want to run on Armadillo240.
+In this example, we use SeqOutComp that we cross-compiled earlier.
+Copy SeqOutComp to the appropriate location (such as the root directory) of the USB memory.
+//:''実行ファイル'' | Armadillo240 上で実行したい RTコンポーネントの実行ファイル。
+//この例では、先ほどクロスコンパイルした SeqOutComp を使用します。
+//SeqOutComp をUSBメモリーの適当な場所（ルートディレクトリー等）にコピーします。
+
+:''Library'' | Library of ARM is stored under /usr/arm-linux-gnu/lib of ATDE2.
+Of the libraries in this directory, copy the following to the USB memory.
+Create a directory lib to place the library in the USB memory.
+//:''ライブラリ'' | ATDE2の/usr/arm-linux-gnu/lib以下にはARM用のライブラリが格納されています。
+//このディレクトリー内のライブラリのうち、以下のものを USBメモリーにコピーします。
+//　USBメモリーにライブラリを置くディレクトリーlibを作成します。
+
+ >mkdir lib
+ or
+ For the GUI, right click to create a folder
+//GUI の場合、右クリックでフォルダーを作成します
+
+When copying the library of /usr/arm-linux-gnu/lib, change the name as follows.
+///usr/arm-linux-gnu/lib のライブラリをコピーする際に、以下の通りに名前を変更してください。
+
+-OpenRTM-aist-0.4.2 case
+--Change library name
+When copying, please change the name as follows.
+//-OpenRTM-aist-0.4.2 の場合
+//--ライブラリ名変更
+//　コピーする際に、以下の通りに名前を変更してください。
+
+| Library name | After changing library name |
+| libomniDynamic4.so.0.6 | libomniDynamic4.so.0 |
+| libomniORB4.so.0.6 | libomniORB4.so.0 |
+| libomnithread.so.3.1 | libomnithread.so.3 |
+| libRTC - 0.4.2 .so.0.0.4 | libRTC - 0.4.2.so.0 |
+| librt.so.1 | librt.so.1 (no change) |
+| libACE.so.5.4.7 | libACE.so.5.4.7 (no change) |
+//|ライブラリ名|ライブラリ名変更後|
+//|libomniDynamic4.so.0.6|libomniDynamic4.so.0|
+//|libomniORB4.so.0.6|libomniORB4.so.0|
+//|libomnithread.so.3.1|libomnithread.so.3|
+//|libRTC-0.4.2.so.0.0.4|libRTC-0.4.2.so.0|
+//|librt.so.1|librt.so.1(変更なし)|
+//|libACE.so.5.4.7|libACE.so.5.4.7(変更なし)|
+
+- For OpenRTM - aist - 1.0.0
+-- Change library name
+| Library name | After changing library name |
+| libm -2.3.6.so | libm.so.6 |
+| libomiDynamic4.so.0.6 | libomniDynamic4.so.0 |
+| libomnithread.so.3.1 | libomnithread.so.3 |
+| librt.so.1 | librt.so.1 (no change) |
+| libRTC - 1.0.0 .so.0.0.4 | libRTC - 1.0.0.so.0 |
+| libstdc ++. so.6.0.8 | libstdc ++. so.6 |
+| libuuid.so.1.2 | libuuid.so.1 |
+//-OpenRTM-aist-1.0.0 の場合
+//--ライブラリ名変更
+//|ライブラリ名|ライブラリ名変更後|
+//|libm-2.3.6.so|libm.so.6|
+//|libomiDynamic4.so.0.6|libomniDynamic4.so.0|
+//|libomnithread.so.3.1|libomnithread.so.3|
+//|librt.so.1|librt.so.1(変更なし)|
+//|libRTC-1.0.0.so.0.0.4|libRTC-1.0.0.so.0|
+//|libstdc++.so.6.0.8|libstdc++.so.6|
+//|libuuid.so.1.2|libuuid.so.1|
+
+:''rtc.conf'' | Please create rtc.conf like below using a text editor.
+Since Armadillo does not start the name server, please start the name server on another PC.
+For the option of corba.nameservers in rtc.conf, specify the address of the PC that started the name server.
+ corba.nameservers: 192.168.100.1 (Enter the IP address of your name server)
+ naming.formats:% n.rtc
+//:''rtc.conf'' | 以下のようなrtc.confをテキストエディタなど使用して作成してください。
+//Armadillo上ではネームサーバを起動しませんので、別のPC上でネームサーバを起動しておいてください。
+//rtc.confのcorba.nameservers のオプションにはそのネームサーバを起動したPCのアドレスを指定します。
+// corba.nameservers: 192.168.100.1　(自分のネームサーバーのIPアドレスを入力)
+// naming.formats: %n.rtc
+
+:* Mounting of USB memory with ATDE2 | When inserting the USB flash memory into the PC while VMware (ATDE2) is running, it can be mounted automatically and checked on Desktop.
+If it is not mounted automatically, use the su command on VMware (ATDE2) terminal to become root and mount again.
+//:※ ATDE2でのUSBメモリのマウント| VMware(ATDE2)を起動中にPCにUSBフラッシュメモリを差し込むと、自動でマウントされDesktop上で確認できます。
+//自動でマウントされないときはVMware(ATDE2)の端末でsuコマンドでrootになりmountをし直します。
+
+- USB memory mounted
+ > su
+ # mkdir /mnt/(suitable directory)
+ # mount - t vfat/dev/sdb1/mnt/(directory created above)
+//-USBメモリのマウント
+// > su
+// # mkdir /mnt/(適当なディレクトリー)
+// # mount -t vfat /dev/sdb1 /mnt/(上で作成したディレクトリー)
+
+- Unmount USB memory &br;
+ If the USB memory icon is displayed on the Desktop, right click> unmount it. &br;
+ Or you can unmount it with the command from the console. &br;
+ # umount /mnt/(the directory created above)
+//-USBメモリーのアンマウント&br;
+//　　Desktop上に USBメモリーのアイコンが表示されてるときは、右クリック ＞ アンマウントしてください。&br;
+//　　または、コンソールからコマンドでアンマウントできます。&br;
+// # umount /mnt/(上で作成したディレクトリー)
+
+*** (G)Directory structure of USB memory
+After preparing the USB memory, the USB memory has the directory structure as shown below.
+//***USBメモリーのディレクトリー構造
+//USBメモリーの準備を終えると、USBメモリーは下のようなディレクトリー構造になります。
+
+-OpenRTM-aist-0.4.2
+
+     USB memory  -+- lib --+- libomniDynamic4.so.0
+ 　    　　　　　     |　 　  +- libomniORB4.so.0
+ 　　　  　　      　 | 　　  +- libomnithread.so.3
+ 　　　  　　　       |  　　 +- libRTC-0.4.2.so.0
+       　　　  　　　 |  　　 +- librt.so.1
+ 　　　        　　　 |　 　  +- libACE.so.5.4.7
+ 　　　　　      　　|
+ 　　　　　　      　+- SeqOutComp 
+ 　　      　　　　　|
+ 　　　　　      　　+- rtc.conf
+
+
+-OpenRTM-aist-1.0.0
+
+ 　USB memory   -+- lib --+- libm.so.6
+ 　　　　　　         | 　　  +- libomniDynamic4.so.0
+ 　      　　  　　　 | 　　  +- ibomnithread.so.3
+ 　　　        　　　 |  　　 +- librt.so.1
+ 　　　  　　　       |  　　 +- libRTC-1.0.0.so.0
+       　　　  　　　 |　 　  +- libstdc++.so.6
+ 　　      　  　　　 |　 　  +- libuuid.so.1
+ 　　　　　      　   |
+ 　　　　　　　      +- SeqOutComp 
+ 　　　　　　　      |
+       　　　　　　　+- rtc.conf
+
+*** (G)Start executable file with Armadillo240&aname (start240);
+Change the USB memory mount setting and library PATH setting, and move the executable file.
+You can operate Linux on Armadillo by connecting the PC and Armadillo with a serial cable and logging in from Linux serial console on Armadillo.
+Please proceed with the following easy method.
+//***Armadillo240 で実行ファイルを起動&aname(start240);
+//USBメモリーのマウント設定、ライブラリ PATH の設定を変更し、実行ファイルを動かします。
+//PC  とArmadillo をシリアルケーブルで接続し、Armadillo上 の Linux のシリアルコンソールからログインすることで Armadillo上 の Linux を操作することができます。
+//以下のやりやすい方法で進めてください。
+
+**** (G)Operate with minicom from ATDE2
+//****ATDE2上から minicom で操作する
+
+From ATDE2, operate with terminal emulator program ''minicom''.
+Connect the serial port of the PC and the serial port of Armadillo with a serial cable.
+For a PC without a serial port, you need to use a USB-serial conversion cable or the like.
+Refer to the Armadillo manual for how to connect the Armadillo serial cable.
+
+Configure the VMware virtual machine's device as follows.
+ Menu bar > VM > Settings > Hardware tag
+(It can be set with VMware Workstation and VMware Console.)
+//ATDE2上から端末エミュレーターのプログラム''minicom''で操作します。
+//PCのシリアルポートと Armadillo のシリアルポートをシリアルケーブルで接続してください。
+//シリアルポートがない PC の場合は USB－シリアル変換ケーブルなどを使用する必要があります。
+//Armadillo のシリアルケーブルの接続方法に関しては、Armadillo のマニュアルを参照してください。
+//※VMware の仮想マシンのデバイスの設定を以下のように行ってください。
+// メニューバー > VM > 設定 > ハードウェアタグ
+//　　（VMwareWorkstation と VMwareConsole で設定できます。）
+
+#ref(VMwareUseSerialSetting.png,nolink,center)
+CENTER: ''Configure VMware's USB serial port''
+//CENTER:''VMware の USBシリアルポート設定''
+
+Please check the connection check.
+//接続のチェックを確認してください。
+
+#ref(VMwareComSeting.png,nolink,center)
+CENTER: ''Configure VMware's serial port''
+//CENTER:''VMware のシリアルポート設定''
+
+Check the device status and check the port using Connection> Physical Serial Port.
+Start the terminal emulator minicom from the terminal of ATDE2.
+//デバイスステータスのチェックと、接続 > 物理シリアルポートを使用でポートを確認してください。
+//ATDE2 の端末から、端末エミュレーターminicom を起動します。
+ > minicom
+Press Enter to display the Armadillo240 login screen.
+Please proceed to & color (Maroon) {common operation}; thereafter.
+//Enterを押すと Armadillo240 の login 画面になります。
+//以降は&color(Maroon){共通の操作};に進んでください。
+
+**** (G)Operate with Windows terminal emulator (teraterm)
+//****Windows から端末エミュレーター (teraterm) で操作する
+
+You can also connect to Armadillo's serial console from Windows using a terminal emulator such as TeraTerm. TeraTerm can be downloaded for free from [[here:http://hp.vector.co.jp/authors/VA002416/]].
+Please start with the following setting.
+//Windowsから、TeraTerm などの端末エミュレーターを使用して Armadillo のシリアルコンソールと接続することもできます。TeraTerm は[[こちら:http://hp.vector.co.jp/authors/VA002416/]]から無料でダウンロードできます。
+//以下の設定で起動してください。
+
+- Menu bar> Settings> Serial port setting>
+- Port/optional
+- Baud rate/115200
+- Data/8bit
+- Parity/none
+- Stop/1bit
+- Flow control/none
+//-メニューバー>設定＞シリアルポート設定＞
+//--ポート/任意
+//--ボーレート/115200
+//--データ/8bit
+//--パリティ/none
+//--ストップ/1bit
+//--フロー制御/none
+
+When starting with the above setting, the login screen of Armadillo240 will be displayed.
+If it is not displayed, press Enter.
+Please proceed to the common operation after that.
+//上記の設定で起動すると、Armadillo240 のログイン画面が表示されます。
+//※表示されないときは Enter を押してください。
+//以降は共通の操作に進んでください。
+
+**** (G)Common operation
+//****共通の操作
+
+Please plug the USB memory into Armadillo.
+Please log in as root (password: root) on Armadillo login screen.
+The default mount is an option (umous=111), which permission setting any user can not execute.
+//USBメモリーを Armadillo に差してください。
+//Armadillo のログイン画面で、root (パスワード:root) でログインしてください。
+//デフォルトの mount はオプション(umous=111)で、どのユーザーも実行のできないパーミッション設定です。
+
+Once unmounted, it will be remounted with the -o rw option that can be written and executed.
+ # umount/dev/sda1
+ # mount - t vfat - o rw /dev/sda1/home/www-data/storage/
+In order to pass the library path, move to the USB memory with the command as a guest.
+ # su guest
+ > cd /home/www-data/storage
+Pass through the path of the library. (Please specify the directory where the library is located.)
+ > export LD_LIBRARY_PATH = $ {LD_LIBRARY_PATH}:/home/www-data/storage/
+ > ./SeqOutComp (executable file was executed)
+The RT component will start up.
+//一度アンマウントしてから、書き込み・実行可能な -o rw オプションでリマウントします。
+// # umount /dev/sda1
+// # mount -t vfat -o rw /dev/sda1 /home/www-data/storage/
+//ライブラリパスを通すため、コマンドでゲストになり USBメモリーに移動します。
+// # su guest
+// > cd /home/www-data/storage
+//ライブラリのパスを通します。(ライブラリの置いてあるディレクトリーを指定してください。)
+// > export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/www-data/storage/
+// > ./SeqOutComp　(実行ファイルが実行されました)
+//RTコンポーネントが起動がします。
+
+You can also check from RtcLink.
+//※RtcLink からも確認できます。
+
+In this method, you have to modify the setting every time you start Armadillo.
+In the next chapter, after Armadillo starts, it creates an image file that the RT component automatically starts and downloads it to Armadillo.
+//この方法では Armadillo の起動の度に設定を修正しなくてはなりません。
+//次の章では、Armadillo の起動後 RTコンポーネントが自動で起動するイメージファイルを作成し、Armadillo にダウンロードします。
+
+** (G)Create an image file of Armadillo240
+With the previous method, it is necessary to change the setting with the terminal emulator every time Armadillo starts up. In this case, use atmark-dist provided by AtmarkTechno, Inc, create an image file that RT component automatically starts after Armadillo240 start up, and download it to Armadillo.
+//** Armadillo240 のイメージファイルを作成する
+//これまでの方法だと、Armadillo の起動ごとに端末エミュレーターで設定を変更する必要があります。ここでは、AtmarkTechno,Inc から提供されている atmark-dist を使い、Armadillo240 の起動後 RTコンポーネントが自動で起動するイメージファイルを作成し、Armadillo にダウンロードします。
+
+*** (G)Development environment development
+Use the environment of ATDE2 cross-compiled RT component as it is. Please download the following items on ATDE2.
+//***開発環境の整備
+//　RTコンポーネントをクロスコンパイルした ATDE2 の環境をそのまま使います。ATDE2上に以下の項目をダウンロードしてください。
+
+:''Atmark-dist'' | Create an Armadillo userland image file.
+-- [[here:http://armadillo.atmark-techno.com/downloads]] for free.
+//:''Atmark-dist''| Armadillo の userland のイメージファイルを作成します。
+//-- [[こちら:http://armadillo.atmark-techno.com/downloads]]から無料で入手できます。
+
+:''Linux kernel'' | Required when creating image files with Atmark-dist.
+-- [[here:http://armadillo.atmark-techno.com/armadillo-240/downloads]] for free. (In the case of Armadillo240)
+-- [[openrtm_new.patch:http://www.openrtm.org/pub/OpenRTM-aist/armadillo/buildtools/openrtm_new.patch]], Atmark-dist (2009/03/18) with the verification of patch Fixed the file. (2010/02/12)
+//:''Linuxカーネル''| Atmark-dist でイメージファイルを作成する際必要です。
+//-- [[こちら:http://armadillo.atmark-techno.com/armadillo-240/downloads]]から無料で入手できます。(Armadillo240の場合)
+//-- [[openrtm_new.patch:http://www.openrtm.org/pub/OpenRTM-aist/armadillo/buildtools/openrtm_new.patch]], Atmark-dist(2009/03/18)のverアップに伴い patch ファイルを修正しました。(2010/02/12)
+
+*** (G)Build and configure atmark-dist
+Here, we will create an image file of userland of Armadillo.
+By using the image file created here, you can start RT Component that was previously installed in USB memory automatically.
+//***atmark-distのビルドと設定
+//ここでは、Armadillo の userland のイメージファイルを作成します。
+//ここで作成するイメージファイルを使用すると、USBメモリーにあらかじめインストールされた RTコンポーネントを、自動的に起動できるようになります。
+
+**** (G)How RT Component starts
+Mount the USB memory to /home/openrtm/, and start Armadillo /home/openrtm/boot.sh.
+boot.sh starts the executable file through the library path in the USB memory.
+-OS setting
+-- Write USB memory, executable and mount on /home/openrtm/.
+-- When USB memory is mounted, start boot.sh directly under the USB memory.
+- Contents of USB memory &br;
+Please prepare the following files in the USB memory.
+//****RTコンポーネントの起動の仕組み 
+//USBメモリーを /home/openrtm/にマウントし、Armadillo の 起動後/home/openrtm/boot.sh を起動させます。
+//boot.shは、USBメモリー内のライブラリパスを通し、実行ファイルを起動します。
+//-OSの設定
+//--USBメモリーを書込、実行可能で /home/openrtm/ にマウントする。
+//--USBメモリーマウント時に、USBメモリー直下の boot.sh を起動する。
+//-USBメモリーの内容&br;
+//USBメモリーに以下のファイルを用意してください。
+
+:''boot.sh'' | Shell script to launch after Armadillo240 starts. Please prepare the following boot.sh directly under the USB memory. Run the executable file through library PATH.
+-- This is the setting when rtc.conf is placed under the USB memory and the library is placed in the lib directory. Correct according to the directory structure of the USB memory.
+//:''boot.sh'' | Armadillo240 起動後、起動するシェルスクリプトです。USBメモリーの直下に下のような boot.sh を用意してください。ライブラリ PATH を通し、実行ファイルを起動します。
+//-- ※rtc.confをUSBメモリー直下に、ライブラリを libディレクトリーに置いた時の設定です。USBメモリーのディレクトリー構造に応じて修正してください。
+
+ #!bin/sh
+ . /etc/default/openrtm.conf
+ export LD_LIBRARY_PATH=$LIBPATH:/home/openrtm/lib/
+ /home/openrtm/SeqOutComp(Execution file name) 　-f　 /home/openrtm/rtc.conf
+
+**** (G)atmark-dist Build
+Please download atmark-dist and linux kernel, openrtm.patch on ATDE2 and expand it.
+ > tar zxvf atmark-dist - 20090318.tar.gz
+ > tar zxvf linux - 2.6.12.3 - a9 - 15. tar.gz
+Go to the directory of the expanded atmark - dist and make a symbolic link of the linux kernel.
+Link name must be ''. /linux-2.6.x'' regardless of ver of linux.
+ > ln -s ../linux-2.6.12.3-a9-15 ./linux-2.6.x
+make make config. Please enter the following as below.
+//****atmark-distビルド 
+//ATDE2上で、atmark-dist と linuxカーネル、openrtm.patch をダウンロードし展開してください。
+// > tar zxvf atmark-dist--20090318.tar.gz
+// > tar zxvf linux-2.6.12.3-a9-15.tar.gz
+//展開された atmark-dist のディレクトリーに移動し、linuxカーネルのシンボリックリンクを張ります。
+//　　※リンク名は、linux の ver にかかわらず ''./linux-2.6.x'' にしてください。
+// > ln -s ../linux-2.6.12.3-a9-15　./linux-2.6.x　
+//make configします。 以降の質問には下のように入力してください。
+ > make config
+ Select the Vendor you wish to target:     Atmarktechno (input)
+ Select the product you wish to target:    Armadillo-240.Recover (input)
+ Kernel is linux - 2.6.x:                             default (even with enter)
+ defined CONFIG_DEFAULTS_CROSSDEV_DEFAULT:      none (also OK)
+ Default all settings:                                y (input)
+ Customize Kernel Settings:                    n (even enter)
+ Customize Vendor / User Settings:        n (even enter)
+ Update Default Vendor Settings:            n (also OK, end)
+// > make config
+// Select the Vendor you wish to target　　：Atmarktechno(入力)
+// Select the Product you wish to target　 ：Armadillo-240.Recover(入力)
+// Kernel is linux-2.6.x　　　　　　 　　　  ：default(enterでもOK)
+// defined CONFIG_DEFAULTS_CROSSDEV_DEFAULT：none(enterでもOK)
+// Default all settings 　　　　　　　 　　　：y(入力)
+// Customize Kernel Settings 　　　　 　　　 ：n(enterでもOK)
+// Customize Vendor/User Settings  　　　　 ：n(enterでもOK)
+// Update Default Vendor Settings  　　　　 ：n(enterでもOK、終了)
+
+Copy openrtm.patch and apply the patch as follows.
+//openrtm.patchをコピーし以下の手順でパッチを当ててください。
+ > cp openrtm.patch /atmark-dist-YYYYMMDD/vendor/AtmarkTechno/Armadillo-240.Recover/openrtm.patch
+ > cd /atmark-dist-YYYYMMDD/vendor/AtmarkTechno/Armadillo-240.Recover/
+ > patch -p1 <openrtm_new.patch
+ (Patch finished)
+// 　(パッチ終了)
+Go to the atmark-dist-YYYYMMDD directory and make dep all all.
+//atmark-dist-YYYYMMDDディレクトリーまで移動し、make dep all してください。
+ > cd ../../../
+ > make dep all
+While make make all, the following error message is displayed, but romfs is generated normally.
+ /bin/sh: extensions/.dccp-test: No permission
+ /bin/sh: extensions/.layer 7-test: No permission
+ /bin/sh: extensions/.statistic-test: No permission
+ make[2]: Enter directory `/home/atmark/Desktop/foratde/forkernel/atmark-dist-200807 17/user/iptables'
+ romfs-inst.sh /bin/iptables
+ romfs-inst.sh -l /bin/iptables/bin/iptables-save
+ Accessing ln: `/bin/iptables': No such file or directory
+ romfs-inst.sh -l /bin/iptables/bin/iptables-restore
+ Accessing ln: `/bin/iptables': No such file or directory
+After making make, four files are generated in the images directory.
+ > ls images
+ linux.bin    linux.bin.gz    romfs.img    romfs.img.gz
+In the next chapter write ''romfs.img.gz'' to Armadillo.
+// > cd ../../../
+// > make dep all
+//make dep all中、以下のようなエラーメッセージが表示されますが、romfs は正常に生成されます。
+// /bin/sh: extensions/.dccp-test: 許可がありません
+// /bin/sh: extensions/.layer7-test: 許可がありません
+// /bin/sh: extensions/.statistic-test: 許可がありません
+// make[2]: ディレクトリー `/home/atmark/Desktop/foratde/forkernel/atmark-dist-200807 17/user/iptables' に入ります
+// romfs-inst.sh /bin/iptables
+// romfs-inst.sh -l /bin/iptables /bin/iptables-save
+// ln: `/bin/iptables' にアクセス中: そのようなファイルやディレクトリーはありません
+// romfs-inst.sh -l /bin/iptables /bin/iptables-restore
+// ln: `/bin/iptables' にアクセス中: そのようなファイルやディレクトリーはありません
+//make終了後、images ディレクトリーに4つのファイルが生成されます。
+// > ls images
+// 　linux.bin　linux.bin.gz　romfs.img　romfs.img.gz
+//次の章で ''romfs.img.gz'' を Armadillo に書き込みます。
+
+*** (G)Download image file to Armadillo240
+Download the generated userland image file ''romfs.img.gz'' to Armadillo240.
+Armadillo ''short'' the jumper pin (2), please turn on the power (Armadillo [[Hardware Manual:http://download.atmark-techno.com/armadillo-240/doc/armadillo-200_series_hardware_manual_ja-2.0.7d.pdf]] please refer to p.16)
+//***イメージファイルを Armadillo240 にダウンロードする 
+//生成した userland のイメージファイル''romfs.img.gz''を Armadillo240 にダウンロードします。
+//Armadillo はジャンパピン(2)を''ショートして''、電源を入れておいてください（Armadillo[[ハードウェアマニュアル:http://download.atmark-techno.com/armadillo-240/doc/armadillo-200_series_hardware_manual_ja-2.0.7d.pdf]]のp.16を参考にしてください)
+
+You can download from either VMware (ATDE2) or Windows.
+//VMware(ATDE2)、Windows どちらからでもダウンロードできます。
+
+**** (G)Download from ATDE2
+[[Here>#start240]] to configure the device of VMware virtual machine before proceeding.
+//****ATDE2上からダウンロードする
+//[[こちら >#start240]]で VMware の仮想マシンのデバイス設定を行ってから進めてください。
+
+- Connect the Armadillo-240 and the PC with a USB serial cable (or serial cable).
+- Download images/''romfs.img.gz'' with hermit from the terminal console of ATDE2.
+ > hermit download - i images/romfs.img.gz - r userland - port/dev/ttyUSB 0 (or /dev/ttyS0)
+Download takes about 8 minutes. &br;
+- It is completed when ''completed'' is displayed.
+ serial: completed 0x004455fd (4478461) bytes. (Completed)
+//-Armadillo-240 と PC を USBシリアルケーブル（又はシリアルケーブル）でつなぎます。
+//-ATDE2 の端末コンソールから hermitでimages/''romfs.img.gz''をダウンロードします。
+// > hermit download -i images/romfs.img.gz -r userland --port /dev/ttyUSB0　(または、/dev/ttyS0)　
+//　ダウンロードには8分ほどかかります。&br;
+//-''completed'' と表示されたら完了です。
+// serial: completed 0x004455fd (4478461) bytes.　(完了)
+&br;
+　
+*** (G)Download from Windows
+Please put downloader > win32 > Hermit.zip of CD-ROM bundled with Armadillo240 on Widows.
+//***Windows上からダウンロードする
+//Armadillo240 に同梱されている CD-ROM の downloader > win32 > Hermit.zip を Widows上に置いてください。
+
+-Extract Hermit.zip on Windows and double-click Hermit.exe to start it.
+//-Windows上にHermit.zip を解凍し、Hermit.exe をダブルクリックで起動します。
+
+#ref(hermit.png,nolink,center)
+CENTER:''Windows上のHermit''
+
+- Connect the Armadillo240 to the PC via the serial port.
+- Move romfs.img.gz generated on ATDE2 on Windows.
+- Configure the serial port in the displayed dialog and press Download. Set ''romfs.img.gz'' created with images to ''userland'' in Region and click the download button to download. (It will take about 8 minutes.)
+- When downloading is completed, it will be displayed in Hermit.
+//-Armadillo240 をPCをシリアルポートで接続してください。
+//-ATDE2 に生成された romfs.img.gz を Windows上に移動してください。
+//-表示されたダイアログでシリアルポートを設定し、Download を押します。images で作成した ''romfs.img.gz'' を、Region で ''userland'' を設定し実行ボタンを押してダウンロードします。(8分くらいかかります。)
+//-ダウンロードが完了すると、Hermit に表示されます。
+
+** (G)Execution/confirmation of RT component
+Start RTCLink and confirm start of RT component.
+//**RTコンポーネントの実行・確認 
+//RTCLink を起動し、RTコンポーネントの起動を確認します。
+
+- After the image file download is completed, remove ''short circuit'' of Armadillo's jumper pin (2), plug the power supply and restart it.
+- When you run the RT component, start the name server specified in rtc.conf.
+-- For Windows
+--- Execute "OpenRTM-aist" > "example" > "NameService.bat" from the program menu.
+--- Alternatively, double click on rtm - naming.bat in OpenRTM-aist\bin and start it.
+-- For Linux
+--- Become root with the su command and start the name server.
+ > su
+ # /etc/init.d/omniorb4-nameserver start
+- Start up RTCLink and check that the component is created on the name server.
+-- If the name server is not displayed, please push the Connect Name Server button and add a name server.
+//-イメージファイルのダウンロード完了後、Armadillo のジャンパピン(2)の''ショートを外し''、電源のプラグを差し直し再起動します。
+//-RTコンポーネントを実行する際、rtc.conf で指定したネームサーバーを起動します。
+//--Windowsの場合
+//---プログラムメニューの「OpenRTM-aist」→「example」→「NameService.bat」を実行します。
+//---あるいは、OpenRTM-aist\binにある rtm-naming.bat をダブルクリックして起動します。
+//--linuxの場合
+//---suコマンドで root になり、ネームサーバーを起動します。
+// > su
+// # /etc/init.d/omniorb4-nameserver start
+//-RTCLink を起動し、ネームサーバーにコンポーネントが生成されているのを確認してください。
+//--※ネームサーバーが表示されていない時は、Connect Name Server ボタンを押してネームサーバーを追加接続してください。
+
+** (G)Application example
+*** (G)Armadillo + URG sensor
+//**応用例 
+//***Armadillo + URG センサ ー
+
+Combined with Armadillo and Hokuyo Electric URG sensor, it is a unit to easily construct a distributed sensor system.
+The URG sensor RT component works on Armadillo. (RTC starts automatically at the same time as Armadillo power is turned on.)
+By using Armadillo compatible with PoE (Power over Ether), communication and power supply are possible only with the LAN cable.
+The URG sensor also operates with power supply from PoE.
+Sensor arrangement is possible with only one cable, so you can easily construct a distributed sensor system.
+//Armadillo と北陽電機URGセンサーと組み合わせ、分散センサーシステムを簡単に構築するためのユニットです。
+//Armadillo 上では URG センサー RTコンポーネントが動作します。（Armadillo 電源投入と同時に RTC が自動起動します。）
+//PoE (Power over Ether) 対応の Armadillo を使用することで、LANケーブルのみで通信・給電が可能です。
+//URG センサーも PoE からの電源供給で動作します。
+//ケーブル1本のみでセンサー配置が可能ですので、分散センサーシステムを容易に構築できます。
+
+#ref(Armadillo_URG.png,nolink,center)
+CENTER: ''Distributed LRF Unit''
+//CENTER:''分散 LRF ユニット''
+
+#ref(Armadillo_URG3.png,nolink,center)
+CENTER: ''PoE (Power over Ether) HUB can supply power''
+//CENTER:''PoE (Power over Ether) HUB により電力供給が可能''
+
+　
