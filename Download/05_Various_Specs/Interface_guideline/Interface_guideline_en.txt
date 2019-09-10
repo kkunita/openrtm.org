@@ -1,0 +1,27 @@
+﻿// Title: Interface guidelines
+** Interface guidelines
+
+The following interfaces are designed to act as interface guides for various device and software types commonly found in robotics. Adhering to these interfaces, and extending them for additional, specialised functionality, aids in increased reusability of components.
+
+|Device type|Purpose|
+|[[Actuator Array:Actarray]]|Array of actuators, such as those found in a robotic limb. Provides individual control of each actuator in the array.|
+|[[AIO:AIO]]|Analogue input/output. Set voltages of each value in an analogue I/O interface.|
+|[[Bumper:Bumper]]|Bump sensor array.|
+|[[Camera:Camera]]|Receive image data from a single camera.|
+|[[DIO:DIO]]|Digital input.output. Set pins of a digital I/O interface high and low.|
+|[[Fiducial:Fiducial]]|Fiducial-finding devices (such as artoolkit).|
+|[[GPS:GPS]]|Global Positioning System devices that provide location in latitude/longitude.|
+|[[Gripper:Gripper]]|High-level control of robotic grippers, such as hands and the grippers found on MobileRobots research robots.|
+|[[IMU:IMU]]|Inertial Measurement Units that provide velocity, acceleration and (sometimes) position and rotation estimates along three axes.|
+|[[Joystick:Joystick]]|Joystick control.|
+|[[Limb:Limb]]|High-level control of robotic limbs. Provides for specifying the pose of the end effector without worrying about individual joint positions.|
+|[[Localise:Localise]]|Control over a localisation component.|
+|[[Map:Map]]|Maps.|
+|[[Multi-camera:Multicamera]]|Multi-camera version of the camera interface. Stereo or greater is possible.|
+|[[PanTilt:Pantilt]]|Pan-Tilt units.|
+|[[Paths:Paths]]|Path components.|
+|[[Point Cloud:Pointcloud3d]]|Get a cloud of points in Cartesian space, such as that returned by a 3D laser scanner.|
+|[[Position:Position]]|Various sub-interfaces that can be combined to create a position-control and state device.|
+|[[Power:Power]]|Control over and state of power supplies, such as batteries and chargers.|
+|[[Ranger:Ranger]]|Range-based sensors, such as infra-red, sonar and laser scanners. Sensors may be singular (as in the case of a typical laser scanner) or multi-unit (as in the case of a sonar sensor array).|
+|[[RFID:RFID]]|RFID detection, data reading and data writing.|

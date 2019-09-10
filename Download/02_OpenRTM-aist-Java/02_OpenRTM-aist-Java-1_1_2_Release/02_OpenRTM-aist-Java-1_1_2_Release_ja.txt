@@ -1,0 +1,59 @@
+﻿// Title: OpenRTM-aist-Java-1.1.2-RELEASE
+#ref(java_logo.png,right,nolink,around)
+
+#contents
+#clear
+&br;
+
+//-&color(red){まだリリースしておりません。準備中です。もうしばらくお待ち下さい。};
+
+**パッケージ
+***Windows インストーラー
+
+**** 32bit 用
+
+|LEFT:230|LEFT|LEFT:100|c
+|Windows 用インストーラー&br; (OpenRTM-aist C++、Python、Java版,&br; および OpenRTP、RTShell (4.1.0) 含む)|[[OpenRTM-aist-1.1.2-RELEASE_x86.msi:http://openrtm.org/pub/Windows/OpenRTM-aist/1.1/OpenRTM-aist-1.1.2-RELEASE_x86.msi]] &br;MD5:59be8603f3fc007c2aed4476052886ce | 2016/05/27 |
+|Python-2.7|[[python-2.7.10.msi:https://www.python.org/ftp/python/2.7.10/python-2.7.10.msi]]|[[python.org:https://www.python.org]]|
+
+-&color(red){※ Python 2.7.10 推奨。2.7.11は PYTHONPATH 等環境変数の設定が必要な場合があります。};
+-&color(red){※ 古い RTShell は事前に削除しておいてください。};
+
+**** 64bit用
+
+|LEFT:230|LEFT|LEFT:100|c
+|Windows用インストーラー&br; (OpenRTM-aist C++,Python,Java版,&br; および OpenRTP,RTShell(4.1.0)含む)|[[OpenRTM-aist-1.1.2-RELEASE_x86_64.msi:http://openrtm.org/pub/Windows/OpenRTM-aist/1.1/OpenRTM-aist-1.1.2-RELEASE_x86_64.msi]] &br;MD5:ee8db7c1682cb21dce963207e0484fb3 | 2016/05/27 |
+|Python-2.7|[[python-2.7.10.amd64.msi:https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi]]|[[python.org:https://www.python.org]]|
+
+-&color(red){※ Python 2.7.10 推奨。2.7.11は PYTHONPATH 等環境変数の設定が必要な場合があります。};
+-&color(red){※ 古い RTShell は事前に削除しておいてください。};
+
+インストールについては、[[OpenRTM-aistを10分で始めよう！:http://openrtm.org/openrtm/ja/node/6026]] のページで手順を紹介しています。&br;
+
+
+***Linux パッケージ
+
+|LEFT:200|LEFT|LEFT:100|c
+|jar ファイルおよびサンプル|[[OpenRTM-aist-Java-1.1.2-RELEASE-jar.zip:http://openrtm.org/pub/OpenRTM-aist/java/1.1.2/OpenRTM-aist-Java-1.1.2-RELEASE-jar.zip]] &br;MD5:e89979be5c43c07c3c72c90233b84ad7 |2016.05.27|
+
+//- Windows をご利用の方は msi でのインストールを推奨します。
+//- ''jar ファイルおよびサンプル''は Windows と UNIX 両方で利用可能です。
+
+
+
+
+
+**Java 開発環境
+
+OpenRTM-aist-Java-1.1.2の動作および開発には以下の JDK が必要です。
+//- JDK7 (1.7):
+- JDK8 (1.8): [[ダウンロード:http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html]]
+- 参考: [[Java Archive:http://www.oracle.com/technetwork/java/archive-139210.html]]
+
+//JDK6 よりも新しいバージョンでも動作する可能性もありますが、配布の msiインストーラでは JDK5 または JDK6 のインストールを確認するため、JDK5、6 のいずれかがインストールされている必要があります。
+//JDK6、5 以外の Java をお使いの場合は、zip アーカイブをダウンロードの上、[[手動でインストール:http://openrtm.org/openrtm/ja/content/windows%E3%81%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB-1#toc10]]してください。
+
+
+**リリースノート: Java-1.1.2-RELEASE
+-- 雑多なバグフィックス
+-- Windows インストーラーで Java版、C++版、Python版、RTShell も同時にインストール可能

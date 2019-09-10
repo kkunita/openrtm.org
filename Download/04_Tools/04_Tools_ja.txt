@@ -1,0 +1,58 @@
+﻿// Title: ツール
+#ref(tools.png,right,around,60%,url=/ja/node/119)
+
+** OpenRTP
+
+-[[OpenRTP 1.2.0:/ja/content/openrtp-120]]
+-[[OpenRTP 1.1.2:/ja/content/openrtp-112]]
+-[[OpenRTP その他のツール(openrtm.org):http://openrtp.org]]
+//-- [[RTC Builder on the Web(RTCBoW):http://www.openrtp.org/rtcbow/index.html]]
+-- RTC Builder on the Web(RTCBoW)
+--- http://www.openrtp.org/rtcbow/index.html
+--- http://hara.jpn.com/_default/ja/Software/RTCBoW.html
+
+** rtshell
+
+-[[rtshell:/ja/content/rtshell]]
+-[[rtshell (github):https://github.com/OpenRTM/rtshell]]
+
+
+
+
+** その他情報
+
+*** Eclipse 更新サイト
+
+Eclipse の更新機能で、最新のプラグインにバージョンアップ可能です。手順については[[更新方法:/ja/content/openrtp_plugin_update]]のページをご覧ください。
+
+
+- ブランチの最新バージョンを取得可能です。通常はこちらを使用してください。
+-- [[branches:http://openrtm.org/pub/openrtp/stable/updates/]]
+- リリースバージョンのプラグインを取得可能です。全部入りパッケージに含まれているものと同一です。
+- [[release:http://openrtm.org/pub/openrtp/releases/updates/]]
+
+***ソースコードリポジトリ
+-[[trunk:http://svn.openrtm.org/rtmtools/trunk]]
+-[[RELENG_1_0:http://svn.openrtm.org/rtmtools/branches/RELENG_1_0]]
+-[[RELENG_1_1:http://svn.openrtm.org/rtmtools/branches/RELENG_1_1]]
+-[[RELENG_1_2:https://github.com/OpenRTM/OpenRTP-aist/tree/RELENG_1_2]]
+
+***リポジトリステータス
+- [[statsvn:http://www.openrtm.org/svnstat/tools]]
+
+***バグトラッキング
+-[[redmine (RTSE):http://www.openrtm.org/redmine/projects/rtsystemeditor]]
+-[[redmine (RTCB):http://www.openrtm.org/redmine/projects/rtcbuilder]]
+
+***旧バージョン
+-[[Eclipse tools 1.1.0-RC5:/ja/node/5778]]
+-[[Eclipse tools 1.1.0-RC4:/ja/node/30]]
+-[[Eclipse tools 1.1.0-RC3:/ja/node/5021]]
+-[[Eclipse tools 1.1.0-RC2:/ja/node/4557]]
+-[[RTSystemEditor・RTCBuilder-1.1.0-RC1:/ja/node/1736]]
+-[[RTSystemEditor・RTCBuilder-1.0.0-RELEASE:/ja/node/941]]
+-[[RTSystemEditor・RTCBuilder-1.0.0-RC1:/ja/node/75]]
+//- RTSystemEditor・RTCBuilder-0.4.2
+//[[RTSystemEditor・RTCBuilder-0.4.2:/ja/node/76]]
+//- RtcLink・RtcTemplate
+//-[[RtcLink・RtcTemplate:/ja/node/89]]

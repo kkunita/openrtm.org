@@ -1,0 +1,22 @@
+﻿// Title: Tools
+#ref(eclipse_logo.png,right,around,70%,url=/node/119)
+
+Tools for creating and using RT Components. RTSystemEditor and RTCBuilder operate as Eclipse plugins or RCP programs. rtshell provides a command-line interface for using and managing RT Components and complete RT Systems. The libraries for Python, rtctree and rtsprofile, allow RT Components and RT Systems to be manipulated from your own Python programs.
+
+-[[Eclipse tools 1.0.0-RELEASE:/en/node/945]]
+-[[rtshell-3.0.0:/en/node/870]]
+-[[rtctree/rtsprofile-3.0.0:/en/node/1395]]
+<!--break-->
+***Source code repository
+-[[trunk:http://svn.openrtm.org/rtmtools/trunk]]
+-[[RELENG_1_0:http://svn.openrtm.org/rtmtools/branches/RELENG_1_0]]
+-[[RELENG_1_1:http://svn.openrtm.org/rtmtools/branches/RELENG_1_1]]
+
+***Bug tracking
+-[[redmine (RTSE):http://www.openrtm.org/redmine/projects/rtsystemeditor]]
+-[[redmine (RTCB):http://www.openrtm.org/redmine/projects/rtcbuilder]]
+
+***Old versions
+-[[RTSystemEditor/RTCBuilder-1.0.0-RC1:/en/node/529]]
+-[[RTSystemEditor/RTCBuilder-0.4.2:/en/node/530]]
+-[[RtcLink・RtcTemplate:/en/node/531]]

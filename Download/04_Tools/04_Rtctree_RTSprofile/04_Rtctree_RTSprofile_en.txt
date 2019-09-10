@@ -1,0 +1,30 @@
+﻿// Title: RTCTree/RTSProfile download
+**Python libraries
+
+RTCTree is a Python library providing an easy-to-use API for interacting with running RT Components  and RTM-based systems running on OpenRTM-aist. It allows developers to manage these systems from other programs without needing to learn the CORBA API. Components can be started, stopped, connected together, have their configuration changed, and so on.
+
+RTSProfile is a Python library providing an interface to the RT System Profile specification.
+<!--break-->
+**Installation package
+
+&color(red){RTCTree requires omniORB-py 4.x or newer. If you have not installed OpenRTM-python, then download omniORB-py from the [[omniORB website>http://omniorb.sourceforge.net]] and install it before using RTCTree.};
+
+&color(red){Before installing the latest version of RTCTree and RTSProfile, ensure that the previous versions have been completely uninstalled.};
+
+RTCTree and RTSProfile can be installed using pip, the Python package installer.
+
+  pip install rtctree
+  pip install rtsprofile
+
+The RTCTree package page is [[here>https://pypi.python.org/pypi/rtctree]].
+
+The RTSProfile package page is [[here>https://pypi.python.org/pypi/rtsprofile]].
+
+**Source code
+
+For OpenRTM-aist versions 1.1.0 and newer.
+
+|LEFT:200|LEFT|LEFT:100|c
+|>|>|CENTER: Python libraries|
+|RTCTree source code|[[githubのページ:https://github.com/gbiggs/rtctree/tree/v4.1.0]]&br;Click "Download ZIP"|2015.09.17|
+|RTSProfile source code|[[githubのページ:https://github.com/gbiggs/rtsprofile/tree/v4.1.0]]&br;Click "Download ZIP"|2015.09.17|
