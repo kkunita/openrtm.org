@@ -1,0 +1,49 @@
+﻿// Title: Making a NXT Python RTC 
+After completing the above preparations, the NXT should be controllable from the PC using Python.
+
+At this point, you could use RtcTemplate to generate a NXT component template and get stuck in coding. However, while NXT Python is a clean module, please read on a little before putting NXT Python directly into an RT-Component.
+
+As you can see from the samples, NXT Python is organised into modules for locators, motors, sensors, etc. In order to provide fine control over motors and sensors, the access method is a little complex.
+
+We will create a class that allows us to access the many NXT Python modules through a single interface. We will use the Facade software pattern.
+
+ The facade pattern is a software engineering design pattern commonly used with Object-oriented programming. A facade is an object that provides a simplified interface to a larger body of code, such as a class library. (Source: "Facade pattern," Wikipedia)
+
+Making such a class has the following benefits:
+
+-Use it in places other than the RTC
+-Easier to debug
+--Debug the facade in isolation
+--Debugging directly in the RTC makes it difficult to determine if a problem is because of the facade or the RTC.
+-Modifications are easier
+--Even if the facade class changes, if the interface does not change then the RTC component does not need to be changed.
+--For example, if you want to add limits to some functions called get_xxx() and set_xxx(), this will only require changes in the facade.
+-Easier to use devices other than the NXT
+--For example, switching to a new version of the NXT that uses the same interface.
+
+This is generally the case for RT-Components. Make good classes for robots and devices you wish to interact with, and even if the RTC itself changes or a new version is made, it will be easy to interact and maintenance will be greatly simplified.
+
+Avoid creating low-level code like the following in your RTC's onExecute() method:
+
+ ioctl(xxxx, xxxx); // UNIX direct device access
+ inb(xxx);          // Direct I/O
+ outb(xxx);         // Direct I/O
+
+Ideally, create code like the following:
+
+ onExecute(ec_id) { //　Pseudocode
+    if (m_inport.isNew()) {
+       retval = m_myrobot.set_actuator(m_inport.read());
+       if (retval == fatal_error) return RTC::RTC_ERROR;
+    }
+    if (myrobot.get_sensor(sensor_data) == true) {
+       m_outport.write(sensor_data);
+    } else {
+       // Processing a read error
+       if (fatal_error) return RTC::RTC_ERROR;
+    }
+    return RTC::RTC_OK;
+ }
+
+Code like this calls a function to process data from the input port and write sensor data to the output port. This sort of abstract code is ideal.
+

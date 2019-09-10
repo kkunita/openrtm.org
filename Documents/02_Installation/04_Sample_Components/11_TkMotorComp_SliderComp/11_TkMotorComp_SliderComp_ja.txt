@@ -1,0 +1,37 @@
+// Title: TkMotorComp・SliderComp 
+//&br;
+#contents
+
+**TkMotorComp
+このサンプルは、OpenRTM-aist の Python版 に同梱されています。
+C++版、Java版  には同梱されていませんのでご注意ください。
+&br;
+***概要
+GUI 画面を持った RTコンポーネントのサンプルです。TkMotorComp.py を実行することでサンプル・コンポーネントが起動します。
+#br
+
+&br;
+***起動画面
+#br
+
+#ref(TkMotorComp.png,center,70%)
+CENTER:''TkMotorComp 実行例''
+#br
+
+&br;
+**SliderComp
+このサンプルは、OpenRTM-aist の Python版 に同梱されています。
+C++版、Java版  には同梱されていませんのでご注意ください。
+&br;
+***概要
+GUI 画面を持った RTコンポーネントのサンプルです。SliderComp.py を実行することでサンプル・コンポーネントが起動します。（以下の画面は、Windows で動作させた場合のものです。）
+#br
+
+&br;
+***起動画面
+#br
+
+#ref(SliderComp.png,center)
+CENTER:''SliderComp 実行例''
+
+

@@ -1,0 +1,10 @@
+﻿// Title: NXT RTC Implementation 
+**NXT RTC Implementation 
+
+We shall now use the NXTBrick class created above to create an RTC.
+
+-InPort
+--Motor speed (TimedFloatSeq)
+-Outport
+--Motor position (TimedFloatSeq)
+--Sensor data (TimedFloatSeq)

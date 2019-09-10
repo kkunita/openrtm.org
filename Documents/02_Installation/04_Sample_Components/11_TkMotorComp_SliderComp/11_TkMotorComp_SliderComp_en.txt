@@ -1,0 +1,27 @@
+﻿// Title: TkMotorComp・SliderComp 
+#contents
+
+**TkMotorComp
+This sample is included with the Python edition of OpenRTM-aist. It is not included in the C++ or Java editions.
+
+***Introduction
+
+This sample is an RT-Component with a GUI. It displays the received sequence data using rotating indicators.
+
+***Screenshots
+
+#ref(TkMotorComp.png,center,70%)
+CENTER:''The TkMotorComp component's GUI.''
+
+**SliderComp
+This sample is included with the Python edition of OpenRTM-aist. It is not included in the C++ or Java editions.
+
+**Introduction
+
+It is a sample of RT component with GUI screen. Running SliderComp.py starts the sample component. (The following screen is for the case of running on Windows.)
+
+***Screenshots
+
+#ref(SliderComp.png,center)
+CENTER:''The SliderComp component's GUI.''
+

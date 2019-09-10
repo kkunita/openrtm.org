@@ -1,0 +1,18 @@
+﻿// Title: About the sample attached to OpenRTM
+#contents
+OpenRTM - aist comes with several sample components, which you can easily trial. (USBCameraMonitor / USBCameraAcquire component requires OpenCV.)
+The source code of the sample component is also included, so please use it for development.
+
+In this chapter, we will explain the sample attached to OpenRTM-aist. &br;
+If you are going to try out the sample, please activate the name service you installed before starting each sample component.
+#br
+
+--Start Naming Service.bat (C++)
+--rtc-naming.py (Python)
+--start-orbd.vbs (Java)
+
+To run the name server on Windows, double click on the corresponding file. If you installed using the installer, you can also run it from [Start Menu] > [OpenRTM-aist] > [Tools].
+In this chapter, we assume that the environment where RTSystemEditor is installed is assumed.
+For details on installing RTSystemEditor, see [[Installing OpenRTM Eclipse tools>/en/content/openrtm-eclipse-tools-]]. (Some samples will work without RTSystemEditor ).
+#br
+#br

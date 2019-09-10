@@ -1,0 +1,49 @@
+﻿// Title: NXTRTC
+#contents
+
+This sample is included with the Python edition of OpenRTM-aist. It is not
+included in the C++ or Java editions.
+
+**Introduction
+
+NXTRTC.py is a component that controls the motors and outputs the sensor
+data for LEGO Mindstorm NXT. See [[Development of RT-Components (for LEGO
+Mindstorms)>/en/node/762]] for details.
+
+**Screenshots
+
+#ref(NXTRTC.png,nolink,center,70%)
+CENTER:''Running the NXTRTC component.''
+
+#ref(TkMotor_en.png,center)
+CENTER:''The TkMotorComp component.''
+
+#ref(NXTRC_example_rtse_en.png,60%,center)
+CENTER:''The NXTRTC sample viewed in RTSystemEditor.''
+
+**Running the samples
+
+Connect to TkJoystickComp (input device) with GUI and TkMotorComp (output device), check motor control and values of LEGO.
+
+For details, please refer to [[RT Component Creation (edited by LEGO Mindstorm)>/node/752]] manual.
+
+//The motor of the LEGO robot can be controlled by connecting this component to
+//the TkJoyStick component, or another component providing a compatible output
+//port.
+
+Use the following procedure to start the sample:
+- Start RTSystemEditor and prepare SystemEditor. → For details on how to use RTSystemEditor, see [[RTSystemEditor >/node/1175]]
+- [[here>/node/753]] please refer to the PC and LEGO Mindstorm with Bluetooth, or USB.
+- Start NXTRTC.py, input device TkJoyStickComp.py, TkMotorComp, each component.
+- Since components are displayed in NameServiceView of RTSystemEditor, drag them onto SystemEditor.
+- Connect the corresponding ports of both components. (See SystemEditor execution example above)
+- Right-click on either component and select "All Activate".
+//-Start RTSystemEditor.
+//-Start LEGO Mindstorms from [[here>/en/node/763]], and connect the NXT to
+//the PC with Bluetooth or USB.
+//-Run NXTRTC.py, TkJoyStickComp.py and TkMotorComp.py.
+//-The components are displayed in the name service view of RTSystemEditor. Add
+//the components to the System Editor.
+//-Drag and drop between the ports to connect them.
+//-Activate the components.
+

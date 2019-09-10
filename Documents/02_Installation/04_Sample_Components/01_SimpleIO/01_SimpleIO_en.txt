@@ -1,0 +1,48 @@
+﻿// Title: SimpleIO
+#contents
+
+This sample is included with the C++, Python and the Java editions of OpenRTM-aist.
+&br;
+
+**Introduction
+
+This is a sample showing how to use InPort and OutPort. Launch the ConsoleIn component and the ConsoleOut component.
+When connecting between ports, the number entered on the ConsoleIn side is displayed on the ConsoleOut side. In addition to using RTSystemEditor between Port, you can connect by running Connector.
+
+#br
+&br;
+
+**Screenshots
+
+#ref(java_simpleio0_en.png,center,70%)
+CENTER:''The SimpleIO sample viewed in RTSystemEditor.''
+#br
+
+#ref(open_simpleIO_en.png,60%,center)
+CENTER:''Running the SimpleIO sample.''
+#br
+
+**Running the sample
+
+This sample transmits data using data ports.  ConsoleIn sends ConsoleOut the input numerical value via data port.  ConsoleOut displays the numerical value.
+Input the numerical value in ConsoleIn's window.  ConsoleOut will display the numerical value that you entered.
+
+#br
+
+-- Launch Eclipse and prepare the RTSystemEditor. → For details on how to use RTSystemEditor, see [[RTSystemEditor >/node/1175]]
+-- Start both ConsoleIn and ConsoleOut components.
+Since the startup of the component depends on the OS and the language of OpenRTM-aist, start it with reference to the following table.
+|LEFT:110|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c
+||>|CENTER:Windows|>|CENTER:Linux|
+||ConsoleIn component|ConsoleOut component|ConsoleIn component|ConsoleOut component|
+|C++|ConsoleInComp.exe|ConsoleOutComp.exe|ConsoleInComp|ConsoleOutComp|
+|Python|ConsoleIn.py|ConsoleOut.py|ConsoleIn.py|ConsoleOut.py|
+|Java|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.sh|ConsoleOut.sh|
+
+-- Both components will appear in NameServiceView of RTSystemEditor, so drag them onto SystemEditor.
+-- Connect the ports of both components. (See SimpleIO execution example above)
+-- Right-click on either component and select "All Activate".
+-- ConsoleIn prompts you to "Please input number:", so enter the number.
+-- The number is displayed on the ConsoleOut screen.
+
+#br
