@@ -1,0 +1,70 @@
+﻿// Title: RTSystemEditor(RTSE)・RTCBuilder(RTCB)-1.0.0-RELEASE
+#ref(eclipse_logo.png,left,around)
+Download(RTSystemEditor(RTSE)・RTCBuilder(RTCB))
+
+#contents
+#clear
+
+The latest version of RTSystemEditor and RTCBuilder are 1.0.0-RELEASE.
+
+
+**All in one package (Eclipse-3.4.2 [Ganymede SR2])
+|LEFT:200|LEFT|LEFT:100|c
+|Eclipse3.4.2+RTSE+RTCB&br;''all in one for Windows''|[[eclipse342_rtmtools100release_win32_en.zip:http://www.openrtm.org/pub/OpenRTM-aist/tools/1.0.0/eclipse342_rtmtools100release_win32_en.zip]]&br;[[EU mirror:http://www.openrtm.de/pub/OpenRTM-aist/tools/1.0.0/eclipse342_rtmtools100release_win32_en.zip]]&br;MD5:2A1895F0E01D874E35CDC29EFDCE1DE7|2010.06.01|
+|Eclipse3.4.2+RTSE+RTCB&br;''all in one for Linux''|[[eclipse342_rtmtools100release_linux_en.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/tools/1.0.0/eclipse342_rtmtools100release_linux_en.tar.gz]]&br;[[EU mirror:http://www.openrtm.de/pub/OpenRTM-aist/tools/1.0.0/eclipse342_rtmtools100release_linux_en.tar.gz]]&br;MD5:4B1F4ACEE7F8E99B9C36D08068DBE5E1|2010.06.01|
+|Eclipse3.4.2+RTSE+RTCB&br;''all in one for Mac OS X''|[[eclipse342_rtmtools100release_macosx_en.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/tools/1.0.0/eclipse342_rtmtools100release_macosx_en.tar.gz]]&br;[[EU mirror:http://www.openrtm.de/pub/OpenRTM-aist/tools/1.0.0/eclipse342_rtmtools100release_macosx_en.tar.gz]]&br;MD5:72C63AEE628CFA9F3919A2550AF4604E|2010.06.10|
+|Eclipse3.4.2+RTSE+RTCB&br;''all in one for Linux(x86_64)''|[[eclipse342_rtmtools100release_x86_64_en.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/tools/1.0.0/eclipse342_rtmtools100release_x86_64_en.tar.gz]]&br;MD5:F87C26793A436F60311F958640C13549|2010.12.07|
+
+
+-Linux version of Eclipse3.4.2 does not work on Ubuntu8.04 and Ubuntu9.10 in some cases.
+--On Ubuntu8.04, please update xulrunner by ''apt-get install xulrunner-1.9.''
+--On Ubuntu9.10, please perform the following hack or use Eclipse3.3 or 3.5.
+ $ su
+ # vi /etc/apt/source.list
+  This line is added. → deb http://jp.archive.ubuntu.com/ubuntu/ jaunty main restricted
+ # apt-get update
+ # apt-get install xulrunner-1.9
+ # dpkg -l |grep xulrunner-1.9
+ ii  xulrunner-1.9                        1.9.0.8+nobinonly-0ubuntu2                 XUL +  XPCOM application runner
+ ii  xulrunner-1.9.1                      1.9.1.7+nobinonly-0ubuntu0.9.10.1          XUL + XPCOM application runner
+ ii  xulrunner-1.9.1-gnome-support        1.9.1.7+nobinonly-0ubuntu0.9.10.1          Support for GNOME in xulrunner-1.9.1 applica
+ 1.9.1 and 1.9 live together.
+ # exit
+ $ export GDK_NATIVE_WINDOWS=1
+ $ ./eclipse
+And, it is reported that it works by using xulrunner-1.9.1.8. Updating to 1.9.1.8 and starting eclipse via the following shell script, you can use it.
+ #/bin/sh
+ export GDK_NATIVE_WINDOWS=1
+ ./eclipse -vmargs -Dorg.eclipse.swt.browser.XULRunnerPath=/usr/lib/xulrunner-1.9.1.8/xulrunner
+
+-RTSystemEditor does not work on Java1.5(5.0). Use Java Development Kit6.
+
+**Binary
+|jar files (RTSE+RTCB)|[[rtmtools100release_en.zip:http://www.openrtm.org/pub/OpenRTM-aist/tools/1.0.0/rtmtools100release_en.zip]]&br;MD5:E1051282F79DD8A2618AD993E92063CE|2010.06.01|
+
+#br
+
+- Just copying jar files that are included in the archive to plugin directory of eclipse.
+- It is recommended starting eclipse with -clean option after updating plugins.
+- EMF SDO runtime, GEF and XSD runtime are required for RTSE and RTCB.
+Please install these plugins, if you want to setup eclipse environment from original Eclipse SDK package.
+- Moreover, please confirm Eclipse Platform SDK and Eclipse Plug-in Development Environment are installed. Neither RTSE nor RTCB appear to the perspective when not installed. 
+
+**RTSsytemEditor/RTCBuilder daily build 
+RTSystemEditor and RTCBuilder are frequently updated. The daily build for RTSE/RTCB in the following URL.
+-The newest version of RTSsytemEditor/RTCBuilder are available.
+-This is development version. So we cannot guarantee these tools works well.
+-PLease copy jar files included archived files into plugin directory of eclipse.
+-It is better to launch eclipse with "-clean" option.
+-Download URL: http://www.openrtm.org/pub/OpenRTM-aist/dailybuild/tools/1.0.0/
+--Setting up downloading Eclipse SDK package and adding plugins by your self, EMF SDO runtime, GEF, XSD runtime plugins are neccesarry to use RTSE/RTCB.
+
+** Eclipse/JDK/JRE
+
+| JDK | http://java.sun.com/javase/downloads/widget/jdk6.jsp |
+| JRE | http://www.java.com/ja/download/ |
+|Eclipse Ganymede SR2 (3.4.2) | http://www.eclipse.org/downloads/packages/release/ganymede/sr2 |
+
+**Old versions 
+- [[RTSystemEditor・RTCBuilder-1.0.0-RC1>/en/node/529]]
+

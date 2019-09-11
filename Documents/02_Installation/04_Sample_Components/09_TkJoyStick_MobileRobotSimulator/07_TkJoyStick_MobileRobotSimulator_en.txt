@@ -1,0 +1,57 @@
+﻿// Title: TkJoyStick MobileRobotSimulator
+#contents
+
+**TkJoyStick
+This sample is included with the Python edition of OpenRTM-aist. It is not included in the C++ or Java editions.
+
+***Introduction
+
+TkJoyStickComp is a graphical virtual joystick component (see image, below).
+The centre circle can be dragged like a joystick to send X/Y values out its
+upper OutPort. The lower OutPort outputs values suitable for controlling a
+differential drive robot, such as the Tribot.
+
+***Screenshots
+
+#ref(TkJoystick_en.png,center)
+CENTER:''The TkJoyStick component.''
+
+***Running the sample
+
+See [[MobileRobotSimulator>#mbs]] or [[NXTRTC>/node/892]]
+
+&aname(mbs);
+**MobileRobotSimulator
+
+***Introduction
+
+This component provides a simple robot simulator. It can be controlled using a
+joystick device component such as the TkJoyStick component.
+
+***Screenshots
+
+#ref(TkMobileRobotSimulator_en.png,60%,center)
+CENTER:''The TkMobileRobotSimulator component.''
+
+***Running the sample
+Connect with TkJoystickComp.py (input device) · TkMotorComp.py (output device) etc and simulate a robot which moves with a motor with a GUI.
+//TkJoystickComp.py (input device) and TkMotorComp.py (output device) can
+//optionally be used with the simulator for input and output. Please refer to
+//[[Development of RT-Components for LEGO Mindstorms:/node/762]] for details.
+
+Use the following procedure to execute the sample.
+- Procedure
+- Start RTSystemEditor and prepare SystemEditor. → For details on how to use RTSystemEditor, see [[RTSystemEditor >/node/1175]]
+- Start TkJoyStickComp.py, TkMobileRobotSimulator.py, both components.
+- Click the [Create] button of the GUI of TkMobileRobotSimulator.py once.
+- Since both components are displayed in NameServiceView of RTSystemEditor, drag them onto SystemEditor.
+- Connect the corresponding ports of both components. (See SystemEditor execution example above)
+- Right-click on either component and select "All Activate".
+//-Start RTSystemEditor.
+//-Run TkJoyStickComp.py and TkMobileRobotSimulator.py.
+//-Click the Create button in TkMobileRobotSimulator.
+//-Both components are displayed in the name service view of RTSystemEditor. Add
+//the components to the System Editor.
+//-Drag and drop between two ports to connect them.
+//-Activate the components.
+

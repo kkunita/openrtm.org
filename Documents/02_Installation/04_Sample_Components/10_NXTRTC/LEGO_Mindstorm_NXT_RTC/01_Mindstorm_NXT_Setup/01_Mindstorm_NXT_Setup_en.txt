@@ -1,0 +1,82 @@
+﻿// Title: Mindstorms NXT Setup
+*Mindstorms NXT Setup
+To create an RTC for the NXT, you must first setup your PC and NXT. The NXT can be connected to the PC by USB or Bluetooth, but because we don't want to tie our battery-powered, portable NXT to the PC with a cable, we will use Bluetooth.
+
+
+***Block assembly
+Using the assembled robot shown in the photo as an example, we will create the NXT RTC.
+#ref(TribotBase.png,center,nolink)
+
+This is a simple mobile base, called "Tribot," combined with a ultrasonic sensor (the "eyes") at the front. The Tribot construction instructions can be found in the NXT "Start Here" booklet included in the NXT kit. Attach the ultrasonic sensor to this base.
+
+***Bluetooth Device Installation
+
+All revisions of the NXT intelligent brick include Bluetooth support. PCs without Bluetooth included can use USB Bluetooth adapters like those shown in the photo to communicate with the NXT. Install such a device if necessary, including any required device drivers. Most versions of Windows from XP SP2 on include suitable default device drivers.
+
+#ref(BluetoothDevices.png,center,nolink)
+
+Once a Bluetooth device has been installed, a "Bluetooth Devices" item should appear in the control panel. Clicking on this will produce the dialog shown below.
+
+#ref(BthDialogOption.png,center,nolink)
+
+Select "Options," and enable device discovery and displaying the Bluetooth icon in the notification area. We will connect the NXT to the PC next, so leave this dialog open.
+
+***Connecting the NXT to the PC
+
+The process to connect the NXT to the PC via Bluetooth is given below.
+
++Turn on the NXT
++Put the NXT into Bluetooth search mode
++Select your PC
++Select a channel
++Start the Connection Wizard from the Bluetooth Devices dialog on the PC
++Set a pass key
++Push the connect button on both the PC and NXT
++Restart the NXT once it has connected.
+
+****Starting the NXT
+
+Press the central orange button on the NXT to turn on the power. A sequence of beeps will sound (if the volume is not set to zero) and the brick will turn on. The screen should look like the image below.
+
+#ref(NXTBoot.png,center,nolink)
+
+If it does not, use the square button below the orange button to navigate to the "My Files" mode.
+
+****Bluetooth Device Search
+
+In "My Files" mode, press the triangular, grey buttons on either side of the orange button to move the cursor to the "Bluetooth" option, and press the orange button.
+
+#ref(NXTBluetooth.png,center,nolink)
+
+Use the grey buttons again to move the cursor to the "Search" option.
+
+#ref(NXTBthSearch.png,center,nolink)
+
+Press the orange button and a search for Bluetooth devices will be conducted. The screen will appear as below while searching.
+
+#ref(NXTBthSearching.png,center,nolink)
+
+****Device Connection
+
+If the PC has Bluetooth enabled and is visible to the NXT, the PC's name (as set in Windows) should appear on the screen of the NXT.
+
+#ref(NXTBthPCfound.png,center,nolink)
+
+If other Bluetooth-enabled PCs are nearby, you may see more than one appear on the NXT. Use the triangular buttons to move the cursor to the correct PC name, then press the orange button. The channel selection screen will appear next. Press the orange button on the default selection. After displaying "Connecting" for a short time, the pass key input screen will appear. Press the orange button.
+
+#ref(NXTBthPasskey.png,center,nolink)
+
+An information balloon should appear on the PC. Click on it to close it.
+
+#ref(PCballoon.png,center,nolink)
+
+If the PC asks for a pass key, input the key that was displayed on the NXT. Once a connection is established, a dialog like that shown below will appear. To prevent other devices interfering, check "Disable discovery" before clicking "Finish."
+
+#ref(PCConnectComp.png,center,nolink)
+
+****Connection confirmation
+Click on the "Devices" tab in the Bluetooth Devices dialog. The NXT should appear as below.
+
+#ref(PCDevlistNXT.png,center,nolink)
+
+

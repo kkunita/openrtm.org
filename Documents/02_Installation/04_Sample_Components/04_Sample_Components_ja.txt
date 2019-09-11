@@ -1,0 +1,23 @@
+﻿//** OpenRTM-aistのサンプルについて 
+OpenRTM-aist にはいくつかのサンプルコンポーネントが同梱されており、簡単に試用することができます。（USBCameraMonitor/USBCameraAcquire コンポーネントには OpenCV が必要です。）
+サンプルコンポーネントのソースコードも付属していますので、開発にお役立てください。
+
+本章では、OpenRTM-aist に付属のサンプルについて説明します。&br;
+サンプルを試用する場合は、各サンプル・コンポーネントを起動する前にインストールしたネーム・サービスを起動しておいてください。
+#br
+
+--Start Naming Service.bat　(C++)
+--rtc-naming.py　(Python)
+--start-orbd.vbs　(Java)
+
+#br
+Windows でネーム・サーバーを実行するには、該当するファイルをダブルクリックしてください。インストーラーを用いてインストールした場合は、[スタートメニュー] > [OpenRTM-aist] > [Tools] から実行することもできます。
+なお、本章では RTSystemEditor がインストールされた環境であることを想定して説明しています。
+RTSystemEditor のインストールについての詳細は、[[OpenRTM Eclipse tools のインストール>/ja/content/openrtm-eclipse-tools-のインストール]]を参照してください（一部のサンプルは RTSystemEditor がなくても動作します）。
+#br
+
+//&color(red){''※'' すでに OpenRTM-aist-0.4 をインストールされている方へ};
+//
+//新しい OpenRTM-aist-1.0 では RtcLink、RTSystemEditor（0.4.2）は使えなくなりました。すでに、Eclipse上に
+//RtcLinkプラグイン、又は RTSystemEditor（0.4.2）をインストールしている方は、OpenRTM-aist-1.0 を使う場合は、必ずRTSystemEditor（1.0.0）に差し替えてください。
+#br

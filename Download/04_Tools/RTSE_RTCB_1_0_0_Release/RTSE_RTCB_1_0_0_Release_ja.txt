@@ -1,0 +1,90 @@
+﻿// Title: OpenRTM Eclipse tools 1.0-RELEASE
+#ref(eclipse_logo.png,left,around)
+
+これまで、OpenRTM-aist のツールとして開発されてきた RTCBUilder (旧RtcTemplate) および RTSystemEditor (旧 RtcLink) は、OpenHRP3やその他のツールと統合開発環境を構成する OpenRT Platform に組み込まれることになりました。
+こちらでは、RTSystemEditor 及び RTCBuilder のみを配布していますが、将来的には様々なツールを一括で提供する予定です。
+
+現在の RTSystemEditor 及び RTCBuilder の最新バージョンは 1.0.0 です。
+
+#contents
+#clear
+
+&aname(package);
+**全部入りパッケージ
+|LEFT:200|LEFT|LEFT:100|c
+|>|>|CENTER: ''Eclipse-3.4.2 [Ganymede SR2]'' |
+|Eclipse3.4.2+RTSE+RTCB&br;''Windows用全部入り''|[[eclipse342_rtmtools100release_win32_ja.zip:http://www.openrtm.org/pub/OpenRTM-aist/tools/1.0.0/eclipse342_rtmtools100release_win32_ja.zip]]&br;MD5:A52450B24F0A1C59402D5340D9FA8D56|2010.06.01|
+|Eclipse3.4.2+RTSE+RTCB (英語版)&br;''Windows用全部入り''|[[eclipse342_rtmtools100release_win32_en.zip:http://www.openrtm.org/pub/OpenRTM-aist/tools/1.0.0/eclipse342_rtmtools100release_win32_en.zip]]&br;MD5:2A1895F0E01D874E35CDC29EFDCE1DE7|2010.06.01|
+|Eclipse3.4.2+RTSE+RTCB&br;''Linux用全部入り''|[[eclipse342_rtmtools100release_linux_ja.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/tools/1.0.0/eclipse342_rtmtools100release_linux_ja.tar.gz]]&br;MD5:FD54B638BB72A351D92ACD22CD4099C7|2010.06.01|
+|Eclipse3.4.2+RTSE+RTCB (英語版)&br;''Linux用全部入り''|[[eclipse342_rtmtools100release_linux_en.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/tools/1.0.0/eclipse342_rtmtools100release_linux_en.tar.gz]]&br;MD5:4B1F4ACEE7F8E99B9C36D08068DBE5E1|2010.06.01|
+|Eclipse3.4.2+RTSE+RTCB&br;''MacOSX用全部入り''|[[eclipse342_rtmtools100release_macosx_ja.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/tools/1.0.0/eclipse342_rtmtools100release_macosx_ja.tar.gz]]&br;MD5:19277C8E1E672688347C6767B57D9D1F|2010.06.10|
+|Eclipse3.4.2+RTSE+RTCB (英語版)&br;''MacOSX用全部入り''|[[eclipse342_rtmtools100release_macosx_en.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/tools/1.0.0/eclipse342_rtmtools100release_macosx_en.tar.gz]]&br;MD5:72C63AEE628CFA9F3919A2550AF4604E|2010.06.10|
+|Eclipse3.4.2+RTSE+RTCB&br;''64bit版Linux用全部入り''|[[eclipse342_rtmtools100release_x86_64_ja.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/tools/1.0.0/eclipse342_rtmtools100release_x86_64_ja.tar.gz]]&br;MD5:6C90AB615C109D05BD5A9EFD60729F9A|2010.12.07|
+|Eclipse3.4.2+RTSE+RTCB (英語版)&br;''64bit版Linux用全部入り''|[[eclipse342_rtmtools100release_x86_64_en.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/tools/1.0.0/eclipse342_rtmtools100release_x86_64_en.tar.gz]]&br;MD5:F87C26793A436F60311F958640C13549|2010.12.07|
+
+
+
+
+-Ubuntu8.04, Ubuntu9.10, Ubuntu10.04でLinux用Eclipse3.4.2が動作しない不具合が報告されています。
+--Ubuntu8.04では、''apt-get install xulrunner-1.9'' として xulrunninerをアップデートしてください。
+--Ubuntu9.10,Ubuntu10.04では、以下の方法を利用するか、Eclipse3.3もしくは3.5をご利用ください。
+ $ su
+ # vi /etc/apt/source.list
+  1行追加 → deb http://jp.archive.ubuntu.com/ubuntu/ jaunty main restricted
+ # apt-get update
+ # apt-get install xulrunner-1.9
+ # dpkg -l |grep xulrunner-1.9
+ ii  xulrunner-1.9                        1.9.0.8+nobinonly-0ubuntu2                 XUL +  XPCOM application runner
+ ii  xulrunner-1.9.1                      1.9.1.7+nobinonly-0ubuntu0.9.10.1          XUL + XPCOM application runner
+ ii  xulrunner-1.9.1-gnome-support        1.9.1.7+nobinonly-0ubuntu0.9.10.1          Support for GNOME in xulrunner-1.9.1 applica
+ 一応、1.9.1と1.9 が共存
+ # exit
+ $ export GDK_NATIVE_WINDOWS=1
+ $ ./eclipse
+また、xulrunner-1.9.1.8 で動作するという報告もあります。1.9.1.8にアップデートして、以下のようなシェルスクリプトを用意して起動するとよいでしょう。
+ #/bin/sh
+ export GDK_NATIVE_WINDOWS=1
+ ./eclipse -vmargs -Dorg.eclipse.swt.browser.XULRunnerPath=/usr/lib/xulrunner-1.9.1.8/xulrunner
+
+
+　→　&color(red){''UNIX系環境で使用する時の注意''};~
+-RT System EditorはJava1.5(5.0)では動作しません。Java Development Kit6を使用します。以下のマニュアルを参考にインストールしてください。
+--[[Java Development Kit 6:http://java.sun.com/javase/ja/6/download.html]]~
+--[[JDKインストール方法 :/ja/node/664#instjavaunixjdk]]
+-Eclipseの適用するJAVA(JRE)をGNUからSunに変更してください。~
+--[[UNIX系環境で簡易にSunのJava(JRE)をEclipseに適用する方法 >/node/248#rtclinksunjava]]
+
+
+&br;
+&aname(binary);
+**バイナリ
+
+|日本語版 jar ファイル(RTSE+RTCB)|[[rtmtools100release_ja.zip:http://www.openrtm.org/pub/OpenRTM-aist/tools/1.0.0/rtmtools100release_ja.zip]]&br;MD5:D3431B687FDFC080AE5D9C8FA7D68FAC|2010.06.01|
+|英語版 jar ファイル(RTSE+RTCB)|[[rtmtools100release_en.zip:http://www.openrtm.org/pub/OpenRTM-aist/tools/1.0.0/rtmtools100release_en.zip]]&br;MD5:E1051282F79DD8A2618AD993E92063CE|2010.06.01|
+
+#br
+- アーカイブに含まれている jar ファイルを eclipse の plugins ディレクトリにコピーします。
+- 更新後は eclipse の起動時に -clean オプションを付けることを推奨します。
+- Eclipse SDKパッケージをダウンロードして、独自にこれ等のプラグインを追加する際は、RTSE、RTCBが依存している EMF SDOランタイム, GEF, XSD ランタイムプラグインを追加でインストールする必要があります。
+- また、Eclipse Platform SDK と Eclipse Plug-in Development Environment がインストールされていることを確認してください。インストールされていない場合、パースペクティブに RTSE と RTCB が現れません。
+
+&br;
+**RTSytemEditor/RTCBuilderデイリービルド
+RTSystemEditorおよびRTCBuilderは、日々改良が行われており、入れ替えも比較的簡単ですので、デイリービルドを提供することにいたしました。 
+-リポジトリの最新ソースからビルドされたRTSsytemEditor/RTCBuilderがダウンロード可能です。
+-ただし、開発版をビルドしただけのものですので、動かない場合もあります。導入は自己責任でお願いいたします。 
+-アーカイブに含まれている jar ファイルを eclipse の plugins ディレクトリにコピーするだけで更新可能です。 
+-更新後は eclipse の起動時に -clean オプションを付けることを推奨します。
+-ダウンロードはこちらから：http://www.openrtm.org/pub/OpenRTM-aist/dailybuild/tools/1.0.0/
+--Eclipse SDKパッケージをダウンロードして、独自にこれ等のプラグインを追加する際は、RTSE、RTCBが依存している EMF SDOランタイム, GEF, XSD ランタイムプラグインを追加でインストールする必要があります。
+
+&br;
+** Eclipse/JDK/JRE等 
+
+| JDK | http://java.sun.com/javase/downloads/widget/jdk6.jsp |
+| JRE | http://www.java.com/ja/download/ |
+|Eclipse Ganymede SR2 (3.4.2) | http://www.eclipse.org/downloads/packages/release/ganymede/sr2 |
+
+**過去のバージョン
+- [[RTSystemEditor・RTCBuilder-1.0.0-RC1>/node/75]]
+- [[RTSystemEditor・RTCBuilder-0.4.2-RELEASE>/node/76]]

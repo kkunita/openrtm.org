@@ -1,0 +1,54 @@
+﻿// Title: SeqIO
+This sample is included with the C++, Python and the Java editions of
+OpenRTM-aist.
+
+#contents
+
+**Introduction
+
+The sample shows how to use InPorts and OutPorts. Execute the SeqIn and SeqOut
+components to display their windows. Both SeqIn and SeqOut have the following
+types of DataPort: TimedShort, TimedLong, TimedFloat, TimedDouble
+TimedShortSeq, TimedLongSeq, TimedFloatSeq and TimedDoubleSeq. The values sent
+over each port are random numbers, and once you connect ports, the output
+values of SeqOut and input values of SeqIn are displayed.  (You may use
+RTSystemEditor to connect between Ports.)
+
+#br
+
+**Screenshots
+
+#ref(java_seqio_en.png,60%,center)
+CENTER:''Running the SeqIO sample.''
+#br
+
+#ref(SeqIO_example_rtse_en.png,60%,center)
+CENTER:''The SeqIO sample viewed in RTSystemEditor.''
+#br
+
+**Running the sample
+
+This sample demonstrates using data ports and the sequence data types.  SeqOut
+outputs numerical data, while SeqIn inputs numerical data and displays it.
+Connect the ports using RTSystemEditor.  When both components are activated,
+the numerical values of SeqOut and SeqIn change continuously. The I/O of the
+data port can be observed.
+
+#br
+
+You can execute this sample using the following procedure.
+-- Start RTSystemEditor.
+-- Run SeqIn and SeqOut. Starting the components varies
+by operating system and OpenRTM-aist version. Please refer to the following
+table.
+|LEFT:110|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c
+||>|CENTER:Windows|>|CENTER:Linux|
+||SeqIn component|SeqOut component|SeqIn component|SeqOut component|
+|C++|SeqInComp.exe|SeqOutComp.exe|SeqInComp|SeqOutComp|
+|Python|SeqIn.py|SeqOut.py|SeqIn.py|SeqOut.py|
+|Java|SeqIn.bat|SeqOut.bat|SeqIn.sh|SeqOut.sh|
+-- Both components are displayed in the Name Service View of RTSystemEditor.
+Add the RT-Components to the System Editor.
+-- Drag and drop between two ports to connect them.
+-- Activate the components.
+
