@@ -1,0 +1,52 @@
+﻿// Title: 概要・システム構築の流れ
+#contents
+
+//**概要
+*** OpenRTM-aist RT System Editor 概要
+現在[[ OMG :http://www.omg.org]]にて、ロボット開発の効率を高める Robot Technology Component（以下RTC）の仕様策定が行われています。この RTC 仕様を実装および適用した共通プラットフォームとして、独立行政法人産業技術総合研究所・知能システム研究部門・統合知能研究グループでは[[ OpenRTM-aist :/ja/node/850]]を提供しています。&br;
+RTSystemEditor は、この OpenRTM-aist に含まれる開発ツールの１つであり、RTC をリアルタイムにグラフィカル操作する機能を持っています。また、その名前のとおり Eclipse 統合開発環境のプラグインとして作成されており、Eclipse 上にて既存のプラグインとシームレスに操作を行うことができます。
+
+
+&aname(target);
+***対象
+本ドキュメントは、RTC についての基本知識を既に持っている方を対象としています。RTC の内容については、[[OMG>http://www.omg.org]] のドキュメントや [[こちら:/node/835]]を参照してください。
+
+
+&aname(screen);
+***画面例
+ここでは、OpenRTM-aist RT System Editor (以下 RTSystemEditor) の画面例を示します。
+
+#ref(fig1InitialOfEclipseStart_1.png,60%,center)
+CENTER:''RTSystemEditor の画面例''
+#br
+
+
+&aname(kinou);
+***機能概要
+RTSystemEditor は、 RTC をリアルタイムにグラフィカル操作する機能を持っています。提供される機能の一覧は以下のとおりです。
+#clear
+CENTER:''機能概要一覧''
+|№|機能名称|機能概要|
+|１|コンポーネントコンフィグレーション表示/編集機能|選択したコンポーネントのコンフィギュレーションプロファイル情報をコンフィグレーションビューに表示し編集する。|
+|２|コンポーネント動作変更機能|選択したコンポーネントの動作を変更する。|
+|３|RTシステム組み立て機能|システムエディタ上でシステムの組み立てを行う。|
+|４|システムセーブ/オープン機能|システムエディタの内容をRTSプロファイルとしてセーブする。RTSプロファイルをシステムエディタでオープンする。システムのポート接続、コンフィグレーションを変更しない）|
+|５|システム復元機能|RTS プロファイルをシステムエディタでオープンし、プロファイルの内容を元にシステムを復元する。（プロファイルの内容でシステムのポート接続、コンフィグレーションを再構築する）|
+
+
+&aname(kankyou);
+***動作環境
+RTSystemEditor の動作に必要な環境は以下のとおりです。
+
+CENTER:''動作環境''
+|№|環境|備考|
+|１|[[Java Development Kit 6:http://java.sun.com/javase/ja/6/download.html]]|&color(red){注意：Java1.5(5.0)では動作しません。};|
+|２|[[Eclipse 3.4以上:http://www.eclipse.org/downloads/index.php]]| Eclipse 本体|
+|３|[[Eclipse EMF 2.4以上(SDO,XSD含む):http://www.eclipse.org/modeling/emf/downloads/]]|RTSystemEditor が依存する Eclipse プラグイン &br;※ご使用になられる Eclipse のバージョンに合ったものをご使用ください。|
+|４|[[Eclipse GEF 3.4以上:http://www.eclipse.org/gef/downloads/]]|RTSystemEditor が依存する Eclipse プラグイン &br;※ご使用になられる Eclipse のバージョンに合ったものをご使用ください。|
+|５|RT Name Service View|RTSystemEditorが依存するOpenRTM-aist に含まれる開発ツール|
+|６|RT Repository View|RTSystemEditorが依存するOpenRTM-aist に含まれる開発ツール|
+
+
+***制限
+RTSystemEditor は、 OpenRTM-aist を対象に開発されたものです。その他の RTC プラットフォームに対する操作は想定しておりません。

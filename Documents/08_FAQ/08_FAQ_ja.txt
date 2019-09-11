@@ -1,0 +1,27 @@
+﻿// Title: FAQ
+よくある質問を簡単にまとめました。
+
+-[[RTミドルウェア / OpenRTM-aist について:/ja/node/161]]
+-[[一般・ライセンスに関する FAQ:/ja/node/6440]]
+-[[インストールに関する FAQ:/ja/node/6428]]
+-[[RTコンポーネント作成に関する FAQ:/ja/node/6426]]
+//- RTシステム作成に関する FAQ
+- OpenRTM-aist 各言語版実装に関する FAQ
+--[[C++版:/ja/node/6422]]
+--[[Python版:/ja/node/6423]]
+--[[Java版:/ja/node/6425]]
+-[[RTSystemEditor、RTCBuilder、rtshell 等ツールに関する FAQ:/ja/node/248]]
+-[[その他の FAQ:/ja/node/6430]]
+-[[過去に掲載した FAQ:/ja/node/6431]]
+
+
+//-[[OpenRTM-aist(C++版、Python版、Java版)に関するFAQ:/ja/node/1190]]
+//--[[各OS共通:/ja/node/149]]
+//--[[Windows://ja/node/150]]
+//--[[Unix:/ja/node/151]]
+//-[[トラブルシューティング:/ja/node/156]]
+//-[[ツールに関するトラブルシューティング:/ja/node/248]]
+//-[[RTCBuilderに関するFAQ:/ja/node/158]]
+//-[[RTコンポーネント作成について:/ja/node/159]]
+//-[[RTコンポーネント作成に関するFAQ（Java版）:/ja/node/160]]
+//-[[Eclipseに関するFAQ:/ja/node/152]]

@@ -1,7 +1,0 @@
-RtcTemplate is a development tool that generates templates for RT-&color(default){Component};. It has the functions to generate RT-&color(default){Component}; templates based on parameters. Also, RtcTemplate that can run on Eclipse, enable an intuitive operation and allow seamless collaboration with other Eclipse plug-ins.~
-While RtcTemplate can run even without RtcLink, RtcTemplate and its menu are integrated when RtcLink has been installed. This manual assumes that RtcLink has already been installed.
-//**RtcTemplate
-//英語探す
-//RtcTemplateはRTコンポーネントのテンプレートを生成する開発ツールです。パラメータを基にRTコンポーネントのテンプレートを生成する機能を持っています。また、RtcTemplateはEclipseにて動作し、直感的な操作と他のEclipseプラグインとのシームレスな連携が可能です。
-//　RtcTemplateはRtcLinkがなくても動作しますが、RtcLinkがインストールされている場合には、RtcTemplateとメニューが統合されます。本マニュアルではRtcLinkがインストールされていることを前提として説明されています。
-

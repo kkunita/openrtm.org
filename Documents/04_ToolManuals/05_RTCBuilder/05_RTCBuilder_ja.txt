@@ -1,4 +1,0 @@
-**RTCBuilderとは
-RTCBuilder は RTコンポーネントのテンプレートを生成する開発ツールです。パラメータを基に RTコンポーネントのテンプレートを生成する機能を持っています。また、 RTCBuilder は Eclipse にて動作し、直感的な操作と他の Eclipse プラグインとのシームレスな連携が可能です。
-　RTCBuilder は RT System Editor がなくても動作しますが、 RT System Editor がインストールされている場合には、 RTCBuilder とメニューが統合されます。本マニュアルでは RT System Editor がインストールされていることを前提として説明されています。
-

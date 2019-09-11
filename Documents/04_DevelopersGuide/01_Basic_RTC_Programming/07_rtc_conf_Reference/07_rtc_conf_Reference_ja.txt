@@ -1,0 +1,591 @@
+// -*- pukiwiki-edit -*-
+// 
+// @brief How to use Service Port Basic
+// @date $Date$
+// @author Noriaki Ando <n-ando@aist.go.jp>
+// 
+// Copyright (C) 2011
+//     Noriaki Ando
+//     Intelligent Systems Research Institute,
+//     National Institute of
+//         Advanced Industrial Science and Technology (AIST), Japan
+//     All rights reserved.
+// 
+// $Id$
+// 
+//*rtc.conf(基本編) 
+#contents
+
+//------------------------------------------------------------
+** 一般的な設定
+
+*** config.version
+コンフィギュレーションファイルのバージョン。
+- 例:
+ config.version: 1.0
+
+*** openrtm.version
+OpenRTM-aist のバージョン。
+- 例:
+ openrtm.version: 1.0.0
+
+//------------------------------------------------------------
+** manager に関する設定
+
+*** manger.name
+
+managerの名前。マネージャがネームサーバで登録される際には、ここで設定し
+た名前で登録される。
+
+- 指定: ネームサーバ等に登録可能な任意の名前
+- デフォルト値: manager
+- 例:
+ manager.name: manager
+
+*** maanger_naming_formats
+
+マネージャをネームサーバに登録する際のフォーマットを指定する。以下の
+''%''で始まる指定子を利用することができる。
+
+| 指定子 | 意味               |
+| %n | マネージャ名           |
+| %h | ホスト名               |
+| %M | マネージャ名           |
+| %p | マネージャのプロセスID |
+
+- 指定: /<name>.<kind>/<name>.<kind>/...
+- デフォルト値: %h.host_cxt/%n.mgr
+- 例:
+ manager.name: %h.host_cxt/%n.mgr
+
+*** manager.is_master
+
+当該プロセスをマスターマネージャにするかどうか？コマンドラインオプショ
+ン ''-d'' を指定すると、この値が NO に設定されていてもマスターマネージャ
+になる。
+
+- 指定: ''YES'' or ''NO''
+- デフォルト値: NO
+- 例:
+ manager.is_master: NO
+
+*** manager.corba_servant
+
+マネージャのCORBAサーバントを起動するかどうかの設定。YES を設定すると、
+マネージャのCORBAサーバントが起動するため、リモートからマネージャの操作
+が可能になる。NO の場合には、CORBAサーバントが起動しないため、マネージャ
+のCORBA経由での操作はできなくなる。
+
+- 指定: ''YES'' or ''NO''
+- デフォルト値: YES
+- 例:
+ manager.corba_servant: YES
+
+*** corba.master_manager
+
+マスターマネージャのアドレスとポート番号。マスターマネージャは、
+corbaloc 形式のURL指定でアクセス可能であるが、その際に使用するポート番
+号を指定する。また、スレーブマネージャは、ここで指定されたマスターマネー
+ジャを自身のマスターマネージャとして解釈、起動時にマスターマネージャに
+アクセスしネゴシエーションを行う。
+
+- 指定: <host_name>:<port>
+- デフォルト: localhost:2810
+- 例:
+ corba.master_manager: localhost:2810
+
+*** manager.shutdown_on_nortcs:
+
+プロセス上にRTCが一つもなくなった場合、すなわち同一プロセス上のRTCの最
+後の1つが終了した場合に、マネージャをシャットダウンし当該プロセスを終了
+させるかどうかを指定する。YES の場合には、RTCが一つもなくなった時点でプ
+ロセスが終了する。NOの場合は、RTCが一つもない状態でもマネージャ、プロセ
+スともに動き続ける。
+
+- 指定: ''YES'' or ''NO''
+- デフォルト: YES
+- 例:
+ manager.shutdown_on_nortcs: YES
+
+*** manager.shutdown_auto
+
+プロセス内のRTCの有無を一定時間ごとに調べ、RTCがない場合には、マネージャ
+およびプロセスをシャットダウンするかどうかを設定する。YESの場合、RTCが
+一つもなければ、マネージャおよびプロセスは自動的にシャットダウンされる。
+NOの場合、RTCが一つもなくともマネージャおよびプロセスが動作し続ける。
+
+manager.shutdown_on_nortcs との違いは、シャットダウンのトリガが、
+manager.shutdown_on_nortc ではRTCの削除であるのに対して、
+manager.shutdown_auto は時間となっている点である。
+- 指定: ''YES'' or ''NO''
+- デフォルト: YES
+- 例:
+ manager.shutdown_auto: YES
+
+*** manager.supported_languages
+
+マスターマネージャは、リモートアプリケーションなどからの要求に応じて、
+スレーブマネージャおよびRTCを起動する。スレーブマネージャは、C++言語版
+だけでなく、Java版、Python版などの可能性もある。このオプションでは、マ
+スターマネージャがサポートする言語を設定する。
+
+- 指定: C++, Java, Python 等の言語をカンマ区切りで指定
+- デフォルト: C++, Java, Python
+- 例:
+ manager.supported_languages: C++, Python, Java
+
+*** manager.modules.<lang>.suffixes
+
+言語ごとのRTCモジュールの拡張子。
+
+- 指定: 共有オブジェクトの拡張子名
+- デフォルト:
+-- Windows: dll
+-- Linux等: so
+-- Mac OS X: dylib
+-例
+ manager.modules.C++.suffixes: dll
+ manager.modules.C++.suffixes: so
+ manager.modules.C++.suffixes: dylib
+
+*** manager.modules.<lang>.manager_cmd
+
+言語ごとのマネージャプログラム名。
+
+- 指定: マネージャのコマンド名
+- デフォルト:
+-- C++: rtcd
+-- Python: rtcd_python
+-- Java: rtc_java
+-例
+ manager.modules.C++.manager_cmd: rtcd
+ manager.modules.Python.manager_cmd: rtcd_python
+ manager.modules.Java.manager_cmd: rtcd_java
+
+*** manager.modules.<lang>.profile_cmd
+
+言語ごとのプロファイル取得コマンド名。
+
+- 指定: プロファイル取得コマンド名
+- デフォルト:
+-- C++: rtcprof
+-- Python: rtcprof_python
+-- Java: rtc_java
+-例
+ manager.modules.C++.profile_cmd: rtcprof
+ manager.modules.Python.profile_cmd: rtcprof_python
+ manager.modules.Java.profile_cmd: rtcprof_java
+
+*** manager.modules.<lang>.load_paths
+
+言語ごとのRTCモジュールロードパス。
+
+- 指定: RTCモジュールロードパス。
+- デフォルト:
+-- C++: ./
+-- Python: ./
+-- Java: ./
+-例
+ manager.modules.C++.profile_cmd: ./, /usr/share/OpenRTM-aist/components/cxx
+
+
+//------------------------------------------------------------
+** CORBAに関する設定
+
+*** corba.args
+
+CORBAに与える引数を指定する。CORBA は実装毎に異なるコマンドラインオプショ
+ンを持つ。通常コマンドライン引数は、CORBA の API である ORB_init() 関数
+に与えられるが、このオプションは指定された文字列をこの ORB_init() 関数
+に渡す。
+
+- 指定: 文字列
+- デフォルト: 空文字列
+- 例:
+ corba.args: -ORBInitialHost myhost -ORBInitialPort 8888
+
+*** corba.endpoint:
+
+CORBAにおいては、リモートのオブジェクトのIORと呼ばれる参照によりアクセ
+スするが、IORには当該オブジェクトが動作するノードのアドレスとポート番号
+が通常1セットのみ記述されている。OpenRTMが動作しているノードに2つ以上の
+ネットワークインターフェースが存在する場合、IORに含まれるノードのアドレ
+スとして意図しないアドレスが割り振られる場合がある。これにより、到達不
+可能なオブジェクト参照が生じる場合がある。
+
+これを解消するために、本オプションでCORBAで利用するネットワークのアドレ
+スを指定することができる。''ホストアドレス:ポート番号'' として指定する
+が、ポート番号は省略できる。ただし、'':(コロン)''は省略できない。
+
+なお、このオプションは将来的に廃止されます。次の corba.endpoints を使用
+してください。
+
+- 指定: <host_addr>:<port>
+- デフォルト: 空文字
+- 例:
+ corba.endpoint: 192.168.0.45:
+ corba.endpoint: 192.168.0.45:8776
+ corba.endpoints: myhost:      (use myhost and default port)
+ corba.endpoints: :9876        (use default addr and port 9876)
+ corba.endpoints: myhost:9876  (use myhost and port 9876)
+
+
+*** corba.endpoints
+
+corba.endpoint のエンドポイントを複数指定することがきるオプション。ORB
+の実装によっては、IORに複数のアドレスを含めることができる。ただし、
+Java標準のCORBAであるJavaIDLにおいては、複数のアドレスを指定したIOR経由
+で当該オブジェクトにアクセスする場合、動作が遅くなるなど問題も報告され
+ているので注意が必要である。
+
+''アドレス:ポート'' の対を '',(カンマ)''で区切り複数指定することができ
+る。特別な文字列として ''all'' を指定することで、ノードのすべてのアドレ
+スをIORに含めることもできる。
+
+- 指定: <host_addr>:<port>, <host_addr>:<port>, ... または all
+- デフォルト: 空文字
+- 例:
+ corba.endpoints: 192.168.1.10:1111, 192.168.10.11:2222
+ corba.endpoints: 192.168.1.10, 192.168.10.11
+ corba.endpoints: all
+
+corba.endpoints:
+
+*** corba.nameservers
+
+RTC等を登録するネームサーバを指定するオプション。カンマ区切りで複数のネー
+ムサーバを指定することができる。指定したアドレスおよびポート番号にネー
+ムサーバがない場合でも特にエラーにはならず、存在するネームサーバにのみ
+RTCの名前を登録する。
+
+- 指定: <host_addr>:<port>, <host_addr>:<port>, ...
+- デフォルト: localhost
+- 例:
+ corba.nameservers: openrtm.aist.go.jp:9876
+ corba.nameservers: rtm0.aist.go.jp, rtm1.aist.go.jp, rtm2.aist.go.jp
+ corba.nameservers: localhost
+
+*** corba.nameservice.replace_endpoint
+
+ノードに複数のNICが存在する場合、ネームサーバ上に登録されるRTCのIORに含
+まれるアドレスが、適切でない場合が存在する。例えば、あるノードが
+192.168.0.10と192.168.1.10という2つのアドレスを持ち、192.168.0.1 および
+192.168.1.1 に存在する2つのネームサーバ上に登録される場合、仮に
+192.168.0.10 が当該ノードでデフォルトで利用されるネットワークインター
+フェースだとすると、上記2つのネームサーバネームサーバに登録されるIORに
+は、192.168.0.10 のみが含まれる。このとき、192.168.1.0 のネットワークで
+はネームサーバ上のIORは到達不可能なアドレスが記載された無意味なものとな
+る。
+
+このオプションを指定すると、上記のケースのような場合、192.168.1.1 のネー
+ムサーバに登録されるIORのアドレスを 192.168.1.10 に置き換える。
+
+ただし、このオプション指定することによって、192.168.1.0 ネットワーク上
+の他のノードからは、当該RTCのプロファイル等を利用することはできるが、ポー
+トの接続等は行うことはできない。
+
+- 指定: ''YES'' or ''NO''
+- デフォルト: NO
+- 例:
+ corba.nameservice.replace_endpoint: NO
+
+
+//------------------------------------------------------------
+** ネームサービスに関する設定
+
+*** naming.enable
+
+このオプションはネーミングサービスに関する機能の有効・無効を切り替える。
+YESを指定した場合、ネームサービスへRTCの参照を登録する。NOの場合、ネー
+ムサービスへのRTCの参照の登録は行われない。
+
+- 指定: ''YES'' or ''NO''
+- デフォルト値: YES
+- 例:
+ manager.is_master: NO
+
+*** naming.type
+
+このオプションはネームサービスのタイプを指定する。現在のところはcorbaの
+みをサポートしている。
+- 指定: ネームサービスのタイプ
+- デフォルト値: corba
+- 例:
+ naming.type: corba
+
+*** naming.formats
+
+RTCをネームサーバに登録する際のフォーマットを指定する。以下の ''%''で始
+まる指定子を利用することができる。名前階層のデリミタは ''/'' であり、名
+前と種類(kind)のデリミタは ''.'' である。
+
+| %n | RTCのインスタンス名 |
+| %t | RTCのタイプ名 |
+| %m | RTCのモジュール名 |
+| %v | RTCのバージョン |
+| %V | RTCのベンダ名 |
+| %c | RTCのカテゴリ名 |
+| %h | ホスト名 |
+| %M | マネージャ名 |
+| %p | プロセスID |
+
+- 指定: /<name>.<kind>/<name>.<kind>/...
+- デフォルト値: %h.host_cxt/%n.mgr
+- 例:
+ naming.formats: %h.host/%n.rtc
+
+*** naming.update.enable
+
+RTCのネームサーバへの登録は通常インスタンス生成時に行われる。したがって、
+RTCの生成以降に起動されたネームサーバには、当該RTCの名前と参照は登録さ
+れない。このオプションを指定することで、定期的にネームサーバを確認し、
+ネームサーバの起動が確認された場合、改めて名前と参照を登録する。
+
+- 指定: ''YES'' or ''NO''
+- デフォルト値: YES
+- 例:
+ naming.update.enable: YES
+
+*** naming.update.interval
+
+naming.update.enable が YES の場合、ネームサーバの確認および再登録を行
+う周期を指定する。
+
+- 指定: 登録周期を [s] で指定する。
+- デフォルト値: 10.0
+- 例:
+ naming.update.interval: 10.0
+
+*** naming.update.rebind
+
+このオプションに YES を指定すると、すでに名前と参照が登録されているネー
+ムサーバ上で名前が削除されるなどした場合にも、再度登録を行う。
+
+- 指定: ''YES'' or ''NO''
+- デフォルト値: NO
+- 例:
+ naming.update.rebind: NO
+
+//============================================================
+// Module management
+//============================================================
+** モジュールロードに関する設定
+
+*** manager.modules.load_path
+
+マネージャはこのオプションで指定されたサーチパスリストからモジュールを
+探索する。パスはカンマ区切りで列挙する。パスのデリミタは、UNIXでは
+''/''、Windows ''\\''である。
+
+- 指定: /dir_name0/dir_name1/..., /dir_name0/dir_name1/...
+- デフォルト値: ./
+- 例:
+ manager.modules.load_path: C:/Program Files/OpenRTM-aist,  \
+                            C:\\Program Files\\OpenRTM-aist
+ manager.modules.load_path: /usr/lib, /usr/local/lib,       \
+                            /usr/local/lib/OpenRTM-aist/libs
+
+*** manager.modules.preload:
+
+マネージャは起動時に予めローダブルモジュールをロードすることができる。
+このオプションで指定されたローダブルモジュール
+を、''manager.modules.load_path'' で指定されたサーチパスから探し出す。
+もし、''manager.modules.abs_path_allowed'' で YES が指定されていれば、
+ローダブルモジュールを絶対パスで指定することもできる。
+
+- 指定: <module_name>.dll, <module_name>.dll, ...
+- デフォルト値: 空
+- 例:
+ manager.modules.preload: ConsoleIn.dll, ConsoleOut.dll
+ manager.modules.preload: ConsoleIn.so, ConsoleOut.so
+ 
+ manager.modules.abs_path_allowed: YES
+ manager.modules.preload: /usr/lib/OpenRTM-aist/ConsoleIn.so
+
+*** manager.modules.abs_path_allowed
+
+モジュールの絶対パス指定許可フラグ。もしこのオプションがYESの場合、モジュールの接待パス指定が許可される。
+
+- 指定: ''YES'' or ''NO''
+- デフォルト値: YES
+- 例:
+manager.modules.abs_path_allowed: YES
+
+// #
+// # The following options are not implemented yet. 
+// #
+// # manager.modules.config_ext:
+// # manager.modules.config_path:
+// # manager.modules.detect_loadable:
+// # manager.modules.init_func_suffix:
+// # manager.modules.init_func_prefix:
+// # manager.modules.download_allowed:
+// # manager.modules.download_dir:
+// # manager.modules.download_cleanup:
+// #
+
+*** manager.components.precreate
+
+このオプションはマネージャのスタート時に起動するコンポーネント名 (モ
+ジュール名) を指定する。ここで指定されるコンポーネントのファクトリは
+manager.module.preload または、マネージャに静的にリンクするなどして、登
+録されている必要がある。
+
+- 指定: <module_name>, <module_name>, ...
+- デフォルト値: 空
+- 例:
+ manager.components.precreate: ConsoleIn, ConsoleOut, SeqIn, SeqOut
+
+
+//============================================================
+// Logger configurations
+//============================================================
+
+** ロガー関係の設定
+
+*** logger.enable
+
+ロガーの有効化・無効化の指定。
+
+- 指定: ''YES'' or ''NO''
+- デフォルト値: YES
+- 例:
+ logger.enable: YES
+
+*** logger.file_name
+
+ログファイル名の指定。カンマ区切りで複数のファイルへ出力することもでき
+る。プロセスIDを置き換える指定子 %p が利用可能。また、ファイル名
+''stdout'' とするとログを標準出力する。
+
+- 指定: パスを含むファイル名
+- デフォルト値: ./rtc%p.log
+- 例:
+ logger.file_name: /tmp/rtc%p.log
+ logger.file_name: /tmp/rtc%p.log, stdout
+
+*** logger.date_format
+
+ログに記載する日付・時刻のフォーマット指定。以下の strftime(3) に似た
+フォーマット指定子を利用可能。時刻を指定しない場合、''No'' または
+''Disable'' を指定する。
+
+| %a | abbreviated weekday name |
+| %A | full weekday name |
+| %b | abbreviated month name |
+| %B | full month name |
+| %c | the standard date and time string |
+| %d | day of the month, as a number (1-31) |
+| %H | hour, 24 hour format (0-23) |
+| %I | hour, 12 hour format (1-12) |
+| %j | day of the year, as a number (1-366) |
+| %m | month as a number (1-12). &br; Note: some versions of Microsoft Visual C++ may use values that range from 0-11. |
+| %M | minute as a number (0-59) |
+| %p | locale's equivalent of AM or PM |
+| %S | second as a number (0-59) |
+| %U | week of the year, sunday as the first day |
+| %w | weekday as a decimal (0-6, sunday=0) |
+| %W | week of the year, monday as the first day |
+| %x | standard date string |
+| %X | standard time string |
+| %y | year in decimal, without the century (0-99) |
+| %Y | year in decimal, with the century |
+| %Z | time zone name |
+| %% | a percent sign |
+
+- 指定: /<name>.<kind>/<name>.<kind>/...
+- デフォルト値: %b %d %H:%M:%S
+- 例:
+ logger.date_format: No
+ logger.date_format: Disable
+ logger.date_format: [%Y-%m-%dT%H.%M.%S%Z]     // W3C standard format
+ logger.date_format: [%b %d %H:%M:%S]          // Syslog format
+ logger.date_format: [%a %b %d %Y %H:%M:%S %Z] // RFC2822 format
+ logger.date_format: [%a %b %d %H:%M:%S %Z %Y] // data command format
+ logger.date_format: [%Y-%m-%d %H.%M.%S]
+
+*** logger.log_level
+
+以下のログレベルを指定可能。
+
+- SILENT
+- ERROR
+- WARN
+- NORMAL
+- INFO
+- DEBUG
+- TRACE
+- VERBOSE
+- PARANOID
+
+各ログレベルを指定した際に実際にログに記録されるログメッセージのレベ
+ルは以下の通り。
+
+| SILENT   | completely silent |
+| ERROR    | includes (ERROR) |
+| WARN     | includes (ERROR, WARN) |
+| INFO     | includes (ERROR, WARN, INFO) |
+| NORMAL   | includes (ERROR, WARN, INFO, NORMAL) |
+| DEBUG    | includes (ERROR, WARN, INFO, NORMAL, DEBUG) |
+| TRACE    | includes (ERROR, WARN, INFO, NORMAL, DEBUG, TRACE) |
+| VERBOSE  | includes (ERROR, WARN, INFO, NORMAL, DEBUG, TRACE, VERBOSE) |
+| PARANOID | includes (ERROR, WARN, INFO, NORMAL, DEBUG, TRACE, VERBOSE, PARA) |
+
+''TRACE'', ''VERBOSE'', ''PARANOID'' の各ログレベルは通常巨大なログファ
+イルを生成します。''PARANOID''を指定すると、ログフォーマットが崩れる場
+合があります。
+
+- 指定: (SILENT|ERROR|WARN|NORMAL|INFO|DEBUG|TRACE|VERBOSE|PARANOID)
+- デフォルト値: NORMAL
+- 例:
+ logger.log_level: DEBUG
+
+//============================================================
+// Timer configuration
+//============================================================
+
+** タイマに関する設定
+
+*** timer.enable
+
+タイマ機能を有効/無効にする。タイマを無効にするとタイマを利用している機
+能、例えばネームサーバの定期的確認と再登録等が無効になる。
+
+- 指定: ''YES'' or ''NO''
+- デフォルト値: YES
+- 例:
+ timer.enable: YES
+
+*** timer.tick
+
+タイマの精度を指定する。
+
+- 指定: タイマの精度を [s] で指定する。
+- デフォルト値: 0.1 [s], (= 100ms)
+- 例:
+ timer.tick: 1.0
+
+//============================================================
+// Execution context settings
+//============================================================
+
+*** exec_cxt.periodic.type
+
+デフォルトの実行コンテキストのタイプ。
+
+- 指定: デフォルトの実行コンテキスト名
+- デフォルト値: PeriodicExecutionContext
+- 例:
+ exec_cxt.periodic.type: PeriodicExecutionContext
+ exec_cxt.periodic.type: ArtExecutionContext
+
+*** exec_cxt.periodic.rate
+
+デフォルトの実行コンテキストの周期。
+
+- 指定: デフォルトの実行コンテキスト周期を [Hz] で指定する
+- デフォルト値: 1000
+- 例:
+ exec_cxt.periodic.rate: 100
+
+

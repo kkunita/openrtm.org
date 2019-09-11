@@ -1,0 +1,126 @@
+﻿// Title: rtshell
+#contents
+
+**Introduction
+
+RTShell provides commands used to manage individual RT components and
+managers, as well as complete RT Systems. It can be used with the
+OpenRTM-aist middleware or middlewares that use a compatible CORBA-based
+introspection system.
+
+Many of the commands allow components and managers running on
+nameservers to be treated like a file system. Directories can be
+entered, components can be cat'd and activated/deactivated/reset,
+connections made and removed, and so on.
+
+Other commands are used in conjunction with RtsProfile XML/YAML files to
+manage complete RT Systems. These are rtresurrect, rtteardown, rtcryo,
+rtstart and rtstop.
+
+The commands are aimed at users of OpenRTM-aist who wish to manage
+components on low-resource systems, systems where a GUI is not available
+(particularly where no network connection is available to manage
+components from another computer), as well as those who face other
+difficulties using RTSystemEditor.  Being familiar with using a
+command-line is a benefit when using these commands of RTShell.
+
+This software is developed at the National Institute of Advanced
+Industrial Science and Technology. Approval number
+H23PRO-1214. The development was financially supported by
+the New Energy and Industrial Technology Development Organisation
+Project for Strategic Development of Advanced Robotics Elemental
+Technologies.
+
+This software is licensed under the GNU Lesser General Public License version 3
+(LGPL3). See LICENSE.txt.
+
+**Requirements
+- RTCTree is required.
+- RTSProfile is required.
+- Python 2.7 is required.
+- OpenRTM - Python - 1.0.0 or higher is required for rtprint, rtinject and rtlog.
+- omniORB-py 4.x or higher is required.
+- For installation from source, Sphinx is required to compile the document.
+
+When installing by pip, RTCTree and RTSProfile are automatically installed.
+
+//omniORB-py 4.x is required.
+
+//RTShell requires rtctree. It must be installed for the commands to function.
+
+//The commands that work with RtsProfile files require rtsprofile. It must be
+//installed for these commands to function/
+
+//RTShell requires Python 2.7. It will not function with an earlier version of
+//Python. It has not been tested with Python 3 and it is likely that several
+//changes will be necessary to make it function using this version of Python.
+
+//rtprint, rtinject and rtlog require the Python version of OpenRTM-aist.
+
+//Sphinx must be installed to build the documentation, if installing from source
+//(method 2).
+
+//If RTShell is installed using pip (method 1, below), RTCTree and RTSProfile
+//will be installed automatically. omniORB-py and OpenRTM-python must still be
+//installed manually.
+
+
+**Installation
+
+There are several methods of installation available:
+
+- (Preferred method) Use pip to install the PyPi package.
+
+++ Install pip if it is not already installed. See https://pip.pypa.io/en/latest/installing/
+++ Execute the following command to install RTShell:
+ $ pip install rtshell
+++ Execute the post-installation setup:
+ $ rtshell_post_install
+++ On Windows, you will need to ensure that your Python scripts directory is in the PATH variable. Typically, this will be something like C:\Python27\Scripts\ (assuming Python 2.7 installed in C:\Python27\).
+++ After downloading from the repository or source archive, decompress and install it in the appropriate directory.
+++ Expand the source.
+ $ cd /home/blurgle/src/
+ $ tar -xvzf rtshell.tar.gz
+++ Run setup.py.
+ $ python setup.py install
+++ Execute the following command and perform the post-installation action.
+ $ rtshell_post_install
+++ On Windows, set environment variables as necessary. Normally it is set by default, but if it is not set you need to set it yourself.
+Please make sure the directory of Python script is set to PATH environment variable. Normally these are C:\Python 27\Scripts\(if Python was installed in C:\Python 27\).
+On Windows, it is possible to install using an installer program.
+
+
+**Repository
+
+The latest source is stored in a Git repository at github, available at http://github.com/gbiggs/rtshell. 
+You can download it as a zip file or tarball by clicking the "Download Source" link on that page. Alternatively, use Git to clone the repository. This is better if you wish to contribute patches:
+
+ $ git clone git://github.com/gbiggs/rtshell.git
+
+
+**Documentation
+The document is provided as a manpage (in Windows, it is provided in HTML). It will be installed in ${prefix}/share/man.
+It is necessary to add this path to the environment variable $ MANPATH. For example, if RTShell was installed in /home/blurgle, add the following line to .bashrc :
+
+//Documentation is available in the form of man pages (on Windows, these are available as HTML files). 
+//These will be installed under 
+//${prefix}/share/man.  You must add this folder to your system's
+//$MANPATH environment variable to be able to use them. For example,
+//if you installed RTShell into /home/blag, add the following line to your .bashrc:
+
+ export MANPATH=/home/blag/share/man:${MANPATH}
+
+
+**Running the tests
+
+The command tests can be run from the source directory using a command like the following:
+
+ ~/src/rtshell $ ./test/test_cmds.py ~/share/OpenRTM-aist/examples/rtcs/
+
+The argument to the test_cmds.py command is a directory containing RTC shared libraries that can be loaded into a manager. It must contain the libraries for Motor, Controller and Sensor.
+
+An individual command's tests can be run by specifying those tests after the command. For example:
+
+ $ ./test/test_cmds.py ~/share/OpenRTM-aist/examples/rtcs/ rtactTests
+
+This will run only the tests for the rtact command.

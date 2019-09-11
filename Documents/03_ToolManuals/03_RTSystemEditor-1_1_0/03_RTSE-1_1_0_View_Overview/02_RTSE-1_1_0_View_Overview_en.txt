@@ -1,0 +1,38 @@
+﻿// Title: View (Overview)
+#contents
+
+RTSystemEditor uses the following view.
+//RTSystemEditor では、以下のようなビューを使用します。
+#br
+
+#ref(fig6RTSystemEditorView_all.png,60%,center)
+#ref(fig6RTSystemEditorView_part.png,60%,center)
+CENTER: ''RTSystemEditor view''
+//CENTER:''RT System Editorのビュー''
+#br
+
+CENTER: ''View List''
+| № | view name | description |
+| 1 | Name Service View | Displays the name service contents registered RTC in tree. |
+| 2 | Configuration view | Display/edit the configuration information of the selected RTC. |
+| 3 | Manager Control View | Controls the selected manager. |
+| 4 | Composite component view | Display/set the port public information of the selected composite RTC. |
+| 5 | Execution Context View | Displays a list of execution contexts (EC) to which the selected RTC belongs, executes actions of RTC, EC, and attaches/detaches RTC to EC. |
+| 6 | Log View | Log Message Displays the log message notified by the observer. |
+| 7 | Property View | Displays the profile information of the selected RTC. |
+| 8 | System Editor | Display RTC graphically and create RT system. |
+| 9 | offline system editor | graphically displays the content of the RT repository and local RT component specification file and creates an RT system. |
+//CENTER:''ビュー一覧''
+//|№|ビュー名|説明|
+//|１|ネームサービスビュー|RTC が登録されているネームサービスの内容をツリー表示します。|
+//|２|コンフィグレーションビュー|選択されている RTC のコンフィグレーション情報を表示/編集します。|
+//|３|マネージャコントロールビュー|選択されているマネージャを制御します。|
+//|４|複合コンポーネントビュー|選択されている複合 RTC のポート公開情報を表示/設定します。|
+//|５|実行コンテキストビュー|選択されている RTC が属する実行コンテキスト（EC）の一覧を表示し、RTC、EC のアクション実行、EC への RTC のアタッチ/デタッチを行います。|
+//|６|ログビュー|ログ通知オブザーバーにより通知されるログメッセージを表示します。|
+//|７|プロパティビュー|選択されている RTC のプロファイル情報を表示します。|
+//|８|システムエディタ|RTC をグラフィカルに表示し、RTシステムを作成します。|
+//|９|オフラインシステムエディタ|RTリポジトリやローカルの RTコンポーネント仕様ファイルの内容をグラフィカルに表示し、RTシステムを作成します。|
+
+In the subsequent sections, we will explain each view individually.
+//この後の節では、各ビューについてそれぞれ解説していきます。

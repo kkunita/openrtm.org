@@ -1,0 +1,48 @@
+﻿// Title: Installation and start-up
+#contents
+
+//** RT System Editor のインストールおよび起動
+
+This section explains installation and startup of RTSystemEditor.
+//ここでは、RTSystemEditor のインストールおよび起動について説明します。
+
+*** (G)Installing RTSystemEditor
+Since RTSystemEditor is an Eclipse plugin, you need to install Eclipse itself and other dependent Eclipse plugins first.
+For installation, please refer to [[OpenRTM Eclipse tools installation:/node/676]].
+//*** RTSystemEditor のインストール
+//RTSystemEditor は Eclipse プラグインであるため、 Eclipse 本体および依存している他の Eclipse プラグインをまずインストールする必要があります。
+//インストールに関しては、[[OpenRTM Eclipse tools のインストール:/node/676]] を参照願います。
+
+*** (G)Activating RTSystemEditor
+After installing Eclipse for the first time, the following page will be displayed. #br
+Click "x" at the top left of the screen and close the "Welcome" screen.
+//*** RTSystemEditor の起動
+//インストール後、 Eclipse を初めて起動すると、以下のようなページが表示されます。#br
+//画面左上の「x」をクリックし、「ようこそ」画面を閉じます。
+#br
+
+#ref(fig2InitialOfEclipseStart_1.png,60%,center)
+CENTER: ''Eclipse 's initial startup screen''
+//CENTER:''Eclipse の初期起動時の画面''
+#br
+On the following screen, click on the "Open Perspective" button in the upper right corner and select "Other ..." from the pull down.
+//以下の画面で、右上の [Open Perspective] ボタンをクリックし、プルダウンの「Other…」を選択します。
+
+#ref(fig3PerspectiveSwitch.png,60%,center)
+CENTER: ''Switching perspective''
+//CENTER:''パースペクティブの切り替え''
+#br
+Select [RT System Editor] and click the [OK] button.
+//[RT System Editor] を選択し、[OK] ボタンをクリックします。 
+
+#ref(fig4PerspectiveSelection.png,80%,center)
+CENTER: ''Select Perspective''
+//CENTER:''パースペクティブの選択''
+#br
+RT System Editor starts up.
+//RT System Editor が起動します。
+
+#ref(fig5InitialOfRTSystemEditorStarts.png,60%,center)
+CENTER: ''RT System Editor initial startup screen''
+//CENTER:''RT System Editor の初期起動時画面''
+#br
