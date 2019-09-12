@@ -1,0 +1,62 @@
+﻿// Title: インストールおよび起動
+#contents(4)
+ここでは、RTCBuilder のインストールおよび起動方法について説明します。
+*** RTCBuilder のインストール
+RTCBuilder は Eclipse プラグインであるため、 Eclipse 本体および依存している他の Eclipse プラグインをまずインストールする必要があります。
+// [[動作環境:RTCBuilder]]を参照の上、これらをダウンロードします。
+// Eclipse のインストールは解凍するだけです。また、 Eclipse のプラグインは解凍後、Eclipse フォルダ内に上書きするだけです。
+// RTCBuilder のインストールは RTCBuilder のプラグイン jar ファイル（jp.go.aist.rtm.rtcbuilder_X.X.X.jar）を eclipse/plugins フォルダーに配置するだけで完了です。
+インストールに関しては、[[OpenRTM Eclipse tools のインストール:/node/676]] を参照願います。
+***RTCBuilder の起動
+インストール後、Eclipse を初めて起動すると、以下のような「ようこそ」画面が表示されます。
+#br
+
+#ref(fig2InitialOfEclipseStart_1_ja.png,40%,center)
+CENTER:''Eclipseの初期起動時の画面''
+#br
+この「ようこそ」画面左上の「X」ボタンをクリックすると、以下のページが表示されます。
+右上の [Open Perspective] ボタンをクリックし、プルダウンから「その他」を選択します。
+#br
+
+#ref(fig3PerspectiveSwitch_ja.png,40%,center)
+CENTER:''パースペクティブの切り替え''
+#br
+「RTC Builder」を選択し、[OK] ボタンをクリックします。
+#br
+
+#ref(fig2-3PerspectiveSelection_ja.png,50%,center)
+CENTER:''パースペクティブの選択''
+#br
+RTCBuilder が起動します。
+#br
+
+#ref(fig2-4RTCBuilderInit_ja.png,70%,center)
+CENTER:''RTCBuilderの初期起動時画面''
+#br
+
+**** RTC プロファイルエディタの起動
+RTC プロファイルエディタを開くには、ツールバーの [Open New RtcBuilder Editor] ボタンをクリックするか、メニューバーの [ファイル] > [Open New Builder Editor] を選択します。
+
+
+|
+#ref(fig2-9ToolsBarOpenNewRtcBuilder_ja.png,nolink,center)|
+#ref(fig2-10FileMenuOpenNewBuilder_ja.png,60%,center)|
+|CENTER:''ツールバーから Open New RtcBuilder Editor''|CENTER:''ファイル メニューから Open New Builder Editor''|
+
+表示された新規プロジェクト作成ダイアログにて、プロジェクト名を入力します｡
+#ref(CreateProject2.png,70%,center)
+CENTER:''RTCBuilder 用プロジェクトの作成　１''
+#br
+ここで作成したプロジェクト配下に RTCBuilder を用いて生成したコード､ RTCProfile などが保存されます｡
+プロジェクトは､デフォルトでは使用しているワークスペース配下に(｢ロケーション｣に設定されたディレクトリー内)作成されます｡
+任意の場所にプロジェクトを作成したい場合には､｢デフォルト・ロケーションの使用｣チェックボックスを OFF にし､｢ロケーション｣にて場所を指定してください｡
+
+#br
+指定した名称のプロジェクトが生成され、パッケージエクスプローラー内に追加されます。
+#br
+
+#ref(fig2-8CreateProject4_ja.png,nolink,center)
+CENTER:''RTCBuilder 用プロジェクトの作成　２''
+#br
+生成したプロジェクト内には、デフォルト値が設定された RTC プロファイル XML(RTC.xml) が自動的に生成されます。
+

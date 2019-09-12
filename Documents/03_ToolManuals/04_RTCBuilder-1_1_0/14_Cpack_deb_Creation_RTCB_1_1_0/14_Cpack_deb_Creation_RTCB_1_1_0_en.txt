@@ -1,0 +1,205 @@
+﻿// Title: Create deb with CPack (Linux)
+#contents
+
+** (G)Introduction
+//** はじめに
+
+The following shows how to create a deb package. &br;
+//deb パッケージの作成方法を以下に示します。&br;
+
+** (G)Steps for creating without including doxygen document
+By default, document build is not generated because it is OFF.
+//** doxygen ドキュメントを含めない場合の作成手順
+//※デフォルトでは、ドキュメントビルドは OFF になっているため生成されません。
+
+- For C++ RTC
+//- C++ RTC の場合
+
+ $ cd project directory
+//$ cd プロジェクトディレクトリー
+ $ mkdir build
+ $ cd build
+ $ cmake ..
+ $ make
+ $ cpack
+
+- For Python RTC
+//- Pyrhon RTC の場合
+
+ $ cd project directory
+// $ cd プロジェクトディレクトリー
+ $ mkdir build
+ $ cd build
+ $ cmake ..
+ $ cpack
+
+** (G)Steps for creating doxygen documents
+Change the following line of CMakeLists.txt immediately under the project directory from OFF to ON. &br;
+In case of C ++ RTC, it is around 86th row, and in Python RTC it is around 77th line.
+//** doxygen ドキュメントを含める場合の作成手順
+//プロジェクトディレクトリー直下にある CMakeLists.txt の下記の行を、OFF → ON に書き換えます。&br;
+//C++ RTC の場合は 86行目あたり、Python RTC の場合は 77行目あたりです。
+
+ option(BUILD_DOCUMENTATION "Build the documentation" ON) (*) Rewrite this line OFF to ON. (Default is OFF)
+// option(BUILD_DOCUMENTATION "Build the documentation" ON) ※この行の OFF を ON に書き換えます。(デフォルトは OFF)
+
+- For C++ RTC
+//- C++ RTC の場合
+
+ $ cd project directory
+// $ cd プロジェクトディレクトリー
+ $ mkdir build
+ $ cd build
+ $ cmake ..
+ $ make
+ $ make doc
+ $ cpack
+
+- For Python RTC
+//- Pyrhon RTC での場合
+
+ $ cd project directory
+// $ cd プロジェクトディレクトリー
+ $ mkdir build
+ $ cd build
+ $ cmake ..
+ $ make doc
+ $ cpack
+
+【Notes】 &br;
+If you turn on document build and execute "cpack" without "make doc", the following error occurs.
+//【注意事項】&br;
+//ドキュメントビルドを ON にして、「make doc」 をせずに 「cpack」 を実行すると以下のようなエラーになります。
+
+ CMake Error at /home/project directory/build/doc/cmake_install.cmake: 36 (file):
+ file INSTALL can not find
+ "/home/project directory/build/doc/html/doxygen/html".
+// CMake Error at /home/プロジェクトディレクトリー/build/doc/cmake_install.cmake:36 (file):
+// file INSTALL cannot find
+// "/home/プロジェクトディレクトリー/build/doc/html/doxygen/html".
+
+** (G)deb Save package location, file name
+If it succeeds, it is saved in [build] of the project directory. &br;
+The file name is "RTC project name_RTC version number_architecture". &br;
+//** deb パッケージの保存場所、ファイル名
+//正常に作成できた場合は、プロジェクトディレクトリーの  [build] 内に保存されます。 &br;
+//ファイル名は、「RTCプロジェクト名_RTCのバージョン番号_アーキテクチャ」となります。&br;
+
+(Example) Flip_1.2.0_amd64.deb &br;
+(*)The architecture is [i386] or [amd64]. &br;
+//(例) Flip_1.2.0_amd64.deb&br;
+//※アーキテクチャは、[i386] または [amd64] となります。&br;
+
+** (G)How to check deb package
+- When confirming the deb package with the less command
+//** deb パッケージの確認方法
+//- less コマンドで、deb パッケージの確認をする場合
+
+ $ cd project directory/build
+ $ less Flip_1.2.0_amd64.deb
+ Flip_1.2.0_amd64.deb
+ New format debian package, version 2.0.
+ Size 258304 bytes: Control archive = 2797 bytes.
+// $ cd プロジェクトディレクトリー/build 
+// $ less Flip_1.2.0_amd64.deb
+// Flip_1.2.0_amd64.deb
+// 新形式 debian パッケージ、バージョン 2.0。
+// サイズ 258304 バイト: コントロールアーカイブ = 2797 バイト。
+     162 bytes,    9 rows      control              
+   10062 bytes,   92 rows      md5sums              
+ Package: affine
+ Version: 1.2.0
+ Section: devel
+ Priority: optional
+ Architecture: amd64
+ Installed-Size: 884
+ Maintainer: unknown　(*)If package maintainer information is not defined, it will be "unknown"
+//※パッケージメンテナー情報を定義していないと「unknown」になります
+ Description: Flip image component
+
+To exit less, press "q".
+//less を終了させるには「q」を押します。
+
+- When extracting and checking contents of deb package &br;
+If the tree command is not installed, install it.
+//- deb パッケージの内容を抽出して確認する場合&br;
+//tree コマンドがインストールされていない場合は、インストールします。
+
+ $ sudo apt-get install tree
+
+ $ cd project directory/build
+// $ cd プロジェクトディレクトリー/build 
+ $ dpkg -x Flip_1.2.0_amd64.deb .
+ $ tree usr
+ usr
+ └─ share
+    　└─ openrtm-1.2
+        　　└─ components
+            　　　└─ python
+               　　　 　└─ Category　(*)Specified installation directory
+                    　　　　　└─ FlipGUI
+                        　　　　　　├─ RTC.xml
+                        　　　　　　├─ FlipGUIComp.py
+                        　　　　　　├─ idl
+                        　　　　　　│    ├─ BasicDataType.idl
+                        　　　　　　│    ├─ CMakeLists.txt
+                     　　　　　　   │    ├─ CalibrationService.idl
+                  　　　　　　      │    ├─ ExtendedDataTypes.idl
+                        　　　　　　│    └─ InterfaceDataTypes.idl
+                        　　　　　　├─ idlcompile.sh
+                      　　　　　　  ├─ rtutil.py
+                        　　　　　　├─ setup.py
+                        　　　　　　└─ flipgui.py
+
+** (G)Install/Uninstall deb package
+*** (G)Installation
+Installation executes the following command.
+ $ cd project directory/build
+ $ sudo dpkg -i Flip_1.2.0_amd64.deb
+//** deb パッケージのインストール・アンインストール
+//*** インストール
+//インストールは以下のコマンドを実行します。
+// $ cd プロジェクトディレクトリー/build 
+// $ sudo dpkg -i Flip_1.2.0_amd64.deb 
+
+*** (G)Uninstall
+To uninstall, execute the following command.
+ $ sudo dpkg -r Flip
+//*** アンインストール
+//アンインストールは以下のコマンドを実行します。
+// $ sudo dpkg -ｒ Flip
+
+** (G)IDL compilation process of Python RTC with service port
+Python RTC with service port performs IDL compilation at package installation.
+Before IDL compilation is executed, postinst.in and prerm.in in the project directory realize this behavior, so be careful as deleting these files will not work. & br; & br;
+Below is a list of files installed from the deb package. ★ A file is generated by IDL compilation.
+//** サービスポートを持つ Python RTC の IDL コンパイル処理 
+//サービスポートを持つ Python RTC は、パッケージインストール時に IDL コンパイルを実行します。
+//IDL コンパイル実行時に、プロジェクトディレクトリー内にある postinst.in、prerm.in でこの動作を実現させているため、これらのファイルを削除してしまうと機能しなくなるので注意が必要です。&br;&br;
+//以下、debパッケージからインストールされるファイル一覧です。★マークが IDL コンパイルで生成されるファイルです。 
+ $ tree /usr/share/openrtm-1.2/components/python/Category/FlipGUI/
+ /usr/share/openrtm-1.2/components/python/Category/FlipGUI/
+   ├─ BasicDataType_idl.py  ★
+   ├─ CalibrationService_idl.py  ★
+   ├─ ExtendedDataTypes_idl.py  ★
+   ├─ ImageCalibService  ★
+   │   └─ __init__.py  ★
+   ├─ ImageCalibService__POA  ★
+   │   └─ __init__.py  ★
+   ├─ InterfaceDataTypes_idl.py  ★
+   ├─ RTC  ★
+   │   └─ __init__.py  ★
+   ├─ RTC.xml
+   ├─ RTC__POA  ★
+   │   └─ __init__.py  ★
+   ├─ FlipGUIComp.py
+   ├─ idl
+   │   ├─ BasicDataType.idl
+   │   ├─ CMakeLists.txt
+   │   ├─ CalibrationService.idl
+   │   ├─ ExtendedDataTypes.idl
+   │   └─ InterfaceDataTypes.idl
+   ├─ idlcompile.sh
+   ├─ rtutil.py
+   ├─ setup.py
+   └─ flipgui.py

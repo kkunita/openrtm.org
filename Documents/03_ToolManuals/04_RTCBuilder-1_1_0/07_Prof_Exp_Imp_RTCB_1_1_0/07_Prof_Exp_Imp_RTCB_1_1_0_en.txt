@@ -1,0 +1,28 @@
+﻿// Title: Profile export/import
+// #contents
+// 
+// ** プロファイルのエクスポート/インポート
+
+It is a function to export the contents input and set in RTC profile editor to external file in XML format, YAML format, and import the exported file.
+Clicking the [Export] button on the basic profile input page selects the destination for exporting profile information, and clicking the [Import] button displays the file dialog for selecting the profile information of the import source.
+#br
+//RTC プロファイルエディタで入力、設定した内容を XML形式、 YAML形式で外部ファイルにエクスポート、エクスポートしたファイルをインポートする機能です。
+//基本プロファイル入力ページの [エクスポート] ボタンをクリックすると、プロファイル情報をエクスポートする先を選択するファイルダイアログが、[インポート] ボタンをクリックすると、インポート元のプロファイル情報を選択するファイルダイアログが表示されます。
+#br
+
+#ref(fig8-1FunctionExportImport_ja.png,60%,center)
+CENTER:''Profile export/import function''
+//CENTER:''プロファイル　エクスポート/インポート機能''
+
+#br
+#br
+
+
+#ref(fig8-2DialogProfileExport_ja.png,80%,center)
+CENTER:''Profile export dialog''
+//CENTER:''プロファイル　エクスポートダイアログ''
+
+#br
+''*'' The format for export processing can be selected by "File type" in "Export" dialog.
+//''※''エクスポート処理時の形式は、｢エクスポート｣ ダイアログの ｢ファイルの種類｣ によって選択することが可能です。
+

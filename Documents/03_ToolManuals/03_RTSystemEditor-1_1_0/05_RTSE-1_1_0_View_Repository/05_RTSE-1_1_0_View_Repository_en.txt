@@ -1,0 +1,68 @@
+﻿// Title: View (Repository View)
+#contents
+
+This section explains the repository view.
+//ここでは、リポジトリビューについて解説します。
+#br
+
+RTC-RepositoryView has a function to read the RT component specification description file and display it in tree view.
+//RTC-RepositoryView は、RTコンポーネント仕様記述ファイルを読み込み、ツリービューで表示する機能をもっています。
+#br
+
+#ref(figREP2_1RepositoryView.png,45%,center)
+CENTER:''RTC-RepositoryView''
+#br
+
+*** (G)Loading files
+This section explains how to specify RTC-RepositoryView by specifying the RT component specification description file. &br;
+Right click in RTC-RepositoryView and select [Load File] from the displayed context menu, a file selection dialog is displayed. Here, select the RT component specification description file to be read into RTC-RepositoryView. &br;
+This dialog will be filtered to display only xml files.
+//***ファイルのロード
+//ここでは、RTC-RepositoryView に RTコンポーネント仕様記述ファイルを指定して表示する方法を説明します。&br;
+//RTC-RepositoryView 内で右クリックし、表示されるコンテキストメニューから [Load File] を選択すると、ファイル選択ダイアログが表示されます。ここで RTC-RepositoryView に読み込む RTコンポーネント仕様記述ファイルを選択します。&br;
+//このダイアログは xml ファイルのみ表示するようフィルタがかかります。
+#br
+
+#ref(figREP2_2LoadFile.png,70%,center)
+CENTER: ''Load file''
+//CENTER:''ファイルのロード''
+#br
+
+When reading the locally existing RT component specification description file, the highest layer displays the absolute path of the read RT component specification description file. The second hierarchy displays the value of the category attribute defined in the RT component specification description file. The third layer displays the value described in the name attribute in the RT component specification description file and the RT component specification description file name.
+//ローカルに存在する RTコンポーネント仕様記述ファイルを読み込んだ場合、最上位階層は読み込んだ RTコンポーネント仕様記述ファイルの絶対パスを表示します。そして、２階層目は RTコンポーネント仕様記述ファイル内で定義されている category 属性の値を表示します。また３階層目は RTコンポーネント仕様記述ファイル内の name 属性に記述されている値と RTコンポーネント仕様記述ファイル名を表示します。
+
+*** (G)Loading directories
+This section explains how to read and display all the files in the directory by specifying the directory where the RT component specification description file exists. &br;
+Right click on RTC-RepositoryView and select [Load Dir] from the displayed context menu, the directory selection dialog will be displayed. Select the directory to load into RTC-RepositoryView. Read RT component specification description file existing under the directory.
+//***ディレクトリーのロード
+//ここでは、RTコンポーネント仕様記述ファイルが存在するディレクトリーを指定して、ディレクトリー内の全ファイルの読み込み、表示を行う方法を説明します。&br;
+//RTC-RepositoryView 上で右クリックし、表示されるコンテキストメニューから [Load Dir] を選択すると、ディレクトリー選択ダイアログが表示されます。RTC-RepositoryView に読み込むディレクトリーを選択します。ディレクトリー以下に存在する RTコンポーネント仕様記述ファイルを読み込みます。
+#br
+
+#ref(figREP2_3LoadDir.png,70%,center)
+CENTER: ''Load Directory''
+//CENTER:''ディレクトリーのロード''
+#br
+
+The display method is the same as loading a file. &br;
+If you add a new RT component specification description file to the already expanded directory and reload it, only the added RT component specification description file will be loaded.
+//表示方法はファイルのロードと同様です。&br;
+//すでに展開したディレクトリーに新しい RTコンポーネント仕様記述ファイルを追加し、再度読み込みを行うと追加された RTコンポーネント仕様記述ファイルのみ読み込まれます。
+#br
+
+***(G)Delete
+Components of RTC-RepositoryView can be deleted by right-clicking on RTC-RepositoryView and selecting [Delete] from the context menu. &br;
+You can select [Delete] only when you select either path, category, or component.
+//***削除
+//RTC-RepositoryView のコンポーネントは、RTC-RepositoryView 上で右クリックし、コンテキストメニューから [Delete] を選択して削除することが可能です。&br;
+//[Delete] はパス、category、コンポーネントのいずれかを選択している場合のみ選択できます。
+#br
+
+#ref(figREP2_4Delete.png,70%,center)
+CENTER: ''Delete component''
+//CENTER:''コンポーネントの削除''
+#br
+
+Deleting the path that is the highest hierarchy deletes the lower category and components at the same time. Also delete the component of the third hierarchy and if there are no other components recursively deleted to the highest level.
+//最上位階層であるパスを削除すると、下位の category、コンポーネントも同時に削除されます。また３階層目のコンポーネントを削除し、他のコンポーネントが存在しない場合は再帰的に最上位階層まで削除されます。
+#br
