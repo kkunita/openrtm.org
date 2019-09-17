@@ -1,228 +1,252 @@
-// -*- pukiwiki-edit -*-
-// 
-// @brief How to use Service Port Basic
-// @date $Date$
-// @author Noriaki Ando <n-ando@aist.go.jp>
-// 
-// Copyright (C) 2011
-//     Noriaki Ando
-//     Intelligent Systems Research Institute,
-//     National Institute of
-//         Advanced Industrial Science and Technology (AIST), Japan
-//     All rights reserved.
-// 
-// $Id$
-// 
-//*rtc.conf(��{��) 
-#contents
+﻿// Title: rtc.conf設定項目一覧
+#contents(3)
 
-//------------------------------------------------------------
-** ��ʓI�Ȑݒ�
+//------------------------------------------------------------=============
+** 一般的な設定
 
 *** config.version
-�R���t�B�M�����[�V�����t�@�C���̃o�[�W�����B
-- ��:
+コンフィギュレーションファイルのバージョン。
+- 例:
  config.version: 1.0
 
 *** openrtm.version
-OpenRTM-aist �̃o�[�W�����B
-- ��:
+OpenRTM-aist のバージョン。
+- 例:
  openrtm.version: 1.0.0
 
 //------------------------------------------------------------
-** manager �Ɋւ���ݒ�
+** manager に関する設定
 
 *** manger.name
 
-manager�̖��O�B�}�l�[�W�����l�[���T�[�o�œo�^�����ۂɂ́A�����Őݒ肵
-�����O�œo�^�����B
+managerの名前。マネージャがネームサーバで登録される際には、ここで設定し
+た名前で登録される。
 
-- �w��: �l�[���T�[�o���ɓo�^�\�ȔC�ӂ̖��O
-- �f�t�H���g�l: manager
-- ��:
+- 指定: ネームサーバ等に登録可能な任意の名前
+- デフォルト値: manager
+- 例:
  manager.name: manager
 
 *** maanger_naming_formats
 
-�}�l�[�W�����l�[���T�[�o�ɓo�^����ۂ̃t�H�[�}�b�g���w�肷��B�ȉ���
-''%''�Ŏn�܂�w��q�𗘗p���邱�Ƃ��ł���B
+マネージャをネームサーバに登録する際のフォーマットを指定する。以下の
+''%''で始まる指定子を利用することができる。
 
-| �w��q | �Ӗ�               |
-| %n | �}�l�[�W����           |
-| %h | �z�X�g��               |
-| %M | �}�l�[�W����           |
-| %p | �}�l�[�W���̃v���Z�XID |
+| 指定子 | 意味               |
+| %n | マネージャ名           |
+| %h | ホスト名               |
+| %M | マネージャ名           |
+| %p | マネージャのプロセスID |
 
-- �w��: /<name>.<kind>/<name>.<kind>/...
-- �f�t�H���g�l: %h.host_cxt/%n.mgr
-- ��:
+- 指定: /<name>.<kind>/<name>.<kind>/...
+- デフォルト値: %h.host_cxt/%n.mgr
+- 例:
  manager.name: %h.host_cxt/%n.mgr
 
 *** manager.is_master
 
-���Y�v���Z�X���}�X�^�[�}�l�[�W���ɂ��邩�ǂ����H�R�}���h���C���I�v�V��
-�� ''-d'' ���w�肷��ƁA���̒l�� NO �ɐݒ肳��Ă��Ă��}�X�^�[�}�l�[�W��
-�ɂȂ�B
+当該プロセスをマスターマネージャにするかどうか？コマンドラインオプショ
+ン ''-d'' を指定すると、この値が NO に設定されていてもマスターマネージャ
+になる。
 
-- �w��: ''YES'' or ''NO''
-- �f�t�H���g�l: NO
-- ��:
+- 指定: ''YES'' or ''NO''
+- デフォルト値: NO
+- 例:
  manager.is_master: NO
 
 *** manager.corba_servant
 
-�}�l�[�W����CORBA�T�[�o���g���N�����邩�ǂ����̐ݒ�BYES ��ݒ肷��ƁA
-�}�l�[�W����CORBA�T�[�o���g���N�����邽�߁A�����[�g����}�l�[�W���̑���
-���\�ɂȂ�BNO �̏ꍇ�ɂ́ACORBA�T�[�o���g���N�����Ȃ����߁A�}�l�[�W��
-��CORBA�o�R�ł̑���͂ł��Ȃ��Ȃ�B
+マネージャのCORBAサーバントを起動するかどうかの設定。YES を設定すると、
+マネージャのCORBAサーバントが起動するため、リモートからマネージャの操作
+が可能になる。NO の場合には、CORBAサーバントが起動しないため、マネージャ
+のCORBA経由での操作はできなくなる。
 
-- �w��: ''YES'' or ''NO''
-- �f�t�H���g�l: YES
-- ��:
+- 指定: ''YES'' or ''NO''
+- デフォルト値: YES
+- 例:
  manager.corba_servant: YES
 
 *** corba.master_manager
 
-�}�X�^�[�}�l�[�W���̃A�h���X�ƃ|�[�g�ԍ��B�}�X�^�[�}�l�[�W���́A
-corbaloc �`����URL�w��ŃA�N�Z�X�\�ł��邪�A���̍ۂɎg�p����|�[�g��
-�����w�肷��B�܂��A�X���[�u�}�l�[�W���́A�����Ŏw�肳�ꂽ�}�X�^�[�}�l�[
-�W�������g�̃}�X�^�[�}�l�[�W���Ƃ��ĉ��߁A�N�����Ƀ}�X�^�[�}�l�[�W����
-�A�N�Z�X���l�S�V�G�[�V�������s���B
+マスターマネージャのアドレスとポート番号。マスターマネージャは、
+corbaloc 形式のURL指定でアクセス可能であるが、その際に使用するポート番
+号を指定する。また、スレーブマネージャは、ここで指定されたマスターマネー
+ジャを自身のマスターマネージャとして解釈、起動時にマスターマネージャに
+アクセスしネゴシエーションを行う。
 
-- �w��: <host_name>:<port>
-- �f�t�H���g: localhost:2810
-- ��:
+- 指定: <host_name>:<port>
+- デフォルト: localhost:2810
+- 例:
  corba.master_manager: localhost:2810
 
 *** manager.shutdown_on_nortcs:
 
-�v���Z�X���RTC������Ȃ��Ȃ����ꍇ�A���Ȃ킿����v���Z�X���RTC�̍�
-���1���I�������ꍇ�ɁA�}�l�[�W�����V���b�g�_�E�������Y�v���Z�X���I��
-�����邩�ǂ������w�肷��BYES �̏ꍇ�ɂ́ARTC������Ȃ��Ȃ������_�Ńv
-���Z�X���I������BNO�̏ꍇ�́ARTC������Ȃ���Ԃł��}�l�[�W���A�v���Z
-�X�Ƃ��ɓ���������B
+プロセス上にRTCが一つもなくなった場合、すなわち同一プロセス上のRTCの最
+後の1つが終了した場合に、マネージャをシャットダウンし当該プロセスを終了
+させるかどうかを指定する。YES の場合には、RTCが一つもなくなった時点でプ
+ロセスが終了する。NOの場合は、RTCが一つもない状態でもマネージャ、プロセ
+スともに動き続ける。
 
-- �w��: ''YES'' or ''NO''
-- �f�t�H���g: YES
-- ��:
+- 指定: ''YES'' or ''NO''
+- デフォルト: YES
+- 例:
  manager.shutdown_on_nortcs: YES
 
 *** manager.shutdown_auto
 
-�v���Z�X����RTC�̗L������莞�Ԃ��Ƃɒ��ׁARTC���Ȃ��ꍇ�ɂ́A�}�l�[�W��
-����уv���Z�X���V���b�g�_�E�����邩�ǂ�����ݒ肷��BYES�̏ꍇ�ARTC��
-����Ȃ���΁A�}�l�[�W������уv���Z�X�͎����I�ɃV���b�g�_�E�������B
-NO�̏ꍇ�ARTC������Ȃ��Ƃ��}�l�[�W������уv���Z�X�����삵������B
+プロセス内のRTCの有無を一定時間ごとに調べ、RTCがない場合には、マネージャ
+およびプロセスをシャットダウンするかどうかを設定する。YESの場合、RTCが
+一つもなければ、マネージャおよびプロセスは自動的にシャットダウンされる。
+NOの場合、RTCが一つもなくともマネージャおよびプロセスが動作し続ける。
 
-manager.shutdown_on_nortcs �Ƃ̈Ⴂ�́A�V���b�g�_�E���̃g���K���A
-manager.shutdown_on_nortc �ł�RTC�̍폜�ł���̂ɑ΂��āA
-manager.shutdown_auto �͎��ԂƂȂ��Ă���_�ł���B
-- �w��: ''YES'' or ''NO''
-- �f�t�H���g: YES
-- ��:
+manager.shutdown_on_nortcs との違いは、シャットダウンのトリガが、
+manager.shutdown_on_nortcs ではRTCの削除であるのに対して、
+manager.shutdown_auto は時間となっている点である。
+- 指定: ''YES'' or ''NO''
+- デフォルト: YES
+- 例:
  manager.shutdown_auto: YES
+
+*** manager.auto_shutdown_duration
+
+プロセス内のRTCの有無調べる周期。単位は秒。上記の manager.shutdown_auto が
+YESに設定されている場合、このオプションで設定された周期でRTCの有無を確認
+しにいく。
+
+- 指定: 数値 (単位[s])
+- デフォルト: 10.0
+- 例:
+ manager.auto_shutdown_duration: 10.0
+
+
+*** manager.cpu_affinity
+
+このオプションは、マネージャのプロセスを特定のCPUにバインドする。
+オプション引数は、カンマで区切られた1つ以上のCPU IDでなければならない。
+CPU IDは0から始まり、最大値はCPUコア数-1となる。
+もし不正なCPU IDが指定された場合、このプロセスはすべてのCPUを利用するよう設定される。
+
+- 指定: バインドするCPU IDをカンマ区切りで指定
+- デフォルト: なし
+- 例:
+ manager.cpu_affinity: 0,1
+
 
 *** manager.supported_languages
 
-�}�X�^�[�}�l�[�W���́A�����[�g�A�v���P�[�V�����Ȃǂ���̗v���ɉ����āA
-�X���[�u�}�l�[�W�������RTC���N������B�X���[�u�}�l�[�W���́AC++�����
-�����łȂ��AJava�ŁAPython�łȂǂ̉\��������B���̃I�v�V�����ł́A�}
-�X�^�[�}�l�[�W�����T�|�[�g���錾���ݒ肷��B
+マスターマネージャは、リモートアプリケーションなどからの要求に応じて、
+スレーブマネージャおよびRTCを起動する。スレーブマネージャは、C++言語版
+だけでなく、Java版、Python版などの可能性もある。このオプションでは、マ
+スターマネージャがサポートする言語を設定する。
 
-- �w��: C++, Java, Python ���̌�����J���}��؂�Ŏw��
-- �f�t�H���g: C++, Java, Python
-- ��:
+- 指定: C++, Java, Python 等の言語をカンマ区切りで指定
+- デフォルト: C++, Java, Python
+- 例:
  manager.supported_languages: C++, Python, Java
 
 *** manager.modules.<lang>.suffixes
 
-���ꂲ�Ƃ�RTC���W���[���̊g���q�B
+言語ごとのRTCモジュールの拡張子。
 
-- �w��: ���L�I�u�W�F�N�g�̊g���q��
-- �f�t�H���g:
+- 指定: 共有オブジェクトの拡張子名
+- デフォルト:
 -- Windows: dll
--- Linux��: so
+-- Linux等: so
 -- Mac OS X: dylib
--��
+-例
  manager.modules.C++.suffixes: dll
  manager.modules.C++.suffixes: so
  manager.modules.C++.suffixes: dylib
 
 *** manager.modules.<lang>.manager_cmd
 
-���ꂲ�Ƃ̃}�l�[�W���v���O�������B
+言語ごとのマネージャプログラム名。
 
-- �w��: �}�l�[�W���̃R�}���h��
-- �f�t�H���g:
+- 指定: マネージャのコマンド名
+- デフォルト:
 -- C++: rtcd
 -- Python: rtcd_python
 -- Java: rtc_java
--��
+-例
  manager.modules.C++.manager_cmd: rtcd
  manager.modules.Python.manager_cmd: rtcd_python
  manager.modules.Java.manager_cmd: rtcd_java
 
 *** manager.modules.<lang>.profile_cmd
 
-���ꂲ�Ƃ̃v���t�@�C���擾�R�}���h���B
+言語ごとのプロファイル取得コマンド名。
 
-- �w��: �v���t�@�C���擾�R�}���h��
-- �f�t�H���g:
+- 指定: プロファイル取得コマンド名
+- デフォルト:
 -- C++: rtcprof
 -- Python: rtcprof_python
 -- Java: rtc_java
--��
+-例
  manager.modules.C++.profile_cmd: rtcprof
  manager.modules.Python.profile_cmd: rtcprof_python
  manager.modules.Java.profile_cmd: rtcprof_java
 
 *** manager.modules.<lang>.load_paths
 
-���ꂲ�Ƃ�RTC���W���[�����[�h�p�X�B
+言語ごとのRTCモジュールロードパス。
 
-- �w��: RTC���W���[�����[�h�p�X�B
-- �f�t�H���g:
+- 指定: RTCモジュールロードパス。
+- デフォルト:
 -- C++: ./
 -- Python: ./
 -- Java: ./
--��
+-例
  manager.modules.C++.profile_cmd: ./, /usr/share/OpenRTM-aist/components/cxx
 
 
 //------------------------------------------------------------
-** CORBA�Ɋւ���ݒ�
+** CORBAに関する設定
 
 *** corba.args
 
-CORBA�ɗ^����������w�肷��BCORBA �͎������ɈقȂ�R�}���h���C���I�v�V��
-�������B�ʏ�R�}���h���C�������́ACORBA �� API �ł��� ORB_init() �֐�
-�ɗ^�����邪�A���̃I�v�V�����͎w�肳�ꂽ����������� ORB_init() �֐�
-�ɓn���B
+CORBAに与える引数を指定する。CORBA は実装毎に異なるコマンドラインオプショ
+ンを持つ。通常コマンドライン引数は、CORBA の API である ORB_init() 関数
+に与えられるが、このオプションは指定された文字列をこの ORB_init() 関数
+に渡す。
 
-- �w��: ������
-- �f�t�H���g: �󕶎���
-- ��:
+
+
+- 指定: 文字列
+- デフォルト: 空文字列
+- 例:
  corba.args: -ORBInitialHost myhost -ORBInitialPort 8888
+
+**** 指定例1
+
+画像データなどをデータポートで送る際、1回に送信するデータサイズ約2MBを超える場合には注意が必要。
+omniORBでは、giop(General Inter-ORB Protocol)で扱えるサイズはデフォルトで"2097152B(2MB)"であり
+このサイズを超えるデータを送ろうとすると、giopの制限のため正しいデータを送ることができない。
+corba.args オプションを利用して、最大サイズを変更することが可能である。この指定は、OutPort、InPort両方にて指定する必要がある。
+
+ corba.args: -ORBgiopMaxMsgSize 3145728 # この行を追加
+                                        # Maxサイズを3Mに指定
+
+なお、corba.args に指定する以外に、環境変数を以下のように指定することでこの制限を緩和することができる。
+
+  export ORBgiopMaxMsgSize=3145728
+
+- （参考）(omniORB configuration and API) http://omniorb.sourceforge.net/omni41/omniORB/omniORB004.html
+
 
 *** corba.endpoint:
 
-CORBA�ɂ����ẮA�����[�g�̃I�u�W�F�N�g��IOR�ƌĂ΂��Q�Ƃɂ��A�N�Z
-�X���邪�AIOR�ɂ͓��Y�I�u�W�F�N�g�����삷��m�[�h�̃A�h���X�ƃ|�[�g�ԍ�
-���ʏ�1�Z�b�g�̂݋L�q����Ă���BOpenRTM�����삵�Ă���m�[�h��2�ȏ��
-�l�b�g���[�N�C���^�[�t�F�[�X�����݂���ꍇ�AIOR�Ɋ܂܂��m�[�h�̃A�h��
-�X�Ƃ��ĈӐ}���Ȃ��A�h���X������U����ꍇ������B����ɂ��A���B�s
-�\�ȃI�u�W�F�N�g�Q�Ƃ�������ꍇ������B
+CORBAにおいては、リモートのオブジェクトのIORと呼ばれる参照によりアクセ
+スするが、IORには当該オブジェクトが動作するノードのアドレスとポート番号
+が通常1セットのみ記述されている。OpenRTMが動作しているノードに2つ以上の
+ネットワークインターフェースが存在する場合、IORに含まれるノードのアドレ
+スとして意図しないアドレスが割り振られる場合がある。
 
-������������邽�߂ɁA�{�I�v�V������CORBA�ŗ��p����l�b�g���[�N�̃A�h��
-�X���w�肷�邱�Ƃ��ł���B''�z�X�g�A�h���X:�|�[�g�ԍ�'' �Ƃ��Ďw�肷��
-���A�|�[�g�ԍ��͏ȗ��ł���B�������A'':(�R����)''�͏ȗ��ł��Ȃ��B
+これを解消するために、本オプションでCORBAで利用するネットワークのアドレ
+スを指定することができる。''ホストアドレス:ポート番号'' として指定するが、ポート番号は省略できる。ただし、'':(コロン)''は省略できない。
 
-�Ȃ��A���̃I�v�V�����͏����I�ɔp�~����܂��B���� corba.endpoints ���g�p
-���Ă��������B
-
-- �w��: <host_addr>:<port>
-- �f�t�H���g: �󕶎�
-- ��:
+- 指定: <host_addr>:<port>
+- デフォルト: 空文字
+- 例:
  corba.endpoint: 192.168.0.45:
  corba.endpoint: 192.168.0.45:8776
  corba.endpoints: myhost:      (use myhost and default port)
@@ -232,19 +256,19 @@ CORBA�ɂ����ẮA�����[�g�̃I�u�W�F�N�g��IOR�ƌĂ΂��Q�Ƃɂ��A�N�Z
 
 *** corba.endpoints
 
-corba.endpoint �̃G���h�|�C���g�𕡐��w�肷�邱�Ƃ�����I�v�V�����BORB
-�̎����ɂ���ẮAIOR�ɕ����̃A�h���X���܂߂邱�Ƃ��ł���B�������A
-Java�W����CORBA�ł���JavaIDL�ɂ����ẮA�����̃A�h���X���w�肵��IOR�o�R
-�œ��Y�I�u�W�F�N�g�ɃA�N�Z�X����ꍇ�A���삪�x���Ȃ�Ȃǖ����񍐂���
-�Ă���̂Œ��ӂ��K�v�ł���B
+corba.endpoint のエンドポイントを複数指定することがきるオプション。ORB
+の実装によっては、IORに複数のアドレスを含めることができる。ただし、
+Java標準のCORBAであるJavaIDLにおいては、複数のアドレスを指定したIOR経由
+で当該オブジェクトにアクセスする場合、動作が遅くなるなど問題も報告され
+ているので注意が必要である。
 
-''�A�h���X:�|�[�g'' �̑΂� '',(�J���})''�ŋ�؂蕡���w�肷�邱�Ƃ��ł�
-��B���ʂȕ�����Ƃ��� ''all'' ���w�肷�邱�ƂŁA�m�[�h�̂��ׂẴA�h��
-�X��IOR�Ɋ܂߂邱�Ƃ��ł���B
+''アドレス:ポート'' の対を '',(カンマ)''で区切り複数指定することができ
+る。特別な文字列として ''all'' を指定することで、ノードのすべてのアドレ
+スをIORに含めることもできる。
 
-- �w��: <host_addr>:<port>, <host_addr>:<port>, ... �܂��� all
-- �f�t�H���g: �󕶎�
-- ��:
+- 指定: <host_addr>:<port>, <host_addr>:<port>, ... または all
+- デフォルト: 空文字
+- 例:
  corba.endpoints: 192.168.1.10:1111, 192.168.10.11:2222
  corba.endpoints: 192.168.1.10, 192.168.10.11
  corba.endpoints: all
@@ -253,133 +277,172 @@ corba.endpoints:
 
 *** corba.nameservers
 
-RTC����o�^����l�[���T�[�o���w�肷��I�v�V�����B�J���}��؂�ŕ����̃l�[
-���T�[�o���w�肷�邱�Ƃ��ł���B�w�肵���A�h���X����у|�[�g�ԍ��Ƀl�[
-���T�[�o���Ȃ��ꍇ�ł����ɃG���[�ɂ͂Ȃ炸�A���݂���l�[���T�[�o�ɂ̂�
-RTC�̖��O��o�^����B
+RTC等を登録するネームサーバを指定するオプション。カンマ区切りで複数のネー
+ムサーバを指定することができる。指定したアドレスおよびポート番号にネー
+ムサーバがない場合でも特にエラーにはならず、存在するネームサーバにのみ
+RTCの名前を登録する。
 
-- �w��: <host_addr>:<port>, <host_addr>:<port>, ...
-- �f�t�H���g: localhost
-- ��:
+- 指定: <host_addr>:<port>, <host_addr>:<port>, ...
+- デフォルト: localhost
+- 例:
  corba.nameservers: openrtm.aist.go.jp:9876
  corba.nameservers: rtm0.aist.go.jp, rtm1.aist.go.jp, rtm2.aist.go.jp
  corba.nameservers: localhost
 
 *** corba.nameservice.replace_endpoint
 
-�m�[�h�ɕ�����NIC�����݂���ꍇ�A�l�[���T�[�o��ɓo�^�����RTC��IOR�Ɋ�
-�܂��A�h���X���A�K�؂łȂ��ꍇ�����݂���B�Ⴆ�΁A����m�[�h��
-192.168.0.10��192.168.1.10�Ƃ���2�̃A�h���X�������A192.168.0.1 �����
-192.168.1.1 �ɑ��݂���2�̃l�[���T�[�o��ɓo�^�����ꍇ�A����
-192.168.0.10 �����Y�m�[�h�Ńf�t�H���g�ŗ��p�����l�b�g���[�N�C���^�[
-�t�F�[�X���Ƃ���ƁA��L2�̃l�[���T�[�o�l�[���T�[�o�ɓo�^�����IOR��
-�́A192.168.0.10 �݂̂��܂܂��B���̂Ƃ��A192.168.1.0 �̃l�b�g���[�N��
-�̓l�[���T�[�o���IOR�͓��B�s�\�ȃA�h���X���L�ڂ��ꂽ���Ӗ��Ȃ��̂Ƃ�
-��B
+ノードに複数のNICが存在する場合、ネームサーバ上に登録されるRTCのIORに含
+まれるアドレスが、適切でない場合が存在する。例えば、あるノードが
+192.168.0.10と192.168.1.10という2つのアドレスを持ち、192.168.0.1 および
+192.168.1.1 に存在する2つのネームサーバ上に登録される場合、仮に
+192.168.0.10 が当該ノードでデフォルトで利用されるネットワークインター
+フェースだとすると、上記2つのネームサーバネームサーバに登録されるIORには、
+192.168.0.10 のみが含まれる。このとき、192.168.1.0 のネットワークではネームサーバ上のIORは到達不可能なアドレスが記載された無意味なものとなる。
 
-���̃I�v�V�������w�肷��ƁA��L�̃P�[�X�̂悤�ȏꍇ�A192.168.1.1 �̃l�[
-���T�[�o�ɓo�^�����IOR�̃A�h���X�� 192.168.1.10 �ɒu��������B
+このオプションを指定すると、上記のケースのような場合、192.168.1.1 のネー
+ムサーバに登録されるIORのアドレスを 192.168.1.10 に置き換える。
 
-�������A���̃I�v�V�����w�肷�邱�Ƃɂ���āA192.168.1.0 �l�b�g���[�N��
-�̑��̃m�[�h����́A���YRTC�̃v���t�@�C�����𗘗p���邱�Ƃ͂ł��邪�A�|�[
-�g�̐ڑ����͍s�����Ƃ͂ł��Ȃ��B
+ただし、このオプション指定することによって、192.168.1.0 ネットワーク上
+の他のノードからは、当該RTCのプロファイル等を利用することはできるが、ポー
+トの接続等は行うことはできない。
 
-- �w��: ''YES'' or ''NO''
-- �f�t�H���g: NO
-- ��:
+- 指定: ''YES'' or ''NO''
+- デフォルト: NO
+- 例:
  corba.nameservice.replace_endpoint: NO
 
 
+*** corba.alternate_iiop_addresses
+
+このオプションは、代替IIOPアドレスをIORプロファイルに追加します。
+IORにはサーバント(CORBAオブジェクトのサーバ)の追加のエンドポイント
+を含めることができます。これは、"corba.endpoints"オプションとほぼ
+同等ですが、実際にエンドポイントを作成しない点が異なります。
+("corba.endpoints" オプションでは実際のエンドポイントを作ろうとし、
+できなければエラーが返されます。) このオプションは単に代替のIIOPエ
+ンドポイントアドレス情報をIORに追加します。
+
+このオプションは、RTCをNATやルータの内部に配置する場合に使用します。
+一般的には、プライベートネットワーク内のRTCはグローバルネットワー
+ク上のRTCを接続することはできません。しかしながら、NATやルータのポー
+トフォワーディングが適切に設定されていればグローバル側のRTCはプライ
+ベートネットワークのRTCに接続することが可能です。
+
+設定は以下のように行います。
+
++ NATやルータのポートフォワーディングを適切に設定します。
+-- ここでは、グローバル側のポート2810をプライベート側のあるアドレ
+スの2810へ転送するように設定します。
++ プライベート側のRTCのrtc.confを以下のように設定します。
+  corba.nameservers: my.global.nameserver.com <- グローバル側のネームサーバを設定
+  corba.endpoints: :2810 <- コンポーネントのポート番号
+  corba.alternate_iiop_addresses: w.x.y.z:2810 <- ルータのグローバル側のIPアドレスとポート番号
++ グローバル側のRTCとプライベート側のRTCを起動
+
+なお、RTSystemEditorでは、プライベート側のRTCへのアクセスが極端に
+遅くなる場合があります。これはJavaのIOR追加プロファイル機能の実装
+が十分でないため、プライベート側に到達するのに時間がかかるためと考
+えられます。rtshellなどを利用すると、接続にかかる時間を減らすこと
+ができます。また、RTSystemEditorやrtshellでの接続に時間がかかった
+場合でも、一旦接続したポート間の通信速度は通常とほとんど変わりませ
+ん。
+
+- 指定: address:port
+- デフォルト: 未指定
+- 例:
+ corba.alternate_iiop_addresses: addr:port
+
+
 //------------------------------------------------------------
-** �l�[���T�[�r�X�Ɋւ���ݒ�
+** ネームサービスに関する設定
 
 *** naming.enable
 
-���̃I�v�V�����̓l�[�~���O�T�[�r�X�Ɋւ���@�\�̗L���E������؂�ւ���B
-YES���w�肵���ꍇ�A�l�[���T�[�r�X��RTC�̎Q�Ƃ�o�^����BNO�̏ꍇ�A�l�[
-���T�[�r�X�ւ�RTC�̎Q�Ƃ̓o�^�͍s���Ȃ��B
+このオプションはネーミングサービスに関する機能の有効・無効を切り替える。
+YESを指定した場合、ネームサービスへRTCの参照を登録する。NOの場合、ネー
+ムサービスへのRTCの参照の登録は行われない。
 
-- �w��: ''YES'' or ''NO''
-- �f�t�H���g�l: YES
-- ��:
+- 指定: ''YES'' or ''NO''
+- デフォルト値: YES
+- 例:
  manager.is_master: NO
 
 *** naming.type
 
-���̃I�v�V�����̓l�[���T�[�r�X�̃^�C�v���w�肷��B���݂̂Ƃ����corba��
-�݂��T�|�[�g���Ă���B
-- �w��: �l�[���T�[�r�X�̃^�C�v
-- �f�t�H���g�l: corba
-- ��:
+このオプションはネームサービスのタイプを指定する。現在のところはcorbaの
+みをサポートしている。
+- 指定: ネームサービスのタイプ
+- デフォルト値: corba
+- 例:
  naming.type: corba
 
 *** naming.formats
 
-RTC���l�[���T�[�o�ɓo�^����ۂ̃t�H�[�}�b�g���w�肷��B�ȉ��� ''%''�Ŏn
-�܂�w��q�𗘗p���邱�Ƃ��ł���B���O�K�w�̃f���~�^�� ''/'' �ł���A��
-�O�Ǝ��(kind)�̃f���~�^�� ''.'' �ł���B
+RTCをネームサーバに登録する際のフォーマットを指定する。以下の ''%''で始
+まる指定子を利用することができる。名前階層のデリミタは ''/'' であり、名
+前と種類(kind)のデリミタは ''.'' である。
 
-| %n | RTC�̃C���X�^���X�� |
-| %t | RTC�̃^�C�v�� |
-| %m | RTC�̃��W���[���� |
-| %v | RTC�̃o�[�W���� |
-| %V | RTC�̃x���_�� |
-| %c | RTC�̃J�e�S���� |
-| %h | �z�X�g�� |
-| %M | �}�l�[�W���� |
-| %p | �v���Z�XID |
+| %n | RTCのインスタンス名 |
+| %t | RTCのタイプ名 |
+| %m | RTCのモジュール名 |
+| %v | RTCのバージョン |
+| %V | RTCのベンダ名 |
+| %c | RTCのカテゴリ名 |
+| %h | ホスト名 |
+| %M | マネージャ名 |
+| %p | プロセスID |
 
-- �w��: /<name>.<kind>/<name>.<kind>/...
-- �f�t�H���g�l: %h.host_cxt/%n.mgr
-- ��:
+- 指定: /<name>.<kind>/<name>.<kind>/...
+- デフォルト値: %h.host_cxt/%n.mgr
+- 例:
  naming.formats: %h.host/%n.rtc
 
 *** naming.update.enable
 
-RTC�̃l�[���T�[�o�ւ̓o�^�͒ʏ�C���X�^���X�������ɍs����B���������āA
-RTC�̐����ȍ~�ɋN�����ꂽ�l�[���T�[�o�ɂ́A���YRTC�̖��O�ƎQ�Ƃ͓o�^��
-��Ȃ��B���̃I�v�V�������w�肷�邱�ƂŁA����I�Ƀl�[���T�[�o���m�F���A
-�l�[���T�[�o�̋N�����m�F���ꂽ�ꍇ�A���߂Ė��O�ƎQ�Ƃ�o�^����B
+RTCのネームサーバへの登録は通常インスタンス生成時に行われる。したがって、
+RTCの生成以降に起動されたネームサーバには、当該RTCの名前と参照は登録さ
+れない。このオプションを指定することで、定期的にネームサーバを確認し、
+ネームサーバの起動が確認された場合、改めて名前と参照を登録する。
 
-- �w��: ''YES'' or ''NO''
-- �f�t�H���g�l: YES
-- ��:
+- 指定: ''YES'' or ''NO''
+- デフォルト値: YES
+- 例:
  naming.update.enable: YES
 
 *** naming.update.interval
 
-naming.update.enable �� YES �̏ꍇ�A�l�[���T�[�o�̊m�F����эēo�^���s
-���������w�肷��B
+naming.update.enable が YES の場合、ネームサーバの確認および再登録を行
+う周期を指定する。
 
-- �w��: �o�^������ [s] �Ŏw�肷��B
-- �f�t�H���g�l: 10.0
-- ��:
+- 指定: 登録周期を [s] で指定する。
+- デフォルト値: 10.0
+- 例:
  naming.update.interval: 10.0
 
 *** naming.update.rebind
 
-���̃I�v�V������ YES ���w�肷��ƁA���łɖ��O�ƎQ�Ƃ��o�^����Ă���l�[
-���T�[�o��Ŗ��O���폜�����Ȃǂ����ꍇ�ɂ��A�ēx�o�^���s���B
+このオプションに YES を指定すると、すでに名前と参照が登録されているネー
+ムサーバ上で名前が削除されるなどした場合にもの、再度登録を行う。
 
-- �w��: ''YES'' or ''NO''
-- �f�t�H���g�l: NO
-- ��:
+- 指定: ''YES'' or ''NO''
+- デフォルト値: NO
+- 例:
  naming.update.rebind: NO
 
 //============================================================
 // Module management
 //============================================================
-** ���W���[�����[�h�Ɋւ���ݒ�
+** モジュールロードに関する設定
 
 *** manager.modules.load_path
 
-�}�l�[�W���͂��̃I�v�V�����Ŏw�肳�ꂽ�T�[�`�p�X���X�g���烂�W���[����
-�T������B�p�X�̓J���}��؂�ŗ񋓂���B�p�X�̃f���~�^�́AUNIX�ł�
-''/''�AWindows ''\\''�ł���B
+マネージャはこのオプションで指定されたサーチパスリストからモジュールを
+探索する。パスはカンマ区切りで列挙する。パスのデリミタは、UNIXでは
+''/''、Windows ''\\''である。
 
-- �w��: /dir_name0/dir_name1/..., /dir_name0/dir_name1/...
-- �f�t�H���g�l: ./
-- ��:
+- 指定: /dir_name0/dir_name1/..., /dir_name0/dir_name1/...
+- デフォルト値: ./
+- 例:
  manager.modules.load_path: C:/Program Files/OpenRTM-aist,  \
                             C:\\Program Files\\OpenRTM-aist
  manager.modules.load_path: /usr/lib, /usr/local/lib,       \
@@ -387,15 +450,15 @@ naming.update.enable �� YES �̏ꍇ�A�l�[���T�[�o�̊m�F����эēo�^���s
 
 *** manager.modules.preload:
 
-�}�l�[�W���͋N�����ɗ\�߃��[�_�u�����W���[�������[�h���邱�Ƃ��ł���B
-���̃I�v�V�����Ŏw�肳�ꂽ���[�_�u�����W���[��
-���A''manager.modules.load_path'' �Ŏw�肳�ꂽ�T�[�`�p�X����T���o���B
-�����A''manager.modules.abs_path_allowed'' �� YES ���w�肳��Ă���΁A
-���[�_�u�����W���[�����΃p�X�Ŏw�肷�邱�Ƃ��ł���B
+マネージャは起動時に予めローダブルモジュールをロードすることができる。
+このオプションで指定されたローダブルモジュール
+を、''manager.modules.load_path'' で指定されたサーチパスから探し出す。
+もし、''manager.modules.abs_path_allowed'' で YES が指定されていれば、
+ローダブルモジュールを絶対パスで指定することもできる。
 
-- �w��: <module_name>.dll, <module_name>.dll, ...
-- �f�t�H���g�l: ��
-- ��:
+- 指定: <module_name>.dll, <module_name>.dll, ...
+- デフォルト値: 空
+- 例:
  manager.modules.preload: ConsoleIn.dll, ConsoleOut.dll
  manager.modules.preload: ConsoleIn.so, ConsoleOut.so
  
@@ -404,11 +467,11 @@ naming.update.enable �� YES �̏ꍇ�A�l�[���T�[�o�̊m�F����эēo�^���s
 
 *** manager.modules.abs_path_allowed
 
-���W���[���̐�΃p�X�w�苖�t���O�B�������̃I�v�V������YES�̏ꍇ�A���W���[���̐ڑ҃p�X�w�肪�������B
+モジュールの絶対パス指定許可フラグ。もしこのオプションがYESの場合、モジュールの接待パス指定が許可される。
 
-- �w��: ''YES'' or ''NO''
-- �f�t�H���g�l: YES
-- ��:
+- 指定: ''YES'' or ''NO''
+- デフォルト値: YES
+- 例:
 manager.modules.abs_path_allowed: YES
 
 // #
@@ -426,14 +489,11 @@ manager.modules.abs_path_allowed: YES
 
 *** manager.components.precreate
 
-���̃I�v�V�����̓}�l�[�W���̃X�^�[�g���ɋN������R���|�[�l���g�� (��
-�W���[����) ���w�肷��B�����Ŏw�肳���R���|�[�l���g�̃t�@�N�g����
-manager.module.preload �܂��́A�}�l�[�W���ɐÓI�Ƀ����N����Ȃǂ��āA�o
-�^����Ă���K�v������B
+このオプションはマネージャのスタート時に起動するコンポーネント名 (モジュール名) を指定する。ここで指定されるコンポーネントのファクトリは manager.module.preload または、マネージャに静的にリンクするなどして、登録されている必要がある。
 
-- �w��: <module_name>, <module_name>, ...
-- �f�t�H���g�l: ��
-- ��:
+- 指定: <module_name>, <module_name>, ...
+- デフォルト値: 空
+- 例:
  manager.components.precreate: ConsoleIn, ConsoleOut, SeqIn, SeqOut
 
 
@@ -441,34 +501,34 @@ manager.module.preload �܂��́A�}�l�[�W���ɐÓI�Ƀ����N����Ȃǂ��āA�o
 // Logger configurations
 //============================================================
 
-** ���K�[�֌W�̐ݒ�
+** ロガー関係の設定
 
 *** logger.enable
 
-���K�[�̗L�����E�������̎w��B
+ロガーの有効化・無効化の指定。
 
-- �w��: ''YES'' or ''NO''
-- �f�t�H���g�l: YES
-- ��:
+- 指定: ''YES'' or ''NO''
+- デフォルト値: YES
+- 例:
  logger.enable: YES
 
 *** logger.file_name
 
-���O�t�@�C�����̎w��B�J���}��؂�ŕ����̃t�@�C���֏o�͂��邱�Ƃ��ł�
-��B�v���Z�XID��u��������w��q %p �����p�\�B�܂��A�t�@�C����
-''stdout'' �Ƃ���ƃ��O��W���o�͂���B
+ログファイル名の指定。カンマ区切りで複数のファイルへ出力することもでき
+る。プロセスIDを置き換える指定子 %p が利用可能。また、ファイル名
+''stdout'' とするとログを標準出力する。
 
-- �w��: �p�X���܂ރt�@�C����
-- �f�t�H���g�l: ./rtc%p.log
-- ��:
+- 指定: パスを含むファイル名
+- デフォルト値: ./rtc%p.log
+- 例:
  logger.file_name: /tmp/rtc%p.log
  logger.file_name: /tmp/rtc%p.log, stdout
 
 *** logger.date_format
 
-���O�ɋL�ڂ�����t�E�����̃t�H�[�}�b�g�w��B�ȉ��� strftime(3) �Ɏ���
-�t�H�[�}�b�g�w��q�𗘗p�\�B�������w�肵�Ȃ��ꍇ�A''No'' �܂���
-''Disable'' ���w�肷��B
+ログに記載する日付・時刻のフォーマット指定。以下の strftime(3) に似た
+フォーマット指定子を利用可能。時刻を指定しない場合、''No'' または
+''Disable'' を指定する。
 
 | %a | abbreviated weekday name |
 | %A | full weekday name |
@@ -493,9 +553,9 @@ manager.module.preload �܂��́A�}�l�[�W���ɐÓI�Ƀ����N����Ȃǂ��āA�o
 | %Z | time zone name |
 | %% | a percent sign |
 
-- �w��: /<name>.<kind>/<name>.<kind>/...
-- �f�t�H���g�l: %b %d %H:%M:%S
-- ��:
+- 指定: /<name>.<kind>/<name>.<kind>/...
+- デフォルト値: %b %d %H:%M:%S
+- 例:
  logger.date_format: No
  logger.date_format: Disable
  logger.date_format: [%Y-%m-%dT%H.%M.%S%Z]     // W3C standard format
@@ -506,63 +566,67 @@ manager.module.preload �܂��́A�}�l�[�W���ɐÓI�Ƀ����N����Ȃǂ��āA�o
 
 *** logger.log_level
 
-�ȉ��̃��O���x�����w��\�B
+以下のログレベルを指定可能。
 
 - SILENT
 - ERROR
 - WARN
-- NORMAL
+//- NORMAL
 - INFO
 - DEBUG
 - TRACE
 - VERBOSE
 - PARANOID
 
-�e���O���x�����w�肵���ۂɎ��ۂɃ��O�ɋL�^����郍�O���b�Z�[�W�̃��x
-���͈ȉ��̒ʂ�B
+書くログレベルを指定した際に実際にログに記録されるログメッセージのレベ
+ルは以下の通り。
 
 | SILENT   | completely silent |
 | ERROR    | includes (ERROR) |
 | WARN     | includes (ERROR, WARN) |
 | INFO     | includes (ERROR, WARN, INFO) |
-| NORMAL   | includes (ERROR, WARN, INFO, NORMAL) |
-| DEBUG    | includes (ERROR, WARN, INFO, NORMAL, DEBUG) |
-| TRACE    | includes (ERROR, WARN, INFO, NORMAL, DEBUG, TRACE) |
-| VERBOSE  | includes (ERROR, WARN, INFO, NORMAL, DEBUG, TRACE, VERBOSE) |
-| PARANOID | includes (ERROR, WARN, INFO, NORMAL, DEBUG, TRACE, VERBOSE, PARA) |
+//| NORMAL   | includes (ERROR, WARN, INFO, NORMAL) |
+| DEBUG    | includes (ERROR, WARN, INFO, DEBUG) |
+| TRACE    | includes (ERROR, WARN, INFO, DEBUG, TRACE) |
+| VERBOSE  | includes (ERROR, WARN, INFO, DEBUG, TRACE, VERBOSE) |
+| PARANOID | includes (ERROR, WARN, INFO, DEBUG, TRACE, VERBOSE, PARA) |
+//| DEBUG    | includes (ERROR, WARN, INFO, NORMAL, DEBUG) |
+//| TRACE    | includes (ERROR, WARN, INFO, NORMAL, DEBUG, TRACE) |
+//| VERBOSE  | includes (ERROR, WARN, INFO, NORMAL, DEBUG, TRACE, VERBOSE) |
+//| PARANOID | includes (ERROR, WARN, INFO, NORMAL, DEBUG, TRACE, VERBOSE, PARA) |
 
-''TRACE'', ''VERBOSE'', ''PARANOID'' �̊e���O���x���͒ʏ틐��ȃ��O�t�@
-�C���𐶐����܂��B''PARANOID''���w�肷��ƁA���O�t�H�[�}�b�g��������
-��������܂��B
+''TRACE'', ''VERBOSE'', ''PARANOID'' の各ログレベルは通常巨大なログファイルを生成します。''PARANOID''を指定すると、ログフォーマットが崩れる場合があります。
 
-- �w��: (SILENT|ERROR|WARN|NORMAL|INFO|DEBUG|TRACE|VERBOSE|PARANOID)
-- �f�t�H���g�l: NORMAL
-- ��:
+- 指定: (SILENT|ERROR|WARN|INFO|DEBUG|TRACE|VERBOSE|PARANOID)
+//- 指定: (SILENT|ERROR|WARN|NORMAL|INFO|DEBUG|TRACE|VERBOSE|PARANOID)
+- デフォルト値: INFO
+//- デフォルト値: NORMAL
+- 例:
  logger.log_level: DEBUG
 
 //============================================================
 // Timer configuration
 //============================================================
 
-** �^�C�}�Ɋւ���ݒ�
+** タイマに関する設定
 
 *** timer.enable
 
-�^�C�}�@�\��L��/�����ɂ���B�^�C�}�𖳌��ɂ���ƃ^�C�}�𗘗p���Ă���@
-�\�A�Ⴆ�΃l�[���T�[�o�̒���I�m�F�ƍēo�^���������ɂȂ�B
+タイマ機能を有効/無効にする。タイマを無効にするとタイマを利用している機
+能、例えばネームサーバの定期的確認と再登録等が無効になる。
 
-- �w��: ''YES'' or ''NO''
-- �f�t�H���g�l: YES
-- ��:
+- 指定: ''YES'' or ''NO''
+- デフォルト値: YES
+- 例:
  timer.enable: YES
 
 *** timer.tick
 
-�^�C�}�̐��x���w�肷��B
+タイマの精度を指定する。
 
-- �w��: �^�C�}�̐��x�� [s] �Ŏw�肷��B
-- �f�t�H���g�l: 0.1 [s], (= 100ms)
-- ��:
+- 指定: タイマの精度を [s] で指定する。
+- デフォルト値: 0.1 [s], (= 100ms)
+- 例:
  timer.tick: 1.0
 
 //============================================================
@@ -571,21 +635,19 @@ manager.module.preload �܂��́A�}�l�[�W���ɐÓI�Ƀ����N����Ȃǂ��āA�o
 
 *** exec_cxt.periodic.type
 
-�f�t�H���g�̎��s�R���e�L�X�g�̃^�C�v�B
+デフォルトの実行コンテキストのタイプ。
 
-- �w��: �f�t�H���g�̎��s�R���e�L�X�g��
-- �f�t�H���g�l: PeriodicExecutionContext
-- ��:
+- 指定: デフォルトの実行コンテキスト名
+- デフォルト値: PeriodicExecutionContext
+- 例:
  exec_cxt.periodic.type: PeriodicExecutionContext
  exec_cxt.periodic.type: ArtExecutionContext
 
 *** exec_cxt.periodic.rate
 
-�f�t�H���g�̎��s�R���e�L�X�g�̎����B
+デフォルトの実行コンテキストの周期。
 
-- �w��: �f�t�H���g�̎��s�R���e�L�X�g������ [Hz] �Ŏw�肷��
-- �f�t�H���g�l: 1000
-- ��:
+- 指定: デフォルトの実行コンテキスト周期を [Hz] で指定する
+- デフォルト値: 1000
+- 例:
  exec_cxt.periodic.rate: 100
-
-

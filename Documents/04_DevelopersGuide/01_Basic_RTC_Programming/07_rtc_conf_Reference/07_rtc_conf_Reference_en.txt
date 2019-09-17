@@ -1,234 +1,328 @@
-// -*- pukiwiki-edit -*-
-// 
-// @brief rtc.conf
-// @date $Date$
-// @author Noriaki Ando <n-ando@aist.go.jp>
-// 
-// Copyright (C) 2011
-//     Noriaki Ando
-//     Intelligent Systems Research Institute,
-//     National Institute of
-//         Advanced Industrial Science and Technology (AIST), Japan
-//     All rights reserved.
-// 
-// $Id$
-//
-// * rtc.conf (basic)
-#contents
+﻿// Title: rtc.conf setting item list
+#contents(3)
 
-//------------------------------------------------------------
-** Generic settings
+//------------------------------------------------------------=============
+** General settings
+//** 一般的な設定
 
 *** config.version
-The version of the configuration file.
-- examples:
+Version of the configuration file.
+//コンフィギュレーションファイルのバージョン。
+- Example:
+//- 例:
  config.version: 1.0
 
 *** openrtm.version
-The versin of OpenRTM-aist.
-- examples:
+Version of OpenRTM-aist.
+//OpenRTM-aist のバージョン。
+- Example:
+//- 例:
  openrtm.version: 1.0.0
 
 //------------------------------------------------------------
-** Settings for the manager
+** Settings related to manager
+//** manager に関する設定
 
 *** manger.name
 
-The name of the manager. The name specified here is used when the
-manager is registered on the naming servers.
+Name of manager. When a manager is registered with a name server, it is registered with the name set here.
+//managerの名前。マネージャがネームサーバで登録される際には、ここで設定し
+//た名前で登録される。
 
-- setting: The arbitrary string name that can be registered on the name server.
-- default value: manager
-- examples:
+- Designation: Any name that can be registered in a name server etc.
+- Default value: manager
+- Example:
+//- 指定: ネームサーバ等に登録可能な任意の名前
+//- デフォルト値: manager
+//- 例:
  manager.name: manager
 
 *** maanger_naming_formats
 
-This option specifies the naming-format to be used when manager is registered on the naming-server. The following specifier started with ''%'' can be used.
+Specify the format for registering the manager in the name server. below
+You can use specifiers that begin with ''% ''.
+//マネージャをネームサーバに登録する際のフォーマットを指定する。以下の
+//''%''で始まる指定子を利用することができる。
 
-| Specifier | Description          |
-| %n | A name of the manager       |
-| %h | A host name                 |
-| %M | A name of the manger        |
-| %p | A process ID of the manager |
+| Specifier | meaning |
+|%n | Manager name |
+|%h | Host name |
+|%M | Manager name |
+|%p | Manager process ID |
+//| 指定子 | 意味               |
+//| %n | マネージャ名           |
+//| %h | ホスト名               |
+//| %M | マネージャ名           |
+//| %p | マネージャのプロセスID |
 
-- setting: /<name>.<kind>/<name>.<kind>/...
-- default value: %h.host_cxt/%n.mgr
-- examples:
+- Specification:/<name>.<Kind>/<name>.<Kind>/...
+- Default value:% h.host_cxt /%n.mgr
+- Example:
+//- 指定: /<name>.<kind>/<name>.<kind>/...
+//- デフォルト値: %h.host_cxt/%n.mgr
+//- 例:
  manager.name: %h.host_cxt/%n.mgr
 
 *** manager.is_master
 
-Even though this option value is specified as ''NO'', if a
-command-line option ''-d'' is specified, the process will run as a
-master manager.
+Whether or not to make this process master manager? Command line option
+If you specify '' - d '', even if this value is set to NO, it becomes the master manager.
+//当該プロセスをマスターマネージャにするかどうか？コマンドラインオプショ
+//ン ''-d'' を指定すると、この値が NO に設定されていてもマスターマネージャ
+//になる。
 
-- setting: ''YES'' or ''NO''
-- default value: NO
-- examples:
+- Designation: ''YES'' or ''NO''
+- Default value:
+- Example:
+//- 指定: ''YES'' or ''NO''
+//- デフォルト値: NO
+//- 例:
  manager.is_master: NO
 
 *** manager.corba_servant
 
-This option specifies whether the CORBA servant of the manager will
-run.  When ''YES'' is specified, the CORBA servant of the manager is
-activated, and it means that the manager can be operated from remote
-computer.  If ''NO'' is specified, the CORBA servant is not activated,
-and it means that remote operation is not allowed.
+Setting whether to activate manager 's CORBA servant. If you set YES, the manager's CORBA servant will start, so you can operate the manager remotely. In the case of NO, since the CORBA servant is not activated, it is impossible for the manager to operate via CORBA.
+//マネージャのCORBAサーバントを起動するかどうかの設定。YES を設定すると、
+//マネージャのCORBAサーバントが起動するため、リモートからマネージャの操作
+//が可能になる。NO の場合には、CORBAサーバントが起動しないため、マネージャ
+//のCORBA経由での操作はできなくなる。
 
-- setting: ''YES'' or ''NO''
-- default value: YES
-- examples:
+- Designation: '' YES '' or '' NO ''
+- Default value: YES
+- Example:
+//- 指定: ''YES'' or ''NO''
+//- デフォルト値: YES
+//- 例:
  manager.corba_servant: YES
 
 *** corba.master_manager
 
-This option specifies an address and a port number of the master
-manager.  If this process runs as the master manager, the address and
-the port number is used for the master-manager, which can be specified
-as corbaloc scheme URL.  If this is slave manager, this specifier is
-used as the master manager for this slave manager, and this slave
-manager makes negotiation to the master specified here.
+Master manager address and port number. The master manager can access by corbaloc format URL specification, but specifies the port number to be used at that time.
+In addition, the slave manager interprets the master manager specified here as its own master manager, and accesses and negotiates the master manager at startup.
+//マスターマネージャのアドレスとポート番号。マスターマネージャは、corbaloc 形式のURL指定でアクセス可能であるが、その際に使用するポート番号を指定する。
+//また、スレーブマネージャは、ここで指定されたマスターマネージャを自身のマスターマネージャとして解釈、起動時にマスターマネージャにアクセスしネゴシエーションを行う。
 
-- setting: <host_name>:<port>
-- default value: localhost:2810
-- examples:
+- Specification: <host_name>: <port>
+- Default: localhost: 2810
+- Example:
+//- 指定: <host_name>:<port>
+//- デフォルト: localhost:2810
+//- 例:
  corba.master_manager: localhost:2810
 
 *** manager.shutdown_on_nortcs:
 
-This option specifies whether the manager and the process are
-terminated when no RTCs exist (in other words when the last RTC is
-terminated) any more on this process.  If ''YES'' is specified here,
-the process is terminated when no RTCs exist. If ''NO'' is specified,
-the process and the manager continue running without any RTCs.
+When there is no RTC on the process, that is, when the last one of the RTCs on the same process is terminated, it specifies whether to shut down the manager and terminate the process. In the case of YES, the process is terminated when there is no RTC. In the case of NO, both the manager and the process continue to move even when there is no RTC.
+//プロセス上にRTCが一つもなくなった場合、すなわち同一プロセス上のRTCの最後の1つが終了した場合に、マネージャをシャットダウンし当該プロセスを終了させるかどうかを指定する。YES の場合には、RTCが一つもなくなった時点でプロセスが終了する。NOの場合は、RTCが一つもない状態でもマネージャ、プロセスともに動き続ける。
 
-- setting: ''YES'' or ''NO''
-- default value: YES
-- examples:
+- Designation: ''YES'' or ''NO''
+- Default: YES
+- Example:
+//- 指定: ''YES'' or ''NO''
+//- デフォルト: YES
+//- 例:
  manager.shutdown_on_nortcs: YES
 
 *** manager.shutdown_auto
 
-This option specifies whether the manager and the process are
-terminated when no RTCs exist on the periodic investigation.  If
-''YES'' is specified, the process and the manager is terminated when
-no RTCs exist.  If ''NO'' is specified, the manager and the process
-continues running without any RTCs.
+Check the presence or absence of RTC in the process at regular time intervals, and if there is no RTC, set whether or not to shut down manager and process. If yes, if there is no RTC, the manager and process are automatically shut down.
+If NO, the manager and processes continue to operate even if there is no RTC.
+//プロセス内のRTCの有無を一定時間ごとに調べ、RTCがない場合には、マネージャおよびプロセスをシャットダウンするかどうかを設定する。YESの場合、RTCが一つもなければ、マネージャおよびプロセスは自動的にシャットダウンされる。
+//NOの場合、RTCが一つもなくともマネージャおよびプロセスが動作し続ける。
 
-The difference between the option ''manager.shutdown_on_nortcs'' and
-the option ''manager.shutdown_auto'' is that the trigger of shutdown
-of the manager is deletion of RTC in former case, on the other hand it
-is time in latter case.
-
-- setting: ''YES'' or ''NO''
-- default value: YES
-- examples:
+The difference from manager.shutdown_on_nortcs is that the shutdown trigger,
+While manager.shutdown_on_nortcs removes RTC,
+manager.shutdown_auto is a point in time.
+- Designation: ''YES'' or ''NO''
+- Default: YES
+- Example:
+//manager.shutdown_on_nortcs との違いは、シャットダウンのトリガが、
+//manager.shutdown_on_nortcs ではRTCの削除であるのに対して、
+//manager.shutdown_auto は時間となっている点である。
+//- 指定: ''YES'' or ''NO''
+//- デフォルト: YES
+//- 例:
  manager.shutdown_auto: YES
+
+*** manager.auto_shutdown_duration
+
+Period to check for the presence or absence of RTC in the process. The unit is seconds. If manager.shutdown_auto above is set to YES, check the presence or absence of RTC at the cycle set by this option.
+//プロセス内のRTCの有無調べる周期。単位は秒。上記の manager.shutdown_auto が YES に設定されている場合、このオプションで設定された周期でRTCの有無を確認しにいく。
+
+- Designation: Numeric value (Unit [s])
+- Default: 10.0
+- Example:
+//- 指定: 数値 (単位[s])
+//- デフォルト: 10.0
+//- 例:
+ manager.auto_shutdown_duration: 10.0
+
+
+*** manager.cpu_affinity
+
+This option binds manager processes to specific CPUs. Optional arguments must be one or more CPU IDs separated by commas. The CPU ID starts from 0, and the maximum value is the number of CPU cores minus one. If an incorrect CPU ID is specified, this process is set to use all CPUs.
+//このオプションは、マネージャのプロセスを特定のCPUにバインドする。オプション引数は、カンマで区切られた1つ以上のCPU IDでなければならない。CPU IDは0から始まり、最大値はCPUコア数-1となる。もし不正なCPU IDが指定された場合、この//プロセスはすべてのCPUを利用するよう設定される。
+
+- Specify: Specify the CPU ID to be bound by a comma
+- Default: None
+- Example:
+//- 指定: バインドするCPU IDをカンマ区切りで指定
+//- デフォルト: なし
+//- 例:
+ manager.cpu_affinity: 0,1
+
 
 *** manager.supported_languages
 
-The master manager launches slave managers and RTCs according to
-requirements from remote applications.  The slave managers might be
-not only for C++ language but also for Java or Python language.  This
-option specifies languages to be supported by the master manager.
+The master manager activates the slave manager and the RTC in response to a request from a remote application or the like. Slave managers may be not only C++ language versions, but also Java and Python versions. This option sets the language supported by the master manager.
+//マスターマネージャは、リモートアプリケーションなどからの要求に応じて、スレーブマネージャおよびRTCを起動する。スレーブマネージャは、C++言語版だけでなく、Java版、Python版などの可能性もある。このオプションでは、マスターマネージャがサポートする言語を設定する。
 
-- setting: C++, Java, Python, etc. are specified with comma separated list.
-- default value: C++, Java, Python
-- examples:
+- Designation: Comma separated languages such as C++, Java, Python etc.
+- Default: C++, Java, Python
+- Example:
+//- 指定: C++, Java, Python 等の言語をカンマ区切りで指定
+//- デフォルト: C++, Java, Python
+//- 例:
  manager.supported_languages: C++, Python, Java
 
 *** manager.modules.<lang>.suffixes
 
-Extension for each language's RTC module.
+Extension of RTC module for each language.
+//言語ごとのRTCモジュールの拡張子。
 
-- setting: RTC module's extension.
-- default value:
--- Windows: dll
--- Linux: so
--- Mac OS X: dylib
-- Examples:
+- Designation: extension name of shared object
+- Default:
+- Windows: dll
+- Linux, etc.: so
+- Mac OS X: dylib
+- Example
+//- 指定: 共有オブジェクトの拡張子名
+//- デフォルト:
+//-- Windows: dll
+//-- Linux等: so
+//-- Mac OS X: dylib
+//-例
  manager.modules.C++.suffixes: dll
  manager.modules.C++.suffixes: so
  manager.modules.C++.suffixes: dylib
 
 *** manager.modules.<lang>.manager_cmd
 
-The manager's executable program name for each language.
+Manager program name by language.
 
-- setting: Executable program name for manager.
-- default value:
--- C++: rtcd
--- Python: rtcd_python
--- Java: rtc_java
-- Examples:
+- Specify: Manager command name
+- Default:
+- C++: rtcd
+- Python: rtcd_python
+- Java: rtc_java
+- Example
+//言語ごとのマネージャプログラム名。
+//- 指定: マネージャのコマンド名
+//- デフォルト:
+//-- C++: rtcd
+//-- Python: rtcd_python
+//-- Java: rtc_java
+//-例
  manager.modules.C++.manager_cmd: rtcd
  manager.modules.Python.manager_cmd: rtcd_python
  manager.modules.Java.manager_cmd: rtcd_java
 
 *** manager.modules.<lang>.profile_cmd
 
-The command name to get the Component Profile for each language.
+Profile acquisition command name for each language.
 
-- setting: The command name.
-- Default value:
--- C++: rtcprof
--- Python: rtcprof_python
--- Java: rtc_java
-- Examples:
+- Specify: Profile acquisition command name
+- Default:
+- C++: rtcprof
+- Python: rtcprof_python
+- Java: rtc_java
+- Example
+//言語ごとのプロファイル取得コマンド名。
+//- 指定: プロファイル取得コマンド名
+//- デフォルト:
+//-- C++: rtcprof
+//-- Python: rtcprof_python
+//-- Java: rtc_java
+//-例
  manager.modules.C++.profile_cmd: rtcprof
  manager.modules.Python.profile_cmd: rtcprof_python
  manager.modules.Java.profile_cmd: rtcprof_java
 
 *** manager.modules.<lang>.load_paths
+RTC module load path for each language.
 
-The module load path for each language.
+- Specification: RTC module load path.
+- Default:
+- C++: ./
+- Python: ./
+- Java: ./
+- Example
 
-- setting: RTC module load path.
-- Default value:
--- C++: ./
--- Python: ./
--- Java: ./
-- Examples:
+//言語ごとのRTCモジュールロードパス。
+//- 指定: RTCモジュールロードパス。
+//- デフォルト:
+//-- C++: ./
+//-- Python: ./
+//-- Java: ./
+//-例
  manager.modules.C++.profile_cmd: ./, /usr/share/OpenRTM-aist/components/cxx
 
 
 //------------------------------------------------------------
-** Setting for CORBA
+** Settings related to CORBA
+//** CORBAに関する設定
 
 *** corba.args
+Specify arguments to give to CORBA. CORBA has different command line options for each implementation. Normally the command line argument is given to the ORB_init () function which is the CORBA API, but this option passes the specified character string to this ORB_init () function.
+//CORBAに与える引数を指定する。CORBA は実装毎に異なるコマンドラインオプションを持つ。通常コマンドライン引数は、CORBA の API である ORB_init() 関数に与えられるが、このオプションは指定された文字列をこの ORB_init() 関数に渡す。
 
-This option specifies argument to be given CORBA.  CORBA
-implementations would receive different arguments respectively.
-Usually command line arguments would be given to the ORB_init()
-function, which is an API of CORBA, and this option gives the
-specified arguments in the configuration file to the ORB_init()
-function.
 
-- setting: string
-- default value: empty string
-- examples:
+- Specified: String
+- Default: Empty string
+- Example:
+//- 指定: 文字列
+//- デフォルト: 空文字列
+//- 例:
  corba.args: -ORBInitialHost myhost -ORBInitialPort 8888
 
+**** Designation example 1
+//**** 指定例1
+
+Be careful when sending image data etc. over the data port when the data size to be sent at once exceeds about 2 MB.
+In omniORB, the size handled by giop (General Inter-ORB Protocol) is "2097152 B (2 MB)" by default, and if you try to send data exceeding this size, it is impossible to send correct data due to giop limitation.
+It is possible to change the maximum size using the corba.args option. This specification must be specified in both OutPort and InPort.
+//画像データなどをデータポートで送る際、1回に送信するデータサイズ約2MBを超える場合には注意が必要。
+//omniORBでは、giop(General Inter-ORB Protocol)で扱えるサイズはデフォルトで"2097152B(2MB)"であり
+//このサイズを超えるデータを送ろうとすると、giopの制限のため正しいデータを送ることができない。
+//corba.args オプションを利用して、最大サイズを変更することが可能である。この指定は、OutPort、InPort両方にて指定する必要がある。
+
+ corba.args: -ORBgiopMaxMsgSize 3145728 # Add this line
+                               # Max size to 3M
+// corba.args: -ORBgiopMaxMsgSize 3145728 # この行を追加
+//                                        # Maxサイズを3Mに指定
+
+In addition to specifying it in corba.args, this restriction can be relaxed by specifying environment variables as follows.
+//なお、corba.args に指定する以外に、環境変数を以下のように指定することでこの制限を緩和することができる。
+
+  export ORBgiopMaxMsgSize=3145728
+
+- （reference）(omniORB configuration and API) http://omniorb.sourceforge.net/omni41/omniORB/omniORB004.html
+
+
 *** corba.endpoint:
+In CORBA, access is made by referring to the remote object called IOR, but in the IOR, usually only one set of the address and port number of the node where the object operates is described. When there are two or more network interfaces in the node on which OpenRTM is running, unintended addresses may be allocated as addresses of nodes included in the IOR.
 
-In the CORBA, the remote object is accessed through a reference called
-IOR with a set of node's address and a port number on which the object
-is running.  An IOR has only one set of address and port number. If
-the node running OpenRTM-aist has two or more network interfaces, IOR
-might have unintended address in it. It might cause unreachable object
-reference.
+In order to solve this, you can specify the address of the network used by CORBA with this option. '' Host address: port number '', but you can omit port number. However, '': (colon) '' can not be omitted.
 
-To eliminate this problem, the network address which is used in CORBA
-can be specified by this option. The syntax is ''address:port'', and
-the port number can be omitted, but '':(colon)'' cannot be omitted.
+//CORBAにおいては、リモートのオブジェクトのIORと呼ばれる参照によりアクセスするが、IORには当該オブジェクトが動作するノードのアドレスとポート番号が通常1セットのみ記述されている。OpenRTMが動作しているノードに2つ以上のネットワークインターフェースが存在する場合、IORに含まれるノードのアドレスとして意図しないアドレスが割り振られる場合がある。
+//これを解消するために、本オプションでCORBAで利用するネットワークのアドレスを指定することができる。''ホストアドレス:ポート番号'' として指定するが、ポート番号は省略できる。ただし、'':(コロン)''は省略できない。
 
-This option is obsolete. Please use the corba.endpoints that is
-mentioned the next section.
-
-- setting: <host_addr>:<port>
-- default value: empty string
-- examples:
+- Specification: <host_addr>: <port>
+- Default: Empty string
+- Example:
+//- 指定: <host_addr>:<port>
+//- デフォルト: 空文字
+//- 例:
  corba.endpoint: 192.168.0.45:
  corba.endpoint: 192.168.0.45:8776
  corba.endpoints: myhost:      (use myhost and default port)
@@ -237,20 +331,18 @@ mentioned the next section.
 
 
 *** corba.endpoints
+An option that allows you to specify multiple endpoints of corba.endpoint. Depending on the implementation of the ORB, the IOR can contain multiple addresses. However, in JavaIDL which is the Java standard CORBA, when accessing the object via IOR specifying multiple addresses, problems such as slow operation are reported, so care is required.
 
-This option can specify multiple endpoints for CORBA. Depending on the
-ORB's implementation, IOR might have multiple addresses in
-it. However, it should be carefully used, because in the Java's
-standard CORBA implementation JavaIDL, accesses through the object
-reference with multiple addresses might cause slow response.
+You can specify multiple '' address: port '' pairs separated by '', (comma) ''. By specifying '' all '' as a special string, all addresses of the node can be included in the IOR.
+//corba.endpoint のエンドポイントを複数指定することがきるオプション。ORBの実装によっては、IORに複数のアドレスを含めることができる。ただし、Java標準のCORBAであるJavaIDLにおいては、複数のアドレスを指定したIOR経由で当該オブジェクトにアクセスする場合、動作が遅くなるなど問題も報告されているので注意が必要である。
 
-The comma separated list of pairs of ''address:port'' can be
-specified.  A special option ''all'' can be specified to include all
-the addresses of the node into the IORs.
-
-- setting: <host_addr>:<port>, <host_addr>:<port>, ... or all
-- default value: empty string
-- examples:
+//''アドレス:ポート'' の対を '',(カンマ)''で区切り複数指定することができる。特別な文字列として ''all'' を指定することで、ノードのすべてのアドレスをIORに含めることもできる。
+- Specification: <host_addr>: <port>, <host_addr>: <port>, ... or all
+- Default: Empty string
+- Example:
+//- 指定: <host_addr>:<port>, <host_addr>:<port>, ... または all
+//- デフォルト: 空文字
+//- 例:
  corba.endpoints: 192.168.1.10:1111, 192.168.10.11:2222
  corba.endpoints: 192.168.1.10, 192.168.10.11
  corba.endpoints: all
@@ -258,144 +350,192 @@ the addresses of the node into the IORs.
 corba.endpoints:
 
 *** corba.nameservers
+Option to specify a name server to register RTC etc. Multiple name servers can be specified with comma separated values. Especially when there is no name server at the specified address and port number, it does not cause an error in particular, and it registers the name of RTC only to existing name servers.
+//RTC等を登録するネームサーバを指定するオプション。カンマ区切りで複数のネームサーバを指定することができる。指定したアドレスおよびポート番号にネームサーバがない場合でも特にエラーにはならず、存在するネームサーバにのみRTCの名前を登録する。
 
-This option specifies name servers on which RTCs and other object
-references are registered. The comma separated list of name servers
-can be specified. In case some specified name servers do not exist,
-errors are not reported and just available name servers are used.
-
-- setting: <host_addr>:<port>, <host_addr>:<port>, ...
-- default value: localhost
-- examples:
+- Specification: <host_addr>: <port>, <host_addr>: <port>, ...
+- Default: localhost
+- Example:
+//- 指定: <host_addr>:<port>, <host_addr>:<port>, ...
+//- デフォルト: localhost
+//- 例:
  corba.nameservers: openrtm.aist.go.jp:9876
  corba.nameservers: rtm0.aist.go.jp, rtm1.aist.go.jp, rtm2.aist.go.jp
  corba.nameservers: localhost
 
 *** corba.nameservice.replace_endpoint
 
-In case a node has multiple NIC, an inappropriate address of
-registered RTC might be embedded in the IOR.  For example, now we
-assume that a node has two addresses 192.168.0.10 and 192.168.1.1, and
-it is registered on the name servers with addresses 192.168.0.1 and
-192.168.1.1.  If the primary network address is 192.168.0.10 that is
-used in default, both IORs registered on each name server above only
-include the address 192.168.0.1.  In this case, the IOR on the network
-with 192.168.1.0 is invalid and unreachable.
+When there are multiple NICs in a node, there are cases where the address included in the IOR of the RTC registered on the name server is not appropriate. For example, if a node has two addresses of 192.168.0.10 and 192.168.1.10 and is registered on two name servers existing in 192.168.0.1 and 192.168.1.1, if 192.168.0.10 is the default on this node If it is a network interface to be used, the IOR registered in the above two name server name servers includes only 192.168.0.10. At this time, in the 192.168.1.0 network, the IOR on the name server is meaningless in which an unreachable address is described.
+//ノードに複数のNICが存在する場合、ネームサーバ上に登録されるRTCのIORに含まれるアドレスが、適切でない場合が存在する。例えば、あるノードが192.168.0.10と192.168.1.10という2つのアドレスを持ち、192.168.0.1 および 192.168.1.1 に存在する2つのネームサーバ上に登録される場合、仮に192.168.0.10 が当該ノードでデフォルトで利用されるネットワークインターフェースだとすると、上記2つのネームサーバネームサーバに登録されるIORには、192.168.0.10 のみが含まれる。このとき、192.168.1.0 のネットワークではネームサーバ上のIORは到達不可能なアドレスが記載された無意味なものとなる。
 
-If ''YES'' is specified in this option, in the above mentioned case,
-the address in the IOR that is registered on the name server of
-192.168.1.1 is replaced with 192.168.1.10.
+If this option is specified, replace the address of the IOR registered in the 192.168.1.1 name server with 192.168.1.10 in the case like the above case.
+//このオプションを指定すると、上記のケースのような場合、192.168.1.1 のネームサーバに登録されるIORのアドレスを 192.168.1.10 に置き換える。
 
-However, specifying this option, RTC's profiles can be obtained from
-the other nodes in the 192.168.1.0 network, however, connecting ports
-and other functionality cannot be used in this network.
+However, by designating this option, although it is possible to use the profile etc. of the RTC from other nodes on the 192.168.1.0 network, it is impossible to connect the port etc.
+//ただし、このオプション指定することによって、192.168.1.0 ネットワーク上の他のノードからは、当該RTCのプロファイル等を利用することはできるが、ポートの接続等は行うことはできない。
 
-This incomplete functionality will be improved in the future version.
-
-- setting: ''YES'' or ''NO''
-- default value: NO
-- examples:
+- Designation: ''YES'' or ''NO''
+- Default: NO
+- Example:
+//- 指定: ''YES'' or ''NO''
+//- デフォルト: NO
+//- 例:
  corba.nameservice.replace_endpoint: NO
 
 
+*** corba.alternate_iiop_addresses
+This option adds an alternate IIOP address to the IOR profile. The IOR can contain additional endpoints of servants (servers of CORBA objects). This is almost equivalent to the "corba.endpoints" option, except that it does not actually create endpoints.
+(The "corba.endpoints" option tries to create the actual endpoint, otherwise an error will be returned.) This option simply adds the alternate IIOP endpoint address information to the IOR.
+//このオプションは、代替IIOPアドレスをIORプロファイルに追加します。IORにはサーバント(CORBAオブジェクトのサーバ)の追加のエンドポイントを含めることができます。これは、"corba.endpoints"オプションとほぼ同等ですが、実際にエンドポイントを作成しない点が異なります。
+//("corba.endpoints" オプションでは実際のエンドポイントを作ろうとし、できなければエラーが返されます。) このオプションは単に代替のIIOPエンドポイントアドレス情報をIORに追加します。
+
+This option is used when RTC is placed inside NAT or router. In general, the RTC in the private network can not connect the RTC on the global network. However, if NAT and router port forwarding are properly configured, RTC on the global side can connect to RTC of private network.
+//このオプションは、RTCをNATやルータの内部に配置する場合に使用します。一般的には、プライベートネットワーク内のRTCはグローバルネットワーク上のRTCを接続することはできません。しかしながら、NATやルータのポートフォワーディングが適切に設定されていればグローバル側のRTCはプライベートネットワークのRTCに接続することが可能です。
+
+The setting is done as follows.
+//設定は以下のように行います。
+
++ Configure NAT and router port forwarding appropriately.
+- Here, port 2810 on the global side is referred to as an address on the private side
+It is set to transfer to 2810 of the system.
++ Set rtc.conf on private side RTC as follows.
+   corba.nameservers: my.global.nameserver.com <- Set up global name server
+   corba.endpoints:: 2810 <- Port number of the component
+   corba.alternate_iiop_addresses: w.x.y.z: 2810 <- IP address and port number on the global side of the router
++ Start global side RTC and private side RTC
+//+ NATやルータのポートフォワーディングを適切に設定します。
+//-- ここでは、グローバル側のポート2810をプライベート側のあるアドレスの2810へ転送するように設定します。
+//+ プライベート側のRTCのrtc.confを以下のように設定します。
+//  corba.nameservers: my.global.nameserver.com <- グローバル側のネームサーバを設定
+//  corba.endpoints: :2810 <- コンポーネントのポート番号
+//  corba.alternate_iiop_addresses: w.x.y.z:2810 <- ルータのグローバル側のIPアドレスとポート番号
+//+ グローバル側のRTCとプライベート側のRTCを起動
+
+In RTSystemEditor, access to private side RTC may become extremely slow. This is probably because it takes time to reach the private side because implementation of Java's IOR add profile function is not enough. By using rtshell etc., you can reduce the time it takes to connect. Also, even when it takes time to connect with RTSystemEditor or rtshell, the communication speed between the ports once connected is almost the same as normal.
+//なお、RTSystemEditorでは、プライベート側のRTCへのアクセスが極端に遅くなる場合があります。これはJavaのIOR追加プロファイル機能の実装が十分でないため、プライベート側に到達するのに時間がかかるためと考えられます。rtshellなどを利用すると、接続にかかる時間を減らすことができます。また、RTSystemEditorやrtshellでの接続に時間がかかった場合でも、一旦接続したポート間の通信速度は通常とほとんど変わりません。
+
+- Specified: address: port
+- Default: Unspecified
+- Example:
+//- 指定: address:port
+//- デフォルト: 未指定
+//- 例:
+ corba.alternate_iiop_addresses: addr:port
+
+
 //------------------------------------------------------------
-** Settings for the Naming Server
+** Settings related to name service
+//** ネームサービスに関する設定
 
 *** naming.enable
 
-This option switches to enable/disable the naming service functions.
-If ''YES'' is specified, RTCs are registered to the naming servers,
-and if ''NO'' is specified, RTCs are never registered to the name
-servers.
+This option enables / disables the function related to the naming service. If YES is specified, RTC reference is registered in the name service. If NO, registration of RTC's reference to the name service is not done.
+//このオプションはネーミングサービスに関する機能の有効・無効を切り替える。YESを指定した場合、ネームサービスへRTCの参照を登録する。NOの場合、ネームサービスへのRTCの参照の登録は行われない。
 
-- setting: ''YES'' or ''NO''
-- default value: YES
-- examples:
+- Designation: 'YES'' or ''NO''
+- Default value: YES
+- Example:
+//- 指定: ''YES'' or ''NO''
+//- デフォルト値: YES
+//- 例:
  manager.is_master: NO
 
 *** naming.type
-
-This option specifies the type of naming service. At present, the
-service type ''corba'' is only supported.
-
-- setting: the type of nameing service
-- default value: corba
-- examples:
+This option specifies the type of name service. Currently it only supports corba.
+- Specified: Name service type
+- Default value: corba
+- Example:
+//このオプションはネームサービスのタイプを指定する。現在のところはcorbaのみをサポートしている。
+//- 指定: ネームサービスのタイプ
+//- デフォルト値: corba
+//- 例:
  naming.type: corba
 
 *** naming.formats
 
-This option specifies formats of names with which RTCs are registered
-on name servers. The following specifier starting with ''%'' can be
-used. The delimiter of the naming tree is ''/(slash)'', and the
-delimiter between the name and the kind is ''.(period)''.
+Specify the format for registering RTC on the name server. You can use specifiers that begin with ''%'' below. The delimiter of the name hierarchy is ''/'', and the delimiter of name and kind (kind) is ''.''.
+//RTCをネームサーバに登録する際のフォーマットを指定する。以下の ''%''で始まる指定子を利用することができる。名前階層のデリミタは ''/'' であり、名前と種類(kind)のデリミタは ''.'' である。
+|%n| RTC instance name |
+|%t| RTC type name |
+|%m| RTC module name |
+|%v| RTC version |
+|%V| RTC vendor name |
+|%c| RTC category name |
+|%h| Host name |
+|%M| Manager name |
+|%p| process ID |
+//| %n | RTCのインスタンス名 |
+//| %t | RTCのタイプ名 |
+//| %m | RTCのモジュール名 |
+//| %v | RTCのバージョン |
+//| %V | RTCのベンダ名 |
+//| %c | RTCのカテゴリ名 |
+//| %h | ホスト名 |
+//| %M | マネージャ名 |
+|// %p | プロセスID |
 
-| %n | RTC's instaqnce name |
-| %t | RTC's type name |
-| %m | RTC's module name |
-| %v | RTC's version |
-| %V | RTC's vendor name |
-| %c | RTC's category name |
-| %h | host name |
-| %M | manager's name |
-| %p | process ID |
-
-- setting: /<name>.<kind>/<name>.<kind>/...
-- default value: %h.host_cxt/%n.mgr
-- examples:
+- Specification:/<name>.<Kind>/<name>.<Kind>/...
+- Default value:% h.host_cxt /% n.mgr
+- Example:
+//- 指定: /<name>.<kind>/<name>.<kind>/...
+//- デフォルト値: %h.host_cxt/%n.mgr
+//- 例:
  naming.formats: %h.host/%n.rtc
 
 *** naming.update.enable
+Registration of the RTC to the name server is usually done at instance creation time. Therefore, the name and reference of the RTC are not registered in the name server started after RTC generation. Specifying this option periodically checks the name server, and if the name server is confirmed to start up, register the name and reference again.
+//RTCのネームサーバへの登録は通常インスタンス生成時に行われる。したがって、RTCの生成以降に起動されたネームサーバには、当該RTCの名前と参照は登録されない。このオプションを指定することで、定期的にネームサーバを確認し、ネームサーバの起動が確認された場合、改めて名前と参照を登録する。
 
-Usually, the registration of RTCs to name servers is performed at the
-time of RTC's instantiation.  Therefore, the RTC's names and
-references are not registered to the name servers which are launched
-after the instantiation of the RTC.  If this option is specified, the
-manager checks name servers periodically, and it tries to register the
-RTCs' names and references to the newly launched name servers.
-
-- setting: ''YES'' or ''NO''
-- default value: YES
-- examples:
+- Designation: ''YES'' or ''NO''
+- Default value: YES
+- Example:
+//- 指定: ''YES'' or ''NO''
+//- デフォルト値: YES
+//- 例:
  naming.update.enable: YES
 
 *** naming.update.interval
+If naming.update.enable is YES, specify the period for checking and re-registering the name server.
+//naming.update.enable が YES の場合、ネームサーバの確認および再登録を行う周期を指定する。
 
-This option specifies the period of the checking and the
-reregistration to the name servers, if ''YES'' is specified in
-''nameing.update.enable'' option.
-
-- setting: checking and registration period as [s]
-- default value: 10.0
-- examples:
+- Designate: Specify the registration period with [s].
+- Default value: 10.0
+- Example:
+//- 指定: 登録周期を [s] で指定する。
+//- デフォルト値: 10.0
+//- 例:
  naming.update.interval: 10.0
 
 *** naming.update.rebind
 
-If ''YES'' is specified to this option, the manager reregister names
-and references to name servers, even if the registered names and
-references deleted.
+If you specify YES for this option, even if the name is already deleted on the name server whose name and reference are already registered, registration is done again.
+//このオプションに YES を指定すると、すでに名前と参照が登録されているネームサーバ上で名前が削除されるなどした場合にもの、再度登録を行う。
 
-- setting: ''YES'' or ''NO''
-- default value: NO
-- examples:
+- Designation: ''YES'' or ''NO''
+- Default value:
+- Example:
+//- 指定: ''YES'' or ''NO''
+//- デフォルト値: NO
+//- 例:
  naming.update.rebind: NO
 
 //============================================================
 // Module management
 //============================================================
-** Settings for Module Loader
+** Settings related to module loading
+//** モジュールロードに関する設定
 
 *** manager.modules.load_path
 
-The manager searches modules from the search path list that is
-specified by this option.  The path list can be specified as
-comma-separated list.  The delimiter of the path is ''/(slash)'' in
-UNIX and ''\\'' in Windows.
+The manager searches modules from the search path list specified by this option. Paths are enumerated by comma separators. Path delimiters are On UNIX, it is ''/'', Windows ''\\''.
+//マネージャはこのオプションで指定されたサーチパスリストからモジュールを探索する。パスはカンマ区切りで列挙する。パスのデリミタは、UNIXでは''/''、Windows ''\\''である。
 
-- setting: /dir_name0/dir_name1/..., /dir_name0/dir_name1/...
-- default value: ./
-- examples:
+- Designation: /dir_name 0/dir_name1/...,/dir_name0/dir_name1/...
+- Default value: ./
+- Example:
+//- 指定: /dir_name0/dir_name1/..., /dir_name0/dir_name1/...
+//- デフォルト値: ./
+//- 例:
  manager.modules.load_path: C:/Program Files/OpenRTM-aist,  \
                             C:\\Program Files\\OpenRTM-aist
  manager.modules.load_path: /usr/lib, /usr/local/lib,       \
@@ -403,16 +543,17 @@ UNIX and ''\\'' in Windows.
 
 *** manager.modules.preload:
 
-The manager can load loadable modules previously at the time of
-starting.  It searches loadable modules which are specified in this
-option along to the search path specified in
-''manager.modules.load_path'' option.  If ''YES' is specified with
-''manager.modules.abs_path_allowed'', loadable modules can be
-specified as absolute path.
+The manager can load the loadable module beforehand at startup. Find the loadable module specified with this option from the search path specified by ''manager.modules.load_path''.
+If YES is specified in '' manager.modules.abs_path_allowed '', loadable modules can also be specified as absolute paths.
+//マネージャは起動時に予めローダブルモジュールをロードすることができる。このオプションで指定されたローダブルモジュールを、''manager.modules.load_path'' で指定されたサーチパスから探し出す。
+//もし、''manager.modules.abs_path_allowed'' で YES が指定されていれば、ローダブルモジュールを絶対パスで指定することもできる。
 
-- setting: <module_name>.dll, <module_name>.dll, ...
-- default value: empty
-- examples:
+- Specification: <module_name> .dll, <module_name> .dll, ...
+- Default value: empty
+- Example:
+//- 指定: <module_name>.dll, <module_name>.dll, ...
+//- デフォルト値: 空
+//- 例:
  manager.modules.preload: ConsoleIn.dll, ConsoleOut.dll
  manager.modules.preload: ConsoleIn.so, ConsoleOut.so
  
@@ -421,12 +562,15 @@ specified as absolute path.
 
 *** manager.modules.abs_path_allowed
 
-This is a flag option to allow absolute path for loadable modules. If
-this is ''YES'', modules can be specified with absolute path.
+Absolute path designation permission flag of the module. If this option is YES, the entertainment path specification of the module is permitted.
+//モジュールの絶対パス指定許可フラグ。もしこのオプションがYESの場合、モジュールの接待パス指定が許可される。
 
-- setting: ''YES'' or ''NO''
-- default value: YES
-- examples:
+- Designation: ''YES'' or ''NO''
+- Default value: YES
+- Example:
+//- 指定: ''YES'' or ''NO''
+//- デフォルト値: YES
+//- 例:
 manager.modules.abs_path_allowed: YES
 
 // #
@@ -443,52 +587,50 @@ manager.modules.abs_path_allowed: YES
 // #
 
 *** manager.components.precreate
-
-This option specifies the names of components (module names) to be
-started at the time starting the manager.  The factories of the
-components specified here must be registered by using
-manager.module.preload or statically linked to the process itself.
-
-- setting: <module_name>, <module_name>, ...
-- default value: ��
-- examples:
+This option specifies the component name (module name) to be started at the start of the manager. The factory of the component specified here needs to be registered, such as manager.module.preload or statically linked to the manager.
+//このオプションはマネージャのスタート時に起動するコンポーネント名 (モジュール名) を指定する。ここで指定されるコンポーネントのファクトリは manager.module.preload または、マネージャに静的にリンクするなどして、登録されている必要がある。
+- Specification: <module_name>, <module_name>, ...
+- Default value: empty
+- Example:
+//- 指定: <module_name>, <module_name>, ...
+//- デフォルト値: 空
+//- 例:
  manager.components.precreate: ConsoleIn, ConsoleOut, SeqIn, SeqOut
 
 
 //============================================================
 // Logger configurations
 //============================================================
-
-** Settings for Logger
+** Logger relationship setting
+//** ロガー関係の設定
 
 *** logger.enable
+Designation to enable / disable logger.
 
-Enabling/disabling the logger.
-
-- setting: ''YES'' or ''NO''
-- default value: YES
-- examples:
+- Designation: '' YES '' or '' NO ''
+- Default value: YES
+- Example:
+//ロガーの有効化・無効化の指定。
+//- 指定: ''YES'' or ''NO''
+//- デフォルト値: YES
+//- 例:
  logger.enable: YES
 
 *** logger.file_name
-
-This option specifies log file names.  The logger can output log to
-multiple files specified with comma-separated list.  The ''%p''
-specifier to be replaced with process ID can be used in the file name.
-And, the special file name ''stdout'' allows to write out log to the
-standard out.
-
-- setting: file names with path
-- default value: ./rtc%p.log
-- examples:
+Specify the log file name. You can also output to multiple files separated by commas. The specifier% p to replace the process ID is available. Also, if the file name is' stdout '', the log is outputted to the standard output.
+//ログファイル名の指定。カンマ区切りで複数のファイルへ出力することもできる。プロセスIDを置き換える指定子 %p が利用可能。また、ファイル名''stdout'' とするとログを標準出力する。
+- Specify: File name including path
+- Default value: ./rtc%p.log
+- Example:
+//- 指定: パスを含むファイル名
+//- デフォルト値: ./rtc%p.log
+//- 例:
  logger.file_name: /tmp/rtc%p.log
  logger.file_name: /tmp/rtc%p.log, stdout
 
 *** logger.date_format
-
-This option specifies date and time formatting.  The following format
-specifier similar to the strftime(3) function can be specified.  If
-date and time is unnecessary, ''No'' or ''Disable'' can be specified.
+Date / time format specification in the log. The format specifier similar to strftime (3) below can be used. If you do not specify a time, specify ''No'' or ''Disable''.
+//ログに記載する日付・時刻のフォーマット指定。以下の strftime(3) に似たフォーマット指定子を利用可能。時刻を指定しない場合、''No'' または''Disable'' を指定する。
 
 | %a | abbreviated weekday name |
 | %A | full weekday name |
@@ -513,9 +655,12 @@ date and time is unnecessary, ''No'' or ''Disable'' can be specified.
 | %Z | time zone name |
 | %% | a percent sign |
 
-- setting: /<name>.<kind>/<name>.<kind>/...
-- default value: %b %d %H:%M:%S
-- examples:
+- Specification:/<name>.<Kind>/<name>.<Kind>/...
+- Default value:% b% d% H:% M:% S
+- Example:
+//- 指定: /<name>.<kind>/<name>.<kind>/...
+//- デフォルト値: %b %d %H:%M:%S
+//- 例:
  logger.date_format: No
  logger.date_format: Disable
  logger.date_format: [%Y-%m-%dT%H.%M.%S%Z]     // W3C standard format
@@ -525,66 +670,73 @@ date and time is unnecessary, ''No'' or ''Disable'' can be specified.
  logger.date_format: [%Y-%m-%d %H.%M.%S]
 
 *** logger.log_level
-
-The following log-levels can be specified.
+The following log levels can be specified.
+//以下のログレベルを指定可能。
 
 - SILENT
 - ERROR
 - WARN
-- NORMAL
+//- NORMAL
 - INFO
 - DEBUG
 - TRACE
 - VERBOSE
 - PARANOID
 
-The following table shows the logable message levels when a certain
-log-level is specified.
+Levels of log messages actually recorded in the log when specifying the log level to be written are as follows.
+//書くログレベルを指定した際に実際にログに記録されるログメッセージのレベルは以下の通り。
 
 | SILENT   | completely silent |
 | ERROR    | includes (ERROR) |
 | WARN     | includes (ERROR, WARN) |
 | INFO     | includes (ERROR, WARN, INFO) |
-| NORMAL   | includes (ERROR, WARN, INFO, NORMAL) |
-| DEBUG    | includes (ERROR, WARN, INFO, NORMAL, DEBUG) |
-| TRACE    | includes (ERROR, WARN, INFO, NORMAL, DEBUG, TRACE) |
-| VERBOSE  | includes (ERROR, WARN, INFO, NORMAL, DEBUG, TRACE, VERBOSE) |
-| PARANOID | includes (ERROR, WARN, INFO, NORMAL, DEBUG, TRACE, VERBOSE, PARA) |
+//| NORMAL   | includes (ERROR, WARN, INFO, NORMAL) |
+| DEBUG    | includes (ERROR, WARN, INFO, DEBUG) |
+| TRACE    | includes (ERROR, WARN, INFO, DEBUG, TRACE) |
+| VERBOSE  | includes (ERROR, WARN, INFO, DEBUG, TRACE, VERBOSE) |
+| PARANOID | includes (ERROR, WARN, INFO, DEBUG, TRACE, VERBOSE, PARA) |
+//| DEBUG    | includes (ERROR, WARN, INFO, NORMAL, DEBUG) |
+//| TRACE    | includes (ERROR, WARN, INFO, NORMAL, DEBUG, TRACE) |
+//| VERBOSE  | includes (ERROR, WARN, INFO, NORMAL, DEBUG, TRACE, VERBOSE) |
+//| PARANOID | includes (ERROR, WARN, INFO, NORMAL, DEBUG, TRACE, VERBOSE, PARA) |
 
-Usually when ''TRACE'', ''VERBOSE'' and ''PARANOID'' log-level is
-specified, it might create huge log files. And sometimes ''PARANOID''
-level might cause collapse log file.
+Each ''TRACE'', ''VERBOSE'', ''PARANOID'' log level usually produces a huge log file. If ''PARANOID'' is specified, the log format may be lost.
+//''TRACE'', ''VERBOSE'', ''PARANOID'' の各ログレベルは通常巨大なログファイルを生成します。''PARANOID''を指定すると、ログフォーマットが崩れる場合があります。
 
-- setting: (SILENT|ERROR|WARN|NORMAL|INFO|DEBUG|TRACE|VERBOSE|PARANOID)
-- default value: NORMAL
-- examples:
+- designation: (SILENT|ERROR|WARN|INFO|DEBUG|TRACE|VERBOSE|PARANOID)
+//- 指定: (SILENT|ERROR|WARN|NORMAL|INFO|DEBUG|TRACE|VERBOSE|PARANOID)
+- Default value: INFO
+//- デフォルト値: NORMAL
+- Example:
  logger.log_level: DEBUG
 
 //============================================================
 // Timer configuration
 //============================================================
-
-** Setting for the Timer
+** Timer settings
+//** タイマに関する設定
 
 *** timer.enable
+Enable/disable the timer function. When the timer is invalidated, the function using the timer, for example, periodic checking and reregistration of the name server, becomes invalid.
+//タイマ機能を有効/無効にする。タイマを無効にするとタイマを利用している機能、例えばネームサーバの定期的確認と再登録等が無効になる。
 
-This option enables/disables a timer functionality.  If the timer is
-disabled, functions that use timer do not work.  For example, the
-functionalities of periodic checking and reregistration of the name
-server is depending on the timer function.
-
-- setting: ''YES'' or ''NO''
-- default value: YES
-- examples:
+- Designation: ''YES'' or ''NO''
+- Default value: YES
+- Example:
+//- 指定: ''YES'' or ''NO''
+//- デフォルト値: YES
+//- 例:
  timer.enable: YES
 
 *** timer.tick
-
-This specifies timer's resolution.
-
-- setting: timer resolution in [s]
-- default value: 0.1 [s], (= 100ms)
-- examples:
+Specify the accuracy of the timer.
+//タイマの精度を指定する。
+- Designate: Specify the accuracy of the timer with [s].
+- Default value: 0.1 [s], (= 100 ms)
+- Example:
+//- 指定: タイマの精度を [s] で指定する。
+//- デフォルト値: 0.1 [s], (= 100ms)
+//- 例:
  timer.tick: 1.0
 
 //============================================================
@@ -592,22 +744,25 @@ This specifies timer's resolution.
 //============================================================
 
 *** exec_cxt.periodic.type
+The type of default execution context.
+//デフォルトの実行コンテキストのタイプ。
 
-This option specifies the default execution context type.
-
-- setting: The name of the default execution context.
-- default value: PeriodicExecutionContext
-- examples:
+- Specified: Default execution context name
+- Default value: PeriodicExecutionContext
+- Example:
+//- 指定: デフォルトの実行コンテキスト名
+//- デフォルト値: PeriodicExecutionContext
+//- 例:
  exec_cxt.periodic.type: PeriodicExecutionContext
  exec_cxt.periodic.type: ArtExecutionContext
 
 *** exec_cxt.periodic.rate
-
-This option specifies the period of the default execution context.
-
-- setting: a period of the default context in [Hz]
-- default value: 1000
-- examples:
+The period of the default execution context.
+//デフォルトの実行コンテキストの周期。
+- Specified: Specify the default execution context period in [Hz]
+- Default value: 1000
+- Example:
+//- 指定: デフォルトの実行コンテキスト周期を [Hz] で指定する
+//- デフォルト値: 1000
+//- 例:
  exec_cxt.periodic.rate: 100
-
-

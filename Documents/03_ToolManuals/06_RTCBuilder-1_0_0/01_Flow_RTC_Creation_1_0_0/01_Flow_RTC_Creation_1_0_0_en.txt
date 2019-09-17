@@ -1,9 +1,10 @@
+// Title: Introduction
 ***Requirements
-The following software is required to use RT-Component Builder (RTC Builder).
-|[[Java Development Kit 6:http://www.oracle.com/technetwork/java/javase/downloads/index.html]]|&color(Red){Note: Java1.5 (5.0) is not suitable.};|
+The following software is required to use RT-Component Builder (RTCBuilder).
+|[[Java Development Kit 6:http://www.oracle.com/technetwork/java/javase/downloads/index.html]]|&color(Red){Note: Java 1.5 (5.0) is not suitable.};|
 |Eclipse 3.2. or higher &br; http://www.eclipse.org/downloads/index.php &br; http://archive.eclipse.org/eclipse/downloads/index.php|Eclipse IDE|
-|[[Eclipse EMF 2.2 or higher(Include SDO,XSD):http://www.eclipse.org/modeling/emf/downloads/]]|Eclipse plugin required by RTC Builder &br; Note: be sure to use versions that match your Eclipse version.|
-|[[Eclipse GEF 3.2 or higher(Include Draw2D):http://www.eclipse.org/gef/downloads/]]|Eclipse plugin required by RTC Builder &br; Note: be sure to use versions that match your Eclipse version.|
+|[[Eclipse EMF 2.2 or higher (including SDO and XSD):http://www.eclipse.org/modeling/emf/downloads/]]|Eclipse plugin required by RTC Builder &br; Note: be sure to use versions that match your Eclipse version.|
+|[[Eclipse GEF 3.2 or higher(including Draw2D):http://www.eclipse.org/gef/downloads/]]|Eclipse plugin required by RTC Builder &br; Note: be sure to use versions that match your Eclipse version.|
 
 If you will be generating components for C++ or Python, you will need the following as well:
 |Software|Remarks|
@@ -12,4 +13,3 @@ If you will be generating components for C++ or Python, you will need the follow
 
 ***Limitations 
 RTCBuilder is designed for OpenRTM-aist. It may not work with other RTC platforms.
-

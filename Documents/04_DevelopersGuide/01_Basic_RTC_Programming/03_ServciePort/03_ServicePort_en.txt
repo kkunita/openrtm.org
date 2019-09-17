@@ -1,3 +1,4 @@
+ï»¿// Title: Service Port (Basic)
 // -*- pukiwiki-edit -*-
 // 
 // @brief How to use Service Port Basic
@@ -20,155 +21,113 @@
 //------------------------------------------------------------
 ** What is service port?
 
-// ƒƒ{ƒbƒgƒVƒXƒeƒ€‚ğƒRƒ“ƒ|[ƒlƒ“ƒgwŒü‚Å\’z‚·‚é‚½‚ß‚É‚ÍAƒRƒ“ƒ|[ƒlƒ“ƒg
-// ŠÔ‚Ìƒf[ƒ^’ÊM‚¾‚¯‚Å‚Í\•ª‚Å‚Í‚È‚­AƒRƒ}ƒ“ƒhƒŒƒxƒ‹(‚ ‚é‚¢‚ÍŠÖ”ƒŒƒxƒ‹)
-// ‚ÌƒRƒ“ƒ|[ƒlƒ“ƒgŠÔ’ÊM‚ª•K—v‚É‚È‚Á‚Ä‚«‚Ü‚·B—á‚¦‚ÎAƒƒ{ƒbƒgƒA[ƒ€‚ğ§
-// Œä‚·‚éƒ}ƒjƒsƒ…ƒŒ[ƒ^ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìê‡Aèæ‚ÌˆÊ’u‚â‘¬“x‚È‚Ç‚ÍAãˆÊ
-// ‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚âƒRƒ“ƒ|[ƒlƒ“ƒg‚©‚çƒf[ƒ^ƒ|[ƒg‚Å‘—‚ç‚ê‚é‚×‚«ƒf[ƒ^
-// ‚Å‚·B
+// ãƒ­ãƒœãƒƒãƒˆã‚·ã‚¹ãƒ†ãƒ ã‚’ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆæŒ‡å‘ã§æ§‹ç¯‰ã™ã‚‹ãŸã‚ã«ã¯ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
+// é–“ã®ãƒ‡ãƒ¼ã‚¿é€šä¿¡ã ã‘ã§ã¯ååˆ†ã§ã¯ãªãã€ã‚³ãƒãƒ³ãƒ‰ãƒ¬ãƒ™ãƒ«(ã‚ã‚‹ã„ã¯é–¢æ•°ãƒ¬ãƒ™ãƒ«)
+// ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆé–“é€šä¿¡ãŒå¿…è¦ã«ãªã£ã¦ãã¾ã™ã€‚ä¾‹ãˆã°ã€ãƒ­ãƒœãƒƒãƒˆã‚¢ãƒ¼ãƒ ã‚’åˆ¶
+// å¾¡ã™ã‚‹ãƒãƒ‹ãƒ”ãƒ¥ãƒ¬ãƒ¼ã‚¿ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å ´åˆã€æ‰‹å…ˆã®ä½ç½®ã‚„é€Ÿåº¦ãªã©ã¯ã€ä¸Šä½
+// ã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ãƒãƒ¼ãƒˆã§é€ã‚‰ã‚Œã‚‹ã¹ããƒ‡ãƒ¼ã‚¿
+// ã§ã™ã€‚
 
-When you construct your robot systems according to the component based
-software development, not only data-centric communication but also
-command (or function call) based communication between components is
-necessary.  For example, in case of a manipulator component which
-controls robot arm, position or velocity of end-effector should be
-given through data port from application programs of upper layer.
+When you construct your robot systems according to the component based software development, not only data-centric communication but also command (or function call) based communication between components is necessary.  For example, in case of a manipulator component which controls robot arm, position or velocity of end-effector should be given through data port from application programs of upper layer.
 
-// ˆê•ûAƒƒ{ƒbƒgƒA[ƒ€‚ÌŠeíİ’èAÀ•WŒn‚Ìİ’èA§Œäƒpƒ‰ƒ[ƒ^‚Ìİ’èA“®
-// ìƒ‚[ƒh‚Ìİ’èA‚È‚Ç‚ğƒf[ƒ^ƒ|[ƒg‚Ås‚¤‚Ì‚Í“KØ‚Æ‚ÍŒ¾‚¦‚¸AƒIƒuƒWƒFƒN
-// ƒgwŒü“I‚É‚¢‚¦‚ÎAƒ}ƒjƒsƒ…ƒŒ[ƒ^ƒIƒuƒWƒFƒNƒg‚É‘Î‚µ‚ÄA
-// setCoordinationSystem(), setParameter(), setMode(), ‚È‚Ç‚ÌŠÖ”‚ª—pˆÓ‚³
-// ‚ê‚Ä‚¢‚ÄA‚±‚ê‚ç‚ÌŠÖ”‚ğ•K—v‚É‰‚¶‚Ä“KØ‚Èƒ^ƒCƒ~ƒ“ƒO‚ÅŒÄ‚Ô‚Ì‚ª©‘R‚Æ‚¢
-// ‚¦‚Ü‚·B
+// ä¸€æ–¹ã€ãƒ­ãƒœãƒƒãƒˆã‚¢ãƒ¼ãƒ ã®å„ç¨®è¨­å®šã€åº§æ¨™ç³»ã®è¨­å®šã€åˆ¶å¾¡ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®è¨­å®šã€å‹•
+// ä½œãƒ¢ãƒ¼ãƒ‰ã®è¨­å®šã€ãªã©ã‚’ãƒ‡ãƒ¼ã‚¿ãƒãƒ¼ãƒˆã§è¡Œã†ã®ã¯é©åˆ‡ã¨ã¯è¨€ãˆãšã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯
+// ãƒˆæŒ‡å‘çš„ã«ã„ãˆã°ã€ãƒãƒ‹ãƒ”ãƒ¥ãƒ¬ãƒ¼ã‚¿ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¯¾ã—ã¦ã€
+// setCoordinationSystem(), setParameter(), setMode(), ãªã©ã®é–¢æ•°ãŒç”¨æ„ã•
+// ã‚Œã¦ã„ã¦ã€ã“ã‚Œã‚‰ã®é–¢æ•°ã‚’å¿…è¦ã«å¿œã˜ã¦é©åˆ‡ãªã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§å‘¼ã¶ã®ãŒè‡ªç„¶ã¨ã„
+// ãˆã¾ã™ã€‚
 
-On the other hand, according to the object oriented principle,
-coordination settings, control parameters settings, operation mode
-settings and other miscellaneous settings for the robot arm should not
-be performed through data ports .  It is natural that these
-functionalities are invoked through certain member functions such as
-setCoordinationSystem(), setParameter() and setMode() of a manipulator
-object as necessary at the right time.
+On the other hand, according to the object oriented principle,coordination settings, control parameters settings, operation mode settings and other miscellaneous settings for the robot arm should not be performed through data ports .  It is natural that these functionalities are invoked through certain member functions such as setCoordinationSystem(), setParameter() and setMode() of a manipulator object as necessary at the right time.
 
 #ref(serviceport_example_en.png,40%,center)
 CENTER: ''An example of service port''
 
-// ƒT[ƒrƒXƒ|[ƒg‚Í‚±‚Ì‚æ‚¤‚ÈƒRƒ}ƒ“ƒhƒŒƒxƒ‹‚ÌƒRƒ“ƒ|[ƒlƒ“ƒgŠÔ‚Ì‚â‚èæ‚è‚ğ
-// s‚¤‚½‚ß‚Ìd‘g‚İ‚ğ’ñ‹Ÿ‚µ‚Ü‚·B
+// ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒˆã¯ã“ã®ã‚ˆã†ãªã‚³ãƒãƒ³ãƒ‰ãƒ¬ãƒ™ãƒ«ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆé–“ã®ã‚„ã‚Šå–ã‚Šã‚’
+// è¡Œã†ãŸã‚ã®ä»•çµ„ã¿ã‚’æä¾›ã—ã¾ã™ã€‚
 
-The service port provides a mechanism for a command based (or service
-based) communication between components.
+The service port provides a mechanism for a command based (or service based) communication between components.
 
-// ˆê”Ê‚ÉƒT[ƒrƒX‚Æ‚ÍA‹@”\“I‚ÉŠÖ˜A‚Ì‚ ‚é‚Ğ‚Æ‚Ü‚Æ‚Ü‚è‚ÌƒRƒ}ƒ“ƒh (ŠÖ”Aƒ
-// ƒ\ƒbƒhAƒIƒyƒŒ[ƒVƒ‡ƒ“‚È‚Ç‚Æ‚àŒÄ‚Î‚ê‚Ü‚·) ŒQ‚Å‚ ‚èAOpenRTM-aist‚É‚¨‚¢
-// ‚Ä‚ÍA‚±‚Ì‹@”\‚ğ’ñ‹Ÿ‚·‚é‘¤‚ğƒT[ƒrƒXƒvƒƒoƒCƒ_(ƒCƒ“ƒ^[ƒtƒF[ƒX)A‹@”\
-// ‚ğ—˜—p‚·‚é‘¤‚ğƒT[ƒrƒXƒRƒ“ƒVƒ…[ƒ}(ƒCƒ“ƒ^[ƒtƒF[ƒX)‚ÆŒÄ‚Ñ‚Ü‚·B
+// ä¸€èˆ¬ã«ã‚µãƒ¼ãƒ“ã‚¹ã¨ã¯ã€æ©Ÿèƒ½çš„ã«é–¢é€£ã®ã‚ã‚‹ã²ã¨ã¾ã¨ã¾ã‚Šã®ã‚³ãƒãƒ³ãƒ‰ (é–¢æ•°ã€ãƒ¡
+// ã‚½ãƒƒãƒ‰ã€ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ãªã©ã¨ã‚‚å‘¼ã°ã‚Œã¾ã™) ç¾¤ã§ã‚ã‚Šã€OpenRTM-aistã«ãŠã„
+// ã¦ã¯ã€ã“ã®æ©Ÿèƒ½ã‚’æä¾›ã™ã‚‹å´ã‚’ã‚µãƒ¼ãƒ“ã‚¹ãƒ—ãƒ­ãƒã‚¤ãƒ€(ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹)ã€æ©Ÿèƒ½
+// ã‚’åˆ©ç”¨ã™ã‚‹å´ã‚’ã‚µãƒ¼ãƒ“ã‚¹ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒ(ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹)ã¨å‘¼ã³ã¾ã™ã€‚
 
-Generally speaking, a service means a set of commands (it is also
-called as functions, methods or operations) which are functionally
-related each other. In the OpenRTM-aist, entities which provide
-functionality are called a service-provider (interface), and entities
-which require and use other service entities are called a service
-consumer (interface).
+Generally speaking, a service means a set of commands (it is also called as functions, methods or operations) which are functionally related each other. In the OpenRTM-aist, entities which provide functionality are called a service-provider (interface), and entities which require and use other service entities are called a service consumer (interface).
 
-// ‚È‚¨AUML“™‚Ì‹K–ñ‚É‚¨‚¢‚Ä‚ÍAƒT[ƒrƒXƒvƒƒoƒCƒ_‚ğ Privided Interface,
-// ‚Ü‚½ƒT[ƒrƒXƒRƒ“ƒVƒ…[ƒ}‚ğ Required Interface ‚È‚Ç‚ÆŒÄ‚ÑA‚»‚ê‚¼‚ê‰º}
-// ‚Ì‚æ‚¤‚È‹L† (ƒƒŠƒ|ƒbƒv (lollipop) Aƒ\ƒPƒbƒg (socket) ) ‚Å•\‚µ‚Ü‚·B
-// ‚±‚ê‚ÍAˆê”Ê“I‚È—pŒê‚¨‚æ‚Ñ‹Lq–@‚È‚Ì‚ÅŠo‚¦‚Ä‚¨‚¢‚½•û‚ª‚æ‚¢‚Å‚µ‚å‚¤BŒÄ
-// ‚Ô‚ ‚é‚¢‚ÍŒÄ‚Î‚ê‚é•ûŒü‚Å‚¢‚¦‚ÎAŒÄ‚Î‚ê‚é‚à‚Ì‚ªƒvƒƒoƒCƒ_ (Provided
-// Interface) ‚Å‚ ‚èAŒÄ‚Ô‚à‚Ì‚ªƒRƒ“ƒVƒ…[ƒ} (Required Interface) ‚Æ‚¢‚¤Œ©
-// •û‚à‚Å‚«‚Ü‚·B
+// ãªãŠã€UMLç­‰ã®è¦ç´„ã«ãŠã„ã¦ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚’ Privided Interface,
+// ã¾ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã‚’ Required Interface ãªã©ã¨å‘¼ã³ã€ãã‚Œãã‚Œä¸‹å›³
+// ã®ã‚ˆã†ãªè¨˜å· (ãƒ­ãƒªãƒãƒƒãƒ— (lollipop) ã€ã‚½ã‚±ãƒƒãƒˆ (socket) ) ã§è¡¨ã—ã¾ã™ã€‚
+// ã“ã‚Œã¯ã€ä¸€èˆ¬çš„ãªç”¨èªãŠã‚ˆã³è¨˜è¿°æ³•ãªã®ã§è¦šãˆã¦ãŠã„ãŸæ–¹ãŒã‚ˆã„ã§ã—ã‚‡ã†ã€‚å‘¼
+// ã¶ã‚ã‚‹ã„ã¯å‘¼ã°ã‚Œã‚‹æ–¹å‘ã§ã„ãˆã°ã€å‘¼ã°ã‚Œã‚‹ã‚‚ã®ãŒãƒ—ãƒ­ãƒã‚¤ãƒ€ (Provided
+// Interface) ã§ã‚ã‚Šã€å‘¼ã¶ã‚‚ã®ãŒã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒ (Required Interface) ã¨ã„ã†è¦‹
+// æ–¹ã‚‚ã§ãã¾ã™ã€‚
 
-In the UML specifications and its notation rules as well, the service
-provider is called as ''Provided Interface'' and the service consumer
-is called as ''Required Interface'', and they are designated as the
-following notation.
+In the UML specifications and its notation rules as well, the service provider is called as ''Provided Interface'' and the service consumer is called as ''Required Interface'', and they are designated as the following notation.
 
 #ref(provider_and_consumer_en.png,40%,center)
 CENTER: ''Service provider and consumer''
 
-- Provided Interface: An entity that is called from others and provides services
+- Provided Interface: An entity that is called from others and provides services 
 - Required Interface: An entity that calls and uses other's services 
 
-// ƒvƒƒoƒCƒ_‚¨‚æ‚ÑƒRƒ“ƒVƒ…[ƒ}‚ğ‚Ü‚Æ‚ß‚ÄƒCƒ“ƒ^[ƒtƒF[ƒX‚Ü‚½‚ÍAƒT[ƒrƒX
-// ƒCƒ“ƒ^[ƒtƒF[ƒX‚ÆŒÄ‚ÑA‚±‚ê‚çƒT[ƒrƒXƒCƒ“ƒ^[ƒtƒF[ƒX‚ğ‚Âƒ|[ƒg‚ğƒT[
-// ƒrƒXƒ|[ƒg‚ÆŒÄ‚Ñ‚Ü‚·B
+// ãƒ—ãƒ­ãƒã‚¤ãƒ€ãŠã‚ˆã³ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã‚’ã¾ã¨ã‚ã¦ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã¾ãŸã¯ã€ã‚µãƒ¼ãƒ“ã‚¹
+// ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã¨å‘¼ã³ã€ã“ã‚Œã‚‰ã‚µãƒ¼ãƒ“ã‚¹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’æŒã¤ãƒãƒ¼ãƒˆã‚’ã‚µãƒ¼
+// ãƒ“ã‚¹ãƒãƒ¼ãƒˆã¨å‘¼ã³ã¾ã™ã€‚
 
-The providers and the consumers are referred to collectively as the
-interfaces or the service interfaces, and the port which has these
+The providers and the consumers are referred to collectively as the interfaces or the service interfaces, and the port which has these
 service interfaces is called the service port.
 
 ** Service port and interfaces
 
-// ƒT[ƒrƒXƒCƒ“ƒ^[ƒtƒF[ƒX‚ÆƒT[ƒrƒXƒ|[ƒg‚ÌŠÖŒW‚É‚Â‚¢‚ÄÚ‚µ‚­à–¾‚µ‚Ü‚·B
+// ã‚µãƒ¼ãƒ“ã‚¹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã¨ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒˆã®é–¢ä¿‚ã«ã¤ã„ã¦è©³ã—ãèª¬æ˜ã—ã¾ã™ã€‚
 
-This section describes the relation between service interfaces and
-service ports in detail.
+This section describes the relation between service interfaces and service ports in detail.
 
 #ref(component_port_interface_en.png,40%,center)
 CENTER: ''The component, the port and the interface''
 
-// ƒ|[ƒg‚Æ‚ÍƒRƒ“ƒ|[ƒlƒ“ƒg‚É•t‘®‚µAƒRƒ“ƒ|[ƒlƒ“ƒgŠÔ‚ÌÚ‘±‚Ì’[“_‚Æ‚È‚é•”
-// •ª‚ğw‚µ‚Ü‚·BƒRƒ“ƒ|[ƒlƒ“ƒgŠÔ‚ÌÚ‘±‚Æ‚ÍAƒRƒ“ƒ|[ƒlƒ“ƒg‚É•t‘®‚·‚éƒ|[
-// ƒgŠÔ‚ÅÚ‘±‚ÉŠÖ‚·‚é’²’â‚ªs‚í‚êA‰½‚ç‚©‚Ì‘ŠŒİì—p (ƒf[ƒ^‚âƒRƒ}ƒ“ƒh‚Ì‚â
-// ‚èæ‚è) ‚ªs‚¦‚éó‘Ô‚É‚·‚é‚±‚Æ‚ğˆÓ–¡‚µ‚Ü‚·B
+// ãƒãƒ¼ãƒˆã¨ã¯ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«ä»˜å±ã—ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆé–“ã®æ¥ç¶šã®ç«¯ç‚¹ã¨ãªã‚‹éƒ¨
+// åˆ†ã‚’æŒ‡ã—ã¾ã™ã€‚ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆé–“ã®æ¥ç¶šã¨ã¯ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«ä»˜å±ã™ã‚‹ãƒãƒ¼
+// ãƒˆé–“ã§æ¥ç¶šã«é–¢ã™ã‚‹èª¿åœãŒè¡Œã‚ã‚Œã€ä½•ã‚‰ã‹ã®ç›¸äº’ä½œç”¨ (ãƒ‡ãƒ¼ã‚¿ã‚„ã‚³ãƒãƒ³ãƒ‰ã®ã‚„
+// ã‚Šå–ã‚Š) ãŒè¡Œãˆã‚‹çŠ¶æ…‹ã«ã™ã‚‹ã“ã¨ã‚’æ„å‘³ã—ã¾ã™ã€‚
 
-The port is an end-point, which belongs to a component, for a
-connection between component.  Connecting two components means that
-negotiation between ports of components is done and a certain
-interaction (data-centric or command based) can be performed by it.
+The port is an end-point, which belongs to a component, for a connection between component.  Connecting two components means that negotiation between ports of components is done and a certain interaction (data-centric or command based) can be performed by it.
 
-// ƒ|[ƒg©‘Ì‚Íƒf[ƒ^‚âƒRƒ}ƒ“ƒh‚Ì‚â‚èæ‚è‚É‘Î‚µ‚ÄA‰½‚Ì‹@”\‚à’ñ‹Ÿ‚µ‚Ü‚¹‚ñB
-// ÀÛ‚ÉƒRƒ}ƒ“ƒh‚Ì‚â‚èæ‚è‚ğs‚¤‚Ì‚ÍƒT[ƒrƒXƒCƒ“ƒ^[ƒtƒF[ƒX (ƒvƒƒoƒCƒ_
-// ‚ÆƒRƒ“ƒVƒ…[ƒ}) ‚É‚È‚è‚Ü‚·Bˆê”Ê“I‚Éƒ|[ƒg‚É‚Í‹@”\“I‚ÉŠÖ˜A‚Ì‚ ‚é”CˆÓ‚Ì
-// ”‚Ì”CˆÓ‚Ì•ûŒü‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚ğ•t‰Á‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B‚±‚ê‚É‚æ‚èA
-// ƒRƒ}ƒ“ƒh‚Ì‚â‚èæ‚è‚ğˆê•ûŒü‚¾‚¯‚Å‚È‚­‘o•ûŒü‚É‚·‚é‚±‚Æ‚à‚Å‚«‚Ü‚·B
+// ãƒãƒ¼ãƒˆè‡ªä½“ã¯ãƒ‡ãƒ¼ã‚¿ã‚„ã‚³ãƒãƒ³ãƒ‰ã®ã‚„ã‚Šå–ã‚Šã«å¯¾ã—ã¦ã€ä½•ã®æ©Ÿèƒ½ã‚‚æä¾›ã—ã¾ã›ã‚“ã€‚
+// å®Ÿéš›ã«ã‚³ãƒãƒ³ãƒ‰ã®ã‚„ã‚Šå–ã‚Šã‚’è¡Œã†ã®ã¯ã‚µãƒ¼ãƒ“ã‚¹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ (ãƒ—ãƒ­ãƒã‚¤ãƒ€
+// ã¨ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒ) ã«ãªã‚Šã¾ã™ã€‚ä¸€èˆ¬çš„ã«ãƒãƒ¼ãƒˆã«ã¯æ©Ÿèƒ½çš„ã«é–¢é€£ã®ã‚ã‚‹ä»»æ„ã®
+// æ•°ã®ä»»æ„ã®æ–¹å‘ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ä»˜åŠ ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚ã“ã‚Œã«ã‚ˆã‚Šã€
+// ã‚³ãƒãƒ³ãƒ‰ã®ã‚„ã‚Šå–ã‚Šã‚’ä¸€æ–¹å‘ã ã‘ã§ãªãåŒæ–¹å‘ã«ã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚
 
-The port does not provide any functionality for data or command
-communication.  Communication between components is actually performed
-by service interfaces (service providers and consumers.)  Generally a
-port can associate functionally related service interfaces of any
-number and any directions.  This means that not only oneway
-communication but also bidirectional communication can be performed
-through it.
+The port does not provide any functionality for data or command communication.  Communication between components is actually performed by service interfaces (service providers and consumers.)  Generally a port can associate functionally related service interfaces of any number and any directions.  This means that not only oneway communication but also bidirectional communication can be performed through it.
 
-// ƒRƒ“ƒVƒ…[ƒ}‚ÆƒvƒƒoƒCƒ_‚ÍAƒ|[ƒg‚ªÚ‘±‚³‚ê‚½‚Æ‚«‚ÉA‚ ‚éğŒ‚ÉŠî‚Ã‚¢
-// ‚ÄÚ‘±‚³‚êAƒRƒ“ƒVƒ…[ƒ}‚©‚çƒvƒƒoƒCƒ_‚Ì‹@”\‚ğŒÄ‚Ño‚·‚±‚Æ‚ª‰Â”\‚É‚È‚è
-// ‚Ü‚·BƒRƒ“ƒVƒ…[ƒ}‚ÆƒvƒƒoƒCƒ_‚ğÚ‘±‚·‚é‚½‚ß‚É‚ÍA—¼Ò‚Ì''Œ^''‚ª“¯‚¶A
-// ‚Ü‚½‚ÍŒİŠ·«‚ª‚ ‚é•K—v‚ª‚ ‚è‚Ü‚·B
+// ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã¨ãƒ—ãƒ­ãƒã‚¤ãƒ€ã¯ã€ãƒãƒ¼ãƒˆãŒæ¥ç¶šã•ã‚ŒãŸã¨ãã«ã€ã‚ã‚‹æ¡ä»¶ã«åŸºã¥ã„
+// ã¦æ¥ç¶šã•ã‚Œã€ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã‹ã‚‰ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®æ©Ÿèƒ½ã‚’å‘¼ã³å‡ºã™ã“ã¨ãŒå¯èƒ½ã«ãªã‚Š
+// ã¾ã™ã€‚ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã¨ãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚’æ¥ç¶šã™ã‚‹ãŸã‚ã«ã¯ã€ä¸¡è€…ã®''å‹''ãŒåŒã˜ã€
+// ã¾ãŸã¯äº’æ›æ€§ãŒã‚ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
 
-A consumer and a provider are connected based on a certain condition,
-and then a consumer is able to call provider's functions.  In order to
-connect a consumer and a provider, both ''type'' should be same or
-compatible.
+A consumer and a provider are connected based on a certain condition, and then a consumer is able to call provider's functions.  In order to connect a consumer and a provider, both ''type'' should be same or compatible.
 
-// “¯‚¶Œ^‚Å‚ ‚éA‚Æ‚Í“¯ˆê‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX’è‹`‚ğ‚Â‚±‚Æ‚Å‚ ‚èAŒİŠ·«‚ª
-// ‚ ‚é‚Æ‚ÍAƒvƒƒoƒCƒ_‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚ªƒRƒ“ƒVƒ…[ƒ}‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX
-// ‚ÌƒTƒuƒNƒ‰ƒX‚Ìˆê‚Â‚Å‚ ‚éA(‹t‚É‚¢‚¦‚ÎAƒRƒ“ƒVƒ…[ƒ}‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚ª
-// ƒvƒƒoƒCƒ_‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚ÌƒX[ƒp[ƒNƒ‰ƒX‚Ìˆê‚Â‚Å‚ ‚é)‚Æ‚¢‚¤‚±‚Æ‚É‚È
-// ‚è‚Ü‚·B
+// åŒã˜å‹ã§ã‚ã‚‹ã€ã¨ã¯åŒä¸€ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹å®šç¾©ã‚’æŒã¤ã“ã¨ã§ã‚ã‚Šã€äº’æ›æ€§ãŒ
+// ã‚ã‚‹ã¨ã¯ã€ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ãŒã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
+// ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã®ä¸€ã¤ã§ã‚ã‚‹ã€(é€†ã«ã„ãˆã°ã€ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ãŒ
+// ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹ã®ä¸€ã¤ã§ã‚ã‚‹)ã¨ã„ã†ã“ã¨ã«ãª
+// ã‚Šã¾ã™ã€‚
 
-The same ''type'' means that both interfaces should have same
-definition, and the compatibility means that the provider's interface
-is one of the sub-classes of consumer's interface.  In other words,
-the consumer's interface should be one of the super-classes of the
-provider's interface.
+The same ''type'' means that both interfaces should have same definition, and the compatibility means that the provider's interface is one of the sub-classes of consumer's interface.  In other words, the consumer's interface should be one of the super-classes of the provider's interface.
 
 ***The service port
 
-// RTƒRƒ“ƒ|[ƒlƒ“ƒg‚Íƒf[ƒ^ƒ|[ƒg“¯—lA”CˆÓ‚Ì”‚ÌƒT[ƒrƒXƒ|[ƒg‚ğ‚Â‚±‚Æ
-// ‚ª‚Å‚«‚Ü‚·B‚Ü‚½AƒT[ƒrƒXƒ|[ƒg‚É‚ÍA”CˆÓ‚Ìí—ŞA”‚ÌƒvƒƒoƒCƒ_‚Ü‚½‚Í
-// ƒRƒ“ƒVƒ…[ƒ}‚ğ•t‰Á‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+// RTã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¯ãƒ‡ãƒ¼ã‚¿ãƒãƒ¼ãƒˆåŒæ§˜ã€ä»»æ„ã®æ•°ã®ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒˆã‚’æŒã¤ã“ã¨
+// ãŒã§ãã¾ã™ã€‚ã¾ãŸã€ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒˆã«ã¯ã€ä»»æ„ã®ç¨®é¡ã€æ•°ã®ãƒ—ãƒ­ãƒã‚¤ãƒ€ã¾ãŸã¯
+// ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã‚’ä»˜åŠ ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
 
-The RT-Component can own any numbers of service ports so that data
-ports are so.  Moreover, a service port can own any kinds of and any
-numbers of providers and consumers.
+The RT-Component can own any numbers of service ports so that data ports are so.  Moreover, a service port can own any kinds of and any numbers of providers and consumers.
 
-// ˆÈ‰º‚ÍAOpenRTM-aist‚ÌƒTƒ“ƒvƒ‹ƒRƒ“ƒ|[ƒlƒ“ƒg MyServiceProvider ‚©‚ç”²ˆ
-// ‚µ‚½ƒ|[ƒg‚ÆƒvƒƒoƒCƒ_‚Ì“o˜^‚Ì‚½‚ß‚ÌƒR[ƒh‚Å‚·B
+// ä»¥ä¸‹ã¯ã€OpenRTM-aistã®ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ MyServiceProvider ã‹ã‚‰æŠœç²‹
+// ã—ãŸãƒãƒ¼ãƒˆã¨ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®ç™»éŒ²ã®ãŸã‚ã®ã‚³ãƒ¼ãƒ‰ã§ã™ã€‚
 
-The following code that is excerpted from MyServiceProvider sample
-code of OpenRTM-aist shows how to register a port and a provider to
-the component.
+The following code that is excerpted from MyServiceProvider sample code of OpenRTM-aist shows how to register a port and a provider to the component.
 
  RTC::ReturnCode_t MyServiceProvider::onInitialize()
  {
@@ -181,22 +140,17 @@ the component.
    return RTC::RTC_OK;
  }
 
-// m_MyServicePort.registerProvider() ‚ÅƒvƒƒoƒCƒ_‚ğƒT[ƒrƒXƒ|[ƒgƒIƒuƒWƒF
-// ƒNƒg m_MyServicePort ‚É“o˜^‚µ‚Ä‚¢‚Ü‚·B‘æ3ˆø”‚ªÀ‘Ì‚Å‚ ‚éƒvƒƒoƒCƒ_ƒI
-// ƒuƒWƒFƒNƒg‚Å‚·BŸ‚ÉAƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒtƒŒ[ƒ€ƒ[ƒNƒNƒ‰ƒX‚Å‚ ‚é
-// RTObjectƒNƒ‰ƒX‚ÌaddPort() ŠÖ”‚ÅAƒ|[ƒg‚ğƒRƒ“ƒ|[ƒlƒ“ƒg‚É“o˜^‚µ‚Ä‚¢‚Ü
-// ‚·B
+// m_MyServicePort.registerProvider() ã§ãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚’ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§
+// ã‚¯ãƒˆ m_MyServicePort ã«ç™»éŒ²ã—ã¦ã„ã¾ã™ã€‚ç¬¬3å¼•æ•°ãŒå®Ÿä½“ã§ã‚ã‚‹ãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚ª
+// ãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ã™ã€‚æ¬¡ã«ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹
+// RTObjectã‚¯ãƒ©ã‚¹ã®addPort() é–¢æ•°ã§ã€ãƒãƒ¼ãƒˆã‚’ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«ç™»éŒ²ã—ã¦ã„ã¾
+// ã™ã€‚
 
-m_MyServicePort.registerProvider() registers a provider to a service
-port object m_MyServicePort. The third argument is an entity of the
-provider object. And next, it is registered to the component by using
-addPort() function which is RTObject component framework class's
-member function.
+m_MyServicePort.registerProvider() registers a provider to a service port object m_MyServicePort. The third argument is an entity of the provider object. And next, it is registered to the component by using addPort() function which is RTObject component framework class's member function.
 
-// “¯—l‚ÉAƒTƒ“ƒvƒ‹ƒRƒ“ƒ|[ƒlƒ“ƒg MyServiceConsumer ‚©‚ç”²ˆ‚µ‚½ƒR[ƒh‚ğ¦‚µ‚Ü‚·B
+// åŒæ§˜ã«ã€ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ MyServiceConsumer ã‹ã‚‰æŠœç²‹ã—ãŸã‚³ãƒ¼ãƒ‰ã‚’ç¤ºã—ã¾ã™ã€‚
 
-Same as above, following shows the excerpted code from
-MyServiceConsumer sample component.
+Same as above, following shows the excerpted code from MyServiceConsumer sample component.
 
  RTC::ReturnCode_t MyServiceConsumer::onInitialize()
  {
@@ -209,78 +163,54 @@ MyServiceConsumer sample component.
    return RTC::RTC_OK;
  }
 
-// ƒvƒƒoƒCƒ_‚Ìê‡‚Æ‚Ù‚Æ‚ñ‚Ç“¯‚¶‚ÅAm_MyServicePort.registerConsumer() ŠÖ
-// ”‚ÅƒRƒ“ƒVƒ…[ƒ}‚ğƒ|[ƒg‚É“o˜^‚µA‚»‚Ìƒ|[ƒg‚ğ addPort() ŠÖ”‚ÅƒRƒ“ƒ|[
-// ƒlƒ“ƒg‚É“o˜^‚µ‚Ä‚¢‚Ü‚·B
+// ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®å ´åˆã¨ã»ã¨ã‚“ã©åŒã˜ã§ã€m_MyServicePort.registerConsumer() é–¢
+// æ•°ã§ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã‚’ãƒãƒ¼ãƒˆã«ç™»éŒ²ã—ã€ãã®ãƒãƒ¼ãƒˆã‚’ addPort() é–¢æ•°ã§ã‚³ãƒ³ãƒãƒ¼
+// ãƒãƒ³ãƒˆã«ç™»éŒ²ã—ã¦ã„ã¾ã™ã€‚
 
-Almost same as the provider's case, m_MyServicePort.registerConsumer()
-function registers a consumer to a port, and the port is registered to
-the component by addPort function.
+Almost same as the provider's case, m_MyServicePort.registerConsumer() function registers a consumer to a port, and the port is registered to the component by addPort function.
 
-// ˆÈãA“Á‚Éà–¾‚à‚È‚µ‚ÉA‚»‚ê‚¼‚ê m_myservice0 ‚Æ‚¢‚¤ƒIƒuƒWƒFƒNƒg‚ªAƒv
-// ƒƒoƒCƒ_A‚Ü‚½‚ÍƒRƒ“ƒVƒ…[ƒ}‚Å‚ ‚é‚Æ‚µ‚ÄƒR[ƒh—á‚ğ¦‚µ‚Ü‚µ‚½‚ªAˆÈ‰ºA
-// ‚±‚ê‚ç‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚ª‚Ç‚Ì‚æ‚¤‚É’è‹`‚³‚êAƒIƒuƒWƒFƒNƒg‚ª‚Ç‚Ì‚æ‚¤‚É
-// À‘•‚³‚ê‚é‚©‚ğà–¾‚µ‚Ä‚¢‚«‚Ü‚·B
+// ä»¥ä¸Šã€ç‰¹ã«èª¬æ˜ã‚‚ãªã—ã«ã€ãã‚Œãã‚Œ m_myservice0 ã¨ã„ã†ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã€ãƒ—
+// ãƒ­ãƒã‚¤ãƒ€ã€ã¾ãŸã¯ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã§ã‚ã‚‹ã¨ã—ã¦ã‚³ãƒ¼ãƒ‰ä¾‹ã‚’ç¤ºã—ã¾ã—ãŸãŒã€ä»¥ä¸‹ã€
+// ã“ã‚Œã‚‰ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ãŒã©ã®ã‚ˆã†ã«å®šç¾©ã•ã‚Œã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã©ã®ã‚ˆã†ã«
+// å®Ÿè£…ã•ã‚Œã‚‹ã‹ã‚’èª¬æ˜ã—ã¦ã„ãã¾ã™ã€‚
 
-An object m_myservice0 assumed a provider and a consumer without any
-explanation and they are used in the codes shown above.  How to define
-these interfaces and how to implement these objects are shown in the
-following.
+An object m_myservice0 assumed a provider and a consumer without any explanation and they are used in the codes shown above.  How to define these interfaces and how to implement these objects are shown in the following.
 
 ***Interface defintion
 
-// ƒCƒ“ƒ^[ƒtƒF[ƒX‚Æ‚Í‰½‚Å‚µ‚å‚¤‚©HC++‚Å‚ ‚ê‚ÎAƒˆ‰¼‘zƒNƒ‰ƒX‚ğƒCƒ“ƒ^[
-// ƒtƒF[ƒX‚ÆŒÄ‚ñ‚¾‚è‚µ‚Ü‚·‚µAJava‚ÍŒ¾ŒêƒŒƒxƒ‹‚Å interface ƒL[ƒ[ƒh‚ª—p
-// ˆÓ‚³‚ê‚Ä‚¢‚Ü‚·B
+// ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã¨ã¯ä½•ã§ã—ã‚‡ã†ã‹ï¼ŸC++ã§ã‚ã‚Œã°ã€ç´”ç²‹ä»®æƒ³ã‚¯ãƒ©ã‚¹ã‚’ã‚¤ãƒ³ã‚¿ãƒ¼
+// ãƒ•ã‚§ãƒ¼ã‚¹ã¨å‘¼ã‚“ã ã‚Šã—ã¾ã™ã—ã€Javaã¯è¨€èªãƒ¬ãƒ™ãƒ«ã§ interface ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãŒç”¨
+// æ„ã•ã‚Œã¦ã„ã¾ã™ã€‚
 
-What is the interface?  In C++ language, pure virtual classes are
-called interface.  In Java language, ''interface'' keyword is used for
-interface definition.
+What is the interface?  In C++ language, pure virtual classes are called interface.  In Java language, ''interface'' keyword is used for interface definition.
 
-// OpenRTM-aist‚É‚ÍAŒ¾Œê‚âOS‚ÉˆË‘¶‚µ‚È‚¢Aƒlƒbƒgƒ[ƒN“§‰ß‚Å‚ ‚é‚Æ‚¢‚Á‚½
-// “Á’¥‚ª‚ ‚è‚Ü‚·‚ªA‚±‚ê‚ÍCORBA‚ÆŒÄ‚Î‚ê‚é•ªUƒIƒuƒWƒFƒNƒgƒ~ƒhƒ‹ƒEƒGƒA‚ğ—˜
-// —p‚·‚é‚±‚Æ‚É‚æ‚èÀŒ»‚³‚ê‚Ä‚¢‚Ü‚·BCORBA‚ÍA‘Û•W€‰»’c‘ÌOMG‚Å•W€‰»‚³
-// ‚ê‚Ä‚¢‚é•ªUƒIƒuƒWƒFƒNƒgƒ~ƒhƒ‹ƒEƒGƒA‚ÅA•W€‚É]‚Á‚ÄA‘½‚­‚Ì‰ïĞ‚â’c‘ÌA
-// ŒÂl‚È‚Ç‚ª‘½—l‚ÈÀ‘•‚ğ’ñ‹Ÿ‚µ‚Ä‚¢‚Ü‚·B
+// OpenRTM-aistã«ã¯ã€è¨€èªã‚„OSã«ä¾å­˜ã—ãªã„ã€ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯é€éã§ã‚ã‚‹ã¨ã„ã£ãŸ
+// ç‰¹å¾´ãŒã‚ã‚Šã¾ã™ãŒã€ã“ã‚Œã¯CORBAã¨å‘¼ã°ã‚Œã‚‹åˆ†æ•£ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ã‚’åˆ©
+// ç”¨ã™ã‚‹ã“ã¨ã«ã‚ˆã‚Šå®Ÿç¾ã•ã‚Œã¦ã„ã¾ã™ã€‚CORBAã¯ã€å›½éš›æ¨™æº–åŒ–å›£ä½“OMGã§æ¨™æº–åŒ–ã•
+// ã‚Œã¦ã„ã‚‹åˆ†æ•£ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãƒŸãƒ‰ãƒ«ã‚¦ã‚¨ã‚¢ã§ã€æ¨™æº–ã«å¾“ã£ã¦ã€å¤šãã®ä¼šç¤¾ã‚„å›£ä½“ã€
+// å€‹äººãªã©ãŒå¤šæ§˜ãªå®Ÿè£…ã‚’æä¾›ã—ã¦ã„ã¾ã™ã€‚
 
-The main important features of the OpenRTM-aist are language
-independence, OS independence and network transparency, and these
-features are realized by using the distributed object middleware which
-is called the CORBA.  The CORBA is one of the distributed object
-middleware which is standardized in a international standardization
-organization OMG (Object Management Group), and a lot of
-implementations compliant to the standard are provided by various
-companies, organizations and individuals.
+The main important features of the OpenRTM-aist are language independence, OS independence and network transparency, and these features are realized by using the distributed object middleware which is called the CORBA.  The CORBA is one of the distributed object middleware which is standardized in a international standardization organization OMG (Object Management Group), and a lot of implementations compliant to the standard are provided by various companies, organizations and individuals.
 
-// OpenRTM-aist‚Å‚ÍAƒCƒ“ƒ^[ƒtƒF[ƒX‚ÍIDL‚ÆŒÄ‚Î‚ê‚éCORBA‚ÌƒCƒ“ƒ^[ƒtƒF[
-// ƒX’è‹`Œ¾Œê‚É‚æ‚Á‚Ä’è‹`‚µ‚Ü‚·B‚±‚ÌIDL‚ÍŒ¾Œê‚ÉˆË‘¶‚µ‚È‚¢ƒCƒ“ƒ^[ƒtƒF[ƒX
-// ’è‹`•û–@‚ğ’ñ‹Ÿ‚µA‚Ü‚½IDLƒRƒ“ƒpƒCƒ‰‚ÆŒÄ‚Î‚ê‚éƒXƒ^ƒu‚âƒXƒPƒ‹ƒgƒ“‚ğ¶¬ƒc[
-// ƒ‹‚ğ—˜—p‚·‚é‚±‚Æ‚ÅAŠeíŒ¾Œê‚É‘Î‰‚µ‚½ƒR[ƒh‚ª©“®“I‚É¶¬‚³‚ê‚Ü‚·BƒX
-// ƒ^ƒu‚Æ‚ÍAƒŠƒ‚[ƒg‚ÌƒIƒuƒWƒFƒNƒg‚ğŒÄ‚Ño‚·‚½‚ß‚ÌƒvƒƒLƒVƒIƒuƒWƒFƒNƒg‚Ì
-// ‚½‚ß‚ÌƒR[ƒh‚Å‚ ‚èAƒXƒPƒ‹ƒgƒ“‚Æ‚ÍAƒvƒƒoƒCƒ_‚ğÀ‘•‚·‚é‚½‚ß‚Ìƒx[ƒX‚Æ
-// ‚È‚éƒR[ƒh‚Å‚·B
+// OpenRTM-aistã§ã¯ã€ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã¯IDLã¨å‘¼ã°ã‚Œã‚‹CORBAã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼
+// ã‚¹å®šç¾©è¨€èªã«ã‚ˆã£ã¦å®šç¾©ã—ã¾ã™ã€‚ã“ã®IDLã¯è¨€èªã«ä¾å­˜ã—ãªã„ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
+// å®šç¾©æ–¹æ³•ã‚’æä¾›ã—ã€ã¾ãŸIDLã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ã¨å‘¼ã°ã‚Œã‚‹ã‚¹ã‚¿ãƒ–ã‚„ã‚¹ã‚±ãƒ«ãƒˆãƒ³ã‚’ç”Ÿæˆãƒ„ãƒ¼
+// ãƒ«ã‚’åˆ©ç”¨ã™ã‚‹ã“ã¨ã§ã€å„ç¨®è¨€èªã«å¯¾å¿œã—ãŸã‚³ãƒ¼ãƒ‰ãŒè‡ªå‹•çš„ã«ç”Ÿæˆã•ã‚Œã¾ã™ã€‚ã‚¹
+// ã‚¿ãƒ–ã¨ã¯ã€ãƒªãƒ¢ãƒ¼ãƒˆã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒ—ãƒ­ã‚­ã‚·ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®
+// ãŸã‚ã®ã‚³ãƒ¼ãƒ‰ã§ã‚ã‚Šã€ã‚¹ã‚±ãƒ«ãƒˆãƒ³ã¨ã¯ã€ãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚’å®Ÿè£…ã™ã‚‹ãŸã‚ã®ãƒ™ãƒ¼ã‚¹ã¨
+// ãªã‚‹ã‚³ãƒ¼ãƒ‰ã§ã™ã€‚
 
-In the OpenRTM-aist, interfaces are defined by the IDL (Interface
-Definition Language) that is an interface definition language of
-CORBA.  The IDL provides a definition scheme independent from any
-languages, and by using IDL compiler which generates stubs and
-skeletons, language dependent codes are automatically generated.  The
-stubs include code of proxy objects which call remote objects, and the
-skeletons include base classes to implement providers.
+In the OpenRTM-aist, interfaces are defined by the IDL (Interface Definition Language) that is an interface definition language of CORBA.  The IDL provides a definition scheme independent from any languages, and by using IDL compiler which generates stubs and skeletons, language dependent codes are automatically generated.  The stubs include code of proxy objects which call remote objects, and the skeletons include base classes to implement providers.
 
-// ‚±‚ê‚ç©“®¶¬‚³‚ê‚éƒR[ƒh‚Ì‚¨‚©‚°‚ÅAˆÙ‚È‚éŒ¾Œê“¯m‚ÌŒÄ‚Ño‚µ‚àƒV[ƒ€
-// ƒŒƒX‚És‚¤‚±‚Æ‚ª‚Å‚«‚Ü‚·B—á‚¦‚ÎAC++‚ÅÀ‘•‚³‚ê‚½ƒvƒƒoƒCƒ_‚ğAPython‚â
-// Java“™‚Å—eˆÕ‚ÉŒÄ‚Ño‚·‚±‚Æ‚ª‚Å‚«‚é‚Ì‚Å‚·B
+// ã“ã‚Œã‚‰è‡ªå‹•ç”Ÿæˆã•ã‚Œã‚‹ã‚³ãƒ¼ãƒ‰ã®ãŠã‹ã’ã§ã€ç•°ãªã‚‹è¨€èªåŒå£«ã®å‘¼ã³å‡ºã—ã‚‚ã‚·ãƒ¼ãƒ 
+// ãƒ¬ã‚¹ã«è¡Œã†ã“ã¨ãŒã§ãã¾ã™ã€‚ä¾‹ãˆã°ã€C++ã§å®Ÿè£…ã•ã‚ŒãŸãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚’ã€Pythonã‚„
+// Javaç­‰ã§å®¹æ˜“ã«å‘¼ã³å‡ºã™ã“ã¨ãŒã§ãã‚‹ã®ã§ã™ã€‚
 
-By the automatically generated codes, the invocation between different
-languages can be performed seamlessly.  For example, a provider object
-which is implemented in C++ language can be called from Python and/or
-Java easily.
+By the automatically generated codes, the invocation between different languages can be performed seamlessly.  For example, a provider object which is implemented in C++ language can be called from Python and/or Java easily.
 
-// ˆÈ‰º‚ÍAOpenRTM-aist‚ÌƒTƒ“ƒvƒ‹‚Åg—p‚³‚ê‚Ä‚¢‚éIDL’è‹`‚Å‚·B
+// ä»¥ä¸‹ã¯ã€OpenRTM-aistã®ã‚µãƒ³ãƒ—ãƒ«ã§ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹IDLå®šç¾©ã§ã™ã€‚
 
-An IDL definition used in a OpenRTM-aist's sample is shown in the
-following.
+An IDL definition used in a OpenRTM-aist's sample is shown in the following.
 
  module SimpleService {
    typedef sequence<string> EchoList;
@@ -295,88 +225,65 @@ following.
    };
  };
 
-// module ‚Æ‚Í C++‚ÅŒ¾‚¤‚Æ‚±‚ë‚Ì–¼‘O‹óŠÔ‚Ì‚æ‚¤‚È‚à‚Ì‚ÅA‚±‚ê‚É‚æ‚èƒCƒ“ƒ^[
-// ƒtƒF[ƒX–¼‚ğAE‚µÕ“Ë‚ğ–h‚®‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+// module ã¨ã¯ C++ã§è¨€ã†ã¨ã“ã‚ã®åå‰ç©ºé–“ã®ã‚ˆã†ãªã‚‚ã®ã§ã€ã“ã‚Œã«ã‚ˆã‚Šã‚¤ãƒ³ã‚¿ãƒ¼
+// ãƒ•ã‚§ãƒ¼ã‚¹åã‚’å°±è·ã—è¡çªã‚’é˜²ãã“ã¨ãŒã§ãã¾ã™ã€‚
 
-The keyword ''module'' is almost same as namespace in C++ language,
-this qualifies the name of the interface and the collision of name can
-be avoided.
+The keyword ''module'' is almost same as namespace in C++ language, this qualifies the name of the interface and the collision of name can be avoided.
 
-// CŒ¾Œê“™‚Æ“¯—l‚É typedef ƒL[ƒ[ƒh‚ª‚ ‚è‚Ü‚·Bã‚Ì—á‚Å‚ÍAsequence ‚ÆŒÄ
-// ‚Î‚ê‚é“®“I”z—ñŒ^‚ğ’è‹`‚µ‚Ä‚¢‚Ü‚·Bˆê‚Â‚ÍAstring (•¶š—ñŒ^) Œ^‚ÌƒŠƒXƒg
-// ‚Æ‚µ‚ÄAEchoList Œ^A‚à‚¤‚Ğ‚Æ‚Â‚Í float Œ^‚ÌƒŠƒXƒg‚Æ‚µ‚Ä ValueList Œ^‚ğ
-// ’è‹`‚µ‚Ä‚¢‚Ü‚·B“Á‚É sequence Œ^‚ÍAtypedef ‚¹‚¸‚ÉA’è‹`’†‚Å’¼Úg‚¤‚±
-// ‚Æ‚ª‚Å‚«‚È‚¢‚Ì‚ÅA‚±‚Ì‚æ‚¤‚É—\‚ß typedef ‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚è‚Ü‚·B
+// Cè¨€èªç­‰ã¨åŒæ§˜ã« typedef ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãŒã‚ã‚Šã¾ã™ã€‚ä¸Šã®ä¾‹ã§ã¯ã€sequence ã¨å‘¼
+// ã°ã‚Œã‚‹å‹•çš„é…åˆ—å‹ã‚’å®šç¾©ã—ã¦ã„ã¾ã™ã€‚ä¸€ã¤ã¯ã€string (æ–‡å­—åˆ—å‹) å‹ã®ãƒªã‚¹ãƒˆ
+// ã¨ã—ã¦ã€EchoList å‹ã€ã‚‚ã†ã²ã¨ã¤ã¯ float å‹ã®ãƒªã‚¹ãƒˆã¨ã—ã¦ ValueList å‹ã‚’
+// å®šç¾©ã—ã¦ã„ã¾ã™ã€‚ç‰¹ã« sequence å‹ã¯ã€typedef ã›ãšã«ã€å®šç¾©ä¸­ã§ç›´æ¥ä½¿ã†ã“
+// ã¨ãŒã§ããªã„ã®ã§ã€ã“ã®ã‚ˆã†ã«äºˆã‚ typedef ã—ã¦ãŠãå¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
 
-You can use ''typedef'' keyword as same as C language.  An array type
-called ''sequence'' is defined in the above example.  A EchoList type
-as string list type and a ValueList type as float list type are
-defined. Especially, since you cannot use sequence types directly,
-the sequence type should be defined by using typedef before it is
-used.
+You can use ''typedef'' keyword as same as C language.  An array type called ''sequence'' is defined in the above example.  A EchoList type as string list type and a ValueList type as float list type are defined. Especially, since you cannot use sequence types directly, the sequence type should be defined by using typedef before it is used.
 
-// Ÿ‚É interface ‚Ån‚Ü‚é•”•ª‚ªÀÛ‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚Ì’è‹`‚É‚È‚è‚Ü‚·B
-// MyService ƒCƒ“ƒ^[ƒtƒF[ƒX‚É‚ÍA5‚Â‚ÌŠÖ” (IDL‚Å‚ÍƒIƒyƒŒ[ƒVƒ‡ƒ“‚ÆŒÄ‚Ñ
-// ‚Ü‚·) ‚ª’è‹`‚³‚ê‚Ä‚¢‚Ü‚·B‚Ù‚Æ‚ñ‚Ç‚ÍACŒ¾Œê‚âJava‚È‚Ç‚Æ“¯‚¶‚æ‚¤‚È’è‹`‚Å
-// ‚·‚ªAIDL‚Å‚Íˆø”‚ª“ü—Í‚Å‚ ‚é‚©o—Í‚Å‚ ‚é‚©‚ğ–¾Šm‚É‚·‚é‚½‚ß‚ÉAˆø”éŒ¾
-// ‚Ì‘O‚ÉA''in'', ''out'' ‚Ü‚½‚Í ''inout'' ‚ÌCüq‚ª•t‚«‚Ü‚·B
+// æ¬¡ã« interface ã§å§‹ã¾ã‚‹éƒ¨åˆ†ãŒå®Ÿéš›ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®å®šç¾©ã«ãªã‚Šã¾ã™ã€‚
+// MyService ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã«ã¯ã€5ã¤ã®é–¢æ•° (IDLã§ã¯ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã¨å‘¼ã³
+// ã¾ã™) ãŒå®šç¾©ã•ã‚Œã¦ã„ã¾ã™ã€‚ã»ã¨ã‚“ã©ã¯ã€Cè¨€èªã‚„Javaãªã©ã¨åŒã˜ã‚ˆã†ãªå®šç¾©ã§
+// ã™ãŒã€IDLã§ã¯å¼•æ•°ãŒå…¥åŠ›ã§ã‚ã‚‹ã‹å‡ºåŠ›ã§ã‚ã‚‹ã‹ã‚’æ˜ç¢ºã«ã™ã‚‹ãŸã‚ã«ã€å¼•æ•°å®£è¨€
+// ã®å‰ã«ã€''in'', ''out'' ã¾ãŸã¯ ''inout'' ã®ä¿®é£¾å­ãŒä»˜ãã¾ã™ã€‚
 
-Next, the part which starts with ''interface'' keyword is the actual
-interface definition.  The MyService interface owns five functions (in
-IDL they are called ''operations'') in it.  Syntax is almost same as C
-language and Java language, but one of the specifiers ''in'', ''out''
-or ''inout'' is put before each argument to specify whether the
-argument is used as input, output or both.
+Next, the part which starts with ''interface'' keyword is the actual interface definition.  The MyService interface owns five functions (in IDL they are called ''operations'') in it.  Syntax is almost same as C language and Java language, but one of the specifiers ''in'', ''out'' or ''inout'' is put before each argument to specify whether the argument is used as input, output or both.
 
 ***IDL compilation
 
-// }‚ÉAIDL’è‹`‚©‚çIDLƒRƒ“ƒpƒCƒ‹AƒvƒƒoƒCƒ_‚ÌÀ‘•‚¨‚æ‚ÑƒXƒ^ƒu‚Ì—˜—p‚Ì—¬
-// ‚ê‚ğ¦‚µ‚Ü‚·B
+// å›³ã«ã€IDLå®šç¾©ã‹ã‚‰IDLã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã€ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®å®Ÿè£…ãŠã‚ˆã³ã‚¹ã‚¿ãƒ–ã®åˆ©ç”¨ã®æµ
+// ã‚Œã‚’ç¤ºã—ã¾ã™ã€‚
 
-The following figure shows the flow of IDL definition, IDL
-compilation, implementation of provider and use of stub.
+The following figure shows the flow of IDL definition, IDL compilation, implementation of provider and use of stub.
 
 #ref(idlcompile_stub_skel_en.png,40%,center)
 CENTER: ''IDL compilation and stub and skeleton''
 
-// ’è‹`‚³‚ê‚½IDL‚ğIDLƒRƒ“ƒpƒCƒ‰‚É—^‚¦‚ÄƒRƒ“ƒpƒCƒ‹‚ğs‚¤‚ÆA’ÊíƒXƒ^ƒu‚ÆƒX
-// ƒPƒ‹ƒgƒ“ (‚Ü‚½‚ÍƒT[ƒo‚ÆƒNƒ‰ƒCƒAƒ“ƒg‚Æ‚¢‚¤ŒÄ‚Ñ•û‚ğ‚·‚éê‡‚à‚ ‚é) ‚Ì‚½
-// ‚ß‚ÌƒR[ƒh‚ª¶¬‚³‚ê‚Ü‚·B
+// å®šç¾©ã•ã‚ŒãŸIDLã‚’IDLã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ã«ä¸ãˆã¦ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã‚’è¡Œã†ã¨ã€é€šå¸¸ã‚¹ã‚¿ãƒ–ã¨ã‚¹
+// ã‚±ãƒ«ãƒˆãƒ³ (ã¾ãŸã¯ã‚µãƒ¼ãƒã¨ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã¨ã„ã†å‘¼ã³æ–¹ã‚’ã™ã‚‹å ´åˆã‚‚ã‚ã‚‹) ã®ãŸ
+// ã‚ã®ã‚³ãƒ¼ãƒ‰ãŒç”Ÿæˆã•ã‚Œã¾ã™ã€‚
 
-Giving defined IDL to a IDL compiler and compiling it, stubs and
-skeletons (these are sometimes called servers and clients) are
-generated.
+Giving defined IDL to a IDL compiler and compiling it, stubs and skeletons (these are sometimes called servers and clients) are generated.
 
-// ƒNƒ‰ƒCƒAƒ“ƒgA‚·‚È‚í‚¿ƒT[ƒrƒX‚ğ—˜—p‚·‚é‘¤‚ÍAƒXƒ^ƒuƒR[ƒh‚ğƒCƒ“ƒNƒ‹[
-// ƒh‚·‚é‚È‚Ç‚µ‚ÄAƒXƒ^ƒu‚Æ‚µ‚Ä‚¢’è‹`‚³‚ê‚Ä‚¢‚éƒvƒƒLƒV(‘ã—)ƒIƒuƒWƒFƒNƒg
-// ‚ğ—˜—p‚µ‚ÄAƒŠƒ‚[ƒg‚É‚ ‚éAƒT[ƒo‚Ì‹@”\‚ÉƒAƒNƒZƒX‚µ‚Ü‚·BˆÈ‰º‚ÉC++‚Å‚Ì
-// ƒR[ƒh—á‚ğ¦‚µ‚Ü‚·B
+// ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã€ã™ãªã‚ã¡ã‚µãƒ¼ãƒ“ã‚¹ã‚’åˆ©ç”¨ã™ã‚‹å´ã¯ã€ã‚¹ã‚¿ãƒ–ã‚³ãƒ¼ãƒ‰ã‚’ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼
+// ãƒ‰ã™ã‚‹ãªã©ã—ã¦ã€ã‚¹ã‚¿ãƒ–ã¨ã—ã¦ã„å®šç¾©ã•ã‚Œã¦ã„ã‚‹ãƒ—ãƒ­ã‚­ã‚·(ä»£ç†)ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+// ã‚’åˆ©ç”¨ã—ã¦ã€ãƒªãƒ¢ãƒ¼ãƒˆã«ã‚ã‚‹ã€ã‚µãƒ¼ãƒã®æ©Ÿèƒ½ã«ã‚¢ã‚¯ã‚»ã‚¹ã—ã¾ã™ã€‚ä»¥ä¸‹ã«C++ã§ã®
+// ã‚³ãƒ¼ãƒ‰ä¾‹ã‚’ç¤ºã—ã¾ã™ã€‚
 
-A client, which is using service, accesses to the functions of server
-on a remote node through proxy object defined as stub that is included
-in the stub code.  An example in C++ language is shown in the
-following code.
+A client, which is using service, accesses to the functions of server on a remote node through proxy object defined as stub that is included in the stub code.  An example in C++ language is shown in the following code.
 
  MyService_var mysvobj = <something to get remote object reference>
  Retval retval = mysvobj->myoperation(argument);
 
-// MyService_var ‚Æ‚¢‚¤‚Ì‚ªAƒvƒƒLƒVƒIƒuƒWƒFƒNƒg‚Ì‚½‚ß‚ÌéŒ¾‚Å‚·B
-// mysvobj‚ÉƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ÌQÆ‚ğ‰½‚ç‚©‚ÌŒ`‚Å‘ã“ü‚·‚é‚ÆA‚»‚Ì‰º‚Ås
-// ‚í‚ê‚Ä‚¢‚é myoperation() ŠÖ”‚ÌŒÄ‚Ño‚µ‚ÍAÀÛ‚É‚ÍƒŠƒ‚[ƒg‚É‘¶İ‚·‚éƒI
-// ƒuƒWƒFƒNƒg‚É‚¨‚¢‚Äs‚í‚ê‚Ü‚·B‚±‚ÌMyService_var ƒNƒ‰ƒX‚ª’è‹`‚³‚ê‚Ä‚¢‚é
-// ‚Ì‚ªƒXƒ^ƒu‚É‚ ‚½‚è‚Ü‚·B
+// MyService_var ã¨ã„ã†ã®ãŒã€ãƒ—ãƒ­ã‚­ã‚·ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãŸã‚ã®å®£è¨€ã§ã™ã€‚
+// mysvobjã«ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‚ç…§ã‚’ä½•ã‚‰ã‹ã®å½¢ã§ä»£å…¥ã™ã‚‹ã¨ã€ãã®ä¸‹ã§è¡Œ
+// ã‚ã‚Œã¦ã„ã‚‹ myoperation() é–¢æ•°ã®å‘¼ã³å‡ºã—ã¯ã€å®Ÿéš›ã«ã¯ãƒªãƒ¢ãƒ¼ãƒˆã«å­˜åœ¨ã™ã‚‹ã‚ª
+// ãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ãŠã„ã¦è¡Œã‚ã‚Œã¾ã™ã€‚ã“ã®MyService_var ã‚¯ãƒ©ã‚¹ãŒå®šç¾©ã•ã‚Œã¦ã„ã‚‹
+// ã®ãŒã‚¹ã‚¿ãƒ–ã«ã‚ãŸã‚Šã¾ã™ã€‚
 
-A line starting with MyService_var is declaration for a proxy object.
-After substituting a remote object reference into the ''mysvobj''
-variable, the invocation of myoperation() function performs remote
-object function call actually.  The MyService_var class is the stub
-defined in the stub code.
+A line starting with MyService_var is declaration for a proxy object. After substituting a remote object reference into the ''mysvobj'' variable, the invocation of myoperation() function performs remote object function call actually.  The MyService_var class is the stub defined in the stub code.
 
-// ˆê•ûAã‹L‚Ì•û–@‚É‚æ‚Á‚ÄÀÛ‚ÉŒÄ‚Î‚ê‚éƒT[ƒo‘¤‚ÌƒIƒuƒWƒFƒNƒg‚ÍAˆÈ‰º‚Ì
-// ‚æ‚¤‚ÉƒXƒPƒ‹ƒgƒ“ƒNƒ‰ƒX‚ğŒp³‚µ‚ÄˆÈ‰º‚Ì‚æ‚¤‚ÉÀ‘•‚³‚ê‚Ü‚·B
+// ä¸€æ–¹ã€ä¸Šè¨˜ã®æ–¹æ³•ã«ã‚ˆã£ã¦å®Ÿéš›ã«å‘¼ã°ã‚Œã‚‹ã‚µãƒ¼ãƒå´ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ã€ä»¥ä¸‹ã®
+// ã‚ˆã†ã«ã‚¹ã‚±ãƒ«ãƒˆãƒ³ã‚¯ãƒ©ã‚¹ã‚’ç¶™æ‰¿ã—ã¦ä»¥ä¸‹ã®ã‚ˆã†ã«å®Ÿè£…ã•ã‚Œã¾ã™ã€‚
 
-On the other hand, the server side object which is called by the above
-method is implemented by inheriting a skeleton class as follows.
+On the other hand, the server side object which is called by the above method is implemented by inheriting a skeleton class as follows.
 
  class MyServiceSVC_impl
    : public virtual MyService,
@@ -391,75 +298,58 @@ method is implemented by inheriting a skeleton class as follows.
     }
  };
 
-// ‚³‚ç‚ÉA‚±‚±‚Å’è‹`‚³‚ê‚½ƒT[ƒoƒ“ƒgƒNƒ‰ƒX‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µACORBAƒIƒuƒWƒF
-// ƒNƒg‚Æ‚µ‚ÄƒAƒNƒeƒBƒx[ƒg‚·‚é‚±‚Æ‚ÅAƒŠƒ‚[ƒg‚©‚çƒIƒyƒŒ[ƒVƒ‡ƒ“‚ğŒÄ‚Ño
-// ‚·‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+// ã•ã‚‰ã«ã€ã“ã“ã§å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒãƒ³ãƒˆã‚¯ãƒ©ã‚¹ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ã€CORBAã‚ªãƒ–ã‚¸ã‚§
+// ã‚¯ãƒˆã¨ã—ã¦ã‚¢ã‚¯ãƒ†ã‚£ãƒ™ãƒ¼ãƒˆã™ã‚‹ã“ã¨ã§ã€ãƒªãƒ¢ãƒ¼ãƒˆã‹ã‚‰ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å‘¼ã³å‡º
+// ã™ã“ã¨ãŒã§ãã¾ã™ã€‚
 
-And, instantiating a servant class defined above, and activating it as
-a CORBA object, operations can be called from remote node.
+And, instantiating a servant class defined above, and activating it as a CORBA object, operations can be called from remote node.
 
  // some spells to startup ORB of CORBA
  MyServiceSVC_impl mysvc;
  POA->activate_object(id, mysvc);
 
-// IDL‚ğ’è‹`‚µ‚ÄAƒRƒ“ƒpƒCƒ‹‚·‚é‚±‚Æ‚ÅA•ªUƒIƒuƒWƒFƒNƒg‚ğ’è‹`‚µ—˜—p‚·‚é‚Ì
-// ‚É•K—v‚È‘å”¼‚ÌƒR[ƒh‚ª©“®“I‚É¶¬‚³‚ê‚Ü‚·B‚½‚¾‚µAã‹L‚Ìu‰½‚ç‚©‚Ì•û
-// –@‚ÅƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ÌQÆ‚ğæ“¾v‚µ‚½‚èAuCORBA‚ÌORB‚ğ‹N“®‚·‚é‚½
-// ‚ß‚Ì‚¢‚ë‚¢‚ë‚È‚¨‚Ü‚¶‚È‚¢v‚Æ‚¢‚Á‚½‚à‚Ì‚ÍACORBA‚ğ’¼Ú—˜—p‚·‚éê‡‚É‚ÍˆË
-// ‘R‚Æ‚µ‚ÄƒR[ƒfƒBƒ“ƒO‚·‚é•K—v‚ª‚ ‚é•”•ª‚Å‚ ‚èA‚±‚ê‚ç‚ÍCORBA‚ğ—˜—p‚·‚é‚¤
-// ‚¦‚Å‚à—‰ğ‚ª“ï‚µ‚©‚Á‚½‚èA”ÏG‚Èì‹Æ‚ª•K—v‚Æ‚È‚é•”•ª‚Å‚·B
+// IDLã‚’å®šç¾©ã—ã¦ã€ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ã“ã¨ã§ã€åˆ†æ•£ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å®šç¾©ã—åˆ©ç”¨ã™ã‚‹ã®
+// ã«å¿…è¦ãªå¤§åŠã®ã‚³ãƒ¼ãƒ‰ãŒè‡ªå‹•çš„ã«ç”Ÿæˆã•ã‚Œã¾ã™ã€‚ãŸã ã—ã€ä¸Šè¨˜ã®ã€Œä½•ã‚‰ã‹ã®æ–¹
+// æ³•ã§ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‚ç…§ã‚’å–å¾—ã€ã—ãŸã‚Šã€ã€ŒCORBAã®ORBã‚’èµ·å‹•ã™ã‚‹ãŸ
+// ã‚ã®ã„ã‚ã„ã‚ãªãŠã¾ã˜ãªã„ã€ã¨ã„ã£ãŸã‚‚ã®ã¯ã€CORBAã‚’ç›´æ¥åˆ©ç”¨ã™ã‚‹å ´åˆã«ã¯ä¾
+// ç„¶ã¨ã—ã¦ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã™ã‚‹å¿…è¦ãŒã‚ã‚‹éƒ¨åˆ†ã§ã‚ã‚Šã€ã“ã‚Œã‚‰ã¯CORBAã‚’åˆ©ç”¨ã™ã‚‹ã†
+// ãˆã§ã‚‚ç†è§£ãŒé›£ã—ã‹ã£ãŸã‚Šã€ç…©é›‘ãªä½œæ¥­ãŒå¿…è¦ã¨ãªã‚‹éƒ¨åˆ†ã§ã™ã€‚
 
-Defining and compiling IDL, most of codes required to define and use
-distributed objects are generated automatically.  However, ''something
-to get remote object reference'' and ''some spells to startup ORB of
-CORBA'' are still required in the actual coding, and these are one of
-difficult and complicated things in use of CORBA.
+Defining and compiling IDL, most of codes required to define and use distributed objects are generated automatically.  However, ''something to get remote object reference'' and ''some spells to startup ORB of CORBA'' are still required in the actual coding, and these are one of difficult and complicated things in use of CORBA.
 
-// ‚µ‚©‚µ‚È‚ª‚çAOpenRTM-aist‚ğ—˜—p‚·‚ê‚ÎA‚±‚¤‚µ‚½CORBA‚Ì—lX‚ÈŒÄ‚Ño‚µ‚Ì
-// ‘å”¼‚Í‰B•Á‚³‚êAÀ‘•Ò‚ÍƒNƒ‰ƒCƒAƒ“ƒg‚ÌŒÄ‚Ño‚µAƒT[ƒoƒ“ƒg‚ÌÀ‘•‚É‚Ì‚İ
-// W’†‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·BˆÈ‰º‚Å‚ÍAƒT[ƒoƒ“ƒg‚ğÀ‘•‚µƒvƒƒoƒCƒ_‚Æ‚µ‚ÄƒR
-// ƒ“ƒ|[ƒlƒ“ƒg‚É“o˜^‚·‚é•û–@AƒRƒ“ƒVƒ…[ƒ}‚Æ‚µ‚ÄƒvƒƒoƒCƒ_‚ğ—˜—p‚·‚é•û–@
-// ‚É‚Â‚¢‚ÄÚ‚µ‚­Œ©‚Ä‚¢‚«‚Ü‚·B
+// ã—ã‹ã—ãªãŒã‚‰ã€OpenRTM-aistã‚’åˆ©ç”¨ã™ã‚Œã°ã€ã“ã†ã—ãŸCORBAã®æ§˜ã€…ãªå‘¼ã³å‡ºã—ã®
+// å¤§åŠã¯éš è”½ã•ã‚Œã€å®Ÿè£…è€…ã¯ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®å‘¼ã³å‡ºã—ã€ã‚µãƒ¼ãƒãƒ³ãƒˆã®å®Ÿè£…ã«ã®ã¿
+// é›†ä¸­ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚ä»¥ä¸‹ã§ã¯ã€ã‚µãƒ¼ãƒãƒ³ãƒˆã‚’å®Ÿè£…ã—ãƒ—ãƒ­ãƒã‚¤ãƒ€ã¨ã—ã¦ã‚³
+// ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«ç™»éŒ²ã™ã‚‹æ–¹æ³•ã€ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã¨ã—ã¦ãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚’åˆ©ç”¨ã™ã‚‹æ–¹æ³•
+// ã«ã¤ã„ã¦è©³ã—ãè¦‹ã¦ã„ãã¾ã™ã€‚
 
-Using OpenRTM-aist, however, most of these CORBA's native function
-calls are hidden, and developers can concentrate only to servants'
-implementation, and calling servers from clients.  In the following,
-how to implement servants and register it to the component and how to
-use providers from the consumers are described in details.
+Using OpenRTM-aist, however, most of these CORBA's native function calls are hidden, and developers can concentrate only to servants' implementation, and calling servers from clients.  In the following, how to implement servants and register it to the component and how to use providers from the consumers are described in details.
 
 ** Implementation
 
-// ƒT[ƒrƒXƒ|[ƒg‚ÌÀ‘•‚É“–‚½‚Á‚Ä‚ÍARTCBuilder‚ğ—˜—p‚·‚é‚Ì‚ª•Ö—˜‚Å‚·B©
-// •ª‚ÅƒT[ƒrƒXƒ|[ƒgAƒvƒƒoƒCƒ_‚¨‚æ‚ÑƒRƒ“ƒVƒ…[ƒ}‚ğÀ‘•‚·‚é‚±‚Æ‚à‚Å‚«‚Ü
-// ‚·‚ªACORBA‚âIDLƒRƒ“ƒpƒCƒ‰‚É¸’Ê‚µ‚Ä‚¢‚é•K—v‚ª‚ ‚è‚Ü‚·‚µAMakefile‚âƒR[
-// ƒh‚Ì—lX‚È•”•ª‚ğ‘‚«Š·‚¦‚é•K—v‚ª‚ ‚è‚Ü‚·‚Ì‚Å‚ ‚Ü‚è‚¨Š©‚ß‚Å‚«‚Ü‚¹‚ñB
+// ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒˆã®å®Ÿè£…ã«å½“ãŸã£ã¦ã¯ã€RTCBuilderã‚’åˆ©ç”¨ã™ã‚‹ã®ãŒä¾¿åˆ©ã§ã™ã€‚è‡ª
+// åˆ†ã§ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒˆã€ãƒ—ãƒ­ãƒã‚¤ãƒ€ãŠã‚ˆã³ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã‚’å®Ÿè£…ã™ã‚‹ã“ã¨ã‚‚ã§ãã¾
+// ã™ãŒã€CORBAã‚„IDLã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ã«ç²¾é€šã—ã¦ã„ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã—ã€Makefileã‚„ã‚³ãƒ¼
+// ãƒ‰ã®æ§˜ã€…ãªéƒ¨åˆ†ã‚’æ›¸ãæ›ãˆã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã®ã§ã‚ã¾ã‚ŠãŠå‹§ã‚ã§ãã¾ã›ã‚“ã€‚
 
-It is convenient to use RTCBuilder in implementing a service port.
-You can implement service ports, providers and consumers by yourself.
-But a detailed knowledge of CORBA, IDL compiler is required, and
-Makefile and some parts of source code have to be modified. It is not
-recommended.
+It is convenient to use RTCBuilder in implementing a service port.You can implement service ports, providers and consumers by yourself. But a detailed knowledge of CORBA, IDL compiler is required, and Makefile and some parts of source code have to be modified. It is not recommended.
 
-// RTCBuilder‚ÌÚ×‚Èg‚¢•û‚ÍARTCBuilder‚Ìƒ}ƒjƒ…ƒAƒ‹‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B
+// RTCBuilderã®è©³ç´°ãªä½¿ã„æ–¹ã¯ã€RTCBuilderã®ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
 
 See the manual of RTCBuilder for the detailed usage of RTCBuilder.
 
 *** IDL Definition
 
-// ƒT[ƒrƒXƒ|[ƒg‚ğ—˜—p‚·‚é‚É‚ÍA—˜—p‚·‚éƒCƒ“ƒ^[ƒtƒF[ƒX‚ğ—\‚ßIDL‚Å’è‹`‚·
-// ‚é‚©AŠù‘¶‚ÌIDLƒtƒ@ƒCƒ‹‚ğ“K“–‚ÈƒfƒBƒŒƒNƒgƒŠ‚É”z’u‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚è‚Ü‚·B
+// ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒˆã‚’åˆ©ç”¨ã™ã‚‹ã«ã¯ã€åˆ©ç”¨ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’äºˆã‚IDLã§å®šç¾©ã™
+// ã‚‹ã‹ã€æ—¢å­˜ã®IDLãƒ•ã‚¡ã‚¤ãƒ«ã‚’é©å½“ãªãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«é…ç½®ã—ã¦ãŠãå¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
 
-In order to use service ports, you have to define interfaces in IDL
-files or use pre-defined IDL files, and have to put them into
-appropriate directory.
+In order to use service ports, you have to define interfaces in IDL files or use pre-defined IDL files, and have to put them into appropriate directory.
 
-// IDL‚Ì’è‹`•û–@‚É‚Â‚¢‚Ä‚ÍA‚±‚±‚Å‚ÍÚ×‚Íq‚×‚Ü‚¹‚ñ‚ªA‚¨‚¨‚æ‚»ˆÈ‰º‚Ì‚æ‚¤
-// ‚ÈƒtƒH[ƒ}ƒbƒg‚Å’è‹`‚·‚é‚±‚Æ‚ª‚Å‚«ACŒ¾Œê‚âJava‚ÉŠµ‚ê‚½“ÇÒ‚Å‚ ‚ê‚ÎA”ä
-// Šr“I—eˆÕ‚É’è‹`‚Å‚«‚é‚Å‚µ‚å‚¤B
+// IDLã®å®šç¾©æ–¹æ³•ã«ã¤ã„ã¦ã¯ã€ã“ã“ã§ã¯è©³ç´°ã¯è¿°ã¹ã¾ã›ã‚“ãŒã€ãŠãŠã‚ˆãä»¥ä¸‹ã®ã‚ˆã†
+// ãªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã§å®šç¾©ã™ã‚‹ã“ã¨ãŒã§ãã€Cè¨€èªã‚„Javaã«æ…£ã‚ŒãŸèª­è€…ã§ã‚ã‚Œã°ã€æ¯”
+// è¼ƒçš„å®¹æ˜“ã«å®šç¾©ã§ãã‚‹ã§ã—ã‚‡ã†ã€‚
 
-Detailed IDL definition rules are not described here, but it can be
-defined roughly as follows.  Developers who are familiar with C or
-Java languages would easily understand it.
+Detailed IDL definition rules are not described here, but it can be defined roughly as follows.  Developers who are familiar with C or Java languages would easily understand it.
 
  // Module can be defined for namespace.
  // Using a module definition positively is recommended.
@@ -507,181 +397,133 @@ Java languages would easily understand it.
 
 *** Designing by using RTCBuilder
 
-// ã‚Ì‚æ‚¤‚ÉIDL‚Å’è‹`‚µ‚½ƒCƒ“ƒ^[ƒtƒF[ƒX‚ğA‚±‚ê‚©‚çŠJ”­‚·‚éRTƒRƒ“ƒ|[ƒl
-// ƒ“ƒg‚ÌƒT[ƒrƒXƒ|[ƒg‚ÌƒvƒƒoƒCƒ_A‚à‚µ‚­‚ÍƒRƒ“ƒVƒ…[ƒ}‚Æ‚µ‚Ä—p‚¢‚é‚½‚ß
-// ‚É‚ÍAƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒR[ƒhƒWƒFƒlƒŒ[ƒ^‚Å‚ ‚é RTCBuilder ‚ÅƒT[ƒrƒXƒ|[
-// ƒg‚ğİŒv‚µA‚»‚ÌÛ‚É‚±‚ÌIDL’è‹`‚ğ—^‚¦‚Ä‚â‚é•K—v‚ª‚ ‚è‚Ü‚·B
+// ä¸Šã®ã‚ˆã†ã«IDLã§å®šç¾©ã—ãŸã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ã€ã“ã‚Œã‹ã‚‰é–‹ç™ºã™ã‚‹RTã‚³ãƒ³ãƒãƒ¼ãƒ
+// ãƒ³ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒˆã®ãƒ—ãƒ­ãƒã‚¤ãƒ€ã€ã‚‚ã—ãã¯ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã¨ã—ã¦ç”¨ã„ã‚‹ãŸã‚
+// ã«ã¯ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ã‚³ãƒ¼ãƒ‰ã‚¸ã‚§ãƒãƒ¬ãƒ¼ã‚¿ã§ã‚ã‚‹ RTCBuilder ã§ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼
+// ãƒˆã‚’è¨­è¨ˆã—ã€ãã®éš›ã«ã“ã®IDLå®šç¾©ã‚’ä¸ãˆã¦ã‚„ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
 
-In order to use interfaces defined as mentioned above for service
-ports' providers and consumers in your new RT-Component, IDL
-definition should be given to RTCBuilder tool which can be used to
-design RT-Components.
+In order to use interfaces defined as mentioned above for service ports' providers and consumers in your new RT-Component, IDL definition should be given to RTCBuilder tool which can be used to design RT-Components.
 
-// RTCBuilder ‚ÌV‹KƒvƒƒWƒFƒNƒg‚ğì¬‚µAƒp[ƒXƒyƒNƒeƒBƒu‚ğŠJ‚«‚Ü‚·BŠeí
-// ƒvƒƒtƒ@ƒCƒ‹(ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì–¼Ì‚âƒJƒeƒSƒŠ–¼)“™A•K—v‚Èİ’è‚ğs‚Á‚½ŒãA
-// ƒT[ƒrƒXƒ|[ƒgƒ^ƒu‚ğŠJ‚­‚ÆAŸ‚Ì‚æ‚¤‚È‰æ–Ê‚ªŒ»‚ê‚Ü‚·B
+// RTCBuilder ã®æ–°è¦ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆã—ã€ãƒ‘ãƒ¼ã‚¹ãƒšã‚¯ãƒ†ã‚£ãƒ–ã‚’é–‹ãã¾ã™ã€‚å„ç¨®
+// ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«(ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®åç§°ã‚„ã‚«ãƒ†ã‚´ãƒªå)ç­‰ã€å¿…è¦ãªè¨­å®šã‚’è¡Œã£ãŸå¾Œã€
+// ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒˆã‚¿ãƒ–ã‚’é–‹ãã¨ã€æ¬¡ã®ã‚ˆã†ãªç”»é¢ãŒç¾ã‚Œã¾ã™ã€‚
 
-Create a new project of RTCBuilder and open perspective of RTCBuilder.
-After setting various required profiles including component's name and
-category, open service port's tab, you can see the following editor
-view.
+Create a new project of RTCBuilder and open perspective of RTCBuilder. After setting various required profiles including component's name and category, open service port's tab, you can see the following editor view.
 
 #ref(rtcbuilder_serviceport_tab1_en.png,40%,center)
 CENTER: ''Service port's design tab.''
 
-// ‚Ü‚¸A''Add Port'' ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µƒT[ƒrƒXƒ|[ƒg‚ğˆê‚Â’Ç‰Á‚µ‚Ü‚·B‚»‚¤‚·‚é
-// ‚ÆAsv_name ‚Æ‚¢‚¤ƒT[ƒrƒXƒ|[ƒg‚ªˆê‚Â’Ç‰Á‚³‚êA‰º‚ÌBuildView‚ÌƒRƒ“ƒ|[
-// ƒlƒ“ƒg‚Ì” ‚ÉA¬‚³‚È³•ûŒ`‚Ìƒ|[ƒg‚ªˆê‚Â’Ç‰Á‚³‚ê‚Ü‚·BRTCBuilder‚ÌƒGƒfƒB
-// ƒ^¶‚Ìƒ|[ƒgƒŠƒXƒg‚Ìsv_name‚ğƒNƒŠƒbƒN‚·‚é‚ÆA‰E‘¤‚É''RT-Component
-// Service Port Profile''‚ª•\¦‚³‚ê‚é‚Ì‚ÅAƒ|[ƒg–¼‚ğ“K“–‚È–¼‘O (‚±‚±‚Å‚Í
-// ''MyServiceProviderPort'') ‚É•ÏX‚µ‚Ü‚·B
+// ã¾ãšã€''Add Port'' ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒˆã‚’ä¸€ã¤è¿½åŠ ã—ã¾ã™ã€‚ãã†ã™ã‚‹
+// ã¨ã€sv_name ã¨ã„ã†ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒˆãŒä¸€ã¤è¿½åŠ ã•ã‚Œã€ä¸‹ã®BuildViewã®ã‚³ãƒ³ãƒãƒ¼
+// ãƒãƒ³ãƒˆã®ç®±ã«ã€å°ã•ãªæ­£æ–¹å½¢ã®ãƒãƒ¼ãƒˆãŒä¸€ã¤è¿½åŠ ã•ã‚Œã¾ã™ã€‚RTCBuilderã®ã‚¨ãƒ‡ã‚£
+// ã‚¿å·¦ã®ãƒãƒ¼ãƒˆãƒªã‚¹ãƒˆã®sv_nameã‚’ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹ã¨ã€å³å´ã«''RT-Component
+// Service Port Profile''ãŒè¡¨ç¤ºã•ã‚Œã‚‹ã®ã§ã€ãƒãƒ¼ãƒˆåã‚’é©å½“ãªåå‰ (ã“ã“ã§ã¯
+// ''MyServiceProviderPort'') ã«å¤‰æ›´ã—ã¾ã™ã€‚
 
-At first, click ''Add Port'' button and add a service port to the
-RT-Component.  Then a service port named sv_name is added, and a small
-rectangle signifying a port is added on a component's larger rectangle
-in the build view that is usually located below.  Click sv_name in
-port list in the left side of the editor, then ''RT-Component Service
-Port Profile'' will appear on the right side.  Please modify it to an
-appropriate name (here it is set as ''MyServiceProviderPort'').
+At first, click ''Add Port'' button and add a service port to the RT-Component.  Then a service port named sv_name is added, and a small rectangle signifying a port is added on a component's larger rectangle in the build view that is usually located below.  Click sv_name in port list in the left side of the editor, then ''RT-Component Service Port Profile'' will appear on the right side.  Please modify it to an appropriate name (here it is set as ''MyServiceProviderPort'').
 
 #ref(rtcbuilder_serviceport_tab2_en.png,40%,center)
 CENTER: ''Adding a service port''
 
-// ƒGƒfƒBƒ^¶‚Ìƒ|[ƒgƒŠƒXƒg‚Ì MyServiceProviderPort ‚ğƒNƒŠƒbƒN‚µA''Add
-// Interface''ƒ{ƒ^ƒ“‚ğƒNƒŠƒbƒN‚·‚é‚ÆAMyServiceProviderPort ‚ÉƒCƒ“ƒ^[ƒtƒF[
-// ƒX ''if_name'' ‚ªˆê‚Â’Ç‰Á‚³‚ê‚Ü‚·‚Ì‚ÅAæ‚Ù‚Ç‚Æ“¯—l‚ÉƒGƒfƒBƒ^¶
-// ‚Ì''if_name''‚ğƒNƒŠƒbƒN‚µA''RT-Component Service Port Interface
-// Profile''ã‚Å''if_name''‚ğ“K“–‚È–¼‘O (‚±‚±‚Å‚ÍMyServiceProvider) ‚É•ÏX
-// ‚µ‚Ü‚·B‰º‚ÌBuildeView‚Å‚ÍA³•ûŒ`‚Ìƒ|[ƒg‚ÉƒƒŠƒ|ƒbƒv‚ª’Ç‰Á‚³‚êAƒvƒ
-// ƒoƒCƒ_ (Provided Interface) ‚ªƒ|[ƒg‚É•t‰Á‚³‚ê‚½‚±‚Æ‚ª‹Šo“I‚É•ª‚©‚è‚Ü
-// ‚·B
+// ã‚¨ãƒ‡ã‚£ã‚¿å·¦ã®ãƒãƒ¼ãƒˆãƒªã‚¹ãƒˆã® MyServiceProviderPort ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã€''Add
+// Interface''ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹ã¨ã€MyServiceProviderPort ã«ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼
+// ã‚¹ ''if_name'' ãŒä¸€ã¤è¿½åŠ ã•ã‚Œã¾ã™ã®ã§ã€å…ˆã»ã©ã¨åŒæ§˜ã«ã‚¨ãƒ‡ã‚£ã‚¿å·¦
+// ã®''if_name''ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã€''RT-Component Service Port Interface
+// Profile''ä¸Šã§''if_name''ã‚’é©å½“ãªåå‰ (ã“ã“ã§ã¯MyServiceProvider) ã«å¤‰æ›´
+// ã—ã¾ã™ã€‚ä¸‹ã®BuildeViewã§ã¯ã€æ­£æ–¹å½¢ã®ãƒãƒ¼ãƒˆã«ãƒ­ãƒªãƒãƒƒãƒ—ãŒè¿½åŠ ã•ã‚Œã€ãƒ—ãƒ­
+// ãƒã‚¤ãƒ€ (Provided Interface) ãŒãƒãƒ¼ãƒˆã«ä»˜åŠ ã•ã‚ŒãŸã“ã¨ãŒè¦–è¦šçš„ã«åˆ†ã‹ã‚Šã¾
+// ã™ã€‚
 
-Click MyServiceProviderPort in the list at the left side of the editor
-and then click ''Add Interface'' button.  You will find an interface
-''if_name'' is added under the MyServiceProviderPort.  As well as
-former step, click ''if_name'' at the left side of the editor, then
-rename ''if_name'' to an appropriate name (here it is set as
-''Provided Interface'') on the ''RT-Component Service Port Interface
-Profile''.
+Click MyServiceProviderPort in the list at the left side of the editor and then click ''Add Interface'' button.  You will find an interface ''if_name'' is added under the MyServiceProviderPort.  As well as former step, click ''if_name'' at the left side of the editor, then rename ''if_name'' to an appropriate name (here it is set as ''Provided Interface'') on the ''RT-Component Service Port Interface Profile''.
 
 
 #ref(rtcbuilder_serviceport_tab3_en.png,40%,center)
 CENTER: ''Adding a service interface (provider)''
 
-// ƒGƒfƒBƒ^‰E‘¤‚Ì Interface Profile ‚Å‚ÍAƒCƒ“ƒ^[ƒtƒF[ƒX‚Ìƒvƒƒtƒ@ƒCƒ‹‚ğ
-// İ’è‚µ‚Ü‚·B—á‚¦‚Î''•ûŒü''‚Ìƒhƒƒbƒvƒ_ƒEƒ“ƒŠƒXƒg‚Å‚ÍA‘ÎÛ‚ÌƒCƒ“ƒ^[
-// ƒtƒF[ƒX‚ªƒvƒƒoƒCƒ_ (Provided) ‚©ƒRƒ“ƒVƒ…[ƒ} (Required) ‚©‚ğw’è‚µ‚Ü
-// ‚·B
+// ã‚¨ãƒ‡ã‚£ã‚¿å³å´ã® Interface Profile ã§ã¯ã€ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã‚’
+// è¨­å®šã—ã¾ã™ã€‚ä¾‹ãˆã°''æ–¹å‘''ã®ãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³ãƒªã‚¹ãƒˆã§ã¯ã€å¯¾è±¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼
+// ãƒ•ã‚§ãƒ¼ã‚¹ãŒãƒ—ãƒ­ãƒã‚¤ãƒ€ (Provided) ã‹ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒ (Required) ã‹ã‚’æŒ‡å®šã—ã¾
+// ã™ã€‚
 
-You can set interface profile in the Interface Profile pane at the
-right side of the editor. For example, you can specify the target
-interface as a provider (provided interface) or a consumer (required
-interface) in the ''Direction'' drop-down list.
+You can set interface profile in the Interface Profile pane at the right side of the editor. For example, you can specify the target interface as a provider (provided interface) or a consumer (required interface) in the ''Direction'' drop-down list.
 
 
 #ref(rtcbuilder_direction_ddown_en.png,100%,center)
 CENTER: ''Setting direction of a service interface''
 
-// ‚±‚±‚Å‚ÍƒvƒƒoƒCƒ_‚ğ’Ç‰Á‚µ‚æ‚¤‚Æ‚µ‚Ä‚¢‚é‚Ì‚ÅAProvided ‚Ì‚Ü‚Ü‚É‚µ‚Ü
-// ‚·B‚±‚Ì‚Ù‚©AƒCƒ“ƒXƒ^ƒ“ƒX–¼A•Ï”–¼‚È‚Ç‚àw’è‚Å‚«‚Ü‚·‚ªA•K{‚Å‚Í‚ ‚è
-// ‚Ü‚¹‚ñBƒCƒ“ƒXƒ^ƒ“ƒX–¼‚ÍAÚ‘±‚ÉƒvƒƒoƒCƒ_‚ÆƒRƒ“ƒVƒ…[ƒ}‚ÌƒCƒ“ƒXƒ^ƒ“
-// ƒX–¼‚ª“¯‚¶‚È‚çA‘Î‰ŠÖŒW‚ğw’è‚µ‚È‚­‚Ä‚àƒ|[ƒg‚ÌÚ‘±‚ğ©“®“I‚És‚¤ê‡
-// ‚É—˜—p‚³‚ê‚Ü‚·B
+// ã“ã“ã§ã¯ãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚’è¿½åŠ ã—ã‚ˆã†ã¨ã—ã¦ã„ã‚‹ã®ã§ã€Provided ã®ã¾ã¾ã«ã—ã¾
+// ã™ã€‚ã“ã®ã»ã‹ã€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åã€å¤‰æ•°åãªã©ã‚‚æŒ‡å®šã§ãã¾ã™ãŒã€å¿…é ˆã§ã¯ã‚ã‚Š
+// ã¾ã›ã‚“ã€‚ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åã¯ã€æ¥ç¶šæ™‚ã«ãƒ—ãƒ­ãƒã‚¤ãƒ€ã¨ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³
+// ã‚¹åãŒåŒã˜ãªã‚‰ã€å¯¾å¿œé–¢ä¿‚ã‚’æŒ‡å®šã—ãªãã¦ã‚‚ãƒãƒ¼ãƒˆã®æ¥ç¶šã‚’è‡ªå‹•çš„ã«è¡Œã†å ´åˆ
+// ã«åˆ©ç”¨ã•ã‚Œã¾ã™ã€‚
 
-Since we are trying to add a provider interface now, keep it
-''Provided.''  Additionally a intance name, a variable name can be
-specified, but thease are not mandatory parameters. The instance name
-is used as a matching key when service ports are connected without
-detailed interface pair settings.
+Since we are trying to add a provider interface now, keep it ''Provided.''  Additionally a intance name, a variable name can be specified, but thease are not mandatory parameters. The instance name is used as a matching key when service ports are connected without detailed interface pair settings.
 
 #ref(serviceif_autoconnection_en.png,40%,center)
 CENTER: ''Instance name of service interface, and automatic pairing.''
 
-// ‚½‚¾‚µAƒCƒ“ƒXƒ^ƒ“ƒX–¼‚ªˆÙ‚È‚Á‚Ä‚¢‚Ä‚àAÚ‘±‚É”CˆÓ‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX
-// “¯m‚ğÚ‘±‚Å‚«‚é‚Ì‚ÅA“ü—Í‚Í•K{‚Å‚Í‚ ‚è‚Ü‚¹‚ñB‚Ü‚½A•Ï”–¼‚ÍƒR[ƒh‚ğ
-// ¶¬‚µ‚½Û‚ÉƒvƒƒoƒCƒ_ƒIƒuƒWƒFƒNƒg‚ğ‘ã“ü‚·‚é•Ï”–¼‚ğw’è‚·‚é‚½‚ß‚Ì€–Ú
-// ‚Å‚·‚ªA‚±‚ê‚àƒCƒ“ƒ^[ƒtƒF[ƒX–¼‚©‚ç©“®“I‚É¶¬‚³‚ê‚é‚Ì‚ÅA“ü—Í‚Í”CˆÓ
-// ‚Å‚·B
+// ãŸã ã—ã€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åãŒç•°ãªã£ã¦ã„ã¦ã‚‚ã€æ¥ç¶šæ™‚ã«ä»»æ„ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
+// åŒå£«ã‚’æ¥ç¶šã§ãã‚‹ã®ã§ã€å…¥åŠ›ã¯å¿…é ˆã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚ã¾ãŸã€å¤‰æ•°åã¯ã‚³ãƒ¼ãƒ‰ã‚’
+// ç”Ÿæˆã—ãŸéš›ã«ãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä»£å…¥ã™ã‚‹å¤‰æ•°åã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®é …ç›®
+// ã§ã™ãŒã€ã“ã‚Œã‚‚ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹åã‹ã‚‰è‡ªå‹•çš„ã«ç”Ÿæˆã•ã‚Œã‚‹ã®ã§ã€å…¥åŠ›ã¯ä»»æ„
+// ã§ã™ã€‚
 
-However, the instance name is not a must, because even if instance
-names are different between provider and consumer, you can specify
-interface pairs at connection time.  Although the variable name is
-used to specify the name of variable which is substituted by a
-provider object in the generated source code, it is not mandatory
-since these are also generated automatically from interface name.
+However, the instance name is not a must, because even if instance names are different between provider and consumer, you can specify interface pairs at connection time.  Although the variable name is used to specify the name of variable which is substituted by a provider object in the generated source code, it is not mandatory since these are also generated automatically from interface name.
 
-// Ÿ‚ÉIDL‚Ìw’è‚ÆAƒCƒ“ƒ^[ƒtƒF[ƒXŒ^‚Ìw’è‚ğs‚¢‚Ü‚·Bã‚Å’è‹`‚µ‚½‚æ‚¤‚È
-// IDL‚ğ“K“–‚ÈƒfƒBƒŒƒNƒgƒŠ‚É”z’u‚µAIDLƒtƒ@ƒCƒ‹w’èƒ{ƒbƒNƒX‰¡‚Ì Browse ƒ{
-// ƒ^ƒ“‚ğ‰Ÿ‚µA‘ÎÛ‚Æ‚È‚éIDL‚ğw’è‚µ‚Ü‚·B‚·‚é‚ÆAw’è‚³‚ê‚½IDL‚Å’è‹`‚³‚ê
-// ‚½ƒCƒ“ƒ^[ƒtƒF[ƒX‚ªA‚»‚Ì‰º‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXŒ^‚Ìƒhƒƒbƒvƒ_ƒEƒ“ƒŠƒXƒg
-// ‚ÉŒ»‚ê‚Ü‚·B‚±‚Ìƒhƒƒbƒvƒ_ƒEƒ“ƒŠƒXƒg‚ÅA‚±‚Ìƒ|[ƒg‚É•t‰Á‚µ‚½ƒCƒ“ƒ^[
-// ƒtƒF[ƒX–¼‚ğ‘I‘ğ‚µ‚Ü‚·BIDLƒtƒ@ƒCƒ‹‚É•¶–@ƒGƒ‰[‚È‚Ç‚ª‚ ‚éê‡‚É‚ÍAƒhƒƒb
-// ƒvƒ_ƒEƒ“ƒŠƒXƒg‚ÉŠó–]‚·‚éƒCƒ“ƒ^[ƒtƒF[ƒX‚ªŒ»‚ê‚Ü‚¹‚ñBÄ“xIDLƒtƒ@ƒCƒ‹‚Ì
-// ’è‹`‚ğƒ`ƒFƒbƒN‚µ‚Ä‚­‚¾‚³‚¢B
+// æ¬¡ã«IDLã®æŒ‡å®šã¨ã€ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹å‹ã®æŒ‡å®šã‚’è¡Œã„ã¾ã™ã€‚ä¸Šã§å®šç¾©ã—ãŸã‚ˆã†ãª
+// IDLã‚’é©å½“ãªãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«é…ç½®ã—ã€IDLãƒ•ã‚¡ã‚¤ãƒ«æŒ‡å®šãƒœãƒƒã‚¯ã‚¹æ¨ªã® Browse ãƒœ
+// ã‚¿ãƒ³ã‚’æŠ¼ã—ã€å¯¾è±¡ã¨ãªã‚‹IDLã‚’æŒ‡å®šã—ã¾ã™ã€‚ã™ã‚‹ã¨ã€æŒ‡å®šã•ã‚ŒãŸIDLã§å®šç¾©ã•ã‚Œ
+// ãŸã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ãŒã€ãã®ä¸‹ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹å‹ã®ãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³ãƒªã‚¹ãƒˆ
+// ã«ç¾ã‚Œã¾ã™ã€‚ã“ã®ãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³ãƒªã‚¹ãƒˆã§ã€ã“ã®ãƒãƒ¼ãƒˆã«ä»˜åŠ ã—ãŸã‚¤ãƒ³ã‚¿ãƒ¼
+// ãƒ•ã‚§ãƒ¼ã‚¹åã‚’é¸æŠã—ã¾ã™ã€‚IDLãƒ•ã‚¡ã‚¤ãƒ«ã«æ–‡æ³•ã‚¨ãƒ©ãƒ¼ãªã©ãŒã‚ã‚‹å ´åˆã«ã¯ã€ãƒ‰ãƒ­ãƒƒ
+// ãƒ—ãƒ€ã‚¦ãƒ³ãƒªã‚¹ãƒˆã«å¸Œæœ›ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ãŒç¾ã‚Œã¾ã›ã‚“ã€‚å†åº¦IDLãƒ•ã‚¡ã‚¤ãƒ«ã®
+// å®šç¾©ã‚’ãƒã‚§ãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚
 
-Next, specify interface type and its IDL (Interface Definition
-Language) file.  Put IDL files to proper location, and click
-''Browse'' button at the side of IDL file name input form, and specify
-the IDL from the dialogue window.  After that, the interfaces defined
-in the IDL file will appear in the interface type dropdown list.
-Select interface to be owned by the port from the dropdown list.  If
-IDL file includes some errors such as syntax error, expected interface
-names might not appear.  In such case, please check the specified IDL
-file again.
+Next, specify interface type and its IDL (Interface Definition Language) file.  Put IDL files to proper location, and click ''Browse'' button at the side of IDL file name input form, and specify the IDL from the dialogue window.  After that, the interfaces defined in the IDL file will appear in the interface type dropdown list. Select interface to be owned by the port from the dropdown list.  If IDL file includes some errors such as syntax error, expected interface names might not appear.  In such case, please check the specified IDL file again.
 
 
 
 #ref(rtcbuilder_interfacetype_ddwon_en.png,100%,center)
 CENTER: ''Selecting interface type''
 
-// ‚È‚¨Aãq‚Ì''•ûŒü''ƒhƒƒbƒvƒ_ƒEƒ“ƒŠƒXƒg‚Å ''Required''‚ğw’è‚·‚é‚ÆA‚±
-// ‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚ÍƒRƒ“ƒVƒ…[ƒ}‚É‚È‚è‚Ü‚·BˆÈ‰º‚Í•Ê‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg
-// ''MyServiceConsumer'' ‚ÌƒT[ƒrƒXƒ|[ƒg‚ÆƒCƒ“ƒ^[ƒtƒF[ƒX‚Ìİ’è‰æ–Ê‚Ì—á
-// ‚Å‚·B
+// ãªãŠã€ä¸Šè¿°ã®''æ–¹å‘''ãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³ãƒªã‚¹ãƒˆã§ ''Required''ã‚’æŒ‡å®šã™ã‚‹ã¨ã€ã“
+// ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã¯ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã«ãªã‚Šã¾ã™ã€‚ä»¥ä¸‹ã¯åˆ¥ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
+// ''MyServiceConsumer'' ã®ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒˆã¨ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®è¨­å®šç”»é¢ã®ä¾‹
+// ã§ã™ã€‚
 
-Moreover, if the ''Required'' is specified in the ''Direction''
-dropdown list, the interface will be a consumer.  The following figure
-shows a service port and interfaces setting page of another
-''MyServiceConsumer'' component.
+Moreover, if the ''Required'' is specified in the ''Direction'' dropdown list, the interface will be a consumer.  The following figure shows a service port and interfaces setting page of another ''MyServiceConsumer'' component.
 
 
 #ref(rtcbuilder_serviceport_tab4_en.png,40%,center)
 CENTER: ''Adding service interface (consumer)''
 
-// ƒGƒfƒBƒ^‰º‚Ì BuildView ‚É‚¨‚¢‚Äƒ|[ƒg‚Éƒ\ƒPƒbƒg‚ª’Ç‰Á‚³‚ê‚ÄAƒRƒ“ƒVƒ…[
-// ƒ} (Required interface) ‚ªƒ|[ƒg‚É•t‰Á‚³‚ê‚½‚±‚Æ‚ª‹Šo“I‚É•ª‚©‚è‚Ü‚·B
+// ã‚¨ãƒ‡ã‚£ã‚¿ä¸‹ã® BuildView ã«ãŠã„ã¦ãƒãƒ¼ãƒˆã«ã‚½ã‚±ãƒƒãƒˆãŒè¿½åŠ ã•ã‚Œã¦ã€ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼
+// ãƒ (Required interface) ãŒãƒãƒ¼ãƒˆã«ä»˜åŠ ã•ã‚ŒãŸã“ã¨ãŒè¦–è¦šçš„ã«åˆ†ã‹ã‚Šã¾ã™ã€‚
 
-Finally you will find visually that consumer (Required interface) is
-added to the port in the BuildView pane under the editor.
+Finally you will find visually that consumer (Required interface) is added to the port in the BuildView pane under the editor.
 
-// *** ƒvƒƒoƒCƒ_‚ÌÀ‘•
+// *** ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®å®Ÿè£…
 *** Implementing Provider
 
-// ƒvƒƒoƒCƒ_‚Æ‚¢‚¤‚Ì‚Í•¶š’Ê‚èAƒT[ƒrƒX‚ğƒvƒƒoƒCƒh(’ñ‹Ÿ)‚·‚é‚½‚ß‚ÌƒCƒ“
-// ƒ^[ƒtƒF[ƒX‚Å‚·B‚µ‚½‚ª‚Á‚ÄAIDL‚Å’è‹`‚µ‚½ƒCƒ“ƒ^[ƒtƒF[ƒX‚ğ‚ÂƒT[
-// ƒrƒX‚Ì’†g‚ğÀ‘•‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B
+// ãƒ—ãƒ­ãƒã‚¤ãƒ€ã¨ã„ã†ã®ã¯æ–‡å­—é€šã‚Šã€ã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒ—ãƒ­ãƒã‚¤ãƒ‰(æä¾›)ã™ã‚‹ãŸã‚ã®ã‚¤ãƒ³
+// ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã§ã™ã€‚ã—ãŸãŒã£ã¦ã€IDLã§å®šç¾©ã—ãŸã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’æŒã¤ã‚µãƒ¼
+// ãƒ“ã‚¹ã®ä¸­èº«ã‚’å®Ÿè£…ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
 
-The Provider is literally a interface to provide some service.
-Therefore, the service that is the actual functionality of the
-provider interface has to be implemented.
+The Provider is literally a interface to provide some service. Therefore, the service that is the actual functionality of the provider interface has to be implemented.
 
-// ƒvƒƒoƒCƒ_ƒCƒ“ƒ^[ƒtƒF[ƒX‚ğ‚ÂƒRƒ“ƒ|[ƒlƒ“ƒg‚ğRTCBuilder‚ÅİŒv‚µ‚½ê
-// ‡AƒR[ƒh¶¬‚ğs‚¤‚ÆAƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒ\[ƒX‚Ì‚Ğ‚ÈŒ`‚Æ‚Æ‚à‚ÉA—á‚¦‚Î
-// C++‚Ìê‡‚É‚ÍA<ƒT[ƒrƒXƒCƒ“ƒ^[ƒtƒF[ƒX–¼>SVC_impl.cpp ‚Æ <ƒT[ƒrƒXƒC
-// ƒ“ƒ^[ƒtƒF[ƒX–¼>SVC_impl.h ‚Æ‚¢‚¤AƒvƒƒoƒCƒ_‚ÌÀ‘•ƒR[ƒh‚Ì‚Ğ‚ÈŒ`‚à¶
-// ¬‚³‚ê‚Ü‚·B
+// ãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’æŒã¤ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’RTCBuilderã§è¨­è¨ˆã—ãŸå ´
+// åˆã€ã‚³ãƒ¼ãƒ‰ç”Ÿæˆã‚’è¡Œã†ã¨ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ã‚½ãƒ¼ã‚¹ã®ã²ãªå½¢ã¨ã¨ã‚‚ã«ã€ä¾‹ãˆã°
+// C++ã®å ´åˆã«ã¯ã€<ã‚µãƒ¼ãƒ“ã‚¹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹å>SVC_impl.cpp ã¨ <ã‚µãƒ¼ãƒ“ã‚¹ã‚¤
+// ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹å>SVC_impl.h ã¨ã„ã†ã€ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®å®Ÿè£…ã‚³ãƒ¼ãƒ‰ã®ã²ãªå½¢ã‚‚ç”Ÿ
+// æˆã•ã‚Œã¾ã™ã€‚
 
-In case of designing a component with service provider interfaces by
-RTCBuilder, for example in C++ language, additional provider's
-implementation source code such as <service interface
-name>SVC_impl.cpp and <service interface name>SVC_impl.h will be
-generated with other component template source code.
+In case of designing a component with service provider interfaces by RTCBuilder, for example in C++ language, additional provider's implementation source code such as <service interface name>SVC_impl.cpp and <service interface name>SVC_impl.h will be generated with other component template source code.
 
 #ref(rtcbuilder_svcimpl_cxxsrc_en.png,100%,center)
 CENTER: ''Service provider implementation files (C++,Python,Java)''
 
-ˆÈ‰º‚ÉAŠeŒ¾Œê‚Å¶¬‚³‚ê‚éƒvƒƒoƒCƒ_‚ÌÀ‘•‚Ì‚Ğ‚ÈŒ`ƒR[ƒh‚Ìƒtƒ@ƒCƒ‹–¼‚ğ
-¦‚µ‚Ü‚·B
+ä»¥ä¸‹ã«ã€å„è¨€èªã§ç”Ÿæˆã•ã‚Œã‚‹ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®å®Ÿè£…ã®ã²ãªå½¢ã‚³ãƒ¼ãƒ‰ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’
+ç¤ºã—ã¾ã™ã€‚
 
 Provider's implementation template code file names for each language are shown in the following.
 
@@ -697,23 +539,22 @@ CENTER: ''Implementation file for service provider (Python)''
 #ref(rtcbuilder_svcimpl_javasrc_en.png,100%,center)
 CENTER: ''Implementation file for service provider (Java)''
 
-// ‚±‚ê‚ç‚ÌÀ‘•‚Ì‚Ğ‚ÈŒ`‚É‚ÍAIDL‚Å’è‹`‚³‚ê‚½ƒCƒ“ƒ^[ƒtƒF[ƒX‚É‘Š“–‚·‚éƒNƒ‰
-// ƒX‚ª‚ ‚ç‚©‚¶‚ß’è‹`‚³‚ê‚Ä‚¢‚Ü‚·B
+// ã“ã‚Œã‚‰ã®å®Ÿè£…ã®ã²ãªå½¢ã«ã¯ã€IDLã§å®šç¾©ã•ã‚ŒãŸã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã«ç›¸å½“ã™ã‚‹ã‚¯ãƒ©
+// ã‚¹ãŒã‚ã‚‰ã‹ã˜ã‚å®šç¾©ã•ã‚Œã¦ã„ã¾ã™ã€‚
 
 A class associated to the interface defined in IDL is already declared
 in these implementation templates.
 
-// ‚±‚±‚Å‚ÍAC++‚Å‚ÌÀ‘••û–@‚ğ—á‚É‚Æ‚èAIDL‚Å’è‹`‚³‚ê‚½ƒIƒyƒŒ[ƒVƒ‡ƒ“‚Ì‚¢
-// ‚­‚Â‚©‚ğÀ‘•‚µ‚Ä‚¢‚«‚Ü‚·B
+// ã“ã“ã§ã¯ã€C++ã§ã®å®Ÿè£…æ–¹æ³•ã‚’ä¾‹ã«ã¨ã‚Šã€IDLã§å®šç¾©ã•ã‚ŒãŸã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®ã„
+// ãã¤ã‹ã‚’å®Ÿè£…ã—ã¦ã„ãã¾ã™ã€‚
 
-Here, as an example, some operations defined in IDL will be
-implemented in C++ language.
+Here, as an example, some operations defined in IDL will be implemented in C++ language.
 
 
-// ****echo()ŠÖ”‚ÌÀ‘•
+// ****echo()é–¢æ•°ã®å®Ÿè£…
 ****echo() operation implementation
 
-// ‚Í‚¶‚ß‚ÉAecho() ƒƒ“ƒoŠÖ”‚ğŒ©‚Ä‚İ‚Ü‚·B
+// ã¯ã˜ã‚ã«ã€echo() ãƒ¡ãƒ³ãƒé–¢æ•°ã‚’è¦‹ã¦ã¿ã¾ã™ã€‚
 
 Let's see echo() member function at first.
 
@@ -729,52 +570,42 @@ Let's see echo() member function at first.
    return 0;
  }
 
-// #warning ƒvƒŠƒvƒƒZƒbƒTƒfƒBƒŒƒNƒeƒBƒu‚ª‚ ‚è‚Ü‚·‚ªA‚±‚ê‚Ígcc‚ÅƒRƒ“ƒpƒC
-// ƒ‹‚µ‚½Û‚É‚±‚ÌŠÖ”‚ªÀ‘•‚³‚ê‚Ä‚¢‚È‚¢‚±‚Æ‚ğŒx‚·‚é‚½‚ß‚Ì‚à‚Ì‚Å‚·‚Ì‚ÅA
-// #ifndef‚²‚Æíœ‚µ‚Ü‚·B
+// #warning ãƒ—ãƒªãƒ—ãƒ­ã‚»ãƒƒã‚µãƒ‡ã‚£ãƒ¬ã‚¯ãƒ†ã‚£ãƒ–ãŒã‚ã‚Šã¾ã™ãŒã€ã“ã‚Œã¯gccã§ã‚³ãƒ³ãƒ‘ã‚¤
+// ãƒ«ã—ãŸéš›ã«ã“ã®é–¢æ•°ãŒå®Ÿè£…ã•ã‚Œã¦ã„ãªã„ã“ã¨ã‚’è­¦å‘Šã™ã‚‹ãŸã‚ã®ã‚‚ã®ã§ã™ã®ã§ã€
+// #ifndefã”ã¨å‰Šé™¤ã—ã¾ã™ã€‚
 
-You can find the #warning preprocessor directive.  Since an error
-arises at the compile time if this function is not implemented, delete
-them including #ifndef directive.
+You can find the #warning preprocessor directive.  Since an error arises at the compile time if this function is not implemented, delete them including #ifndef directive.
 
  char* MyServiceSVC_impl::echo(const char* msg)
  {
    return msg;
  }
 
-// ‚Ü‚½A‚±‚ÌŠÖ”‚ÍAecho() ŠÖ”‚Ìˆø”‚É—^‚¦‚ç‚ê‚½•¶š—ñ‚ğA’P‚ÉŒÄ‚Ño‚µ‘¤
-// ‚É•Ô‚·‚¾‚¯‚Ì‹@”\‚ğ’ñ‹Ÿ‚·‚é‚Æ‚µ‚Ü‚·B‚µ‚½‚ª‚Á‚ÄAˆÈ‰º‚Ì‚æ‚¤‚ÉÀ‘•‚·‚ê‚Î
-// ‚æ‚¢‚æ‚¤‚Év‚¦‚Ü‚·B
+// ã¾ãŸã€ã“ã®é–¢æ•°ã¯ã€echo() é–¢æ•°ã®å¼•æ•°ã«ä¸ãˆã‚‰ã‚ŒãŸæ–‡å­—åˆ—ã‚’ã€å˜ã«å‘¼ã³å‡ºã—å´
+// ã«è¿”ã™ã ã‘ã®æ©Ÿèƒ½ã‚’æä¾›ã™ã‚‹ã¨ã—ã¾ã™ã€‚ã—ãŸãŒã£ã¦ã€ä»¥ä¸‹ã®ã‚ˆã†ã«å®Ÿè£…ã™ã‚Œã°
+// ã‚ˆã„ã‚ˆã†ã«æ€ãˆã¾ã™ã€‚
 
-Now we assume that this function echo() just return given string in
-argument to the caller. Therefore, the following implementation seems
-apparently normal.
+Now we assume that this function echo() just return given string in argument to the caller. Therefore, the following implementation seems apparently normal.
 
  char* MyServiceSVC_impl::echo(const char* msg)
  {
    return msg;
  }
 
-// ‚µ‚©‚µA‚±‚ê‚ÍƒRƒ“ƒpƒCƒ‹‚ÉƒGƒ‰[‚É‚È‚è‚Ü‚·Bconst char* ‚ğ char* ‚É“n
-// ‚µ‚Ä‚¢‚é‚½‚ß‚Å‚·B‚Ü‚½ACORBA ‚ÌƒIƒuƒWƒFƒNƒg‚ÌÀ‘••û–@‚Æ‚µ‚Ä‚àŠÔˆá‚Á‚Ä
-// ‚¢‚Ü‚·BCORBA‚Å‚ÍAreturn ‚Å•Ô‚³‚ê‚éƒIƒuƒWƒFƒNƒg‚ÍAORB (Object
-// Request Broker, ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ÌŒÄ‚Ño‚µ•”•ª‚ği‚é•”•ªACORBA‚ÌƒR
-// ƒA) ‚É‚æ‚Á‚Ä‰ğ‘Ì‚³‚ê‚é‚Æ‚¢‚¤ƒ‹[ƒ‹‚ª‚ ‚é‚½‚ß‚Å‚·B(return‚É‚ÍƒIƒuƒWƒF
-// ƒNƒg‚ÌŠ—LŒ ‚ğ•úŠü‚·‚éA‚Æ‚àŒ¾‚¢‚Ü‚·B)
+// ã—ã‹ã—ã€ã“ã‚Œã¯ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚ã«ã‚¨ãƒ©ãƒ¼ã«ãªã‚Šã¾ã™ã€‚const char* ã‚’ char* ã«æ¸¡
+// ã—ã¦ã„ã‚‹ãŸã‚ã§ã™ã€‚ã¾ãŸã€CORBA ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å®Ÿè£…æ–¹æ³•ã¨ã—ã¦ã‚‚é–“é•ã£ã¦
+// ã„ã¾ã™ã€‚CORBAã§ã¯ã€return ã§è¿”ã•ã‚Œã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ã€ORB (Object
+// Request Broker, ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‘¼ã³å‡ºã—éƒ¨åˆ†ã‚’å¸ã‚‹éƒ¨åˆ†ã€CORBAã®ã‚³
+// ã‚¢) ã«ã‚ˆã£ã¦è§£ä½“ã•ã‚Œã‚‹ã¨ã„ã†ãƒ«ãƒ¼ãƒ«ãŒã‚ã‚‹ãŸã‚ã§ã™ã€‚(returnæ™‚ã«ã¯ã‚ªãƒ–ã‚¸ã‚§
+// ã‚¯ãƒˆã®æ‰€æœ‰æ¨©ã‚’æ”¾æ£„ã™ã‚‹ã€ã¨ã‚‚è¨€ã„ã¾ã™ã€‚)
 
-However, this will be error when it is compiled. Because the const
-char* variable is returned to char* type.  Addingly it is also
-incorrect in the CORBA implementation rules.  Because CORBA has a rule
-that the ownership of the returned object has to be released and ORB
-destructs after that.
+However, this will be error when it is compiled. Because the const char* variable is returned to char* type.  Addingly it is also incorrect in the CORBA implementation rules.  Because CORBA has a rule that the ownership of the returned object has to be released and ORB destructs after that.
 
-// ‚µ‚½‚ª‚Á‚ÄAreturn ‚É‚ÍA•Ê“r—Ìˆæ‚ğŠm•Û‚µAmsg ‚Ì“à—e‚ğƒRƒs[‚µ‚½•¶š—ñ
-// ‚ğ•Ô‚·•K—v‚ª‚ ‚è‚Ü‚·B‚±‚ê‚É]‚¦‚ÎAˆÈ‰º‚Ì‚æ‚¤‚ÉÀ‘•‚·‚ê‚Î‚æ‚¢‚æ‚¤‚Év
-// ‚¤‚©‚à‚µ‚ê‚Ü‚¹‚ñB
+// ã—ãŸãŒã£ã¦ã€return ã«ã¯ã€åˆ¥é€”é ˜åŸŸã‚’ç¢ºä¿ã—ã€msg ã®å†…å®¹ã‚’ã‚³ãƒ”ãƒ¼ã—ãŸæ–‡å­—åˆ—
+// ã‚’è¿”ã™å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ã“ã‚Œã«å¾“ãˆã°ã€ä»¥ä¸‹ã®ã‚ˆã†ã«å®Ÿè£…ã™ã‚Œã°ã‚ˆã„ã‚ˆã†ã«æ€
+// ã†ã‹ã‚‚ã—ã‚Œã¾ã›ã‚“ã€‚
 
-Therefore, in order to return objects, you have to allocate memory and
-copy the contents of msg and return it. According to this rule, the
-following implementation seems correct.
+Therefore, in order to return objects, you have to allocate memory and copy the contents of msg and return it. According to this rule, the following implementation seems correct.
 
  char* MyServiceSVC_impl::echo(const char* msg)
  {
@@ -784,23 +615,18 @@ following implementation seems correct.
    return msgcopy;
  }
 
-// ‚±‚±‚Å‚ÍAmalloc‚Å—Ìˆæ‚ğŠm•Û‚µ‚Ä‚¢‚Ü‚·‚ªAORB‚Ífree‚Å—Ìˆæ‚ğ‰ğ‘Ì‚·‚é‚Ì‚©A
-// delete‚Å‰ğ‘Ì‚·‚é‚Ì‚©‚Í‚í‚©‚è‚Ü‚¹‚ñBÀ‚ÍACORBA‚Å‚ÍƒIƒuƒWƒFƒNƒg(\‘¢‘Ì
-// ‚â”z—ñA‚Ü‚½‚»‚Ì•¡‡Œ^“™‚àŠÜ‚Ş)‚â•¶š—ñ‚ğˆµ‚¤‚½‚ß‚Ì•û–@‚ª•Ê“r’è‚ß‚ç‚ê‚Ä
-// ‚¢‚ÄA‚»‚ê‚É]‚Á‚ÄŠÖ”‚Ìˆø”‚ğó‚¯æ‚Á‚½‚èA•Ô‚µ‚½‚è‚·‚é•K—v‚ª‚ ‚é‚Ì‚Å
-// ‚·B
+// ã“ã“ã§ã¯ã€mallocã§é ˜åŸŸã‚’ç¢ºä¿ã—ã¦ã„ã¾ã™ãŒã€ORBã¯freeã§é ˜åŸŸã‚’è§£ä½“ã™ã‚‹ã®ã‹ã€
+// deleteã§è§£ä½“ã™ã‚‹ã®ã‹ã¯ã‚ã‹ã‚Šã¾ã›ã‚“ã€‚å®Ÿã¯ã€CORBAã§ã¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(æ§‹é€ ä½“
+// ã‚„é…åˆ—ã€ã¾ãŸãã®è¤‡åˆå‹ç­‰ã‚‚å«ã‚€)ã‚„æ–‡å­—åˆ—ã‚’æ‰±ã†ãŸã‚ã®æ–¹æ³•ãŒåˆ¥é€”å®šã‚ã‚‰ã‚Œã¦
+// ã„ã¦ã€ãã‚Œã«å¾“ã£ã¦é–¢æ•°ã®å¼•æ•°ã‚’å—ã‘å–ã£ãŸã‚Šã€è¿”ã—ãŸã‚Šã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã®ã§
+// ã™ã€‚
 
-Here, although memory is allocated by using malloc, it is uncertain
-whether the area would be released by free() or delete().  Actually
-CORBA provides methods to allocate and/or destruct objects (including
-structure, array and complex types), and developers have to receive
-argument and return value according to the rules.
+Here, although memory is allocated by using malloc, it is uncertain whether the area would be released by free() or delete().  Actually CORBA provides methods to allocate and/or destruct objects (including structure, array and complex types), and developers have to receive argument and return value according to the rules.
 
-// CORBA‚Å’è‚ß‚ç‚ê‚½•û–@‚É]‚¤‚ÆAecho()ŠÖ”‚ÍˆÈ‰º‚Ì‚æ‚¤‚ÉÀ‘•‚·‚é•K—v
-// ‚ª‚ ‚è‚Ü‚·B
+// CORBAã§å®šã‚ã‚‰ã‚ŒãŸæ–¹æ³•ã«å¾“ã†ã¨ã€echo()é–¢æ•°ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«å®Ÿè£…ã™ã‚‹å¿…è¦
+// ãŒã‚ã‚Šã¾ã™ã€‚
 
-According to the CORBA rule, the echo() function should be implemented
-as follows.
+According to the CORBA rule, the echo() function should be implemented as follows.
 
  char* MyServiceSVC_impl::echo(const char* msg)
  {
@@ -808,108 +634,77 @@ as follows.
    return msgcopy._retn();
  }
 
-// ŠÖ”“à‚Ì1s–Ú‚Å‚ÍACORBA‚Ì•¶š—ñƒNƒ‰ƒXCORBA::String ‚ÌƒXƒ}[ƒgƒ|ƒCƒ“ƒ^
-// ‚Å‚ ‚é CORBA::String_var Œ^‚ğéŒ¾‚µ‚Ä‚¢‚Ü‚·BString_var Œ^‚Í‚¢‚í‚ä‚éŠ
-// —LŒ ‚ğŠÇ—‚·‚é‚½‚ß‚ÌƒXƒ}[ƒgƒ|ƒCƒ“ƒ^‚ÅSTL‚Ìauto_ptr‚É—‚Ä‚¢‚Ü‚·B
+// é–¢æ•°å†…ã®1è¡Œç›®ã§ã¯ã€CORBAã®æ–‡å­—åˆ—ã‚¯ãƒ©ã‚¹CORBA::String ã®ã‚¹ãƒãƒ¼ãƒˆãƒã‚¤ãƒ³ã‚¿
+// ã§ã‚ã‚‹ CORBA::String_var å‹ã‚’å®£è¨€ã—ã¦ã„ã¾ã™ã€‚String_var å‹ã¯ã„ã‚ã‚†ã‚‹æ‰€
+// æœ‰æ¨©ã‚’ç®¡ç†ã™ã‚‹ãŸã‚ã®ã‚¹ãƒãƒ¼ãƒˆãƒã‚¤ãƒ³ã‚¿ã§STLã®auto_ptrã«ä¼¼ã¦ã„ã¾ã™ã€‚
 
-In the first line of the function, CORBA::String_var which is a kind
-of smart pointer for CORBA's string class CORBA::String is declared.
-String_var, which is similar to auto_ptr of STL, is a smart pointer to
-manage ownership of objects.
+In the first line of the function, CORBA::String_var which is a kind of smart pointer for CORBA's string class CORBA::String is declared. String_var, which is similar to auto_ptr of STL, is a smart pointer to manage ownership of objects.
 
  CORBA::String_var msgcopy = CORBA::string_dup(msg);
 
-// ‚±‚Ì String_var Œ^‚Ì•Ï” msgcopy ‚Éˆø”‚Ì msg ‚ÉŠi”[‚³‚ê‚Ä‚¢‚é•¶š—ñ‚ğ
-// ƒRƒs[‚µ‚Ä‚¢‚é‚Ì‚ª CORBA::string_dup() ŠÖ”‚Å‚·B‚±‚ÌŠÖ”‚Å‚Íˆø”‚É—^‚¦
-// ‚ç‚ê‚½•¶š—ñ‚ğŠi”[‚·‚é‚Ì‚É\•ª‚Èƒƒ‚ƒŠ—Ìˆæ‚ğŠm•Û‚µA‚»‚Ì—Ìˆæ‚Éˆø”‚Ì•¶
-// š—ñ‚ğƒRƒs[‚µ‚Ä‚¢‚Ü‚·B
+// ã“ã® String_var å‹ã®å¤‰æ•° msgcopy ã«å¼•æ•°ã® msg ã«æ ¼ç´ã•ã‚Œã¦ã„ã‚‹æ–‡å­—åˆ—ã‚’
+// ã‚³ãƒ”ãƒ¼ã—ã¦ã„ã‚‹ã®ãŒ CORBA::string_dup() é–¢æ•°ã§ã™ã€‚ã“ã®é–¢æ•°ã§ã¯å¼•æ•°ã«ä¸ãˆ
+// ã‚‰ã‚ŒãŸæ–‡å­—åˆ—ã‚’æ ¼ç´ã™ã‚‹ã®ã«ååˆ†ãªãƒ¡ãƒ¢ãƒªé ˜åŸŸã‚’ç¢ºä¿ã—ã€ãã®é ˜åŸŸã«å¼•æ•°ã®æ–‡
+// å­—åˆ—ã‚’ã‚³ãƒ”ãƒ¼ã—ã¦ã„ã¾ã™ã€‚
 
-This CORBA::string_dup() function copies the character string stored
-in msg variable to the variable msgcopy which is a String_var type
-variable.  In this function, sufficient memory space for given
-characters are allocated and these are copied to the area.
+This CORBA::string_dup() function copies the character string stored in msg variable to the variable msgcopy which is a String_var type variable.  In this function, sufficient memory space for given characters are allocated and these are copied to the area.
 
-// Ÿ‚Ìs‚Å‚ÍAreturn ‚ÅŒÄ‚Ño‚µŒ³‚É msgcopy “à‚Ì•¶š—ñ‚ğ•Ô‚µ‚Â‚ÂAƒIƒuƒWƒF
-// ƒNƒg‚ÌŠ—LŒ ‚ğ•úŠüAreturn ‘¤‚ÉŠ—LŒ ‚ğˆÚ÷‚µ‚Ä‚¢‚Ü‚·B‰º}‚É¦‚·‚æ‚¤‚É
-// ORB ‚Å‚ÍAreturn ‚Å•Ô‚³‚ê‚½•¶š—ñ‚ğAƒlƒbƒgƒ[ƒNã‚ÌŒÄ‚Ño‚µŒ³‚É‘—M‚µ
-// ‚Ä‚©‚çA•¶š—ñƒIƒuƒWƒFƒNƒg‚ğ‰ğ•ú‚µ‚Ü‚·B
+// æ¬¡ã®è¡Œã§ã¯ã€return ã§å‘¼ã³å‡ºã—å…ƒã« msgcopy å†…ã®æ–‡å­—åˆ—ã‚’è¿”ã—ã¤ã¤ã€ã‚ªãƒ–ã‚¸ã‚§
+// ã‚¯ãƒˆã®æ‰€æœ‰æ¨©ã‚’æ”¾æ£„ã€return å´ã«æ‰€æœ‰æ¨©ã‚’ç§»è­²ã—ã¦ã„ã¾ã™ã€‚ä¸‹å›³ã«ç¤ºã™ã‚ˆã†ã«
+// ORB ã§ã¯ã€return ã§è¿”ã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’ã€ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ä¸Šã®å‘¼ã³å‡ºã—å…ƒã«é€ä¿¡ã—
+// ã¦ã‹ã‚‰ã€æ–‡å­—åˆ—ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è§£æ”¾ã—ã¾ã™ã€‚
 
-At the next line, character string in msgcopy is returned to caller
-and its ownership is released and is transferred to caller.  As shown
-in the following figure, ORB destructs string object after it is
-transferred to the caller on the network.
+At the next line, character string in msgcopy is returned to caller and its ownership is released and is transferred to caller.  As shown in the following figure, ORB destructs string object after it is transferred to the caller on the network.
 
 
 #ref(serviceport_orb_and_provider_en.png,50%,center)
 CENTER: ''Relation among ORB, operation call and memory management.''
 
-// ‚±‚Ìƒ‹[ƒ‹‚ğ‚æ‚­—‰ğ‚·‚é‚ÆAmsgcopy ƒIƒuƒWƒFƒNƒg‚ª echo() ŠÖ”“à‚Åg—p
-// ‚³‚ê‚Ä‚¢‚È‚¢‚±‚Æ‚©‚çAecho() ŠÖ”‚ÌÀ‘•‚ÍÅI“I‚É‚ÍˆÈ‰º‚Ì‚æ‚¤‚É‚à‘‚­‚±
-// ‚Æ‚à‚Å‚«‚Ü‚·B
+// ã“ã®ãƒ«ãƒ¼ãƒ«ã‚’ã‚ˆãç†è§£ã™ã‚‹ã¨ã€msgcopy ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒ echo() é–¢æ•°å†…ã§ä½¿ç”¨
+// ã•ã‚Œã¦ã„ãªã„ã“ã¨ã‹ã‚‰ã€echo() é–¢æ•°ã®å®Ÿè£…ã¯æœ€çµ‚çš„ã«ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«ã‚‚æ›¸ãã“
+// ã¨ã‚‚ã§ãã¾ã™ã€‚
 
-According to this rule, since msgcopy object is used only for return
-value in the function, the implementation of the echo() function can
-be written as follows.
+According to this rule, since msgcopy object is used only for return value in the function, the implementation of the echo() function can be written as follows.
 
  char* MyServiceSVC_impl::echo(const char* msg)
  {
    return CORBA::string_dup(msg);
  }
 
-// CORBA::string_dup() ŠÖ”‚Å•¶š—ñ—Ìˆæ‚ÌŠm•Û‚Æ“à—e‚ÌƒRƒs[‚ğs‚Á‚½‚¤‚¦‚ÅA
-// ‚»‚ÌŠ—LŒ ‚ğ’¼‚ÉŒÄ‚Ño‚µŒ³‚É—^‚¦‚Ä‚¢‚é‚±‚Æ‚É‚È‚è‚Ü‚·B
+// CORBA::string_dup() é–¢æ•°ã§æ–‡å­—åˆ—é ˜åŸŸã®ç¢ºä¿ã¨å†…å®¹ã®ã‚³ãƒ”ãƒ¼ã‚’è¡Œã£ãŸã†ãˆã§ã€
+// ãã®æ‰€æœ‰æ¨©ã‚’ç›´ã«å‘¼ã³å‡ºã—å…ƒã«ä¸ãˆã¦ã„ã‚‹ã“ã¨ã«ãªã‚Šã¾ã™ã€‚
 
-This means that CORBA::string_dup() function allocates memory for
-string characters, copies it to there and transfers its ownership to
-caller.
+This means that CORBA::string_dup() function allocates memory for string characters, copies it to there and transfers its ownership to caller.
 
-// ‚±‚Ì‚æ‚¤‚ÉAƒT[ƒrƒXƒvƒƒoƒCƒ_‚Í CORBA ‚ÌƒIƒuƒWƒFƒNƒg‚Å‚·‚Ì‚ÅA‚»‚ÌÀ‘•
-// •û–@‚Í’Êí‚Ì C++ ‚ÌÀ‘•‚Æ‚Í­‚µˆá‚Á‚½‚â‚è•û‚Ås‚¤•K—v‚ª‚ ‚è‚Ü‚·B“Á‚ÉAŠÖ
-// ”‚Ìˆø”‚¨‚æ‚Ñ•Ô‚è’l‚Ìó‚¯“n‚µ‹K‘¥‚ÍA­‚µ•¡G‚È‚æ‚¤‚ÉŒ©‚¦‚Ü‚·B‚½‚¾‚µA
-// ã‹L‚Ì‚æ‚¤‚ÉAƒIƒuƒWƒFƒNƒg‚ÌŠ—LŒ ‚Æ‚¢‚¤l‚¦•û‚ğ”O“ª‚É‚¨‚¢‚Äl‚¦‚é‚ÆA
-// ˆø”‚ğ‚Ç‚Ì‚æ‚¤‚Éó‚¯æ‚é‚×‚«‚È‚Ì‚©A‚ ‚é‚¢‚Í•Ô‚è’l‚ğ‚Ç‚Ì‚æ‚¤‚É•Ô‚·‚×‚«
-// ‚È‚Ì‚©‚ª©‚¸‚Æ–¾‚ç‚©‚É‚È‚è‚Ü‚·BÚ×‚É‚Â‚¢‚Ä‚ÍAAppendix‚â‘¼‚ÌCORBA‚ÌQ
-// l‘“™‚ğQl‚É‚µ‚Ä‚­‚¾‚³‚¢B
+// ã“ã®ã‚ˆã†ã«ã€ã‚µãƒ¼ãƒ“ã‚¹ãƒ—ãƒ­ãƒã‚¤ãƒ€ã¯ CORBA ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ã™ã®ã§ã€ãã®å®Ÿè£…
+// æ–¹æ³•ã¯é€šå¸¸ã® C++ ã®å®Ÿè£…ã¨ã¯å°‘ã—é•ã£ãŸã‚„ã‚Šæ–¹ã§è¡Œã†å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ç‰¹ã«ã€é–¢
+// æ•°ã®å¼•æ•°ãŠã‚ˆã³è¿”ã‚Šå€¤ã®å—ã‘æ¸¡ã—è¦å‰‡ã¯ã€å°‘ã—è¤‡é›‘ãªã‚ˆã†ã«è¦‹ãˆã¾ã™ã€‚ãŸã ã—ã€
+// ä¸Šè¨˜ã®ã‚ˆã†ã«ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æ‰€æœ‰æ¨©ã¨ã„ã†è€ƒãˆæ–¹ã‚’å¿µé ­ã«ãŠã„ã¦è€ƒãˆã‚‹ã¨ã€
+// å¼•æ•°ã‚’ã©ã®ã‚ˆã†ã«å—ã‘å–ã‚‹ã¹ããªã®ã‹ã€ã‚ã‚‹ã„ã¯è¿”ã‚Šå€¤ã‚’ã©ã®ã‚ˆã†ã«è¿”ã™ã¹ã
+// ãªã®ã‹ãŒè‡ªãšã¨æ˜ã‚‰ã‹ã«ãªã‚Šã¾ã™ã€‚è©³ç´°ã«ã¤ã„ã¦ã¯ã€Appendixã‚„ä»–ã®CORBAã®å‚
+// è€ƒæ›¸ç­‰ã‚’å‚è€ƒã«ã—ã¦ãã ã•ã„ã€‚
 
-In this manner, since a service provider is a CORBA object, its
-implementation have to be performed as a little different way from the
-normal C++ style programming.  Especially the rule for argument and
-return value for operations seems difficult to understand.  However,
-as mentioned above, if you are keeping the ownership handling of
-objects in your mind, you can easily understand how to receive
-arguments and how to return object.  For details, please refer to the
-reference book of Appendix or other CORBA etc.
+In this manner, since a service provider is a CORBA object, its implementation have to be performed as a little different way from the normal C++ style programming.  Especially the rule for argument and return value for operations seems difficult to understand.  However, as mentioned above, if you are keeping the ownership handling of objects in your mind, you can easily understand how to receive arguments and how to return object.  For details, please refer to the reference book of Appendix or other CORBA etc.
 
-// ****set_value(), get_value() ‚Æ get_value_history()
+// ****set_value(), get_value() ã¨ get_value_history()
 ****set_value(), get_value() and get_value_history()
 
-// Ÿ‚ÍAset_value() ŠÖ”, get_value() ŠÖ”‚¨‚æ‚Ñ get_value_list() ŠÖ”‚ğ
-// “¯‚ÉÀ‘•‚µ‚Ä‚¢‚«‚Ü‚·B‚±‚ê‚ç‚ÌŠÖ”‚ÍAset_value() ‚Åİ’è‚³‚ê‚½floatŒ^
-// ‚Ì’l‚ğ•Û‘¶‚µ‚Ä‚¨‚«Aget_value()‚Å‚»‚Ì’l‚ğ•Ô‚·‚Æ‚¢‚¤’Pƒ‚È‚à‚Ì‚Å‚·B‚Ü‚½A
-// get_value_history() ‚Å‚ÍA¡‚Ü‚Å‚ÉƒZƒbƒg‚³‚ê‚½’l‚Ì—š—ğ‚ğ•Û‘¶‚µ‚Ä‚¨‚«A
-// —š—ğ‚ğƒŠƒXƒg‚Æ‚µ‚Ä•Ô‚·‚Æ‚¢‚¤‚à‚Ì‚Å‚·B
+// æ¬¡ã¯ã€set_value() é–¢æ•°, get_value() é–¢æ•°ãŠã‚ˆã³ get_value_list() é–¢æ•°ã‚’
+// åŒæ™‚ã«å®Ÿè£…ã—ã¦ã„ãã¾ã™ã€‚ã“ã‚Œã‚‰ã®é–¢æ•°ã¯ã€set_value() ã§è¨­å®šã•ã‚ŒãŸfloatå‹
+// ã®å€¤ã‚’ä¿å­˜ã—ã¦ãŠãã€get_value()ã§ãã®å€¤ã‚’è¿”ã™ã¨ã„ã†å˜ç´”ãªã‚‚ã®ã§ã™ã€‚ã¾ãŸã€
+// get_value_history() ã§ã¯ã€ä»Šã¾ã§ã«ã‚»ãƒƒãƒˆã•ã‚ŒãŸå€¤ã®å±¥æ­´ã‚’ä¿å­˜ã—ã¦ãŠãã€
+// å±¥æ­´ã‚’ãƒªã‚¹ãƒˆã¨ã—ã¦è¿”ã™ã¨ã„ã†ã‚‚ã®ã§ã™ã€‚
 
-Next, set_value(), get_value() and get_value_list() functions will be
-implemented simultaneously.  These functions work as follows.
-set_value() sets a float type value and stores a variable, get_value()
-returns the stored value, and get_value_history() returns history list
-which is recorded past set values.
+Next, set_value(), get_value() and get_value_list() functions will be implemented simultaneously.  These functions work as follows. set_value() sets a float type value and stores a variable, get_value() returns the stored value, and get_value_history() returns history list which is recorded past set values.
 
-// ]‚Ü‚¸A’l‚ğ•Û‘¶‚µ‚Ä‚¨‚­•Ï”‚ğ—pˆÓ‚µ‚Ü‚·BŒ»İ‚Ì’l‚ÍMyServiceSVC_implƒNƒ‰
-// ]ƒX‚ÉCORBA::FloatŒ^‚Ìprivateƒƒ“ƒo[‚Æ‚µ‚Ä—pˆÓ‚µ‚Ü‚·Bˆê•ûA
-// ]get_value_history() ‚Å‚ÍA–ß‚è’l‚ÉSimpleService::ValueList ‚Æ‚¢‚¤CORBA
-// ]‚ÌƒV[ƒPƒ“ƒXŒ^‚ªg‚í‚ê‚Ä‚¢‚é‚Ì‚ÅA‚±‚ê‚ğƒƒ“ƒo[•Ï”‚Æ‚µ‚Ä‚Â‚æ‚¤‚É‚µ
-// ]‚Ü‚·B‚±‚ê‚ç‚Ì•Ï”éŒ¾‚ğ MyServiceSVC_impl.h ‚Ì MyServiceSVC_impl ƒNƒ‰
-// ]ƒX’è‹`‚ÌÅŒã‚Ì•û‚ÉˆÈ‰º‚Ì‚æ‚¤‚É’Ç‰Á‚µ‚Ü‚·B
+// ]ã¾ãšã€å€¤ã‚’ä¿å­˜ã—ã¦ãŠãå¤‰æ•°ã‚’ç”¨æ„ã—ã¾ã™ã€‚ç¾åœ¨ã®å€¤ã¯MyServiceSVC_implã‚¯ãƒ©
+// ]ã‚¹ã«CORBA::Floatå‹ã®privateãƒ¡ãƒ³ãƒãƒ¼ã¨ã—ã¦ç”¨æ„ã—ã¾ã™ã€‚ä¸€æ–¹ã€
+// ]get_value_history() ã§ã¯ã€æˆ»ã‚Šå€¤ã«SimpleService::ValueList ã¨ã„ã†CORBA
+// ]ã®ã‚·ãƒ¼ã‚±ãƒ³ã‚¹å‹ãŒä½¿ã‚ã‚Œã¦ã„ã‚‹ã®ã§ã€ã“ã‚Œã‚’ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°ã¨ã—ã¦æŒã¤ã‚ˆã†ã«ã—
+// ]ã¾ã™ã€‚ã“ã‚Œã‚‰ã®å¤‰æ•°å®£è¨€ã‚’ MyServiceSVC_impl.h ã® MyServiceSVC_impl ã‚¯ãƒ©
+// ]ã‚¹å®šç¾©ã®æœ€å¾Œã®æ–¹ã«ä»¥ä¸‹ã®ã‚ˆã†ã«è¿½åŠ ã—ã¾ã™ã€‚
 
-At first, a variable to store current value is needed.  The current
-value is declared as a CORBA::Float type private member of
-MyServiceSVC_impl class.  On the other hand, in the
-get_value_history() function, since a CORBA sequence type
-SimpleService::ValueList is used for return value, same type variable
-should be owned as a member variable.  These variable declarations are
-added to the end of MyServiceSVC_impl class definition in
-MyServiceSVC_impl.h.
+At first, a variable to store current value is needed.  The current value is declared as a CORBA::Float type private member of MyServiceSVC_impl class.  On the other hand, in the get_value_history() function, since a CORBA sequence type SimpleService::ValueList is used for return value, same type variable should be owned as a member variable.  These variable declarations are added to the end of MyServiceSVC_impl class definition in MyServiceSVC_impl.h.
 
  class MyServiceSVC_impl
    : public virtual POA_SimpleService::MyService,
@@ -921,12 +716,10 @@ MyServiceSVC_impl.h.
    SimpleService::ValueList m_valueList; // add this line
    };
 
-// •Ï”‚Ì‰Šú‰»‚à–Y‚ê‚¸‚És‚¢‚Ü‚·BMyServiceSVC_impl.cpp ‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^
-// ‚ÅAm_value ‚Í 0.0‚ÉAm_valueList ‚Í’·‚³0‚É‰Šú‰»‚µ‚Ä‚¨‚«‚Ü‚·B
+// å¤‰æ•°ã®åˆæœŸåŒ–ã‚‚å¿˜ã‚Œãšã«è¡Œã„ã¾ã™ã€‚MyServiceSVC_impl.cpp ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
+// ã§ã€m_value ã¯ 0.0ã«ã€m_valueList ã¯é•·ã•0ã«åˆæœŸåŒ–ã—ã¦ãŠãã¾ã™ã€‚
 
-Remember to initialize variable. In the constructor in
-MyServiceSVC_impl.cpp, m_value is set to 0.0 and the length of
-m_valueList is set to 0.
+Remember to initialize variable. In the constructor in MyServiceSVC_impl.cpp, m_value is set to 0.0 and the length of m_valueList is set to 0.
 
  MyServiceSVC_impl::MyServiceSVC_impl()
  : m_value(0.0), m_valueList(0)
@@ -934,49 +727,35 @@ m_valueList is set to 0.
    // Please add extra constructor code here.
  }
 
-// Ÿ‚ÉAset_value() ŠÖ”‚ğÀ‘•‚µ‚Ü‚·Bˆø”‚É—^‚¦‚ç‚ê‚½”’l‚ğƒƒ“ƒo•Ï”
-// m_value ‚É‘ã“ü‚·‚é‚Æ‚Æ‚à‚ÉAm_valueList‚É‚à’Ç‰Á‚µ‚Ü‚·BCORBA‚ÌƒV[ƒPƒ“
-// ƒXŒ^‚ÍA“®“I”z—ñŒ^‚ÅA[]ƒIƒyƒŒ[ƒ^‚Æ‚Æ‚à‚ÉAlength(),
-// length(CORBA::ULong) ‚ÌŠÖ”‚ğ—˜—p‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·Blength() ŠÖ”‚ÍAŒ»
-// İ‚Ì”z—ñ‚Ì’·‚³‚ğ•Ô‚µAlength(CORBA::ULong) ŠÖ”‚ÍŒ»İ‚Ì”z—ñ‚Ì’·‚³‚ğİ’è
-// ‚µ‚Ü‚·BÀ‘•‚ÍˆÈ‰º‚Ì‚æ‚¤‚É‚È‚è‚Ü‚·B
+// æ¬¡ã«ã€set_value() é–¢æ•°ã‚’å®Ÿè£…ã—ã¾ã™ã€‚å¼•æ•°ã«ä¸ãˆã‚‰ã‚ŒãŸæ•°å€¤ã‚’ãƒ¡ãƒ³ãƒå¤‰æ•°
+// m_value ã«ä»£å…¥ã™ã‚‹ã¨ã¨ã‚‚ã«ã€m_valueListã«ã‚‚è¿½åŠ ã—ã¾ã™ã€‚CORBAã®ã‚·ãƒ¼ã‚±ãƒ³
+// ã‚¹å‹ã¯ã€å‹•çš„é…åˆ—å‹ã§ã€[]ã‚ªãƒšãƒ¬ãƒ¼ã‚¿ã¨ã¨ã‚‚ã«ã€length(),
+// length(CORBA::ULong) ã®é–¢æ•°ã‚’åˆ©ç”¨ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚length() é–¢æ•°ã¯ã€ç¾
+// åœ¨ã®é…åˆ—ã®é•·ã•ã‚’è¿”ã—ã€length(CORBA::ULong) é–¢æ•°ã¯ç¾åœ¨ã®é…åˆ—ã®é•·ã•ã‚’è¨­å®š
+// ã—ã¾ã™ã€‚å®Ÿè£…ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚
 
-Next, set_value() function is implemented. Set a value from the
-argument to a member variable m_value, and add it also to m_valueList.
-CORBA's sequence type is a kind of dynamic array type, and [] (array)
-operator, length() and length(CORBA::ULong) operators are
-available. length() returns current length of the array, and
-lenght(CORBA::ULong) set length of the array.  The function can be
-implemented as follows.
+Next, set_value() function is implemented. Set a value from the argument to a member variable m_value, and add it also to m_valueList. CORBA's sequence type is a kind of dynamic array type, and [] (array) operator, length() and length(CORBA::ULong) operators are available. length() returns current length of the array, and lenght(CORBA::ULong) set length of the array.  The function can be implemented as follows.
 
  void MyServiceSVC_impl::set_value(CORBA::Float value)
    throw (CORBA::SystemException)
  {
-   m_value = value; // Œ»İ’l
+   m_value = value; // ç¾åœ¨å€¤
  
    CORBA::ULong len(m_valueList.length()); // Getting length of the array
    m_valueList.length(len + 1); // Increment length of the array
    m_valueList[len] = value; // Adding a value to the end of the array
- 
+  
    return;
  }
 
-// echo() ŠÖ”‚Æ‚ÍˆÙ‚È‚èACORBA::Long Œ^‚ÍC++‚Ìlong int‚Æ“™‰¿‚ÅAƒIƒuƒWƒF
-// ƒNƒg‚ÌŠ—LŒ A—ÌˆæŠm•Û‚â”pŠü“™‚Íl‚¦‚é•K—v‚Í‚ ‚è‚Ü‚¹‚ñB‚µ‚½‚ª‚Á‚ÄAã
-// ‚Ì‚æ‚¤‚É’Pƒ‚È‘ã“ü‚Å\‚¢‚Ü‚¹‚ñB‚Ü‚½A”z—ñŒ^‚ÍA2í—Ş‚Ì length() ŠÖ”‚Æ
-// []ƒIƒyƒŒ[ƒ^‚ğ—˜—p‚µ‚ÄA”z—ñ‚Ì’·‚³‚ğ1‚Â‘‚â‚µ‚ÄÅŒã”ö‚Éˆø”‚Ì’l‚ğ‘ã“ü‚µ
-// ‚Ä‚¢‚Ü‚·B‚È‚¨AOpenRTM-aist‚Å‚ÍACORBA‚ÌƒV[ƒPƒ“ƒXŒ^‚ğSTL‚Ìvector‚É‹ß
-// ‚¢Œ`‚Å—˜—p‚·‚é‚½‚ß‚ÌŠÖ”ƒeƒ“ƒvƒŒ[ƒg‚ğ’ñ‹Ÿ‚µ‚Ä‚¨‚èA‚»‚ê‚ğg‚¤‚ÆA
+// echo() é–¢æ•°ã¨ã¯ç•°ãªã‚Šã€CORBA::Long å‹ã¯C++ã®long intã¨ç­‰ä¾¡ã§ã€ã‚ªãƒ–ã‚¸ã‚§
+// ã‚¯ãƒˆã®æ‰€æœ‰æ¨©ã€é ˜åŸŸç¢ºä¿ã‚„å»ƒæ£„ç­‰ã¯è€ƒãˆã‚‹å¿…è¦ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚ã—ãŸãŒã£ã¦ã€ä¸Š
+// ã®ã‚ˆã†ã«å˜ç´”ãªä»£å…¥ã§æ§‹ã„ã¾ã›ã‚“ã€‚ã¾ãŸã€é…åˆ—å‹ã¯ã€2ç¨®é¡ã® length() é–¢æ•°ã¨
+// []ã‚ªãƒšãƒ¬ãƒ¼ã‚¿ã‚’åˆ©ç”¨ã—ã¦ã€é…åˆ—ã®é•·ã•ã‚’1ã¤å¢—ã‚„ã—ã¦æœ€å¾Œå°¾ã«å¼•æ•°ã®å€¤ã‚’ä»£å…¥ã—
+// ã¦ã„ã¾ã™ã€‚ãªãŠã€OpenRTM-aistã§ã¯ã€CORBAã®ã‚·ãƒ¼ã‚±ãƒ³ã‚¹å‹ã‚’STLã®vectorã«è¿‘
+// ã„å½¢ã§åˆ©ç”¨ã™ã‚‹ãŸã‚ã®é–¢æ•°ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’æä¾›ã—ã¦ãŠã‚Šã€ãã‚Œã‚’ä½¿ã†ã¨ã€
 
-Differing from the argument of the echo() function, since CORBA::Long
-type is equivalent of long int type, you do not need to consider
-ownership, allocation and destruction of objects.  Therefore, simple
-assignment above is allowed.  By using two types of length() function
-and [] array operator of the sequence type variable, length of the
-variable is incremented and a value is added to the tail of the array.
-OpenRTM-aist provides some function templates which enables CORBA
-sequence type to be used like STL vector container, and the above code
-can be implemented as follows.
+Differing from the argument of the echo() function, since CORBA::Long type is equivalent of long int type, you do not need to consider ownership, allocation and destruction of objects.  Therefore, simple assignment above is allowed.  By using two types of length() function and [] array operator of the sequence type variable, length of the variable is incremented and a value is added to the tail of the array. OpenRTM-aist provides some function templates which enables CORBA sequence type to be used like STL vector container, and the above code can be implemented as follows.
 
  void MyServiceSVC_impl::set_value(CORBA::Float value)
    throw (CORBA::SystemException)
@@ -987,13 +766,13 @@ can be implemented as follows.
    return;
  }
 
-// ‚Ì‚æ‚¤‚É‘‚­‚±‚Æ‚ª‚Å‚«‚Ü‚·BCORBA_SeqUtil.h ‚Å‚ÍA for_each(), find(),
-// push_back(), insert(), front(), back(), erase(), clear() ‚Æ‚¢‚Á‚½ŠÖ”‚ª
-// ’è‹`‚³‚ê‚Ä‚¢‚Ü‚·B
+// ã®ã‚ˆã†ã«æ›¸ãã“ã¨ãŒã§ãã¾ã™ã€‚CORBA_SeqUtil.h ã§ã¯ã€ for_each(), find(),
+// push_back(), insert(), front(), back(), erase(), clear() ã¨ã„ã£ãŸé–¢æ•°ãŒ
+// å®šç¾©ã•ã‚Œã¦ã„ã¾ã™ã€‚
 
 In the CORBA_SeqUtil.h, for_each(), find(), push_back(), insert(), front(), back(), erase() and clear() functions are defined.
 
-// get_value() ‚ÍˆÈ‰º‚Ì‚æ‚¤‚É‚È‚è‚Ü‚·B
+// get_value() ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚
 
 get_value() can be implemented as follows.
 
@@ -1003,22 +782,17 @@ get_value() can be implemented as follows.
    return m_value;
  }
 
-// •Û‘¶‚³‚ê‚½’l‚ğ return ‚ÅŒÄ‚Ño‚µŒ³‚É•Ô‚·‚¾‚¯‚Å‚·B‚±‚±‚Å‚àAæ‚Ù‚Ç‚Ì
-// echo() ‚Ì—á‚Æ‚ÍˆÙ‚È‚èACORBA::Float ‚ªƒvƒŠƒ~ƒeƒBƒuŒ^‚È‚Ì‚ÅŠ—LŒ “™‚ğl
-// —¶‚·‚é•K—v‚Í‚ ‚è‚Ü‚¹‚ñB
+// ä¿å­˜ã•ã‚ŒãŸå€¤ã‚’ return ã§å‘¼ã³å‡ºã—å…ƒã«è¿”ã™ã ã‘ã§ã™ã€‚ã“ã“ã§ã‚‚ã€å…ˆã»ã©ã®
+// echo() ã®ä¾‹ã¨ã¯ç•°ãªã‚Šã€CORBA::Float ãŒãƒ—ãƒªãƒŸãƒ†ã‚£ãƒ–å‹ãªã®ã§æ‰€æœ‰æ¨©ç­‰ã‚’è€ƒ
+// æ…®ã™ã‚‹å¿…è¦ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
 
-This function only returns the stored value.  Differing from echo()
-function, since CORBA::Float is primitive type, you do not need to
-consider ownership, and so on.
+This function only returns the stored value.  Differing from echo() function, since CORBA::Float is primitive type, you do not need to consider ownership, and so on.
 
-// ÅŒã‚ÉAget_value_history() ‚ÌÀ‘•‚ğŒ©‚Ä‚¢‚«‚Ü‚·B’l‚Ì—š—ğ‚ªŠi”[‚³‚ê‚½
-// m_valueList‚ğ•Ô‚¹‚Î‚¢‚¢‚¾‚¯‚Ì‚æ‚¤‚Év‚¦‚Ü‚·‚ªAæ‚Ù‚Ç‚Ìq‚×‚½Š—LŒ ‚Æ—Ì
-// ˆæ‚Ì‰ğ•ú‚Ì–â‘è‚ª‚ ‚é‚½‚ßAˆÈ‰º‚Ì‚æ‚¤‚ÉÀ‘•‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B
+// æœ€å¾Œã«ã€get_value_history() ã®å®Ÿè£…ã‚’è¦‹ã¦ã„ãã¾ã™ã€‚å€¤ã®å±¥æ­´ãŒæ ¼ç´ã•ã‚ŒãŸ
+// m_valueListã‚’è¿”ã›ã°ã„ã„ã ã‘ã®ã‚ˆã†ã«æ€ãˆã¾ã™ãŒã€å…ˆã»ã©ã®è¿°ã¹ãŸæ‰€æœ‰æ¨©ã¨é ˜
+// åŸŸã®è§£æ”¾ã®å•é¡ŒãŒã‚ã‚‹ãŸã‚ã€ä»¥ä¸‹ã®ã‚ˆã†ã«å®Ÿè£…ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
 
-Finally, let's see an implementation of the get_value_history()
-function.  Although it seems simply returning m_valueList is enough,
-ownership, because of the problems about allocation and destruction,
-the implementation should be as follows.
+Finally, let's see an implementation of the get_value_history() function.  Although it seems simply returning m_valueList is enough, ownership, because of the problems about allocation and destruction, the implementation should be as follows.
 
  SimpleService::ValueList* MyServiceSVC_impl::get_value_history()
    throw (CORBA::SystemException)
@@ -1028,25 +802,18 @@ the implementation should be as follows.
    return vl._retn();
  }
 
-// ŠÖ”“à1s–Ú‚Å‚ÍAƒV[ƒPƒ“ƒXŒ^ƒIƒuƒWƒFƒNƒg‚Ì‚½‚ß‚ÌƒXƒ}[ƒgƒ|ƒCƒ“ƒ^‚Å‚ ‚éA
-// SimpleService::valueList_var Œ^‚Ì•Ï”‚ğéŒ¾‚µ‚Ä‚¢‚Ü‚·B‚³‚ç‚ÉŸ‚Ìs‚ÅA
-// ‚±‚ÌƒXƒ}[ƒgƒ|ƒCƒ“ƒ^‚É‘Î‚µ‚ÄAƒRƒs[ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğŒÄ‚Ño‚µ‚Ä‚»‚Ìƒ|ƒC
-// ƒ“ƒ^‚ğ‘ã“ü‚µ‚Ä‚¢‚Ü‚·B‚±‚ê‚É‚æ‚èA—Ìˆæ‚ÌŠm•Û‚ÆA’l‚ÌƒRƒs[‚ª“¯‚És‚í
-// ‚ê‚Ü‚·BÅŒã‚ÉAvl._retn() ‚ÅAvl ‚ª•Û‚µ‚Ä‚¢‚éƒV[ƒPƒ“ƒXŒ^‚ÌƒIƒuƒWƒF
-// ƒNƒg‚ÌŠ—LŒ ‚ğ•úŠü‚µ‚ÄAreturn‘¤‚ÉƒIƒuƒWƒFƒNƒg‚ğ“n‚µ‚Ä‚¢‚Ü‚·B
+// é–¢æ•°å†…1è¡Œç›®ã§ã¯ã€ã‚·ãƒ¼ã‚±ãƒ³ã‚¹å‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãŸã‚ã®ã‚¹ãƒãƒ¼ãƒˆãƒã‚¤ãƒ³ã‚¿ã§ã‚ã‚‹ã€
+// SimpleService::valueList_var å‹ã®å¤‰æ•°ã‚’å®£è¨€ã—ã¦ã„ã¾ã™ã€‚ã•ã‚‰ã«æ¬¡ã®è¡Œã§ã€
+// ã“ã®ã‚¹ãƒãƒ¼ãƒˆãƒã‚¤ãƒ³ã‚¿ã«å¯¾ã—ã¦ã€ã‚³ãƒ”ãƒ¼ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’å‘¼ã³å‡ºã—ã¦ãã®ãƒã‚¤
+// ãƒ³ã‚¿ã‚’ä»£å…¥ã—ã¦ã„ã¾ã™ã€‚ã“ã‚Œã«ã‚ˆã‚Šã€é ˜åŸŸã®ç¢ºä¿ã¨ã€å€¤ã®ã‚³ãƒ”ãƒ¼ãŒåŒæ™‚ã«è¡Œã‚
+// ã‚Œã¾ã™ã€‚æœ€å¾Œã«ã€vl._retn() ã§ã€vl ãŒä¿æŒã—ã¦ã„ã‚‹ã‚·ãƒ¼ã‚±ãƒ³ã‚¹å‹ã®ã‚ªãƒ–ã‚¸ã‚§
+// ã‚¯ãƒˆã®æ‰€æœ‰æ¨©ã‚’æ”¾æ£„ã—ã¦ã€returnå´ã«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ¸¡ã—ã¦ã„ã¾ã™ã€‚
 
-At the first line of the function, SimpleService::ValeList_var type
-which is a smart pointer type of sequence object is declared.  At the
-next line, calling the copy-constructor, its pointer is assigned to
-the declared smart pointer.  It performs allocation of memory and copy
-of the value simultaneously.  Finally, vl._retn() releases the
-ownership of the sequence type object owned by vl variable, and object
-is passed as return variable.
+At the first line of the function, SimpleService::ValeList_var type which is a smart pointer type of sequence object is declared.  At the next line, calling the copy-constructor, its pointer is assigned to the declared smart pointer.  It performs allocation of memory and copy of the value simultaneously.  Finally, vl._retn() releases the ownership of the sequence type object owned by vl variable, and object is passed as return variable.
 
-// ‚»‚µ‚ÄAvl ‚ÍŠÖ”“à‚Åg—p‚³‚ê‚Ä‚¢‚È‚¢‚Ì‚ÅAˆÈ‰º‚Ì‚æ‚¤‚É‘‚­‚±‚Æ‚à‚Å‚«‚Ü‚·B
+// ãã—ã¦ã€vl ã¯é–¢æ•°å†…ã§ä½¿ç”¨ã•ã‚Œã¦ã„ãªã„ã®ã§ã€ä»¥ä¸‹ã®ã‚ˆã†ã«æ›¸ãã“ã¨ã‚‚ã§ãã¾ã™ã€‚
 
-And, since the variable vl is not used in the function, it can be
-coded as follows.
+And, since the variable vl is not used in the function, it can be coded as follows.
 
  SimpleService::ValueList* MyServiceSVC_impl::get_value_history()
    throw (CORBA::SystemException)
@@ -1055,35 +822,26 @@ coded as follows.
  }
 
 
-// ˆÈãAƒvƒƒoƒCƒ_‚ÌÀ‘•‚É‚Â‚¢‚Ä‚İ‚Ä‚«‚Ü‚µ‚½‚ªAƒvƒƒoƒCƒ_‚ª‚¢‚í‚ä‚é
-// CORBAƒIƒuƒWƒFƒNƒg‚Å‚ ‚é‚Ì‚ÅAg—p‚·‚éŒ^A•Ï”‚Ìó‚¯“n‚µ‚Ìd•û‚È‚ÇA
-// CORBA‚Ìƒ‹[ƒ‹‚É]‚Á‚ÄÀ‘•‚µ‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñB‚Í‚¶‚ß‚Í”Ï‚í‚µ‚­Š´‚¶‚é‚©
-// ‚à‚µ‚ê‚Ü‚¹‚ñ‚ªAƒvƒŠƒ~ƒeƒBƒuŒ^‚É‚Â‚¢‚Ä‚Í]—ˆ’Ê‚è‚ÌÀ‘•A•¡G‚ÈƒIƒuƒWƒF
-// ƒNƒg‚É‚Â‚¢‚Ä‚Íƒƒ‚ƒŠ‚ÌŠm•Û‚Æ‰ğ•ú‚ª‚Ç‚±‚Ås‚í‚ê‚é‚©AŠ—LŒ ‚Í‚Ç‚¿‚ç‚É‚ 
-// ‚é‚©‚ğ—‰ğ‚·‚é‚ÆA‚Ç‚Ì‚æ‚¤‚ÉÀ‘•‚·‚é‚×‚«‚È‚Ì‚©—‰ğ‚Å‚«‚é‚Æv‚¢‚Ü‚·B
+// ä»¥ä¸Šã€ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®å®Ÿè£…ã«ã¤ã„ã¦ã¿ã¦ãã¾ã—ãŸãŒã€ãƒ—ãƒ­ãƒã‚¤ãƒ€ãŒã„ã‚ã‚†ã‚‹
+// CORBAã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ã‚ã‚‹ã®ã§ã€ä½¿ç”¨ã™ã‚‹å‹ã€å¤‰æ•°ã®å—ã‘æ¸¡ã—ã®ä»•æ–¹ãªã©ã€
+// CORBAã®ãƒ«ãƒ¼ãƒ«ã«å¾“ã£ã¦å®Ÿè£…ã—ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ã€‚ã¯ã˜ã‚ã¯ç…©ã‚ã—ãæ„Ÿã˜ã‚‹ã‹
+// ã‚‚ã—ã‚Œã¾ã›ã‚“ãŒã€ãƒ—ãƒªãƒŸãƒ†ã‚£ãƒ–å‹ã«ã¤ã„ã¦ã¯å¾“æ¥é€šã‚Šã®å®Ÿè£…ã€è¤‡é›‘ãªã‚ªãƒ–ã‚¸ã‚§
+// ã‚¯ãƒˆã«ã¤ã„ã¦ã¯ãƒ¡ãƒ¢ãƒªã®ç¢ºä¿ã¨è§£æ”¾ãŒã©ã“ã§è¡Œã‚ã‚Œã‚‹ã‹ã€æ‰€æœ‰æ¨©ã¯ã©ã¡ã‚‰ã«ã‚
+// ã‚‹ã‹ã‚’ç†è§£ã™ã‚‹ã¨ã€ã©ã®ã‚ˆã†ã«å®Ÿè£…ã™ã‚‹ã¹ããªã®ã‹ç†è§£ã§ãã‚‹ã¨æ€ã„ã¾ã™ã€‚
 
-What you just read is the outline of implementation of service ports.
-Since a provider is a kind of CORBA object, they should be implemented
-according to the CORBA way such as types to be used, the way of
-argument passing.  Although you might feel it a little troublesome at
-first, you can use primitive types as conventionally, and you can
-easily understand how to use other complex types if you understand
-ownership of variables and memory allocation and destruction.
+What you just read is the outline of implementation of service ports. Since a provider is a kind of CORBA object, they should be implemented according to the CORBA way such as types to be used, the way of argument passing.  Although you might feel it a little troublesome at first, you can use primitive types as conventionally, and you can easily understand how to use other complex types if you understand ownership of variables and memory allocation and destruction.
 
 ***Using Consumers
 
-// ƒRƒ“ƒVƒ…[ƒ}‚Å‚ÍAã‚ÅÀ‘•‚µ‚½ƒT[ƒrƒXƒvƒƒoƒCƒ_‚ğŒÄ‚Ño‚µA‚»‚Ì‹@”\‚ğ
-// —˜—p‚·‚é‚±‚Æ‚É‚È‚è‚Ü‚·BƒRƒ“ƒVƒ…[ƒ}‚ğ‚ÂƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì‚Ğ‚ÈŒ`ƒR[ƒh
-// ‚ğRTCBuilder‚Å¶¬‚µ‚½ê‡‚É‚ÍAƒvƒƒoƒCƒ_‚Ìê‡‚Æ‚ÍˆÙ‚È‚è“Á•Ê‚Èƒtƒ@ƒCƒ‹‚Í¶
-// ¬‚³‚ê‚Ü‚¹‚ñB
+// ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã§ã¯ã€ä¸Šã§å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚’å‘¼ã³å‡ºã—ã€ãã®æ©Ÿèƒ½ã‚’
+// åˆ©ç”¨ã™ã‚‹ã“ã¨ã«ãªã‚Šã¾ã™ã€‚ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã‚’æŒã¤ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ã²ãªå½¢ã‚³ãƒ¼ãƒ‰
+// ã‚’RTCBuilderã§ç”Ÿæˆã—ãŸå ´åˆã«ã¯ã€ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®å ´åˆã¨ã¯ç•°ãªã‚Šç‰¹åˆ¥ãªãƒ•ã‚¡ã‚¤ãƒ«ã¯ç”Ÿ
+// æˆã•ã‚Œã¾ã›ã‚“ã€‚
 
-Consumers call service providers which are implemented as presented
-above and use their functionality.  When RTCBuilder generates template
-source code of component which has consumers, other special files are
-not created, unlike component which has providers.
+Consumers call service providers which are implemented as presented above and use their functionality.  When RTCBuilder generates template source code of component which has consumers, other special files are not created, unlike component which has providers.
 
-// ‚»‚Ì‘ã‚í‚èAƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒwƒbƒ_‚ÉˆÈ‰º‚Ì‚æ‚¤‚ÈƒvƒƒoƒCƒ_‚ÌƒvƒŒ[ƒXƒz
-// ƒ‹ƒ_‚Å‚ ‚éƒRƒ“ƒVƒ…[ƒ}ƒIƒuƒWƒFƒNƒg‚ªéŒ¾‚³‚ê‚Ü‚·B
+// ãã®ä»£ã‚ã‚Šã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ˜ãƒƒãƒ€ã«ä»¥ä¸‹ã®ã‚ˆã†ãªãƒ—ãƒ­ãƒã‚¤ãƒ€ã®ãƒ—ãƒ¬ãƒ¼ã‚¹ãƒ›
+// ãƒ«ãƒ€ã§ã‚ã‚‹ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå®£è¨€ã•ã‚Œã¾ã™ã€‚
 
 In stead of generating files, the following consumer object as a place holder will be declared in the header of component source code.
 
@@ -1100,17 +858,13 @@ In stead of generating files, the following consumer object as a place holder wi
   private:
       : (*snip*)
 
-// ‚±‚ê‚ÍARTC::CorbaConsumer ƒNƒ‰ƒXƒeƒ“ƒvƒŒ[ƒg‚ÉŒ^ˆø”
-// SimpleService::MyService ‚ğ—^‚¦‚ÄAMyService Œ^‚ÌƒRƒ“ƒVƒ…[ƒ}‚ğéŒ¾‚µ‚Ä
-// ‚¢‚é‚±‚Æ‚É‚È‚è‚Ü‚·B‚Ü‚½AÀ‘•ƒtƒ@ƒCƒ‹‚Ì•û‚Å‚ÍAonInitialize() ŠÖ”‚É‚¨
-// ‚¢‚ÄAƒRƒ“ƒVƒ…[ƒ}‚Ìƒ|[ƒg‚Ö‚Ì“o˜^‚ÆAƒ|[ƒg‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚Ö‚Ì“o˜^‚ª
-// s‚í‚ê‚Ä‚¢‚é‚±‚Æ‚ªŠm”F‚Å‚«‚Ü‚·B
+// ã“ã‚Œã¯ã€RTC::CorbaConsumer ã‚¯ãƒ©ã‚¹ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã«å‹å¼•æ•°
+// SimpleService::MyService ã‚’ä¸ãˆã¦ã€MyService å‹ã®ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã‚’å®£è¨€ã—ã¦
+// ã„ã‚‹ã“ã¨ã«ãªã‚Šã¾ã™ã€‚ã¾ãŸã€å®Ÿè£…ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–¹ã§ã¯ã€onInitialize() é–¢æ•°ã«ãŠ
+// ã„ã¦ã€ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã®ãƒãƒ¼ãƒˆã¸ã®ç™»éŒ²ã¨ã€ãƒãƒ¼ãƒˆã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¸ã®ç™»éŒ²ãŒ
+// è¡Œã‚ã‚Œã¦ã„ã‚‹ã“ã¨ãŒç¢ºèªã§ãã¾ã™ã€‚
 
-This means that type argument SimpleService::MyService is given to the
-class template of RTC::CorbaConsumer, and MyService type consumer is
-declared.  You can find that they are registered to a port in the
-onInitialize() function and the port is also registered to the
-component in the implementation file.
+This means that type argument SimpleService::MyService is given to the class template of RTC::CorbaConsumer, and MyService type consumer is declared.  You can find that they are registered to a port in the onInitialize() function and the port is also registered to the component in the implementation file.
 
  RTC::ReturnCode_t MyServiceConsumer::onInitialize()
  {
@@ -1128,50 +882,38 @@ component in the implementation file.
  }
  
 
-// ƒwƒbƒ_‚ÅéŒ¾‚³‚ê‚Ä‚¢‚½ m_MyServiceConsumer •Ï”‚ªAregisterConsumer()
-// ƒƒ“ƒoŠÖ”‚É‚æ‚Á‚Äƒ|[ƒg‚É“o˜^‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ª•ª‚©‚è‚Ü‚·B‘æ1ˆø”‚Å‚ÍA
-// ‚±‚ÌƒRƒ“ƒVƒ…[ƒ}‚ÌuƒCƒ“ƒXƒ^ƒ“ƒX•Ï”v‚ªA‘æ2ˆø”‚Å‚ÍƒRƒ“ƒVƒ…[ƒ}‚ÌuƒC
-// ƒ“ƒ^[ƒtƒF[ƒXŒ^v‚ªA‚»‚µ‚Ä‘æ3ˆø”‚Å‚ÍƒRƒ“ƒVƒ…[ƒ}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚ ‚é
-// m_MyServiceConsumer •Ï”‚ª‚»‚ê‚¼‚ê—^‚¦‚ç‚ê‚Ä‚¢‚Ü‚·B‚±‚ê‚É‚æ‚Á‚ÄAƒRƒ“
-// ƒVƒ…[ƒ}‚ªƒCƒ“ƒXƒ^ƒ“ƒX–¼AŒ^–¼‚Æ‚à‚Éƒ|[ƒg‚ÉŠÖ˜A•t‚¯‚ç‚ê‚Ä‚¢‚é‚±‚Æ‚É‚È
-// ‚è‚Ü‚·B
+// ãƒ˜ãƒƒãƒ€ã§å®£è¨€ã•ã‚Œã¦ã„ãŸ m_MyServiceConsumer å¤‰æ•°ãŒã€registerConsumer()
+// ãƒ¡ãƒ³ãƒé–¢æ•°ã«ã‚ˆã£ã¦ãƒãƒ¼ãƒˆã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã“ã¨ãŒåˆ†ã‹ã‚Šã¾ã™ã€‚ç¬¬1å¼•æ•°ã§ã¯ã€
+// ã“ã®ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã®ã€Œã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã€ãŒã€ç¬¬2å¼•æ•°ã§ã¯ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã®ã€Œã‚¤
+// ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹å‹ã€ãŒã€ãã—ã¦ç¬¬3å¼•æ•°ã§ã¯ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ã‚ã‚‹
+// m_MyServiceConsumer å¤‰æ•°ãŒãã‚Œãã‚Œä¸ãˆã‚‰ã‚Œã¦ã„ã¾ã™ã€‚ã“ã‚Œã«ã‚ˆã£ã¦ã€ã‚³ãƒ³
+// ã‚·ãƒ¥ãƒ¼ãƒãŒã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åã€å‹åã¨ã‚‚ã«ãƒãƒ¼ãƒˆã«é–¢é€£ä»˜ã‘ã‚‰ã‚Œã¦ã„ã‚‹ã“ã¨ã«ãª
+// ã‚Šã¾ã™ã€‚
 
-You can see that a variable m_MyServiceConsumer which is declared in
-the header is registered to a port by the registerConsumer() member
-function.  An instance variable of the consumer as the first argument,
-an interface type of the consumer as the second argument, and
-m_MyServiceConsumer variable of a instance of the consumer as the
-third argument are given to the function respectively.  According to
-this function call, the service consumer is associated with a port
-with instance name and type name.
+You can see that a variable m_MyServiceConsumer which is declared in the header is registered to a port by the registerConsumer() member function.  An instance variable of the consumer as the first argument, an interface type of the consumer as the second argument, and m_MyServiceConsumer variable of a instance of the consumer as the third argument are given to the function respectively.  According to this function call, the service consumer is associated with a port with instance name and type name.
 
-// ƒRƒ“ƒVƒ…[ƒ} m_MyServiceConsumer ‚Íã‚Å‚àq‚×‚½‚æ‚¤‚ÉAƒvƒƒoƒCƒ_‚ÌƒvƒŒ[
-// ƒXƒzƒ‹ƒ_‚É‚È‚Á‚Ä‚¢‚Ü‚·BC++‚Å‚ÍAƒIƒuƒWƒFƒNƒg‚Ö‚Ìƒ|ƒCƒ“ƒ^‚Ì‚æ‚¤‚Éˆµ‚¤‚±
-// ‚Æ‚ª‚Å‚«‚Ü‚·B
+// ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒ m_MyServiceConsumer ã¯ä¸Šã§ã‚‚è¿°ã¹ãŸã‚ˆã†ã«ã€ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®ãƒ—ãƒ¬ãƒ¼
+// ã‚¹ãƒ›ãƒ«ãƒ€ã«ãªã£ã¦ã„ã¾ã™ã€‚C++ã§ã¯ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¸ã®ãƒã‚¤ãƒ³ã‚¿ã®ã‚ˆã†ã«æ‰±ã†ã“
+// ã¨ãŒã§ãã¾ã™ã€‚
 
-As above mentioned, the consumer m_MyServiceConsumer is a place holder
-of a provider object. In C++ language it can be handled as a pointer.
+As above mentioned, the consumer m_MyServiceConsumer is a place holder of a provider object. In C++ language it can be handled as a pointer.
 
-MyService ƒCƒ“ƒ^[ƒtƒF[ƒX‚Å‚ÍAstring Œ^ (CORBA‚ÌstringŒ^) ˆø”‚ğˆê‚Â
-æ‚é echo() ƒIƒyƒŒ[ƒVƒ‡ƒ“‚ª’è‹`‚³‚ê‚Ä‚¢‚Ü‚µ‚½B‚µ‚½‚ª‚Á‚ÄA—á‚¦‚ÎˆÈ‰º
-‚Ì‚æ‚¤‚É echo() ŠÖ”‚ğŒÄ‚Ño‚·‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+MyService ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã§ã¯ã€string å‹ (CORBAã®stringå‹) å¼•æ•°ã‚’ä¸€ã¤
+å–ã‚‹ echo() ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ãŒå®šç¾©ã•ã‚Œã¦ã„ã¾ã—ãŸã€‚ã—ãŸãŒã£ã¦ã€ä¾‹ãˆã°ä»¥ä¸‹
+ã®ã‚ˆã†ã« echo() é–¢æ•°ã‚’å‘¼ã³å‡ºã™ã“ã¨ãŒã§ãã¾ã™ã€‚
 
  m_MyServiceConsumer->echo("Hello World");
 
-// C++‚Å‚Íã‚Ì‚æ‚¤‚Éƒ|ƒCƒ“ƒ^AJava‚âPython‚Å‚ÍQÆ‚Ì‚æ‚¤‚ÉAƒIƒyƒŒ[ƒVƒ‡ƒ“
-// ‚ğŒÄ‚Ño‚·‚±‚Æ‚ª‚Å‚«‚é‚Ì‚Å‚·B
+// C++ã§ã¯ä¸Šã®ã‚ˆã†ã«ãƒã‚¤ãƒ³ã‚¿ã€Javaã‚„Pythonã§ã¯å‚ç…§ã®ã‚ˆã†ã«ã€ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
+// ã‚’å‘¼ã³å‡ºã™ã“ã¨ãŒã§ãã‚‹ã®ã§ã™ã€‚
 
-Operations can be called by it like a pointer in C++ language, and a
-reference in Java and Python languages.
+Operations can be called by it like a pointer in C++ language, and a reference in Java and Python languages.
 
-// ‚³‚ÄA‚±‚±‚ÅŠ¨‚Ì—Ç‚¢•û‚ÍAƒ|ƒCƒ“ƒ^‚Ü‚½‚ÍQÆ‚Ìw‚·æ‚Íˆê‘Ì‚Ç‚¤‚È‚Á‚Ä‚¢
-// ‚é‚ñ‚¾‚Æ‚¨v‚¢‚Å‚µ‚å‚¤BC++“™‚Å‚àA—á‚¦‚ÎˆÈ‰º‚Ì‚æ‚¤‚ÈƒR[ƒh‚Í
-// segmentation fault ‚Å‘¦À‚É—‚¿‚Ü‚·B
+// ã•ã¦ã€ã“ã“ã§å‹˜ã®è‰¯ã„æ–¹ã¯ã€ãƒã‚¤ãƒ³ã‚¿ã¾ãŸã¯å‚ç…§ã®æŒ‡ã™å…ˆã¯ä¸€ä½“ã©ã†ãªã£ã¦ã„
+// ã‚‹ã‚“ã ã¨ãŠæ€ã„ã§ã—ã‚‡ã†ã€‚C++ç­‰ã§ã‚‚ã€ä¾‹ãˆã°ä»¥ä¸‹ã®ã‚ˆã†ãªã‚³ãƒ¼ãƒ‰ã¯
+// segmentation fault ã§å³åº§ã«è½ã¡ã¾ã™ã€‚
 
-And now, readers who have enough experience in C++ language might be
-wondering what is the entity of the pointer and the reference.  In C++
-language, the following code is aborted immediately by segmentation
-fault.
+And now, readers who have enough experience in C++ language might be wondering what is the entity of the pointer and the reference.  In C++ language, the following code is aborted immediately by segmentation fault.
 
  class A {
  public:
@@ -1186,16 +928,12 @@ fault.
    a->echo("Hello World!!");
  }
 
-// a ‚Ínullƒ|ƒCƒ“ƒ^‚Å‚·‚Ì‚ÅA‰½‚àƒIƒuƒWƒFƒNƒg‚ğw‚µ‚Ä‚¢‚Ü‚¹‚ñB‚±‚ê‚Æ“¯—l
-// ‚ÉAã‚Ì m_MyServiceConsumer ‚àAƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì‹N“®’¼Œã‚É‚ÍA‚¢‚©‚È‚é
-// ƒIƒuƒWƒFƒNƒg‚àw‚µ‚Ä‚¢‚Ü‚¹‚ñ‚Ì‚ÅA“–‘RƒIƒyƒŒ[ƒVƒ‡ƒ“‚ğŒÄ‚Ño‚·‚±‚Æ‚ª‚Å
-// ‚«‚Ü‚¹‚ñBã‚Ì class A ‚Ìê‡‚Å‚ÍA
+// a ã¯nullãƒã‚¤ãƒ³ã‚¿ã§ã™ã®ã§ã€ä½•ã‚‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡ã—ã¦ã„ã¾ã›ã‚“ã€‚ã“ã‚Œã¨åŒæ§˜
+// ã«ã€ä¸Šã® m_MyServiceConsumer ã‚‚ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®èµ·å‹•ç›´å¾Œã«ã¯ã€ã„ã‹ãªã‚‹
+// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚‚æŒ‡ã—ã¦ã„ã¾ã›ã‚“ã®ã§ã€å½“ç„¶ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å‘¼ã³å‡ºã™ã“ã¨ãŒã§
+// ãã¾ã›ã‚“ã€‚ä¸Šã® class A ã®å ´åˆã§ã¯ã€
 
-The "a" is a null-pointer, and it points nothing.  In the same way,
-since m_MyServiceConsumer can be state that does not point any object,
-it cannot call any operations.  In the above example, variable "a" can
-be a valid pointer if a new object is created and is assigned to the
-pointer as the following.
+The "a" is a null-pointer, and it points nothing.  In the same way, since m_MyServiceConsumer can be state that does not point any object, it cannot call any operations.  In the above example, variable "a" can be a valid pointer if a new object is created and is assigned to the pointer as the following.
 
  int main (void) {
    A* a;
@@ -1203,49 +941,37 @@ pointer as the following.
    a->echo("Hello World!!");
  }
 
-// ƒIƒuƒWƒFƒNƒg‚ğnew‚Å¶¬‚µ‚ÄA•Ï” a ‚É‘ã“ü‚µ‚Ä‚ ‚°‚ê‚Î a ‚Í‚»‚Ì“_‚Å‚ 
-// ‚éƒIƒuƒWƒFƒNƒg‚ğw‚µ¦‚·³“–‚Èƒ|ƒCƒ“ƒ^‚Å‚·‚Ì‚ÅAclass A‚Ìƒƒ“ƒoŠÖ”‚Å‚ 
-// ‚é echo() ‚ğŒÄ‚Ô‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’newã§ç”Ÿæˆã—ã¦ã€å¤‰æ•° a ã«ä»£å…¥ã—ã¦ã‚ã’ã‚Œã° a ã¯ãã®æ™‚ç‚¹ã§ã‚
+// ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡ã—ç¤ºã™æ­£å½“ãªãƒã‚¤ãƒ³ã‚¿ã§ã™ã®ã§ã€class Aã®ãƒ¡ãƒ³ãƒé–¢æ•°ã§ã‚
+// ã‚‹ echo() ã‚’å‘¼ã¶ã“ã¨ãŒã§ãã¾ã™ã€‚
 
-Therefore, now variable "a" can call the "echo()" function which is a
-member of class A.
+Therefore, now variable "a" can call the "echo()" function which is a member of class A.
 
-// ‚µ‚©‚µ‚È‚ª‚çAƒRƒ“ƒ|[ƒlƒ“ƒg‚È‚¢‚ÌƒRƒ“ƒVƒ…[ƒ}‚ªŒÄ‚Ño‚µ‚½‚¢‚Ì‚ÍAƒlƒb
-// ƒgƒ[ƒNã‚Ì‚Ç‚±‚©‚É‚ ‚éƒIƒuƒWƒFƒNƒg‚ÌƒIƒyƒŒ[ƒVƒ‡ƒ“‚Å‚·B‚µ‚½‚ª‚Á‚ÄA
-// m_MyServiceConsumer ‚ªw‚µ¦‚·‚Ì‚ÍƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ÌQÆ (CORBAƒIƒu
-// ƒWƒFƒNƒgQÆ(ƒŠƒtƒ@ƒŒƒ“ƒX)) ‚Å‚·B
+// ã—ã‹ã—ãªãŒã‚‰ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãªã„ã®ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒãŒå‘¼ã³å‡ºã—ãŸã„ã®ã¯ã€ãƒãƒƒ
+// ãƒˆãƒ¯ãƒ¼ã‚¯ä¸Šã®ã©ã“ã‹ã«ã‚ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã§ã™ã€‚ã—ãŸãŒã£ã¦ã€
+// m_MyServiceConsumer ãŒæŒ‡ã—ç¤ºã™ã®ã¯ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‚ç…§ (CORBAã‚ªãƒ–
+// ã‚¸ã‚§ã‚¯ãƒˆå‚ç…§(ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹)) ã§ã™ã€‚
 
-However, consumer in the component would call a operation of the
-remote object which is located somewhere on the network.  In other
-words, m_MyServiceConsumer points a reference (CORBA's object
-reference) to a remote object.
+However, consumer in the component would call a operation of the remote object which is located somewhere on the network.  In other words, m_MyServiceConsumer points a reference (CORBA's object reference) to a remote object.
 
-// À‚Í‰º}‚É¦‚·‚æ‚¤‚ÉAƒRƒ“ƒVƒ…[ƒ}‚Í‚»‚Ìƒ|[ƒg‚ªƒvƒƒoƒCƒ_‚ğ‚Âƒ|[ƒg
-// ‚ÆÚ‘±‚³‚ê‚é‚Æ‚«‚ÉA‘Î‰‚·‚éƒIƒuƒWƒFƒNƒgQÆ‚ğó‚¯æ‚è‚Ü‚·BÚ‘±‚É‚æ‚è
-// ƒRƒ“ƒVƒ…[ƒ}‚Í³“–‚ÈƒIƒuƒWƒFƒNƒg‚ğw‚·‚±‚Æ‚É‚È‚èA‚±‚¤‚µ‚Ä‰‚ß‚ÄƒIƒyƒŒ[
-// ƒVƒ‡ƒ“‚ğŒÄ‚Ño‚·‚±‚Æ‚ª‚Å‚«‚é‚Ì‚Å‚·B
+// å®Ÿã¯ä¸‹å›³ã«ç¤ºã™ã‚ˆã†ã«ã€ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã¯ãã®ãƒãƒ¼ãƒˆãŒãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚’æŒã¤ãƒãƒ¼ãƒˆ
+// ã¨æ¥ç¶šã•ã‚Œã‚‹ã¨ãã«ã€å¯¾å¿œã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå‚ç…§ã‚’å—ã‘å–ã‚Šã¾ã™ã€‚æ¥ç¶šã«ã‚ˆã‚Š
+// ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã¯æ­£å½“ãªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡ã™ã“ã¨ã«ãªã‚Šã€ã“ã†ã—ã¦åˆã‚ã¦ã‚ªãƒšãƒ¬ãƒ¼
+// ã‚·ãƒ§ãƒ³ã‚’å‘¼ã³å‡ºã™ã“ã¨ãŒã§ãã‚‹ã®ã§ã™ã€‚
 
-As shown in the following figure, a consumer receives an object
-reference when it is connected to the other port which has provider.
-After the connection established, since the consumer has a valid
-object reference, it can call operations in the remote object.
+As shown in the following figure, a consumer receives an object reference when it is connected to the other port which has provider. After the connection established, since the consumer has a valid object reference, it can call operations in the remote object.
 
 #ref(serviceport_connection_and_reference_en.png,40%,center)
 CENTER: ''Connecting service ports and object reference''
 
-// Ú‘±Œã‚Í(‘Šè‚Ìƒ|[ƒg‚É“K“–‚ÈƒvƒƒoƒCƒ_‚ª‘¶İ‚·‚ê‚Î)ƒRƒ“ƒVƒ…[ƒ}‚ÌƒIƒy
-// ƒŒ[ƒVƒ‡ƒ“‚ğŒÄ‚Ño‚·‚±‚Æ‚ª‚Å‚«‚Ü‚·‚ªAÚ‘±‚µ‚Ä‚¢‚È‚¢ê‡A‚Ü‚½‚Í—LŒø‚È
-// QÆ‚ªƒZƒbƒg‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAƒRƒ“ƒVƒ…[ƒ}ƒIƒuƒWƒFƒNƒg‚Í—áŠO‚ğ“Š‚°‚Ü
-// ‚·B‚»‚µ‚ÄAƒRƒ“ƒVƒ…[ƒ}‚ğ—˜—p‚·‚éê‡A‚¢‚ÂÚ‘±‚ªs‚í‚ê‚é‚©A‚Ü‚½‚¢‚Â
-// Ú‘±‚ªØ’f‚³‚ê‚é‚©‚Í•ª‚©‚è‚Ü‚¹‚ñ‚Ì‚ÅAí‚É‚±‚Ì—áŠO‚ğ•ß‘¨‚µ‚Ä“KØ‚Éˆ—
-// ‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B
+// æ¥ç¶šå¾Œã¯(ç›¸æ‰‹ã®ãƒãƒ¼ãƒˆã«é©å½“ãªãƒ—ãƒ­ãƒã‚¤ãƒ€ãŒå­˜åœ¨ã™ã‚Œã°)ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã®ã‚ªãƒš
+// ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å‘¼ã³å‡ºã™ã“ã¨ãŒã§ãã¾ã™ãŒã€æ¥ç¶šã—ã¦ã„ãªã„å ´åˆã€ã¾ãŸã¯æœ‰åŠ¹ãª
+// å‚ç…§ãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ä¾‹å¤–ã‚’æŠ•ã’ã¾
+// ã™ã€‚ãã—ã¦ã€ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã‚’åˆ©ç”¨ã™ã‚‹å ´åˆã€ã„ã¤æ¥ç¶šãŒè¡Œã‚ã‚Œã‚‹ã‹ã€ã¾ãŸã„ã¤
+// æ¥ç¶šãŒåˆ‡æ–­ã•ã‚Œã‚‹ã‹ã¯åˆ†ã‹ã‚Šã¾ã›ã‚“ã®ã§ã€å¸¸ã«ã“ã®ä¾‹å¤–ã‚’æ•æ‰ã—ã¦é©åˆ‡ã«å‡¦ç†
+// ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
 
-After connection established, the consumer can call operations if an
-appropriate provider exists in the other port.  The consumer will
-throw exceptions if the connection is not established or valid object
-reference is not set.  Since you cannot know when connection is
-established or is destructed, always you have to catch exceptions from
-consumers and handle them adequately.
+After connection established, the consumer can call operations if an appropriate provider exists in the other port.  The consumer will throw exceptions if the connection is not established or valid object reference is not set.  Since you cannot know when connection is established or is destructed, always you have to catch exceptions from consumers and handle them adequately.
 
  try
  {
@@ -1261,24 +987,19 @@ consumers and handle them adequately.
    // Other exceptions
  }
 
-// ‚È‚¨AonExecute() ƒƒ“ƒoŠÖ”“à‚Å—áŠO‚ª”­¶‚µAŠÖ”“à•”‚Å•ß‘¨‚³‚ê‚È‚©‚Á
-// ‚½ê‡ARTC‚ÍƒGƒ‰[ó‘Ô‚Ö‘JˆÚ‚µ‚Ü‚·B
+// ãªãŠã€onExecute() ãƒ¡ãƒ³ãƒé–¢æ•°å†…ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ã€é–¢æ•°å†…éƒ¨ã§æ•æ‰ã•ã‚Œãªã‹ã£
+// ãŸå ´åˆã€RTCã¯ã‚¨ãƒ©ãƒ¼çŠ¶æ…‹ã¸é·ç§»ã—ã¾ã™ã€‚
 
-If an exception is thrown from the onExecute() member function, and
-the exception is not caught, RTC will go to error state.
+If an exception is thrown from the onExecute() member function, and the exception is not caught, RTC will go to error state.
 
-// ˆÈã‚ğ“¥‚Ü‚¦‚ÄAMyServiceConsumer ƒRƒ“ƒ|[ƒlƒ“ƒgÀ‘•‚µ‚Ü‚·B‚±‚Ì—á‚Å‚ÍA
-// onExecute() ‚Åƒ†[ƒU‚©‚ç‚Ì“ü—Í‘Ò‚¿‚ğs‚¢AŠeƒIƒyƒŒ[ƒVƒ‡ƒ“‚É‘Î‰‚µ‚½ƒR
-// ƒ}ƒ“ƒh‚ğó‚¯æ‚èAƒRƒ}ƒ“ƒh‚É‰‚¶‚ÄƒŠƒ‚[ƒg‚ÌƒvƒƒoƒCƒ_‚ÌƒIƒyƒŒ[ƒVƒ‡ƒ“
-// ‚ğŒÄ‚Ño‚µŒ‹‰Ê‚ğ•Ô‚·‚Æ‚¢‚Á‚½ŠÈ’P‚È‚à‚Ì‚Å‚·B
+// ä»¥ä¸Šã‚’è¸ã¾ãˆã¦ã€MyServiceConsumer ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå®Ÿè£…ã—ã¾ã™ã€‚ã“ã®ä¾‹ã§ã¯ã€
+// onExecute() ã§ãƒ¦ãƒ¼ã‚¶ã‹ã‚‰ã®å…¥åŠ›å¾…ã¡ã‚’è¡Œã„ã€å„ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã«å¯¾å¿œã—ãŸã‚³
+// ãƒãƒ³ãƒ‰ã‚’å—ã‘å–ã‚Šã€ã‚³ãƒãƒ³ãƒ‰ã«å¿œã˜ã¦ãƒªãƒ¢ãƒ¼ãƒˆã®ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
+// ã‚’å‘¼ã³å‡ºã—çµæœã‚’è¿”ã™ã¨ã„ã£ãŸç°¡å˜ãªã‚‚ã®ã§ã™ã€‚
 
-Based on the above, let's implement a MyServiceConsumer component.  In
-this example, the component receives commands assigned to each
-operation defined in the interface in the onExecute() function, and
-call actual operation in the remote object according to the received
-command and return results.
+Based on the above, let's implement a MyServiceConsumer component.  In this example, the component receives commands assigned to each operation defined in the interface in the onExecute() function, and call actual operation in the remote object according to the received command and return results.
 
-// ‚Å‚ÍA‚Ü‚¸ƒ†[ƒU‚É—˜—p‚Å‚«‚éƒRƒ}ƒ“ƒh‚ğ’ñ¦‚·‚é•”•ª‚©‚ç‚İ‚Ä‚¢‚«‚Ü‚·B
+// ã§ã¯ã€ã¾ãšãƒ¦ãƒ¼ã‚¶ã«åˆ©ç”¨ã§ãã‚‹ã‚³ãƒãƒ³ãƒ‰ã‚’æç¤ºã™ã‚‹éƒ¨åˆ†ã‹ã‚‰ã¿ã¦ã„ãã¾ã™ã€‚
 
 So, let's see a part that shows available command to users.
 
@@ -1300,13 +1021,11 @@ RTC::ReturnCode_t MyServiceConsumer::onExecute(RTC::UniqueId ec_id)
       std::vector<std::string> argv;
       std::getline(std::cin, args);
 
-// ‚Ü‚¸Aã‚Åq‚×‚½‚æ‚¤‚ÉƒRƒ“ƒVƒ…[ƒ}‚ª”­‚·‚é—áŠO‚ğ•ß‘¨‚·‚é‚½‚ß‚Étryß‚ÅˆÍ
-// ‚İ‚Ü‚·B—˜—p‰Â”\‚ÈƒRƒ}ƒ“ƒhƒŠƒXƒg‚ğ•\¦‚µ‚ÄAƒ†[ƒU‚Ì“ü—Í‚ğgetline()ŠÖ”
-// ‚Åó‚¯æ‚Á‚Ä‚¢‚Ü‚·B
+// ã¾ãšã€ä¸Šã§è¿°ã¹ãŸã‚ˆã†ã«ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒãŒç™ºã™ã‚‹ä¾‹å¤–ã‚’æ•æ‰ã™ã‚‹ãŸã‚ã«tryç¯€ã§å›²
+// ã¿ã¾ã™ã€‚åˆ©ç”¨å¯èƒ½ãªã‚³ãƒãƒ³ãƒ‰ãƒªã‚¹ãƒˆã‚’è¡¨ç¤ºã—ã¦ã€ãƒ¦ãƒ¼ã‚¶ã®å…¥åŠ›ã‚’getline()é–¢æ•°
+// ã§å—ã‘å–ã£ã¦ã„ã¾ã™ã€‚
 
-As mentioned above, in order to catch exceptions from consumer please
-put the code into a "try" block.  This code is showing available
-command list and getting input from user by getline() function.
+As mentioned above, in order to catch exceptions from consumer please put the code into a "try" block.  This code is showing available command list and getting input from user by getline() function.
 
       
       pos = args.find_first_of(" ");
@@ -1320,18 +1039,13 @@ command list and getting input from user by getline() function.
           argv.push_back(args);
         }
 
-// ‚±‚ê‚ç‚ÌƒRƒ}ƒ“ƒh‚Ì‚¤‚¿Aˆø”‚ğæ‚é‚à‚Ì‚Í echo ‚Æ set_value ‚¾‚¯‚ÅA‚©‚Â
-// ‚±‚ê‚ç‚ÌƒRƒ}ƒ“ƒh‚Íˆø”‚ğˆê‚Â‚¾‚¯‚Æ‚è‚Ü‚·Bó‚¯æ‚Á‚½•¶š—ñ‚ğÅ‰‚Ì‹ó”’
-// ‚Å•ªŠ„‚µAargv[0] = ƒRƒ}ƒ“ƒhAargv[1] = ˆø”‚Æ‚µ‚Ä string ‚Ì vector ‚É
-// Ši”[‚µ‚Ü‚·Becho, set_value ƒRƒ}ƒ“ƒh‚Å‚Í argv[1] ‚ğˆø”‚Æ‚µ‚Ä—˜—p‚µA‘¼
-// ‚ÌƒRƒ}ƒ“ƒh‚Å‚Í’Pƒ‚É–³‹‚·‚é‚±‚Æ‚É‚µ‚Ü‚·B
+// ã“ã‚Œã‚‰ã®ã‚³ãƒãƒ³ãƒ‰ã®ã†ã¡ã€å¼•æ•°ã‚’å–ã‚‹ã‚‚ã®ã¯ echo ã¨ set_value ã ã‘ã§ã€ã‹ã¤
+// ã“ã‚Œã‚‰ã®ã‚³ãƒãƒ³ãƒ‰ã¯å¼•æ•°ã‚’ä¸€ã¤ã ã‘ã¨ã‚Šã¾ã™ã€‚å—ã‘å–ã£ãŸæ–‡å­—åˆ—ã‚’æœ€åˆã®ç©ºç™½
+// ã§åˆ†å‰²ã—ã€argv[0] = ã‚³ãƒãƒ³ãƒ‰ã€argv[1] = å¼•æ•°ã¨ã—ã¦ string ã® vector ã«
+// æ ¼ç´ã—ã¾ã™ã€‚echo, set_value ã‚³ãƒãƒ³ãƒ‰ã§ã¯ argv[1] ã‚’å¼•æ•°ã¨ã—ã¦åˆ©ç”¨ã—ã€ä»–
+// ã®ã‚³ãƒãƒ³ãƒ‰ã§ã¯å˜ç´”ã«ç„¡è¦–ã™ã‚‹ã“ã¨ã«ã—ã¾ã™ã€‚
 
-Only "echo" and "set_value" commands receives argument in the command
-set, and these commands have only one argument.  Separating received
-character string by blank character, two strings are stored as argv[0]
-= command and argv[1] = argument.  argv[1] is used as argument in the
-echo and set_value command, and for other command argv[1] is just
-ignored.
+Only "echo" and "set_value" commands receives argument in the command set, and these commands have only one argument.  Separating received character string by blank character, two strings are stored as argv[0] = command and argv[1] = argument.  argv[1] is used as argument in the echo and set_value command, and for other command argv[1] is just ignored.
 
         
       if (argv[0] == "echo" && argv.size() > 1)
@@ -1342,23 +1056,15 @@ ignored.
           return RTC::RTC_OK;
         }
 
-// echo ƒRƒ}ƒ“ƒh‚ÌÀ‘•‚Å‚·Bargv[0] ‚ª ''echo'' ‚Ìê‡Aargv[1] ‚ğˆø”‚É‚µ
-// ‚Ä echo() ŠÖ”‚ğŒÄ‚Ño‚µ‚Ü‚·Becho() ‚ÌCORBA‚ÌstringŒ^‚Ì–ß‚è’l‚ğó‚¯æ
-// ‚é‚½‚ß‚Ì•Ï”‚Æ‚µ‚ÄAretmsg ‚ğéŒ¾‚µ‚Ä‚¢‚Ü‚·Becho() ‚Ì–ß‚è’l‚ÌŠ—LŒ ‚Í
-// ‚±‚¿‚ç‘¤‚É‚ ‚é‚Ì‚ÅAó‚¯æ‚Á‚½Œã‚É“KØ‚É—Ìˆæ‚ğ‰ğ•ú‚·‚é•K—v‚ª‚ ‚é‚Ì‚Å‚·
-// ‚ªAString_var Œ^‚ÌƒXƒ}[ƒgƒ|ƒCƒ“ƒ^‚ğ—˜—p‚·‚é‚ÆA•s—v‚É‚È‚Á‚½“_‚Å“KØ
-// ‚É—Ìˆæ‰ğ•ú‚ğs‚Á‚Ä‚­‚ê‚Ü‚·B–ß‚è’l‚ğ•\¦‚µ‚ÄAreturn RTC::RTC_OK ‚Æ‚µ‚Ä
-// onExecute() ŠÖ”‚ğ”²‚¯‚Ä‚¢‚Ü‚·B
+// echo ã‚³ãƒãƒ³ãƒ‰ã®å®Ÿè£…ã§ã™ã€‚argv[0] ãŒ ''echo'' ã®å ´åˆã€argv[1] ã‚’å¼•æ•°ã«ã—
+// ã¦ echo() é–¢æ•°ã‚’å‘¼ã³å‡ºã—ã¾ã™ã€‚echo() ã®CORBAã®stringå‹ã®æˆ»ã‚Šå€¤ã‚’å—ã‘å–
+// ã‚‹ãŸã‚ã®å¤‰æ•°ã¨ã—ã¦ã€retmsg ã‚’å®£è¨€ã—ã¦ã„ã¾ã™ã€‚echo() ã®æˆ»ã‚Šå€¤ã®æ‰€æœ‰æ¨©ã¯
+// ã“ã¡ã‚‰å´ã«ã‚ã‚‹ã®ã§ã€å—ã‘å–ã£ãŸå¾Œã«é©åˆ‡ã«é ˜åŸŸã‚’è§£æ”¾ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã®ã§ã™
+// ãŒã€String_var å‹ã®ã‚¹ãƒãƒ¼ãƒˆãƒã‚¤ãƒ³ã‚¿ã‚’åˆ©ç”¨ã™ã‚‹ã¨ã€ä¸è¦ã«ãªã£ãŸæ™‚ç‚¹ã§é©åˆ‡
+// ã«é ˜åŸŸè§£æ”¾ã‚’è¡Œã£ã¦ãã‚Œã¾ã™ã€‚æˆ»ã‚Šå€¤ã‚’è¡¨ç¤ºã—ã¦ã€return RTC::RTC_OK ã¨ã—ã¦
+// onExecute() é–¢æ•°ã‚’æŠœã‘ã¦ã„ã¾ã™ã€‚
 
-This is an implementation of echo command.  In case that argv[0] is
-"echo", echo() function is called with argument from argv[1].  In this
-function, CORBA's string type variable "retmsg" is declared to receive
-return value from echo() function.  Since the ownership of the return
-value from echo() function is here, you have to release memory
-properly after used.  However, if String_var type smart pointer is
-used in this context, memory will be released automatically when it is
-not used any more.  So this code just prints returned value and end
-the onExecute() function with return RTC::RTC_OK.
+This is an implementation of echo command.  In case that argv[0] is "echo", echo() function is called with argument from argv[1].  In this function, CORBA's string type variable "retmsg" is declared to receive return value from echo() function.  Since the ownership of the return value from echo() function is here, you have to release memory properly after used.  However, if String_var type smart pointer is used in this context, memory will be released automatically when it is not used any more.  So this code just prints returned value and end the onExecute() function with return RTC::RTC_OK.
 
       if (argv[0] == "set_value" && argv.size() > 1)
         {
@@ -1368,12 +1074,10 @@ the onExecute() function with return RTC::RTC_OK.
           return RTC::RTC_OK;
         }
 
-// set_value ƒRƒ}ƒ“ƒh‚ÌÀ‘•‚Å‚·Bˆø” argv[1] ‚Ì•¶š—ñ‚ğCORBA::Float Œ^‚É
-// •ÏŠ·‚µ‚ÄAset_value() ƒIƒyƒŒ[ƒVƒ‡ƒ“‚Ìˆø”‚É—^‚¦‚Ä‚¢‚Ü‚·B
+// set_value ã‚³ãƒãƒ³ãƒ‰ã®å®Ÿè£…ã§ã™ã€‚å¼•æ•° argv[1] ã®æ–‡å­—åˆ—ã‚’CORBA::Float å‹ã«
+// å¤‰æ›ã—ã¦ã€set_value() ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®å¼•æ•°ã«ä¸ãˆã¦ã„ã¾ã™ã€‚
 
-This is "set_value" command implementation. After converting argument
-argv[1] to CORBA::Float, it is given to set_value() operation as an
-argument.
+This is "set_value" command implementation. After converting argument argv[1] to CORBA::Float, it is given to set_value() operation as an argument.
 
         
       if (argv[0] == "get_value")
@@ -1383,16 +1087,12 @@ argument.
           return RTC::RTC_OK;
         }
 
-// get_value ƒRƒ}ƒ“ƒh‚Í set_value ƒRƒ}ƒ“ƒh‚Åİ’è‚µ‚½’l‚ğæ“¾‚µ‚Ü‚·B
-// get_value() ƒIƒyƒŒ[ƒVƒ‡ƒ“‚ÍA–ß‚è’l‚ª CORBA::Float ‚Å’l“n‚µ‚Ì‚½‚ßƒIƒu
-// ƒWƒFƒNƒg‚ÌŠ—LŒ ‚È‚Ç‚Í“Á‚Él‚¦‚È‚­‚Æ‚à\‚¢‚Ü‚¹‚ñB‚±‚±‚Å‚ÍA–ß‚è’l‚ğ‚»
-// ‚Ì‚Ü‚Ü std::cout ‚ÅƒRƒ“ƒ\[ƒ‹‚É•\¦‚³‚¹‚Ä‚¢‚Ü‚·B
+// get_value ã‚³ãƒãƒ³ãƒ‰ã¯ set_value ã‚³ãƒãƒ³ãƒ‰ã§è¨­å®šã—ãŸå€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
+// get_value() ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã¯ã€æˆ»ã‚Šå€¤ãŒ CORBA::Float ã§å€¤æ¸¡ã—ã®ãŸã‚ã‚ªãƒ–
+// ã‚¸ã‚§ã‚¯ãƒˆã®æ‰€æœ‰æ¨©ãªã©ã¯ç‰¹ã«è€ƒãˆãªãã¨ã‚‚æ§‹ã„ã¾ã›ã‚“ã€‚ã“ã“ã§ã¯ã€æˆ»ã‚Šå€¤ã‚’ã
+// ã®ã¾ã¾ std::cout ã§ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«è¡¨ç¤ºã•ã›ã¦ã„ã¾ã™ã€‚
 
-"get_value" command gets a value that is set by "set_value" command.
-get_value() operation has a CORBA::Float return value, and because it
-is passed by value, concerning about ownership of object is not
-necessary.  Here, returned value is directly printed out to the
-console by std::cout.
+"get_value" command gets a value that is set by "set_value" command. get_value() operation has a CORBA::Float return value, and because it is passed by value, concerning about ownership of object is not necessary.  Here, returned value is directly printed out to the console by std::cout.
 
       if (argv[0] == "get_echo_history")
         {
@@ -1404,25 +1104,16 @@ console by std::cout.
           return RTC::RTC_OK;
         }
 
-// get_echo_history ƒRƒ}ƒ“ƒh‚Å‚ÍAget_echo_history() ‚ÌŒ‹‰Ê‚ğó‚¯æ‚èA‚»
-// ‚ê‚Ü‚Å echo ƒRƒ}ƒ“ƒh‚Åˆø”‚É—^‚¦‚ç‚ê‚½•¶š—ñ‚ÌƒŠƒXƒg‚ğ•Ô‚µ‚Ä‚¢‚Ü‚·B
-// get_echo_history() ŠÖ”‚Ì–ß‚è’l‚Í CORBA ‚ÌƒV[ƒPƒ“ƒXŒ^‚Å‚ ‚é EchoList
-// ‚Å‚·BƒV[ƒPƒ“ƒXŒ^‚É‚Â‚¢‚Ä‚àƒXƒ}[ƒgƒ|ƒCƒ“ƒ^‚Å‚ ‚é _var Œ^‚ª’è‹`‚³‚ê‚Ä
-// ‚¢‚Ü‚·‚Ì‚ÅA‚±‚ê‚ğ—˜—p‚µ‚Ü‚·B”z—ñ‚Ì’·‚³‚ğæ“¾‚·‚é‚½‚ß‚Ì length() ŠÖ”
-// ‚ª—˜—p‚Å‚«‚é‚Ì‚ÅA’·‚³‚ğ’²‚×‚Ä for •¶‚Å‚·‚×‚Ä‚Ì—v‘f‚ğ•\¦‚µ‚Ä‚¢‚Ü‚·BƒV[
-// ƒPƒ“ƒXŒ^‚Ì_varŒ^‚Å‚ÍAã‚Ì‚æ‚¤‚É[]ƒIƒyƒŒ[ƒ^‚ğ—˜—p‚µ‚ÄCŒ¾Œê‚Ì”z—ñ‚Ì‚æ‚¤
-// ‚ÉŠe—v‘f‚ÉƒAƒNƒZƒX‚Å‚«‚Ü‚·B
+// get_echo_history ã‚³ãƒãƒ³ãƒ‰ã§ã¯ã€get_echo_history() ã®çµæœã‚’å—ã‘å–ã‚Šã€ã
+// ã‚Œã¾ã§ echo ã‚³ãƒãƒ³ãƒ‰ã§å¼•æ•°ã«ä¸ãˆã‚‰ã‚ŒãŸæ–‡å­—åˆ—ã®ãƒªã‚¹ãƒˆã‚’è¿”ã—ã¦ã„ã¾ã™ã€‚
+// get_echo_history() é–¢æ•°ã®æˆ»ã‚Šå€¤ã¯ CORBA ã®ã‚·ãƒ¼ã‚±ãƒ³ã‚¹å‹ã§ã‚ã‚‹ EchoList
+// ã§ã™ã€‚ã‚·ãƒ¼ã‚±ãƒ³ã‚¹å‹ã«ã¤ã„ã¦ã‚‚ã‚¹ãƒãƒ¼ãƒˆãƒã‚¤ãƒ³ã‚¿ã§ã‚ã‚‹ _var å‹ãŒå®šç¾©ã•ã‚Œã¦
+// ã„ã¾ã™ã®ã§ã€ã“ã‚Œã‚’åˆ©ç”¨ã—ã¾ã™ã€‚é…åˆ—ã®é•·ã•ã‚’å–å¾—ã™ã‚‹ãŸã‚ã® length() é–¢æ•°
+// ãŒåˆ©ç”¨ã§ãã‚‹ã®ã§ã€é•·ã•ã‚’èª¿ã¹ã¦ for æ–‡ã§ã™ã¹ã¦ã®è¦ç´ ã‚’è¡¨ç¤ºã—ã¦ã„ã¾ã™ã€‚ã‚·ãƒ¼
+// ã‚±ãƒ³ã‚¹å‹ã®_varå‹ã§ã¯ã€ä¸Šã®ã‚ˆã†ã«[]ã‚ªãƒšãƒ¬ãƒ¼ã‚¿ã‚’åˆ©ç”¨ã—ã¦Cè¨€èªã®é…åˆ—ã®ã‚ˆã†
+// ã«å„è¦ç´ ã«ã‚¢ã‚¯ã‚»ã‚¹ã§ãã¾ã™ã€‚
 
-get_echo_history command receives a result from get_echo_history()
-operation, and print a list of strings that were given to echo-command
-before.  The return value of get_echo_history() operation is EchoList
-CORBA sequence type.  Since the _var smart pointer type is also
-defined for sequence type, it is used there.  A "length()" function
-which returns current length of the array is available, and getting
-the length of the array by it all the values are printed out by "FOR"
-sentence.  In the _var object of sequence type, "[]" operator is
-available as shown in above example, and each element can be accessed
-like in C language.
+get_echo_history command receives a result from get_echo_history() operation, and print a list of strings that were given to echo-command before.  The return value of get_echo_history() operation is EchoList CORBA sequence type.  Since the _var smart pointer type is also defined for sequence type, it is used there.  A "length()" function which returns current length of the array is available, and getting the length of the array by it all the values are printed out by "FOR" sentence.  In the _var object of sequence type, "[]" operator is available as shown in above example, and each element can be accessed like in C language.
 
       if (argv[0] == "get_value_history")
         {
@@ -1434,21 +1125,15 @@ like in C language.
           return RTC::RTC_OK;
         }
 
-// ÅŒã‚ÉAget_value_history ƒRƒ}ƒ“ƒh‚Å‚·Bget_value_history() ƒIƒyƒŒ[ƒVƒ‡
-// ƒ“‚ğŒÄ‚Ño‚µA‚±‚ê‚Ü‚Åİ’è‚³‚ê‚½‚ ‚½‚è‚ÌƒŠƒXƒg‚ğ•\¦‚µ‚Ü‚·B
-// get_value_hitory() ŠÖ”‚Ì–ß‚è’l‚Í CORBA::Float ‚ÌƒV[ƒPƒ“ƒXŒ^‚Ì
-// ValueList ‚Å‚·B—v‘f‚Í CORBA::Float ‚Ì‚½‚ßƒIƒuƒWƒFƒNƒg‚ÌŠ—LŒ “™‚Æ‚¢‚Á
-// ‚½‚±‚Æ‚Íl‚¦‚È‚­‚Ä‚à‚æ‚¢‚Ì‚Å‚·‚ªAƒV[ƒPƒ“ƒXŒ^‚Í‚»‚ê©gƒIƒuƒWƒFƒNƒg‚Å
-// ‚·‚Ì‚ÅAŠ—LŒ ‚ğl—¶‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢‚Ì‚Å‚±‚±‚Å‚Í _var Œ^‚Ì•Ï”‚Åó‚¯
-// æ‚Á‚Ä‚¢‚Ü‚·B
+// æœ€å¾Œã«ã€get_value_history ã‚³ãƒãƒ³ãƒ‰ã§ã™ã€‚get_value_history() ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§
+// ãƒ³ã‚’å‘¼ã³å‡ºã—ã€ã“ã‚Œã¾ã§è¨­å®šã•ã‚ŒãŸã‚ãŸã‚Šã®ãƒªã‚¹ãƒˆã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
+// get_value_hitory() é–¢æ•°ã®æˆ»ã‚Šå€¤ã¯ CORBA::Float ã®ã‚·ãƒ¼ã‚±ãƒ³ã‚¹å‹ã®
+// ValueList ã§ã™ã€‚è¦ç´ ã¯ CORBA::Float ã®ãŸã‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æ‰€æœ‰æ¨©ç­‰ã¨ã„ã£
+// ãŸã“ã¨ã¯è€ƒãˆãªãã¦ã‚‚ã‚ˆã„ã®ã§ã™ãŒã€ã‚·ãƒ¼ã‚±ãƒ³ã‚¹å‹ã¯ãã‚Œè‡ªèº«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§
+// ã™ã®ã§ã€æ‰€æœ‰æ¨©ã‚’è€ƒæ…®ã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã®ã§ã“ã“ã§ã¯ _var å‹ã®å¤‰æ•°ã§å—ã‘
+// å–ã£ã¦ã„ã¾ã™ã€‚
 
-Let's see get_value_history command implementation.  Calling
-get_value_history() operation, it prints out a list of values which
-were set before.  The return value of the get_value_history()
-operation is ValueList, which is sequence type of CORBA::Float.  Since
-each element is CORBA::Float, you don't need to consider the ownership
-of objects.  However, since sequence type variable is an object to be
-considered its ownership, it is assigned to _var type variable.
+Let's see get_value_history command implementation.  Calling get_value_history() operation, it prints out a list of values which were set before.  The return value of the get_value_history() operation is ValueList, which is sequence type of CORBA::Float.  Since each element is CORBA::Float, you don't need to consider the ownership of objects.  However, since sequence type variable is an object to be considered its ownership, it is assigned to _var type variable.
 
  std::cout << "Invalid command or argument(s)." << std::endl;
      }
@@ -1459,22 +1144,16 @@ considered its ownership, it is assigned to _var type variable.
    return RTC::RTC_OK;
  }
 
-// ÅŒã‚ÉAã‚Ì‚Ç‚ê‚É‚à“–‚Ä‚Í‚Ü‚ç‚È‚©‚Á‚½ƒRƒ}ƒ“ƒh‚Ìê‡‚ÉAƒƒbƒZ[ƒW‚ğo
-// ‚µ‚Ä‚¢‚Ü‚·B‚Ü‚½AƒRƒ“ƒVƒ…[ƒ}‚ÉQÆ‚ªƒZƒbƒg‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ì—áŠO‚ğŠÜ
-// ‚ß‚Ä•ß‘¨‚·‚é‚½‚ß‚Ì catch ß‚ª‚ ‚è‚Ü‚·B
+// æœ€å¾Œã«ã€ä¸Šã®ã©ã‚Œã«ã‚‚å½“ã¦ã¯ã¾ã‚‰ãªã‹ã£ãŸã‚³ãƒãƒ³ãƒ‰ã®å ´åˆã«ã€ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡º
+// ã—ã¦ã„ã¾ã™ã€‚ã¾ãŸã€ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã«å‚ç…§ãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ãªã„å ´åˆã®ä¾‹å¤–ã‚’å«
+// ã‚ã¦æ•æ‰ã™ã‚‹ãŸã‚ã® catch ç¯€ãŒã‚ã‚Šã¾ã™ã€‚
 
-At the end, a message is printed out for unknown or invalid command
-case.  And you can see "catch" block to catch exception from the
-consumer including reference not assigned exception.
+At the end, a message is printed out for unknown or invalid command case.  And you can see "catch" block to catch exception from the consumer including reference not assigned exception.
 
-// ˆÈãAƒRƒ“ƒVƒ…[ƒ}‚É‚æ‚éƒIƒyƒŒ[ƒVƒ‡ƒ“‚ÌŒÄ‚Ñ•û‚É‚Â‚¢‚ÄŠÈ’P‚È—á‚ğŒğ‚¦‚Ä
-// à–¾‚µ‚Ü‚µ‚½BƒRƒ“ƒVƒ…[ƒ}‚ğ—˜—p‚·‚éÛ‚É‚ÍA•K‚¸‚µ‚àƒIƒuƒWƒFƒNƒgQÆ‚ª
-// ƒZƒbƒg‚³‚ê‚Ä‚¢‚é‚Æ‚ÍŒÀ‚ç‚È‚¢‚Ì‚ÅA•K‚¸—áŠO‚ğ•ß‘¨‚µ‘Îˆ‚·‚é‚±‚Æ‚ÆAŠeƒI
-// ƒyƒŒ[ƒVƒ‡ƒ“‚ÌŒÄ‚Ño‚µ‚ªACORBA‚Ìƒ‹[ƒ‹‚ÉŠî‚Ã‚¢‚Äs‚í‚ê‚é‚±‚Æ‚É—¯ˆÓ‚µ‚Ä
-// ‚­‚¾‚³‚¢B
+// ä»¥ä¸Šã€ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã«ã‚ˆã‚‹ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®å‘¼ã³æ–¹ã«ã¤ã„ã¦ç°¡å˜ãªä¾‹ã‚’äº¤ãˆã¦
+// èª¬æ˜ã—ã¾ã—ãŸã€‚ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒã‚’åˆ©ç”¨ã™ã‚‹éš›ã«ã¯ã€å¿…ãšã—ã‚‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå‚ç…§ãŒ
+// ã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ã‚‹ã¨ã¯é™ã‚‰ãªã„ã®ã§ã€å¿…ãšä¾‹å¤–ã‚’æ•æ‰ã—å¯¾å‡¦ã™ã‚‹ã“ã¨ã¨ã€å„ã‚ª
+// ãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®å‘¼ã³å‡ºã—ãŒã€CORBAã®ãƒ«ãƒ¼ãƒ«ã«åŸºã¥ã„ã¦è¡Œã‚ã‚Œã‚‹ã“ã¨ã«ç•™æ„ã—ã¦
+// ãã ã•ã„ã€‚
 
-How to call operations from consumer was explained sprinkled with some
-simple example in above.  In case of using consumers, it must be noted
-that exception from consumers should always be caught and should be
-handled them since object reference is not always set to it.  And note
-that every operation call would be done by CORBA's rule.
+How to call operations from consumer was explained sprinkled with some simple example in above.  In case of using consumers, it must be noted that exception from consumers should always be caught and should be handled them since object reference is not always set to it.  And note that every operation call would be done by CORBA's rule.

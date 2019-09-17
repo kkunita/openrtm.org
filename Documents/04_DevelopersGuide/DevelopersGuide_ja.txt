@@ -1,9 +1,8 @@
-TITLE:OpenRTM-aist�f�x���b�p�[�Y�K�C�h
-
+﻿// Title: デベロッパーズガイド
 #ref(devguide.png,right,around,70%,url=/node/113)
 
-RT�R���|�[�l���g�J���Ҍ����̃h�L�������g�BRTC�������@����сARTC��g�ݍ��킹�ăV�X�e���������@�ɂ��āA�u����ҁv�Ɓu���p�ҁv�ɕ����ĉ�����܂��B
-�܂��AOpenRTM-aist�̂��ڍׂȓ����\���ɂ��Ă�������܂��B
+RTコンポーネント開発者向けのドキュメント。RTCを作る方法および、RTCを組み合わせてシステムを作る方法について、「入門編」と「応用編」に分けて解説します。
+また、OpenRTM-aistのより詳細な内部構造についても解説します。
 
 &br;
 

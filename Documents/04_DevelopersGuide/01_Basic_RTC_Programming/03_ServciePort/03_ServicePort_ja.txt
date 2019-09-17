@@ -1,107 +1,56 @@
-// -*- pukiwiki-edit -*-
-// 
-// @brief How to use Service Port Basic
-// @date $Date$
-// @author Noriaki Ando <n-ando@aist.go.jp>
-// 
-// Copyright (C) 2011
-//     Noriaki Ando
-//     Intelligent Systems Research Institute,
-//     National Institute of
-//         Advanced Industrial Science and Technology (AIST), Japan
-//     All rights reserved.
-// 
-// $Id$
-// 
-//*�T�[�r�X�|�[�g(��{��)
-
+﻿// Title: サービスポート (基礎編)
 #contents
 
-//------------------------------------------------------------
-**�T�[�r�X�|�[�g�Ƃ�
+**サービスポートとは
 
-���{�b�g�V�X�e�����R���|�[�l���g�w���ō\�z���邽�߂ɂ́A�R���|�[�l���g
-�Ԃ̃f�[�^�ʐM�����ł͏\���ł͂Ȃ��A�R�}���h���x��(���邢�͊֐����x��)
-�̃R���|�[�l���g�ԒʐM���K�v�ɂȂ��Ă��܂��B�Ⴆ�΁A���{�b�g�A�[����
-�䂷��}�j�s�����[�^�R���|�[�l���g�̏ꍇ�A���̈ʒu�⑬�x�Ȃǂ́A���
-�̃A�v���P�[�V������R���|�[�l���g����f�[�^�|�[�g�ő�����ׂ��f�[�^
-�ł��B
+ロボットシステムをコンポーネント指向で構築するためには、コンポーネント間のデータ通信だけでは十分ではなく、コマンドレベル(あるいは関数レベル)のコンポーネント間通信が必要になってきます。
+例えば、ロボットアームを制御するマニピュレータコンポーネントの場合、手先の位置や速度などは、上位のアプリケーションやコンポーネントからデータポートで送られるべきデータです。
 
-����A���{�b�g�A�[���̊e��ݒ�A���W�n�̐ݒ�A����p�����[�^�̐ݒ�A��
-�샂�[�h�̐ݒ�A�Ȃǂ��f�[�^�|�[�g�ōs���͓̂K�؂Ƃ͌������A�I�u�W�F�N
-�g�w���I�ɂ����΁A�}�j�s�����[�^�I�u�W�F�N�g�ɑ΂��āA
-setCoordinationSystem(), setParameter(), setMode(), �Ȃǂ̊֐����p�ӂ�
-��Ă��āA�����̊֐���K�v�ɉ����ēK�؂ȃ^�C�~���O�ŌĂԂ̂����R�Ƃ�
-���܂��B
+一方、ロボットアームの各種設定、座標系の設定、制御パラメーターの設定、動作モードの設定、などをデータポートで行うのは適切とは言えず、オブジェクト指向的にいえば、マニピュレータオブジェクトに対して、
+setCoordinationSystem()、setParameter()、setMode() などの関数が用意されていて、これらの関数を必要に応じて適切なタイミングで呼ぶのが自然といえます。
 
 #ref(serviceport_example_ja.png,40%,center)
-CENTER: ''�T�[�r�X�|�[�g�̗�''
+CENTER: ''サービスポートの例''
 
-�T�[�r�X�|�[�g�͂��̂悤�ȃR�}���h���x���̃R���|�[�l���g�Ԃ̂�����
-�s�����߂̎d�g�݂�񋟂��܂��B
+サービスポートはこのようなコマンドレベルのコンポーネント間のやり取りを行うための仕組みを提供します。
 
-��ʂɃT�[�r�X�Ƃ́A�@�\�I�Ɋ֘A�̂���ЂƂ܂Ƃ܂�̃R�}���h (�֐��A��
-�\�b�h�A�I�y���[�V�����ȂǂƂ��Ă΂�܂�) �Q�ł���AOpenRTM-aist�ɂ���
-�ẮA���̋@�\��񋟂��鑤���T�[�r�X�v���o�C�_(�C���^�[�t�F�[�X)�A�@�\
-�𗘗p���鑤���T�[�r�X�R���V���[�}(�C���^�[�t�F�[�X)�ƌĂт܂��B
+一般にサービスとは、機能的に関連のあるひとまとまりのコマンド (関数、メソッド、オペレーションなどとも呼ばれます) 群であり、OpenRTM-aistにおいては、この機能を提供する側をサービスプロバイダ(インターフェース)、機能を利用する側をサービスコンシューマ(インターフェース)と呼びます。
 
-�Ȃ��AUML���̋K��ɂ����ẮA�T�[�r�X�v���o�C�_�� Privided Interface,
-�܂��T�[�r�X�R���V���[�}�� Required Interface �ȂǂƌĂсA���ꂼ�ꉺ�}
-�̂悤�ȋL�� (�����|�b�v (lollipop) �A�\�P�b�g (socket) ) �ŕ\���܂��B
-����́A��ʓI�ȗp�ꂨ��ыL�q�@�Ȃ̂Ŋo���Ă����������悢�ł��傤�B��
-�Ԃ��邢�͌Ă΂������ł����΁A�Ă΂����̂��v���o�C�_ (Provided
-Interface) �ł���A�ĂԂ��̂��R���V���[�} (Required Interface) �Ƃ�����
-�����ł��܂��B
+なお、UML等の規約においては、サービスプロバイダを Provided Interface、またサービスコンシューマを Required Interface などと呼び、それぞれ下図のような記号 (ロリポップ (lollipop) 、ソケット (socket) ) で表します。
+これは、一般的な用語および記述法なので覚えておいた方がよいでしょう。呼ぶあるいは呼ばれる方向でいえば、呼ばれるものがプロバイダ (Provided Interface) であり、呼ぶものがコンシューマ (Required Interface) という見方もできます。
 
 #ref(provider_and_consumer_ja.png,40%,center)
-CENTER: ''�v���o�C�_�ƃR���V���[�}''
+CENTER: ''プロバイダとコンシューマ''
 
-- �v���o�C�_ (Provided Interface): �Ă΂�鑤�A�T�[�r�X��񋟂��鑤
-- �R���V���[�} (Required Interface): �Ăԑ��A�T�[�r�X�𗘗p���鑤 
+- プロバイダ (Provided Interface): 呼ばれる側、サービスを提供する側
+- コンシューマ (Required Interface): 呼ぶ側、サービスを利用する側 
 
-�v���o�C�_����уR���V���[�}���܂Ƃ߂ăC���^�[�t�F�[�X�܂��́A�T�[�r�X
-�C���^�[�t�F�[�X�ƌĂсA�����T�[�r�X�C���^�[�t�F�[�X�����|�[�g���T�[
-�r�X�|�[�g�ƌĂт܂��B
+プロバイダおよびコンシューマをまとめてインターフェースまたは、サービスインターフェースと呼び、これらサービスインターフェースを持つポートをサービスポートと呼びます。
 
 
-**�T�[�r�X�|�[�g�ƃC���^�[�t�F�[�X
+**サービスポートとインターフェース
 
-�T�[�r�X�C���^�[�t�F�[�X�ƃT�[�r�X�|�[�g�̊֌W�ɂ��ďڂ����������܂��B
+サービスインターフェースとサービスポートの関係について詳しく説明します。
 
 #ref(component_port_interface_ja.png,40%,center)
-CENTER: ''�R���|�[�l���g�A�|�[�g�A�C���^�[�t�F�[�X''
+CENTER: ''コンポーネント、ポート、インターフェース''
 
-�|�[�g�Ƃ̓R���|�[�l���g�ɕt�����A�R���|�[�l���g�Ԃ̐ڑ��̒[�_�ƂȂ镔
-�����w���܂��B�R���|�[�l���g�Ԃ̐ڑ��Ƃ́A�R���|�[�l���g�ɕt������|�[
-�g�ԂŐڑ��Ɋւ��钲�₪�s���A���炩�̑��ݍ�p (�f�[�^��R�}���h�̂�
-����) ���s�����Ԃɂ��邱�Ƃ��Ӗ����܂��B
+ポートとはコンポーネントに付属し、コンポーネント間の接続の端点となる部分を指します。コンポーネント間の接続とは、コンポーネントに付属するポート間で接続に関する調停が行われ、何らかの相互作用 (データやコマンドのやり取り) が行える状態にすることを意味します。
 
-�|�[�g���̂̓f�[�^��R�}���h�̂����ɑ΂��āA���̋@�\���񋟂��܂���B
-���ۂɃR�}���h�̂������s���̂̓T�[�r�X�C���^�[�t�F�[�X (�v���o�C�_
-�ƃR���V���[�}) �ɂȂ�܂��B��ʓI�Ƀ|�[�g�ɂ͋@�\�I�Ɋ֘A�̂���C�ӂ�
-���̔C�ӂ̕����̃C���^�[�t�F�[�X��t�����邱�Ƃ��ł��܂��B����ɂ��A
-�R�}���h�̂���������������łȂ��o�����ɂ��邱�Ƃ��ł��܂��B
+ポート自体はデータやコマンドのやり取りに対して、何の機能も提供しません。実際にコマンドのやり取りを行うのはサービスインターフェース (プロバイダとコンシューマ) になります。
+一般的にポートには機能的に関連のある任意の数の任意の方向のインターフェースを付加することができます。これにより、コマンドのやり取りを一方向だけでなく双方向にすることもできます。
 
-�R���V���[�}�ƃv���o�C�_�́A�|�[�g���ڑ����ꂽ�Ƃ��ɁA��������Ɋ�Â�
-�Đڑ�����A�R���V���[�}����v���o�C�_�̋@�\���Ăяo�����Ƃ��\�ɂȂ�
-�܂��B�R���V���[�}�ƃv���o�C�_��ڑ����邽�߂ɂ́A���҂�''�^''�������A
-�܂��͌݊���������K�v������܂��B
+コンシューマとプロバイダは、ポートが接続されたときに、ある条件に基づいて接続され、コンシューマからプロバイダの機能を呼び出すことが可能になります。
+コンシューマとプロバイダを接続するためには、両者の''型''が同じ、または互換性がある必要があります。
 
-�����^�ł���A�Ƃ͓���̃C���^�[�t�F�[�X��`�������Ƃł���A�݊�����
-����Ƃ́A�v���o�C�_�̃C���^�[�t�F�[�X���R���V���[�}�̃C���^�[�t�F�[�X
-�̃T�u�N���X�̈�ł���A(�t�ɂ����΁A�R���V���[�}�̃C���^�[�t�F�[�X��
-�v���o�C�_�̃C���^�[�t�F�[�X�̃X�[�p�[�N���X�̈�ł���)�Ƃ������Ƃɂ�
-��܂��B
+同じ型である、とは同一のインターフェース定義を持つことであり、互換性があるとは、プロバイダのインターフェースがコンシューマのインターフェースのサブクラスの一つである、(逆にいえば、コンシューマのインターフェースがプロバイダのインターフェースのスーパークラスの一つである)ということになります。
 
 
-***�T�[�r�X�|�[�g
+***サービスポート
 
-RT�R���|�[�l���g�̓f�[�^�|�[�g���l�A�C�ӂ̐��̃T�[�r�X�|�[�g��������
-���ł��܂��B�܂��A�T�[�r�X�|�[�g�ɂ́A�C�ӂ̎�ށA���̃v���o�C�_�܂���
-�R���V���[�}��t�����邱�Ƃ��ł��܂��B
+RTコンポーネントはデータポート同様、任意の数のサービスポートを持つことができます。また、サービスポートには、任意の種類、数のプロバイダまたはコンシューマを付加することができます。
 
-�ȉ��́AOpenRTM-aist�̃T���v���R���|�[�l���g MyServiceProvider ���甲��
-�����|�[�g�ƃv���o�C�_�̓o�^�̂��߂̃R�[�h�ł��B
+以下は、OpenRTM-aistのサンプルコンポーネント MyServiceProvider から抜粋したポートとプロバイダの登録のためのコードです。
 
  RTC::ReturnCode_t MyServiceProvider::onInitialize()
  {
@@ -114,13 +63,10 @@ RT�R���|�[�l���g�̓f�[�^�|�[�g���l�A�C�ӂ̐��̃T�[�r�X�|�[�g��������
    return RTC::RTC_OK;
  }
 
-m_MyServicePort.registerProvider() �Ńv���o�C�_���T�[�r�X�|�[�g�I�u�W�F
-�N�g m_MyServicePort �ɓo�^���Ă��܂��B��3���������̂ł���v���o�C�_�I
-�u�W�F�N�g�ł��B���ɁA�R���|�[�l���g�̃t���[�����[�N�N���X�ł���
-RTObject�N���X��addPort() �֐��ŁA�|�[�g���R���|�[�l���g�ɓo�^���Ă���
-���B
+m_MyServicePort.registerProvider() でプロバイダをサービスポートオブジェクト m_MyServicePort に登録しています。第3引数が実体であるプロバイダオブジェクトです。
+次に、コンポーネントのフレームワーククラスである RTObjectクラスのaddPort() 関数で、ポートをコンポーネントに登録しています。
 
-���l�ɁA�T���v���R���|�[�l���g MyServiceConsumer ���甲�������R�[�h�������܂��B
+同様に、サンプルコンポーネント MyServiceConsumer から抜粋したコードを示します。
 
  RTC::ReturnCode_t MyServiceConsumer::onInitialize()
  {
@@ -133,40 +79,22 @@ RTObject�N���X��addPort() �֐��ŁA�|�[�g���R���|�[�l���g�ɓo�^���Ă���
    return RTC::RTC_OK;
  }
 
-�v���o�C�_�̏ꍇ�ƂقƂ�Ǔ����ŁAm_MyServicePort.registerConsumer() ��
-���ŃR���V���[�}���|�[�g�ɓo�^���A���̃|�[�g�� addPort() �֐��ŃR���|�[
-�l���g�ɓo�^���Ă��܂��B
+プロバイダの場合とほとんど同じで、m_MyServicePort.registerConsumer() 関数でコンシューマをポートに登録し、そのポートを addPort() 関数でコンポーネントに登録しています。
 
-�ȏ�A���ɐ������Ȃ��ɁA���ꂼ�� m_myservice0 �Ƃ����I�u�W�F�N�g���A�v
-���o�C�_�A�܂��̓R���V���[�}�ł���Ƃ��ăR�[�h��������܂������A�ȉ��A
-�����̃C���^�[�t�F�[�X���ǂ̂悤�ɒ�`����A�I�u�W�F�N�g���ǂ̂悤��
-��������邩��������Ă����܂��B
+以上、特に説明もなしに、それぞれ m_myservice0 というオブジェクトが、プロバイダ、またはコンシューマであるとしてコード例を示しましたが、以下、これらのインターフェースがどのように定義され、オブジェクトがどのように実装されるかを説明していきます。
 
-***�C���^�[�t�F�[�X��`
+***インターフェース定義
 
-�C���^�[�t�F�[�X�Ƃ͉��ł��傤���HC++�ł���΁A�������z�N���X���C���^�[
-�t�F�[�X�ƌĂ񂾂肵�܂����AJava�͌��ꃌ�x���� interface �L�[���[�h���p
-�ӂ���Ă��܂��B
+インターフェースとは何でしょうか？ C++であれば、純粋仮想クラスをインターフェースと呼んだりしますし、Java は言語レベルで interface キーワードが用意されています。
 
-OpenRTM-aist�ɂ́A�����OS�Ɉˑ����Ȃ��A�l�b�g���[�N���߂ł���Ƃ�����
-����������܂����A�����CORBA�ƌĂ΂�镪�U�I�u�W�F�N�g�~�h���E�G�A��
-�p���邱�Ƃɂ���������Ă��܂��BCORBA�́A���ەW�����c��OMG�ŕW������
-��Ă��镪�U�I�u�W�F�N�g�~�h���E�G�A�ŁA�W���ɏ]���āA�����̉�Ђ�c�́A
-�l�Ȃǂ����l�Ȏ�����񋟂��Ă��܂��B
+OpenRTM-aist には、言語や OS に依存しない、ネットワーク透過であるといった特徴がありますが、これは CORBA と呼ばれる分散オブジェクトミドルウエアを利用することにより実現されています。
+CORBAは、国際標準化団体OMGで標準化されている分散オブジェクトミドルウエアで、標準に従って、多くの会社や団体、個人などが多様な実装を提供しています。
 
-OpenRTM-aist�ł́A�C���^�[�t�F�[�X��IDL�ƌĂ΂��CORBA�̃C���^�[�t�F�[
-�X��`����ɂ���Ē�`���܂��B����IDL�͌���Ɉˑ����Ȃ��C���^�[�t�F�[�X
-��`���@��񋟂��A�܂�IDL�R���p�C���ƌĂ΂��X�^�u��X�P���g���𐶐��c�[
-���𗘗p���邱�ƂŁA�e�팾��ɑΉ������R�[�h�������I�ɐ�������܂��B�X
-�^�u�Ƃ́A�����[�g�̃I�u�W�F�N�g���Ăяo�����߂̃v���L�V�I�u�W�F�N�g��
-���߂̃R�[�h�ł���A�X�P���g���Ƃ́A�v���o�C�_���������邽�߂̃x�[�X��
-�Ȃ�R�[�h�ł��B
+OpenRTM-aistでは、インターフェースは IDL と呼ばれる CORBA のインターフェース定義言語によって定義します。この IDL は言語に依存しないインターフェース定義方法を提供し、また IDL コンパイラと呼ばれるスタブやスケルトンを生成ツールを利用することで、各種言語に対応したコードが自動的に生成されます。スタブとは、リモートのオブジェクトを呼び出すためのプロキシオブジェクトのためのコードであり、スケルトンとは、プロバイダを実装するためのベースとなるコードです。
 
-����玩�����������R�[�h�̂������ŁA�قȂ錾�ꓯ�m�̌Ăяo�����V�[��
-���X�ɍs�����Ƃ��ł��܂��B�Ⴆ�΁AC++�Ŏ������ꂽ�v���o�C�_���APython��
-Java���ŗe�ՂɌĂяo�����Ƃ��ł���̂ł��B
+これら自動生成されるコードのおかげで、異なる言語同士の呼び出しもシームレスに行うことができます。例えば、C++で実装されたプロバイダを、Python や Java 等で容易に呼び出すことができるのです。
 
-�ȉ��́AOpenRTM-aist�̃T���v���Ŏg�p����Ă���IDL��`�ł��B
+以下は、OpenRTM-aist のサンプルで使用されている IDL 定義です。
 
  module SimpleService {
    typedef sequence<string> EchoList;
@@ -181,49 +109,35 @@ Java���ŗe�ՂɌĂяo�����Ƃ��ł���̂ł��B
    };
  };
 
-module �Ƃ� C++�Ō����Ƃ���̖��O��Ԃ̂悤�Ȃ��̂ŁA����ɂ��C���^�[
-�t�F�[�X�����A�E���Փ˂�h�����Ƃ��ł��܂��B
+module とは C++ で言うところの名前空間のようなもので、これによりインターフェース名を修飾し衝突を防ぐことができます。
 
-C���ꓙ�Ɠ��l�� typedef �L�[���[�h������܂��B��̗�ł́Asequence �ƌ�
-�΂�铮�I�z��^���`���Ă��܂��B��́Astring (������^) �^�̃��X�g
-�Ƃ��āAEchoList �^�A�����ЂƂ� float �^�̃��X�g�Ƃ��� ValueList �^��
-��`���Ă��܂��B���� sequence �^�́Atypedef �����ɁA��`���Œ��ڎg����
-�Ƃ��ł��Ȃ��̂ŁA���̂悤�ɗ\�� typedef ���Ă����K�v������܂��B
+C言語等と同様に typedef キーワードがあります。上の例では、sequence と呼ばれる動的配列型を定義しています。
+一つは、string (文字列型) 型のリストとして、EchoList 型、もうひとつは float 型のリストとして ValueList 型を定義しています。
+特に sequence 型は、typedef せずに、定義中で直接使うことができないので、このように予め typedef しておく必要があります。
 
-���� interface �Ŏn�܂镔�������ۂ̃C���^�[�t�F�[�X�̒�`�ɂȂ�܂��B
-MyService �C���^�[�t�F�[�X�ɂ́A5�̊֐� (IDL�ł̓I�y���[�V�����ƌĂ�
-�܂�) ����`����Ă��܂��B�قƂ�ǂ́AC�����Java�ȂǂƓ����悤�Ȓ�`��
-�����AIDL�ł͈��������͂ł��邩�o�͂ł��邩�𖾊m�ɂ��邽�߂ɁA�����錾
-�̑O�ɁA''in'', ''out'' �܂��� ''inout'' �̏C���q���t���܂��B
+次に interface で始まる部分が実際のインターフェースの定義になります。
+MyService インターフェースには、5つの関数 (IDLではオペレーションと呼びます) が定義されています。
+ほとんどは、C言語やJavaなどと同じような定義ですが、IDL では引数が入力であるか出力であるかを明確にするために、引数宣言の前に、''in'', ''out'' または ''inout'' の修飾子が付きます。
 
-***IDL�R���p�C��
+***IDL コンパイル
 
-�}�ɁAIDL��`����IDL�R���p�C���A�v���o�C�_�̎�������уX�^�u�̗��p�̗�
-��������܂��B
+図に、IDL 定義から IDL コンパイル、プロバイダの実装およびスタブの利用の流れを示します。
 
 #ref(idlcompile_stub_skel_ja.png,40%,center)
-CENTER: ''IDL�R���p�C���ƃX�^�u�A�X�P���g��''
+CENTER: ''IDLコンパイルとスタブ、スケルトン''
 
-��`���ꂽIDL��IDL�R���p�C���ɗ^���ăR���p�C�����s���ƁA�ʏ�X�^�u�ƃX
-�P���g�� (�܂��̓T�[�o�ƃN���C�A���g�Ƃ����Ăѕ�������ꍇ������) �̂�
-�߂̃R�[�h����������܂��B
+定義された IDL を IDL コンパイラに与えてコンパイルを行うと、通常スタブとスケルトン (またはサーバーとクライアントという呼び方をする場合もある) のためのコードが生成されます。
 
-�N���C�A���g�A���Ȃ킿�T�[�r�X�𗘗p���鑤�́A�X�^�u�R�[�h���C���N���[
-�h����Ȃǂ��āA�X�^�u�Ƃ��Ă���`����Ă���v���L�V(�㗝)�I�u�W�F�N�g
-�𗘗p���āA�����[�g�ɂ���A�T�[�o�̋@�\�ɃA�N�Z�X���܂��B�ȉ���C++�ł�
-�R�[�h��������܂��B
+クライアント、すなわちサービスを利用する側は、スタブコードをインクルードするなどして、スタブとしてい定義されているプロキシ(代理)オブジェクトを利用して、リモートにある、サーバーの機能にアクセスします。以下に C++ でのコード例を示します。
 
- MyService_var mysvobj = <������̕��@�Ń����[�g�I�u�W�F�N�g�̎Q�Ƃ��擾>
+ MyService_var mysvobj = <何からの方法でリモートオブジェクトの参照を取得>
  Retval retval = mysvobj->myoperation(argument);
 
-MyService_var �Ƃ����̂��A�v���L�V�I�u�W�F�N�g�̂��߂̐錾�ł��B
-mysvobj�Ƀ����[�g�I�u�W�F�N�g�̎Q�Ƃ����炩�̌`�ő������ƁA���̉��ōs
-���Ă��� myoperation() �֐��̌Ăяo���́A���ۂɂ̓����[�g�ɑ��݂���I
-�u�W�F�N�g�ɂ����čs���܂��B����MyService_var �N���X����`����Ă���
-�̂��X�^�u�ɂ�����܂��B
+MyService_var というのが、プロキシオブジェクトのための宣言です。
+mysvobjにリモートオブジェクトの参照を何らかの形で代入すると、その下で行われている myoperation() 関数の呼び出しは、実際にはリモートに存在するオブジェクトにおいて行われます。
+このMyService_var クラスが定義されているのがスタブにあたります。
 
-����A��L�̕��@�ɂ���Ď��ۂɌĂ΂��T�[�o���̃I�u�W�F�N�g�́A�ȉ���
-�悤�ɃX�P���g���N���X���p�����Ĉȉ��̂悤�Ɏ�������܂��B
+一方、上記の方法によって実際に呼ばれるサーバー側のオブジェクトは、以下のようにスケルトンクラスを継承して以下のように実装されます。
 
  class MyServiceSVC_impl
    : public virtual MyService,
@@ -238,81 +152,67 @@ mysvobj�Ƀ����[�g�I�u�W�F�N�g�̎Q�Ƃ����炩�̌`�ő������ƁA���̉��ōs
     }
  };
 
-����ɁA�����Œ�`���ꂽ�T�[�o���g�N���X���C���X�^���X�����ACORBA�I�u�W�F
-�N�g�Ƃ��ăA�N�e�B�x�[�g���邱�ƂŁA�����[�g����I�y���[�V�������Ăяo
-�����Ƃ��ł��܂��B
+さらに、ここで定義されたサーバントクラスをインスタンス化し、CORBA オブジェクトとしてアクティベートすることで、リモートからオペレーションを呼び出すことができます。
 
- // CORBA��ORB�����N�����邽�߂̂��낢��Ȃ��܂��Ȃ�
+ // CORBAのORB等を起動するためのいろいろなおまじない
  MyServiceSVC_impl mysvc;
  POA->activate_object(id, mysvc);
 
-IDL���`���āA�R���p�C�����邱�ƂŁA���U�I�u�W�F�N�g���`�����p�����
-�ɕK�v�ȑ唼�̃R�[�h�������I�ɐ�������܂��B�������A��L�́u���炩�̕�
-�@�Ń����[�g�I�u�W�F�N�g�̎Q�Ƃ��擾�v������A�uCORBA��ORB���N�����邽
-�߂̂��낢��Ȃ��܂��Ȃ��v�Ƃ��������̂́ACORBA�𒼐ڗ��p����ꍇ�ɂ͈�
-�R�Ƃ��ăR�[�f�B���O����K�v�����镔���ł���A������CORBA�𗘗p���邤
-���ł����������������A�ώG�ȍ�Ƃ��K�v�ƂȂ镔���ł��B
+IDL を定義して、コンパイルすることで、分散オブジェクトを定義し利用するのに必要な大半のコードが自動的に生成されます。
+ただし、上記の「何らかの方法でリモートオブジェクトの参照を取得」したり、「CORBA の ORB を起動するためのいろいろなおまじない」といったものは、CORBA を直接利用する場合には依然としてコーディングする必要がある部分であり、これらは CORBA を利用するうえでも理解が難しかったり、煩雑な作業が必要となる部分です。
 
-�������Ȃ���AOpenRTM-aist�𗘗p����΁A��������CORBA�̗l�X�ȌĂяo����
-�唼�͉B������A�����҂̓N���C�A���g�̌Ăяo���A�T�[�o���g�̎����ɂ̂�
-�W�����邱�Ƃ��ł��܂��B�ȉ��ł́A�T�[�o���g���������v���o�C�_�Ƃ��ăR
-���|�[�l���g�ɓo�^������@�A�R���V���[�}�Ƃ��ăv���o�C�_�𗘗p������@
-�ɂ��ďڂ������Ă����܂��B
+しかしながら、OpenRTM-aist を利用すれば、こうした CORBA の様々な呼び出しの大半は隠蔽され、実装者はクライアントの呼び出し、サーバントの実装にのみ集中することができます。以下では、サーバントを実装しプロバイダとしてコンポーネントに登録する方法、コンシューマとしてプロバイダを利用する方法について詳しく見ていきます。
 
-**����
+**サービスポートの実装
 
-�T�[�r�X�|�[�g�̎����ɓ������ẮARTCBuilder�𗘗p����̂��֗��ł��B
-�����ŃT�[�r�X�|�[�g�A�v���o�C�_����уR���V���[�}���������邱�Ƃ��ł��܂����ACORBA��IDL�R���p�C���ɐ��ʂ��Ă���K�v������܂����AMakefile��R�[�h�̗l�X�ȕ���������������K�v������܂��̂ł��܂肨���߂ł��܂���B
+サービスポートの実装に当たっては、RTCBuilder を利用するのが便利です。
+自分でサービスポート、プロバイダおよびコンシューマを実装することもできますが、CORBA や IDL コンパイラに精通している必要がありますし、Makefile やコードの様々な部分を書き換える必要がありますのであまりお勧めできません。
 
-RTCBuilder�̏ڍׂȎg�����́ARTCBuilder�̃}�j���A�����Q�Ƃ��Ă��������B
+RTCBuilder の詳細な使い方は、RTCBuilder のマニュアルを参照してください。
 
-***IDL��`
+***IDL 定義
 
-�T�[�r�X�|�[�g�𗘗p����ɂ́A���p����C���^�[�t�F�[�X��\��
-IDL�Œ�`���邩�A������IDL�t�@�C����K���ȃf�B���N�g���ɔz�u���Ă����K
-�v������܂��B
+サービスポートを利用するには、利用するインターフェースを予め IDL で定義するか、既存の IDL ファイルを適当なディレクトリーに配置しておく必要があります。
 
-IDL�̒�`���@�ɂ��ẮA�����ł͏ڍׂ͏q�ׂ܂��񂪁A�����悻�ȉ��̂悤
-�ȃt�H�[�}�b�g�Œ�`���邱�Ƃ��ł��AC�����Java�Ɋ��ꂽ�ǎ҂ł���΁A��
-�r�I�e�Ղɒ�`�ł���ł��傤�B
+IDL の定義方法については、ここでは詳細は述べませんが、おおよそ以下のようなフォーマットで定義することができ、C言語や Java に慣れた読者であれば、比較的容易に定義できるでしょう。
 
- // ���O��Ԃ̂��߂Ƀ��W���[�����`���邱�Ƃ��ł���B
- // ���W���[����`�͐ϋɓI�ɗ��p���邱�Ƃ����������B
- module <���W���[����>
+ // 名前空間のためにモジュールを定義することができる。
+ // モジュール定義は積極的に利用することが推奨される。
+ module <モジュール名>
  {
-   // �\���̂��`���邱�Ƃ��ł���B
-   struct MyStruct // �\���̖�
+   // 構造体を定義することができる。
+   struct MyStruct // 構造体名
    {
-     short x; // int�^��short��long�̂ݗ��p�\
+     short x; // int型は short と longの み利用可能
      short y;
      long  a;
      long  b;
-     double dval; // ���������_�^��float��double�̂ݗ��p�\
+     double dval; // 浮動小数点型は float と double のみ利用可能
      float fval;
-     string strval; // ������̂��߂�string�����p�\
+     string strval; // 文字列のために string が利用可能
    };
  
-   // ���I�z�� sequence �^�͗\�� typedef ����K�v������
+   // 動的配列 sequence 型は予め typedef する必要がある
    typedef sequence<double> DvalueList;
-   typedef sequence<MyStruct> MyStructList; // �C�ӂ̍\���̂�sequence�^�ɂł���
+   typedef sequence<MyStruct> MyStructList; // 任意の構造体もsequence型にできる
  
-   // �C���^�[�t�F�[�X��`
-   interface MyInterface // �C���^�[�t�F�[�X��
+   // インターフェース定義
+   interface MyInterface // インターフェース名
    {
-     void op1(); // �߂�l�Ȃ��A�����Ȃ��̏ꍇ
+     void op1(); // 戻り値なし、引数なしの場合
  
-     // NG: �啶���E����������ʂ��Ȃ�����ł͈ȉ��̒�`�����ɂȂ邽��IDL�ł̓G���[�ɂȂ�
+     // NG: 大文字・小文字を区別しない言語では以下の定義が問題になるため IDLではエラーになる
      // short op2(in MuStruct mystruct);
-     short op2(in MyStruct mydata); // ������ {in, out, inout} �ŕ������w��
+     short op2(in MyStruct mydata); // 引数は {in, out, inout} で方向を指定
  
-     oneway void op3(); // �߂�l�Ȃ��̃I�y���[�V������onway�L�[���[�h�����p�\
+     oneway void op3(); // 戻り値なしのオペレーションは onway キーワードが利用可能
  
      void op4(in short inshort, out short outshort, inout short ioshort);
  
-     void op5(MyInterface myif); // MyInterface ���g�������ɗ��p���邱�Ƃ��\
+     void op5(MyInterface myif); // MyInterface 自身を引数に利用することも可能
    };
  
-   // �����IDL�t�@�C���ɕ�����interface���`���邱�Ƃ��\
+   // 同一の IDL ファイルに複数の interface を定義することも可能
    interface YourInterface
    {
      void op1();
@@ -320,127 +220,81 @@ IDL�̒�`���@�ɂ��ẮA�����ł͏ڍׂ͏q�ׂ܂��񂪁A�����悻�ȉ��̂悤
  };
 
 
-***RTCBuilder�ɂ��݌v
+***RTCBuilder による設計
 
-��̂悤��IDL�Œ�`�����C���^�[�t�F�[�X���A���ꂩ��J������RT�R���|�[�l
-���g�̃T�[�r�X�|�[�g�̃v���o�C�_�A�������̓R���V���[�}�Ƃ��ėp���邽��
-�ɂ́A�R���|�[�l���g�̃R�[�h�W�F�l���[�^�ł��� RTCBuilder �ŃT�[�r�X�|�[
-�g��݌v���A���̍ۂɂ���IDL��`��^���Ă��K�v������܂��B
+上のように IDL で定義したインターフェースを、これから開発する RTコンポーネントのサービスポートのプロバイダ、もしくはコンシューマとして用いるためには、コンポーネントのコードジェネレータである RTCBuilder でサービスポートを設計し、その際にこの IDL 定義を与えてやる必要があります。
 
-RTCBuilder �̐V�K�v���W�F�N�g���쐬���A�p�[�X�y�N�e�B�u���J���܂��B�e��
-�v���t�@�C��(�R���|�[�l���g�̖��̂�J�e�S����)���A�K�v�Ȑݒ���s������A
-�T�[�r�X�|�[�g�^�u���J���ƁA���̂悤�ȉ�ʂ�����܂��B
+RTCBuilder の新規プロジェクトを作成し、パースペクティブを開きます。各種プロファイル(コンポーネントの名称やカテゴリ名)等、必要な設定を行った後、サービスポートタブを開くと、次のような画面が表示されます。
 
 #ref(rtcbuilder_serviceport_tab1_ja.png,40%,center)
-CENTER: ''�T�[�r�X�|�[�g�݌v�^�u''
+CENTER: ''サービスポート設計タブ''
 
-�܂��A''Add Port'' �{�^���������T�[�r�X�|�[�g����ǉ����܂��B��������
-�ƁAsv_name �Ƃ����T�[�r�X�|�[�g����ǉ�����A����BuildView�̃R���|�[
-�l���g�̔��ɁA�����Ȑ����`�̃|�[�g����ǉ�����܂��BRTCBuilder�̃G�f�B
-�^���̃|�[�g���X�g��sv_name���N���b�N����ƁA�E����''RT-Component
-Service Port Profile''���\�������̂ŁA�|�[�g����K���Ȗ��O (�����ł�
-''MyServiceProviderPort'') �ɕύX���܂��B
+まず、[Add Port] ボタンをクリックし、サービスポートを一つ追加します。そうすると、sv_name というサービスポートが一つ追加され、下の BuildView のコンポーネントの箱に、小さな正方形のポートが一つ追加されます。RTCBuilder のエディタ左のポートリストの sv_name をクリックすると、右側に''RT-Component Service Port Profile''が表示されるので、ポート名を適当な名前 (ここでは''MyServiceProviderPort'') に変更します。
 
 #ref(rtcbuilder_serviceport_tab2_ja.png,40%,center)
-CENTER: ''�T�[�r�X�|�[�g�̒ǉ�''
+CENTER: ''サービスポートの追加''
 
-�G�f�B�^���̃|�[�g���X�g�� MyServiceProviderPort ���N���b�N���A''Add
-Interface''�{�^�����N���b�N����ƁAMyServiceProviderPort �ɃC���^�[�t�F�[
-�X ''if_name'' ����ǉ�����܂��̂ŁA��قǂƓ��l�ɃG�f�B�^��
-��''if_name''���N���b�N���A''RT-Component Service Port Interface
-Profile''���''if_name''��K���Ȗ��O (�����ł�MyServiceProvider) �ɕύX
-���܂��B����BuildeView�ł́A�����`�̃|�[�g�Ƀ����|�b�v���ǉ�����A�v��
-�o�C�_ (Provided Interface) ���|�[�g�ɕt�����ꂽ���Ƃ����o�I�ɕ������
-���B
+エディタ左のポートリストの MyServiceProviderPort をクリックし、[Add Interface] ボタンをクリックすると、MyServiceProviderPort にインターフェース ''if_name'' が一つ追加されますので、先ほどと同様にエディタ左の''if_name''をクリックし、''RT-Component Service Port Interface Profile''上で''if_name''を適当な名前 (ここでは MyServiceProvider) に変更します。下の BuildeView では、正方形のポートにロリポップが追加され、プロバイダ (Provided Interface) がポートに付加されたことが視覚的に分かります。
 
 #ref(rtcbuilder_serviceport_tab3_ja.png,40%,center)
-CENTER: ''�T�[�r�X�C���^�[�t�F�[�X(�v���o�C�_)�̒ǉ�''
+CENTER: ''サービスインターフェース(プロバイダ)の追加''
 
-�G�f�B�^�E���� Interface Profile �ł́A�C���^�[�t�F�[�X�̃v���t�@�C����
-�ݒ肵�܂��B�Ⴆ��''����''�̃h���b�v�_�E�����X�g�ł́A�Ώۂ̃C���^�[
-�t�F�[�X���v���o�C�_ (Provided) ���R���V���[�} (Required) �����w�肵��
-���B
+エディタ右側の Interface Profile では、インターフェースのプロファイルを設定します。例えば''方向''のドロップダウンリストでは、対象のインターフェースがプロバイダ (Provided) かコンシューマ (Required) かを指定します。
 
 #ref(rtcbuilder_direction_ddown_ja.png,100%,center)
-CENTER: ''�T�[�r�X�C���^�[�t�F�[�X�́u�����v�̐ݒ�''
+CENTER: ''サービスインターフェースの「方向」の設定''
 
-�����ł̓v���o�C�_��ǉ����悤�Ƃ��Ă���̂ŁAProvided �̂܂܂ɂ���
-���B���̂ق��A�C���X�^���X���A�ϐ����Ȃǂ��w��ł��܂����A�K�{�ł͂���
-�܂���B�C���X�^���X���́A�ڑ����Ƀv���o�C�_�ƃR���V���[�}�̃C���X�^��
-�X���������Ȃ�A�Ή��֌W���w�肵�Ȃ��Ă��|�[�g�̐ڑ��������I�ɍs���ꍇ
-�ɗ��p����܂��B
+ここではプロバイダを追加しようとしているので、Provided のままにします。このほか、インスタンス名、変数名なども指定できますが、必須ではありません。インスタンス名は、接続時にプロバイダとコンシューマのインスタンス名が同じなら、対応関係を指定しなくてもポートの接続を自動的に行う場合に利用されます。
 
 #ref(serviceif_autoconnection_ja.png,40%,center)
-CENTER: ''�T�[�r�X�C���^�[�t�F�[�X�̃C���X�^���X���Ǝ����ڑ�''
+CENTER: ''サービスインターフェースのインスタンス名と自動接続''
 
-�������A�C���X�^���X�����قȂ��Ă��Ă��A�ڑ����ɔC�ӂ̃C���^�[�t�F�[�X
-���m��ڑ��ł���̂ŁA���͕͂K�{�ł͂���܂���B�܂��A�ϐ����̓R�[�h��
-���������ۂɃv���o�C�_�I�u�W�F�N�g��������ϐ������w�肷�邽�߂̍���
-�ł����A������C���^�[�t�F�[�X�����玩���I�ɐ��������̂ŁA���͔͂C��
-�ł��B
+ただし、インスタンス名が異なっていても、接続時に任意のインターフェース同士を接続できるので、入力は必須ではありません。
+また、変数名はコードを生成した際にプロバイダオブジェクトを代入する変数名を指定するための項目ですが、これもインターフェース名から自動的に生成されるので、入力は任意Ωです。
 
-����IDL�̎w��ƁA�C���^�[�t�F�[�X�^�̎w����s���܂��B��Œ�`�����悤��
-IDL��K���ȃf�B���N�g���ɔz�u���AIDL�t�@�C���w��{�b�N�X���� Browse �{
-�^���������A�ΏۂƂȂ�IDL���w�肵�܂��B����ƁA�w�肳�ꂽIDL�Œ�`����
-���C���^�[�t�F�[�X���A���̉��̃C���^�[�t�F�[�X�^�̃h���b�v�_�E�����X�g
-�Ɍ���܂��B���̃h���b�v�_�E�����X�g�ŁA���̃|�[�g�ɕt�������C���^�[
-�t�F�[�X����I�����܂��BIDL�t�@�C���ɕ��@�G���[�Ȃǂ�����ꍇ�ɂ́A�h���b
-�v�_�E�����X�g�Ɋ�]����C���^�[�t�F�[�X������܂���B�ēxIDL�t�@�C����
-��`���`�F�b�N���Ă��������B
+次に IDL の指定と、インターフェース型の指定を行います。上で定義したような IDL を適当なディレクトリに配置し、IDL ファイル指定ボックス横の [Browse] ボタンをクリックし、対象となる IDL を指定します。すると、指定された IDL で定義されたインターフェースが、その下のインターフェース型のドロップダウンリストに現れます。このドロップダウンリストで、このポートに付加したインターフェース名を選択します。IDL ファイルに文法エラーなどがある場合には、ドロップダウンリストに希望するインターフェースが現れません。再度 IDL ファイルの定義をチェックしてください。
 
 #ref(rtcbuilder_interfacetype_ddwon_ja.png,100%,center)
-CENTER: ''�C���^�[�t�F�[�X�^�̑I��''
+CENTER: ''インターフェース型の選択''
 
-�Ȃ��A��q��''����''�h���b�v�_�E�����X�g�� ''Required''���w�肷��ƁA��
-�̃C���^�[�t�F�[�X�̓R���V���[�}�ɂȂ�܂��B�ȉ��͕ʂ̃R���|�[�l���g
-''MyServiceConsumer'' �̃T�[�r�X�|�[�g�ƃC���^�[�t�F�[�X�̐ݒ��ʂ̗�
-�ł��B
+なお、上述の''方向''ドロップダウンリストで ''Required''を指定すると、このインターフェースはコンシューマになります。
+以下は別のコンポーネント''MyServiceConsumer'' のサービスポートとインターフェースの設定画面の例です。
 
 #ref(rtcbuilder_serviceport_tab4_ja.png,40%,center)
-CENTER: ''�T�[�r�X�C���^�[�t�F�[�X(�R���V���[�})�̒ǉ�''
+CENTER: ''サービスインターフェース(コンシューマ)の追加''
 
-�G�f�B�^���� BuildView �ɂ����ă|�[�g�Ƀ\�P�b�g���ǉ�����āA�R���V���[
-�} (Required interface) ���|�[�g�ɕt�����ꂽ���Ƃ����o�I�ɕ�����܂��B
+エディタ下の BuildView においてポートにソケットが追加されて、コンシューマ (Required interface) がポートに付加されたことが視覚的に分かります。
 
-***�v���o�C�_�̎���
+***サービスプロバイダの実装
 
-�v���o�C�_�Ƃ����͕̂����ʂ�A�T�[�r�X���v���o�C�h(��)���邽�߂̃C��
-�^�[�t�F�[�X�ł��B���������āAIDL�Œ�`�����C���^�[�t�F�[�X�����T�[
-�r�X�̒��g����������K�v������܂��B
+プロバイダというのは文字通り、サービスをプロバイド(提供)するためのインターフェースです。したがって、IDL で定義したインターフェースを持つサービスの中身を実装する必要があります。
 
-�v���o�C�_�C���^�[�t�F�[�X�����R���|�[�l���g��RTCBuilder�Ő݌v������
-���A�R�[�h�������s���ƁA�R���|�[�l���g�̃\�[�X�̂ЂȌ`�ƂƂ��ɁA�Ⴆ��
-C++�̏ꍇ�ɂ́A<�T�[�r�X�C���^�[�t�F�[�X��>SVC_impl.cpp �� <�T�[�r�X�C
-���^�[�t�F�[�X��>SVC_impl.h �Ƃ����A�v���o�C�_�̎����R�[�h�̂ЂȌ`����
-������܂��B
+プロバイダインターフェースを持つコンポーネントを RTCBuilder で設計した場合、コード生成を行うと、コンポーネントのソースのひな形とともに、例えばC++の場合には、<サービスインターフェース名>SVC_impl.cpp と <サービスインターフェース名>SVC_impl.h という、プロバイダの実装コードのひな形も生成されます。
 
 #ref(rtcbuilder_svcimpl_cxxsrc_ja.png,100%,center)
-CENTER: ''�T�[�r�X�v���o�C�_�����t�@�C�� (C++,Python,Java)''
+CENTER: ''サービスプロバイダ実装ファイル (C++,Python,Java)''
 
-�ȉ��ɁA�e����Ő��������v���o�C�_�̎����̂ЂȌ`�R�[�h�̃t�@�C������
-�����܂��B
+以下に、各言語で生成されるプロバイダの実装のひな形コードのファイル名を示します。
 
-|>|CENTER: ''���������v���o�C�_�̂ЂȌ`�R�[�h�t�@�C��'' |
+|>|CENTER: ''生成されるプロバイダのひな形コードファイル'' |
 | ''C++''    | <interface name>SVC_impl.cpp &br; <interface name>SVC_impl.h |
 | ''Python'' | <interface name>_idl_example.py |
 | ''Java''   | <interface name>SVC_impl.java |
 
 
 #ref(rtcbuilder_svcimpl_pysrc_ja.png,100%,center)
-CENTER: ''�T�[�r�X�v���o�C�_�����t�@�C�� (Python)''
+CENTER: ''サービスプロバイダ実装ファイル (Python)''
 
 #ref(rtcbuilder_svcimpl_javasrc_ja.png,100%,center)
-CENTER: ''�T�[�r�X�v���o�C�_�����t�@�C�� (Java)''
+CENTER: ''サービスプロバイダ実装ファイル (Java)''
 
-�����̎����̂ЂȌ`�ɂ́AIDL�Œ�`���ꂽ�C���^�[�t�F�[�X�ɑ�������N��
-�X�����炩���ߒ�`����Ă��܂��B
+これらの実装のひな形には、IDLで定義されたインターフェースに相当するクラスがあらかじめ定義されています。
 
-�����ł́AC++�ł̎������@���ɂƂ�AIDL�Œ�`���ꂽ�I�y���[�V�����̂�
-�������������Ă����܂��B
+ここでは、C++での実装方法を例にとり、IDLで定義されたオペレーションのいくつかを実装していきます。
 
-****echo()�֐��̎���
+****echo()関数の実装
 
-�͂��߂ɁAecho() �����o�֐������Ă݂܂��B
+はじめに、echo() メンバ関数を見てみます。
 
  /*
   * Methods corresponding to IDL attributes and operations
@@ -454,34 +308,23 @@ CENTER: ''�T�[�r�X�v���o�C�_�����t�@�C�� (Java)''
    return 0;
  }
 
-#warning �v���v���Z�b�T�f�B���N�e�B�u������܂����A�����gcc�ŃR���p�C
-�������ۂɂ��̊֐�����������Ă��Ȃ����Ƃ��x�����邽�߂̂��̂ł��̂ŁA
-#ifndef���ƍ폜���܂��B
+#warning プリプロセッサディレクティブがありますが、これは gcc でコンパイルした際にこの関数が実装されていないことを警告するためのものですので、#ifndefごと削除します。
 
  char* MyServiceSVC_impl::echo(const char* msg)
  {
    return msg;
  }
 
-�܂��A���̊֐��́Aecho() �֐��̈����ɗ^����ꂽ��������A�P�ɌĂяo����
-�ɕԂ������̋@�\��񋟂���Ƃ��܂��B���������āA�ȉ��̂悤�Ɏ��������
-�悢�悤�Ɏv���܂��B
+また、この関数は、echo() 関数の引数に与えられた文字列を、単に呼び出し側に返すだけの機能を提供するとします。したがって、以下のように実装すればよいように思えます。
 
  char* MyServiceSVC_impl::echo(const char* msg)
  {
    return msg;
  }
 
-�������A����̓R���p�C�����ɃG���[�ɂȂ�܂��Bconst char* �� char* �ɓn
-���Ă��邽�߂ł��B�܂��ACORBA �̃I�u�W�F�N�g�̎������@�Ƃ��Ă��Ԉ����
-���܂��BCORBA�ł́Areturn �ŕԂ����I�u�W�F�N�g�́AORB (Object
-Request Broker, �����[�g�I�u�W�F�N�g�̌Ăяo���������i�镔���ACORBA�̃R
-�A) �ɂ���ĉ�̂����Ƃ������[�������邽�߂ł��B(return���ɂ̓I�u�W�F
-�N�g�̏��L�����������A�Ƃ������܂��B)
+しかし、これはコンパイル時にエラーになります。const char* を char* に渡しているためです。また、CORBA のオブジェクトの実装方法としても間違っています。CORBAでは、return で返されるオブジェクトは、ORB (Object Request Broker、リモートオブジェクトの呼び出し部分を司る部分、CORBAのコア) によって解体されるというルールがあるためです。(return時にはオブジェクトの所有権を放棄する、とも言います。)
 
-���������āAreturn �ɂ́A�ʓr�̈���m�ۂ��Amsg �̓��e���R�s�[����������
-��Ԃ��K�v������܂��B����ɏ]���΁A�ȉ��̂悤�Ɏ�������΂悢�悤�Ɏv
-����������܂���B
+したがって、return には、別途領域を確保し、msg の内容をコピーした文字列を返す必要があります。これに従えば、以下のように実装すればよいように思うかもしれません。
 
  char* MyServiceSVC_impl::echo(const char* msg)
  {
@@ -491,13 +334,10 @@ Request Broker, �����[�g�I�u�W�F�N�g�̌Ăяo���������i�镔���ACORBA�̃R
    return msgcopy;
  }
 
-�����ł́Amalloc�ŗ̈���m�ۂ��Ă��܂����AORB��free�ŗ̈����̂���̂��A
-delete�ŉ�̂���̂��͂킩��܂���B���́ACORBA�ł̓I�u�W�F�N�g(�\����
-��z��A�܂����̕����^�����܂�)�╶������������߂̕��@���ʓr��߂���
-���āA����ɏ]���Ċ֐��̈������󂯎������A�Ԃ����肷��K�v������̂�
-���B
+ここでは、malloc で領域を確保していますが、ORB は free で領域を解体するのか、delete で解体するのかはわかりません。
+実は、CORBA ではオブジェクト(構造体や配列、またその複合型等も含む)や文字列を扱うための方法が別途定められていて、それに従って関数の引数を受け取ったり、返したりする必要があるのです。
 
-CORBA�Œ�߂�ꂽ���@�ɏ]���ƁAecho()�֐��͈ȉ��̂悤�Ɏ�������K�v������܂��B
+CORBA で定められた方法に従うと、echo() 関数は以下のように実装する必要があります。
 
  char* MyServiceSVC_impl::echo(const char* msg)
  {
@@ -505,73 +345,53 @@ CORBA�Œ�߂�ꂽ���@�ɏ]���ƁAecho()�֐��͈ȉ��̂悤�Ɏ�������K�v������܂��B
    return msgcopy._retn();
  }
 
-�֐�����1�s�ڂł́ACORBA�̕�����N���XCORBA::String �̃X�}�[�g�|�C���^
-�ł��� CORBA::String_var �^��錾���Ă��܂��BString_var �^�͂����鏊
-�L�����Ǘ����邽�߂̃X�}�[�g�|�C���^��STL��auto_ptr�Ɏ��Ă��܂��B
+関数内の1行目では、CORBA の文字列クラス CORBA::String のスマートポインタである CORBA::String_var 型を宣言しています。String_var 型はいわゆる所有権を管理するためのスマートポインタで STL の auto_ptr に似ています。
 
  CORBA::String_var msgcopy = CORBA::string_dup(msg);
 
-���� String_var �^�̕ϐ� msgcopy �Ɉ����� msg �Ɋi�[����Ă��镶�����
-�R�s�[���Ă���̂� CORBA::string_dup() �֐��ł��B���̊֐��ł͈����ɗ^��
-��ꂽ��������i�[����̂ɏ\���ȃ������̈���m�ۂ��A���̗̈�Ɉ����̕�
-������R�s�[���Ă��܂��B
+この String_var 型の変数 msgcopy に引数の msg に格納されている文字列をコピーしているのが CORBA::string_dup() 関数です。この関数では引数に与えられた文字列を格納するのに十分なメモリー領域を確保し、その領域に引数の文字列をコピーしています。
 
-���̍s�ł́Areturn �ŌĂяo������ msgcopy ���̕������Ԃ��A�I�u�W�F
-�N�g�̏��L��������Areturn ���ɏ��L�����ڏ����Ă��܂��B���}�Ɏ����悤��
-ORB �ł́Areturn �ŕԂ��ꂽ��������A�l�b�g���[�N��̌Ăяo�����ɑ��M��
-�Ă���A������I�u�W�F�N�g��������܂��B
+次の行では、return で呼び出し元に msgcopy 内の文字列を返しつつ、オブジェクトの所有権を放棄、return 側に所有権を移譲しています。下図に示すように ORB では、return で返された文字列を、ネットワーク上の呼び出し元に送信してから、文字列オブジェクトを解放します。
 
 #ref(serviceport_orb_and_provider_ja.png,50%,center)
-CENTER: ''ORB�ƃI�y���[�V�����Ăяo���A�������Ǘ��̊֌W''
+CENTER: ''ORBとオペレーション呼び出し、メモリ管理の関係''
 
-���̃��[�����悭��������ƁAmsgcopy �I�u�W�F�N�g�� echo() �֐����Ŏg�p
-����Ă��Ȃ����Ƃ���Aecho() �֐��̎����͍ŏI�I�ɂ͈ȉ��̂悤�ɂ�������
-�Ƃ��ł��܂��B
+このルールをよく理解すると、msgcopy オブジェクトが echo() 関数内で使用されていないことから、echo() 関数の実装は最終的には以下のようにも書くこともできます。
 
  char* MyServiceSVC_impl::echo(const char* msg)
  {
    return CORBA::string_dup(msg);
  }
 
-CORBA::string_dup() �֐��ŕ�����̈�̊m�ۂƓ��e�̃R�s�[���s���������ŁA
-���̏��L���𒼂ɌĂяo�����ɗ^���Ă��邱�ƂɂȂ�܂��B
+CORBA::string_dup() 関数で文字列領域の確保と内容のコピーを行ったうえで、その所有権を直に呼び出し元に与えていることになります。
 
-���̂悤�ɁA�T�[�r�X�v���o�C�_�� CORBA �̃I�u�W�F�N�g�ł��̂ŁA���̎���
-���@�͒ʏ�� C++ �̎����Ƃ͏�������������ōs���K�v������܂��B���ɁA��
-���̈�������ѕԂ�l�̎󂯓n���K���́A�������G�Ȃ悤�Ɍ����܂��B�������A
-��L�̂悤�ɁA�I�u�W�F�N�g�̏��L���Ƃ����l������O���ɂ����čl����ƁA
-�������ǂ̂悤�Ɏ󂯎��ׂ��Ȃ̂��A���邢�͕Ԃ�l���ǂ̂悤�ɕԂ��ׂ�
-�Ȃ̂��������Ɩ��炩�ɂȂ�܂��B�ڍׂɂ��ẮAAppendix�⑼��CORBA�̎Q
-�l�������Q�l�ɂ��Ă��������B
+このように、サービスプロバイダは CORBA のオブジェクトですので、その実装方法は通常の C++ の実装とは少し違ったやり方で行う必要があります。
+特に、関数の引数および返り値の受け渡し規則は、少し複雑なように見えます。ただし、上記のように、オブジェクトの所有権という考え方を念頭において考えると、引数をどのように受け取るべきなのか、あるいは返り値をどのように返すべきなのかが自ずと明らかになります。
+詳細については、Appendix や他の CORBA の参考書等を参考にしてください。
 
 
-****set_value(), get_value() �� get_value_history()
+****set_value(), get_value() と get_value_history()
 
-���́Aset_value() �֐�, get_value() �֐������ get_value_list() �֐���
-�����Ɏ������Ă����܂��B�����̊֐��́Aset_value() �Őݒ肳�ꂽfloat�^
-�̒l��ۑ����Ă����Aget_value()�ł��̒l��Ԃ��Ƃ����P���Ȃ��̂ł��B�܂��A
-get_value_history() �ł́A���܂łɃZ�b�g���ꂽ�l�̗�����ۑ����Ă����A
-���������X�g�Ƃ��ĕԂ��Ƃ������̂ł��B
+次は、set_value() 関数, get_value() 関数および get_value_list() 関数を同時に実装していきます。
+これらの関数は、set_value() で設定されたfloat型の値を保存しておき、get_value()でその値を返すという単純なものです。
+また、get_value_history() では、今までにセットされた値の履歴を保存しておき、履歴をリストとして返すというものです。
 
-�܂��A�l��ۑ����Ă����ϐ���p�ӂ��܂��B���݂̒l��MyServiceSVC_impl�N��
-�X��CORBA::Float�^��private�����o�[�Ƃ��ėp�ӂ��܂��B����A
-get_value_history() �ł́A�߂�l��SimpleService::ValueList �Ƃ���CORBA
-�̃V�[�P���X�^���g���Ă���̂ŁA����������o�[�ϐ��Ƃ��Ď��悤�ɂ�
-�܂��B�����̕ϐ��錾�� MyServiceSVC_impl.h �� MyServiceSVC_impl �N��
-�X��`�̍Ō�̕��Ɉȉ��̂悤�ɒǉ����܂��B
+まず、値を保存しておく変数を用意します。現在の値は MyServiceSVC_impl クラスに CORBA::Float 型 の private メンバーとして用意します。
+一方、get_value_history() では、戻り値にSimpleService::ValueList という CORBA のシーケンス型が使われているので、これをメンバー変数として持つようにします。
+これらの変数宣言を MyServiceSVC_impl.h の MyServiceSVC_impl クラス定義の最後の方に以下のように追加します。
 
  class MyServiceSVC_impl
    : public virtual POA_SimpleService::MyService,
     public virtual PortableServer::RefCountServantBase
  {
-   : (����)
+   : (中略)
  private:
-   CORBA::Float m_value; // ���̍s��ǉ�����
-   SimpleService::ValueList m_valueList; // ���̍s��ǉ�����
+   CORBA::Float m_value; // この行を追加する
+   SimpleService::ValueList m_valueList; // この行を追加する
    };
 
-�ϐ��̏��������Y�ꂸ�ɍs���܂��BMyServiceSVC_impl.cpp �̃R���X�g���N�^
-�ŁAm_value �� 0.0�ɁAm_valueList �͒���0�ɏ��������Ă����܂��B
+変数の初期化も忘れずに行います。MyServiceSVC_impl.cpp のコンストラクタ
+で、m_value は 0.0に、m_valueList は長さ0に初期化しておきます。
 
  MyServiceSVC_impl::MyServiceSVC_impl()
  : m_value(0.0), m_valueList(0)
@@ -579,45 +399,38 @@ get_value_history() �ł́A�߂�l��SimpleService::ValueList �Ƃ���CORBA
    // Please add extra constructor code here.
  }
 
-���ɁAset_value() �֐����������܂��B�����ɗ^����ꂽ���l�������o�ϐ�
-m_value �ɑ������ƂƂ��ɁAm_valueList�ɂ��ǉ����܂��BCORBA�̃V�[�P��
-�X�^�́A���I�z��^�ŁA[]�I�y���[�^�ƂƂ��ɁAlength(),
-length(CORBA::ULong) �̊֐��𗘗p���邱�Ƃ��ł��܂��Blength() �֐��́A��
-�݂̔z��̒�����Ԃ��Alength(CORBA::ULong) �֐��͌��݂̔z��̒�����ݒ�
-���܂��B�����͈ȉ��̂悤�ɂȂ�܂��B
+次に、set_value() 関数を実装します。引数に与えられた数値をメンバ変数 m_value に代入するとともに、m_valueListにも追加します。
+CORBA のシーケンス型は、動的配列型で、[]オペレータとともに、length()、length(CORBA::ULong) の関数を利用することができます。length() 関数は、現在の配列の長さを返し、length(CORBA::ULong) 関数は現在の配列の長さを設定します。
+実装は以下のようになります。
 
  void MyServiceSVC_impl::set_value(CORBA::Float value)
    throw (CORBA::SystemException)
  {
-   m_value = value; // ���ݒl
+   m_value = value; // 現在値
  
-   CORBA::ULong len(m_valueList.length()); // �z��̒������擾
-   m_valueList.length(len + 1); // �z��̒�����1���₷
-   m_valueList[len] = value; // �z��̍Ō����value��ǉ�
+   CORBA::ULong len(m_valueList.length()); // 配列の長さを取得
+   m_valueList.length(len + 1); // 配列の長さを1つ増やす
+   m_valueList[len] = value; // 配列の最後尾にvalueを追加
  
    return;
  }
 
-echo() �֐��Ƃ͈قȂ�ACORBA::Long �^��C++��long int�Ɠ����ŁA�I�u�W�F
-�N�g�̏��L���A�̈�m�ۂ�p�����͍l����K�v�͂���܂���B���������āA��
-�̂悤�ɒP���ȑ���ō\���܂���B�܂��A�z��^�́A2��ނ� length() �֐���
-[]�I�y���[�^�𗘗p���āA�z��̒�����1���₵�čŌ���Ɉ����̒l������
-�Ă��܂��B�Ȃ��AOpenRTM-aist�ł́ACORBA�̃V�[�P���X�^��STL��vector�ɋ߂��`�ŗ��p���邽�߂̊֐��e���v���[�g��񋟂��Ă���A������g���ƁA
+echo() 関数とは異なり、CORBA::Long 型は C++のlong int と等価で、オブジェクトの所有権、領域確保や廃棄等は考える必要はありません。
+したがって、上記のように単純な代入で構いません。また、配列型は、2種類の length() 関数と []オペレータを利用して、配列の長さを1つ増やして最後尾に引数の値を代入しています。
+なお、OpenRTM-aistでは、CORBA のシーケンス型を STL の vector に近い形で利用するための関数テンプレートを提供しており、それを使うと、
 
  void MyServiceSVC_impl::set_value(CORBA::Float value)
    throw (CORBA::SystemException)
  {
-   m_value = value; // ���ݒl
+   m_value = value; // 現在値
    CORBA_SeqUitl::push_back(m_valueList, value);
  
    return;
  }
 
-�̂悤�ɏ������Ƃ��ł��܂��BCORBA_SeqUtil.h �ł́A for_each(), find(),
-push_back(), insert(), front(), back(), erase(), clear() �Ƃ������֐���
-��`����Ă��܂��B
+のように書くことができます。CORBA_SeqUtil.h では、 for_each()、find()、push_back()、insert()、front()、back()、erase()、clear() といった関数が定義されています。
 
-get_value() �͈ȉ��̂悤�ɂȂ�܂��B
+get_value() は以下のようになります。
 
  CORBA::Float MyServiceSVC_impl::get_value()
    throw (CORBA::SystemException)
@@ -625,13 +438,9 @@ get_value() �͈ȉ��̂悤�ɂȂ�܂��B
    return m_value;
  }
 
-�ۑ����ꂽ�l�� return �ŌĂяo�����ɕԂ������ł��B�����ł��A��قǂ�
-echo() �̗�Ƃ͈قȂ�ACORBA::Float ���v���~�e�B�u�^�Ȃ̂ŏ��L�������l
-������K�v�͂���܂���B
+保存された値を return で呼び出し元に返すだけです。ここでも、先ほどの echo() の例とは異なり、CORBA::Float がプリミティブ型なので所有権等を考慮する必要はありません。
 
-�Ō�ɁAget_value_history() �̎��������Ă����܂��B�l�̗������i�[���ꂽ
-m_valueList��Ԃ��΂��������̂悤�Ɏv���܂����A��قǂ̏q�ׂ����L���Ɨ�
-��̉���̖�肪���邽�߁A�ȉ��̂悤�Ɏ�������K�v������܂��B
+最後に、get_value_history() の実装を見ていきます。値の履歴が格納された m_valueList を返せばいいだけのように思えますが、先ほどの述べた所有権と領域の解放の問題があるため、以下のように実装する必要があります。
 
  SimpleService::ValueList* MyServiceSVC_impl::get_value_history()
    throw (CORBA::SystemException)
@@ -641,14 +450,10 @@ m_valueList��Ԃ��΂��������̂悤�Ɏv���܂����A��قǂ̏q�ׂ����L���Ɨ�
    return vl._retn();
  }
 
-�֐���1�s�ڂł́A�V�[�P���X�^�I�u�W�F�N�g�̂��߂̃X�}�[�g�|�C���^�ł���A
-SimpleService::valueList_var �^�̕ϐ���錾���Ă��܂��B����Ɏ��̍s�ŁA
-���̃X�}�[�g�|�C���^�ɑ΂��āA�R�s�[�R���X�g���N�^���Ăяo���Ă��̃|�C
-���^�������Ă��܂��B����ɂ��A�̈�̊m�ۂƁA�l�̃R�s�[�������ɍs��
-��܂��B�Ō�ɁAvl._retn() �ŁAvl ���ێ����Ă���V�[�P���X�^�̃I�u�W�F
-�N�g�̏��L����������āAreturn���ɃI�u�W�F�N�g��n���Ă��܂��B
+関数内1行目では、シーケンス型オブジェクトのためのスマートポインタである、SimpleService::valueList_var 型の変数を宣言しています。さらに次の行で、このスマートポインタに対して、コピーコンストラクタを呼び出してそのポインタを代入しています。
+これにより、領域の確保と、値のコピーが同時に行われます。最後に、vl._retn() で、vl が保持しているシーケンス型のオブジェクトの所有権を放棄して、return 側にオブジェクトを渡しています。
 
-�����āAvl �͊֐����Ŏg�p����Ă��Ȃ��̂ŁA�ȉ��̂悤�ɏ������Ƃ��ł��܂��B
+そして、vl は関数内で使用されていないので、以下のように書くこともできます。
 
  SimpleService::ValueList* MyServiceSVC_impl::get_value_history()
    throw (CORBA::SystemException)
@@ -657,25 +462,17 @@ SimpleService::valueList_var �^�̕ϐ���錾���Ă��܂��B����Ɏ��̍s�ŁA
  }
 
 
-�ȏ�A�v���o�C�_�̎����ɂ��Ă݂Ă��܂������A�v���o�C�_��������
-CORBA�I�u�W�F�N�g�ł���̂ŁA�g�p����^�A�ϐ��̎󂯓n���̎d���ȂǁA
-CORBA�̃��[���ɏ]���Ď������Ȃ���΂Ȃ�܂���B�͂��߂͔ς킵�������邩
-������܂��񂪁A�v���~�e�B�u�^�ɂ��Ă͏]���ʂ�̎����A���G�ȃI�u�W�F
-�N�g�ɂ��Ă̓������̊m�ۂƉ�����ǂ��ōs���邩�A���L���͂ǂ���ɂ�
-�邩�𗝉�����ƁA�ǂ̂悤�Ɏ�������ׂ��Ȃ̂������ł���Ǝv���܂��B
+以上、プロバイダの実装についてみてきましたが、プロバイダがいわゆる CORBA オブジェクトであるので、使用する型、変数の受け渡しの仕方など、CORBA のルールに従って実装しなければなりません。
+はじめは煩わしく感じるかもしれませんが、プリミティブ型については従来通りの実装、複雑なオブジェクトについてはメモリーの確保と解放がどこで行われるか、所有権はどちらにあるかを理解すると、どのように実装するべきなのか理解できると思います。
 
 
-***�R���V���[�}�̗��p
+***サービスコンシューマの実装
 
-�R���V���[�}�ł́A��Ŏ��������T�[�r�X�v���o�C�_���Ăяo���A���̋@�\��
-���p���邱�ƂɂȂ�܂��B�R���V���[�}�����R���|�[�l���g�̂ЂȌ`�R�[�h
-��RTCBuilder�Ő��������ꍇ�ɂ́A�v���o�C�_�̏ꍇ�Ƃ͈قȂ���ʂȃt�@�C���͐�
-������܂���B
+コンシューマでは、上で実装したサービスプロバイダを呼び出し、その機能を利用することになります。コンシューマを持つコンポーネントのひな形コードを RTCBuilder で生成した場合には、プロバイダの場合とは異なり特別なファイルは生成されません。
 
-���̑���A�R���|�[�l���g�̃w�b�_�Ɉȉ��̂悤�ȃv���o�C�_�̃v���[�X�z
-���_�ł���R���V���[�}�I�u�W�F�N�g���錾����܂��B
+その代わり、コンポーネントのヘッダに以下のようなプロバイダのプレースホルダであるコンシューマオブジェクトが宣言されます。
 
-      : (����)
+      : (中略)
    // Consumer declaration
    // <rtc-template block="consumer_declare">
    /*!
@@ -685,17 +482,14 @@ CORBA�̃��[���ɏ]���Ď������Ȃ���΂Ȃ�܂���B�͂��߂͔ς킵�������邩
    // </rtc-template>
  
   private:
-      : (����)
+      : (中略)
 
-����́ARTC::CorbaConsumer �N���X�e���v���[�g�Ɍ^����
-SimpleService::MyService ��^���āAMyService �^�̃R���V���[�}��錾����
-���邱�ƂɂȂ�܂��B�܂��A�����t�@�C���̕��ł́AonInitialize() �֐��ɂ�
-���āA�R���V���[�}�̃|�[�g�ւ̓o�^�ƁA�|�[�g�̃R���|�[�l���g�ւ̓o�^��
-�s���Ă��邱�Ƃ��m�F�ł��܂��B
+これは、RTC::CorbaConsumer クラステンプレートに型引数 SimpleService::MyService を与えて、MyService 型のコンシューマを宣言していることになります。
+また、実装ファイルの方では、onInitialize() 関数において、コンシューマのポートへの登録と、ポートのコンポーネントへの登録が行われていることが確認できます。
 
  RTC::ReturnCode_t MyServiceConsumer::onInitialize()
  {
-   : (����)   
+   : (中略)   
   // Set service consumers to Ports
    m_MyServiceConsumerPortPort.registerConsumer("MyServiceConsumer",
                                                 "SimpleService::MyService",
@@ -709,29 +503,22 @@ SimpleService::MyService ��^���āAMyService �^�̃R���V���[�}��錾����
  }
  
 
-�w�b�_�Ő錾����Ă��� m_MyServiceConsumer �ϐ����AregisterConsumer()
-�����o�֐��ɂ���ă|�[�g�ɓo�^����Ă��邱�Ƃ�������܂��B��1�����ł́A
-���̃R���V���[�}�́u�C���X�^���X�ϐ��v���A��2�����ł̓R���V���[�}�́u�C
-���^�[�t�F�[�X�^�v���A�����đ�3�����ł̓R���V���[�}�̃C���X�^���X�ł���
-m_MyServiceConsumer �ϐ������ꂼ��^�����Ă��܂��B����ɂ���āA�R��
-�V���[�}���C���X�^���X���A�^���Ƃ��Ƀ|�[�g�Ɋ֘A�t�����Ă��邱�Ƃɂ�
-��܂��B
+ヘッダで宣言されていた m_MyServiceConsumer 変数が、registerConsumer() メンバ関数によってポートに登録されていることが分かります。
+第1引数では、このコンシューマの「インスタンス変数」が、第2引数ではコンシューマの「インターフェース型」が、そして第3引数ではコンシューマのインスタンスである m_MyServiceConsumer 変数がそれぞれ与えられています。
+これによって、コンシューマがインスタンス名、型名ともにポートに関連付けられていることになります。
 
 
-�R���V���[�} m_MyServiceConsumer �͏�ł��q�ׂ��悤�ɁA�v���o�C�_�̃v���[
-�X�z���_�ɂȂ��Ă��܂��BC++�ł́A�I�u�W�F�N�g�ւ̃|�C���^�̂悤�Ɉ�����
-�Ƃ��ł��܂��B
+コンシューマ m_MyServiceConsumer は上でも述べたように、プロバイダのプレースホルダになっています。
+C++では、オブジェクトへのポインタのように扱うことができます。
 
-MyService �C���^�[�t�F�[�X�ł́Astring �^ (CORBA��string�^) ���������
-��� echo() �I�y���[�V��������`����Ă��܂����B���������āA�Ⴆ�Έȉ�
-�̂悤�� echo() �֐����Ăяo�����Ƃ��ł��܂��B
+MyService インターフェースでは、string 型 (CORBAのstring型) 引数を一つ取る echo() オペレーションが定義されていました。
+したがって、例えば以下のように echo() 関数を呼び出すことができます。
 
  m_MyServiceConsumer->echo("Hello World");
 
-C++�ł͏�̂悤�Ƀ|�C���^�AJava��Python�ł͎Q�Ƃ̂悤�ɁA�I�y���[�V����
-���Ăяo�����Ƃ��ł���̂ł��B
+C++ では上のようにポインタ、Java や Python では参照のように、オペレーションを呼び出すことができるのです。
 
-���āA�����Ŋ��̗ǂ����́A�|�C���^�܂��͎Q�Ƃ̎w����͈�̂ǂ��Ȃ��Ă���񂾂Ƃ��v���ł��傤�BC++���ł��A�Ⴆ�Έȉ��̂悤�ȃR�[�h�� segmentation fault �ő����ɗ����܂��B
+さて、ここで勘の良い方は、ポインタまたは参照の指す先は一体どうなっているんだとお思いでしょう。C++等でも、例えば以下のようなコードは segmentation fault で即座に落ちます。
 
  class A {
  public:
@@ -746,10 +533,8 @@ C++�ł͏�̂悤�Ƀ|�C���^�AJava��Python�ł͎Q�Ƃ̂悤�ɁA�I�y���[�V����
    a->echo("Hello World!!");
  }
 
-a ��null�|�C���^�ł��̂ŁA�����I�u�W�F�N�g���w���Ă��܂���B����Ɠ��l
-�ɁA��� m_MyServiceConsumer ���A�R���|�[�l���g�̋N������ɂ́A�����Ȃ�
-�I�u�W�F�N�g���w���Ă��܂���̂ŁA���R�I�y���[�V�������Ăяo�����Ƃ���
-���܂���B��� class A �̏ꍇ�ł́A
+a は null ポインタですので、何もオブジェクトを指していません。これと同様に、上の m_MyServiceConsumer も、コンポーネントの起動直後には、いかなるオブジェクトも指していませんので、当然オペレーションを呼び出すことができません。
+上記の class A の場合では、
 
  int main (void) {
    A* a;
@@ -757,29 +542,19 @@ a ��null�|�C���^�ł��̂ŁA�����I�u�W�F�N�g���w���Ă��܂���B����Ɠ��l
    a->echo("Hello World!!");
  }
 
-�I�u�W�F�N�g��new�Ő������āA�ϐ� a �ɑ�����Ă������ a �͂��̎��_�ł�
-��I�u�W�F�N�g���w�����������ȃ|�C���^�ł��̂ŁAclass A�̃����o�֐��ł�
-�� echo() ���ĂԂ��Ƃ��ł��܂��B
+オブジェクトを new で生成して、変数 a に代入してあげれば a はその時点であるオブジェクトを指し示す正当なポインタですので、class Aのメンバ関数である echo() を呼ぶことができます。
 
-�������Ȃ���A�R���|�[�l���g���̃R���V���[�}���Ăяo�������̂́A�l�b
-�g���[�N��̂ǂ����ɂ���I�u�W�F�N�g�̃I�y���[�V�����ł��B���������āA
-m_MyServiceConsumer ���w�������̂̓����[�g�I�u�W�F�N�g�̎Q�� (CORBA�I�u
-�W�F�N�g�Q��(���t�@�����X)) �ł��B
+しかしながら、コンポーネント内のコンシューマが呼び出したいのは、ネットワーク上のどこかにあるオブジェクトのオペレーションです。
+したがって、m_MyServiceConsumer が指し示すのはリモートオブジェクトの参照 (CORBAオブジェクト参照(リファレンス)) です。
 
-���͉��}�Ɏ����悤�ɁA�R���V���[�}�͂��̃|�[�g���v���o�C�_�����|�[�g
-�Ɛڑ������Ƃ��ɁA�Ή�����I�u�W�F�N�g�Q�Ƃ��󂯎��܂��B�ڑ��ɂ��
-�R���V���[�}�͐����ȃI�u�W�F�N�g���w�����ƂɂȂ�A�������ď��߂ăI�y���[
-�V�������Ăяo�����Ƃ��ł���̂ł��B
+実は下図に示すように、コンシューマはそのポートがプロバイダを持つポートと接続されるときに、対応するオブジェクト参照を受け取ります。
+接続によりコンシューマは正当なオブジェクトを指すことになり、こうして初めてオペレーションを呼び出すことができるのです。
 
 #ref(serviceport_connection_and_reference_ja.png,40%,center)
-CENTER: ''�T�[�r�X�|�[�g�̐ڑ��ƃI�u�W�F�N�g(�Q��)���t�@�����X''
+CENTER: ''サービスポートの接続とオブジェクト(参照)リファレンス''
 
-�ڑ����(����̃|�[�g�ɓK���ȃv���o�C�_�����݂����)�R���V���[�}�̃I�y
-���[�V�������Ăяo�����Ƃ��ł��܂����A�ڑ����Ă��Ȃ��ꍇ�A�܂��͗L����
-�Q�Ƃ��Z�b�g����Ă��Ȃ��ꍇ�́A�R���V���[�}�I�u�W�F�N�g�͗�O�𓊂���
-���B�����āA�R���V���[�}�𗘗p����ꍇ�A���ڑ����s���邩�A�܂�����
-�ڑ����ؒf����邩�͕�����܂���̂ŁA��ɂ��̗�O��ߑ����ēK�؂ɏ���
-����K�v������܂��B
+接続後は(相手のポートに適当なプロバイダが存在すれば)コンシューマのオペレーションを呼び出すことができますが、接続していない場合、または有効な参照がセットされていない場合は、コンシューマオブジェクトは例外を投げます。
+そして、コンシューマを利用する場合、いつ接続が行われるか、またいつ接続が切断されるかは分かりませんので、常にこの例外を捕捉して適切に処理する必要があります。
 
  try
  {
@@ -787,23 +562,20 @@ CENTER: ''�T�[�r�X�|�[�g�̐ڑ��ƃI�u�W�F�N�g(�Q��)���t�@�����X''
  }
  catch (CORBA::SystemException &e)
  {
-   // ��O�ߑ����̏���
-      std::cout << "�|�[�g���ڑ�����Ă��܂���"" << std::endl;
+   // 例外捕捉時の処理
+      std::cout << "ポートが接続されていません"" << std::endl;
  }
  catch (...)
  {
-   // ���̑��̗�O
+   // その他の例外
  }
 
-�Ȃ��AonExecute() �����o�֐����ŗ�O���������A�֐������ŕߑ�����Ȃ���
-���ꍇ�ARTC�̓G���[��Ԃ֑J�ڂ��܂��B
+なお、onExecute() メンバ関数内で例外が発生し、関数内部で捕捉されなかっ
+た場合、RTC はエラー状態へ遷移します。
 
-�ȏ�𓥂܂��āAMyServiceConsumer �R���|�[�l���g�������܂��B���̗�ł́A
-onExecute() �Ń��[�U����̓��͑҂����s���A�e�I�y���[�V�����ɑΉ������R
-�}���h���󂯎��A�R�}���h�ɉ����ă����[�g�̃v���o�C�_�̃I�y���[�V����
-���Ăяo�����ʂ�Ԃ��Ƃ������ȒP�Ȃ��̂ł��B
+以上を踏まえて、MyServiceConsumer コンポーネント実装します。この例では、onExecute() でユーザーからの入力待ちを行い、各オペレーションに対応したコマンドを受け取り、コマンドに応じてリモートのプロバイダのオペレーションを呼び出し結果を返すといった簡単なものです。
 
-�ł́A�܂����[�U�ɗ��p�ł���R�}���h��񎦂��镔������݂Ă����܂��B
+では、まずユーザーに利用できるコマンドを提示する部分からみていきます。
 
 RTC::ReturnCode_t MyServiceConsumer::onExecute(RTC::UniqueId ec_id)
 {
@@ -823,9 +595,8 @@ RTC::ReturnCode_t MyServiceConsumer::onExecute(RTC::UniqueId ec_id)
       std::vector<std::string> argv;
       std::getline(std::cin, args);
 
-�܂��A��ŏq�ׂ��悤�ɃR���V���[�}���������O��ߑ����邽�߂�try�߂ň�
-�݂܂��B���p�\�ȃR�}���h���X�g��\�����āA���[�U�̓��͂�getline()�֐�
-�Ŏ󂯎���Ă��܂��B
+まず、上で述べたようにコンシューマが発する例外を捕捉するためにtry節で囲みます。
+利用可能なコマンドリストを表示して、ユーザの入力をgetline()関数で受け取っています。
 
       
       pos = args.find_first_of(" ");
@@ -839,11 +610,9 @@ RTC::ReturnCode_t MyServiceConsumer::onExecute(RTC::UniqueId ec_id)
           argv.push_back(args);
         }
 
-�����̃R�}���h�̂����A�����������̂� echo �� set_value �����ŁA����
-�����̃R�}���h�͈�����������Ƃ�܂��B�󂯎������������ŏ��̋�
-�ŕ������Aargv[0] = �R�}���h�Aargv[1] = �����Ƃ��� string �� vector ��
-�i�[���܂��Becho, set_value �R�}���h�ł� argv[1] �������Ƃ��ė��p���A��
-�̃R�}���h�ł͒P���ɖ������邱�Ƃɂ��܂��B
+これらのコマンドのうち、引数を取るものは echo と set_value だけで、かつこれらのコマンドは引数を一つだけとります。
+受け取った文字列を最初の空白で分割し、argv[0] = コマンド、argv[1] = 引数として string の vector に格納します。
+echo, set_value コマンドでは argv[1] を引数として利用し、他のコマンドでは単純に無視することにします。
 
         
       if (argv[0] == "echo" && argv.size() > 1)
@@ -854,13 +623,10 @@ RTC::ReturnCode_t MyServiceConsumer::onExecute(RTC::UniqueId ec_id)
           return RTC::RTC_OK;
         }
 
-echo �R�}���h�̎����ł��Bargv[0] �� ''echo'' �̏ꍇ�Aargv[1] �������ɂ�
-�� echo() �֐����Ăяo���܂��Becho() ��CORBA��string�^�̖߂�l���󂯎�
-�邽�߂̕ϐ��Ƃ��āAretmsg ��錾���Ă��܂��Becho() �̖߂�l�̏��L����
-�����瑤�ɂ���̂ŁA�󂯎������ɓK�؂ɗ̈���������K�v������̂ł�
-���AString_var �^�̃X�}�[�g�|�C���^�𗘗p����ƁA�s�v�ɂȂ������_�œK��
-�ɗ̈������s���Ă���܂��B�߂�l��\�����āAreturn RTC::RTC_OK �Ƃ���
-onExecute() �֐��𔲂��Ă��܂��B
+echo コマンドの実装です。argv[0] が ''echo'' の場合、argv[1] を引数にして echo() 関数を呼び出します。
+echo() のCORBAのstring型の戻り値を受け取るための変数として、retmsg を宣言しています。
+echo() の戻り値の所有権はこちら側にあるので、受け取った後に適切に領域を解放する必要があるのですが、String_var 型のスマートポインタを利用すると、不要になった時点で適切に領域解放を行ってくれます。
+戻り値を表示して、return RTC::RTC_OK としてonExecute() 関数を抜けています。
 
         
       if (argv[0] == "set_value" && argv.size() > 1)
@@ -871,8 +637,7 @@ onExecute() �֐��𔲂��Ă��܂��B
           return RTC::RTC_OK;
         }
 
-set_value �R�}���h�̎����ł��B���� argv[1] �̕������CORBA::Float �^��
-�ϊ����āAset_value() �I�y���[�V�����̈����ɗ^���Ă��܂��B
+set_value コマンドの実装です。引数 argv[1] の文字列を CORBA::Float 型に変換して、set_value() オペレーションの引数に与えています。
 
         
       if (argv[0] == "get_value")
@@ -882,10 +647,9 @@ set_value �R�}���h�̎����ł��B���� argv[1] �̕������CORBA::Float �^��
           return RTC::RTC_OK;
         }
 
-get_value �R�}���h�� set_value �R�}���h�Őݒ肵���l���擾���܂��B
-get_value() �I�y���[�V�����́A�߂�l�� CORBA::Float �Œl�n���̂��߃I�u
-�W�F�N�g�̏��L���Ȃǂ͓��ɍl���Ȃ��Ƃ��\���܂���B�����ł́A�߂�l����
-�̂܂� std::cout �ŃR���\�[���ɕ\�������Ă��܂��B
+get_value コマンドは set_value コマンドで設定した値を取得します。
+get_value() オペレーションは、戻り値が CORBA::Float で値渡しのためオブジェクトの所有権などは特に考えなくとも構いません。
+ここでは、戻り値をそのまま std::cout でコンソールに表示させています。
 
       if (argv[0] == "get_echo_history")
         {
@@ -897,14 +661,11 @@ get_value() �I�y���[�V�����́A�߂�l�� CORBA::Float �Œl�n���̂��߃I�u
           return RTC::RTC_OK;
         }
 
-get_echo_history �R�}���h�ł́Aget_echo_history() �̌��ʂ��󂯎��A��
-��܂� echo �R�}���h�ň����ɗ^����ꂽ������̃��X�g��Ԃ��Ă��܂��B
-get_echo_history() �֐��̖߂�l�� CORBA �̃V�[�P���X�^�ł��� EchoList
-�ł��B�V�[�P���X�^�ɂ��Ă��X�}�[�g�|�C���^�ł��� _var �^����`�����
-���܂��̂ŁA����𗘗p���܂��B�z��̒������擾���邽�߂� length() �֐�
-�����p�ł���̂ŁA�����𒲂ׂ� for ���ł��ׂĂ̗v�f��\�����Ă��܂��B�V�[
-�P���X�^��_var�^�ł́A��̂悤��[]�I�y���[�^�𗘗p����C����̔z��̂悤
-�Ɋe�v�f�ɃA�N�Z�X�ł��܂��B
+get_echo_history コマンドでは、get_echo_history() の結果を受け取り、それまで echo コマンドで引数に与えられた文字列のリストを返しています。
+get_echo_history() 関数の戻り値は CORBA のシーケンス型である EchoListです。
+シーケンス型についてもスマートポインタである _var 型が定義されていますので、これを利用します。
+配列の長さを取得するための length() 関数が利用できるので、長さを調べて for 文ですべての要素を表示しています。
+シーケンス型の_var型では、上記のように[]オペレータを利用して C言語の配列のように各要素にアクセスできます。
 
       if (argv[0] == "get_value_history")
         {
@@ -916,13 +677,8 @@ get_echo_history() �֐��̖߂�l�� CORBA �̃V�[�P���X�^�ł��� EchoList
           return RTC::RTC_OK;
         }
 
-�Ō�ɁAget_value_history �R�}���h�ł��Bget_value_history() �I�y���[�V��
-�����Ăяo���A����܂Őݒ肳�ꂽ�l�̃��X�g��\�����܂��B
-get_value_hitory() �֐��̖߂�l�� CORBA::Float �̃V�[�P���X�^��
-ValueList �ł��B�v�f�� CORBA::Float �̂��߃I�u�W�F�N�g�̏��L�����Ƃ���
-�����Ƃ͍l���Ȃ��Ă��悢�̂ł����A�V�[�P���X�^�͂��ꎩ�g�I�u�W�F�N�g��
-���̂ŁA���L�����l�����Ȃ���΂Ȃ�Ȃ��̂ł����ł� _var �^�̕ϐ��Ŏ�
-����Ă��܂��B
+最後に、get_value_history コマンドです。get_value_history() オペレーションを呼び出し、これまで設定された値のリストを表示します。
+get_value_hitory() 関数の戻り値は CORBA::Float のシーケンス型の ValueList です。要素は CORBA::Float のためオブジェクトの所有権等といったことは考えなくてもよいのですが、シーケンス型はそれ自身オブジェクトですので、所有権を考慮しなければならないのでここでは _var 型の変数で受け取っています。
 
  std::cout << "Invalid command or argument(s)." << std::endl;
      }
@@ -933,12 +689,7 @@ ValueList �ł��B�v�f�� CORBA::Float �̂��߃I�u�W�F�N�g�̏��L�����Ƃ���
    return RTC::RTC_OK;
  }
 
-�Ō�ɁA��̂ǂ�ɂ����Ă͂܂�Ȃ������R�}���h�̏ꍇ�ɁA���b�Z�[�W���o
-���Ă��܂��B�܂��A�R���V���[�}�ɎQ�Ƃ��Z�b�g����Ă��Ȃ��ꍇ�̗�O����
-�߂ĕߑ����邽�߂� catch �߂�����܂��B
+最後に、上のどれにも当てはまらなかったコマンドの場合に、メッセージを出しています。また、コンシューマに参照がセットされていない場合の例外を含めて捕捉するための catch 節があります。
 
-�ȏ�A�R���V���[�}�ɂ��I�y���[�V�����̌Ăѕ��ɂ��ĊȒP�ȗ��������
-�������܂����B�R���V���[�}�𗘗p����ۂɂ́A�K�������I�u�W�F�N�g�Q�Ƃ�
-�Z�b�g����Ă���Ƃ͌���Ȃ��̂ŁA�K����O��ߑ����Ώ����邱�ƂƁA�e�I
-�y���[�V�����̌Ăяo�����ACORBA�̃��[���Ɋ�Â��čs���邱�Ƃɗ��ӂ���
-���������B
+以上、コンシューマによるオペレーションの呼び方について簡単な例を交えて説明しました。
+コンシューマを利用する際には、必ずしもオブジェクト参照がセットされているとは限らないので、必ず例外を捕捉し対処することと、各オペレーションの呼び出しが、CORBA のルールに基づいて行われることに留意してください。

@@ -1,5 +1,6 @@
+// Title: 概要・RTC作成の流れ
 #contents
-**概要
+//**概要
 ***動作環境
 RTCBuilder の動作に必要な環境は以下のとおりです。
 #clear
@@ -20,6 +21,5 @@ RTCBuilder の動作に必要な環境は以下のとおりです。
 
 ***制限
 RTCBuilder は、OpenRTM-aist を対象に開発されたものです。その他の RTC プラットフォームに対する動作は想定しておりません。
-
 
 
