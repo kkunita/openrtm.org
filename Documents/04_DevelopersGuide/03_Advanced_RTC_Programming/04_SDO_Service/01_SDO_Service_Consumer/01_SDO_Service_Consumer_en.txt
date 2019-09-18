@@ -1,0 +1,146 @@
+// Title: SDO Service Consumer
+// -*- pukiwiki-edit -*-
+//* SDO サービスコンシューマ
+
+#contents
+
+//この節ではSDOサービスのコンシューマの実装方法について説明します。
+In this section, I will explain how to implement 'Consumer" of a SDO service. 
+
+SDOサービスコンシューマは、ツールなど外部に存在するサービスインターフェースをコールすることで機能するようなサービスを実現する手段です。
+
+前述の ComponentObserver のように、RTC側から何かを通知したり、RTC側で外部のサービスを利用したりする場合にSDOサービスコンシューマを実装します。
+
+//** SDOサービスの実装
+**Implement SDO service
+
+まずはRTCのためのSDOコンシューマを実装する前に、外部にSDOサービスを実装する必要があります。現在は、CORBAのサーバとして、SDOPackage.idlのSDOServiceインターフェースを継承し、通常のCORBAサービスとして実装することになります。
+
+この実装方法は、通常のCORBAサービスの実装の方法となりますので、ここでは割愛します。
+
+** SDO サービスコンシューマのライフサイクル
+
+前述のとおり、オブジェクトは通常、共有オブジェクト (so, DLL) としてコンパイル・リンクされます。このオブジェクトがRTCのプロセスにロードされ動作する実際のライフサイクルは以下の通りとなります。
+
+- マネージャに対してロードされるとモジュール初期化関数によりオブジェクトファクトリが、SdoServiceConsumerFactory に対して登録される。
+-- 登録のキーにはサービスインターフェースの IFR (interface repository) ID が利用され、これによりサービスが区別される。
+- 外部のツールなどからサービスプロバイダがアタッチされる。
+-- この場合、サービスインターフェースの IFR ID が同一である SDO コンシューマがインスタンス化され、提供されたSDOサービスの ServiceProfile (この構造体はサービスのオブジェクトリファレンスを含む) がコンシューマにアタッチされる。
+- このときのアタッチシーケンスは以下の通り。
+++ SDO::get_configuration() により Configuration オブジェクトを取得
+++ Configuration::add_service_profile() により外部側の SdoServiceProvider を ServiceProfile により RTC に与える。
+++ RTC側でサービスを呼び出す必要が有った場合、この SdoServiceConsumer が保持しているサービスオブジェクトプロキシに対して呼び出しを行う
+++ 最終的に SdoServiceConsumer が不要になった場合には、Configuration::remove_service_profile() が id とともに呼び出されSDOサービスコンシューマが RTC から削除される。
+
+   [RTC] [SDO consumer] [Configuration]  [SDO service]    [Other]
+     |          :             |                 |            |
+     |          :         get_configuration()   |            |
+     |<---------:-------------------------------|------------|
+     |          :             |                 |            |
+     |          :             |   add_service_profile(prof)  |
+     |          :  create()   |<----------------|------------|
+     |          |<------------|                 |            |
+     |          |         call_sdo_service()    |            |
+     |          |-------------|---------------->|            |
+     |          |         call_sdo_service2()   |            |
+     |          |-------------|---------------->|            |
+     |          |             |       :         |            |
+     |          |             |                 |            |
+     |          |             | remove_service_profile(id)   |
+     |          |  delete()   |<----------------|------------|
+     |          x<------------|                 |            |
+     |                        |                 x            x
+
+
+** SDOサービスコンシューマの実装
+
+SDOサービスコンシューマを実装する際には、SdoServiceConsumerBase　基底クラスを継承した一つのクラスを作成します。
+
+ #include <rtm/SdoServiceConsumerBase.h>
+ 
+ class MySdoServiceConsumer
+  : SdoServiceConsumerBase
+ {
+
+このクラスの実装に当たっては、少なくとも以下の純粋仮想関数および、グローバルなモジュール初期化関数を実装する必要があります。
+
+- SdoServiceConsumer::init()
+- SdoServiceConsumer::reinit()
+- SdoServiceConsumer::getProfile()
+- SdoServiceConsumer::finalize()
+- <class name>Init()
+
+以下に、各関数の詳細な振る舞いを示す。
+
+*** init()
+
+ 関数プロトタイプ
+ bool init(RTObject_impl& rtobj, const SDOPackage::ServiceProfile& profile)
+
+- rtobj このオブジェクトがインスタンス化された RTC
+- profile 外部から与えられた SDO ServiceProfile
+- return 与えられた SDO Service や ServiceProfile が不正の場合 false
+
+初期化関数。与えられた RTObject および ServiceProfile から、当該オブジェクトを初期化します。外部からSDOサービスが ServiceProfile とともにアタッチされると、SDOコンシューマがインスタンス化され、その直後に SDO サービスがアタッチされた RTC と与えられた ServiceProfile を引数としてこの関数が呼ばれる。
+
+関数内では、ServiceProfile 内の SDO サービスリファレンスを CorbaConsumer クラス等を利用しオブジェクト内に保持するとともに、properties から設定内容を読み込みサービス固有の設定等を行う。与えられたサービスのオブジェクトリファレンスが不正、あるいは properties の内容が不正、等の場合は戻り値に false を返す。
+
+*** reinit()
+
+ 関数プロトタイプ
+ bool reinit(const SDOPackage::ServiceProfile& profile)
+
+- profile 新たに与えられた SDO ServiceProfile
+- return 不正な ServiceProfile が与えられた場合は false
+
+再初期化関数。ServiceProfile は設定情報更新のため同一IDで呼び出されることが有りますが、その際にこの関数が新たな ServiceProfile とともに呼び出されます。関数内では、設定の変更など再初期化処理を実装します。
+
+*** getProfile()
+
+ 関数プロトタイプ
+ const SDOPackage::ServiceProfile& getProfile() const
+
+設定されたプロファイルを返す関数です。
+
+*** finalize()
+ 関数プロトタイプ
+ const SDOPackage::ServiceProfile& getProfile() const
+
+終了処理。コンシューマがデタッチされる際に呼び出される関数です。関数内では終了処理を実装します。
+
+*** <class name>Init()
+
+ 関数プロトタイプ
+ DLL_EXPORT void ComponentObserverConsumerInit()
+
+この関数は共有オブジェクト (.so や .dll) のエントリポイントとなります。この関数内では、RTC::SdoServiceConsumerFactory に対して、当該SDOコンシューマオブジェクトのインターフェースIDおよび生成(Creator)・破壊(Desctuctor)関数（ファンクタ）を登録します。
+
+以下は、典型的なInit() 関数の実装例です。
+
+ extern "C"
+ {
+   void MySdoServiceConsumerInit()
+   {
+     RTC::SdoServiceConsumerFactory& factory
+       = RTC::SdoServiceConsumerFactory::instance();
+     factory.addFactory(CORBA_Util::toRepositoryId<OpenRTM::MySdoService>(),
+                        ::coil::Creator< ::RTC::SdoServiceConsumerBase,
+                        ::RTC::MySdoServiceConsumer>,
+                        ::coil::Destructor< ::RTC::SdoServiceConsumerBase,
+                        ::RTC::MySdoServiceConsumer>);
+   }
+ };
+
+*** クラス名・ファイル名
+
+SdoServiceConsumer は通常共有オブジェクトとしてコンパイル・リンクされます。
+
+共有オブジェクトのエントリポイントは通常コンパイルされたファイル名の basename + "Init" となります。（別の名称の場合、rtc.confのオプションで別途指定する必要があります。）
+
+以下に、クラス名、ファイル名、エントリポイント関数名の推奨例を示します。
+
+- 実装クラス名: MySdoServiceConusmer 
+- ファイル名: MySdoServiceConsumer.h. MySdoServiceConsumer.cpp
+- 共有オブジェクト名: MySdoServiceConsumer.so (or DLL)
+- エントリポイント関数名: MySdoServiceConsumerInit()
+

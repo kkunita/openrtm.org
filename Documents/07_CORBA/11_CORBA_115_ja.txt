@@ -1,6 +1,6 @@
--[[IDLƒRƒ“ƒpƒCƒ‰:/ja/node/143]]
--[[_var_type, _ptr_type:/ja/node/145]]
--[[•Ï”ó“n‹K‘¥:/ja/node/144]]
+ï»¿// Title: CORBA
 -[[CCM:/ja/node/146]]
+-[[IDLã‚³ãƒ³ãƒ‘ã‚¤ãƒ©:/ja/node/143]]
 -[[MICO_CCM:/ja/node/147]]
-
+-[[_var_type, _ptr_type:/ja/node/145]]
+-[[å¤‰æ•°å—æ¸¡è¦å‰‡:/ja/node/144]]

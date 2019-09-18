@@ -1,0 +1,8 @@
+﻿// Title: How to use DDS communication function
+#contents
+
+** Usable Implementation
+At the present, the following implementations are supported.
+
+- [[Fast-RTPs>/ja/node/6583]]
+- [[OpenSplice>/ja/node/6584]]

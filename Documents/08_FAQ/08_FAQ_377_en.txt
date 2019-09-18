@@ -1,0 +1,25 @@
+﻿// Title: FAQ
+Frequently Asked Questions about OpenRTM-aist.
+
+//-[[General Information:/en/node/495]]
+//-[[Frequently Asked Questions about OpenRTM-aist(C++,Python,Java):/en/node/1327]]
+// --[[General:/en/node/496]]
+// --[[Windows:/en/node/497]]
+// --[[UNIX:/en/node/498]]
+// -[[Troubleshooting:/en/node/499]]
+//-[[Frequently Asked Questions about tool:/en/node/500]]
+// -[[RtcTemplate:/en/node/501]]
+//-[[Development of RT-Component.:/en/node/502]]
+// -[[Development of RT-Comp
+-[[About RT Middleware/OpenRTM-aist:/en/node/495]]
+-[[Common FAQ, FAQ about Licensing:/en/node/6769]]
+-[[FAQ about Installation:/en/node/6770]]
+-[[FAQ about RTC creation:/en/node/6771]]
+//- FAQ about RT System creation
+- FAQ about OpenRTM-aist
+--[[C++ version:/en/node/6772]]
+--[[Python version:/en/node/6773]]
+--[[Java version:/en/node/6774]]
+-[[FAQ about Tools:/en/node/500]]
+-[[Other FAQ:/en/node/6775]]
+-[[Old FAQ:/en/node/6776]]
