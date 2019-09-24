@@ -1,0 +1,2 @@
+﻿// Title: How to use the callback functions for manager actions
+#contents
