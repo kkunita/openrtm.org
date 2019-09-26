@@ -1,2 +1,0 @@
-﻿// Title: Operation overview at updating the configuration parameters
-#contents

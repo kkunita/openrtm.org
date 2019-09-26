@@ -1,1 +1,0 @@
-﻿// Title: OpenRTM-aist (Python版) 2.0系のインストール

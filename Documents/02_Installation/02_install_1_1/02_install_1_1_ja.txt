@@ -1,5 +1,0 @@
-﻿// Title: OpenRTM-aist 1.1系のインストール
-- [[C++版 1.1系>/ja/node/999]]
-- [[Python版 1.1系>/ja/node/798]]
-- [[Java版 1.1系>/ja/node/803]]
-- [[Eclipsツール 1.1系>/ja/node/676]]

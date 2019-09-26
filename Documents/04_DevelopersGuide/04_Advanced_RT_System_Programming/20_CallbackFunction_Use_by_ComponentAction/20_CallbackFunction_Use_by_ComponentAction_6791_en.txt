@@ -1,2 +1,0 @@
-﻿// Title: How to use the callback function for a component actions
-#contents

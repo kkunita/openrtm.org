@@ -1,7 +1,0 @@
-﻿// Title: RTSystemEditor-1.1.0
-** What is RTSystemEditor
-Robot Technology Component (hereinafter referred to as RTC) specifications that enhance the efficiency of robot development are currently being formulated at OMG. As a common platform that implements and applies this RTC specification, National Institute of Advanced Industrial Science and Technology, Intelligent Systems Research Division, Task Intelligence Research Group provides OpenRTM-aist.
-RTSystemEditor is one of the development tools included in this OpenRTM-aist, and has the function of graphically operating RTC in real time. In addition, it is created as a plug-in of the Eclipse integrated development environment, and it can operate seamlessly with existing plugins on Eclipse.
-//**RTSystemEditorとは
-//　現在 OMG にて、ロボット開発の効率を高める Robot Technology Component（以下RTC）の仕様策定が行われています。この RTC 仕様を実装および適用した共通プラットフォームとして、独立行政法人産業技術総合研究所・知能システム研究部門・タスクインテリジェンス研究グループでは OpenRTM-aist を提供しています。
-//RTSystemEditor は、この OpenRTM-aist に含まれる開発ツールの１つであり、RTC をリアルタイムにグラフィカル操作する機能を持っています。また、Eclipse 統合開発環境のプラグインとして作成されており、Eclipse 上にて既存のプラグインとシームレスに操作を行うことができます。

@@ -1,7 +1,0 @@
-﻿// Title: LEGO Mindstorm NXT RT component
-**LEGO Mindstorms NXT RT-Component 
-LEGO Mindstorms NXT is a collection of LEGO components for creating robots. It includes 3 motors, 4 types of sensor and an intelligent brick, the NXT brick, for connecting and controlling them. NXT is connected via USB or Bluetooth to a PC, from which it can be directly controlled and programmed. It can also be loaded with user-created programs for operation independent of a PC.
-
-This article will describe how to create an RT-Component (RTC) for the intelligent brick on a PC and, using other components, control connected motors and read connected sensors. With a single component for the NXT brick, controlling motors and reading sensors using existing RT-Components is simple.
-
-

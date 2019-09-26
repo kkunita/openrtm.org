@@ -1,6 +1,0 @@
-﻿// Title: CORBA
--[[CCM:/ja/node/146]]
--[[IDLコンパイラ:/ja/node/143]]
--[[MICO_CCM:/ja/node/147]]
--[[_var_type, _ptr_type:/ja/node/145]]
--[[変数受渡規則:/ja/node/144]]

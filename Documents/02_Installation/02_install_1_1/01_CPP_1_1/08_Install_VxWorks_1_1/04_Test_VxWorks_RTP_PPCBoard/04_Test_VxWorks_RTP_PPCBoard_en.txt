@@ -1,2 +1,0 @@
-﻿// Title: OpenRTM-aist operation confirmation (when using VxWorks, RTP, PowerPC board)
-#contents

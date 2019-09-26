@@ -1,2 +1,0 @@
-﻿// Title: About the calling order of the callback functions when a connector is generated
-#contents

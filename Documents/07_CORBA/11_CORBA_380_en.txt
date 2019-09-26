@@ -1,6 +1,0 @@
-﻿// Title: CORBA
--[[CCM:/en/node/507]]
--[[IDL compiler:/en/node/504]]
--[[MICO_CCM:/en/node/508]]
--[[_var_type, _ptr_type:/en/node/505]]
--[[Variable passing rule:/en/node/506]]

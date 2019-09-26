@@ -1,8 +1,0 @@
-﻿// Title: DDS通信機能の利用
-#contents
-
-** 利用可能な実装
-現状、以下のDDS実装に対応している。
-
-- [[Fast-RTPs>/ja/node/6583]]
-- [[OpenSplice>/ja/node/6584]]

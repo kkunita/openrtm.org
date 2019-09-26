@@ -1,1 +1,0 @@
-﻿// Title: OpenRTM-aist (C++版) 2.0系のインストール

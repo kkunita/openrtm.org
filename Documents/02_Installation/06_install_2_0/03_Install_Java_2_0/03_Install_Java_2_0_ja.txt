@@ -1,1 +1,0 @@
-﻿// Title: OpenRTM-aist (Java版) 2.0系のインストール

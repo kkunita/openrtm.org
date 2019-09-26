@@ -1,2 +1,0 @@
-﻿// Title: Inside OpenRTM-aist
-Writing (n-ando)

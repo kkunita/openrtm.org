@@ -1,2 +1,0 @@
-﻿// Title: How to use OpenHRPExecutionContext
-#contents

@@ -1,2 +1,0 @@
-﻿// Title: Master Manager/Slave Manager
-#contents

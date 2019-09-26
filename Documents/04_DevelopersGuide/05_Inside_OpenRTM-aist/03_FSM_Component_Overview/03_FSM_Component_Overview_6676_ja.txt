@@ -1,2 +1,0 @@
-﻿// Title: FSMコンポーネントの概要
-#contents

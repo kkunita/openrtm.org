@@ -1,2 +1,0 @@
-﻿// Title: 独自シリアライザの実装手順(Java)
-#contents

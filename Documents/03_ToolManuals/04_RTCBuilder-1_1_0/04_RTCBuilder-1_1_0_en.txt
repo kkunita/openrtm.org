@@ -1,6 +1,0 @@
-﻿// Title: RTCBuilder-1.1.0
-** What is RTCBuilder-1.1.0
-RTC Builder is one of development tools included in OpenRTM-aist, and it can generate RTC source code model from RTC profile information. C++, Python, Java and other programming languages. In addition, it is created as a plug-in of the Eclipse integrated development environment, and it can operate seamlessly with existing plugins on Eclipse.
-//**RTCBuilder-1.1.0 とは
-//RTCBuilderは、OpenRTM-aist に含まれる開発ツールの１つであり、RTCのプロファイル情報から、RTCのソースコードのひな型を生成することができます。C++、Python、Javaなどのプログラム言語に対応しています。また、Eclipse 統合開発環境のプラグインとして作成されており、 Eclipse 上にて既存のプラグインとシームレスに操作を行うことができます。
-

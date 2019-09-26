@@ -1,2 +1,0 @@
-﻿// Title: 独自ロガーの実装方法
-#contents

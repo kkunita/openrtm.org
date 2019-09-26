@@ -1,4 +1,0 @@
-﻿// Title: RTCBuilder-1.2.0
-**RTCBuilder-1.2.0 とは
-RTCBuilderは、OpenRTM-aist に含まれる開発ツールの１つであり、RTCのプロファイル情報から、RTCのソースコードのひな型を生成することができます。C++、Python、Javaなどのプログラム言語に対応しています。また、Eclipse 統合開発環境のプラグインとして作成されており、 Eclipse 上にて既存のプラグインとシームレスに操作を行うことができます。
-

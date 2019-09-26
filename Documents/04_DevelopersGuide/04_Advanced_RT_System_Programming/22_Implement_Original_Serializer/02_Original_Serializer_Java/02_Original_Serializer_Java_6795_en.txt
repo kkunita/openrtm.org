@@ -1,2 +1,0 @@
-﻿// Title: Implement Original Serializer (Java)
-#contents
