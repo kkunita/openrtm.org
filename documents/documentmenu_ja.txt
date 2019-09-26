@@ -1,6 +1,6 @@
 ﻿    
 - ドキュメント
-  - OpenRTM-aistとは？: 00_aboutopenrtm-aist_ja.txt
+  - OpenRTM-aistとは？: 00_aboutopenrtm_ja.txt
     - RTミドルウエア: 01_rtmiddleware_ja.txt
     - ライセンス: 02_license_ja.txt
     - OpenRTM-aist 諸元: 03_specification_ja.txt
@@ -501,16 +501,16 @@
  -> raspPiMouse　コンパイル       - (Ubuntu=> コンパイル方法 (Ubuntu、CMake、Code::Blocks利用
 
       - SD カードの準備: 02_lego_sdcard_prep_ja.txt
+      - EV3 および ev3dev の初期設定: 03_lego_setup_ev3_ev3dev_ja.txt
+      - サンプルコンポーネントの実行: 04_lego_samplec_exec_ja.txt
+      - 開発環境の構築: 05_lego_devenv_make_ja.txt
+      - EV3 デバイスの利用: 06_lego_ev3_device_use_ja.txt
+      - python-ev3dev の利用: 07_lego_python-ev3dev_use_ja.txt
+      - EV3デバイス C++ バインディングの利用: 08_lego_ev3dev_cpp_binding_ja.txt
+      - EV3用RTCの作成 (Python編): 09_lego_ev3rtc_python_ja.txt
+      - EV3 デバイスの操作方法について: 10_lego_ev3_dev_operation_ja.txt
 
 
-      - EV3 および ev3dev の初期設定
-      - サンプルコンポーネントの実装
-      - 開発環境の構築
-      - EV3 デバイスの利用
-      - python-ev3dev の利用
-      - ev3dev C++ バインディングの利用
-      - EV3用RTCの作成 (Python編)
-      - EV3 デバイスの操作方法について
       - Educator Vehicle用 RTC のインストール (EV3)
       - サンプルの RTシステムの実行
       - 自作の RTC で制御
