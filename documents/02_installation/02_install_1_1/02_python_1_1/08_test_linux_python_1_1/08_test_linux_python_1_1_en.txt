@@ -1,0 +1,123 @@
+﻿// Title: Testing operation in Linux
+#contents
+
+Once the installer has completed successfully, OpenRTM-aist-Python can be tested using the included sample components. These are typically stored in one of the following locations:
+
+-/usr/share/openrtm-1.1/example/python
+-/usr/local/share/OpenRTM-aist/examples/python
+
+If you built from source, they can also be found in the source directory:
+
+-OpenRTM_aist/examples/<sample component name>
+
+We will use the SimpleIO components to check that OpenRTM-aist has built and installed correctly.
+
+**SimpleIO sample component set
+
+This set contains the ConsoleInComp and ConsoleOutComp components. ConsoleInComp receives numbers as input from the console and sends them over an OutPort. ConsoleOutComp receives numbers via an InPort and prints them to the console. They use this very simple I/O to illustrate the basics of RT Components. Connect the OutPort of ConsoleInComp to the InPort of ConsoleOutComp and activate them.
+
+The explanation below assumes the sample components are in /usr/share/openrtm-1.1/example/python.
+
+** Test using the sample components
+
+*** Start the name server
+
+First, a name server that the components can register on must be started. If omniORBpy was installed as a package in Linux, it will often add the name server as a system service. You can check if this is the case on your system using the ps command:
+
+ $ ps ax | grep omni
+ 1550  ?        Sl     0:00 /usr/bin/omniNames -errlog /var/log/omniorb4-nameserver.log
+ 18418 pts/2    S+     0:00 grep --color=auto omni
+
+If omniNames is not executing, the command will produce something like this (or no output at all):
+
+ $ ps ax | grep omni
+ 18418 pts/2    S+     0:00 grep --color=auto omni
+
+To start omniNames manually, use the rtm-naming command:
+
+ $ rtm-naming
+ Starting omniORB omniNames: ubuntu910:2809
+ 
+ Thu Dec  3 18:52:14 2009:
+ 
+ Starting omniNames for the first time.
+ Wrote initial log file.
+ Read log file successfully.
+ Root context is  IOR:010000002b00000049444c3a6f6d672e6f72672f436f734e616d696e672f4e616d696e67436f6e746578744578743a312e30000001000000000000007400000001010200100000003139322e3136382e3130302e31323500942600000b0000004e616d6553657276696365000300000000000000080000000100000000545441010000001c0000000100000001000100010000000100010509010100010000000901010003545441080000004e8a174b01000fef
+ Checkpointing Phase 1: Prepare.
+ Checkpointing Phase 2: Commit.
+ Checkpointing completed.
+
+*** Create an rtc.conf
+
+An RTC configuration file, rtc.conf, must be created for the test. First, make a suitable working directory. This example will create a directory called RTCwork below the home directory. Change to this directory and create a file called "rtc.conf".
+
+ $ cd ~/RTCwork
+ $ vi rtc.conf
+
+Add the following lines to this file. Note that you cannot use the rtc.conf in share/OpenRTM-aist/examples/ for this example.
+
+ corba.nameservers: localhost
+ naming.formats: %h.host_cxt/%n.rtc
+ logger.enable: NO
+ example.ConsoleOut.config_file: consout.conf
+ example.ConsoleIn.config_file: consin.conf
+CENTER:''rtc.conf''
+
+If your system is configured to use IPv6, using ''localhost'' may not function correctly. In that case, use ''127.0.0.1'' instead.
+
+*** Start ConsoleInComp
+
+Open a new terminal and start ConsoleInComp, making sure it uses the rtc.conf you created.
+
+ $ python /usr/share/OpenRTM-aist/examples/python/SimpleIO/ConsoleIn.py -f ~/RTCwork/rtc.conf 
+ comp_args: ConsoleIn
+
+If using the samples directly from a source directory:
+
+ $ python <source_dir>/OpenRTM_aist/examples/SimpleIO/ConsoleIn.py -f ~/RTCwork/rtc.conf
+
+*** Start ConsoleOutComp
+
+In the same way, start ConsoleOutComp.
+
+ $ python /usr/share/OpenRTM-aist/examps/python/SimpleIO/ConsoleOut.py -f ~/RTCwork/rtc.conf
+ comp_args: ConsoleOut
+
+If using the samples directly from a source directory:
+
+ $ python <source_dir>/OpenRTM_aist/examples/SimpleIO/ConsoleOut.py -f ~/RTCwork/rtc.conf
+
+*** Start RTSystemEditor
+
+You can use RTSystemEditor to connect the two components and activate them. Download the all-in-one Eclipse package from [[here>/en/node/945]] and extract it.
+
+RTSystemEditor requires Java Development Kit 6. Install it according to the instructions below, or use an equivalent such as OpenJDK as provided by your distribution. Refer to [[this page>/en/node/6480]] for details on starting RTSystemEditor.
+
+--[[Java SE Development Kit 7:http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html]]
+-- [[Tips for installing JDK>/node/805]]
+//--[[JDK installation instructions>/en/node/664#instjavaunixjdk]]
+
+Please start RTSystemEditor referring to the page of [[here>/en/node/6480]].
+
+*** Browsing the name server
+
+Connect to the name server and browse the registered components. You can connect to a name server using the Name Service View on the left side of RTSystemEditor. Click the plug icon to connect to a name server and enter its address (localhost or localhost:2809) in the dialog box. The default port for omniNames is 2809.
+
+#ref(unix100_NameServer_en.png,50%,center)
+CENTER: Connecting to a name server
+
+Drag the RT Components registered on the name server into the system editor. In the name service view, select the ConsoleIn0 and ConsoleOut0 items and drag them into the editor in the middle. Now click and drag between the small boxes at the side of each component, dragging from one component to the other and releasing. The connection dialog will appear. Accept it with all defaults to make a connection between the components.
+
+#ref(unix100_oneditor_en.png,50%,center)
+CENTER: Editing a system with RTSystemEditor
+
+Click the green [Play] button in the toolbar to activate all components in the system editor.
+
+*** Confirming data transfer
+
+After connecting the ports of ConsoleInComp and ConsoleOutComp, the terminal for ConsoleInComp will display:
+
+ Please input number: 
+
+Enter a number and press enter. This number should fit within a short int. Look at the ConsoleOutComp terminal. The number you entered should have been printed out. If this is the case, OpenRTM-aist is functioning correctly.

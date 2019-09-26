@@ -1,0 +1,51 @@
+﻿// Title: Appendix
+#contents
+
+** (G)Copying files to Raspberry Pi
+//**Raspberry Pi へのファイルコピー
+
+By setting SSH to be effective on Raspberry Pi setting screen (Raspi-config), sFTP can be used.When connecting to Raspberry Pi with sFTP from Windows, software supporting sFTP (WinSCP etc. )Use the.
+//Raspberry Pi の設定画面(Raspi-config)にて SSH を有効に設定することで、sFTP が利用できるようになります｡ Windows から sFTP で Raspberry Pi に接続する場合には sFTP に対応したソフト(WinSCP など)を使用します｡
+
+[[Here:http://winscp.net/eng/docs/lang:jp]] to the WinSCP download page.
+//[[こちら:http://winscp.net/eng/docs/lang:jp]]から WinSCP のダウンロードページに移動することができます。
+
+
+#ref(4_app1.png, 60%, center,nolink)
+#ref(4_app2.png, 60%, center,nolink)
+CENTER: ''Figure 4-1 sFTP connection''
+//CENTER:''図4-1 sFTP 接続''
+
+** (G)Use of Virtual Network Computing (VNC)
+//**VNC(Virtual Network Computing)の利用
+
+Install the VNC server to operate Raspbian's GUI environment on the development PC.
+//Raspbian のGUI 環境を開発用PC上で操作するために、VNCサーバーをインストールします｡
+
+You can download VNC from [[here:http://www.vector.co.jp/soft/win95/net/se324464.html]].
+//[[こちら:http://www.vector.co.jp/soft/win95/net/se324464.html]] から VNC をダウンロードすることができます。
+
+<nowiki><blockcode>
+$ su
+# apt-get install tightvncserver
+</blockcode></nowiki>
+
+During installation, you will be prompted to enter a password to connect to the VNC server, so set an appropriate password.
+After installing the VNC server, SSH connection to Raspberry Pi using the terminal from the development PC and start up the VNC server.
+//インストール途中で、VNCサーバーに接続する際のパスワード入力を求められますので、適当なパスワードを設定します｡
+//VNCサーバーをインストール後、開発用PC からターミナルを使用して Raspberry Pi に SSH 接続し、VNCサーバーを起動します｡
+
+<nowiki><blockcode>
+$ vncserver :1 -geometry 1024x600 -depth 16 -pixelformat rgb565
+</blockcode></nowiki>
+
+#ref(4_app3.png, 60%, center,nolink)
+CENTER: ''Figure4-2 Starting the VNC server''
+//CENTER:''図4-2 VNCサーバーの起動''
+
+When connecting to VNC server from Windows, use VNC client software (such as RealVNC).
+//Windows から VNCサーバーに接続する場合には、VNCクライアントソフト(RealVNC など)を使用します｡
+
+#ref(4_app4.png, 60%, center,nolink)
+CENTER: ''Figure4-3 VNC connection''
+//CENTER:''図4-3 VNC 接続''

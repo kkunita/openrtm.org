@@ -1,0 +1,175 @@
+﻿// Title: OpenRTM-aist-1.0.0-RC1 
+#ref(cpp_logo.png,nolink,left,around)
+#contents
+#clear
+
+**ソースコード・パッチ等 
+|LEFT:200|LEFT|LEFT:100|c
+|C++版ソースコード|[[OpenRTM-aist-1.0.0-RC1.tar.bz2:http://www.openrtm.org/pub/OpenRTM-aist/cxx/1.0.0/OpenRTM-aist-1.0.0-RC1.tar.bz2]]&br;MD5:18127b5fa5c6f692918c11cec6519a2f|2009.05.24|
+|C++版ソースコード|[[OpenRTM-aist-1.0.0-RC1.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/cxx/1.0.0/OpenRTM-aist-1.0.0-RC1.tar.gz]]&br;MD5:c2f810e3b638df8b53fc4a4fd2d41189|2009.05.24|
+|C++版Windows専用ソース|[[OpenRTM-aist-1.0.0-RC1-win32.zip:http://www.openrtm.org/pub/OpenRTM-aist/cxx/1.0.0/OpenRTM-aist-1.0.0-RC1-win32.zip]]&br;MD5:c26df500cb01db0c6289b546bd7bc54a|2009.05.24|
+
+**ビルド済みパッケージ(Windows) 
+|LEFT:200|LEFT|LEFT:100|c
+|>|>|CENTER:''Visual Studio 2005 用''|
+|Windowsインストーラ|[[OpenRTM-aist-1.0.0-RC1_jp_vc8.msi:http://www.openrtm.org/pub/Windows/OpenRTM-aist/cxx/OpenRTM-aist-1.0.0-RC1-jp_vc8.msi]]&br;MD5:15d8e3ea20b93977c0d9b4980f1ba990|2009.05.24|
+|Windowsインストーラ(英語版)|[[OpenRTM-aist-1.0.0-RC1_vc8.msi:http://www.openrtm.org/pub/Windows/OpenRTM-aist/cxx/OpenRTM-aist-1.0.0-RC1_vc8.msi]]&br;MD5:7a465bcce8e51c15687673e7ecc69093|2009.05.24|
+|omniORB Windows用インストーラ|[[omniORB-4.0.7-jp_vc8.msi:http://www.openrtm.org/pub/Windows/omniORB/omniORB-4.0.7-jp_vc8.msi]]|2007.07.22|
+|Python Windows用インストーラ|[[python-2.4.2.msi:http://www.python.jp/pub/ftp.python.org/python/2.4.2/python-2.4.2.msi]]|2005.09.28|
+|PyYAML (rtc-templateに必要)|[[PyYAML-3.05.win32-py2.4.exe:http://pyyaml.org/download/pyyaml/PyYAML-3.05.win32-py2.4.exe]]|[[pyyaml.org:http://pyyaml.org/]]|
+|OpenCV Windows用インストーラ|[[OpenCV_1.0.exe:http://downloads.sourceforge.net/opencvlibrary/OpenCV_1.0.exe?modtime=1161287502&big_mirror=1]]|[[sourceforge:http://sourceforge.net/projects/opencvlibrary/]]|
+|VC++ 2005 SP1 再頒布可能パッケージ (x86)|[[Microsoftダウンロードサイト:http://www.microsoft.com/downloads/details.aspx?FamilyID=200b2fd9-ae1a-4a14-984d-389c36f85647&DisplayLang=ja]]|[[Microsoft:http://www.microsoft.com/downloads/Search.aspx?displaylang=ja]]|
+
+&br;
+
+|LEFT:200|LEFT|LEFT:100|c
+|>|>|CENTER:''Visual Studio 2008 用''|
+|Windowsインストーラ|[[OpenRTM-aist-1.0.0-RC1-jp_vc9.msi:http://www.openrtm.org/pub/Windows/OpenRTM-aist/cxx/OpenRTM-aist-1.0.0-RC1-jp_vc9.msi]]&br;MD5:6db2af9fa12c3ce81e244b2d4f05ae2b|2009.05.24|
+|Windowsインストーラ(英語版)|[[OpenRTM-aist-1.0.0-RC1_vc9.msi:http://www.openrtm.org/pub/Windows/OpenRTM-aist/cxx/OpenRTM-aist-1.0.0-RC1_vc9.msi]]&br;MD5:89edb84cbbe7c850ef6d3827a3f1c7b2|2009.05.24|
+|omniORB Windows用インストーラ|[[omniORB4.1.2_vc9.msi:http://www.openrtm.org/pub/Windows/omniORB/omniORB-4.1.2_vc9.msi]]|2008.05.21|
+|Python Windows用インストーラ|[[python-2.4.2.msi :http://www.python.jp/pub/ftp.python.org/python/2.4.2/python-2.4.2.msi]]|2005.09.28|
+|PyYAML (rtc-templateに必要)|[[PyYAML-3.05.win32-py2.4.exe:http://pyyaml.org/download/pyyaml/PyYAML-3.05.win32-py2.4.exe]]|[[pyyaml.org:http://pyyaml.org/]]|
+|OpenCV Windows用インストーラ|[[OpenCV_1.0.exe:http://downloads.sourceforge.net/opencvlibrary/OpenCV_1.0.exe?modtime=1161287502&big_mirror=1]]|[[sourceforge:http://sourceforge.net/projects/opencvlibrary/]]|
+|VC++ 2008 再頒布可能パッケージ (x86)|[[Microsoftダウンロードサイト:http://www.microsoft.com/downloads/details.aspx?displaylang=ja&FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf]]|[[Microsoft:http://www.microsoft.com/downloads/Search.aspx?displaylang=ja]]|
+
+-&color(red){※Visual Studio 2005でビルドしたOpenRTM-aist（やACE,omniORB等）とVisual Studio 2008でビルドしたものは混在できません。お使いの開発環境に合わせて適切なパッケージをダウンロードしてください。};
+-&color(red){再配布可能パッケージとはVisualStudioのランタイムライブラリです。VisualStudio(VC++)がインストールされていないPC上でRTCを動作させる場合にはインストールしてください。};
+
+&br;
+|LEFT:200|LEFT|LEFT:100|c
+|>|>|CENTER:''Visual Studio 2005 ＆ omniORB-4.0.7用''|
+|Windowsインストーラ|[[OpenRTM-aist-1.0.0-RC1_jp_vc8.msi>http://www.openrtm.org/pub/Windows/OpenRTM-aist/cxx/OpenRTM-aist-1.0.0-RC1-jp_vc8.msi]]&br;MD5:15d8e3ea20b93977c0d9b4980f1ba990|2009.05.24|
+|Windowsインストーラ(英語版)|[[OpenRTM-aist-1.0.0-RC1_vc8.msi>http://www.openrtm.org/pub/Windows/OpenRTM-aist/cxx/OpenRTM-aist-1.0.0-RC1_vc8.msi]]&br;MD5:7a465bcce8e51c15687673e7ecc69093|2009.05.24|
+|omniORB Windows用インストーラ|[[omniORB-4.0.7-jp_vc8.msi>http://www.openrtm.org/pub/Windows/omniORB/omniORB-4.0.7-jp_vc8.msi]]|2007.07.22|
+
+&br;
+
+|LEFT:200|LEFT|LEFT:100|c
+|>|>|CENTER:''Visual Studio 2008 ＆ omniORB-4.1.2用''|
+|Windowsインストーラ|[[OpenRTM-aist-1.0.0-RC1-jp_vc9.msi>http://www.openrtm.org/pub/Windows/OpenRTM-aist/cxx/OpenRTM-aist-1.0.0-RC1-jp_vc9.msi]]&br;MD5:6db2af9fa12c3ce81e244b2d4f05ae2b|2009.05.24|
+|Windowsインストーラ(英語版)|[[OpenRTM-aist-1.0.0-RC1_vc9.msi>http://www.openrtm.org/pub/Windows/OpenRTM-aist/cxx/OpenRTM-aist-1.0.0-RC1_vc9.msi]]&br;MD5:89edb84cbbe7c850ef6d3827a3f1c7b2|2009.05.24|
+|omniORB Windows用インストーラ|[[omniORB4.1.2_vc9.msi>http://www.openrtm.org/pub/Windows/omniORB/omniORB-4.1.2_vc9.msi]]|2008.05.21|
+
+
+**ビルド済みパッケージ(UNIX) 
+1.0.0以降はrpmパッケージをapt-get, yumなどを使用してOpenRTM-aistのリポジトリサーバから直接インストールすることができるようになりました。
+-[[Vine Linux上でapt-getを使ってOpenRTM-aistをインストールする:/ja/node/1000]]
+-[[Fedora上でyumを使ってOpenRTM-aistをインストールする:/ja/node/1002]]
+-[[debian/Ubuntu上でapt-getを使ってOpenRTM-aistをインストールする:/ja/node/1001]]
+
+&br;
+
+*** Vine Linux 用 &aname(dlshvine1.0.0);
+|LEFT:200|LEFT|LEFT:100|c
+|>|>|CENTER:''Vine Linux 用''|
+|Vine Linux 3.1 RPMパッケージ|[[リポジトリ :http://www.openrtm.org/pub/Linux/Vine/apt/3.1/i386/RPMS.main/]]|2009.05.25|
+|Vine Linux 4.0 RPMパッケージ|[[リポジトリ :http://www.openrtm.org/pub/Linux/Vine/apt/4.0/i386/RPMS.main/]]|2009.05.25|
+|Vine Linux 4.2 RPMパッケージ|[[リポジトリ :http://www.openrtm.org/pub/Linux/Vine/apt/4.2/i386/RPMS.main/]]|2009.05.25|
+|Vine Linux 一括インストール・スクリプト|[[pkg_install100_vine.sh :http://svn.openrtm.org/OpenRTM-aist/trunk/OpenRTM-aist/build/pkg_install100_vine.sh]]|2009.05.24|
+&br;
+
+*** Fedora Core/Fedora 用 &aname(dlshfedora1.0.0);
+|LEFT:200|LEFT|LEFT:100|c
+|>|>|CENTER:''Fedora Core/Fedora 用''|
+|Fedora Core 5 RPMパッケージ(i386)|[[リポジトリ :http://www.openrtm.org/pub/Linux/Fedora/releases/5/Fedora/i386/os/Packages/OpenRTM-aist-1.0/]]|2009.05.25|
+|Fedora Core 6 RPMパッケージ(i386)|[[リポジトリ :http://www.openrtm.org/pub/Linux/Fedora/releases/6/Fedora/i386/os/Packages/OpenRTM-aist-1.0/]]|2009.05.25|
+|Fedora 7 RPMパッケージ(i386)|[[リポジトリ :http://www.openrtm.org/pub/Linux/Fedora/releases/7/Fedora/i386/os/Packages/OpenRTM-aist-1.0/]]|2009.05.25|
+|Fedora 8 RPMパッケージ(i386)|[[リポジトリ :http://www.openrtm.org/pub/Linux/Fedora/releases/8/Fedora/i386/os/Packages/OpenRTM-aist-1.0/]]|2009.05.25|
+|Fedora 9 RPMパッケージ(i386)|[[リポジトリ :http://www.openrtm.org/pub/Linux/Fedora/releases/9/Fedora/i386/os/Packages/OpenRTM-aist-1.0/]]|2009.05.25|
+|Fedora 10 RPMパッケージ(i386)|[[リポジトリ :http://www.openrtm.org/pub/Linux/Fedora/releases/10/Fedora/i386/os/Packages/OpenRTM-aist-1.0/]]|2009.05.25|
+|Fedora 11 RPMパッケージ(i386)|[[リポジトリ :http://www.openrtm.org/pub/Linux/Fedora/releases/11/Fedora/i386/os/Packages/OpenRTM-aist-1.0/]]|2009.06.17|
+|Fedora Core 5 RPMパッケージ(x86_64)|[[リポジトリ :http://www.openrtm.org/pub/Linux/Fedora/releases/5/Fedora/x86_64/os/Packages/OpenRTM-aist-1.0/]]|2009.05.25|
+|Fedora Core 6 RPMパッケージ(x86_64)|[[リポジトリ :http://www.openrtm.org/pub/Linux/Fedora/releases/6/Fedora/x86_64/os/Packages/OpenRTM-aist-1.0/]]|2009.05.25|
+|Fedora 7 RPMパッケージ(x86_64)|[[リポジトリ :http://www.openrtm.org/pub/Linux/Fedora/releases/7/Fedora/x86_64/os/Packages/OpenRTM-aist-1.0/]]|2009.05.25|
+|Fedora 8 RPMパッケージ(x86_64)|[[リポジトリ :http://www.openrtm.org/pub/Linux/Fedora/releases/8/Fedora/x86_64/os/Packages/OpenRTM-aist-1.0/]]|2009.05.25|
+|Fedora 9 RPMパッケージ(x86_64)|[[リポジトリ :http://www.openrtm.org/pub/Linux/Fedora/releases/9/Fedora/x86_64/os/Packages/OpenRTM-aist-1.0/]]|2009.05.25|
+|Fedora 10PMパッケージ(x86_64)|[[リポジトリ :http://www.openrtm.org/pub/Linux/Fedora/releases/10/Fedora/x86_64/os/Packages/OpenRTM-aist-1.0/]]|2009.05.25|
+|Fedora 11PMパッケージ(x86_64)|[[リポジトリ :http://www.openrtm.org/pub/Linux/Fedora/releases/11/Fedora/x86_64/os/Packages/OpenRTM-aist-1.0/]]|2009.06.17|
+|Fedora 一括インストール・スクリプト|[[pkg_install_fedora.sh :http://svn.openrtm.org/OpenRTM-aist/trunk/OpenRTM-aist/build/pkg_install_fedora.sh]]|2009.05.25|
+&br;
+
+*** Ubuntu 用 &aname(dlshubuntu1.0.0);
+|LEFT:200|LEFT|LEFT:100|c
+|>|>|CENTER:''Ubuntu 用''|
+|>|>|&color(red){Ubuntu7で提供されているomniORB4.0.6にはバグがあります。必ず4.0.7に入れ替えてください。};|
+|Ubuntu 7.04 debパッケージ(i386)|[[リポジトリ :http://www.openrtm.org/pub/Linux/ubuntu/dists/feisty/main/binary-i386/]]|2009.05.25|
+|Ubuntu 7.04 debパッケージ(x86_64)|[[リポジトリ :http://www.openrtm.org/pub/Linux/ubuntu/dists/feisty/main/binary-amd64/]]|2009.05.25|
+|Ubuntu 7.10 debパッケージ(i386)|[[リポジトリ :http://www.openrtm.org/pub/Linux/ubuntu/dists/gutsy/main/binary-i386/]]|2009.05.25|
+|Ubuntu 7.10 debパッケージ(x86_64)|[[リポジトリ :http://www.openrtm.org/pub/Linux/ubuntu/dists/gutsy/main/binary-amd64/]]|2009.05.25|
+|Ubuntu 8.04 debパッケージ(i386)|[[リポジトリ :http://www.openrtm.org/pub/Linux/ubuntu/dists/hardy/main/binary-i386/]]|2009.05.25|
+|Ubuntu 8.04 debパッケージ(x86_64)|[[リポジトリ :http://www.openrtm.org/pub/Linux/ubuntu/dists/hardy/main/binary-amd64/]]|2009.05.25|
+|Ubuntu 8.10 debパッケージ(i386)|[[リポジトリ :http://www.openrtm.org/pub/Linux/ubuntu/dists/intrepid/main/binary-i386/]]|2009.05.25|
+|Ubuntu 9.04 debパッケージ(i386)|[[リポジトリ :http://www.openrtm.org/pub/Linux/ubuntu/dists/intrepid/main/binary-i386/]]|2009.05.25|
+|Ubuntu 9.04 debパッケージ(x86_64)|[[リポジトリ :http://www.openrtm.org/pub/Linux/ubuntu/dists/jaunty/main/binary-amd64/]]|2009.05.25|
+|Ubuntu 一括インストール・スクリプト|[[pkg_install_ubuntu.sh :http://svn.openrtm.org/OpenRTM-aist/trunk/OpenRTM-aist/build/pkg_install_ubuntu.sh]]|2009.05.25|
+
+*** Debian 用 &aname(dlshdebian1.0.0);
+|LEFT:200|LEFT|LEFT:100|c
+|>|>|CENTER:''debian 用''|
+|>|>|&color(red){debian4.0で提供されているomniORB4.0.6にはバグがあります。必ず4.0.7に入れ替えてください。};|
+|Debian 3.1 sarge (i386)|[[リポジトリ :http://www.openrtm.org/pub/Linux/debian/dists/sarge/main/binary-i386/]]|2009.05.25|
+|Debian 4.0 etch (i386)|[[リポジトリ :http://www.openrtm.org/pub/Linux/debian/dists/etch/main/binary-i386/]]|2009.05.25|
+|Debian 4.0 etch (x86_64)|[[リポジトリ :http://www.openrtm.org/pub/Linux/debian/dists/etch/main/binary-amd64/]]|2009.05.25|
+|Debian 5.0 lenny (i386)|[[リポジトリ :http://www.openrtm.org/pub/Linux/debian/dists/lenny/main/binary-i386/]]|2009.05.25|
+|Debian 5.0 lenny (x86_64)|[[リポジトリ :http://www.openrtm.org/pub/Linux/debian/dists/lenny/main/binary-amd64/]]|2009.05.25|
+|Debian 一括インストール・スクリプト|[[pkg_install_debian.sh :http://svn.openrtm.org/OpenRTM-aist/trunk/OpenRTM-aist/build/pkg_install_debian.sh]]|2009.05.25|
+&br;
+
+**ツール
+|全部入り&br;(RTSystemEditor1.0.0+RTCBUilder1.0.0)|[[eclipse32_rtse100_rtcb100_win32.zip:http://www.openrtm.org/pub/OpenRTM-aist/tools/1.0.0/eclipse32_rtse100_rtcb100_win32.zip]]&br;MD5:928571cf94486b2f066edb2a8a2a6e1c|2009.06.17|
+
+**リリースノート: 1.0.0-RC1 
+- [[OpenRTM-aist-1.0.0-RC1.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/cxx/1.0.0/OpenRTM-aist-1.0.0-RC1.tar.gz]] -- 2009.05.24リリース
+--雑多なバグフィックス
+--CORBA関連のメモリリークの修正
+--ManagerのCORBAオブジェクト化
+--rtc.conf新オプションの導入
+--対応(ビルド検証済)OS
+---Debian3.1-i686
+---Debian4.0-i686
+---Debian4.0-x86_64
+---Debian5.0-i686
+---Debian5.0-x86_64
+---Fedora Core release 5 (Bordeaux)-i686
+---Fedora Core release 5 (Bordeaux)-x86_64
+---Fedora Core release 6 (Zod)-i686
+---Fedora Core release 6 (Zod)-x86_64
+---Fedora release 7 (Moonshine)-i686
+---Fedora release 7 (Moonshine)-x86_64
+---Fedora release 8 (Werewolf)-i686
+---Fedora release 8 (Werewolf)-x86_64
+---Fedora release 9 (Sulphur)-i686
+---Fedora release 9 (Sulphur)-x86_64
+---Fedora release 10 (Cambridge)-i686
+---Fedora release 10 (Cambridge)-x86_64
+---FreeBSD5.5-RELEASE-amd64
+---FreeBSD5.5-RELEASE-i386
+---FreeBSD6.0-RELEASE-amd64
+---FreeBSD6.0-RELEASE-i386
+---FreeBSD6.2-RELEASE-amd64
+---FreeBSD6.2-RELEASE-i386
+---FreeBSD7.0-RELEASE-amd64
+---FreeBSD7.0-RELEASE-i386
+---Ubuntu 7.04-i686
+---Ubuntu 7.04-x86_64
+---Ubuntu 7.10-i686
+---Ubuntu 7.10-x86_64
+---Ubuntu 8.04-i686
+---Ubuntu 8.04-x86_64
+---Ubuntu 8.10-i686
+---Ubuntu 8.10-x86_64
+---Ubuntu 9.04-i686
+---Ubuntu 9.04-x86_64
+---Vine Linux 3.1 (Pichon Lalande)-i686
+---Vine Linux 4.0 (Latour)-i686
+---Vine Linux 4.2 (Lynch Bages)-i686
+---Windows-XP-VC2005-i386
+---Windows-XP-VC2008-i386
+---Windows-Vista-VC2008-i386
+
+**過去のバージョン 
+-[[0.4.2-RELESE>OpenRTM-aist-0.4.2-RELEASE]]
+-[[0.4.2-RC2>OpenRTM-aist-0.4.2-RC2]]
+-[[0.4.1-RELEASE>OpenRTM-aist-0.4.1-RELEASE]]
+-[[0.4.0-RELEASE>OpenRTM-aist-0.4.0-RELEASE]]
+-[[0.4.0-RC2>OpenRTM-aist-0.4.0-RC2]]

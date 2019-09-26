@@ -1,0 +1,882 @@
+﻿// Title: Data port (Advanced)
+//-*-pukiwiki-edit-*-
+// * Data port (Advanced)
+
+#contents
+
+(GA) In the Data Port (Basic), the basic usage of the data port was explained. In the advanced section, I will explain how to use it a little more.
+
+// ------------------------------------------------ ------------
+** Use of original data type
+
+In addition to the predefined data types (eg TimedLong, TimedDouble, etc.), you can also use your own defined data types in the data port.
+However, before creating a new data type yourself, make sure that a similar data type is not already defined, and define a new data type only if the required data type is not found in it. Is recommended.
+
+In OpenRTM-aist, the data type used for the data port is defined in the following IDL file.
+
+-BasicDataType.idl
+-ExtendedDataTypes.idl
+-InterfaceDataTypes.idl
+
+The storage location is as follows. This is called the IDL directory.
+-UNIX: {prefix}/include/rtm/idl, {prefix}/include/openrtm-x.y/rtm/idl ({prefix} is /usr/, /usr/local/, /opt/local/etc.)
+-For Windows: {ProgramFiles} /OpenRTM-aist/x.y/rtm/idl. ({Program Files} is C:/ ProgramFiles, C:/Program Files (x86), etc.)
+
+// (Location is {prefix}/include/rtm/idl for UNIX, {prefix}/include/openrtm-xy/rtm/idl, {ProgramFiles}/OpenRTM-aist/xy/rtm/idl for Windows, etc. {prefix } is the installation prefix (/usr/, /usr/local/, /opt/local/, etc.), {Program Files} is C:/ProgramFiles, C:/Program Files (x86), etc. These are called IDL directories. 
+
+*** Create folder
+
+Create a folder for the component.
+Here, we will create a folder called “UserDefType” directly under the C drive. (C: \UserDefType)
+
+*** Create IDL file
+
+Create an IDL file that defines the data type. The data type is defined by the struct keyword. The following basic types, string types, and sequence types are available.
+
+| Type | Meaning | Declaration Example |
+| short | short integer | short shortVariable; |
+| long | long integer | long longVariable; |
+| unsinged short | short integer | unsigned short ushortVariable; |
+| unsigned long | long integer | unsigned long ulongVariable; |
+| float | Single precision floating point | float floatVariable; |
+| double | double precision floating point number | double doubleVariable; |
+| char | Character type | char charVariable; |
+| wchar | wchar character type | char charVariable; |
+| boolean | bool type | bool shortVariable; |
+| octet | octet type | octet octetVariable; |
+| longlong | longlong integer | longlong longlongVariable; |
+| ulonglong | unsinged longlong integer | ulonglong ulonglongVariable; |
+| sequence <T> | Sequence type | sequence <double> doubleSeqVariable; |
+
+In this example, MyDataType.idl defines a data type called MyData.
+
+ // @file MyDataType.idl
+ #include "BasicDataType.idl"
+ 
+ struct MyData
+ {
+   RTC::Time tm;
+   short shortVariable;
+   long longVariable;
+   sequence<double> data;
+ };
+
+
+On the second line
+ #include "BasicDataType.idl"
+Is necessary to use the first field tm of MyData type (RTC::Time type).
+Unless you have a specific reason, declare the first field as RTC::Time tm; to store the time stamp, even for custom data types.
+
+Create the above file in the C: \ UserDefType folder.
+
+// The 3rd line is a dummy interface definition. This is necessary for loading with RTCBuilder. (This may not be necessary in future versions of RTCBuilder.)
+//
+// interface dummy {};
+
+// *** Copy IDL file
+//
+// When including an IDL file defined in OpenRTM-aist, such as BasicDataType.idl, copy the IDL file from the directory containing BasicDataType.idl to the folder where the user-defined IDL file is stored. The
+// (Copy BasicDataType.idl to C: \ UserDefType)
+//
+//BasicDataType.idl An example of the storage location is as follows.
+//-UNIX: {prefix} / include / rtm / idl, {prefix} / include / openrtm-xy / rtm / idl ({prefix} is / usr /, / usr / local /, / opt / local / Such )
+//-For Windows: {ProgramFiles} /OpenRTM-aist/x.y/rtm/idl etc. ({Program Files} is C: / ProgramFiles, C: / Program Files (x86), etc.)
+
+*** Check with RTCBuilder
+
+// & color (red) {* When creating a new project, uncheck “Use default location (D)” and specify the folder (C: \ UserDefType) created earlier. };
+
+//#ref(data_port_01.png,100%,center)
+// CENTER: Specify "UserDefType" for location
+
+Check the following in RTCBuilder.
+
+Open the data port setting tab, click the "Data type" pull-down of "Detail", and check if MyData exists.
+
+#ref(data_port_03.png,100%,center)
+CENTER: Data type of Detail
+
+If not found, check the following:
+
+//-Is MyData.idl copied to the directory containing BasicDataType.idl etc?
+-Check that the directory (C:\UserDefType) containing the user-defined IDL file is set in [Window]> [Settings]> [RTCBUilder]> [Data Type: IDLFile Directories] in Eclipse. If it is not set, add the directory containing MyDataType.idl from "New" and restart Eclipse.
+
+#ref(data_port_02.png,100%,center)
+CENTER: If MyData is not displayed
+
+*** Creating a data port
+
+Create a component in RTCBuilder.
+In the data port setting tab, the newly defined MyData type can be selected. Create a new data port (InPort or OutPort) and set the data port name and data type.
+
+After completing the settings required for creating the component, return to the Basic tab and click the [Generate Code] button to generate the code.
+
+// *** Copy IDL to the project directory
+//
+// Copy MyDataType.idl to the project directory created by code generation.
+
+
+// *** Working on Windows
+
+// On Windows, IDL files in the project directory are automatically compiled, so compile once to try the RT component.
+// This will generate files such as MyDataTypeSkel.h and MyDataTypeSkel.cpp.
+// However, compiling the component should fail because the header file that declared MyData is not included.
+
+// *** Working with Linux
+// Specify the object file to SKEL_OBJ in Makefile. <Component name>. (Not necessary if the following description is already present.)
+
+// STUB_OBJ = MyDataTypeStub.o
+
+// This will link the MydataType stub object to the component.
+// Add the following lines to generate MyDataTypeStub.h and MyDataTypeStub.cpp from MyDataType.idl. (Not necessary if the following description is already present.)
+
+// MyDataTypeStub.cpp: MyDatatype.idl
+// $ (IDLC) $ (IDLFLAGS) $ <
+// $ (WRAPPER) $ (WRAPPER_FLAGS) --idl-file = $ <
+// MyDataTypeStub.h: MyDatatype.idl
+// $ (IDLC) $ (IDLFLAGS) $ <
+// $ (WRAPPER) $ (WRAPPER_FLAGS) --idl-file = $ <
+// MyDataTypeStub.o: MyDataTypeStub.cpp MyDataTypeStub.h
+// $ (CXX) $ (CXXFLAGS) -c -o $ @ $ <
+
+// These will create MyDataTypeStub.cpp MyDataTypeStub.h from MyDatatype.idl and MyDataTypeStub.o from MyDataTypeStub.cpp MyDataTypeStub.h.
+
+// *** Edit header
+//
+// Open the component header file (MyComponent.h if the component name is MyComponent) in the editor and include MyDataTypeStub.h as shown below.
+//
+// // Service Consumer stub headers
+// // <rtc-template block = "consumer_stub_h">
+// #include <MyDatatypeStub.h>
+//
+// // </ rtc-template>
+
+// *** build
+
+// After completing so far, try building again.
+// The build should finish without any errors.
+
+
+// ------------------------------------------------ ------------
+**Using data port and connector callbacks
+
+We have already mentioned that InPort checks for data arrival with isNew() and reads it with read(), or OutPort sends out data with write().
+
+For example, InPort cannot obtain data until it is called by read function after calling isNew() in a function such as onExecute().
+Even if the onExecute() cycle is very fast, the timing at which data arrives at InPort and the timing at which the actual processing is performed are asynchronous.
+
+What if you want to process data as soon as it arrives, that is, synchronously? As a way to achieve this, OpenRTM-aist defines callbacks that are called at various data port and connector processing timings.
+
+There are four types of callbacks: 1) InPort, 2) OutPort, 3) connector, and 4) port.
+
+// ------------------------------------------------ ------------
+***InPort callback
+
+InPort provides two types of callbacks:
+These are defined in rtm / PortCallback.h.
+
+| LEFT: 55 | LEFT: 150 | c
+| OnRead | Set by InPort :: setOnRead () function that is called when InPort read () is called. |
+| OnReadConvert | Called to convert data when InPort read () is called. Set by InPort :: setOnReadConvert () function. |
+
+The OnRead callback is a callback used to return data with some conversion to the caller when read() is called and OnReadConvert is called when read() is called.
+
+Each callback is implemented by inheriting the base class of each functor defined in rtm/PortCallback.h.
+
+> A functor makes an object callable in the same syntax as a normal function. In C ++, it can be realized by overloading operator (). In C language, a callback is realized by giving a function pointer to the caller, but it is difficult to give a state variable to the callback itself by using only the function pointer. Since functors are themselves objects, they can have state variables, and can be called like C functions.
+
+Each implementation example is shown below.
+
+ #include <rtm/Portcallback.h>
+ 
+ template <class T>
+ class MyOnRead
+  : public RTC::OnRead<T>
+ {
+ public:
+   MyOnRead(std::ostream& os) : m_os(os) {};
+   virtual void operator()()
+   {
+     m_os      << "read() function was called." << std::endl;
+     std::cout << "read() function was called." << std::endl;
+   }
+ private:
+   std::ostream& m_os;
+ };
+ 
+ template <class T> 
+ class MyOnReadConvert
+  : public RTC::OnReadConvert<T>
+ {
+ public:
+   virtual T operator()(const T& value)
+   {
+     T tmp;
+     tmp.data = value.data * value.data;
+     return tmp;
+   }
+ };
+
+In MyOnRead functor that inherits OnRead, output stream std :: ostream is passed in the constructor. It is intended to pass a file output stream std :: ofstream etc. opened somewhere.
+The functor entity operator()() outputs a character string to the output stream and standard output. In this way, functors can also call other objects by passing state variables in advance in the constructor.
+
+On the other hand, MyOnReadConvert which inherits OnReadConvert<T> implements only operator()(const T&). The argument of this function is passed the data before being read into the InPort variable when read() is called.
+Some processing is performed in this function, and the data returned by return is written to the InPort variable. In this example, the square is calculated and returned assuming that the data type has a member called data and the multiplication operator is defined.
+If you use a variable type that does not have an appropriate member, you will get a compilation error.
+
+Now, let's actually incorporate this functor into the component. As a sample using InPort, ConsoleOut, which is a sample included in OpenRTM-aist, is used here. When ConsoleOut expands the OpenRTM-aist source,
+
+ OpenRTM-aist-<version>/examples/SimpleIO/
+
+If you install from a package etc.
+
+ /usr/share/OpenRTM-aist/examples/src/
+
+Below is the source code.
+
+First, write the above class definition in ConsoleOut.h. It is better to describe the class definition in a separate source, but the functor class is only used in this component and its content is short. In such cases, define it including the implementation in the header. It does n’t matter.
+
+ // ConsoleOut.h
+ 
+   Omission
+ // Service Consumer stub headers
+ // <rtc-template block="consumer_stub_h">
+ 
+ // </rtc-template>
+ 
+ using namespace RTC; 
+ 
+ // Add from here
+ template <class T>
+ class MyOnRead
+  : public RTC::OnRead<T>
+ {
+ public:
+   MyOnRead(std::ostream& os) : m_os(os) {};
+   virtual void operator()()
+   {
+     m_os      << "read() function was called." << std::endl;
+     std::cout << "read() function was called" << std::endl;
+   }
+ private:
+   std::ostream& m_os;
+ };
+ 
+ template <class T> 
+ class MyOnReadConvert
+  : public RTC::OnReadConvert<T>
+ {
+ public:
+   virtual T operator()(const T& value)
+   {
+     T tmp;
+     tmp.data = value.data * value.data;
+     return tmp;
+   }
+ };
+ // up to here
+ 
+ class ConsoleOut
+   : public RTC::DataFlowComponentBase
+ {
+ 
+   Omission
+ 
+  protected:
+   // DataInPort declaration
+   // <rtc-template block="inport_declare">
+   TimedLong m_in;
+   InPort<TimedLong> m_inIn;
+ 
+   Omission
+ 
+  private:
+   //Added from here
+   MyOnRead<TimedLong>* m_onread;
+   MyOnReadConvert<TimedLong>* m_onreadconv;
+   //Added upto here
+ };
+
+First, declare the callback functors MyOnRead and MyOnReadConvert before declaring the ConsoleOut class.
+In order to have pointer variables of these classes as members, declare each pointer variable in the private part.
+At this time, please note that both MyOnRead / MyOnReadConvert give TimedLong, which is the same as the InPort type of this component, to the type argument of the class template.
+
+
+
+// ------------------------------------------------ ------------
+*** OutPort callback
+
+OutPort provides the following two types of callbacks.
+These are defined in rtm / PortCallback.h.
+
+| LEFT: 40 | LEFT: 150 | c
+| OnWrite | Set by OutPort :: setOnWrite () function that is called when OutPort's write () is called. |
+| OnWriteConvert | Called to convert data when OutPort write () is called. Set by OutPort :: setOnWriteConvert () function. |
+
+The OnWrite callback is a callback used to send data with some sort of conversion when write () is called, and OnWriteConvert is called when write () is called.
+
+Each callback is implemented by inheriting the base class of each functor defined in rtm / PortCallback.h like InPort.
+
+Each implementation example is shown below.
+
+ #include <rtm/Portcallback.h>
+ 
+ template <class T>
+ class MyOnWrite
+  : public RTC::OnWrite<T>
+ {
+ public:
+   MyOnWrite(std::ostream& os) : m_os(os) {};
+   virtual void operator()()
+   {
+     m_os      << "write() was called. " << std::endl;
+     std::cout << "write() was called. " << std::endl;
+   }
+ private:
+   std::ostream& m_os;
+ };
+ 
+ template <class T> 
+ class MyOnWriteConvert
+  : public RTC::OnWriteConvert<T>
+ {
+ public:
+   virtual T operator()(const T& value)
+   {
+     T tmp;
+     tmp.data = 2 * value.data;
+     return tmp;
+   }
+ };
+
+The way to write a callback functor is almost the same as InPort OnRead / OnReadConvert. MyOnWrite functor that inherits OnWrite passes the output stream std :: ostream in the constructor.
+It is intended to pass a file output stream std :: ofstream etc. opened somewhere. The functor entity operator () outputs a character string to the output stream and standard output.
+In this way, functors can also call other objects by passing state variables in advance in the constructor.
+
+On the other hand, MyOnReadConvert which inherits OnReadConvert <T> implements only operator () (constT &). The argument of this function is passed the data before being read into the InPort variable when read () is called. Some processing is performed in this function, and the data returned by return is written to the InPort variable.
+In this example, the square is calculated and returned assuming that the data type has a member called data and the multiplication operator is defined. If you use a variable type that does not have an appropriate member, you will get a compilation error.
+
+*** Connector buffer callback
+
+****connector
+
+A connector is an object that abstracts buffers and communication paths. As shown in the figure, it exists between OutPort and InPort, data is written from OutPort by write () function, and data is read from InPort by read () function.
+The connector abstracts and hides how the data is transmitted from OutPort to InPort.
+
+
+OutPort is a buffer in the connector
+-writing
+-Various controls (readback, access to unread data, etc.)
+-You can notify (or receive notifications) of buffer full status and timeout.
+-Reading data
+-Various controls (readback, access to unread data, etc.)
+-You can send (or receive notifications) buffer empty status notifications and timeout notifications.
+
+OutPort can be connected to multiple InPorts, but one connector is created for each connection. (In fact, InPort can have multiple connections at the same time, but since there is no way to distinguish the data, it is not normally used.)
+In other words, if there are three connections, there are three connectors, each with a write status.
+
+You can also see that for these functions, there must be one connector for each OutPort / InPort pair.
+Furthermore, when modeling the connector at the implementation level corresponding to the subscription type, we introduced an object for asynchronous communication called publisher.
+
+A data port creates one connector object per connection when a connection is established. A connector is an abstract channel of data stream that connects OutPort and InPort.
+
+| ON_BUFFER_WRITE | When writing to the buffer |
+| ON_BUFFER_FULL | When buffer is full |
+| ON_BUFFER_WRITE_TIMEOUT | Buffer write timeout
+| ON_BUFFER_OVERWRITE | When buffer is overwritten |
+| ON_BUFFER_READ | When reading buffer |
+| ON_SEND | When sending to InProt |
+| ON_RECEIVED | When sending to InProt is complete |
+| ON_RECEIVER_FULL | InProt side buffer full |
+| ON_RECEIVER_TIMEOUT | InProt side buffer timeout |
+| ON_RECEIVER_ERROR | InProt side error |
+
+| ON_BUFFER_EMPTY | If the buffer is empty |
+| ON_BUFFER_READTIMEOUT | If the buffer times out and is empty |
+| ON_SENDER_EMPTY | OutPort buffer is empty |
+| ON_SENDER_TIMEOUT | OutPort side timeout |
+| ON_SENDER_ERROR | OutPort side error |
+| ON_CONNECT | When establishing a connection |
+| ON_DISCONNECT | When disconnected |
+
+***Port callback
+****status
+The data port returns a status when data is sent and received.
+The status is defined in rtm/DataPortStatus.h.
+
+| LEFT: 80 | LEFT: 150 | c
+| PORT_OK | Successful completion |
+| PORT_ERROR | Abnormal termination |
+| BUFFER_ERROR | Buffer error |
+| BUFFER_FULL |
+| BUFFER_EMPTY | Buffer Empty |
+| BUFFER_TIMEOUT | Buffer timeout |
+| SEND_FULL | Sending data but buffer is full |
+| SEND_TIMEOUT | Sending data but the other side timed out |
+| RECV_EMPTY | Data sent but data is empty |
+| RECV_TIMEOUT | Trying to receive data but timed out |
+| INVALID_ARGS | Invalid argument |
+| PRECONDITION_NOT_MET | Precondition not met |
+| CONNECTION_LOST | Connection lost |
+| UNKNOWN_ERROR | Unknown error |
+
+This error code is used to convey error information from the location of the error on the data port data path to the caller.
+Mainly errors on the transmission line and errors at the transmission destination can be considered. The errors that occur in each part are shown below.
+#br
+
+-Push type
+-Return code between InPortConsumer and Publisher / Activity
+#br
+PORT_OK, PORT_ERROR, SEND_FULL, SEND_TIMEOUT, CONNECTION_LOST, UNKNOWN_ERROR
+-Return code generated between Activity and OutPort Buffer / Connector
+#br
+PORT_OK, PORT_ERROR, BUFFER_ERROR, BUFFER_FULL, BUFFER_TIMEOUT, UNKNOWN_ERROR
+-Pull type
+-Return code generated between Activity and InPort
+#br
+PORT_OK, PORT_ERROR, RECV_EMPTY, RECV_TIMEOUT, CONNETION_LOST, UNKNOWN_ERROR
+
+#br
+
+** Creating your own data port interface
+An example of creating a custom data port interface is shown below.
+
+The following functions and classes must be defined.
+
+-Provider class (InPortTestProvider)
+-Consumer class (InPortTestConsumer)
+-Provider, consumer registration function (InPortTestInterfaceInit)
+
+*** Provider class (InPortTestProvider)
+Provider class of data port interface (Push type).
+When the put function is called on the consumer side, it is necessary to transfer data to the provider side in some way.
+In this sample, data is written to the file when the put function is called on the consumer side, and data is transferred by reading data from the file on the provider side.
+ //InPortTestProvider.cpp
+ 
+ #include "InPortTestProvider.h"
+ #ifdef WIN32
+ #pragma warning( disable : 4290 )
+ #endif
+ 
+ namespace RTC
+ {
+   InPortTestProvider::InPortTestProvider(void)
+	  : m_buffer(0), m_running(true), m_filename("data.dat")
+  {
+    setInterfaceType("test");
+    activate();
+  }
+  
+  InPortTestProvider::~InPortTestProvider(void)
+  {
+	  m_running = false;
+	  wait();
+  }
+ 
+  //function called when provider is created
+  //Receive information on connector profile and port properties
+  void InPortTestProvider::init(coil::Properties& prop)
+  {
+  }
+ 
+  void InPortTestProvider::
+  setBuffer(BufferBase<cdrMemoryStream>* buffer)
+  {
+    m_buffer = buffer;
+  }
+ 
+  void InPortTestProvider::setListener(ConnectorInfo& info, ConnectorListeners* listeners)
+  {
+    m_profile = info;
+    m_listeners = listeners;
+  }
+ 
+  void InPortTestProvider::setConnector(InPortConnector* connector)
+  {
+    m_connector = connector;
+  }
+ 
+  //Function executed by another thread
+  //Read data from file periodically and write to buffer
+  //This function is necessary for this sample, but to create your own interface
+  //not required
+  int InPortTestProvider::svc()
+  {
+     coil::sleep(1);
+     while (m_running)
+     {
+	  std::ifstream  fin;
+	  fin.open(m_filename, std::ios::in | std::ios::binary);
+          if (fin)
+          {
+               while (!fin.eof())
+               {
+                    int data_size = 0;
+                    fin.read((char*)&data_size, sizeof(int));
+                    if (data_size > 0)
+                    {
+                        CORBA::OctetSeq data;
+                        data.length(data_size);
+                        fin.read((char*)&data[0], data_size);
+ 
+                        //cdrMemoryStream型変数にデータを格納してバッファに書き込む
+                        //以下の記述方法はomniORB特有なため、TAOやORBexpressに対応する場合は
+                        //分ける必要がある
+                        cdrMemoryStream cdr;
+                        //エンディアンの設定を行う
+                        bool endian_type = m_connector->isLittleEndian();
+                        cdr.setByteSwapFlag(endian_type);
+                        //データを書き込む
+                        cdr.put_octet_array(&(data[0]), data.length());
+                        //バッファに書き込む
+                        m_buffer->write(cdr);
+                    }
+               }
+               fin.close();
+	  }
+     }
+     return 0;
+  }
+ 
+  //Function called when connector is connected
+  //This function is called before the consumer side subscribeInterface function
+  //For this reason, the information set with the publishInterface function
+  //can get
+  //If something goes wrong, return false and disconnect the connector
+  bool InPortTestProvider::
+              publishInterface(SDOPackage::NVList& properties)
+   {
+        //Store the name information of the file which data is written to  
+        CORBA_SeqUtil::
+                  push_back(properties,
+                  NVUtil::newNV("dataport.test.filename", m_filename.c_str()));
+	return true;
+   }
+ };
+ 
+ extern "C"
+ {
+     //This function must be called when the module is loaded
+    void InPortTestProviderInit(void)
+    {
+         RTC::InPortProviderFactory& factory(RTC::InPortProviderFactory::instance());
+         factory.addFactory("test",
+                       ::coil::Creator< ::RTC::InPortProvider,
+                                        ::RTC::InPortTestProvider>,
+                       ::coil::Destructor< ::RTC::InPortProvider,
+                                           ::RTC::InPortTestProvider>);
+     }
+ };
+
+#br
+
+Consumer class of data port interface (Push type). Must inherit from InPortProvider.
+Inheritance of the Task class is not required because it is unique to this sample.
+
+ //InPortTestProvider.h
+ 
+ #ifndef RTC_INPORTTESTPROVIDER_H
+ #define RTC_INPORTTESTPROVIDER_H
+ #include <rtm/BufferBase.h>
+ #include <rtm/InPortProvider.h>
+ #include <rtm/CORBA_SeqUtil.h>
+ #include <rtm/Manager.h>
+ #include <rtm/ConnectorListener.h>
+ #include <rtm/ConnectorBase.h>
+ #include <fstream>
+ #ifdef WIN32
+ #pragma warning( disable : 4290 )
+ #endif
+ 
+ namespace RTC
+ {
+    class InPortTestProvider
+      : public InPortProvider,
+	public coil::Task
+    {
+    public:
+       InPortTestProvider(void);
+       virtual ~InPortTestProvider(void);
+       virtual void init(coil::Properties& prop);
+       virtual void setBuffer(BufferBase<cdrMemoryStream>* buffer);
+       virtual void setListener(ConnectorInfo& info,
+                             ConnectorListeners* listeners);
+       virtual void setConnector(InPortConnector* connector);
+       virtual bool publishInterface(SDOPackage::NVList& properties);
+       virtual int svc();
+ 
+  private:
+      CdrBufferBase* m_buffer;
+      ConnectorListeners* m_listeners;
+      ConnectorInfo m_profile;
+      InPortConnector* m_connector;
+      bool m_running;
+      std::string m_filename;
+   }; 
+ };
+ 
+ extern "C"
+ {
+	DLL_EXPORT void InPortTestProviderInit(void);
+ };
+ 
+ #ifdef WIN32
+ #pragma warning( default : 4290 )
+ #endif
+ #endif
+
+#br
+
+*** Consumer class (InPortTestConsumer)
+Consumer class of data port interface (Push type). In case of Push type, a consumer is created on the InPort side and a provider is created on the OutPort side.
+When the put function is called on the consumer side, it is necessary to transfer data to the provider side in some way.
+In this sample, data is written to the file when the put function is called on the consumer side, and data is transferred by reading data from the file on the provider side.
+
+ //InPortTestConsumer.cpp
+ 
+ #include <rtm/NVUtil.h>
+ #include "InPortTestConsumer.h"
+ 
+ namespace RTC
+ {
+    InPortTestConsumer::InPortTestConsumer(void)
+    : rtclog("InPortTestConsumer")
+    {
+    }
+  
+    InPortTestConsumer::~InPortTestConsumer(void)
+    {
+       RTC_PARANOID(("~InPortTestConsumer()"));
+    }
+ 
+    //コネクタプロファイル、ポートのプロパティの情報を受け取る
+    void InPortTestConsumer::init(coil::Properties& prop)
+    {
+       m_properties = prop;
+    }
+  
+    //データ転送時に呼び出される関数
+    //put関数内でプロバイダ側にデータを転送する処理を記述する
+    InPortConsumer::ReturnCode InPortTestConsumer::
+	  put(const cdrMemoryStream& data)
+    {
+         RTC_PARANOID(("put()"));
+ 
+         //このサンプルでは、コンシュマー側でファイルにデータを書き込んで、プロバイダ側で
+         //ファイル内のデータを読み込むことにしている
+         //バイナリファイルを開く
+         m_file.open(m_filename, std::ios::out | std::ios::binary | std::ios::trunc);
+         //データサイズと生データをファイルに書き込む
+         int data_size = data.bufSize();	
+         m_file.write((char*)&data_size, sizeof(int));
+         m_file.write((char*)data.bufPtr(), data_size);
+         //ファイルを閉じる
+         m_file.close();
+ 
+         return PORT_OK;
+      }
+ 
+      //コネクタ接続時に呼び出される関数
+      //この関数はプロバイダ側のpublishInterface関数よりも後に呼び出される
+      //このため、プロバイダ側のpublishInterface関数で設定した情報を取得することができる
+      //return: 何か問題があった時はfalseを返してコネクタを切断する
+ 
+      bool InPortTestConsumer::
+      subscribeInterface(const SDOPackage::NVList& properties)
+      {
+          //プロバイダ側で設定したファイル名を取得する
+          CORBA::Long index = NVUtil::find_index(properties,
+                                          "dataport.test.filename");
+          const char* filename(0);
+          properties[index].value >>= filename;
+ 
+          //取得したファイル名のファイルを開く
+          m_filename = filename;
+          m_file.open(m_filename, std::ios::out | std::ios::binary | std::ios::trunc);
+          m_file.close();
+  
+         return true;
+     }
+  
+     //コネクタ切断時に呼び出される関数
+     void InPortTestConsumer::
+     unsubscribeInterface(const SDOPackage::NVList& properties)
+     {
+     }
+ 
+     void InPortTestConsumer::publishInterfaceProfile(SDOPackage::NVList& properties)
+     {
+     }
+ };
+ 
+ extern "C"
+ { 
+     //コンシューマ登録関数
+     //この関数をモジュールロード時に呼び出す必要がある
+     void InPortTestConsumerInit(void)
+    {
+        RTC::InPortConsumerFactory& factory(RTC::InPortConsumerFactory::instance());
+        factory.addFactory("test",
+                       ::coil::Creator< ::RTC::InPortConsumer,
+                                        ::RTC::InPortTestConsumer>,
+                       ::coil::Destructor< ::RTC::InPortConsumer,
+                                           ::RTC::InPortTestConsumer>);
+     }
+ };
+
+#br
+
+Consumer class of data port interface (Push type). Must inherit from InPortConsumer.
+
+
+ //InPortTestProvider.h
+ 
+ #ifndef RTC_INPORTTESTPROVIDER_H
+ #define RTC_INPORTTESTPROVIDER_H
+ #include <rtm/BufferBase.h>
+ #include <rtm/InPortProvider.h>
+ #include <rtm/CORBA_SeqUtil.h>
+ #include <rtm/Manager.h>
+ #include <rtm/ConnectorListener.h>
+ #include <rtm/ConnectorBase.h>
+ #include <fstream>
+ #ifdef WIN32
+ #pragma warning( disable : 4290 )
+ #endif
+ 
+ namespace RTC
+ {
+    class InPortTestProvider
+      : public InPortProvider,
+	public coil::Task
+    {
+    public:
+       InPortTestProvider(void);
+       virtual ~InPortTestProvider(void);
+       virtual void init(coil::Properties& prop);
+       virtual void setBuffer(BufferBase<cdrMemoryStream>* buffer);
+       virtual void setListener(ConnectorInfo& info,
+                             ConnectorListeners* listeners);
+       virtual void setConnector(InPortConnector* connector);
+       virtual bool publishInterface(SDOPackage::NVList& properties);
+       virtual int svc();
+ 
+  private:
+      CdrBufferBase* m_buffer;
+      ConnectorListeners* m_listeners;
+      ConnectorInfo m_profile;
+      InPortConnector* m_connector;
+      bool m_running;
+      std::string m_filename;
+   }; 
+ };
+ 
+ extern "C"
+ {
+	DLL_EXPORT void InPortTestProviderInit(void);
+ };
+ 
+ #ifdef WIN32
+ #pragma warning( default : 4290 )
+ #endif
+ #endif
+
+#br
+
+*** Provider and consumer registration function (InPortTestInterfaceInit)
+The OpenRTM-aist manager calls the “XXXInit” function when the dynamic link library “XXX.dll” is loaded.
+For this sample, load "InPortTestInterface.dll" and call the following "InPortTestInterfaceInit" function.
+ //InPortTestInterface.cpp
+ 
+ #include "InPortTestConsumer.h"
+ #include "InPortTestProvider.h"
+ 
+ extern "C"
+ {
+	DLL_EXPORT void InPortTestInterfaceInit(RTC::Manager* manager)
+	{
+		InPortTestProviderInit();
+		InPortTestConsumerInit();
+	}
+ };
+
+*** Confirmation procedure
+1. Prepare an environment where OpenRTM-aist is installed. #br
+#br
+2. Create a CMake configuration file (CMakeLists.txt) for building. #br
+The following is a CMake configuration file for building a custom interface sample.
+
+ //Description to find OpenRTM-aist library
+ 
+ cmake_minimum_required (VERSION 2.6)
+ 
+ find_package(OpenRTM HINTS /usr/lib64/openrtm-1.1/cmake)
+ if(${OpenRTM_FOUND})
+   MESSAGE(STATUS "OpenRTM configuration Found")
+ else(${OpenRTM_FOUND})
+   message(STATUS "Use cmake/Modules/FindOpenRTM.cmake in the project")
+   list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/Modules)
+   find_package(OpenRTM REQUIRED)
+ endif(${OpenRTM_FOUND})
+ 
+ if (DEFINED OPENRTM_INCLUDE_DIRS)
+   string(REGEX REPLACE "-I" ";"
+     OPENRTM_INCLUDE_DIRS "${OPENRTM_INCLUDE_DIRS}")
+   string(REGEX REPLACE " ;" ";"
+     OPENRTM_INCLUDE_DIRS "${OPENRTM_INCLUDE_DIRS}")
+ endif (DEFINED OPENRTM_INCLUDE_DIRS)
+ 
+ if (DEFINED OPENRTM_LIBRARY_DIRS)
+   string(REGEX REPLACE "-L" ";"
+     OPENRTM_LIBRARY_DIRS "${OPENRTM_LIBRARY_DIRS}")
+   string(REGEX REPLACE " ;" ";"
+     OPENRTM_LIBRARY_DIRS "${OPENRTM_LIBRARY_DIRS}")
+ endif (DEFINED OPENRTM_LIBRARY_DIRS)
+ 
+ if (DEFINED OPENRTM_LIBRARIES)
+   string(REGEX REPLACE "-l" ";"
+     OPENRTM_LIBRARIES "${OPENRTM_LIBRARIES}")
+   string(REGEX REPLACE " ;" ";"
+     OPENRTM_LIBRARIES "${OPENRTM_LIBRARIES}")
+ endif (DEFINED OPENRTM_LIBRARIES)
+ 
+ include_directories(${OPENRTM_INCLUDE_DIRS})
+ include_directories(${OMNIORB_INCLUDE_DIRS})
+ add_definitions(${OPENRTM_CFLAGS})
+ add_definitions(${OMNIORB_CFLAGS})
+ 
+ link_directories(${OPENRTM_LIBRARY_DIRS})
+ link_directories(${OMNIORB_LIBRARY_DIRS})
+ 
+ //Project name setting
+ project (InPortTestInterface)
+ 
+ //Create a dynamic library
+ add_library(InPortTestInterface SHARED InPortTestProvider.cpp InPortTestConsumer.cpp InPortTestProvider.h InPortTestConsumer.h InPortTestInterface.cpp)
+ 
+ //Set library to link
+ target_link_libraries(InPortTestInterface ${OPENRTM_LIBRARIES})
+
+3. Generate a Visual Studio project file with CMake.
+#br
+#br
+4. Build with Visual Studio. #br
+After building, InPortTestInterface.dll is generated in the Debug folder.
+#br
+#br
+5. Create rtc.conf # br
+Create rtc.conf and specify InPortTestInterface.dll in the module that loads when Manager starts.
+
+ manager.modules.preload: InPortTestInterface.dll
+
+If InPortTestInterface.dll is different from the directory where RTC is executed, set the module search path separately.
+
+ manager.modules.load_path: C:¥workspace¥InPortTestInterface¥build¥Debug
+#br
+
+6. Load the above rtc.conf and start RTC. #br
+ ConsoleInComp.exe -f ../rtc.conf
+#br
+
+7. Specify "test" for Interface Type when connecting the port. #br
+Interface Type can be specified from RTSystemEditor.

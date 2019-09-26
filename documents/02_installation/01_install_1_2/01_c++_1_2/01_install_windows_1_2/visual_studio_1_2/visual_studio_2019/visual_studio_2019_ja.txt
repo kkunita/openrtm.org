@@ -1,0 +1,45 @@
+﻿// Title: Visual Studio Community 2019のインストール
+** インストーラーの入手
+以下のページからVisual Studio Community 2019のインストーラーを入手してください
+
+- [[Visual Studio のダウンロード:https://visualstudio.microsoft.com/ja/downloads/?utm_source=mscom&utm_campaign=msdocs]]
+
+Visual Studio Community 2019の無料ダウンロードをクリックするとインストーラーをダウンロードできます。 
+
+#ref(vs_install1.png, around,nolink,left)
+
+
+** インストーラーの実行
+入手したインストーラーを実行してください。 しばらくすると以下の画面が表示されるので、''C++によるデスクトップ開発''にチェックを入れてインストールしてください。
+
+
+
+#ref(vs_install2.png, around,nolink,left)
+
+
+** インストールの確認
+インストールが完了するとサインインを求める画面が表示されるため、Microsoftアカウントでサインインしてください。 サインインしなくても30日間は使用できます。
+Microsoftアカウントの手順は以下を参考にしてください。
+
+- [[新しい Microsoft アカウントを作成する方法:https://support.microsoft.com/ja-jp/help/4026324/microsoft-account-how-to-create]]
+
+
+#ref(vs_install3.png, around,nolink,left)
+
+
+
+** C++コンパイラがインストールされているかの確認
+
+C++によるデスクトップ開発機能がインストールされているかを必ず確認してください。
+
+Visual C++のプロジェクトを作成できれば問題ありません。
+まず、新しいプロジェクトの作成をクリックしてください。
+
+#ref(vs_install4.png, around,nolink,left)
+
+この時、空のプロジェクト(Winmdows用にC++で最初から始めます。開始ファイルは提供しません)などが選択肢にあればインストールに問題ありません。
+
+インストールされていない場合は、''さらにツールと機能をインストールする''をクリックするとインストーラーが起動するためC++によるデスクトップ開発機能をインストールしてください。
+
+
+#ref(vs_install5.png, around,nolink,left)

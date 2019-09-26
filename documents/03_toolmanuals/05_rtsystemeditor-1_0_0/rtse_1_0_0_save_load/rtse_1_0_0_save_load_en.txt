@@ -1,0 +1,68 @@
+﻿// Title: Saving and Loading Systems
+#contents
+
+***Saving the System Editor
+The contents of the System Editor can be saved. Select ''Save'' or ''Save As...'' from the File menu and select a suitable file name.
+#br
+
+
+|
+#ref(fig75SaveSystemEditor2_en.png,nolink,50%,center)|
+#ref(fig75SaveSystemEditor3_en.png,nolink,50%,center)|
+
+CENTER:''Saving the System Editor. Left: from the File menu, Right: from the context menu.''
+#br
+The profile information dialog will be displayed. Set the required information and click OK. The system information will be saved to the profile.
+#br
+
+
+#ref(fig76ProfileInfomationDialog_en.png,80%,center)
+CENTER:''Profile Information Dialog''
+#br
+
+CENTER:''Profile Information items''
+|Name|Meaning|
+|Vendor|Used to differentiate the RT system. Required.|
+|System Name|Used to differentiate the RT system. Required.|
+|Version|Used to differentiate the RT system. Required.|
+|Path|File name to save the profile to. Required.|
+|Update Log|Enter a change log here.|
+|Required|Components required by the RT system.|
+#br
+
+***Loading a System Editor State 
+To load a previously-saved System Editor state, right-click on the editor and select ''Open...''
+#br
+
+
+#ref(fig77OpenSavedSystemEditor_en.png,50%,center)
+CENTER:''Loading a System Editor''
+#br
+After loading, RT System Editor will attempt to get the latest state from remote systems. To restore the system, use the option described below.
+
+***Loading and Restoring a System Editor state 
+To load a previously-saved System Editor state and restore it, right-click on the editor and select ''Open and Restore...''
+#br
+
+
+#ref(fig78OpenAndRestore_en.png,50%,center)
+CENTER:''Loading and restoring a System Editor state''
+#br
+The following items are restored:
+-Port connections
+-Configuration information&br;
+~At restoration time, it will try to search for name servers and retrieve remote components using the component path ID. If ''Quick Restore'' is selected, it will first try using the IOR stored in the profile, and only if that fails will it attempt to access a name server.
+When restoration fails, the error details are displayed. RT System Editor will attempt to restore as much as possible.
+#br
+
+
+#ref(fig38ErrorMessageOfRestorationFailure_en.png,80%,center)
+CENTER:''Restoration error display ''
+#br
+&color(red){''Note''};'' When there are multiple connections between the same ports, the connection lines will not be differentiated.''
+
+***Restoring a saved system using the console 
+Saved systems can also be restored using the console. This is accomplished using the RT System Editor "ConsoleRestore" package (distributed separately). In this tool's folder, exectute ''run.bat'', passing it the saved file.
+~
+~（Example）
+C:\tmp\RtcLink\ConsoleRestore>run.bat C:\tmp\save.rtclink

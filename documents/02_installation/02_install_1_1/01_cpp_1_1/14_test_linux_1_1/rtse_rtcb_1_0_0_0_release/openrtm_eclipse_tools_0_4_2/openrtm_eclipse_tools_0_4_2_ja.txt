@@ -1,0 +1,48 @@
+﻿// Title: OpenRTM Eclipse tools 0.4.2
+#ref(eclipse_logo.png,left,around)
+#contents
+#clear
+
+&color(red){※0.4.x系の開発はすでに終了しました。特に理由がなければ現行バージョンの利用をお勧めします。};
+
+**RTSystemEditor 
+|LEFT:200|LEFT|LEFT:100|c
+|''RTSystemEditor'' on Eclipse&br;(for OpenRTM-aist 0.4.2)|[[jp.go.aist.rtm.systemeditor_0.4.2.jar:http://www.openrtm.org/pub/OpenRTM-aist/tools/0.4.2/RTSystemEditor/jp.go.aist.rtm.systemeditor_0.4.2.jar]] &br;[[jp.go.aist.rtm.nameserviceview_0.4.2.jar:http://www.openrtm.org/pub/OpenRTM-aist/tools/0.4.2/RTSystemEditor/jp.go.aist.rtm.nameserviceview_0.4.2.jar]] &br;[[jp.go.aist.rtm.repositoryView_0.4.2.jar:http://www.openrtm.org/pub/OpenRTM-aist/tools/0.4.2/RTSystemEditor/jp.go.aist.rtm.repositoryView_0.4.2.jar]] &br;[[jp.go.aist.rtm.toolscommon_0.4.2.jar:http://www.openrtm.org/pub/OpenRTM-aist/tools/0.4.2/RTSystemEditor/jp.go.aist.rtm.toolscommon_0.4.2.jar]] &br;[[jp.go.aist.rtm.toolscommon.profiles_0.4.2.jar:http://www.openrtm.org/pub/OpenRTM-aist/tools/0.4.2/RTSystemEditor/jp.go.aist.rtm.toolscommon.profiles_0.4.2.jar]] &br;※jar形式ファイル&br;|2008.09.08|
+::''※ jar形式ファイルの&color(black){ダウンロード};時の注意(Windows)：''
+::IE上からjar形式ファイルを&color(black){ダウンロード};する場合、拡張子が「.zip」に変更されてしまいます。この場合は、手動で「ファイル名の変更」を行い、ファイル拡張子「.zip」を「.jar」に書き戻してください。
+
+**RTCBuilder
+|LEFT:200|LEFT|LEFT:100|c
+|''RTCBuilder'' on Eclipse&br;(for OpenRTM-aist 0.4.2)|[[jp.go.aist.rtm.rtcbuilder_0.4.2.jar :http://www.openrtm.org/pub/OpenRTM-aist/tools/0.4.2/RTCBuilder/jp.go.aist.rtm.rtcbuilder_0.4.2.jar]] &br;[[jp.go.aist.rtm.rtcbuilder.java_0.4.2.jar :http://www.openrtm.org/pub/OpenRTM-aist/tools/0.4.2/RTCBuilder/jp.go.aist.rtm.rtcbuilder.java_0.4.2.jar]] &br; [[jp.go.aist.rtm.rtcbuilder.python_0.4.2.jar :http://www.openrtm.org/pub/OpenRTM-aist/tools/0.4.2/RTCBuilder/jp.go.aist.rtm.rtcbuilder.python_0.4.2.jar]] &br; [[jp.go.aist.rtm.toolscommon_0.4.2.jar :http://www.openrtm.org/pub/OpenRTM-aist/tools/0.4.2/RTCBuilder/jp.go.aist.rtm.toolscommon_0.4.2.jar]] &br; [[jp.go.aist.rtm.toolscommon.profiles_0.4.2.jar :http://www.openrtm.org/pub/OpenRTM-aist/tools/0.4.2/RTCBuilder/jp.go.aist.rtm.toolscommon.profiles_0.4.2.jar]] &br;※jar形式ファイル&br;|2008.09.08|
+
+::''※ jar形式ファイルの&color(black){ダウンロード};時の注意(Windows)：''
+::IE上からjar形式ファイルを&color(black){ダウンロード};する場合、拡張子が「.zip」に変更されてしまいます。この場合は、手動で「ファイル名の変更」を行い、ファイル拡張子「.zip」を「.jar」に書き戻してください。
+
+
+**全部入りパッケージ
+|LEFT:200|LEFT|LEFT:100|c
+|Eclipse3.2+RTSystemEditor(0.4.2)+RTCBuilder(0.4.2)&br;''Windows用全部入り| [[openrtm_tools_042.zip:http://www.openrtm.org/pub/OpenRTM-aist/tools/0.4.2/openrtm_tools_042.zip]] &br;MD5:69310179d45a922715da25b23df6422e|2008.09.08|
+|Eclipse3.2+RTSystemEditor(0.4.2)+RTCBuilder(0.4.2)&br;''UNIX用全部入り|[[openrtm_tools_042_linux.zip:http://www.openrtm.org/pub/OpenRTM-aist/tools/0.4.2/openrtm_tools_042_linux.zip]]&br;MD5:C3B2614A63DDA96F44418F5E3833A3BE|2008.09.11|
+
+&color(red){''UNIX系環境で使用する時の注意''};
+-RT System EditorはJava1.5(5.0)では動作しません。Java Development Kit6を使用します。以下のマニュアルを参考にインストールしてください。
+--[[Java Development Kit 6:http://java.sun.com/javase/ja/6/download.html]]
+--[[JDKインストール方法 :/ja/node/664#instjavaunixjdk]]
+-Eclipseの適用するJAVA(JRE)をGNUからSunに変更してください。~
+--[[UNIX系環境で簡易にSunのJava(JRE)をEclipseに適用する方法 >/node/248#rtclinksunjava]]
+
+**Eclipse/JDK/JRE等 
+***Eclipse 
+-[[Eclipse webページ:http://www.eclipse.org/]]
+|Eclipse 3.2.2 (Windows版)|[[eclipse-SDK-3.2.2-win32.zip:http://archive.eclipse.org/eclipse/downloads/drops/R-3.2.2-200702121330/eclipse-SDK-3.2.2-win32.zip]]|
+|Eclipse 3.2.2 (Linux版 x86/GTK 2)|[[eclipse-SDK-3.2.2-linux-gtk.tar.gz :http://archive.eclipse.org/eclipse/downloads/drops/R-3.2.2-200702121330/eclipse-SDK-3.2.2-linux-gtk.tar.gz]]|
+|Eclipse 3.2.2 (Linux版 x86/Motif)|[[eclipse-SDK-3.2.2-linux-motif.tar.gz :http://archive.eclipse.org/eclipse/downloads/drops/R-3.2.2-200702121330/eclipse-SDK-3.2.2-linux-motif.tar.gz]]|
+|Eclipseアーカイブ|[[eclipse project archived downloads:http://archive.eclipse.org/eclipse/downloads/]]|
+
+***Eclipse日本語化
+-[[Eclipse日本語化　Webページ:http://eclipsewiki.net/eclipse/?%C6%FC%CB%DC%B8%EC%B2%BD]]
+|Eclipse3.2　日本語化パッケージ　Windows用|[[NLpack1-eclipse-SDK-3.2-win32.zip:http://www.ring.gr.jp/pub/misc/eclipse/downloads/drops/L-3.2_Language_Packs-200607121700/NLpack1-eclipse-SDK-3.2-win32.zip]]|
+***Java実行環境 
+-[[JRE: Java Runtime Environment Webページ （ダウンロード一覧へ）:http://www.java.com/ja/download/manual.jsp]]
+|JRE (Windows) オンラインインストーラ|[[jre-6u1-windows-i586-p-iftw.exe:http://javadl.sun.com/webapps/download/AutoDL?BundleId=11145]]|
+|JRE (Windows) オフラインインストーラ|[[jre-6u1-windows-i586-p-s.exe:http://javadl.sun.com/webapps/download/AutoDL?BundleId=11193]]|

@@ -1,0 +1,50 @@
+﻿// Title: NXT RTC Test
+We will now test our NXT RT-Component.
+
+**Start the name server 
+The name server must be started to connect components together. If you have installed the Windows C++ version of OpenRTM-aist, the Start Menu will contain an entry for this: OpenRTM-aist->C++->examples->Start Naming Service.
+
+**Write an rtc.conf file 
+Put the following into a file named "rtc.conf":
+
+ corba.nameservers: localhost
+ naming.formats: %n.rtc
+
+Ensure the value of corba.nameservers matches the address of the name server you want to use. In this case, a name server running on localhost is used. Copy this file to the directories of components you want to use. Other than NXTRTC, we will also use:
+-TkJoystickComp
+-TkMotorPosComp
+-TkSliderMonitorComp
+
+**Start RtcLink
+Start RtcLink. Once it has started, connect to your name server and open the System Diagram Editor.
+
+**Start Components 
+Execute the following components:
+-NXTRTC
+-TkJoystickComp
+-TkMotorPosComp
+-TkSliderMonitorComp
+As each is executed, it will appear in the name service view of RtcLink.
+
+***TkJoystickComp
+TkJoyStickComp is a graphical virtual joystick component (see image, below). The centre circle can be dragged like a joystick to send  X/Y values out its upper OutPort. The lower OutPort outputs values suitable for controlling a differential drive robot, such as the Tribot.
+
+#ref(TkJoystick.png,center,nolink)
+
+***TkMotorComp 
+TkMotorComp is a GUI-based component for displaying motor angles received at its InPort. It can be used to monitor the rotation of wheels. Connect the angle output port of NXTRTC to its input port to display the angle of the Tribot's wheels. The angle will change even if you turn the wheels by hand.
+
+#ref(TkMotor.png,center,nolink)
+
+***TkSliderMonitorComp
+This component displays values received at its input port in a GUI using sliders. Connect the sensor output of the NXTRTC component to it to monitor the NXT's sensor values.
+
+**Connect Components 
+After executing all components, we will connect them together. Drag each component from the name service view into the system diagram editor window. Click and drag between the ports you want to connect together. The screenshot below shows one example of connecting some components.
+
+#ref(RtcLink.png,center,nolink)
+
+Using these components, confirm that the NXTRTC component functions correctly.
+
+*Make your own components to control the NXT brick 
+You have successfully made the NXT into an RT-Component. Now, make new components using your own logic to control the NXT. You can make new components using Python, C++ or Java. No matter what language you use, you can connect your new components with the NXTRTC component created here.

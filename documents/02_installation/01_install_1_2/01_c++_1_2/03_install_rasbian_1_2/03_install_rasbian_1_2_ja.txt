@@ -1,0 +1,35 @@
+﻿{\rtf1}// Titile: Rasbianへのインストール
+#ref(Raspberry_Pi_Logo.svg_.png,50%,margin=10,around,right)
+
+#contents
+
+C++版 OpenRTM-aist は Raspberry Pi 用 Raspbian の armhf、armel用 deb パッケージが提供されています。
+ただし、Raspbian への対応およびそのバージョンは、予告なしに変更または停止されることがありますので、予めご了承ください。
+
+** はじめに
+*** 対応バージョン
+
+加筆をお願いします。
+
+
+*** SDメモリーカードの準備
+
+以下のページからイメージをダウンロードして、SDメモリーカードに書き込みます。SDメモリーカードは ''4GB'' 以上はあったほうがよいでしょう。
+SDメモリーカードへの書き込み方法については [[RPi SD Card Setup:http://elinux.org/RPi_Easy_SD_Card_Setup]] を参照してください。
+
+- [[Raspberry Pi Downloads:https://www.raspberrypi.org/downloads/]]
+
+Windowsでは、[[Win32 Disk Imager:https://forest.watch.impress.co.jp/docs/review/1067836.html]]などを利用して書き込みます。
+Linux や Mac OS では dd を利用して書き込みます。
+
+ $ sudo dd if=/dev/<SDメモリーカードのデバイスファイル> of=<ダウンロード・解凍したイメージファイル> bs=1m
+
+** OpenRTM-aist のインストール
+加筆をお願いします。
+
+*** インストールの確認
+執筆中
+
+
+** パッケージの詳細
+加筆をお願いします。

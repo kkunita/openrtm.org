@@ -1,0 +1,197 @@
+// Title: Create RT Component (VC++ version)
+#contents
+//Development of RT-Component (VC++)
+
+
+* RT-Component with DataPorts 
+
+Here, how to develop RT-Component(MRCConverter) with DataPort would be shown.
+
+
+**Overview of the RTC 
+This RTC converts x-y value from input device (ex. joystick) to the wheel velocity of differential drive mobile robot.
+
+The specification of the RTC is the following.
+
+-InPort
+--Input values of x-y from joystick (TimedFloatSeq)
+
+-OutPort
+--Wheel velocity to the mobile robot (TimedFloatSeq)
+
+** Creating template codes of MRCConverter
+Here, how to create template codes by using RtcTemplate would be shown.
+
+*** Creating working folder
+Create working directory in any place.
+In the following, the directory name is MRCConverter.
+
++Double-click "My Computer"
++Move to working folder
++Create new folder on the target folder
+
+*** Using rtc-template (CUI version)
+Create the following batch file (ex. gen.bat) on the working folder to run the rtc-template easily.
+
+ rtc-template.py -bcxx^
+  --module-name=MRCConvertor --module-desc="Convertor component for MobileRobot component"^
+  --module-version=1.0.0 --module-vendor=AIST --module-category=Category^
+  --module-comp-type=DataFlowComponent --module-act-type=PERIODIC^
+  --module-max-inst=1^
+  --inport=velFromInput:TimedFloatSeq^
+  --outport=velToWheel:TimedFloatSeq
+
+***Running rtc-template (with gen.bat)
+
+Run the gen.bat, and the result will be the following.
+
+ >gen.bat
+  rtc-template.py -bcxx
+  --module-name=MRCConvertor
+  --module-desc="Convertor component for MobileRobot component"
+  --module-version=1.0.0 --module-vendor=AIST
+  --module-category=Category
+  --module-comp-type=DataFlowComponent --module-act-type=PERIODIC
+  --module-max-inst=1
+  --inport=velFromInput:TimedFloatSeq --outport=velToWheel:TimedFloatSeq
+   File "MRCConvertor.h" was generated.
+   File "MRCConvertor.cpp" was generated.
+   File "MRCConvertorComp.cpp" was generated.
+   File "Makefile.MRCConvertor" was generated.
+   File "MRCConvertorComp_vc8.vcproj" was generated.
+   File "MRCConvertor_vc8.vcproj" was generated.
+   File "MRCConvertorComp_vc9.vcproj" was generated.
+   File "MRCConvertor_vc9.vcproj" was generated.
+   File "MRCConvertor_vc8.sln" was generated.
+   File "MRCConvertor_vc9.sln" was generated.
+   File "copyprops.bat" was generated.
+   File "user_config.vsprops" was generated.
+   File "README.MRCConvertor" was generated.
+   File "MRCConvertor.yaml" was generated.
+
+Some source codes and other files would be generated in the woking diretory.
+
+***RtcTemplate on Eclipse (GUI version) 
+Input the following profiles in the RtcTempalte's editor window.
+
+-Programing language selection: C++
+-Module definition
+--Module name: MRCConvertor
+--Module decription: Convertor component for MobileRobot component
+--Module version: 1.0.0
+--Module vender: AIST
+--Module category: Category
+--Component type: DataFlowComponent
+--Component's activity type: PERIODIC
+--Number of maximum instance: 1
+-InPort definition
+--Ports: Name:velFromInput Type:TimedFloatSeq
+-OutPort definition
+--Ports: Name:velToWheel, Type:TimedFloatSeq
+
+After input the component profile, push "Generate" button.
+Some source codes and other files would be generated in the working folder.
+
+**Running copyprops.bat
+As the result of the above mentioned operation, copyprops.bat would be generated in the working folder.
+The copyprops.bat copies rtm_config.vsprops (Visual Studio Property Sheet) from installed OpenRTM-aist folder to current working folder.
+This file is necessary to build RTC on Visual C++.
+
+Double-click te copyprops.bat.
+
+** Implementing MRCConvertor
+
+***Launching Visual Studio
+
+Double-click MRCConvertorComp_vc?.sln and launch Visual Studio.
+XXX_vc8.sln is a solution file for VC2005, XXX_vc9.sln is a solution file for VC2008.
+Please select an appropriate solution file for your development environment.
+
+
+***Implementing Header File 
+Open the MRCConverter.h in "MRCConverterComp" -> "Header Files" from Solution Explorer.
+
+-Including other header files~
+Since this RTC uses STL vector and math library, include these two header files.
+
+
+ #include <vector>
+ // To use Math::M_PI in VC8
+ #define _USE_MATH_DEFINES
+ #include <math.h>
+
+
+-Uncomment "virtual RTC::ReturnCode_t onExecute(RTC::UniqueId ec_id);"
+
+-Declaration of member variable and member function~
+Declare a "convert()" function and its coefficient value "m_k" converting from input value to output wheel velocity.
+
+ private:  float m_k;
+ 
+  /*!
+   * @brief This function converts input data from joystick to velocity of
+   *        differential drive mobile robot.
+   *        Only m_velFromInput.data[0 and 1] would be used.
+   */
+  std::vector<float> convert(float x, float y) {
+	float th = atan2(y,x);
+	float v  = m_k * hypot(x,y);
+	std::vector<float> ret_val;
+	ret_val.push_back(v * cos(th - (M_PI/4.0))); // left vel
+	ret_val.push_back(v * sin(th - (M_PI/4.0))); // right vel
+	return ret_val;
+  }
+
+***Implementing Source File 
+
+Open the MRCConverter.cpp in "MRCConverterComp" -> "Source Files" from Solution Explorer.
+
+-Implementing onExecute()~
+Uncomment "onExecute()" function and implement it as follows.
+
+
+ /*!
+  * @brief This function converts input data from joystick to velocity of
+  *        differential drive mobile robot.
+  */
+ RTC::ReturnCode_t MRCConvertor::onExecute(RTC::UniqueId ec_id)
+ {
+   if (m_velFromInputIn.isNew()) {
+ 	m_velFromInputIn.read();
+ 	if (m_velFromInput.data.length() > 2) {
+ 	  std::vector<float>  con_val = this->convert(m_velFromInput.data[0],m_velFromInput.data[1]);
+ 	  for (int i = 0; i < 2; i++)
+ 		m_velToWheel.data[i] = con_val[i];
+ 	  m_velToWheelOut.write();
+ 	}
+   }
+   return RTC::RTC_OK;
+ }
+
+This function does the following.
+
++ Checking if a new data is coming by using m_velFromInputIn.isNew() function.
++ Reading the data by m_velFromInputIn.read() function, if a new data is coming.
++ Converting input data to a velocity of wheels by convert() function.
++ Setting converted data to the OutPort variable, and write to OutPort buffer.
+
+
+**Running Build Proces
+Click "Build" menu button and build the project.
+
+
+**Creating rtc.conf 
+Create new file and input the following lines in it.
+Copy this file to Debug and Release folders.
+
+ corba.nameservers: localhost
+ naming.formats: %n.rtc
+
+**Running Component
+***Starting CORBA Name Server
+
+Before running an RT-Component, launch CORBA name server.
+You can find the name server launching batch file from "Start"->"Program"->"OpenRTM-aist"->"C++"->"Example"->"NameService.bat"
+
+***Running MRCConvertorComp.exe
+Go to "Debug" or "Release" folder and run MRCConverter.exe.

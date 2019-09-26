@@ -1,0 +1,9 @@
+﻿// Title: What is OpenRTM-aist?
+#ref(rtm_logo.png,right,around,url=/en/node/834)
+OpenRTM-aist is a software platform for robot systems. It is based on component-oriented development.
+
+OpenRTM-aist builds a system by creating software modules called "RT component (RTC)" for each functional elements and connecting the RT components to build the robot system. The RT component can be developed by using ''C++'', ''Python'', ''Java'' language and work on major OSs (Linux / Unix, Windows, Mac OS X). Eclipse tool and command line tool can be used for component development and system development using components.
+
+The RT component has functions called "ports" for exchanging data and commands with other components, basic state transitions called "activities" for unifying behaviors, and functions called "configuration" that can externally manipulate parameters. By using these functions, you can easily create modules with high independence and re-usability. By using existing components, you can build a system with just the minimum effort.
+
+OpenRTM-aist is implemented based on CORBA distributed object Architecture, to emphasis network transparency, OS independency, and language independency. Currently, OpenRTM-aist provides implementations on C++, Python and Java languages.

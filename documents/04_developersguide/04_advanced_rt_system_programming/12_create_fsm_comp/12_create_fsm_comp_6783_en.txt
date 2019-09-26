@@ -1,0 +1,66 @@
+﻿// Title: FSM Component creating procedure
+** RTCBuilderでのコード生成
+
+まずは通常のRTC作成手順と同じくプロジェクトの作成、モジュール名の設定、言語の設定(C++)を行います。
+
+次にFSMタブからFSMのチェックボックスをオンにします。
+さらに新規作成ボタンを押してGUIエディタを起動します。
+
+#ref(fsm1.png,80%,center)
+
+
+起動したエディタで右クリックして''Add node''を選択する。
+
+#ref(fsm2.png,80%,center)
+
+作成したノードを右クリックして''Edit node''を選択します。
+
+#ref(fsm3.png,80%,center)
+
+''State Name''を適当な名前に変更します。
+
+#ref(fsm4.png,80%,center)
+
+同様の手順でノードを複数作成します。
+以下の図ではToggle Initial、Toggle finalを設定しているノードがありますが、この設定により生成するコードは変化しないようです。
+
+#ref(fsm8.png,80%,center)
+
+一部のノードは''On Entry''、''On Exit''をオンにしてください。
+
+#ref(fsm7.png,80%,center)
+
+またノードからノードへドラッグアンドドロップすることで状態遷移を定義します。
+
+#ref(fsm8-2.png,80%,center)
+
+エディタを閉じます。
+
+#ref(fsm10.png,80%,center)
+
+その後、コード生成を行います。
+
+#ref(fsm11.png,80%,center)
+
+
+** RTCのビルド
+ビルドにはOpenRTM-aist 2.0が必要です。
+以下の手順でOpenRTM-aistでビルドしてください。
+
+- https://openrtm.org/openrtm/ja/content/cmake_build_rtm
+
+その後、INSTALLのプロジェクトをビルドして適当な場所にインストールしてください。
+インストールする場所を変更するためにはCMAKE_INSTALL_PREFIXのオプションを変更します。
+
+RTCのコードを生成したフォルダで以下のコマンドを実行します。
+
+ mkdir build
+ cd build
+ set OPENRTM_DIR={OpenRTM-aistをインストールしたディレクトリ}\2.0.0\cmake\
+ cmake -G "Visual Studio 15 2017" -A x64 ..
+ cmake --build . --config Release
+
+** コードの編集
+執筆中
+
+** 動作確認手順

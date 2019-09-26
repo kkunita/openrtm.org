@@ -1,0 +1,15 @@
+﻿// Title: Installation of OpenRTM Eclipse tools
+#ref(eclipse_logo.png,around,left)
+RTCBuilder and RTSystemEditor are development tools that support the development of RT Components and RT Systems. They are plug-ins for the Eclipse integrated development environment. Therefore, it is necessary to install Eclipse and Java to use RTCBuilder and RTSystemEditor.
+
+#clear
+----
+We prepared an installation package for UNIX and Windows [[here:/ja/node/6037]]. We prepared packages for UNIX and Windows including RTSystemEditor and RTCBuilder, all containing (Eclipse 4.4.2 + Japaneseization + RTSystemEditor + GEF + EMF + XSD + RTCBuilder). It is very easy to install, so please use those who would like to try to move them.
+//If you are in a hurry, you can download all-in-one packages for Windows and UNIX from [[here:/ja/node/6037]]. These include Eclipse, RTSystemEditor, RTCBuilder, and all required Eclipse plugins. It is possible to install it very easily. 
+#br
+#br
+
+[[Java Development Kit 7 (JDK):http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html]] is required, please install in advance. Eclipse archive (package file in compressed state) has over 100 MB. After downloading, please unpack the archive to the directory you want to install. There is no installer in Eclipse in particular, you can just use the archive just expand it.
+//The [[Java Development Kit (JDK) 7 :http://www.oracle.com/technetwork/java/javase/downloads/index.html]] is necessary. It must be installed before Eclipse. The compressed Eclipse archive is 100MB or more. Extract its contents into the directory you wish to install Eclipse into. There is no installer for Eclipse. Start it by running the eclipse.exe executable on Windows, or the eclipse binary on UNIX.
+#br
+#br

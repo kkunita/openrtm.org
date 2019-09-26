@@ -1,0 +1,25 @@
+﻿// Title インストール
+#ref(install.png,right,around,80%,url=/ja/node/111)
+***OpenRTM-aistを10分で始めよう！
+-[[OpenRTM-aistを10分で始めよう！:/ja/node/6521]]
+
+***OpenRTM-aist-1.2系インストールマニュアル
+-[[C++:/ja/node/6600]]
+-[[Python:/ja/node/6601]]
+-[[Java:/ja/node/6602]]
+-[[Eclipse tools:/ja/node/6655]]
+-[[サンプル使用法:/ja/node/811]]
+-[[rtshellのインストール:/ja/node/869]]
+***OpenRTM-aist-1.1系インストールマニュアル
+-[[C++:/ja/node/999]]
+-[[Python:/ja/node/798]]
+-[[Java:/ja/node/803]]
+-[[Eclipse tools:/ja/node/676]]
+-[[サンプル使用法:/ja/node/811]]
+-[[rtshellのインストール:/ja/node/869]]
+<!--break-->
+***その他
+-[[玄箱HGへのインストール:/ja/node/197]]
+-[[玄箱PROへのインストール:/ja/node/198]]
+-[[Armadillo240へのインストール:/ja/node/170]]
+-[[Raspberry Piへのインストール:/ja/node/5269]]

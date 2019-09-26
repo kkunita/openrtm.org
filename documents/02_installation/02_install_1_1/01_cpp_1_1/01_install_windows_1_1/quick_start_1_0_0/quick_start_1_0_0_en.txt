@@ -1,0 +1,262 @@
+﻿// Title: Let's start OpenRTM-aist in ten minutes ! 
+#contents
+The installer of OpenRTM-aist can install a necessary package with one installer since 1.0.0-RELEASE. 
+
+
+**Installation of OpenRTM-aist
+Please download and execute OpenRTM-aist-1.0.0_vc9.msi. (The installer starts. )Please obey instructions and install OpenRTM-aist. 
+
+--Please download the installer that is appropriate for the version if you install Visual Studio. 
+---Visual Studio 2008　→ [[OpenRTM-aist-1.0.0_vc9.msi:http://www.openrtm.org/pub/Windows/OpenRTM-aist/cxx/OpenRTM-aist-1.0.0-RELEASE_vc9.msi]]
+---Visual Studio 2005　→ [[OpenRTM-aist-1.0.0_vc8.msi:http://www.openrtm.org/pub/Windows/OpenRTM-aist/cxx/OpenRTM-aist-1.0.0-RELEASE_vc8.msi]]
+&br;
+#br
+
++Please start the installer, and click "Next". 
+#br
+
+
+#ref(installer_en_00.png,60%,center)
+&br;
+#br
+
++The page of the use approval contract is displayed. Please check "Agree to the license", and click "Next". 
+#br
+
+#ref(installer_en_02.png,60%,center)
+&br;
+#br
+
++The page of the selection of the kind of the setup is displayed. Please click "Standard". 
+#br
+
+#ref(installer_en_03.png,60%,center)
+&br;
+#br
+
++Please click "Installation". The installation begins. 
+#br
+
+#ref(installer_en_09.png,60%,center)
+//#ref(inst4-1.png,nolink,center)
+#br
+
+//#ref(inst4-2.png,nolink,center)
+//&br;
+//#br
+
++The installation ended. Please click "Completion". The installer ends. 
+#br
+
+
+#ref(installer_en_10.png,60%,center)
+CENTER:''Installation end screen''
+&br;
+#br
+
+**Execution of sample components
+You will start a lot of applications registered from here to Start menu. 
+
+Because it is troublesome to trace order from the start menu every time and to start the application, the following operation is recommended. 
+
+#br
+
+#ref(menu_open0.png,nolink,center)&br;
+
+CENTER:''Select "Open" of Start menu. ''
+&br;
+#br
+
+Please right-click in Start menu and select "Open". 
+#br
+
+#ref(menu_open1.png,nolink,center)&br;
+CENTER:''Start menu folder''
+&br;
+#br
+The folder of the start menu is opened. It becomes easy to access various applications. 
+
+
+***ConsoleInComp,ConsoleOutComp
+ConsoleInComp and ConsoleOutComp are samples that showed the use of InPort and OutPort.Please input the numerical value from the screen of ConsoleIn. Then, ConsoleOut displays the numerical value that you input to ConsoleIn.
+
++Please click ''Start Naming Service'' of [Start]-[OpenRTM-aist]-[C++]-[tools] and start. 
+#br
+
+#ref(sample1.png,nolink,center)
+//CENTER: ''Start Naming Service''
+&br;
+#br
+
++Please start the sample components.Please click ''ConsoleInComp.exe'' and ''ConsoleOutComp.exe''of  [Start]-[OpenRTM-aist]-[C++]-[components]-[exampls]. The console screen starts. 
+#br
+
+#ref(sample2.png,nolink,center,80%)&br;
+//CENTER:''ConsoleInComp.exe''and''ConsoleOutComp.exe''
+&br;
+#br
+
++The operation of RTSystemEditorRCP is shown.  Please click ''RTSystemEditorRCP'' of [Start]-[OpenRTM-aist]-[C++]-[tools]. RTSystemEditorRCP starts. 
+#br
+
+#ref(editor1.png,nolink,center,70%)&br;
+//CENTER:''Start screen''
+&br;
+#br
+
+#ref(editor2.png,nolink,center)&br;
+//CENTER:''RTSystemEditorRCP''
+&br;
+#br
+
+--Please add localhost by hand power when the name server is not displayed in NameServerView. Please click the add button of the name server of the image and put out the dialog. Please input as ''localhost'', and click OK. 
+#br
+
+#ref(editor3.png,nolink,center,70%)&br;
+//CENTER:''Addition of name server''
+&br;
+#br
+
++Please click [OpenNewSystemEditor]. SystemDiagram is displayed. 
+#br
+
+#ref(editor.png,nolink,center)&br;
+//CENTER:''Display of SystemDiagram''
+&br;
+#br
+
++The component is displayed in NameServiceView.  Please click [+] first because it is non-display.  The component can be confirmed by being displayed as a tree. 
+#br
+
+#ref(editor4.png,nolink,center)&br;
+//CENTER:''Confirmation of component''
+&br;
+#br
+
++Please drag-and-drop the sample components of NameServiceView to SystemDiagram.
+#br
+
+#ref(editor5.png,nolink,center)&br;
+//CENTER:''Confirmation of component''
+&br;
+#br
+
++Please connect the components. Please drag-and-drop between the data ports. 
+The dialog that presses the input of information necessary for the connection is displayed. Please choose ''push'' with DataflowTypeType and click OK. 
+#br
+
+#ref(editor6.png,nolink,center)&br;
+//CENTER:''Connection of components''
+&br;
+#br
+
+#ref(editor7.png,nolink,center)&br;
+//CENTER:''Connection profile''
+&br;
+#br
+
++The connection was completed.
+#br
+
+#ref(editor8.png,nolink,center)
+&br;
+#br
+
+Please make the state of the component Activate. Please right-click in the component and select [Activate]. When the color of the component changes from blue into bright green, it is a success. 
+
+#br
+
+#ref(editor9.png,nolink,center)
+&br;
+#br
+
++Next, please confirm the operation on the console screen. 
+When components are activated, "Please input number" is displayed in the console of ''ConsoleInComp.exe''. 
+#br
+
+#ref(sample4-0.png,nolink,center)&br;
+//CENTER:''ConsoleInComp.exe''
+&br;
+#br
+
++ Please input the numerical value to ''ConsoleInComp.exe'' and press 'Enter'. The numerical value is displayed in the console of ''ConsoleOutComp.exe''. 
+#br
+
+#ref(sample4-1.png,nolink,center)&br;
+//CENTER:''Confirmation''
+&br;
+#br
+
+-- If the input other than the numerical value are input, it becomes an error (red). 
+-- If a too large numerical value is input, it becomes an error (red). 
+-- Please end the component pressing [Ctrl] key and [C] key at the same time on the console screen when the component occurs the error. 
++ The confirmation of operation using ''ConsoleInComp.exe'' and ''ConsoleOutComp.exe'' ended by this. 
+
+***USBCameraAqcuireComp,USBCameraMonitorComp
+USBCameraAcquire component provides image data captured from a USB camera over its OutPort. USBCameraMonitor component displays image data received over its InPort.
+#br
+
++ Please connect the web camera with the personal computer, and install the driver for the web camera. 
+-- Please download the driver for the web camera from each manufacturer.
+#br
+
++ Please click ''Start Naming Service'' of  [Sart]-[OpenRTM-aist]-[C++]-[tools] and start.Please omit this when having already started.  
+#br
+
++Please start the sample components. Please click ''USBCameraAqcuireComp.exe'' of [Start]-[OpenRTM-aist]-[C++]-[components]- [examples] and ''USBCameraMonitorComp.exe''. The console screen starts. 
+#br
+
+#ref(sample5.png,nolink,center,70%)&br;
+//CENTER:''Start Naming Service''
+&br;
+#br
+
++The operation of RTSystemEditorRCP is shown.  Please click ''RTSystemEditorRCP'' of [Start]-[OpenRTM-aist]-[C++]-[tools]. RTSystemEditorRCP starts. Please omit this when having already started. 
+&br;
+#br
+
+
+
++ Please connect RTSystemEditorRCP with the name server. Please input as ''localhost'', and click OK. Please omit this when having already started. 
+&br;
+#br
+
+
++The component is displayed in NameServiceView.  Please click [+] first because it is non-display.  The component can be confirmed by being displayed as a tree. Please omit this when having already started. 
+&br;
+#br
+
++Please drag-and-drop the sample components of NameServiceView to SystemDiagram.
+&br;
+#br
+
++Please connect the components. Please drag-and-drop between the data ports. 
+The dialog that presses the input of information necessary for the connection is displayed. Please choose ''push'' with DataflowTypeType and click OK. 
+&br;
+#br
+
++The connection was completed.
+&br;
+#br
+
++Please make the state of the component Activate. Please right-click in the component and select [Activate]. When the color of the component changes from blue into bright green, it is a success. 
+&br;
+#br
+
++The CaptureImage screen is displayed at the same time as changing into the state of [Activate], and the image of the web camera is displayed. 
+#br
+
+#ref(sample6.png,nolink,center,70%)&br;
+//CENTER:''USBCameraAqcuireComp.exe USBCameraMonitorComp.exe''
+&br;
+#br
+
+#ref(sample7.png,nolink,center)&br;
+//CENTER:''CaptureImage''
+&br;
+#br
+
++ The confirmation of operation using ''USBCameraAqcuireComp.exe'' and ''USBCameraMonitorComp.exe'' ended by this. 
+
+***Other sample components
+Please see [[RTSampleComponent:/en/node/882]] about other sample components. 

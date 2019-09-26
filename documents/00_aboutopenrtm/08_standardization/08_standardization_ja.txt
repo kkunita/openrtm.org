@@ -1,0 +1,68 @@
+﻿** 標準化
+
+*** OMG Robotics DTF
+
+OMG (Object Management Group) \cite{bib3-6:omg_web} は1989年に設立され
+たソフトウエア標準化団体であり、分散オブジェクトミドルウエア: CORBA
+(Common Object Request Broker Architecture)\cite{bib3-6:corba_313}, ソ
+フトウェアモデリング言語: UML (Unified Modeling
+Language)\cite{bib3-6:uml_infra,bib3-6:uml_structure} を始めとして、様々
+な分野のソフトウエア標準を策定・管理している組織として知られている。
+
+RTミドルウエアプロジェクトにおいて策定されたRTコンポーネントインター
+フェース仕様を標準化するために、OMGにおける標準化活動が 2004 年から行わ
+れ、米国、韓国と共に仕様についての協議を重ね、2006 年 9 月に標準仕様草
+案が採択、2008年4月にOMGの公式標準仕様 ``Robotics Technology Component
+Specification (RTC Specification)'' として公開された
+\cite{bib3-6:omg_rtc}。標準化の意義並びに、OMG等における標準化のプロセ
+スについては、第3.8節を参照されたい。
+
+OMG における標準化は通常、MDA (Model Driven Architecture)
+\cite{bib3-6:omg_mda,bib3-6:omg_mda_guide,bib3-6:mda_frankel} を規範と
+して行われる。MDA は、標準の中心となるソフトウエアモデルを、特定の言語
+やミドルウエアに依存しない UML で記述する PIM (Platform Independent
+Model) としてモデル化し、必要に応じて特定の言語やミドルウエアである
+PSM (Platform Spesific Model) へマッピングし実装・利用する。設計の本質
+である PIM を様々な技術に対して再利用することが狙いである。
+
+OpenRTM-aist-0.4 以降は OMG RTC 仕様の PIM ならびに CORBA PSM に準拠し
+ている。OMG RTC 仕様と OpenRTM-aist の関係を図~\ref{fig3-6:rtc_pim_psm}に
+示す。
+
+%次節で述べるRTミドルウエア実装の一つOpenRTM-aistは、このOMG RTC標準の
+%PIM および CORBA PSM に準拠した実装である。他のベンダがOMG RTC の
+%CORBA PSM 準拠のミドルウエアを実装すれば、OpenRTM-aistと相互運用が可能
+%となり、また PIM にのみ準拠したミドルウエアでも、簡単なブリッジにより相
+%互運用を実現することができる。このように、標準化とPIMによるモデル化は、
+%相互運用において様々なメリットをもたらす。
+
+
+*** OMG Robotic Technology Component Specification
+% はOMGが提唱する、モデリング主導のシステムの開発、ライフサイクルの管理
+%を実現するための参照アーキテクチャである。中心となるモデルは、プラット
+%フォームに非依存なPIM(Platform Independent Mode) と プラットフォーム依
+%存モデル PSM(Platform Specific Model) の2階層から構成される。PIMはプラッ
+%トフォームに依存しないシステムのモデルであり、UMLにより特定の言語やOS、
+%ミドルウエアなどに依存せず、かつ曖昧さを排除して構築されたモデルを指す。
+%PSMはPIMから生成される各プラットフォームに特化したモデルであり、開発者
+%はこのモデルを元に実装を行う。CORBAや.NET等に特化したモデルがPIMからツー
+%ルにより自動的に生成されることが想定されている。
+
+
+%2006年9月にOMGにおいて, 著者らが提案した ``Robotics Technology
+%Component Specification (RTC Specification)'' の草案が OMG の標準化作
+%業部会である AB (Architecture Board) により承認された.  この OMG RTC
+%Specification は 以降 FTF (Finalization Task Force) において最終文書化
+%が行われるとともに, 提案者はこの標準仕様に基づいた実装を作成し, 仕様の
+%整合性・完全性を検証することが求めらる.
+
+%OMG RTC Specification は大きく分けて図~\ref{fig:OMG_RTC_Package}に示す
+%3つのパッケージおよび, 既存のOMG標準仕様である SDO (Super Distributed
+%Object) から構成される~\cite{OMG_SDO_Spec}.  パッケージとは, モデルの
+%論理的集合を表し, 図中の矢印はパッケージ間の依存性を示している.  すな
+%わち, LighweightRTCパッケージは他に対して独立であり,
+%ExecutionSemanticsパッケージはLighweightRTCパッケージに,
+%IntrospectionパッケージはLightweightRTC, ExecutionSemantics各パッケー
+%ジに依存していることを示している.  以下, 各パッケージごとに仕様の概要
+%を示す.
+

@@ -1,0 +1,186 @@
+﻿// Title: OpenRTM-aist operation confirmation (in the case of using VxWorks, kernel module, PowerPC board)
+#contents
+
+This page explains the procedure to check the operation of the RTC kernel module built for VxWorks on the PowerPC board.
+//このページでは、PowerPCボード上でVxWorks用にビルドしたRTCのカーネルモジュールの動作確認を行う手順を説明します。
+
+
+** (G)Connection between Workbench and VxWorks
+//** WorkbenchとVxWorksとの接続
+
+Please generate a connection between Workbench and VxWorks as follows.
+//以下の手順でWorkbenchとVxWorksの接続を生成してください。
+
+- [[VxWorks Target Server - Connection Generation Procedure>/en/node/6379]]
+//-  [[VxWorksターゲットサーバ－接続の生成手順>/en/node/6448]]
+
+After selecting the target server with Workbench Remote System, press connect 'xxxxx' button to connect to VxWorks.
+//WorkbenchのRemote Systemでターゲットサーバを選択後にconnect 'xxxxx'ボタンを押すとVxWorksと接続します。
+
+
+#br
+
+#ref(target02.png, left)
+
+#br
+
+
+** (G)Loading kernel modules
+//** カーネルモジュールのロード
+
+In the Workbench Remote System, right-click the target server and select ''Download'' → ''VxWorks Kernel Task''.
+//WorkbenchのRemote Systemでターゲットサーバを右クリックして、''Download''→''VxWorks Kernel Task''を選択してください。
+
+#br
+
+#ref(server1.png, left)
+
+#br
+
+From the Launch Context tab of the Download Configurations window, select the target server for the system to be downloaded.
+//Download ConfigurationsウインドウのLaunch Contextタブから、ダウンロードするシステムにターゲットサーバを選択してください。
+
+
+#br
+
+#ref(server5.png, left)
+
+#br
+
+Set the module to download from the Downloads tab.
+Click the [Add] button.
+//Downloadsタブからダウンロードするモジュールを設定します。
+//Addボタンをクリックしてください。
+
+
+#br
+
+#ref(server6.png, left)
+
+#br
+
+After setting the path of rtcd.out in the Add window, click the [OK] button.
+rtcd.out is generated under utils/rtcd in the OpenRTM-aist build directory.
+//Addウインドウでrtcd.outのパスを設定後、OKボタンをクリックしてください。
+//rtcd.outはOpenRTM-aistのビルドディレクトリのutils/rtcd以下に生成されています。
+
+- Example：/home/openrtm/OpenRTM-aist/build_vxworks/utils/rtcd/rtcd.out
+
+
+#br
+
+#ref(server3.png, left)
+
+#br
+
+Click the [Download] button to start the download.
+//Downloadボタンをクリックするとダウンロードを開始します。
+
+#br
+
+#ref(download.png,　/ja/node/6374, left)
+
+#br
+
+Please also download the RTC kernel module to be started in the same procedure.
+//起動するRTCのカーネルモジュールについても同様の手順でダウンロードしてください。
+
+- Example(ConsoleIn)：/home/openrtm/OpenRTM-aist/build_vxworks/examples/SimpleIO/ConsoleIn.out
+- Example(ConsoleOut)：/home/openrtm/OpenRTM-aist/build_vxworks/examples/SimpleIO/ConsoleOut.out
+
+** (G)RTC execution
+//** RTC実行
+
+*** (G)Manager start
+//*** マネージャ起動
+
+In the Workbench Remote System, right-click the target server and select ''Run'' → ''VxWorks Kernel Task''.
+//WorkbenchのRemote Systemでターゲットサーバを右クリックして、''Run''→''VxWorks Kernel Task''を選択してください。
+
+#br
+
+#ref(server2.png, left)
+
+#br
+
+Perform various settings in the Run Configurations window.
+Please enter ''rtcd_main'' for Entry Point.
+''- o manager.shutdown_on_nortcs:NO - o manager.shutdown_auto: NO - o corba.nameservers: 172.30.1.1'' for Arguments. Since name servers do not start on VxWorks, register RTC on the name server on Ubuntu.
+When using ORBexpress please also add endpoint setting ''corba.endpoints: 172.30.1.20: 1234''.
+Press the [Run] button to start the manager.
+Change the IP address as appropriate.
+//Run Configurationsウインドウで各種設定を行います。
+//Entry Pointには''rtcd_main''と入力してください。
+//Argumentsには''"-o manager.shutdown_on_nortcs:NO -o manager.shutdown_auto:NO -o corba.nameservers:172.30.1.1"''を設定してください。ネームサーバーはVxWorksでは起動しないため、Ubuntu上のネームサーバーにRTCを登録します。
+//※ORBexpressを使用する場合はエンドポイントの設定''corba.endpoints:172.30.1.20:1234''も追加してください。
+//Runボタンを押すとマネージャが起動します。
+//IPアドレスは適宜変更してください。
+
+
+#br
+
+#ref(server4.png, left)
+
+#br
+
+*** (G)Starting RTC
+//*** RTCの起動
+It starts up in the same procedure as starting manager.
+For Entry Point, specify a function to start RTC.
+//マネージャの起動と同様の手順で起動します。
+//Entry PointにはRTCを起動する関数を指定します。
+
+- Example(ConsoleIn)：consolein_main
+- Example(ConsoleOut)：consoleout_main
+
+You do not need to enter anything in Arguments.
+Please check if RTC started in RT system editor started by Ubuntu.
+//Argumentsには何も入力しなくても大丈夫です。
+//Ubuntuで起動したRTシステムエディタでRTCが起動したかを確認してください。
+
+Please check if the RTC started is registered.
+//起動したRTCが登録されているかを確認してください。
+
+
+#br
+
+#ref(ns3.png,　/ja/node/6374, left)
+
+#br
+
+Procedures such as RTC connection, activation, etc. are the same as when checking operation with Ubuntu.
+//RTCの接続、アクティブ化等の手順はUbuntuで動作確認する場合と同じです。
+
+- [[Operation check (Linux version)>/en/node/900/]]
+//-  [[動作確認 (Linux編)>/ja/node/789]]
+
+However, when using ORBexpress, you need to set the endian to big when connecting data port connectors.
+//ただしORBexpressを使用した場合にはデータポートのコネクタ接続時にエンディアンをbigに設定する必要があります。
+
+*** (G)On command line operation
+//*** コマンドラインによる操作について
+
+You can enter commands from the WTX Console window after connecting to the target server.
+//ターゲットサーバ接続後にWTX Consoleウインドウからコマンド入力ができます。
+
+
+#br
+
+#ref(target03.png, left)
+
+#br
+
+The operation of RTC can be confirmed with the following command.
+Change the path of Workbench, omniORB, openRTM-aist, IP address of Ubuntu accordingly.
+//以下のコマンドでRTCの動作確認ができます。
+//Workbench、omniORB、openRTM-aistのパス、UbuntuのIPアドレスは適宜変更してください。
+
+
+
+ cd "/home/openrtm/openrtm-build/OpenRTM/OpenRTM_69_kernel_sim/OpenRTM-aist/build_vxworks/utils/rtcd"
+ ld<rtcd.out
+ cd "/home/openrtm/openrtm-build/OpenRTM/OpenRTM_69_kernel_sim/OpenRTM-aist/build_vxworks/examples/SimpleIO"
+ ld<ConsoleIn.out
+ 
+ taskSpawn "rtcd_main",100,67108864,1000000,rtcd_main,"-o","manager.shutdown_on_nortcs:NO","-o","manager.shutdown_auto:NO","-o","corba.nameservers:172.30.1.1"
+ taskSpawn "consolein_main",100,0,1000000,consolein_main

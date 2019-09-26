@@ -1,0 +1,79 @@
+﻿// Title: Eclipse について
+#ref(eclipse_logo.png,around,left)
+#contents
+** Eclipseの概要 
+[[Eclipse:http://www.eclipse.org/]] は Eclipse Foundation が開発するオープンソースのJava 言語およびその他の言語のための統合開発環境を構築するためのフレームワークです。
+Eclipse の基本部分は plug-in を実行するためのプラットフォームで、 様々な開発環境は多くのplug-in の集合体として構築されます。
+デフォルトで付属するJava の開発環境自体もplug-inとして実現され、 plug-in を追加することで様々な言語の開発環境として容易に拡張することができます。
+#clear
+Eclipse の特徴として、
+
+-plug-in 機構により容易に拡張可能であり、plug-in 同士の連携も可能である。
+-Rich Client Platform (RCP) と呼ばれる仕組みにより、 plug-in をスタンドアロン化することが容易にできる。
+-Java で実装されているため、多くのプラットフォームで動作する。
+
+等が挙げられます。
+こうした Eclipse の特徴が、ロボット用統合開発環境を構築する上で有用であると判断し、Eclipse を RTミドルウエアのツールのためのプラットフォームとして選択しました。
+
+RTC Builder と RT System Editor を利用するには Eclipse をインストールする必要があります。
+
+&aname(eclipse_install);
+** Eclipseのインストール
+EclipseはOpenRTM-aistのインストーラーで導入することもできます。
+OpenRTM-aistのインストーラー、もしくはPleiades All in One Eclipseを導入してください。
+
+
+*** OpenRTM-aistのインストーラーによる導入
+**** Windows
+
+- [[OpenRTM-aist 1.2系のインストール(Windows、msiインストーラー使用):/ja/node/6652]]
+
+**** Ubuntu
+
+加筆をお願いします。
+
+**** Fedora
+
+加筆をお願いします。
+
+*** Pleiades All in One Eclipseの導入
+
+以下のプラグイン導入済みのeclipseパッケージをダウンロードして適当な場所に展開してください。
+
+- [[Pleiades All in One ダウンロード:http://mergedoc.osdn.jp/]]
+
+''Pleiades All in One Ultimate''、''Full Edition''のパッケージを入手してください。
+
+Pleiades All in One EclipseにはLinux版はないため、[[eclipse.org:https://www.eclipse.org/downloads/]]からeclipseのインストーラーを入手してインストール、日本語化、プラグインの導入を行ってください。
+
+&aname(jdk_install);
+**JDK(Java Development Kit)のインストール
+RTC Builder、RT System EditorのビルドにはJDKが必要です。
+Amazon CorrettoかOracle Javaをインストールしてください。
+
+- [[Amazon Corretto:https://aws.amazon.com/jp/corretto/]]
+- [[Oracle Java:https://www.oracle.com/technetwork/java/javase/downloads/index.html]]
+
+
+**プラグインのインストール
+RTCBuilder と RTSystemEditor  は下記の Eclipse プラグインを使用しています。Pleiades All in Oneを使用する場合は導入済みです。
+
+-[[EMF (Eclipse Modeling Framework):http://www.eclipse.org/modeling/emf/]]
+-[[GEF (Graphical Editing Framework):http://www.eclipse.org/gef/]] 
+-[[XSD (XML Schema Infoset Model):http://www.eclipse.org/modeling/mdt/?project=xsd#xsd]] 
+-[[SDO (EMF Service Data Objects):http://www.eclipse.org/modeling/emf/?project=sdo]]
+-[[JDT (Eclipse Java development tools):http://www.eclipse.org/projects/project_summary.php?projectid=eclipse.jdt]]
+
+以下の手順で、これらのプラグインをインストールしてください。
+
++Eclipse のメニューから [ヘルプ] > [ソフトウエア更新] を選択します。
++このような ソフトウェア更新およびアドイン ウィンドウ が表示されますので、「使用可能なソフトウェア」タブを選択します。
+#ref(eclipse_update_ja.png,60%,center)
++Genymede Update Site を展開してプラグインを選択します。
+#ref(eclipse_plugin_GEF_JDT_ja.png,60%,center)
+#ref(eclipse_plugin_EMF_SDO_ja.png,60%,center)
++[インストール]をクリックします。
+#ref(eclipse_plugin2_ja.png,60%,center)
++これで、これらのプラグインが自動的にダウンロードされて、インストールされます。
+
+インストール後 Eclipse を一旦終了します。

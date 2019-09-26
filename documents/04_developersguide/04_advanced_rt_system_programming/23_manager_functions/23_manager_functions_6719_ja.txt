@@ -1,0 +1,2 @@
+﻿// Title: マネージャの機能
+#contents

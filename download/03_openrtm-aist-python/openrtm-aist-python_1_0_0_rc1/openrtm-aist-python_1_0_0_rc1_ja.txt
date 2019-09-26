@@ -1,0 +1,118 @@
+﻿// Title: OpenRTM-aist-Python-1.0.0-RC1
+#ref(python-logo.png,left,nolink)
+#contents
+#clear
+
+*ダウンロード(Python版)
+
+&color(red){バージョン0.4系をインストール済みの環境に1.0系をインストールする場合は、一度0.4系を削除してから1.0系のインストールを行ってください。&br;0.4系をアンインストールした後に0.4系の残骸が残っている場合がございますので、残骸が残っている場合は手動でOpenRTMフォルダの削除を行って下さい。};
+
+ 削除するフォルダ
+ 
+ Windows環境の場合:
+  C:\Python[24,25]\Lib\site-packages\OpenRTM
+ 
+ Linux環境の場合:
+  /usr/lib/python[2.4,2.5]/site-packages/OpenRTM
+*ダウンロード 
+**ソースコード・パッチ等
+|LEFT:200|LEFT|LEFT:100|c
+|Python版ソースコード|[[OpenRTM-aist-Python-1.0.0-RC1-p1.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/python/1.0.0/OpenRTM-aist-Python-1.0.0-RC1-p1.tar.gz]]| 09/08/18 |
+|Python版ソースコード(Python2.4+Win32)|[[OpenRTM-aist-Python24-1.0.0-RC1-p1.zip:http://www.openrtm.org/pub/OpenRTM-aist/python/1.0.0/OpenRTM-aist-Python24-1.0.0-RC1-p1.zip]]| 09/08/18 |
+|Python版ソースコード(Python2.5+Win32)|[[OpenRTM-aist-Python25-1.0.0-RC1-p1.zip:http://www.openrtm.org/pub/OpenRTM-aist/python/1.0.0/OpenRTM-aist-Python25-1.0.0-RC1-p1.zip]]| 09/08/18 |
+|Python版ソースコード(Python2.6+Win32)|[[OpenRTM-aist-Python26-1.0.0-RC1-p1.zip:http://www.openrtm.org/pub/OpenRTM-aist/python/1.0.0/OpenRTM-aist-Python26-1.0.0-RC1-p1.zip]]| 09/08/31 |
+|パッチ OpenRTM-aist-Python-1.0.0-RC1 |[[patch-OpenRTM-aist-Python-1.0.0-RC1-20090818:http://www.openrtm.org/pub/OpenRTM-aist/python/1.0.0/patch-OpenRTM-aist-Python-1.0.0-RC1-20090818]]| 09/08/18 |
+
+&color(red){※1.0.0-RC1に深刻なバグがあったため、パッチを適用したバージョンを1.0.0-RC1-p1としてリリースいたしました。&br;1.0.0-RC1をすでにダウンロードされた方は1.0.0-RC1-p1へ入れ替えることをお勧めします。 };
+
+**ビルド済みパッケージ(Windows) 
+***Python2.4 
+|LEFT:200|LEFT|LEFT:100|c
+|Windows用インストーラ&br;(Python2.4使用環境専用)|[[OpenRTM-aist-Python24-1.0.0-RC1-p1.msi:http://www.openrtm.org/pub/Windows/OpenRTM-aist/python/OpenRTM-aist-Python24-1.0.0-RC1-p1.msi]]| 09/08/18 |
+|Python-2.4.4 インストーラ|[[python-2.4.4.msi:http://www.python.org/ftp/python/2.4.4/python-2.4.4.msi]]|[[python.org:http://www.python.org]]|
+|omniORBpy-2.7 インストーラ&br;(産総研提供)|[[omniORBpy-2.7.msi:http://www.openrtm.org/pub/Windows/omniORB/omniORBpy-2.7.msi]]|2007.11.09|
+|omniORBpy-2.7 (ビルド済みバイナリアーカイブ)|[[omniORBpy-2.7-win32-python2.4.zip:http://prdownloads.sourceforge.net/omniorb/omniORBpy-2.7-win32-python2.4.zip?download]]|[[sourceforge:http://omniorb.sourceforge.net/]]|
+
+
+***Python2.5 
+|LEFT:200|LEFT|LEFT:100|c
+|Windows用インストーラ&br;(Python2.5使用環境専用)|[[OpenRTM-aist-Python25-1.0.0-RC1-p1.msi:http://www.openrtm.org/pub/Windows/OpenRTM-aist/python/OpenRTM-aist-Python25-1.0.0-RC1-p1.msi]]| 09/08/18 |
+|Python-2.5.1|[[python-2.5.1.msi:http://www.python.org/ftp/python/2.5.1/python-2.5.1.msi]]|[[python.org:http://www.python.org]]|
+|omniORBpy-3.1 インストーラ&br;(産総研提供)|[[omniORBpy-3.1.msi:http://www.openrtm.org/pub/Windows/omniORB/omniORBpy-3.1.msi]]|2007.11.09|
+|omniORBpy-3.1 (ビルド済みバイナリアーカイブ)|[[omniORBpy-3.1-x86-win32-python2.5.zip:http://downloads.sourceforge.net/omniorb/omniORBpy-3.1-x86-win32-python2.5.zip?modtime=1191955391&big_mirror=1]]|[[sourceforge:http://omniorb.sourceforge.net/]]|
+
+
+***Python2.6
+|LEFT:200|LEFT|LEFT:100|c
+|Windows用インストーラ&br;(Python2.6使用環境専用)|[[OpenRTM-aist-Python26-1.0.0-RC1-p1.msi:http://www.openrtm.org/pub/Windows/OpenRTM-aist/python/OpenRTM-aist-Python26-1.0.0-RC1-p1.msi]]| 09/08/31 |
+|Python-2.6.2|[[python-2.6.2.msi:http://www.python.org/ftp/python/2.6.2/python-2.6.2.msi]]|[[python.org:http://www.python.org]]|
+|omniORBpy-3.4 インストーラ&br;(産総研提供)|[[omniORBpy-3.4.msi:http://www.openrtm.org/pub/Windows/omniORB/omniORBpy-3.4.msi]]|2009.08.31|
+|omniORBpy-3.4 (ビルド済みバイナリアーカイブ)|[[omniORBpy-3.4-x86_win32-python2.6.zip:http://sourceforge.net/projects/omniorb/files/omniORBpy/omniORBpy-3.4/omniORBpy-3.4-x86_win32-python-2.6.zip/download]]|[[sourceforge:http://omniorb.sourceforge.net/]]|
+
+
+** ビルド済みパッケージ(UNIX) 
+rpm/debパッケージをapt-get, yumなどを使用してOpenRTM-aistのリポジトリサーバから直接インストールすることができます。
+以下のC++版インストールマニュアルを参考にしてください。
+
+-[[Vine Linuxへのインストール>/ja/node/1187]]
+-[[Fedoraへのインストール>/ja/node/1186]]
+-[[Ubuntu/Debianへのインストール>/ja/node/1182]]
+
+***Vine Linux 用 
+|LEFT:200|LEFT|LEFT:100|c
+|>|>|CENTER:''Vine Linux 用''|
+|Vine Linux 4.2 RPMパッケージ| [[リポジトリ >http://www.openrtm.org/pub/Linux/Vine/apt/4.2/i386/RPMS.main/]] | 09/08/27 |
+|Vine Linux 5.0 RPMパッケージ| [[リポジトリ >http://www.openrtm.org/pub/Linux/Vine/apt/5.0/i386/RPMS.main/]] | 09/08/27 |
+
+*** Fedora Core/Fedora 用 
+|LEFT:200|LEFT|LEFT:100|c
+|>|>|CENTER:''Fedora Core/Fedora 用''|
+|Fedora 10 RPMパッケージ     | [[リポジトリ >http://www.openrtm.org/pub/Linux/Fedora/releases/10/Fedora/i386/os/Packages/OpenRTM-aist-Python-1.0/]] | 09/08/27 |
+|Fedora 11 RPMパッケージ     | [[リポジトリ >http://www.openrtm.org/pub/Linux/Fedora/releases/11/Fedora/i386/os/Packages/OpenRTM-aist-Python-1.0/]] | 09/08/27 |
+
+*** Ubuntu 用 
+|LEFT:200|LEFT|LEFT:100|c
+|>|>|CENTER:&ref(http://www.ubuntu.com/sites/all/themes/ubuntu09/logo.png,nolink,50%);|
+|Ubuntu 8.04 debパッケージ| [[リポジトリ >http://www.openrtm.org/pub/Linux/ubuntu/dists/hardy/main/binary-i386/]]  | 09/08/27 |
+|Ubuntu 8.10 debパッケージ| [[リポジトリ >http://www.openrtm.org/pub/Linux/ubuntu/dists/intrepid/main/binary-i386/]]  | 09/08/27 |
+|Ubuntu 9.04 debパッケージ| [[リポジトリ >http://www.openrtm.org/pub/Linux/ubuntu/dists/jaunty/main/binary-i386/]]  | 09/08/27 |
+
+*** Debian 用 
+|LEFT:200|LEFT|LEFT:100|c
+|>|>|CENTER:''debian 用''|
+|Debian 4.0 etch  debパッケージ | [[リポジトリ >http://www.openrtm.org/pub/Linux/debian/dists/etch/main/binary-i386/]]  | 09/08/27 |
+|Debian 5.0 lenny debパッケージ | [[リポジトリ >http://www.openrtm.org/pub/Linux/debian/dists/lenny/main/binary-i386/]] | 09/08/27 |
+
+**リリースノート: 1.0.0-RC1
+- ビルド済みパッケージリリース(09/08/18のパッチ適用済み) -- 09/08/27
+- [[OpenRTM-aist-Python-1.0.0-RC1-p1.tar.gz >http://www.openrtm.org/pub/OpenRTM-aist/python/1.0.0/OpenRTM-aist-Python-1.0.0-RC1-p1.tar.gz]] -- 09/08/18
+-- バグフィックス
+- [[OpenRTM-aist-Python-1.0.0-RC1.tar.gz >http://www.openrtm.org/pub/OpenRTM-aist/python/1.0.0/OpenRTM-aist-Python-1.0.0-RC1.tar.gz]] -- 09/08/13
+--OMG RTC Specification 1.0 正式対応
+--1.0版新型データポート対応
+--雑多なバグフィックス
+--動作条件
+--- omniORBpy~
+　対応バージョン: 2.3, 2.7, 3.2
+--- Tkinter~
+　GUI関係のコンポーネントに必要
+-- サポートするPythonバージョン
+--- 2.4
+--- 2.5
+--動作確認済みOS
+---Debian4.0-i386
+---Debian5.0-i386
+---Fedora release 10 (Cambridge)-i386
+---Fedora release 11 (Leonidas)-i386
+---Ubuntu 8.04-i386
+---Ubuntu 8.10-i386
+---Ubuntu 9.04-i386
+---Vine Linux 4.0 (Latour)-i386
+---Vine Linux 4.1 (Cos d'Estournel)-i386
+---Vine Linux 4.2 (Lynch Bages)-i386
+---Windows XP
+---Windows Vista
+
+**過去のバージョン 
+-[[OpenRTM-aist-Python-0.4.1-RELEASE >OpenRTM-aist-Python-0.4.1-RELEASE]]
+-[[OpenRTM-aist-Python-0.4.1-RC1 >OpenRTM-aist-Python-0.4.1-RC1]]

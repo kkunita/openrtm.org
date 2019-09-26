@@ -1,0 +1,64 @@
+﻿// Title: SimpleService
+#contents
+//**SimpleService
+このサンプルは、OpenRTM-aist の C++版、Python版、Java版 に同梱されています。
+***概要
+ServicePort の使用方法を示したサンプルです。以下に示す IDL を使用してサービスを定義しています。
+
+ typedef sequence<string> EchoList;
+ typedef sequence<float> ValueList;
+ 
+ interface MyService
+ {
+   string echo(in string msg);
+   EchoList get_echo_history();
+   void set_value(in float value);
+   float get_value();
+   ValueList get_value_history();
+ };
+
+MyServiceConsumer コンポーネントと MyServiceProvider コンポーネントを起動します。
+Consumer側コンポーネントを Activate すると、コンソールに利用可能なコマンドリストが表示されますので、各コマンドをお試しください。(Port間の接続には RTSystemEditor をご利用ください。)
+
+#br
+
+&br;
+***起動画面
+
+#ref(SimpleService_example_rtse_ja.png,60%,center)
+CENTER:''SimpleService 実行例(RTSystemEditor 接続画面)''
+#br
+
+#ref(MyService_example.png,60%,center)
+CENTER:''MyServiceConsumer コンポーネントと MyServiceProvider コンポーネントの実行例''
+
+&br;
+***使い方
+SimpleService は、MyServiceConsumer からコマンドを送り、MyServiceProvider でそれを処理させるというサンプルです（※正確には、コマンドの解釈は Consumer側であり、Provider側の関数を呼び出す形で実装されています）。
+MyServiceConsumer と MyServiceProvider の対応するポートを RTSystemEditor 上で接続してください。
+両コンポーネントをアクティベートします（Activate するのは Consumer側コンポーネントだけでもよい）と Consumer側プロンプトにコマンド一覧が表示されるので、適宜コマンドを入力してください。Provider側の応答がプロンプト上で観察できます。
+#br
+
+- 手順
+
+-- RTSystemEditor を起動し、SystemEditor を用意します。→RTSystemEditor の使用方法の詳細については [[RTSystemEditor >/node/1175]] を参照
+-- MyServiceConsumer と MyServiceProvider の両コンポーネントを起動します。
+コンポーネントの起動は OS や OpenRTM-aist の言語によってことなりますので、以下の表を参考に起動します。
+|LEFT:110|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c
+||>|CENTER:Windows の場合|>|CENTER:Linux の場合|
+||MyServiceConsumer コンポーネント|MyServiceProvider コンポーネント|MyServiceConsumer コンポーネント|MyServiceProvider コンポーネント|
+|C++版|MyServiceConsumerComp.exe|MyServiceProviderComp.exe|MyServiceConsumerComp|MyServiceProviderComp|
+|Python版|MyServiceConsumer.py|MyServiceProvider.py|MyServiceConsumer.py|MyServiceProvider.py|
+|Java版|MyServiceConsumer.bat|MyServiceProvider.bat|MyServiceConsumer.sh|MyServiceProvider.sh|
+-- RtcLinkのNameServiceView に両コンポーネントが現れるので、それらを SystemEditor 上にドラッグします。
+-- 両コンポーネントの対応ポートを結びます。（上図 SimpleService 実行例を参照）
+-- どちらかのコンポーネントを右クリックし、「All Activate」を選択します。（この場合は、Consumer側コンポーネントを Activate するだけでも動作します。）
+-- Consumer側プロンプトにコマンドを入力します。
+#br
+
+- コマンド
+-- echo <message>：任意の<message>をエコー
+-- set_value <value>：任意の<value>を Provider側にセット
+-- get_value：現在 Provider側にセットされている値を取得して表示
+-- get_echo_history：今までのエコーメッセージの履歴を Provider側から取得
+-- get_value_history：今までにセットしてきた値の履歴を Provider側から取得

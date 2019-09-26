@@ -1,0 +1,39 @@
+﻿// Title: Offline System Editor
+**Outline 
+#br
+
+
+#ref(fig79OfflineSystemEditor_en.png,40%,center)
+CENTER:''Offline System Editor location''
+#br
+The Offline System Editor allows for creation of RT systems by drag and drop of components from a repository into a system diagram. Its operation is generally the same as the online editor, but the state of RT components cannot be changed, nor will component state information be updated.
+#br
+
+**Functionality
+***Opening the Offline System Editor
+To open a new Offline System Editor, click ''Open New Offline System Editor'' in the toolbar, or select ''Open New Offline System Editor'' from the File menu.
+#br
+
+
+#ref(fig41OpenNewSystemEditorFromToolbar_en.png,60%,center)
+CENTER:''Open New Offline System Editor button''
+#br
+#br
+
+#ref(fig42FileOpenNewOfflineEditor_en.png,40%,center)
+CENTER:''Open New Offline System Editor menu entry''
+#br
+
+***Adding Component Specifications to the Offline System Editor 
+To add a component specification to the editor, drag it from the repository view.
+#br
+
+
+#ref(fig43TheOff-lineEditorComponentArange_en.png,50%,center)
+CENTER:''Adding a component specification to the Offline System Editor''
+#br
+
+***Editing Component Specifications with the Offline System Editor 
+With the exception of executing components, the Offline System Editor is capable of all functions of the System Editor.
+
+

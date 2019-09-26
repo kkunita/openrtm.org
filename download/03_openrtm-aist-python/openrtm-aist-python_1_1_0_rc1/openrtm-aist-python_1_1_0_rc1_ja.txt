@@ -1,0 +1,107 @@
+﻿// OpenRTM-aist-Python-1.1.0-RC1
+#ref(python-logo.png,left,nolink)
+#contents
+#clear
+
+**注意事項
+
+バージョン0.4系をインストール済みの環境に1.x系をインストールする場合は、一度0.4系を削除してから1.x系のインストールを行ってください。
+0.4系をアンインストールした後に0.4系の残骸が残っている場合がございますので、残骸が残っている場合は手動でOpenRTMフォルダの削除を行って下さい。
+
+:削除するフォルダ|
+- Windows環境の場合:
+ C:\Python[24,25,26]\Lib\site-packages\OpenRTM
+-Linux環境の場合:
+  /usr/lib/python[2.4,2.5,2.6]/site-packages/OpenRTM
+
+**ソースコード
+|LEFT:200|LEFT|LEFT:100|c
+|Python版ソースコード|[[OpenRTM-aist-Python-1.1.0-RC1.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/python/1.1.0/OpenRTM-aist-Python-1.1.0-RC1.tar.gz]] &br; MD5:bbc9c4915d13cef0f5a925a070bab0aa | 11/10/04 |
+|Python版ソースコード(Win32)|[[OpenRTM-aist-Python-1.1.0-RC1.zip:http://www.openrtm.org/pub/OpenRTM-aist/python/1.1.0/OpenRTM-aist-Python-1.1.0-RC1.zip]] &br; MD5:513f9a80ab7ce3c4d831c509e2252a8b | 11/10/04 |
+
+
+&br;
+**パッケージ
+***Windowsインストーラ (Python 2.4,2.5,2.6 共通)
+
+OpenRTM-aist-Python-1.1.0-RC1.msiを使用してOpenRTM-aist-Pythonをインストールする場合、Pythonのバージョン2.4、2.5、2.6のいずれかが必要です。
+OpenRTM-aist-Python-1.1.0-RC1.msiでは、インストールされているPythonのバージョンを検出し、それぞれにOpenRTM-aist-Python-1.1.0とomniORBpyをインストールします。別途omniORBpyをインストールする必要はありません。
+
+
+|LEFT:200|LEFT|LEFT:100|c
+|Windows用インストーラ|[[OpenRTM-aist-Python-1.1.0-RC1.msi:http://www.openrtm.org/pub/Windows/OpenRTM-aist/python/OpenRTM-aist-Python-1.1.0-RC1.msi]] &br; MD5:1faaf9c25bcb879628da3d23f851a4cd | 11/010/04 |
+|Python-2.4.4|[[python-2.4.4.msi:http://www.python.org/ftp/python/2.4.4/python-2.4.4.msi]]|[[python.org:http://www.python.org]]|
+|Python-2.5.4|[[python-2.5.1.msi:http://www.python.org/ftp/python/2.5.4/python-2.5.4.msi]]|[[python.org:http://www.python.org]]|
+|Python-2.6.6|[[python-2.6.2.msi:http://www.python.org/ftp/python/2.6.6/python-2.6.6.msi]]|[[python.org:http://www.python.org]]|
+|Java: Windows (32bit) 用 JRE|[[インストーラ:http://javadl.sun.com/webapps/download/AutoDL?BundleId=63691]]|[[java.com:http://java.com/ja/download/manual.jsp]]|
+
+-&color(red){※ RTSystemEditor(RCP 版 ) を動作させるために、32 ビット版の Java 動作環境 (JRE) または Java 開発環境 (JDK) が必要となります。
+-&color(red){※ Pythonのバージョンによってpython.exe にパスが通らないケースがあります。パスをチェックしてください。};
+
+
+**** omnipy が importできない旨のエラーが出る場合
+
+MSVCR71.dll, MSVCP71.dll がインストールされていないため、omnipy が importできない旨のエラーが出る場合があります。
+下記よりMSVCR71.dll, MSVCP71.dllをダウンロードしてインストールしてください。
+
+- http://www.vector.co.jp/soft/win95/util/se435079.html
+
+ダウンロード後解凍して、MSVCR71.dll, MSVCP71.dllを
+- 32bit Windows の場合 C:\Windows\system32 
+- 64bit Windows の場合 C:\Windows\SysWow64
+にインストールしてください。
+
+
+&br;
+
+***Linuxパッケージ
+Ubuntu, Debianの各ディストリビューション用のパッケージを www.openrtm.org 上のリポジトリサーバにて配布しています。
+詳細は、以下のドキュメントを参照してください。~
+Fedora版は、もうしばらくお待ちください。
+
+-[[Vine Linuxへのインストール:/ja/node/1187]]
+-[[Fedoraへのインストール:/ja/node/1186]]
+-[[Ubuntu/Debianへのインストール:/ja/node/1182]]
+
+
+|LEFT:200|LEFT|LEFT:200|c
+| ディストリビューション | 対応バージョン | 一括インストールスクリプト |
+//| Fedora | 11, 12 (共にi386/x86_64) |[[pkg_install_python_fedora.sh >http://www.openrtm.org/pub/OpenRTM-aist/python/install_scripts/pkg_install_python_fedora.sh]]|
+| Ubuntu | 8.04, 10.04, 10.10, 11.04 (共にi386/x86_64)|[[pkg_install_python_ubuntu.sh >http://svn.openrtm.org/OpenRTM-aist-Python/trunk/OpenRTM-aist-Python/installer/install_scripts/pkg_install_python_ubuntu.sh]]|
+| Debian |5.0 (i386, x86_64)|[[pkg_install_python_debian.sh >http://svn.openrtm.org/OpenRTM-aist-Python/trunk/OpenRTM-aist-Python/installer/install_scripts/pkg_install_python_debian.sh]]|
+
+
+&br;
+
+**リリースノート: 1.1.0-RC1
+
+RTミドルウエア：OpenRTM-aist のPython言語版最新バージョン 1.1.0-RC1 を10月4日にリリースいたしました。
+
+OpenRTM-aist Official Website からソースコード、Windowsインストーラ、Linux用パッケージ等が LGPL ライセンスもしくは産総研との個別契約のうち一つから選択するデュアルライセンス方式で利用可能です。
+
+これまでは、実行・開発環境を構築するには、いくつかのパッケージをインストールする必要がありましたが、今回のリリースでは、特にWindows用には、omniORBpyやツール等を含むインストーラを提供することにより、どなたでもすぐにサンプルを実行して試用可能となりました。ぜひお試しください。
+
+- [[OpenRTM-aist-Python-1.1.0-RC1.tar.gz>http://www.openrtm.org/pub/OpenRTM-aist/python/1.1.0/OpenRTM-aist-Python-1.1.0-RC1.tar.gz]] -- 2011.10.04リリース
+-- APIの追加
+--- コールバックAPI
+--- 実行コンテキストに関するコールバック
+-- rtc.conf新オプション(-o)の導入
+-- ECのrateをrtc.confで与えられるよう変更
+-- SDOサービスフレームワーク
+-- オブザーバSDOサービスの導入(実験的)
+-- 雑多なバグフィックス
+
+--動作条件
+-- サポートするPythonバージョン
+--- 2.4
+--- 2.5
+--- 2.6
+--動作確認済みOS
+---Debian5.0-i386
+---Ubuntu 8.04-i386
+---Ubuntu 10.04LTS-i386
+---Ubuntu 10.10-i386
+---Ubuntu 11.04-i386
+---Windows XP
+---Windows Vista
+---Windows7

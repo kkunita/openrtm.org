@@ -1,0 +1,32 @@
+﻿// Title: RTC/RTS profile specification
+This page provides some specification documents and schema files of RT-Component's specification description format (RTCProfile) and RT-Systems' specification description format (RTSProfile) which are used in RTSystemEditor, RTCBuilder and rtshelll.
+<!--break-->
+#contents
+
+**RT-Component profile specification (RTCProfile)
+***Versioin 0.2 
+- [[Specification document(PDF)>http://www.openrtm.org/OpenRTM-aist/documents/RTCProfile.pdf]]
+- Schema
+-- http://www.openrtm.org/schema/rtc_profile/0.2/rtc_profile_basic.xsd
+-- http://www.openrtm.org/schema/rtc_profile/0.2/rtc_profile_doc.xsd
+-- http://www.openrtm.org/schema/rtc_profile/0.2/rtc_profile_ext.xsd
+
+***Version 0.1 
+//- [[仕様書(PDF)>http://www.openrtm.org/OpenRTM-aist/documents/RTCProfile/RTCProfileSpecification-0.1.pdf]](リンク切れ)
+- Schema
+-- http://www.openrtm.org/schema/rtc_profile/0.1/rtc_profile_basic.xsd
+-- http://www.openrtm.org/schema/rtc_profile/0.1/rtc_profile_doc.xsd
+-- http://www.openrtm.org/schema/rtc_profile/0.1/rtc_profile_ext.xsd
+
+**RT-Systems profile specification (RTSProfile) 
+***Versioin 0.2 
+- [[Specification document(PDF)>http://www.openrtm.org/OpenRTM-aist/documents/RTSProfile.pdf]]
+- Schema
+-- http://www.openrtm.org/schema/rts_profile/0.2/rts_profile.xsd
+-- http://www.openrtm.org/schema/rts_profile/0.2/rts_profile_ext.xsd
+
+****Versioin 0.1
+//- [[仕様書(PDF)>http://www.openrtm.org/OpenRTM-aist/documents/RTSProfile/RTCProfileSpecification-0.1.pdf]](リンク切れ)
+- Schema
+-- http://www.openrtm.org/schema/rts_profile/0.1/rts_profile.xsd
+-- http://www.openrtm.org/schema/rts_profile/0.1/rts_profile_ext.xsd

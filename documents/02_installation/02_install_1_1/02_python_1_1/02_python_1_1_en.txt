@@ -1,0 +1,4 @@
+﻿// Title: Install OpenRTM-aist-1.1 for Python
+Packages and installers for the Python edition of OpenRTM-aist are provided for many operating systems and distributions to allow easy installation. OpenRTM-aist can also be installed by downloading and compiling the source directly.
+
+The following pages describe installing the Python edition of OpenRTM-aist in various environments.

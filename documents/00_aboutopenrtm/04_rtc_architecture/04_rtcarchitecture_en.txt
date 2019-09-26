@@ -1,0 +1,99 @@
+﻿// Title: RT Component architecture
+#contents
+
+//** RTコンポーネントフレームワーク
+** RT Component Framework
+
+//RTコンポーネントを作成するためのフレームワークです。
+RT Component Framework is a framework for creating RT Components.
+
+//ロボットシステムを構成する要素をモジュール化するとき、様々な粒度でのモジュール化が考えられます。たとえば、モーターやセンサーといった単機能のデバイス、移動ロボットやアームなど複合的なシステム、あるいは様々な処理を行うアルゴリズムといった単位が考えられ、それらの階層的な集積によりシステムが構築されます。RTミドルウエアでは、これらのRT機能要素の本質的なソフトウエア部分をコアロジックと呼びます。RTコンポーネントフレームワークは、コアロジックに共通のインターフェースという皮を被せて、これらのモジュールを統一的に扱うことができるようにするための仕組みです。
+To modularize the elements which are constructing a robot system, there are many types of granularity of the modularization. For example, a single function device like a motor/sensor, a compound function device like a moving cart robot, robot arm and a set of algorithm which handle various processes are considerable. A system would be built up by hierarchical integration of them. In RT middleware, the software part of the fundamental functional elements is called as "Core logic". RT component framework is a mechanism for covering the Core Logic by common interface and make the user be able to use the modules uniformly.
+
+#ref(rtc_framework_en.png,40%,center)
+//CENTER: ''RT RTコンポーネントフレームワークとコアロジック''
+CENTER: ''RT Component Framework and Core Logic''
+
+//上図のように、ステレオビジョンのアルゴリズムをコンポーネント化する例を考えると、アルゴリズムを実装したプログラムそのものはコアロジックに相当します。適切なポートを設定した RTコンポーネントフレームワークを用意してやり、ステレオビジョンアルゴリズムをこのフレームワークに実装してやることで、ステレオビジョンコンポーネントを作ることができます。このように、コンポーネントフレームワークに基づきコンポーネント開発者がコアロジックを実装し、システムに組み込むことができるようにしたモジュールを RTコンポーネントと呼びます。RTコンポーネントフレームワークは、共通インターフェースの実装を、コンポーネント開発者や、コンポーネントを組合わせてシステムを構築するインテグレータに対して隠蔽します。こうすることによって、コンポーネント開発者はメインのロジックの実装に集中でき、インテグレータは実装の詳細を気にすることなくシステム全体の設計に集中することができます。
+Consider an example of componentized stereo vision algorithm as shown in the above figure. The program itself which implements the algorithm corresponds to the Core logic. Stereo vision component can be made by preparing RT component framework with appropriate Port's and implementing a stereo vision algorithm into the framework. The module in which Core logic is implemented based on RT component framework is called as "RT component". RT component framework hides the implementation of the common interface from the component developer and the integrator who make a system by combining the components. As a result, the component developer can focus on the implementation of the main logic and the integrator can focus on the whole system design without worrying about the implementation details of the component.  
+
+//** RTコンポーネントアーキテクチャ
+** RT Component architecture
+
+//RTシステムでは、低レベルのセンサ処理やアクチュエータ制御から、高レベルの認識、判断、行動制御など、様々なレベルの処理を連携して行う必要があります。低レベルの制御プログラムには、速度やリアルタイム性の要求を満たす言語が求められる一方で、高レベルのプログラムには、抽象度や記述力の高い言語が求められます。また、現在のRTシステムは、複数の CPU で構成されるケースが増えており、並列制御やネットワークを介した連携機能も必要です。
+In RT system, various levels of processing should be handled with considering the cooperation of them from low-level sensor process and actuator control to high-level Recognition, Judgement, Controlling the behavior, etc. In low-level controlling program might require the speed and the real-time capability. However, the high-level program might require computer language which has high abstraction capability and high descriptive power. Also, the use of multiple CPU system is currently increasing in RT system world, and it is necessary to have parallel control and cooperation function via the network.
+
+//これらの機能要素をモジュール化するため、RTコンポーネントは、様々な粒度でモジュール化が可能で、かつ、多様な言語、OS上で動作する、分散コンポーネント型のフレームワークを提供しています。
+To modularize these functional elements, the RT component provides a framework based on a distributed component technology that can be modularized with various granularity and operate on various languages and OS.
+
+//図に RTC の基本的なアーキテクチャを示します。RTC の主な機能としては以下のものがあります。
+The figure shows the basic architecture of RTC. The main functions of RTC are as follows.
+
+#ref(rtc_architecture_en.png,40%,center)
+//CENTER: ''RTコンポーネントアーキテクチャ''
+CENTER: '' RT Component architecture ''
+
+//*** メタ情報取得
+*** Get meta information
+
+//RTC はメタ情報 (RTC プロファイル) 取得のためのインターフェース (イントロスペクション機能) を持ちます。RTC プロファイルとは、コンポーネントの名前や所有しているポートのプロファイルなど、コンポーネントの特性を表わす一連の情報です。この機能は実行時の動的なシステム構成時に必要となります。
+
+RTC has interfaces (introspection function) for obtaining meta information (RTC profile). RTC profile is a set of information that describes the characteristics of a component, such as the name of the component and the profile of Port's it owns. This function is necessary for dynamic system configuration at run time.
+
+//> イントロスペクション: 日本語で内省と訳される、オブジェクトやコンポーネントのメタ情報を取得する仕組みのこと. 定義は一定していないが、Java におけるリフレクションと類似の機能. OMG RTC 仕様ではこの機能を introspection と定義している。
+Introspection: A mechanism to acquire meta information of objects and components translated to "NAISEI" in Japanese.　The definitions are not commonly fixed, but the function is similar to Reflection in Java. OMG RTC specification defines the function as "Introspection". 
+
+#ref(rtc_arch_introspection_en.png,40%,center)
+//CENTER: ''メタ情報取得''
+CENTER: '' Get meta information ''
+
+//*** アクティビティ
+*** Activity
+
+//コンポーネン内での主要なロジック実現のための実行行為そのもの。RTCの統一的管理のため、Inactive(OFF状態)、Active(ON状態)、Error(エラー状態)といった共通の状態が決められています。RTC開発者は、主に、それぞれの状態や状態遷移イベントに割り当てられた関数(コールバック関数)に実現したい機能を実装することでRTCを作成します。
+Execution itself to implement major functions into a component. Common states such as Inactive (OFF state), Active (ON state), Error (Error state), etc are defined for unified management of RTC. An RTC developer creates an RTC by mainly implementing the desired feature into the function (callback function) assigned to each state and each state transition event.
+
+#ref(rtc_arch_activity_en.png,40%,center)
+//CENTER: ''アクティビティと実行コンテキスト''
+CENTER: ''activity and execution context''
+
+//*** 実行コンテキスト
+*** Execution Context
+
+//アクティビティを構成する関数は、実行コンテキスト (Execution Context: EC) と呼ばれるスレッドにより実行されます。ECは、RTC に対して動的にアタッチ・デタッチ可能で、一つの EC を複数の RTC にアタッチし、直列に同期的に実行させたり、リアルタイム実行可能な EC と入れ替えることで RTC の実行をリアルタイム化することも可能です。
+The functions which construct "Activity" are executed by a thread called Execution Context (EC). EC can be attached and detached dynamically to RTC. It is possible to attach one EC to multiple RTCs to execute them synchronously in series. Also, it is possible to make RTC execution real-time by changing the EC to real-time capable EC,
+
+//*** データポート
+*** Data port
+
+//連続的なデータの送受信を行うためのデータ指向ポート。入力ポート (InPort) と出力ポート (OutPort) の2種類があり、同じデータ型同士なら、言語や OS が異なっていても、ネットワークを介して接続・通信することができます。
+A data directional port for transmitting and receiving continuous data. There are two types of input port (InPort) and output port (OutPort). Even if the same data types are used, even if the language and OS are different, you can connect and communicate via the network.
+
+#ref(rtc_arch_dataport_en.png,40%,center)
+//CENTER: ''データポート''
+CENTER: '' Data port ''
+
+//*** サービスポート
+*** Service port
+
+//コマンドレベルの詳細な機能の提供/利用を行うポートです。ユーザー定義可能なプロバイダ(提供(Provided)インターフェース)とコンシューマー(要求(Required)インターフェース)があり、それぞれ外部に機能を提供するインターフェースをProvided Interface、外部の機能を要求/利用するインターフェースをRequired Interfaceと呼びます。データポート同様、言語、OSが異なっていてもインターフェース型が同じなら接続し関数を呼び出すことができます。
+Ports which is used for providing functions and using external functions in command-base. It is used-defined. There are two types of interface - Provider (Provided interface) and Consumer (Required interface). The Provided interface provides functions to external units. Required interface is for requesting/using the function on external units. Like Data port, even if the language and OS are different, you can connect and call the function if the interface type is the same.
+
+#ref(rtc_arch_serviceport_en.png,40%,center)
+//CENTER: ''データポート''
+CENTER: ''Service port''
+
+*** Configuration
+
+//ユーザー定義のパラメーターを、実行時に外部から変更するための機能。複数のパラメーターセットを持ち、それらを一斉に入れ替えることができます。パラメーターを予め変更可能にしておくことで、RTC を様々なシステムで再利用可能にします。
+A function to change the user-defined parameters externally at runtime. It has multiple sets of the parameters and you can swap them all at once. By making the parameters changeable, RTC can be reused in various systems.
+
+#ref(rtc_arch_configuration_en.png,40%,center)
+//CENTER: ''コンフィギュレーション''
+CENTER: ''Configuration''
+
+//一般に、RTシステムにおける低レベル部分では、サーボコントローラー等粒度が細かくデータ指向の密結合なサブシステムが主体であり、判断や振る舞いを決める高レベルの部分では、粒度の粗いサービス指向のサブシステムが主体となります。RTCでは、こうした多様な粒度のモジュール化を共通のフレームワークで実現しているため、階層化フレームワークで問題となる、階層間の結合は問題となりません。
+Generally, in the low-level part of the RT system like the servo controller, etc. are mainly composed by data-oriented tightly coupled subsystems. In high-level part like subsystems which judges and decides the behavior would be mainly coarse-grained and service-oriented. Since RTC realizes such modularization with various granularity with a common framework, the coupling between hierarchies which becomes a problem in the hierarchical other frameworks is not a problem.
+
+//異なる言語、および OS 上の RTC 間の透過的連携は、分散オブジェクトミドルウエアの標準仕様である CORBA (Common Object Request Broker Architecture) を利用することで実現されています。
+The transparent linkage between RTCs in different languages is realized by using CORBA (Common Object Request Broker Architecture) which is the standard specification of distributed object middleware.

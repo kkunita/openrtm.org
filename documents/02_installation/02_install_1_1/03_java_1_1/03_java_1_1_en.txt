@@ -1,0 +1,3 @@
+﻿Packages and installers for the Java edition of OpenRTM-aist are provided for many operating systems and distributions to allow easy installation. OpenRTM-aist-Java can also be installed by downloading and compiling the source directly.
+
+The following pages describe installing the Java edition of OpenRTM-aist in various environments.

@@ -1,0 +1,119 @@
+﻿// Title: RTC programming flow
+// -*- pukiwiki-edit -*-
+//*The flow of RTC programming
+#contents(4)
+**RTC programming flow
+OpenRTM-aist is a framework to support the easy development of RT-Components (RTCs), modularising existing source code and libraries or newly developed software. The following figure shows the RT-Component
+development flow.
+
+&br;&br;
+#ref(ComponentDevelFlow.png,center,nolink)
+CENTER:''RT-Component development flow.''
+&br;&br;
+
+Usually, a component developer embeds existing library functions, class libraries, etc. to create a component using the framework. Through this, they create an RT-Component using existing resources, allowing considerable software reuse. RT-Components can be deployed into a network and used as distributed objects.
+
+As shown in the figure above, RT-Components created in using the RT-Component framework can be realised as two kinds of binary files. A stand-alone RT-Component is an executable binary. A loadable module RT-Component is a dynamically-loadable shared library.  RT-Components can be created, distributed and executed in these two ways.
+
+**The basics of RTC programming
+
+There are some differences between standard programming and programming RT-Components.
+
+*** Program without a main function
+
+Unlike common programs, there is no "main" function in an RT-Component. An RT-Component is implemented as a class that inherits from a special base class.
+
+The logic of an RT-Component is implemented in known member functions that override the same members of the base class. For example, the initialisation logic is implemented in the onInitialize member function, while the termination logic is implemented in the onFinalize member function.
+
+ ReturnCode_t MyComponent::onInitialize()
+ {
+   // Initialization code.
+ }
+ ReturnCode_t MyComponent::onFinalize()
+ {
+   // Finalization code.
+ }
+
+In order to understand when these functions will be executed, it is necessary to understand the life cycle of an RT-Component.
+
+***Component lifecycle
+
+The set of states an RT-Component travels through from creation to destruction is called its life cycle. The folowing three basic states
+exist:
+
+- Created
+- Alive
+- End
+
+The "Alive" state has several internal states, discussed later.
+
+As mentioned above, a component is implemented as a class. This makes instantiating a component the same as instantiating a class. RT-Components are typically created by a manager (the RTC manager), and the manager is responsible for the component's life cycle.
+
+Specifically, the manager calls the onInitialize function after creating the instance of an RT-Component. When an RT-Component has finished, the manager calls the onFinalize function.  Thus, an RT-Component is programmed by describing the logic for every necessary call-back (called component actions) assigned to the states in the life cycle of RT-Component.
+
+*** Execution context
+
+Usually when a program is executed, an operating system process is created for that program to execute in. A robot program has a processing loop executed by that operating system process. This processes sensor data or controls actuators. The logic for performing such processing or controlling is called the "core logic" in an RT-Component.
+
+After creation, an RT-Component enters the Alive state. A thread is then assigned and it begins to execute the component. This thread is called the execution context. In actuality, the execution context is not a thread but an object with its own execution cycle and state. When an RT-Component is created, it is assigned to an execution context, which then exectutes the RT-Component's core logic. This causes the RT-Component to carry out its purpose - such as controlling a robot.
+
+*** State transitions of an RTC
+
+As mentioned above, an RT-Component has states and logic, called component actions, assigned to the states and transitions. The following figure shows the state transition diagram of an RT-Component.
+
+&br;&br;
+#ref(RTCStateMachine040.png,nolink,center)
+CENTER:''The state machine of an RT-Component.''
+&br;&br;
+
+Created and Alive are states of an RT-Component. The Alive state has sub-states.
+
+**** Stopped and running states
+
+Let's begin with the upper part of the state machine, with the Stopped and Running states in the Alive state.
+
+&br;&br;
+#ref(RTCStateMachineStartStop.png,nolink,center)
+CENTER:''Stopped state and running state of an RTC.''
+&br;&br;
+
+These states indicate whether the execution context thread is stopped or running.
+
+When an execution context in the stopped state receives a start event, it executes the onStartup state action of the RTCs and enters the running state. When a running execution context receives a stop event, it executes the onShutdown state action of the RTCs and enters the stopped state.
+
+The core logic is executed in the running state, and no actions are executed in the stopped state.
+
+**** Active/Inactive states
+
+The lower part of the alive state is the core logic states active, inactive and error.
+
+An RT-Component is in the inactive state immediatly after creation. When it is activated, the onActivate state action will be called and the component will enter the active state. During the active state, the onExecute state action is repeatedly called. Usually, the main logic of an RTC is implemented in onExecute.  For example, typical robot processing tasks such as reading data from sensors and controlling motors based on the data received from other components will be described in onExecute callback function.
+
+An RTC remains in the active state until it becomes inactive or an error occurs.  When it is inactived, onDeactivate is called, and it moves to the inactive state.  When an error occurs in the core logic, onAborting is called and the RTC enters the error state.
+
+When an RTC changes to the error status, it remains in the error state until an external reset is performed. onError is continuously called during the error state in place of onExecute. onReset is called when a reset is performed. If onReset is succesful in restoring the component, the RTC shifts back to the inactive state, from where it can be activated again. If onReset fails, the RTC remains in the error state.
+
+&br;&br;
+#ref(RTCStateMachineActiveInactive.png,nolink,center)
+CENTER:''Inactive, Active and Error states.''
+&br;&br;
+
+***Summary of Actions
+
+An RT-Component developer must consider which logic to implement in each state. Un-used states do not require functions to be implemented. Only those functions being used should be overridden.
+
+The table below gives the function and role of each state action.
+
+|onInitialize| Initialisation. It is called only once when the component life cycle is initialised. |
+|onActivated| Called once each time the component transitions to the active state. |
+|onExecute| Called while in the active state depending on the execution context used. |
+|onDeactivated| Called once each time the component transitions to the inactive state from the active state. |
+|onAborting| Called once whenever entering the onError state. |
+|onReset| Called once each time the component is reset from the error state to the inactive state. |
+|onError| Called while in the error state. |
+|onFinalize| Called once at the end of the component's life cycle. |
+|onStateUpdate| Called every time after onExecute. |
+|onRateChanged| Called when the rate of execution changes. |
+|onStartup| Called when the execution context starts. |
+|onShutdown| Called when the execution context stops. |
+
