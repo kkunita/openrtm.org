@@ -1,0 +1,77 @@
+﻿// Title: How to Use Educator Vehicle Simulator
+#contents
+
+このページでは Educator Vehicle 改 のシミュレーター RTC の仕様、利用方法について説明します。
+#ref(ev32.png, center)
+
+*仕様
+
+#ref(simulator_ev3_1.png, center)
+
+|>|>|CENTER:EV3Simulator|
+|>|>|CENTER:InPort|
+|名前|データ型|説明|
+|velocity2D|RTC::TimedVelocity2D|目標速度|
+|angle|RTC::TimedDouble|Mモーターの角度|
+|pos_update|RTC::TimedPose2D|現在位置更新|
+|>|>|CENTER:OutPort|
+|名前|データ型|説明|
+|odometry|RTC::TimedPose2D|現在の位置|
+|current_vel|RTC::TimedVelocity2D|現在の速度|
+|ultrasonic|RTC::RangeData|超音波センサーで計測した距離|
+|gyro|RTC::TimedDouble|ジャイロセンサーで計測した角度|
+|light_reflect|RTC::TimedDouble|カラーセンサーで計測した反射光の強さ|
+|touch|RTC::TimedBooleanSeq|タッチセンサーのオンオフ。右側が0番目の要素、左側が1番目の要素|
+|>|>|CENTER:コンフィギュレーションパラメーター|
+|名前|デフォルト値|説明|
+|medium_motor_speed|1.6|モーターMの速度|
+|blocksConfigFile|None|障害物の配置設定ファイルの名前|
+|touchSensorOnLength|0.003|タッチセンサーをオンと判定する押し込んだ距離|
+|lightReflectThreshold|0.1|カラーセンサーから物体までの距離がこの値以下になると255を出力|
+|plane_exist|0|1の時は新たに地面作成|
+|plane_x|0|地面の位置(X)|
+|plane_y|0|地面の位置(Y)|
+|plane_z|0|カラーセンサーから物体までの距離がこの値以下になると255を出力|
+|plane_lx|1.0|地面の長さ|
+|plane_ly|1.0|地面の幅|
+|plane_lz|1.0|地面の高さ|
+|draw_time|0.01|描画の周期|
+|sampling_time|-1|シミュレーションの刻み幅。負の値に設定した場合は実行コンテキストの周期で設定|
+
+
+
+* 使用方法
+
+以下からダウンロードできます。
+
+- [[ZIPファイル>https://github.com/Nobu19800/EV3SimulatorRTC/archive/master.zip]]
+
+
+展開したフォルダーの EXEフォルダー内に実行ファイル (EV3SimulatorComp.exe) があります。
+この EXEファイルを実行すると RTC が起動します。
+
+
+
+** コンフィギュレーションパラメーター
+*** 障害物の設定ファイル
+blocksConfigFile というパラメーターで障害物の配置を設定する CSVファイルを指定できます。
+サンプルとして test.csv というファイルを用意してあります。
+
+このファイルに位置、角度、サイズを記述してください。
+
+|位置(X)|位置(Y)|位置(Z)|長さ(L)|幅(W)|高さ(H)|角度(θ)|
+|0.3|0.0|0.0|0.1|1.0|0.3|0.0|
+
+
+#ref(block1.png, /ja/node/6198, center)
+
+#ref(block2.png, /ja/node/6198, center)
+
+
+ブロックは何個でも設定可能です。
+
+*** 地面の設定
+Educator Vehicle 改 は超音波センサーにより設置可能な地面の有無を検知して回避する運動が可能になっています。
+この制御シミュレーションのために、地面を新たに作成するコンフィギュレーションパラメーターを用意してあります。
+
+plane_existを1に設定後、地面の位置、サイズを設定してください。

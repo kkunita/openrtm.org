@@ -1,0 +1,22 @@
+﻿// Title: Raspberry Pi Mouse 活用事例
+//#contents
+
+Raspberry Pi Mouse (以下ラズパイマウス) はアールティが販売している二輪方式の移動ロボットです。
+Raspberry Pi を搭載しているため Linux (Raspbian) 等での開発が可能です。
+
+#ref(s_DSC00444.JPG,50%,center)
+
+このドキュメントではラズパイマウスでの OpenRTM-aist の利用方法等を紹介します。
+
+
+** 仕様
+
+|>|CENTER:ラズパイマウスの仕様|
+|CPU|Raspberry Pi 2 Model B|
+|モーター|ステッピングモーターST-42BYG020 2個|
+|モータードライバー|SLA7070MRPT 2個|
+|距離センサー|赤色LED+フォトトランジスタ(ST-1K3) 4個|
+|モニター用赤色LED|4個|
+|ブザー|1個|
+|スイッチ|3個|
+|バッテリー|LiPo3セル(11.1V)1000mAh 1個|

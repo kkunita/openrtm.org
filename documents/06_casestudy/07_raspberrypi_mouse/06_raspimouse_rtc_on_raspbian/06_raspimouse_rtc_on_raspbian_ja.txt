@@ -1,0 +1,127 @@
+// Title: ラズパイマウス用 RTC のインストール(Raspbian)
+#contents
+
+
+*RaspberryPiMouseRTC
+RaspberryPiMouseRTC は名城大学のロボットシステムデザイン研究室で開発されているラズパイマウス制御用の RTコンポーネントです。
+
+以下のコマンドでインストールできます。
+
+ git clone https://github.com/rsdlab/RaspberryPiMouseRTC.git
+ cd RaspberryPiMouseRTC
+ cmake .
+ make
+
+以下の RTC は必要に応じてインストールしてください。
+
+*RaspberryPiMouseController_DistanceSensor
+ラズパイマウスの距離センサーが障害物を感知した際に回転して回避する運動を生成する RTC です。
+
+以下のコマンドでインストールできます。
+
+ git clone https://github.com/Nobu19800/RaspberryPiMouseController_DistanceSensor
+ cd RaspberryPiMouseController_DistanceSensor
+ cmake .
+ make
+
+#ref(https://raw.githubusercontent.com/Nobu19800/RaspberryPiMouseRTSystem_script/master/Components/RaspberryPiMouseController_DistanceSensor_comp.png, center)
+
+|>|>|CENTER:RaspberryPiMouseController_DistanceSensor|
+|>|>|CENTER:InPort|
+|名前|データ型|説明|
+|target_velocity_in|RTC::TimedVelocity2D|補正前の目標速度|
+|distance_sensor|RTC::TimedShortSeq|距離センサーの計測値|
+|>|>|CENTER:OutPort|
+|名前|データ型|説明|
+|target_velocity_out|RTC::TimedVelocity2D|補正後の目標速度|
+|>|>|CENTER:コンフィギュレーションパラメーター|
+|名前|デフォルト値|説明|
+|sensor_limit|10|回避運動を開始する距離センサーの計測値|
+|rotational_speed|1.6|回避運動の速さ|
+|stop_velocity|0.01|停止していると判定する直進速度|
+
+
+*RaspberryPiMouseController_Joystick
+ジョイスティックでラズパイマウスを指定の方角へ制御するための RTC です。
+※この RTC の動作には以下の NineAxisSensor_RT_USB等の方角が計測できる RTC が必須です。
+
+以下のコマンドでインストールできます。
+
+ git clone https://github.com/Nobu19800/RaspberryPiMouseController_Joystick
+ cd RaspberryPiMouseController_Joystick
+ cmake .
+ make
+
+#ref(https://raw.githubusercontent.com/Nobu19800/RaspberryPiMouseRTSystem_script/master/Components/RaspberryPiMouseController_Joystick_comp.png, center)
+
+|>|>|CENTER:RaspberryPiMouseController_Joystick|
+|>|>|CENTER:InPort|
+|名前|データ型|説明|
+|joystick_float|RTC::TimedFloatSeq|ジョイスティックの入力|
+|joystick_long|RTC::TimedFloatSeq|ジョイスティックの入力|
+|orientation|RTC::TimedOrientation3D|センサーなど計測した姿勢|
+|>|>|CENTER:OutPort|
+|名前|データ型|説明|
+|out|RTC::TimedVelocity2D|目標速度|
+|>|>|CENTER:コンフィギュレーションパラメーター|
+|名前|デフォルト値|説明|
+|forward_factor|0.01|入力に対する直進速度の大きさ|
+|tangential_factor|1.0|入力に対する回転速度の大きさ|
+|x_reverse|0|1の時はジョイスティックのX座標を反転する|
+|m_y_reverse|0|1の時はジョイスティックのY座標を反転する|
+
+*NineAxisSensor_RT_USB
+アールティが販売している [[USB出力9軸 IMUセンサーモジュール>http://www.rt-shop.jp/blog/archives/7238]] の計測値を出力する RTC です。
+
+以下のコマンドでインストールできます。
+
+ git clone https://github.com/Nobu19800/NineAxisSensor_RT_USB
+ cd NineAxisSensor_RT_USB
+ cmake .
+ make
+
+#ref(https://raw.githubusercontent.com/Nobu19800/RaspberryPiMouseRTSystem_script/master/Components/NineAxisSensor_RT_USB_comp.png, center)
+
+
+|>|>|CENTER:NineAxisSensor_RT_USB|
+|>|>|CENTER:OutPort|
+|名前|データ型|説明|
+|acc|RTC::TimedAcceleration3D|加速度センサーの計測値|
+|magn|RTC::TimedDoubleSeq|地磁気センサーの計測値|
+|gyro|RTC::TimedAngularVelocity3D|ジャイロセンサーの計測値|
+|temp|RTC::TimedDouble|温度センサーの計測値|
+|rot|RTC::TimedOrientation3D|姿勢|
+|>|>|CENTER:コンフィギュレーションパラメーター|
+|名前|デフォルト値|説明|
+|rotOffset|0|姿勢のオフセット(0[rad]を北以外の方角にしたい場合に調整)|
+|magnOffsetX|-65|地磁気センサーのオフセット(X軸)|
+|magnOffsetY|-60|地磁気センサーのオフセット(Y軸)|
+|magnOffsetZ|-5|地磁気センサーのオフセット(Z軸)|
+|serial_port|COM3(Windows)、/dev/ttyACM0(Linux)|デバイスファイル名|
+
+地磁気センサーのキャリブレーション用のソフトウェアは以下のコマンドでインストールできます。
+
+ git clone https://github.com/Nobu19800/CalibrationUSBNineAxisSensor
+ cd CalibrationUSBNineAxisSensor
+ cmake .
+ make
+
+
+実行すると10秒カウントを始めるので、センサーをいろんな姿勢になるように回転させてください。
+可能ならばスマートフォンの8の字調整の動きを行ってください。
+
+そして最後にX・Y・Z軸の地磁気センサの補正値が表示されるので、その値に-1掛けた数値を NineAxisSensor_RT_USB のコンフィギュレーションパラメーターに反映させてください。
+
+ロボットにセンサーを取り付ける等した場合は再度キャリブレーションを行ってください。
+
+
+*一括インストール
+上記の RTC を一括でインストールします。
+以下のコマンドを入力してください。
+
+ git clone https://github.com/Nobu19800/RaspberryPiMouseRTSystem_script_Raspbian
+ cd RaspberryPiMouseRTSystem_script_Raspbian
+ sh Component/install_rtc.sh
+
+これで RaspberryPiMouseRTSystem_script_Raspbian の Component フォルダー内に各 RTC がインストールされます。
+※キャリブレーション用ソフトウェアはインストールされないので、手動でインストールしてください。
