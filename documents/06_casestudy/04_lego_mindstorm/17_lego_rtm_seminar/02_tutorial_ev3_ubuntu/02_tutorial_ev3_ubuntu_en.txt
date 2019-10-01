@@ -1,4 +1,4 @@
-﻿// Title: Tutorial (EV3, Ubuntu, 2nd)
+﻿// Title: Tutorial (EV3, Ubuntu, Part 2)
 #contents
 
 ** はじめに

@@ -1,0 +1,64 @@
+﻿// Title: シミュレーター利用方法
+#contents
+
+このページでは Rapberry Pi マウスのシミュレーターRTC の仕様、利用方法について説明します。
+#ref(raspimouse2.png, center)
+
+*仕様
+
+#ref(raspimouse.png, center)
+
+|>|>|CENTER:RaspberryPiMouseSimulator|
+|>|>|CENTER:InPort|
+|名前|データ型|説明|
+|target_velocity_in|RTC::TimedVelocity2D|目標速度|
+|pose_update|RTC::TimedPose2D|現在位置の更新|
+|>|>|CENTER:OutPort|
+|名前|データ型|説明|
+|current_velocity_out|RTC::TimedVelocity2D|現在の速度|
+|current_pose_out|RTC::TimedPose2D|現在位置|
+|ir_sensor_out|RTC::TimedShortSeq|距離センサーから取得したデータを再現した値|
+|ir_sensor_metre_out|RTC::TimedDoubleSeq|距離センサーで計測した距離|
+|>|>|CENTER:コンフィギュレーションパラメーター|
+|名前|デフォルト値|説明|
+|sampling_time|-1|シミュレーションの刻み幅。負の値に設定した場合は実行コンテキストの周期で設定|
+|draw_time|0.01|描画の周期|
+|sensor_param|1394,792,525,373,299,260,222,181,135,100,81,36,17,16|距離センサーのデータを生データに変換するパラメーター。0.01、0.02、0.03、0.04、0.05、0.06、0.07、0.08、0.09、0.10、0.15、0.20、0.25、0.30[m]に対応した値を設定|
+|blocksConfigFile|None|障害物の配置設定ファイルの名前|
+
+
+
+* 使用方法
+
+以下からダウンロードできます。
+
+- [[ZIPファイル>https://github.com/Nobu19800/RasPiMouseSimulatorRTC/archive/master.zip]]
+
+
+展開したフォルダーの EXEフォルダー内に実行ファイル(RaspberryPiMouseSimulatorComp.exe)があります。
+この EXEファイルを実行すると RTC が起動します。
+
+** データポート
+*** 距離センサーのデータ出力
+ir_sensor_out、ir_sensor_metre_out と距離センサーのデータ出力を行うポートが2つありますが、RaspberryPiMouseRTC が距離センサーのデータを直接出力するようになっているため、ir_sensor_out ではシミュレーター上で計測した距離からセンサーのデータを再現して出力するようになっています。
+ir_sensor_metre_out はメートル単位で距離を出力します。
+
+** コンフィギュレーションパラメーター
+*** 障害物の設定ファイル
+blocksConfigFile というパラメーターで障害物の配置を設定する CSVファイルを指定できます。
+サンプルとして test.csv というファイルを用意してあります。
+
+このファイルに位置、角度、サイズを記述してください。
+
+|位置(X)|位置(Y)|位置(Z)|長さ(L)|幅(W)|高さ(H)|角度(θ)|
+|0.3|0.0|0.0|0.1|1.0|0.3|0.0|
+
+
+#ref(block1.png, center)
+
+#ref(block2.png, center)
+
+
+ブロックは何個でも設定可能です。
+
+
