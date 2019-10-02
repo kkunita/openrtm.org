@@ -1,0 +1,6 @@
+﻿// Title: Appendix
+補足ですが、バッテリーを充電する際もコネクタの向きに注意してください。
+
+#ref(https://raw.githubusercontent.com/Nobu19800/RaspberryPiMouseRTSystem_script/master/rpm5.png, center)
+
+必ず突起部分のある方向に合わせるようにしてください。

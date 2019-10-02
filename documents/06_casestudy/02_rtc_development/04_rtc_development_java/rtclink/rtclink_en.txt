@@ -1,0 +1,476 @@
+﻿// Title: RtcLink
+*RtcLink
+
+**RtcLink 
+RtcLinkは, RTコンポーネントをリアルタイムにGUI上で操作することができます。 → インストール方法は[[こちら >マニュアル/RtcLinkインストール]]にあります。
+***RtcLinkの基本機能 
+RtcLinkには, 以下のような機能があります.
+
+:''ネームサーバ接続/編集''|ネームサーバに接続し, 登録されているコンポーネントをNameServiceViewにツリー形式で表示します.
+:''コンポーネントプロファイル表示機能''|選択したコンポーネントのプロファ イル情報をプロパティViewに表示します.
+:''コンポーネントConfiguration表示/編集''|選択したコンポーネントのConfiguratioin情報をConfigurationViewに表示し編集できます.
+:''コンポーネント基本操作''|選択したコンポーネントのアクティブ化・非アクティブ化・リセット・終了等操作を行うことができ案巣.
+:''システム構築''|システムエディタ上でコンポーネントを接続してシステムを構築することができます.
+:''システム保存/再構築機能''|システムエディタの内容を保存したり, それを読み込みシステムを再構築することができます.
+
+***RtcLinkを使ったシステム構築の流れ 
+RtcLinkを使用してシステムを構築する手順はおおよそ以下の通りです.
+
+:''1.コンポーネントを起動''|システムに必要なRTコンポーネントを起動します.
+通常はシステム全体で1箇所のネームサーバを使用するように設定した上でRTコンポーネントを起動します.
+
+:''2.RtcLinkをネームサーバへ接続''|RtcLinkを起動して, NameServiceViewからRTコンポーネント起動時に設定したネームサーバへ接続します.
+
+:''3.システムエディタ上で編集''|起動しているRTコンポーネントはネームサーバ上に登録され, RtcLinkのNameServiceViewから見ることができます.
+これらのRTコンポーネントを, システムエディタへドラッグアンドドロップし, RTコンポーネントの適切なポート同士をRtcLinkを使って接続します.
+
+:''4.コンポーネントの起動(アクティブ化)''|RTコンポーネント同士の接続が完了したら, RTコンポーネントをアクティブ化しシステムを起動します.
+RTコンポーネントを一つづつアクティブ化することもできますし, メニューボタンの一括アクティブ化ボタンでいっせいにアクティブ化することもできます.
+:''5.システムの保存''|完成したシステムはXML形式のファイルで接続情報などを保存します.
+:''6.システムの復元''|保存したシステム構成情報のファイルを読み込み接続情報を復元しシステムを再び同じ状態で起動します.
+
+
+これらの使用法以外に, RTコンポーネントを作成後にデバッグなどでも使用することもできます.
+
+**RtcLinkの起動 &aname(startlink);
+　[[Eclipseを起動 >FAQ/RtcTemplate#x46770fa]]し, メニューから''ウインドウ(W)→パースペクティブを開く(O)→その他(O)''を選択すると, 次のようなパースペクティブ選択画面が現れます.
+#br
+
+#ref(EclipsePluginInstall4.png,nolink,center)
+#br
+パースペクティブ一覧にあるRtcLinkを選択すると, 次のような画面が現れてRtcLinkが起動されます.
+#br
+
+#ref(EclipsePluginInstall5.png,nolink,center)
+#br
+**RtcLink操作画面
+RtcLinkは, Eclipseの用語でビュー(View)やエディタ(Editor)と呼ばれるいくつかのサブウインドウから構成されます.
+:''ネームサービスビュー(NameServiceView)''|RTコンポーネントが登録されているネームサービスの内容をツリー表示します.
+:''コンフィグレーションビュー(ConfigurationView)''|選択されているRTコンポーネントのコンフィグレーション情報を表示/編集します.
+:''プロパティビュー(PropertyView)''|選択されているRTコンポーネントのプロファイル情報を表示します.
+:''システムエディタ(SystemEditor)''|RTコンポーネントの状態をグラフィカルに表示し、ポート接続等を行いシステムを構築します.
+
+以下, RtcLinkのビュー(View)やエディタ(Editor)毎の操作方法を説明します.
+
+***ネームサービスビュー(NameServiceView)
+下図の枠で囲まれた部分がネームサービスビューです.
+#br
+
+#ref(rtc-link7.png,nolink,center)
+#br
+OpenRTM-aistではRTCを管理・公開するためにネームサービスが使用されており, ネームサービスビューでは、この内容を表示/編集することができます.
+****ネームサーバへの接続
+ネームサーバへ接続するには, ネームサービスビューの上部に存在するボタンを押下するか, コンテクストメニューにて''「Add Name Server」''を選択します. 
+#br
+
+#ref(rtc-link8.png,nolink,center)
+#br
+ネームサーバ接続ダイアログでは、IPアドレスおよびポート番号を入力します.
+(ポート番号が省略された場合には, omniORBのネームサービスのデフォルトポートの2809番ポートが使用されます.)
+#br
+
+#ref(rtc-link9.png,nolink,center)
+#br
+※Eclipseの(再)起動時には最後に接続したアドレスへ自動的に接続します.
+存在しない場合には, ローカルホストの2809番に接続を試みます.
+
+****ネームサーバをビューから削除する
+接続しているネームサーバを画面から削除するには、ネームサーバを選択し''「Delete from View」''ボタンを押下します.
+#br
+
+#ref(rtc-link10.png,nolink,center)
+#br
+
+****ネームサーバの内容を表示する
+接続したネームサーバにコンポーネントが登録されていると, 以下のように登録内容がツリー形式で表示されます.
+#br
+
+#ref(rtc-link11.png,nolink,center)
+#br
+各アイコンの意味は以下のとおりです.
+|アイコン|kind|意味|
+|#ref(icon1.png,around,nolink,center,60%)|host_cxt|ホストコンテキスト|
+|#ref(icon2.png,around,nolink,center,60%)|mgr_cxt|マネージャコンテキスト|
+|#ref(icon3.png,around,nolink,center,60%)|cate_cxt|カテゴリコンテキスト|
+|#ref(icon4.png,around,nolink,center,60%)|mod_cxt|モジュールコンテキスト|
+|#ref(icon5.png,around,nolink,center,60%)|上記以外|上記以外のコンテキスト|
+|#ref(icon6.png,around,nolink,center,60%)|rtc|RTコンポーネント|
+|なし|--|RTコンポーネント以外のオブジェクト|
+|#ref(icon8.png,around,nolink,center,60%)|--|登録されているが, 実体のないゾンビオブジェクト|
+
+ネームサービスビューは, 接続先の各ネームサーバを常に監視し表示の同期・更新を行っています.
+(監視の周期は, 設定画面の接続周期の項目で変更することができます)
+また, 明示的にネームサーバの内容を再取得する場合にはリフレッシュを行うことができます.
+リフレッシュを行うには, ネームサービスビューの上部に存在するボタンを押下するか, コンテキストメニューにて''「Refresh」''を選択します.
+
+****ネームサービスビューの表示範囲を変更する
+ネームサービスビューでは、RTCの数が多くなることによって操作する範囲が煩雑化するのを防ぐために, 表示ルートの位置を移動する機能があります.
+表示ルートを移動するには, 移動する先を選択し, ''「Go Into」''で移動します.
+
+#br
+
+#ref(rtc-link13.png,nolink,center)
+CENTER:表示ルート変更
+#br
+
+#ref(rtc-link14.png,nolink,center)
+CENTER:表示ルート変更例
+#br
+移動後は, ''「Go Back」''で1階層上に上ることができます.
+また, ''「Go Home」''で最上位の階層に戻ります.
+
+****ネームツリーの内容の編集
+ネームサービスビューでは, ネームサーバに登録されているコンテキストやオブジェクトの削除を行うことができます.
+(追加を行うことはできません)
+コンテキストやオブジェクトを削除するには, コンテクストメニューにて''「Delete from Name Service」''ボタンを押下します.
+ネームサービス上でRTコンポーネントのエントリを削除しても, RTコンポーネント自体が削除されたり終了したりすることはありません.
+
+また, 登録されているネームサーバについても同様に削除することができます.
+#br
+
+#ref(rtc-link15.png,nolink,center)
+#br
+
+
+***コンフィグレーションビュー(ConfigurationView)
+下図の枠で囲まれたビューがコンフィギュレーションビューです.
+#br
+
+#ref(rtc-link16.png,nolink,center)
+CENTER:''コンフィグレーションビュー(ConfigurationView)''
+#br
+コンフィグレーションビューでは、選択されたRTCのコンフィグレーションを表示/編集することができます.
+左側にCofigurationSetのリストが表示され, 右側にConfigurationSet内のプロパティが表示されます.
+
+#br
+
+#ref(rtc-link17.png,nolink,center)
+#br
+
++選択されているコンポーネント名.
++選択されているConfigurationSet名.
++アクティブになっているConfigurationSet. また, アクティブなConfigurationSetを変更することができる.
++ConfigurationSetのリスト.
++左側で選択されているConfigurationSetのプロパティの名前.
++左側で選択されているConfigurationSetのプロパティの値.
++ConfigurationSetを追加/削除するボタン.
++プロパティを追加/削除するボタン.
++変更内容を適用/キャンセルするボタン.
+
+コンフィグレーションビューで編集中の情報は, 9.の適用ボタンが押下されるまで適用されません.
+また, 修正中(未適用)の情報は赤く表示されます.
+
+#br
+
+#ref(rtc-link18.png,nolink,center)
+#br
+
+コンフィグレーションビューに表示される情報は, RTコンポーネント選択時に最新の情報をキャッシュして表示しています(コンフィグレーションの編集に備えるため).
+あるRTコンポーネントを選択したままで, 他(のRtcLinkなど)からコンフィギュレーションが変更されると,　コンフィギュレーション情報の不整合が生じますので注意してください.
+RtcLinkはコンフィギュレーションの編集結果の適用時には, 以前の情報に関係なく完全に上書きますので注意してください.
+
+***プロパティビュー(PropertyView) 
+下図の枠で囲まれた部分がプロパティビューです.
+#br
+
+#ref(rtc-link20.png,nolink,center)
+CENTER:プロパティビュー(PropertyView)
+#br
+表示されるアイコンの意味は以下のとおりです.
+
+|#ref(prof_icon1.png,nolink,center)|RTC|InstanceName, TypeName, Description, Vender, Category, State((※1番目のExecutionContextのLifeCycleStateを基にして表示される))|
+|#ref(prof_icon2.png,nolink,center)|ExecutionContext|State, Kind, Rate|
+|#ref(prof_icon3.png,nolink,center)|ServicePort|Name, プロパティ情報のリスト|
+|#ref(prof_icon4.png,nolink,center)|Outport|Name, プロパティ情報のリスト|
+|#ref(prof_icon5.png,nolink,center)|Inport|Name, プロパティ情報のリスト|
+|#ref(prof_icon5.png,nolink,center)|PrtInterfaceProfile|InterfaceName, TypeName, PortInterfacePolarity|
+
+なお, OMG RTCの仕様では、RTCのLifeCycleStateはExecutionContextごとに存在します.
+つまり状態は複数存在しますが, RtcLinkでは1番目のExecutionContextのみを使用してSTATEを表示します.
+***システムエディタ(SystemEditor)
+下図の枠で囲まれた部分がシステムエディタ(SystemEditor)です.
+
+#br
+
+#ref(rtc-link22.png,nolink,center)
+CENTER:''システムエディタ(SystemEditor)''
+#br
+
+システムエディタでは, RTコンポーネントの状態がリアルタイムで表示されます.
+またポート間の接続や, RTコンポーネントの状態を変更することでシステム構築, 動作検証を行うことができます.
+
+#br
+
+#ref(rtc-link23.png,nolink,center)
+CENTER:''システムエディタ(SystemEditor)''
+#br
+
+****システムエディタを開く &aname(openediter);
+新しいシステムエディタを開くには, ツールバーの''「Open New System Editor」''ボタンを押下するか, メニューバーの''[ファイル]-[ Open New System Editor]''を選択します.
+#br
+
+#ref(rtc-link24.png,nolink,center)
+CENTER:''ツールバーからOpen New System Editorを選択''
+#br
+
+#br
+
+#ref(rtc-link25.png,nolink,center)
+CENTER:''ファイルメニューから Open New System Editorを選択''
+#br
+
+****RTCをシステムエディタに配置する
+RTCをシステムエディタに配置するには, ネームサービスビューからRTコンポーネントをドラッグ＆ドロップします.
+ 
+#br
+
+#ref(rtc-link26.png,nolink,center)
+CENTER:''コンポーネントをシステムエディタに配置する''
+#br
+
+****RTコンポーネントの表示 
+システムエディタに配置されたRTコンポーネントは矩形で表示され, ポートはその矩形の周りに表示されます.
+また, それぞれの状態が色で表現されます.
+
+#br
+
+#ref(rtc-link27.png,nolink,center)
+CENTER:''RTコンポーネント表示の例''
+#br
+ 
+アイコンと状態色の一覧は以下のとおりです.
+
+コンポーネントの状態
+|オブジェクト|形状|状態|色|変更可|
+|RTコンポーネント|#ref(box_icon.png,nolink,center)|CREATED|&color(white){■};(白)|○|
+|~|~|INACTIVE|&color(blue){■};(青)|○|
+|~|~|ACTIVE|&color(lime){■};(緑)|○|
+|~|~|ERROR|&color(red){■};(赤)|○|
+|~|~|UNKNOWN|&color(black){■};(黒)|○|
+|ExecutionContext|RTCの外周線|RUNNING|&color(black){□};(黒)|×|
+|~|~|STOPPED|&color(gray){□};(灰色)|×|
+|InPort|#ref(in_p_icon.png,nolink,center)|未接続|&color(blue){■};(青)|×|
+|~|~|接続あり|&color(lime){■};(緑)|×|
+|OutPort|#ref(out_p_icon.png,nolink,center)|未接続|&color(blue){■};(青)|×|
+|~|~|接続あり|&color(Lime){■};(緑)|×|
+|ServicePort|#ref(svc_icon.png,nolink,center)|未接続|&color(blue){■};(青)|×|
+|~|~|接続あり|&color(aqua){■};(水色)|×|
+
+**RtcLinkを用いたRTコンポーネントの操作
+
+***RTコンポーネントの状態を変更する
+システムエディタでは, RTコンポーネントを選択し, ''「Activate」'', ''「Deactivate」'', ''「Reset」'', ''「Finalize」'', ''「Exit」'', ''「Start」'', ''「Stop」''を実行することができます.
+また, ネームサービスビューでも同様操作を実行することができます. 
+
+#br
+
+#ref(rtc-link33.png,nolink,center)
+CENTER:''ネームサービスビュー(左)とシステムエディタ(右)から状態を変更する''
+#br
+
+これらのアクションの意味は以下のとおりです.
+
+|アクション名|実行対象|意味|
+|Activate|1番目のExecutionContext|Active化する|
+|Deactivate|~|非Active化する|
+|Reset|~|Resetする|
+|Finalize|RTコンポーネント|Finalizeする|
+|Exit|~|Exitする|
+|Start|1番目のExecutionContext|Startする|
+|Stop|~|Stopする|
+
+また, ツールバーとコンテクストメニューから, システムエディタに含まれるすべてのRTコンポーネントへ''Activate'', ''Deactivate'', ''Start'', ''Stop''を実行することができます.
+#br
+
+#ref(rtc-link34.png,nolink,center)
+CENTER:''ツールバーボタン:全コンポーネントを一括操作可能''
+#br
+
+All系のアクションは, 1番目以外のExecutionContextについても行われます.
+''Activate''や''Start''を画面内のRTコンポーネントに１つずつ行った場合と結果が異なることに注意してください.
+
+***ポート間を接続する
+システムエディタでは, RTコンポーネントのポート間を接続することができます.
+ポート間を接続するには, ポートとポートをドラッグ＆ドロップでつなぎます.  
+#br
+
+#ref(rtc-link35.png,nolink,center)
+#br
+
+ドラッグ＆ドロップ終了後, 接続に必要な情報の入力を促すダイアログが表示されます.
+#br
+
+#ref(rtc-link36.png,nolink,center)
+#br
+
+このダイアログでは, ConnectorProfileを作成します.
+ConnectorProfileは, それぞれのポートが必要とする条件を満たすように作成しなければなりません, このダイアログでは自動的に必要な条件を満たす値のみが入力できるようになっています.
+
+必要な条件を満たすことができない接続の場合には, ドラッグ＆ドロップの接続時に禁止マークが表示され, ドラッグ＆ドロップを行うことができません.  
+#br
+
+#ref(rtc-link37.png,nolink,center) \\
+#br
+
+ポート間の接続には, データポート間接続とサービスポート間接続があります.
+
+***データポート間接続
+データポートの接続で, 「InPort」と「OutPort」を接続します. これらの間をドラッグ＆ドロップでつなぐと以下のダイアログが表示されます. 
+#br
+
+#ref(rtc-link38.png,nolink,center)
+#br
+
+ダイアログの項目と条件は以下のとおりです. 
+
+|項目|プロファイル名|概要|
+|Data Type|''dataport.data_type''|ポートが使用するデータ型.|
+|Interface Type|''dataport.interface_type''|データポートが使用するインターフェースタイプ.デフォルトではCORBA_Anyのみ使用可能.|
+|Dataflow Type|''dataport.dataflow_type''|データフロー型.Push型とPull型がある.|
+|Subscription Type|''dataport.subscription_type''|サブスクリプション型.Push型の時のみ意味を持つ.New, Periodic, Flush型がある.|
+|Push Rate(Hz)|''dataport.push_interval''|Subscription Type がPeriodicのときのデータ送信周期. Subscription Typeが''Periodic''の時のみ指定可能.|
+
+これらの項目について, RtcLinkは指定可能な値を, それぞれのポートの値リストから文字列のマッチングを行って作成します. 
+このため, 双方のポートに対してANYしか指定されていないような場合には, 入力可能な値を判断することができません.
+このため双方のポートにANYが含まれている場合に, RtcLinkは任意の文字列を入力できるようにしています. 任意の文字列が入力可能な項目には, 「任意入力可」と表示されます.
+***サービスポート間接続 
+サービスポート間の接続では, ''「ServicePort」''と''「ServicePort」''を接続します. 
+これらの間をドラッグ＆ドロップでつなぐと以下のダイアログが表示されます.  
+
+#br
+
+#ref(rtc-link39.png,nolink,center)
+#br
+
+サービスポートの場合, 必須となる接続の条件はありません.
+しかし, ServicePort間でのPortInterfaceProfileが完全にマッチングしない場合, 接続ダイアログにて警告を表示します. 
+ここでいう完全なマッチングとは, PortInterfaceProfileの「type」が同じで, 「polarity」がお互いにPROVIDEDとREQUIredになっていること.
+また余りなく (PortInterfaceProfileはそれぞれのポートに複数存在する) すべてのPortInterfaceProfileがマッチングすることを指しています. 
+
+***ポート間の接続を切断する 
+ポート間の接続を切断するには, 接続を選択しDeleteボタンを押下するか, コンテクストメニューに表示されるDeleteを押下します.  
+
+#br
+
+#ref(rtc-link40.png,nolink,center)
+#br
+
+
+
+***システムをセーブする
+システムエディタで構築すしたシステムはセーブすることができます.
+セーブするには, メニューの''[ファイル]''もしくはエディタを右クリックして''「Save…」''を選択します.
+(''「SaveAs…」''では, セーブするファイルを任意選択することができます) 
+
+#br
+
+#ref(rtc-link41.png,nolink,center)
+#br
+
+
+****セーブしたシステムをオープンする
+セーブしたシステムエディタをオープンするには, エディタを右クリックして
+「Open」を選択します.  
+#br
+
+#ref(rtc-link42.png,nolink,center)
+#br
+
+オープン後は, RtcLinkはリモートのシステムを正として最新の情報へと更新を行います.
+セーブ内容をシステムへ復元するには, 次の節で説明する「Open and Restore…」を使用してください.
+
+***セーブしたシステムをオープンおよび復元する
+セーブしたシステムエディタをオープンおよび復元するには, エディタを右クリックして「Open and Restore…」を選択します.  
+#br
+
+#ref(rtc-link43.png,nolink,center) \\
+#br
+
+システムへ復元されるのは以下の内容です. 
+-ポート間の接続
+-コンフィグレーション情報
+
+また, 復元後は自動的にAll Activateが実行されます. 
+復元に失敗した場合には, エラー内容が表示されます. 
+また, RtcLinkはエラー発生時でも, できる限りの復元を試みます. 
+
+***セーブしたシステムを復元する（コンソール）
+RtcLinkには, GUIからではなくコンソールにて, システムを復元する機能も持っています. コンソール復元を行うには, 別途配布されているRtcLinkのコンソール復元パッケージの「ConsoleRestore」フォルダにある, 「run.bat」をセーブファイルを指定して実行します. 
+
+ C:\tmp\RtcLink\ConsoleRestore > run.bat C:\tmp\save.rtclink 
+
+
+
+**RTコンポーネントの描画編集
+ここでは, RTコンポーネントの描画編集について説明していきます. (「編集」ではなく「描画編集」とあえてしているのは, ここで説明される作業は描画の編集であり, システムに対する影響は全くないためです. )
+
+***コンポーネントブロックの大きさの変更と移動
+ブロックを移動するには, 選択後ドラッグして動かします. 
+ブロックの大きさを変更するには, ブロックを選択することで表示されるハンドルをドラッグして動かします.  
+#br
+
+#ref(rtc-link28.png,nolink,center)
+#br
+また, 選択されたブロックの位置と大きさがステータスバーに表示されます.  
+#br
+
+#ref(rtc-link29.png,nolink,center)
+#br
+***ブロックの回転
+ブロックを選択し, マウスの中ボタン (あるいはホイール) をクリッ
+クすることで, 水平の向きへ回転します.
+Shiftキーを押しながらマウスの中ボタン(あるいはホイール)をクリックすることで, 垂直の向きへ回転します.
+それぞれ同じ操作を繰り返し行うことで逆の水平の向き, 逆の垂直の向きへ変更でき, 上下左右の向きへ操作することができます.  
+#br
+
+#ref(rtc-link30.png,nolink,center)
+#br
+
+***ブロックの削除
+ブロックを削除するには, ブロックを選択しDeleteボタンを押下するか, コンテキストメニューからDeleteを押下してください.  
+#br
+
+#ref(rtc-link31.png,nolink,center)
+#br
+
+***ポート間の接続線を移動する
+接続線を移動するには, 接続線を選択し表示されるハンドルを移動します. 垂直線は左右に, 水平線は上下に移動することができます.  
+#br
+
+#ref(rtc-link32.png,nolink,center)
+#br
+
+**RtcLinkの設定
+ここでは, RtcLinkの設定画面について説明します. RtcLinkの設定画面は, メニューの''[ウインドウ]-[preferences…]-[RtcLinｋ]''で表示することができます. 
+
+***接続周期
+接続周期とは, RtcLinkがシステムの情報を収集して表示へ反映する周期のことです.]
+接続周期は, ネームサービスビューとシステムエディタの2つがあります.
+単位はミリ秒で, 0を指定した場合には, 同期は行われません.  
+
+#br
+
+#ref(rtc-link44.png,nolink,center)
+#br
+
+***表示色
+表示色の設定画面では, システムエディタにて表示されるRTコンポーネントとExecutionContext状態の色を設定することができます.
+それぞれの状態の意味については, システムエディタのRTコンポーネントの表示をご覧ください.  
+
+#br
+
+#ref(rtc-link45.png,nolink,center)
+#br
+
+
+**その他 
+***FAQ
+　[[こちら>FAQ/RtcLink]]を参照してください。
+**謝辞
+　RtcLinkは, 以下のライブラリを使用して開発されました. これらのプロジェクトの開発と設計にかかわった方々に感謝します. 
+
+:Apache Jakarta Commons Lang 2.2|
+Apache Jakarta Commons Lang~
+Copyright 2001-2006 The Apache Software Foundation~
+This product includes software developed by~
+The Apache Software Foundation http://www.apache.org/
