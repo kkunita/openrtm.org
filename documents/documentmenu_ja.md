@@ -460,7 +460,7 @@
         - (「OpenRTM-aist-Java インストールマニュアル(UNIX)」=> Linuxへのインストール: 02_install_linux_java_1_1_ja.txt)
         - (「OpenRTM-aist-Java インストールマニュアル(Windows)」=> - Windows へのインストール: 01_install_windows_java_1_1_ja.txt)
         - (こちら=> RTコンポーネント作成に関する FAQ: 04_faq_rtc_creation_6426_ja.txt)
-        - (JDK 5 インストール方法（UNIX）=> Linuxへのインストール: 02_install_linux_java_1_1_ja.txt)
+        - (JDK 5 インストール方法（UNIX）=> Tips: 06_tips_jdk_jp.txt)
         - (JDK 5 インストール方法（Windows）=> Windows へのインストール: 01_install_windows_java_1_1_ja.txt)
         - (システム環境変数の設定方法（UNIX）=> Linuxへのインストール: 02_install_linux_java_1_1_ja.txt)
         - システム環境変数の設定方法（Windows）=> Windows へのインストール: 01_install_windows_java_1_1_ja.txt)
@@ -468,14 +468,20 @@
         - (FAQ: 任意のフォルダーにクラスパスを設定してAnt ビルドを行う方法は？=> RTコンポーネント作成に関する FAQ: 04_faq_rtc_creation_6426_ja.txt)
         - RtcLink・RtcTemplateのインストール: リンク切れ
 　　　　- RtcTemplate: rtc_template_ja.txt
-          - こちら : リンク異常
-　　　　　- RtcTemplateエディタの起動; 異常
+          - こちら : リンク切れ(エラーはでないがおかしなページに飛ぶ）
+　　　　　- RtcTemplateエディタの起動; リンク異常
           - rtctemplate操作画面:　リンク異常
-          - その他・謝辞 : リンク異常
-        - (''FAQ'': Q. 新規 Java プロジェクトが JDK5 (1.5) 準拠として作成できない: 古いページへのリンク必要なさそうなので、ページ同期せず）
-        - RtcLink: 古いコマンドなのでページ同期せず
+          - その他・謝辞 : リンク切れ(エラーはでないがおかしなページに飛ぶ）
+        - こちら=> RTコンポーネント作成について: about_rtc_creation_ja.txt
+        - (''FAQ'': Q. 新規 Java プロジェクトが JDK5 (1.5) 準拠として作成できない=> RTコンポーネント作成について: about_rtc_creation_ja.txt)
+        - RtcTemplate を直接起動する: リンク切れ
+　　　　- (RtcTemplate: rtc_template_ja.txt)
+        - (こちら=> RTコンポーネント作成について: about_rtc_creation_ja.txt)
+        - (''FAQ'': Q. 任意のフォルダーにクラスパスを設定して Ant ビルドを行う方法は？=> RTコンポーネント作成について: about_rtc_creation_ja.txt)
+        - RtcLink: rtclink_ja.txt
 　　　　- ネームサーバの起動(UNIX): リンク切れ
         - ネームサーバの起動(Windows): リンク切れ
+        - (RtcLink の起動=> RtcLink: rtclink_ja.txt)
       - OpenCV編 for RTCB-RC1=> RTコンポーネント作成(OpenCV編 for RTCB-RC1): 05_rtc_development_opencv_rtcb-rc1_ja.txt
 　    - NXTway編=> RTコンポーネント作成(NXTway編): 06_rtc_development_nxtway_ja.txt
       - LEGO Mindstorm編=> LEGO Mindstorm NXT RTコンポーネント : 07_rtc_development_logo_mindstorm_ja.txt
@@ -583,7 +589,7 @@
         - (一括インストールの項目=> ラズパイマウス用 RTC のインストール(Raspbian) : 06_raspimouse_rtc_on_raspbian_ja.txt) 
         - (スクリプトファイルの項目=> ラズパイマウス用 RTC のインストール(Windows): 07_raspimouse_rtc_on_windows_ja.txt)
         - (センサのキャリブレーション=> ラズパイマウス用 RTC のインストール(Raspbian) : 06_raspimouse_rtc_on_raspbian_ja.txt) 
-      - 自作の RTC で制御
+      - 自作の RTC で制御: 09_raspimouse_control_by_original_rtc_ja.txt
         - (このページ=> RTCBuilder-1.1.0: 04_rtc_builder-1_1_0_ja.txt)
         - (Windows=> コンパイル方法 (Windows、CMake 利用、C++ 編 ): 10_compile_win_cmake_cpp_rtcb_1_1_0_ja.txt)
         - (Ubuntu=> コンパイル方法 (Ubuntu、CMake、Code::Blocks利用): 12_raspimouse_compile_ja.txt)
