@@ -1,0 +1,155 @@
+﻿// Title: Making RTC for EV3 (Python)
+// -*- pukiwiki-edit -*-
+// * EV3用 RTC の作成 (Python編)
+#contents
+
+** 移動ロボットの組み立て
+
+EV3 の標準セットを購入すると、移動ロボット (Educator Vehicle) の作成方法のマニュアルが1冊ついてくるはずです。
+なければ、以下の URL からダウンロードすることができます。この移動ロボットを例にとり、移動ロボットRTC を作成してみます。
+
+- Educator Vehicle: http://robotsquare.com/wp-content/uploads/2013/10/45544_educator.pdf
+
+まずは、このマニュアルに従って、移動ロボット (Educator Vehicle) を組み立てます。
+
+それぞれのモーター、センサーはそれぞれ以下のように取り付けます。
+
+| モーター右   | ポート C |
+| モーター左   | ポート B |
+| モーター(M)| ポートA |
+| タッチセンサー右 | ポート 3 |
+| タッチセンサー左 | ポート 1 |
+| 超音波センサー | ポート 4 |
+| ジャイロセンサー | ポート 2 |
+
+
+
+** 移動ロボットの運動学
+
+さて、上記のコンポーネントは指令値として2次元速度指令を受け取りますが、実際にモータを制御する際には、モーターの角速度指令値を計算しモーターに命令しなければなりません。
+
+移動ロボットの運動学については、東北学院大学の熊谷先生のページが参考になります。
+
+- http://www.mech.tohoku-gakuin.ac.jp/rde/contents/course/robotics/wheelrobot.html
+
+座標系としては、自律移動機能共通インターフェース仕様書に従って、
+
+- http://openrtm.org/openrtm/ja/project/Recommendation_CommonIF
+
+ロボット進行方向をX軸とした右手系を想定する。速度指令は座標系にならって、(v_x、v_y、v_a)とする。独立二輪駆動式の移動ロボットなので、v_y は常に0となり、実質的に v_x および v_a を指定することになる。
+
+
+さて、車輪の角速度を &ref(math16.png,nolink); , &ref(math17.png,nolink); として、車輪の半径を r とすると、各車輪の接地点での速度 v_r、v_l はそれぞれ
+
+// v_r = rω_r
+// v_l = rω_l
+&br;
+#ref(math3.png,nolink)
+#ref(math4.png,nolink)
+&br;
+
+となる。また、回転中心からロボット中心の距離を ρ とすると、以下の式が成り立つ。
+
+// vx = ρva
+&br;
+#ref(math5.png,nolink)
+&br;
+
+一方、中心から車輪までの距離(トレッドの1/2)を d とすると、
+
+// v_r = (ρ + d)va
+// v_l = (ρ - d)va
+&br;
+#ref(math0.png,nolink)
+#ref(math1.png,nolink)
+// #ref(http://latex.codecogs.com/png.latex?v_{r} = (\rho + d) v_{a},nolink)
+// #ref(http://latex.codecogs.com/png.latex?v_{l} = (\rho - d) v_{a},nolink)
+&br;
+
+となる。以上の式から、速度指令(v_x、v_y、v_a)の時に実際に与えるべき左右のモーターの角速度は以下の通りになります。
+
+// ω_r  = (vx + va d) / r
+// ω_l  = (vx - va d) / r
+&br;
+#ref(math6.png,nolink)
+#ref(math7.png,nolink)
+&br;
+
+Educator Vehicle の車輪の直径 (2r)、トレッド (2d) はそれぞれ
+
+| 車輪の直径 2r | 56mm (0.056m) |
+| 車輪の直径 r  | 28mm (0.028m) |
+| トレッド幅 2d | 118.5mm (0.1185m) |
+| トレッド幅 d  | 59.25mm (0.05925m)|
+| 車輪の幅      | 28.5mm (0.0285m) |
+
+なので、
+// ω_r  = (vx + 0.05 va) / 0.02
+// ω_l  = (vx - 0.05 va) / 0.02
+&br;
+#ref(math8.png,nolink)
+#ref(math9.png,nolink)
+&br;
+
+となる。
+
+** 自己位置推定（オドメトリ）
+
+次に、ロボットの自己位置同定の方法について考えます。
+ロボットの移動速度・角速度を積分することで任意の時点の位置・姿勢を得ることができます。速度 v_x、角速度 v_a とすると、(x、y、θ) の微小変位と v_x、v_a との関係を直線近似すると、
+
+// dx/dt = vx cosθ
+// dy/dt = vx sinθ
+// dθ/dt = va
+&br;
+#ref(math10.png,nolink)
+#ref(math11.png,nolink)
+#ref(math12.png,nolink)
+&br;
+
+となる。(より厳密には円弧近似する方法もあるが、ここでは簡単に直線近似とした。)
+これを実際のロボット制御時に、計算機上で求める場合、サンプリング周期 Δt [s] として、
+
+// x_i+1 = x_i + vx_i cosθΔt
+// y_i+1 = y_i + vx_i sinθΔt
+// θ_i+1 = θ_i + va_i Δt
+#ref(math13.png,nolink)
+#ref(math14.png,nolink)
+#ref(math15.png,nolink)
+
+のように求められる。
+
+** RTC のひな形作成
+** 作成する RTC の設計
+
+作成する RTC を設計します。
+
+
+作成する RTC の仕様をいかに示します。RTCBuilder で必要事項を入力し、ひな形コードを生成します。
+
+|150|150||c
+|>|>|CENTER: ''基本タブ'' |
+|''プロファイル名'' |>| ''名称・指定'' |
+| モジュール名 |>| EducatorVehicle |
+| バージョン |>| 任意 |
+| ベンダ名 |>| 任意 |
+| カテゴリ |>| Mobilerobot |
+|>|>|CENTER: ''アクティビティ'' |
+| 有効アクション |>| onInitialize、onActivated、onDeactivated、onExecute |
+|>|>|CENTER: ''データポート (InPort)'' |
+| ''ポート名'' | ''型'' | ''意味'' |
+| velocity2D | RTC::TimedVelocity2D | 速度指令 (v_x、v_y、v_θ) [m/s、m/s、rad/s] |
+| angle | RTC::TimedDouble | 
+|>|>|CENTER: ''データポート (OutPort)'' |
+| ''ポート名'' | ''型'' | ''意味'' |
+| odometry | RTC::TimedPose2D | 現在の位置・姿勢（角度） (x、y、θ) [m、m、rad] |
+| ultrasonic | RTC::RangeData | 超音波センサーをレンジセンサーと仮定し、要素1の距離データを格納 |
+| gyro | RTC::TimedDouble | ジャイロセンサーを TimedDouble [rad] にて出力 |
+| color | RTC::TimedString | カラーセンサーの値を色名 (none、black、white、blue、green、red、yellow、brown) で出力 |
+| touch | RTC::TimedBooleanSeq | タッチセンサーの値をBoolean[2] で出力 |
+|>|>|CENTER: ''コンフィギュレーション'' |
+| ''ポート名'' | ''型'' | ''意味'' |
+| wheelRadius | double | タイヤの半径 [m] |
+| wheelDistance | double | タイヤ間距離の1/2 [m] |
+
+

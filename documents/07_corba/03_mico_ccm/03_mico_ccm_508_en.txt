@@ -1,0 +1,84 @@
+﻿// Title: MICO_CCM
+#contents
+
+** ccmd (mico-ccmd) 
+CCM daemon attached to MICO.
+ccmd installs components on a single host and manages the deployed components.
+Therefore, if you want to run components on multiple hosts you must run on each host.
+The mico-ccmd has ComponentInstallation, AssemblyFactory and ServerActivator interfaces (and services) implemented.
+//MICO に付属する CCM デーモン。
+//ccmd は単一ホスト上でのコンポーネントのインストール、デプロイされたコンポーネントの管理を行う。
+//したがって、複数ホストにコンポーネントを実行したい場合は各ホスト上で実行しなければならない。
+//mico-ccmd はComponentInstallation, AssemblyFactory および ServerActivator インターフェース(およびサービス)が実装されている。
+
+: ComponentInstallation | On the host where mico-ccmd is running you can install the component implementation through the ComponentInstallation interface. Normally you install components with mico-ccmload.
+//::mico-ccmdが実行されているホスト上では、ComponentInstallation インターフェースを通してコンポーネント実装をインストールすることができる。
+//::通常はmico-ccmloadによりコンポーネントをインストールする。
+
+: AssemblyFactory | Assembly Factory allows you to launch assembly of components on demand.
+//::AssemblyFactory を通してコンポーネントのアセンブリをオンデマンドで起動することができる。
+
+: ServerActivator | The component server can be launched on demand through the ServerActivator interface.
+//::ServerActivator インターフェースを通してコンポーネントサーバーをオンデマンドで起動することができる。
+
+The deployment tool first communicates with mico-ccm, uploads the component implementation file, and launches componentserver on that host.
+(Do you create a process for each component?)
+Mico-ccmd is a daemon that normally operates in a permanent background, and does not do anything.
+If it receives an end signal (SIGINT, Ctrl-C), it terminates all assembly and component servers.
+Finally, delete all installed component implementations and exit.
+//デプロイメントツールはまず始めに、mico-ccmと通信しコンポーネント実装ファイルをアップロードし、そのホストでcomponentserverを起動する。
+//(コンポーネント毎にプロセス作るのか？)
+//mico-ccmdは通常永続的バックグラウンドで動作するデーモンで、表立っては何もしない。
+//もし終了シグナル(SIGINT, Ctrl-C)を受け取ると、すべてのアセンブリおよびコンポーネントサーバーを終了させる。
+//最後に、インストールされたすべてのコンポーネント実装を削除し終了する。
+
+*** Option
+//*** オプション
+|LEFT:150|LEFT|c
+| --root <pkgdir> | The path to the directory where the component implementation to be installed is stored. If not specified, it is saved in the current directory.|
+|--ior <filename> | If you want to save mico - ccmd 's IOR in a file, specify the file name with this option. Output to standard output with a hyphen.|
+|-v | Redundancy option. Status messages such as start and stop of component server are output to standard output. (Does not conflict with ior? www)|
+//| --root <pkgdir> | インストールされるコンポーネント実装が保存されるディレクトリへのパス。指定されなければカレントディレクトリに保存される。|
+//|--ior <filename> | mico-ccmd の IORをファイルに保存したい場合はこのオプションでファイル名を指定する。ハイフンで標準出力に出力する。|
+//|-v | 冗長オプション。コンポーネントサーバーのスタート、ストップ等のステータスメッセージを標準出力に出力する。(iorとぶつからない？www)|
+
+Standard options of MICO ORB can also be used.
+With ORBIIOPAddr, it is possible to assign an ORB to a specific IP address (-ORBIIOPAddr hoge.aist.go.jp:1234 etc.).
+If the port is known, it is also possible to specify mico-ccmd with the object URL.
+Since the object key of mico-ccmd is "MicoCCMD"
+ corbaloc::<host>:<port>/MicoCCMD
+You can specify an object of ccmd with a URL like.
+//MICO ORB の標準オプションも使用可能。
+//-ORBIIOPAddr により、特定のIPアドレスにORBをアサイン (-ORBIIOPAddr hoge.aist.go.jp::1234 等) することが可能である。
+//ポートが既知であれば、mico-ccmd　をオブジェクトURLで指定することも可能である。
+//mico-ccmdのオブジェクトキーは "MicoCCMD" なので、
+// corbaloc::<host>:<port>/MicoCCMD
+//といったURLでccmdのオブジェクトを指定することができる。
+
+** ccmload (mico-ccmload)
+ccmload is a simple deployment tool that can place a single component.
+ccmload communicates with the MicoCCM daemon, launches a new component server, and loads new components.
+Then load the home <home name> from the shared library <library file> into the container.
+Optionally, you can also register home with name servers.
+<home name> needs to be the full name of the component home to be deployed.
+<library name> must be a shared library filename containing the implementation of <home name>.
+ccmload does not upload the shared library of the implementation, but the file name must be accessible by the MicoCCM daemon.
+//ccmload は単一のコンポーネントを配置することができる簡単なデプロイメントツールである。
+//ccmloadはMicoCCMデーモンと通信し新たなコンポーネントサーバーを起動し新たなコンポーネントをロードする。
+//そして、共有ライブラリ <library file> からホーム <home name> をコンテナにロードする。
+//オプションとして、homeをネームサーバに登録することもできる。
+//<home name> はデプロイされるコンポーネントホームの完全な名前である必要がある。
+//<library name> は <home name> の実装を含む共有ライブラリファイル名でなくてはならない。
+//ccmloadは実装の共有ライブラリをアップロードするのではなく、ファイル名はMicoCCMデーモンがアクセスできるものでなくてはならない。
+
+|LEFT:180|LEFT|c
+| --ccmd <IOR> | Give an object reference of MicoCCM Daemon.|
+| --host <host>[:port] | This option gives you the address and port of the MicoCCM daemon. When the port number is not specified, the default port is 1234.|
+| --ns <name> | Register the home to be deployed in the name server with the specified name.|
+| --ior <filename> | Write the object reference of the home being deployed to the specified file. Write out to standard output with a hyphen.|
+| -v | Redundant message output |
+//| --ccmd <IOR> | MicoCCM Daemon のオブジェクトリファレンスを与える。|
+//| --host <host>[:port] | このオプションによりMicoCCM デーモンのアドレスとポートを与えることができる。ポート番号が指定されない場合のデフォルトポートは1234である。|
+//| --ns <name> | デプロイされるホームを指定の名前でネームサーバに登録する。|
+//| --ior <filename> | デプロイされるホームのオブジェクトリファレンスを指定のファイルに書き出す。ハイフンで標準出力に書き出す。|
+//| -v | 冗長メッセージ出力 |

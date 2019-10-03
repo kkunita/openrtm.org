@@ -1,0 +1,30 @@
+﻿// Title: OpenRTM-aist class references
+//-[[Configuration:/en/node/474]]OpenRTM-aist class references
+//-[[Detailed explanation for DataPort:/en/node/475]]
+
+#ref(reference.png,right,around,70%,url=/node/376)
+** The latest class references
+
+This class references are automatically generated from the newest source codes on the repository. Some features must be different from release version's OpenRTM-aist.
+
+-[[C++ class reference>http://openrtm.org/doc/cxx/1.1.2/classreference_en/index.html]]
+-[[Python class reference>http://openrtm.org/doc/python/1.1.2/classreference_en/index.html]]
+-[[Java class reference>http://openrtm.org/doc/java/1.1.2/classreference_en/index.html]]
+<!--break-->
+** 1.1 IDL references
+
+-[[IDL references>http://openrtm.org/doc/idl/1.1/idlreference_en/index.html]]
+
+** 1.1.0 class references
+
+-[[C++ class reference>http://openrtm.org/doc/cxx/1.1.0/classreference_en/index.html]]
+-[[Python class reference>http://openrtm.org/doc/python/1.1.0/classreference_en/index.html]]
+-[[Java class reference>http://www.openrtm.org/OpenRTM-aist/documents/current/java/classreference_en/index.html]]
+
+** 1.0 IDL references
+
+-[[IDL references>http://openrtm.org/doc/idl/1.0/idlreference_en/index.html]]
+
+//**Reference manual (0.4.x)
+//-[[Class reference>http://www.openrtm.org/OpenRTM-aist/doxygen/ClassReference-en/index.html]]
+//-[[IDL reference>http://www.openrtm.org/OpenRTM-aist/doxygen/IDLReference-en/index.html]]

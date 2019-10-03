@@ -1,0 +1,201 @@
+﻿// Title: コード生成・セーブとロード
+#contents
+
+**コード生成
+生成対象 RTコンポーネントの各種プロファイル情報を設定した後、テンプレートコードの生成を行います。
+基本プロファイル入力ページの [コード生成] ボタンをクリックすると、入力したプロファイル情報に応じたテンプレートコードの生成が行われます。
+#br
+
+#ref(CodeGen.png,center,60%)
+CENTER:''テンプレートコードの生成''
+#br
+各言語を選択した際のコード生成実行時に生成されるテンプレートファイルは以下のとおりです。
+CENTER:''生成ファイル一覧''
+
+-C++ ( 「 Use old build environment. 」のチェックボックスを ON しない場合 )
+|LEFT:270|LEFT|c
+|CENTER:ファイル名|CENTER:説明|
+|<RTC名> Comp.cpp|RTコンポーネントを起動するコードです。|
+|<RTC名>.h|RTコンポーネント本体のヘッダです。|
+|<RTC名>.cpp|RTコンポーネント本体のコードです。|
+|<サービス型名>SVC_impl.h|サービスプロバイダーのヘッダです。（''※''）&br;ServiceProvider にて指定された Type のみが出力されます。|
+|<サービス型名>SVC_impl. cpp|サービスプロバイダーの実装コードです。（''※''）&br;ServiceProvider にて指定された Type のみが出力されます。|
+|CMakeLists.txt|CMake用の設定ファイルファイルです。|
+|doc/||
+|doxyfile.in|Doxygen 用の設定ファイルファイルです。|
+|cmake/||
+|uninstall_target.cmake.in|アンインストールターゲット追加の雛形ファイル（CMake用）|
+|cpack_options.cmake|WiX パッケージ作成用モジュール（CMake/WiX用）|
+|License.rtf|パッケージ情報に含まれるライセンス表示（CMake/WiX用）|
+|wix.xsl.in|WiX パッケージに含めるファイルを指定するテンプレート（CMake/WiX用）|
+|cmake/Modules/||
+|FindOpenRTM.cmake|OpenRTM-aist 環境設定取得用モジュール（CMake用）|
+
+-C++ ( [Use old build environment.] のチェックボックスを ON した場合 )
+|LEFT:270|LEFT|c
+|CENTER:ファイル名|CENTER:説明|
+|<RTC名> Comp.cpp|RTコンポーネントを起動するコードです。|
+|<RTC名>.h|RTコンポーネント本体のヘッダです。|
+|<RTC名>.cpp|RTコンポーネント本体のコードです。|
+|<サービス型名>SVC_impl.h|サービスプロバイダーのヘッダです。（''※''）&br;ServiceProvider にて指定された Type のみが出力されます。|
+|<サービス型名>SVC_impl. cpp|サービスプロバイダーの実装コードです。（''※''）&br;ServiceProvider にて指定された Type のみが出力されます。|
+|Makefile.<RTC名>|コンパイルするための Makefile です。|
+|<RTC名>_vc8.sln|Visual Studio 2005用のソリューションファイルです。|
+|<RTC名>_vc8.vcproj|Visual Studio 2005用の RTコンポーネントプロジェクトファイルです。|
+|<RTC名>Comp_vc8.vcproj|Visual Studio 2005用の起動コード用プロジェクトファイルです。|
+|<RTC名>_vc9.sln|Visual Studio 2008用のソリューションファイルです。|
+|<RTC名>_vc9.vcproj|Visual Studio 2008用の RTコンポーネントプロジェクトファイルです。|
+|<RTC名>Comp_vc9.vcproj|Visual Studio 2008用の起動コード用プロジェクトファイルです。|
+|Copyprops.bat|プロパティ・ファイルコピー用バッチファイルです。|
+|User_config.vsprops|ユーザー定義用プロパティ・ファイルです。|
+|OpenRTM-aist.vsprops|OpenRTM-aist 用プロパティ・ファイルです。|
+
+-Java
+|LEFT:290|LEFT|c
+|CENTER:ファイル名|CENTER:説明|
+|<RTC名>Comp.java|RTコンポーネントの起動用クラスです。|
+|<RTC名>.java|RTコンポーネントの Component Profile、初期化処理などを定義したクラスです。|
+|<RTC名>Impl.java|RTコンポーネントの本体です。|
+|build_<RTC名>.xml|RTコンポーネントのビルド用ファイルです。|
+|<サービス型名> SVC_impl.java|サービスプロバイダーの実装クラスです。（''※''）|
+|CMakeLists.txt|CMake用の設定ファイルファイルです。|
+|doc/||
+|doxyfile.in|Doxygen用の設定ファイルファイルです。|
+|cmake_modules/||
+|cmake_javacompile.cmake.in|Java コンパイルターゲット追加の雛形ファイル（CMake用）|
+|FindOpenRTMJava.cmake|OpenRTM-aist-Java 環境設定取得用モジュール（CMake用）|
+|cmake/||
+|uninstall_target.cmake.in|アンインストールターゲット追加の雛形ファイル（CMake用）|
+|cpack_options.cmake|WiXパッケージ作成用モジュール（CMake/WiX用）|
+|License.rtf|パッケージ情報に含まれるライセンス表示（CMake/WiX用）|
+|cpack_resources/||
+|wix.xsl.in|WiXパッケージに含めるファイルを指定するテンプレート（CMake/WiX用）|
+
+-Python
+|LEFT:290|LEFT|c
+|CENTER:ファイル名|CENTER:説明|
+|<RTC名>.py|RTコンポーネントのコードです。|
+|<サービス型名>_idl.py||
+|<サービス型名>_idl_example.py|サービスプロバイダーの実装ファイルです。（''※''）|
+|CMakeLists.txt|CMake用の設定ファイルファイルです。|
+|doc/||
+|doxyfile.in|Doxygen用の設定ファイルファイルです。|
+|cmake_modules/||
+|FindOpenRTMPython.cmake|OpenRTM-aist-Python 環境設定取得用モジュール（CMake用）|
+|cmake/||
+|uninstall_target.cmake.in|アンインストールターゲット追加の雛形ファイル（CMake用）|
+|cpack_options.cmake|WiXパッケージ作成用モジュール（CMake/WiX用）|
+|License.rtf|パッケージ情報に含まれるライセンス表示（CMake/WiX用）|
+|cpack_resources/||
+|Description.txt|パッケージ情報に含まれる説明（CMake用）|
+|License.txt|パッケージ情報に含まれるライセンス表示（CMake/Linux用）|
+|wix.xsl.in|WiXパッケージに含めるファイルを指定するテンプレート（CMake/WiX用）|
+
+''※'' RtcBuilder は、このサービスプロバイダーの実装ファイルを出力する際、オペレーションのテンプレートを生成するために、IDL をパースします。しかし、このパース機能には以下のような制限が存在します。
+-プリプロセッサにおいて、#include ディレクティブのみ使用可能。（#ifdef などは単に無視される）
+-生成されるオペレーションは直接指定されたインタフェースのオペレーションのみで、親から継承したオペレーションは含まれない。
+
+
+***出力選択
+RtcBuilder は、生成したファイルと同名のファイルが出力先に既に存在し、既存ファイルと生成ファイルの間で出力内容に差異が存在する場合、どちらの出力を利用するかを選択する確認画面が表示されます。
+#br
+
+
+#ref(fig4-2SelectOutPut_ja.png,50%,center)
+CENTER:''出力選択画面''
+#br
+
+出力の選択では、以下の3つ出力候補の中から選択します。
+-Original ： 既に存在するファイルをそのまま残す
+-Merge ： マージブロックを利用したマージを行う（''※１''）
+-Generate ： 新たに生成した内容で上書きする
+// -Cancel ： 既に存在するファイルをそのまま残す
+
+''※１'' Mergeでは、<rtc-template block=”block”>タグで囲まれた範囲のみを最新の生成内容で上書します。生成したテンプレートは、ユーザーが変更しない範囲をあらかじめこのタグで囲んでいます。
+このタグの中は変更後もマージすることで消えてしまいますので、修正しないようにしてください。
+
+***パースペクティブ切り替え
+生成対象言語の開発環境用プラグインがインストールされている場合、コード生成実行後にパースペクティブ切り替えの確認メッセージが表示されます。
+対象のプラグインがインストールされている場合には以下のようなメッセージが表示されますので、パースペクティブの切り替えを行うかどうかを選択してください。
+#br
+
+
+#ref(fig4-3MessagePerspectiveSwitch_ja.png,70%,center)
+CENTER:''パースペクティブ切り替え確認メッセージ''
+#br
+生成言語と開発環境用プラグインの関係は以下のとおりです。
+-Java ： JDT(Java Development Tools) → あらかじめ Eclipse に含まれている開発環境です。
+-C++ ： CDT(C/C++ Development Tooling)
+-Python ： PyDev
+
+''※''各言語用の開発環境用プラグインがインストールされており、出力対象プロジェクトが新規作成プロジェクトの場合は、各プロジェクトのプロパティに対象言語の属性が設定されます。
+
+**生成ファイルのパッケージング機能
+生成したテンプレートファイル、テンプレートファイルを基に作成した RT コンポーネントの実行用バイナリファイルなどを各種形式でアーカイブする機能です。
+基本プロファイル入力ページの [パッケージ化] ボタンをクリックすると、パッケージング内容を設定するための「RTコンポーネント パッケージ化」画面が表示されます。
+#br
+
+#ref(fig6-1FunctionPack_ja.png,60%,center)
+//CENTER:''図 6-1 各種成果物のパッケージング機能''
+CENTER:''各種成果物のパッケージング機能''
+#br
+#br
+
+#ref(fig6-2ExportRTC_ja.png,60%,center)
+//CENTER:''図 6-2 RTコンポーネント エクスポート画面''
+CENTER:''RTコンポーネント パッケージ化画面''
+#br
+以下、各項目について説明いたします。
+CENTER:''RTコンポーネント パッケージ化画面 項目説明''
+|LEFT:200|LEFT|c
+|項目|説明|
+|対象プロジェクト|パッケージング対象のプロジェクトを選択してください。|
+|宛先ディレクトリ|パッケージングした成果物を出力するディレクトリーを入力してください。｢参照｣ボタンを使用することで、ディレクトリー選択ダイアログが表示されます。|
+|アーカイブ方式|作成するアーカイブの形式を選択してください。|
+|オプション|各アクション内での動作に関する概要説明。省略可能項目。|
+|アーカイブ形式|ZIP フォーマットを利用したアーカイブと、tar フォーマットを利用したアーカイブを作成することが可能です。使用するフォーマット形式を選択してください。|
+|アーカイブ内容の圧縮|アーカイブ内容を圧縮する場合には、チェックボックスを ON にしてください。|
+|ディレクトリー構造|アーカイブ対象プロジェクトのディレクトリ構造をそのまま保持した形でアーカイブを行うか、全てルートディレクトリに入れた形でアーカイブを行うかを選択してください。|
+''※''アーカイブ方式(｢ソース｣｢バイナリ｣｢ソース＋バイナリ｣)ごとに、どのファイル種類をアーカイブに含めるかは、後述の｢設定画面｣にて設定することができます。
+
+#br
+
+**設定内容のセーブとロード 
+RTCBuilder では、RTC プロファイルエディタで入力した内容を RTC プロファイル XML(RTC.xml) に保存したり、保存した内容を再度読み込むことが可能です。
+
+
+***セーブ
+RTC プロファイルエディタで入力した内容は、RTC プロファイル XML(RTC.xml) に保存することが可能です。入力内容は以下の操作により保存することができます。
+-エディタを右クリックし、表示されたコンテクストメニューから [Save] もしくは [Save As…] を選択
+-メニューバーの [File] > [Save…] もしくは [File] > [Save As…] を選択
+
+
+''※''[Save As…] を選んだ場合、任意のプロジェクト内に保存することが可能です。
+#br
+
+
+|
+#ref(fig5-1Save_ja.png,40%,center)|
+#ref(fig5-1Save2_ja.png,40%,center)|
+|>|CENTER:''セーブ''|
+#br
+
+// ''　※''任意のプロジェクト以外のディレクトリーを保存先に指定した場合は、以下のメッセージが表示され保存されません。保存先を任意のプロジェクト内のディレクトリーに指定し直してください。
+// #br
+// 
+// #ref(SaveError.png,nolink,center)
+// CENTER:''保存先の指定が不正の場合のエラー''
+// 
+***ロード
+RTC プロファイルエディタの内容を保存した RTC プロファイル XML(RTC.xml) は以下の操作により読み込むことが可能です。
+-エディタを右クリックし、コンテクストメニューから [Open] を選択
+-メニューバーの [ファイル] > [ファイルを開く…] を選択
+#br
+
+
+|
+#ref(fig5-2Load_ja.png,40%,center)|
+#ref(fig5-2Load2_ja.png,40%,center)|
+|>|CENTER:''ロード''|
+#br
+

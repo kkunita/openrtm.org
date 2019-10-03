@@ -1,4 +1,0 @@
-**RtcTemplateとは
-RtcTemplateはRTコンポーネントのテンプレートを生成する開発ツールです。パラメータを基にRTコンポーネントのテンプレートを生成する機能を持っています。また、RtcTemplateはEclipseにて動作し、直感的な操作と他のEclipseプラグインとのシームレスな連携が可能です。
-　RtcTemplateはRtcLinkがなくても動作しますが、RtcLinkがインストールされている場合には、RtcTemplateとメニューが統合されます。本マニュアルではRtcLinkがインストールされていることを前提として説明されています。
-

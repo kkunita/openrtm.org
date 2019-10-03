@@ -1,0 +1,333 @@
+﻿// Title: How to build Educator Vehicle (Revised)
+#contents
+
+このページではレゴマインドストーム EV3 で以下の車輪移動ロボット (Educator Vehicle 改) を組み立てる手順を説明します。
+
+&br;
+#br
+
+#ref(s_DSC00443.JPG,50%, center)
+&br;
+#br
+
+#ref(s_DSC00440.JPG,50%, center)
+&br;
+#br
+
+
+
+** Educator Vehicle との共通部分
+
+***車輪移動ロボットの組立て
+
+まずは [[Educator Vehicleの説明書>http://robotsquare.com/2013/10/01/education-ev3-45544-instruction/]] の最初の車輪移動ロボットを組み立てる章の45番まで組み立ててください。
+ただし8番と20番の作業は必要ないので飛ばしてください。
+
+またジャイロセンサーを取り付ける章(98ページ)を参考にしてジャイロセンサーを取り付けてください。
+
+
+&br;
+#br
+
+#ref(s_DSC00374.JPG,50%, center)
+&br;
+#br
+
+
+***モーターMの取り付け
+
+モーターMにパーツを取り付けます。
+Educator Vehicle の説明書のモーターMを取り付ける章(78ページ)の2～5、10番作業を行ってください。
+
+&br;
+#br
+
+#ref(s_DSC00370.JPG,50%, center)
+&br;
+#br
+
+そして18番の作業を行ってモーターMを移動ロボットに取り付けてください。
+
+&br;
+#br
+
+#ref(s_DSC00375.JPG,50%, center)
+&br;
+#br
+
+
+***タッチセンサーへのパーツ取り付け
+
+タッチセンサーにパーツを取り付けます。
+Educator Vehicle の説明書のタッチセンサーを取り付ける章(61ページ)の1～3番の作業を行ってください。
+
+&br;
+#br
+
+#ref(s_DSC00372.JPG,50%, center)
+&br;
+#br
+
+
+
+**独自部分
+ここからの作業に必要な部品は以下の通りです。
+
+
+
+
+&br;
+#br
+
+#ref(s_DSC00369.JPG,50%, center)
+&br;
+#br
+
+***土台部分組立て
+
+&br;
+#br
+
+#ref(s_DSC00376.JPG,50%, center)
+&br;
+#br
+
+&br;
+#br
+
+#ref(s_DSC00386.JPG,50%, center)
+&br;
+#br
+
+&br;
+#br
+
+#ref(s_DSC00387.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00388.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00389.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+CENTER:&ref(s_DSC00390.JPG,50%,center);  &ref(s_DSC00391.JPG,50%,center);
+&br;
+#br
+
+&br;
+#br
+
+CENTER:&ref(s_DSC00393.JPG,50%,center);  &ref(s_DSC00394.JPG,50%,center);
+&br;
+#br
+&br;
+#br
+
+CENTER:&ref(s_DSC00395.JPG,50%,center);  &ref(s_DSC00396.JPG,50%,center);
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00397.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00398.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00399.JPG, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00400.JPG, center)
+&br;
+#br
+&br;
+#br
+
+CENTER:&ref(s_DSC00401.JPG,50%,center);  &ref(s_DSC00402.JPG,50%,center);
+&br;
+#br
+
+
+
+***タッチセンサーの取り付け
+
+&br;
+#br
+
+CENTER:&ref(s_DSC00403.JPG,50%,center);  &ref(s_DSC00404.JPG,50%,center);
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00405.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00406.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00407.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00408.JPG,50%, center)
+&br;
+#br
+
+
+
+***超音波センサーの取り付け
+&br;
+#br
+
+#ref(s_DSC00409.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00410.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00411.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00412.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00415.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00416.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00417.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00418.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00419.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00422.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00424.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+
+***カラーセンサの取り付け
+
+#ref(s_DSC00425.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00426.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00427.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00428.JPG,50%, center)
+&br;
+#br
+
+
+**ケーブルの接続
+
+| モーター右   | ポート C |25cmケーブル|
+| モーター左   | ポート B |25cmケーブル|
+| モーター(M)| ポートA |25cmケーブル|
+| タッチセンサー右 | ポート 3 |35cmケーブル|
+| タッチセンサー左 | ポート 1 |35cmケーブル|
+| 超音波センサー | ポート 4 |50cmケーブル|
+| ジャイロセンサー | ポート 2 |25cmケーブル|
+
+※カラーセンサーを利用する際は超音波センサーかタッチセンサーのケーブルを外して使用してください。
+
+&br;
+#br
+
+#ref(s_DSC00432.JPG,50%, center)
+&br;
+#br
+&br;
+#br
+
+#ref(s_DSC00433.JPG,50%, center)
+&br;
+#br
+
+&br;
+#br
+
+#ref(s_DSC00434.JPG,50%, center)
+&br;
+#br

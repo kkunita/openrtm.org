@@ -1,6 +1,0 @@
--[[IDLƒRƒ“ƒpƒCƒ‰:/ja/node/143]]
--[[_var_type, _ptr_type:/ja/node/145]]
--[[•Ï”ó“n‹K‘¥:/ja/node/144]]
--[[CCM:/ja/node/146]]
--[[MICO_CCM:/ja/node/147]]
-

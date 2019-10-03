@@ -1,0 +1,478 @@
+﻿// Title: OpenRTM-aist (C++, Python, Java) FAQ
+#contents(4)
+
+Troubleshooting OpenRTM-aist (C++ edition, Python edition, and
+Java edition).
+
+**OpenRTM-aist (General)
+***OS-independent
+****A component which should be running seems to be dead.
+
+ Symptom: A component which has been launched and registered to a name
+ server is displayed as a zombie object in the name service view of
+ RTSystemEditor. Even if I drag it down on the system editor, nothing is
+ shown.
+
+
+*****[Cause] You cannot reach the host where the component was launched.
+
+You may not have reached the host where the component was launched from the
+PC where RTSystemEditor is running for some reason.
+At first check whether pings from the PC where RTSystemEditor is running to
+the host where the component was launched are successful.
+
+For example, there are three hosts A, B, and C:
+-hostA: The host where the component is running.
+-hostB: The host where name server is running.
+-hostC: The host where RTSystemEditor is running.
+
+Networks among these hosts are set up like this:
+
+''[hostA]-(networkI)-[hostB]-(networkII)-[hostC]''
+
+In this case, if host B is not configured for routing between ''networkI''
+and ''networkII'', hostA is unreachable from hostC.
+You need to configure hostB in order to reach hostA from hostC.
+
+*****[Cause] The firewall is enabled in the host where the component was
+launched.
+
+When the firewall is enabled in the host where the component was launched, this
+problem may occur. Please recheck the configuration or turn off the firewall to
+connect to the component externally.
+
+***Windows
+&aname(tokkenn);
+
+****"The installer has insufficient privileges to access this directory..."
+is displayed while executing the installer, and it fails in the
+installation.
+
+Please log on as a user who has the Administrator privilege to run the
+installer.
+
+****Components are not registered to the name service.
+
+After launching the name server and components, I connect to the name server
+with RTSystemEditor, but the components have not been registered.
+
+First, to increase the log level to the highest level, please add the following
+line to rtc.conf:
+
+ logger.log_level:PARANOID
+
+and launch the components.
+
+If the following message cannot be found in the component's log, the
+registration of the name server is not complete:
+
+ naming_svc NameServer connection succeeded: corba/Host name : Port number
+
+In this case, the following causes are possible.
+
+*****corba.nameservers is not set correctly in rtc.conf.
+
+Please make sure that the rtc.conf the components load is set correctly. If you
+want to set the host name as openrtm.aist.go.jp, the line shown below must be
+included in rtc.conf.
+
+ corba.nameservers: openrtm.aist.go.jp
+
+Also, when you start the name server by specifying port number, you need to
+specify the port number in rtc.conf, too.  If you specify 1234 as the port
+number when launching the name server, you need to set rtc.conf as follows:
+
+ corba.nameservers: openrtm.aist.go.jp:1234
+
+If you do not specify the port number, the default port of 2809 will be used.
+This is the default port number of the omniORB name server (omniNames). If you
+use another name server than omniORB name server, set the port number
+appropriately.
+
+*****The network of the host who launched the component and the host who launched the name server is not connected.
+
+Please make sure you can connect from the host where the component was launched
+to the host where the name server was launched.  First, confirm whether you can
+ping one computer from the other. If the ping does not succeed, please
+check the network configuration again.
+
+Even if the ping succeeds, the connection may be prohibited by a firewall.
+First, please check the configuration of the host where the name server was
+launched. The easiest solution is to turn off the firewall. For more
+details, please refer to the configuration of each OS and firewall.
+
+*****There are more than two network interfaces.
+
+When there are more than two network interfaces, you need to specify to
+CORBA which interface to use. You should consider both the name server and
+the component.
+
+Let's assume that each host has two interfaces and that the address for each
+interface is set as follows (the netmask is assumed to be 255.255.255.0):
+-Name server host: eth0:192.168.0.1, eth1:192.168.100.1
+-Component host: eth0:192.168.0.2, eth1:192.168.11.96
+
+In this case, the name server host and the component host should be connected
+by the 192.168.0 network, so you need to specify the interface:
+-Name server eth0:192.168.0.1
+-Component eth0:192.168.0.2
+
+When launching the name server, you need set the environment variable
+OMNIORB_USEHOSTNAME on the name server side.
+ (csh)
+ > setenv OMNIORB_USEHOSTNAME 192.168.0.1
+ (bash)
+ > export OMNIORB_USEHOSTNAME=192.168.0.1
+ > rtm-naming or launch the name server by omniNames
+
+You may modify rtm-naming (Unix) or rtm-naming.bat (Windows) directly.
+
+While you modify the configuration of corba.endpoint in rtc.conf on the
+component side, you can specify the interface to use.
+
+ corba.endpoint: Interface IP address:Port number
+ corba:endpoint: 192.168.0.2:       (In case of not specifying port number)
+ corba:endpoint: 192.168.0.2:1234   (In case of specifying port number)
+
+You don't have to specify the port number, but please don't forget to add
+'':(colon)'' after the IP address if you do.
+
+**OpenRTM-aist (C++ edition)
+***Windows
+
+&aname(errorinit);
+****Application error "The application failed to initialize properly" is generated.
+
+This error can appear when rtm-naming.bat is executed to start the name server.
+This error occurs because there is no VC++ runtime library in the execution
+environment.  OpenRTM-aist (C++ edition) doesn't operate in the environment in
+which the VC++ (Microsoft Visual Studio and Visual C++ Express, etc.) runtime
+is not installed. Please install VC++ or the VC++ runtime.  OpenRTM-aist (C++
+edition) provides a VC8 (VS2005) version and a VC9 (VS2008) version. Install
+the Microsoft Visual C++ 2005 SP1 redistributable package when using
+OpenRTM-aist-X.X.X_vc8.msi, and the Microsoft Visual C++ 2008 redistributable
+package when using OpenRTM-aist-X.X.X_vc9.msi.
+
+***When building in Visual C++ 2005 Express Edition, the error "'windows.h': No such file or directory" is given.
+
+When building in Visual C++ 2005 Express Edition, an error like this
+sometimes occurs:
+ >c:\program files\omniorb\include\omnithread\nt.h(35) : fatal error C1083:
+ include file cannot be opened. 'windows.h': No such file or directory
+It may be caused by one of two reasons: 1. the Microsoft Platform SDK is
+not installed, or 2. the include file path or library path are not set up
+correctly.
+:''1. Microsoft Platform SDK is not installed.''|
+Install the Microsoft Platform SDK.
+:''2. The include file path or the library path are not set up correctly.''|
+There are some situations prevent the Visual C++ 2005 Express Edition compiler
+from finding the include or library files of the Microsoft Platform SDK, such
+as the Microsoft Platform SDK being installed in a different location to that
+of Visual C++ 2005 Express Edition. In this case, add the install directory of
+Microsoft Platform SDK to include the file search path and library search path
+to fix the problem.
+--''Adding include file search paths''
+Select "Options" from the "Tools" menu to open the "Options" window. Select "Projects and Solutions"-"VC++directory" from
+the tree view at left side.
+Change the right upper pull-down menu [Project directory] to [Include
+files], and add the include file directory of Microsoft Platform SDK (for
+example, "C:\Program Files\Microsoft Platform SDK\Include").
+--''Adding library search paths''
+Similarly, select "VC++ directory" in the left tree view in the Options window,
+change right upper pulldown menu [Project directory] to [Library
+files], and add the library file directory of the Microsoft Platform SDK (for
+example, "C:\Program Files\Microsoft Platform SDK\Lib").
+
+Refer to the Visual C++ 2005 Express Edition help for more details.
+
+
+****Error occurs by executing rtm-naming (Windows)
+ Sympton: If rtm-naming.bat is executed, an application error occurs.
+Libraries related to VC++ may not be installed.
+
+*****Libraries related to VC++ are not installed.
+When applications such as Visual Studio 2005 are not installed, please install
+"Visual C++ 2005 Express Edition" from the [[Visual Studio 2005 Express Edition
+site>http://www.microsoft.com/japan/msdn/vstudio/express/]].
+
+****rtm-naming cannot be executed
+When rtm-naming.bat is executed, a black window (command prompt screen)
+opens and immediately closes.
+
+*****[Cause] omniORB is not installed.
+The name server, ''OmniNames.exe'', of omniORB is started by rtm-naming.bat.
+Because ''OmniNames.exe'' is not installed if omniORB is not installed, the
+name server cannot be executed. Please download and install omniORB on the
+download page.
+
+*****[Cause] A 2 byte character is included in the path of the log directory.
+The name server of omniORB is started in rtm-naming.bat with:
+ omniNames.exe -start 2809 -logdir %TEMP%
+
+An environment variable, %TEMP%, sets the user's temporary directory, typically
+to:
+ C:\Documents and Settings\[user-name]\Local Settings\Temp
+
+When the user name uses 2-byte character codes, such as Japanese names,
+omniNames cannot create the log file and exits.
+
+To resolve this issue, use one of the following methods.
+:[Method 1] Do not use a Japanese user-name. |
+Add a user who doesn't use Japanese and use that user to execute
+rtm-naming.bat.
+:[method 2] Rewrite rtm-naming.bat. |
+Edit the file ''C:\Program Files\OpenRTM-aist\[version]\bin\rtm-naming.bat'',
+changing the following line:
+ %cosnames% -start %port% -logdir %temp%
+
+ %cosnames% -start %port% -logdir [log path]
+: |
+Ensure that the new log path does not contain 2-byte character codes and that
+the user has permission to write to that directory.
+
+:[method 3] Use the Java orbd name server. |
+When the Java edition of OpenRTM-aist and the Java JDK are installed,
+''start-orbd.vbs'' will be present in the Examples folder of the Start Menu.
+This starts the name server included in the Java CORBA system. It has no
+problems with 2-byte character codes.
+
+***unix
+****A download error occurs during package installation.
+
+The automatic installer included in OpenRTM-aist checks for the existence of
+packages and their versions, and if appropriate packages are not installed, it
+downloads the packages from the &color(default){download}; site of each package
+and installs them. Make sure your computer is connected to Internet to install
+with the automatic installer.  Although your network connection is normal, when
+&color(default){download}; errors still happen, it may be possible that the
+&color(default){download}; fails because of network congestion, or locations or
+names of the files have been changed on the &color(default){download}; site. In
+the first case, try automatic installation again after waiting some time. In
+the latter case, specify your target packages and  &color(default){download};
+them individually to install manually, or modify the &color(default){download};
+links in the automatic installer and run it again.  If there are changes in the
+&color(default){download}; sites, please notify us.
+
+****Running configure quits due to errors
+Most configuration errors happen when a required package cannot be found. When
+there is an error, make sure required packages are installed, and headers
+and libraries are installed in locations autoconf searches.
+
+****Errors occur during make
+Launch the automatic installer of packages again and start over from package
+installation. If some error messages are shown during this process, install the
+specified packages manually and run configure. When configure ends without
+error messages, execute make again to finish the build.
+
+&aname(openrtminstfault);
+****The installation of OpenRTM-aist fails.
+When an old version of OpenRTM-aist is not completely uninstalled, a new
+version cannot be installed. Please install it again after uninstalling an old
+version once.
+
+*****Vine/Fedora/ubuntu/debian:
+Please use "pkg_install_XXXX.sh" to uninstall.
+ >su
+ #pkg_install_XXXX.sh -u
+
+This problem can also be solved by one of the following methods:
+*****Vine:
+The old OpenRTM-aist can be uninstalled with the apt-get command:
+ >su
+ #apt-get remove OpenRTM-aist-example
+ #apt-get remove OpenRTM-aist-dev
+ #apt-get remove OpenRTM-aist-doc
+ #apt-get remove OpenRTM-aist
+
+*****Fedora:
+The old OpenRTM-aist can be uninstalled with the yum command:
+ >su
+ #yum remove OpenRTM-aist-example
+ #yum remove OpenRTM-aist-dev
+ #yum remove OpenRTM-aist-doc
+ #yum remove OpenRTM-aist
+
+*****Ubuntu/Debian:
+The old OpenRTM-aist can be uninstalled with the apt-get command:
+ >su
+ #apt-get remove OpenRTM-aist-example
+ #apt-get remove OpenRTM-aist-dev
+ #apt-get remove OpenRTM-aist-doc
+ #apt-get remove OpenRTM-aist
+
+&aname(notusecd);
+**** When apt-get etc. is used, it asks for a CD
+When apt-get, pkg_install_ubuntu.sh, and pkg_install_debian.sh are used on
+distributions such as Ubuntu and Debian, a CD might be asked for:
+
+ Media change: please insert the disc labeled
+ 'Ubuntu 7.10 _Gutsy Gibbon_ - Release i386 (20071016)'
+ in the drive '/cdrom/' and press enter
+
+Press ctrl-c to interrupt installation when the message is displayed. When you
+do not have the CD, you can avoid this message with the following method:
+
+*****1. Edit ''/etc/apt/sources.list''.
+The following lines are in ''/etc/apt/sources.list''.
+
+ deb cdrom:[Ubuntu 7.10 _Gutsy Gibbon_ Japanese Remix - Release i386 (20071018)]/ gutsy main restricted
+
+or
+
+ deb cdrom:[Debian GNU/Linux 4.0 r3 _Etch_ - Official i386 NETINST Binary-1 20080218-14:15]/ etch contrib main
+
+Comment out the line by inserting a ''#'' character at the start.
+
+ #deb cdrom:[Ubuntu 7.10 _Gutsy Gibbon_ Japanese Remix - Release i386 (20071018)]/ gutsy main restricted
+
+or
+
+ #deb cdrom:[Debian GNU/Linux 4.0 r3 _Etch_ - Official i386 NETINST Binary-1 20080218-14:15]/ etch contrib main
+
+*****2. Re-install
+Start the installation from the beginning.
+
+****Cannot run run.sh to start the SimpleIO sample
+It may be because run.sh does not have the execution bit set. Set the execution
+bit, or pass the script to the shell directly.
+
+ > ls -al run.sh
+ -rw-r--r--  1 n-ando  n-ando  1146  4 27 15:12 run.sh
+ > chmod 755 run.sh
+ > ./run.sh
+ Or
+ > sh run.sh
+
+****The SimpleIO sample starts up, but does not work
+The execution script of SimpleIO, run.sh assumes a terminal window is one of
+kterm, xterm, or gnome-terminal. Therefore when you use another terminal
+window, edit run.sh appropriately.
+
+
+**OpenRTM-aist (Python edition)
+***Windows
+&aname(pythonusage);
+****If I execute rtm-naming.py, omniNames shows a "usage:" message and exits
+--''Symptoms''
+If you execute rtm-naming.py in a directory containing spaces such as
+"C:\Documents and Settings\Hoge\My Documents" etc, omniNames shows a
+"usage:" message and exits.
+
+--''Solutions''
+This is a bug in rtm-naming.py, so if you see the above symptom, try
+one of the following solutions.
+
+---Solution 1
+Create a folder such as "RTMNaming" under C:\ (or another location whose path
+does not contain any spaces), copy there and run rtm-naming.py.
+
+---Solution 2
+Modify at line 48 of rtm-naming.py in C:\Python24 (or
+Python25)\Lib\site-packages\OpenRTM\rtm-naming as follows:
+  cmd = "omniNames -start "+str(port)+" -logdir \""+str(currdir)+"\" &"
+
+&aname(pythonexe);
+****python.exe does not start
+Add the Python installation folder (e.g. C:\Python26) to the PATH environment
+variable.
+
+&aname(python);
+****There may be several versions of python.exe in some environments where
+Cygwin is installed.
+Since there may be several versions of python.exe in some environments where
+Cygwin is installed,
+even if the PATH environment variable is set up correctly, another version
+of python.exe that is different from the expected can be
+started. This sometimes causes failures caused by version differences
+in the two Pythons. Finding the exact cause can be extremely difficult.
+If you use an environment where Cygwin is installed, make sure python.exe is
+starting from the Python installation folder when you run OpenRTM-aist for
+Python.
+
+-How to check: Check the Python version using ''python -V'', or check which
+python.exe is executed with "which python" (in the Cygwin environment).
+-How to avoid: You can solve this problem by adding the Python installation
+folder (e.g. C:\Python26 etc) to the top of the PATH system environment
+variable (not the PATH user environment variable).
+
+&aname(MSVCerror);
+****The program exits showing the error message "MSVCP71.dll cannot be found"
+This is an error because the WINDOWS\system32 folder does not have msvcp71.dll.
+Get msvcp71.dll from this URL:
+ http://www.vector.co.jp/soft/win95/util/se435079.html
+
+
+&aname(rtc.conf);
+**** Errors such as "Can't open file: ./rtc.conf" are displayed
+If an rtc.conf file is not found in the same directory as the RT-Component or
+in the search path, the component cannot be started. The error appears as
+follows:
+ Can't open file: ./rtc.conf
+ Can't open file: /etc/rtc.conf
+ Can't open file: /etc/rtc/rtc.conf
+ Can't open file: /usr/local/etc/rtc.conf
+ Can't open file: /usr/local/etc/rtc/rtc.conf
+Make a simple rtc.conf in one of the above directories in order to avoid this.
+ corba.nameservers: localhost
+ naming.formats: %n.rtc
+
+**** Components do not register with the name service.
+If the new lines in rtc.conf are CRLF, you should remake rtc.conf. You can
+check using the file command:
+ $ file rtc.conf
+
+**OpenRTM-aist (Java edition)
+***OS-independent
+****Data transfer is slow
+Data transfer speed might decrease considerably when a large amount of data is
+sent and received between RT-Components of the Java edition and RT-Components
+in other languages. This is often caused by data of 100KB or more. This is
+known to be a problem in Java's CORBA, and it is possible to avoid by setting
+the CORBA time-out appropriately. This can be set in rtc.conf:
+ corba.args: -ORBTCPReadTimeouts 1:60000:300:1
+''100:3000:300:20'' is default in Java (since JDK1.5). The line above changes
+it to ''1:60000:300:1''. The four values mean:
+-Initial time to wait in milliseconds if a TCP transport read returns 0 bytes
+-Maximum time to spend in cumulative waits in milliseconds if a TCP transport
+read returns 0 bytes
+-Maximum time to spend in cumulative waits in milliseconds if a TCP transport
+read of the GIOP header returns 0 bytes
+-A backoff percentage used to compute the next amount of time to wait on a
+subsequent TCP transport read of 0 bytes.
+
+Therefore, ''1:60000:300:1'' means:
+
+- The read thread stops after 1ms when read content was 0 bytes.
+- The maximum accumulated time for which the read thread waits is 6000ms.
+- The timeout period when the header of GIOP is read is 300ms.
+- The rest time of read thread is increased by 1%.
+
+When a large amount of data is received, all the data cannot be acquired with a
+single read.  In that case, it usually divides reads into portions.  With the
+default value, the read thread will wait for 100ms, so it takes time to receive
+a large amount of data. Java's CORBA divides data into 100KB. When data that
+exceeds this is exchanged, you should add the above-mentioned setting to
+rtc.conf.
+
+***Windows
+
+&aname(JDKver);
+****"java -version" shows a different version from the installed JDK.
+&aname(javaver);
+When a newer version of the JRE (Java Runtime Environment) than the JDK is
+installed, even after you install the JDK,
+"java -version" sometimes shows the version of the JRE. We will describe how
+to set up against this problem.
+- JAVA_HOME environment variable
+Set the JAVA_HOME environment variable to the installation folder of the JDK.
+
+***Unix
+
+&aname(javafedora);
+****Important note for installing Java on FedoraCore
+When java is installed by yum in FedoraCore, GCJ (The GNU Compiler for Java) is
+installed. GCJ can cause problems.  Confirm whether Sun Microsystems Java is
+used when trouble occurs.
+-[[JDK installation hints:/en/node/664#instjavaunixjdk]]
+-[[Applying Sun Java to Eclipse in UNIX systems:/en/node/500]]
+

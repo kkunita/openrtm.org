@@ -1,0 +1,866 @@
+﻿// Title: Configuration (Basic)
+// -*- pukiwiki-edit -*-
+//*コンフィギュレーション(基本編)
+
+#contents(4)
+
+//============================================================
+**(G)What is configuration?
+//**コンフィギュレーションとは
+
+Often it is necessary to change the parameters in the program to be created according to the external environment of the system, the usage situation, the characteristics of individual devices, and the robot in constructing the robot system.
+In a simple program for simple experiments, you may be able to deal with it by hard-coding (padding) the parameters and directly rewriting and compiling each time you change them.
+By going a little further, reusability will be much higher by reading the parameters from file etc, passing in with the command line argument etc etc.
+In order to reuse one program depending on the application, externalization without embedding such parameters becomes very important.
+//ロボットシステムを構築するうえで、システムの外部環境、使用状況や、個別のデバイス、ロボットの特性に応じて作成するプログラム内のパラメーターを変更ことが度々あります。
+//単純な実験をするための簡単なプログラムでは、パラメーターをハードコード(埋め込んで)して、変更する度に直接書き換え、コンパイルすることで対処できるかもしれません。
+//もう少し進んで、パラメーターをファイル等から読み込んだり、コマンドライン引数で渡したり等の工夫をすることで再利用性はぐっと高くなります。
+//一つのプログラムを用途に応じて再利用するためには、こうしたパラメーターを埋め込まずに外部化することが非常に重要になってきます。
+
+In the RT system constructed by the RT component, various components made by various people cooperate, so the user freely defines the parameters used inside the core logic and changes it from the outside at the time of execution A function is provided for.
+This is called configuration (function). The configuration can have multiple parameter sets and parameter sets can be swapped all at once.
+By making the parameters changeable in advance, RTC can be easily reused on various systems.
+//RTコンポーネントによって構築される RTシステムでは、様々な人が作った多様なコンポーネントが協調して動作しますので、コアロジック内部で使用されるパラメーターをユーザーが自由に定義し、実行時に外部から変更するための機能が用意されています。
+//これをコンフィギュレーション(機能)と呼びます。コンフィギュレーションは複数のパラメーターセットを持つことができ、パラメーターセットを一斉に入れ替えることもできます。
+//パラメーターを予め変更可能にしておくことで、RTCを様々なシステムで簡単に再利用することができます。
+
+#ref(configuration_example_ja.png,40%,center)
+CENTER: ''Configuration example''
+//CENTER: ''コンフィギュレーションの例''
+
+In this section, we will explain the structure and actual usage of the configuration which is one of the important functions of the RT component.
+//このセクションでは、RTコンポーネントの重要な機能の一つであるコンフィギュレーションについて、仕組みと実際の使い方について説明していきます。
+
+** (G)How the configuration works
+//**コンフィギュレーションの仕組み
+
+The figure below shows a rough structure of configuration.
+//下図はコンフィギュレーションの大まかな仕組みを表しています。
+
+#ref(configuration_functionality_ja.png,50%,center)
+CENTER: ''How the configuration works''
+//CENTER: ''コンフィギュレーションの仕組み''
+
+We call the ''name'' and ''value'' pair of parameters ''configuration parameter''.
+A component can define more than one configuration parameter, which is called the ''configuration set''.
+//パラメーターの''名前''と''値''のペアを''コンフィギュレーションパラメーター''と呼びます。
+//一つのコンポーネントは複数のコンフィギュレーションパラメーターを定義することができ、その集合を''コンフィギュレーションセット''と呼びます。
+
+Furthermore, one component can have more than one configuration set, only one of which will be the value of the actual parameter.
+This configuration set is called '' active configuration ''. A configuration set can be named and distinguished by its name.
+//さらに一つのコンポーネントは複数のコンフィギュレーションセットを持つことができ、そのうち一つのコンフィギュレーションのみが、実際のパラメーターの値となります。
+//このコンフィギュレーションセットを、''アクティブコンフィギュレーション''と呼びます。コンフィギュレーションセットは名前を付けることができ、その名前により区別されます。
+
+You can use external tools (such as RTSystemEditor or rtshell) to change individual parameters or active configuration sets.
+The contents of the configuration are reflected in the variables tied to the configuration (''parameter variable'') and can be used with the logic in the RT component.
+In this way, it is possible to increase the reusability of the component by making it easy to change the parameters used inside the logic from the outside.
+//外部のツール (RTSystemEditor や rtshell等) を利用して、個々のパラメーター、あるいはアクティブなコンフィギュレーションセットを変更することができます。
+//コンフィギュレーションの内容は、コンフィギュレーションに結び付けられた変数 (''パラメーター変数'') に反映され、RTコンポーネント内のロジックで使用することができます。
+//こうして、ロジック内部で使用されるパラメーターを外部から容易に変更できるようにすることでコンポーネントの再利用性を高めることができます。
+
+- ''Configuration'': RTC's ability to externalize parameters in components
+- ''Configuration Parameters'': Parameter actually externalized in the component. It consists of keys and values.
+- ''Configuration Set'': List of parameters, consisting of a list of keys and values. An RTC can have multiple sets.
+- ''Configuration set name'': The name given to the configuration set. Each set is distinguished by name.
+- ''Active configuration'': RTC can have multiple configuration sets, among which the effective set actually reflected in the parameters is called the active configuration.
+- ''Parameter variable'': Variable tied to the configuration parameter. When the content of the configuration is changed, the value assigned to the variable is changed.
+//- ''コンフィギュレーション'': コンポーネント内のパラメーターを外部化するための RTC の機能 
+//- ''コンフィギュレーションパラメーター'': 実際にコンポーネント内の外部化されるパラメーター。キーと値から構成される。
+//- ''コンフィギュレーションセット'': キーと値のリストから構成される、パラメーターのリスト。RTC は複数のセットを持つことができる。
+//- ''コンフィギュレーションセット名'': コンフィギュレーションセットにつけられた名前。セットはそれぞれ名前で区別される。
+//- ''アクティブコンフィギュレーション'': RTC は複数のコンフィギュレーションセットを持つことができ、そのうち実際にパラメーターに反映される有効なセットをアクティブコンフィギュレーションと呼ぶ。
+//- ''パラメーター変数'': コンフィギュレーションパラメーターに結び付けられた変数。コンフィギュレーションの内容が変更されると変数に代入されている値が変更されます。
+
+In a typed language, the configuration parameters can be used as parameters for any type that is available in that language.
+Of course, the same is true for languages without type, but the important point is that when setting these parameters externally, that value is given by a string.
+//型のある言語では、コンフィギュレーションパラメーターはその言語で利用可能な型であればどのような型でもパラメーターとして利用することができます。
+//もちろん、型のない言語でも同様ですが、重要な点は、こうしたパラメーターを外部から設定する際には、その値は文字列によって与えられるということです。
+
+The configuration converts the string to each parameter type and sets it to the actual variable.
+Even data types that can not be easily converted from character strings to data, such as structures and arrays, can be handled in the same way for any type of data by defining the conversion function.
+This is a big difference from data ports and service ports that require IDL definition in advance.
+//コンフィギュレーションは、文字列をそれぞれのパラメーター型に変換して、実際の変数にセットします。
+//構造体や配列など、文字列からデータに簡単には変換できないようなデータ型でも、変換関数を定義することで、どのような型のデータでも同じように扱うことができます。
+//これは、予め IDL 定義が必要なデータポートやサービスポートとは大きく異なる点です。
+
+//============================================================
+** (G)Define parameters
+//**パラメーターを定義する
+
+There are several ways to define the parameters used within the RT component.
+//RTコンポーネント内で利用するパラメーターを定義する方法にはいくつかあります。
+
+- Define it at component design in RTC Builder
+- Define the configuration parameters with rt-template
+- Write the necessary code manually
+//- RTCBuilder でコンポーネント設計時に定義する
+//- rt-template でコンフィギュレーションパラメーターを定義する
+//- 手動で必要なコードを書く
+
+Each method will be explained below.
+//以下では、それぞれの方法について説明します。
+
+//------------------------------------------------------------
+*** (G)Definition by RTC Builder
+//***RTCBuilderによる定義
+
+The easiest way to define the configuration parameters is to use the RTC design tool RTCBuilder to define the configuration parameters during RTC design.
+//コンフィギュレーションパラメーターを定義するもっとも簡単な方法は RTC の設計ツールである RTCBuilderで、RTC 設計時にコンフィギュレーションパラメーターを定義することです。
+
+The figure below shows the definition screen of RTC Builder's configuration.
+By defining the necessary parameters on this screen, the code necessary for using the configuration parameters is automatically generated regardless of the language.
+//下図は RTCBuilder のコンフィギュレーションの定義画面です。
+//この画面で必要なパラメーターを定義することで、コンフィギュレーションパラメーターを利用するために必要なコードが言語を問わず自動的に生成されます。
+
+#ref(configuration_rtcb00_ja.png,80%,center)
+CENTER: ''RTCBuilder setting screen''
+//CENTER: ''RTCBuilderの設定画面''
+
+To use the configuration parameters, press the RTC Builder's Configuration tab and click the Add button next to the parameter list.
+Then, since one configuration parameter is added, the appropriate
+//コンフィギュレーションパラメーターを利用するためには、RTCBuilder のコンフィギュレーションタブを押し、パラメーターリスト横の [Add] ボタンをクリックします。
+//すると、コンフィギュレーションパラメーターが一つ追加されますので、適切な
+
+- Name (required)
+- Data type (required)
+- Default value (required)
+//- 名称 (必須)
+//- データ型 (必須)
+//- デフォルト値 (必須)
+
+//を入力します。
+
+As the name (conf_name 0 etc is default by default), please give a descriptive name briefly describing the nature of the parameter.
+The type names that can be selected from the drop-down list are appropriately converted and defined in each language.
+In languages that need not explicitly type declarations such as Python, the type name set here may not appear on the code.
+//名称は(デフォルトでは conf_name0 等となっているので)、そのパラメーターの性質を端的に表す分かりやすい名前を付けてください。
+//ドロップダウンリストから選択できる型名は、各言語において適切に変換され定義されます。
+//Python 等明示的に型宣言が必要ない言語では、ここで設定された型名はコード上には現れないかもしれません。
+
+As mentioned above, the configuration parameter can correspond to various types of parameters by giving the value as a string and converting the string to a specific type.
+However, since values are input from the outside as a character string, if there is an incorrect parameter input such as a nontranslatable character string, conversion may be an error.
+The default value set here is the value to be used instead when the conversion of the set value is illegal.
+//上でも述べたように、コンフィギュレーションパラメーターは値を文字列として与えて、文字列を特定の型に変換することで様々な型のパラメーターに対応可能です。
+//ただし、外部から文字列として値が入力されるため、変換不可能な文字列など不正なパラメーター入力があった場合、変換がエラーになる場合もあります。
+//ここで設定されたデフォルト値は、設定された値の変換が不正な場合に代わりに使用される値です。
+
+In addition, the following items are not required. Please enter it as necessary.
+//このほか、必須でない項目として以下の項目があります。必要に応じて入力してください。
+
+- Variable name: A character string to be used as a variable name. If empty, the name is used.
+- Unit: A unit of this parameter. Currently, it is not used other than human reading.
+- Constraint Condition: Give constraints on this parameter. This condition is used in RTSystemEditor. You can specify inequality in case of continuous value, comma separating in enumerated value.
+- Widget: The control used when manipulating parameters with RTSystemEditor. You can choose from text, slider, spin, radio.
+- Step: Specify the step when the above widget is slider or spin.
+//- 変数名: 変数名として使用する文字列。空の場合は名称が使用されます。
+//- 単位: このパラメーターの単位。現在のところ、人間が読む以外には使われていません。
+//- 制約条件: このパラメーターの制約条件を与えます。この条件は RTSystemEditor で使用されます。連続値の場合は不等号、列挙値の場合はカンマ区切りなど指定できます。
+//- Widget: RTSystemEditor でパラメーターを操作するときに使用されるコントロール。text、slider、spin、radio から選択できます。
+//- Step: 上記の Widget が slider や spin の場合のステップを指定します。
+#br
+#br
+
+CENTER:&ref(param1_slider_ja.png,80%,center);  &ref(param2_spin_ja.png,80%,center);
+CENTER:''Slider and spin setting''
+//CENTER:''スライダーとスピンの設定''
+
+CENTER:&ref(param3_radio_ja.png,80%,center);  &ref(param4_text_ja.png,80%,center);
+CENTER:''Setting radio buttons and text''
+//CENTER:''ラジオボタンとテキストの設定''
+
+For details, refer to the hint on the right side of the screen and the RTCBuilder manual.
+//詳細については、画面右側のヒントや、RTCBuilderのマニュアルを参照してください。
+
+//------------------------------------------------------------
+*** (G)Definition by rtc-template
+//***rtc-templateによる定義
+
+rtc-template is a component template generator to use from the command line.
+To use the configuration with rtc-template, specify as follows.
+//rtc-template はコマンドラインから使用するコンポーネントテンプレートジェネレータです。
+//rtc-template でコンフィギュレーションを使用するには以下のように指定します。
+
+    /usr/local/bin/rtc-template -bcxx --module-name=ConfigSample 
+    --module-type=DataFlowComponent 
+    --module-desc=Configuration example component --module-version=1.0 
+    --module-vendor=Noriaki Ando, AIST --module-category=example 
+    --module-comp-type=DataFlowComponent --module-act-type=SPORADIC 
+    --module-max-inst=10 --config=int_param0:int:0 
+    --config=int_param1:int:1 --config=double_param0:double:0.11 
+    --config=double_param1:double:9.9 
+    --config=str_param0:std::string:hoge 
+    --config=std_param:std::string:dara 
+    --config=vector_param0:std::vector<double>:0.0,1.0,2.0,3.0,4.0
+ 
+       # In fact, please input on one line, or supplement the continuation character at the end of the line (\, on UNIX ^ on Windows)
+//    # 実際には1行で入力するか、継続文字を行末に (UNIXでは \, Windowsでは ^) を補ってください
+
+This is an example of specification with ConfigSample attached to the sample.
+//これは、サンプルに付属しているConfigSampleでの指定例です。
+
+ --config = <name>:<data type>:<default value>
+// --config=<名称>:<データ型>:<デフォルト値>
+
+It is specified as follows. For the data type, you specify the data type to be used in that language, but it may not work well with primitive types, or you may need to manually modify it.
+//のように指定します。データ型については、その言語で使用するデータ型を指定しますが、プリミティブ型以外ではうまく動作しなかったり、手動で修正が必要な場合があります。
+
+//------------------------------------------------------------
+*** (G)Manual definition
+//***手動による定義
+
+Although less recommended, you can manually define the configuration parameters.
+It is effective when you want to add new parameters etc, but if you do not update the document or RTC.xml file etc., third parties do not have consistency of specification and implementation when using this RTC Please be aware that there is a possibility of confusion.
+//あまり推奨されませんが、手動でもコンフィギュレーションパラメーターを定義することができます。
+//新たにパラメーターを追加したくなった場合等に有効ですが、ドキュメントや RTC.xml ファイル等を更新しないと、第三者がこの RTC を使用した場合に仕様と実装の整合性が取れていないために、混乱を来たす可能性がありますので注意してください。
+
+However, it is meaningful to know how the configuration is declared and used, so I will explain it here.
+//ただし、コンフィギュレーションがどのように宣言され使用されるのかを知ることは意味がありますのでここで説明します。
+
+The following procedure is necessary to use the configuration.
+//コンフィギュレーションを使用するには以下の手続きが必要です。
+
+**** (G)Determine the usage, name and type of configuration parameters (hereafter referred to as parameters)
+//**** コンフィギュレーションパラメーター(以下パラメーター)の用途、名称、型を決める
+
+As mentioned above, decide which part of the component you want to use the parameter, the name that characterizes the parameter, and the type name (for languages with type) at the time of implementation.
+//上で述べたように、コンポーネントのどの部分でパラメーターを使用するのか、またそのパラメーターの特徴を表す名称と実装時の型名(型のある言語の場合)を決めます。
+
+**** (G)Declare the parameter variable to the component's header (private / protected)
+//**** パラメーターの変数をコンポーネントのヘッダ(private/protected)に宣言する
+
+If it is a file generated by RTC Builder or rtc-template, there are parts surrounded by the following tags, so declare variables for the configuration parameters here.
+//RTCBuilder や rtc-template で生成したファイルであれば、以下のようなタグに囲まれた部分がありますので、ここにコンフィギュレーションパラメーターのための変数を宣言します。
+
+  // Configuration variable declaration
+  // <rtc-template block="config_declare">
+ 
+  // </rtc-template>
+
+In the above example of ConfigSample, it becomes as follows.
+//上の ConfigSample の例であれば以下のようになります。
+
+  // Configuration variable declaration
+  // <rtc-template block="config_declare">
+  int m_int_param0;
+  int m_int_param1;
+  double m_double_param0;
+  double m_double_param1;
+  std::string m_str_param0;
+  std::string m_str_param1;
+  std::vector<double> m_vector_param0;
+  
+  // </rtc-template>
+
+**** (G)Add parameter declaration and default value to static variable <component name> _spec [] of component implementation file
+//**** コンポーネントの実装ファイルの static 変数 <コンポーネント名>_spec[] にパラメーターの宣言とデフォルト値を追加する
+
+Configuration parameters are managed within the component in a data store named Properties. Within this Properties,
+//コンフィギュレーションパラメーターはコンポーネント内で、Propertiesというデータストアに入れられ管理されます。このProperties内では、
+
+ conf.<configuration set name>.<parameter name>
+// conf.<コンフィギュレーションセット名>.<パラメーター名>
+
+Keeping the configuration parameters with the key. The default value '' default '' configuration set name is reserved and all default values are defined as this '' default '' configuration set.
+//というキーでコンフィギュレーションパラメーターを保持しています。デフォルト値として ''default'' というコンフィギュレーションセット名が予約済みとなっており、デフォルト値はすべてこの ''default'' コンフィギュレーションセットとして定義されます。
+
+For the above ConfigSample, add as follows.
+//上のConfigSampleの場合、以下のように追加します。
+
+ // Module specification
+ // <rtc-template block="module_spec">
+ static const char* configsample_spec[] =
+   {
+     "implementation_id", "ConfigSample",
+     "type_name",         "ConfigSample",
+     "description",       "Configuration example component",
+     "version",           "1.0",
+     "vendor",            "Noriaki Ando, AIST",
+     "category",          "example",
+     "activity_type",     "DataFlowComponent",
+     "max_instance",      "10",
+     "language",          "C++",
+     "lang_type",         "compile",
+     // Configuration variables
+     "conf.default.int_param0", "0",
+     "conf.default.int_param1", "1",
+     "conf.default.double_param0", "0.11",
+     "conf.default.double_param1", "9.9",
+     "conf.default.str_param0", "hoge",
+     "conf.default.str_param1", "dara",
+     "conf.default.vector_param0", "0.0,1.0,2.0,3.0,4.0",
+  
+     ""
+   };
+ // </rtc-template>
+
+Configuration variables The following part is the definition of the default configuration set.
+//Configuration variables 以下の部分がデフォルトコンフィギュレーションセットの定義になります。
+
+**** (G)Initialize each variable with an initializer
+//****各変数を初期化子で初期化する
+
+Variables generated by RTCBuilder and rtc-template are not initialized by the initializer of the constructor, but it is better to initialize all variables with initializers of the constructor, if possible.
+In addition, since default values are set for each variable after the bindParameter () function in the onInitialize () function is called, in principle it should not be used before that.
+//RTCBuilder や rtc-template で生成された変数はコンストラクタの初期化子による初期化は行われませんが、可能であればすべての変数はコンストラクタの初期化子で初期化したほうがよいでしょう。
+//また、各変数にデフォルト値がセットされるのは onInitialize() 関数の中の bindParameter() 関数が呼ばれた後ですので、原則としてそれ以前には使用してはいけません。
+
+**** (G)Bind parameters and variables with bindParameter() function
+//****bindParameter()関数でパラメーターと変数をバインドする
+
+Finally, by binding the names of variables and parameters, default values, and further conversion functions, we simply make the variables configuration parameters.
+We use bindParameter () which is a member function (method) of the RTObject class.
+//最後に変数とパラメーターの名称、デフォルト値、さらに変換関数をバインドすることで、単なる変数をコンフィギュレーションパラメーターにします。
+//RTObject クラスのメンバ関数(メソッド)である bindParameter() を使用します。
+
+ bindParameter (<parameter name (string)>, variable, <default value (character string)>, <conversion function>)
+// bindParameter(<パラメーター名称(文字列)>, 変数, <デフォルト値(文字列)>, <変換関数>)
+
+In the above ConfigSample (C ++ example) it looks like the following.
+//上のConfigSample (C++の例) では以下のようになります。
+
+  // <rtc-template block="bind_config">
+  // Bind variables and configuration variable
+  bindParameter("int_param0", m_int_param0, "0");
+  bindParameter("int_param1", m_int_param1, "1");
+  bindParameter("double_param0", m_double_param0, "0.11");
+  bindParameter("double_param1", m_double_param1, "9.9");
+  bindParameter("str_param0", m_str_param0, "hoge");
+  bindParameter("str_param1", m_str_param1, "dara");
+  bindParameter("vector_param0", m_vector_param0, "0.0,1.0,2.0,3.0,4.0");
+  
+  // </rtc-template>
+
+In this way, each variable and configuration parameter are bound, and configuration parameters are made available that can manipulate these variables from RTSystemEditor etc.
+//こうすることで、各変数とコンフィギュレーションパラメーターがバインドされ、RTSystemEditor 等からこれらの変数を操作することができる、コンフィギュレーションパラメーターが利用可能になります。
+
+Note that the conversion function given to bindParameter () is unnecessary for built-in type as in the above example, and it is not necessary to explicitly give it.
+However, if you want to use your own structure or complex type etc as configuration parameters, you need to define and give the conversion from these strings to those types.
+Details of the conversion function will be described later.
+//なお、bindParameter() に与える変換関数は、組込み型については、上記の例のように不要で、特に明示的に与える必要はありません。
+//しかし、独自の構造体や複雑な型等をコンフィギュレーションパラメーターとして使用したい場合は、文字列からそれらの型への変換を定義しここに与える必要があります。
+//変換関数の詳細については後述します。
+
+//============================================================
+** (G)Using parameters
+//**パラメーターを使う
+
+Using parameters is very easy. As we have just mentioned, we simply use variables declared as configuration parameters.
+However, there are some conditions to use, and it is necessary to use it by observing this condition.
+//パラメーターを使うのは非常に簡単です。これまで述べてきたように、コンフィギュレーションパラメーターとして宣言された変数を単に利用するだけです。
+//ただし、使用に当たってはいくつかの条件があり、これを守って利用する必要があります。
+
+//------------------------------------------------------------
+*** (G)Callback function that variables can use
+//***変数が使用できるコールバック関数
+
+The configuration variable can only be used within a specific callback function (onXXX ()).
+Changing the configuration variables from outside is done asynchronously.
+In such cases, it is necessary to control exclusive access to variables with mutex etc. In order to realize this, it is necessary for component developers to mutex protect themselves when accessing each variable.
+In order to avoid this, OpenRTM-aist makes external configuration changes be done outside the callback function.
+//コンフィギュレーション変数は、特定のコールバック関数 (onXXX()) 内でしか利用することはできません。
+//外部からのコンフィギュレーション変数の変更は非同期的に行われます。
+//通常このような場合には、ミューテックス等で変数への排他アクセス制御を行う必要がありますが、これを実現するにはコンポーネント開発者も各変数へのアクセス時にミューテックス保護を行う必要があります。
+//これを回避するために、OpenRTM-aist では外部からのコンフィギュレーションの変更は、コールバック関数の外で行われるようになっています。
+
+The available callback functions are as follows.
+//利用できるコールバック関数は、以下のものになります。
+
+- onInitialize() (※)
+- onActivated()
+- onExecute()
+- onStateUpdate()
+- onDeactivate()
+- onAborting()
+- onError()
+- onReset()
+- onFinalize() (※)
+
+Configuration parameters can be used within almost all callback functions.
+However, in onInitialize (), of course you can not use the configuration parameter before doing bindParameter ().
+Also, within onFinalize (), changes made to the configuration parameters may not be reflected immediately before the call.
+//ほぼすべてのコールバック関数内でコンフィギュレーションパラメーターを利用することができます。
+//ただし、onInitialize() においては、bindParameter()を行う前には当然コンフィギュレーションパラメーターを利用できません。
+//また、onFinalize() 内では、その呼び出しの直前にコンフィギュレーションパラメーターに対してなされた変更が反映されない可能性があります。
+
+//------------------------------------------------------------
+*** (G)Variable is read only
+//***変数は読み出し専用
+
+The configuration parameter variable is changed from outside the component and its value is assigned to the parameter variable. However, for parameter variables
+Even if you write it inside a function such as onExecute (), it will not be reflected in the value of the parameter seen from the outside.
+//コンフィギュレーションパラメーターの変数は、コンポーネントの外部から変更されその値がパラメーター用変数に代入されます。しかし、パラメーター用変数に
+//onExecute() 等内部の関数内で書きこんでも、外から見えるパラメーターの値には反映されません。
+
+In this way, since changing the value of a variable is one way, writing to a variable from inside the component is meaningless.
+Let's use the configuration variable as read only.
+//このように、変数の値の変更は一方通行ですので、コンポーネント内部からの変数に対する書き込みは意味がありません。
+//コンフィギュレーション変数は read only で使いましょう。
+
+//------------------------------------------------------------
+*** (G)Always check if the value is correct
+//***値が正しいか常にチェックする
+
+The value of the configuration parameter is converted to the variable actually used by converting what is given as a character string from the outside by the conversion function as described above.
+Since it is a character string, it is possible that a character string is assigned to where the value should be assigned originally, or a variable of size larger than the upper limit may be assigned to the variable declared with short int.
+Therefore, on the receiving side, it is recommended that you always check on the program before use whether it is within the range of the expected value or not assigned an unlikely value.
+//コンフィギュレーションパラメーターの値は、上述したように外部から文字列として与えられたものを変換関数で変換したものが実際使用される変数に代入されます。
+//文字列ですので、本来数値が代入されるべきところに文字列が代入されたり、short int で宣言された変数に、上限以上の大きさの数値が代入されることもあり得ます。
+//従って、受け取った側では変数が想定されている値の範囲内に入っているか、あり得ない値が代入されていないかについて、プログラム上で使用前には常にチェックすることが推奨されます。
+
+
+//============================================================
+** (G)Set parameters
+//**パラメーターを設定する
+
+We mentioned above that the configuration parameters have several sets and can change them at the same time at run time.
+On the other hand, when designing the component with RTC Builder or rtc-template, only the default configuration set could be defined.
+This section explains how to use the configuration set.
+//コンフィギュレーションパラメーターは、いくつかのセットを持ち、実行時にそれらを同時に変更できることを上で述べました。
+//その一方で、RTCBuilder や rtc-template でコンポーネントを設計する時点では、デフォルトコンフィギュレーションセットしか定義できませんでした。
+//ここでは、コンフィギュレーションセットの使い方について説明します。
+
+//------------------------------------------------------------
+*** (G)Component configuration file
+//***コンポーネント設定ファイル
+
+The default configuration set is embedded in the source code.
+In the same way, other configuration sets can also be increased in principle by embedding them in the source code.
+However, since the purpose of the RTC configuration function was to use one component for various purposes by changing the parameters according to the application without changing the source code, the other configuration set It is totally overwhelmed to embed.
+//デフォルトコンフィギュレーションセットはソースコードに埋め込まれます。
+//同じ方法で、他のコンフィギュレーションセットも原理的にはソースコードに埋め込むことで増やすことができます。
+//しかし、RTCコンフィギュレーション機能の目的は、ソースコードを変更しないで、用途に応じてパラメーターを変更することで、一つのコンポーネントを様々な用途に使うことでしたので、ソースコードに他のコンフィギュレーションセットを埋め込むのは本末転倒です。
+
+The configuration set can be given in the component's configuration file.
+There is rtc.conf in the file that configures the component, which is mainly a configuration file for middleware that manages components, and the configuration file for the component is specified in rtc.conf as follows can.
+//コンフィギュレーションセットはコンポーネントのコンフィギュレーションファイルで与えることができます。
+//コンポーネントの設定を行うファイルには rtc.confがありますが、これは主にコンポーネントを管理するミドルウエアのための設定ファイルで、コンポーネントのための設定ファイルは、rtc.conf 内で以下のように指定することができます。
+
+ corba.nameservers: localhost
+ naming.formats: %h.host_cxt/%n.rtc
+ example.ConfigSample.config_file: configsample.conf
+
+The part of example.ConfigSample.config_file is the specified part of the component's configuration file. The part that specifies the configuration file is as follows.
+//example.ConfigSample.config_file の部分がコンポーネントのコンフィギュレーションファイルの指定部分です。コンフィギュレーションファイルを指定する部分は以下のようになっています。
+
+ <Category name>.<Module name>.config_file: <file name>
+// <カテゴリ名>.<モジュール名>.config_file: <ファイル名>
+
+You can also give an instance name instead of the module name of the component.
+//また、コンポーネントのモジュール名の代わりにインスタンス名を与えることもできます。
+
+ <Category name>.<Instance name>.config_file: <file name>
+// <カテゴリ名>.<インスタンス名>.config_file: <ファイル名>
+
+Therefore, different configuration files can be given for each instance.
+//したがって、インスタンス毎に異なるコンフィギュレーションファイルを与えることもできます。
+
+ example.ConfigSample0.config_file: consout0.conf
+ example.ConfigSample1.config_file: consout1.conf
+ example.ConfigSample2.config_file: consout2.conf
+
+//------------------------------------------------------------
+*** (G)Setting the configuration set
+//***コンフィギュレーションセットの設定
+
+In the configuration file, describe the configuration set you want to use.
+//コンフィギュレーションファイルの中には、使用したいコンフィギュレーションセットを記述します。
+
+ configuration.active_config: mode1
+ 
+ conf.mode0.int_param0: 12345
+ conf.mode0.int_param1: 98765
+ conf.mode0.double_param0: 3.141592653589793238462643383279
+ conf.mode0.double_param1: 2.718281828459045235360287471352
+ conf.mode0.str_param0: mode0
+ conf.mode0.str_param1: foo
+ conf.mode0.vector_param0: 0.0,0.1,0.2,0.3,0.4
+ 
+ conf.mode1.int_param0: -999
+ conf.mode1.int_param1: 999
+ conf.mode1.double_param0: 297992458
+ conf.mode1.double_param1: 2.97992458e+8
+ conf.mode1.str_param0: mode1
+ conf.mode1.str_param1: AIST
+ conf.mode1.vector_param0: 1,2,3,4,5,6,7,8,9
+ 
+ conf.__widget__.int_param0: slider.1
+ conf.__widget__.int_param1: spin
+ conf.__widget__.double_param0: slider.0.1
+ conf.__widget__.double_param1: text
+ conf.__widget__.str_param0: radio
+ conf.__widget__.str_param1: text
+ conf.__widget__.vector_param0: text
+ 
+ conf.__constraints__.int_param0: 0<=x<=150
+ conf.__constraints__.int_param1: 0<=x<=1000
+ conf.__constraints__.double_param0: 0<=x<=100
+ conf.__constraints__.double_param1: 
+ conf.__constraints__.str_param0: (default,mode0,mode1,foo,bar,radio)
+ conf.__constraints__.str_param1: 
+ conf.__constraints__.vector_param0: 
+
+//------------------------------------------------------------
+*** (G)Specifying the active configuration set
+//***アクティブコンフィギュレーションセットの指定
+
+In the first line, configuration.active_config specifies the active configuration set name. In this case, it is necessary to specify the existing set name with the set name called mode 1.
+//最初の行の configuration.active_config で、アクティブなコンフィギュレーションセット名を指定しています。ここでは mode1 というセット名で、当然、存在するセット名を指定する必要があります。
+
+ configuration.active_config: mode1
+
+//------------------------------------------------------------
+*** (G)Setting the configuration set
+//***コンフィギュレーションセットの設定
+
+Next is a list of parameters starting with conf.mode 0, which is a list of configuration parameters for set name '' mode 0 ''. How to specify is almost the same as source code
+//次に、conf.mode0 で始まるパラメーターのリストがありますが、これがセット名 ''mode0'' のコンフィギュレーションパラメーターのリストです。指定の仕方は、ソースコードとほぼ同じように
+
+ conf.<set name>.<parameter name>:<default value>
+// conf.<セット名>.<パラメーター名>: <デフォルト値>
+
+Has become. Be sure to specify all the configuration parameters that exist.
+If not specified, the default value is used. Next, there is a list of parameters starting with conf.mode 1, as well as mode 0, this is the setting of the parameter named mode 1.
+//となっています。必ず、存在するすべてのコンフィギュレーションパラメーターについて指定してください。
+//指定がない場合はデフォルト値が使用されます。その次に、conf.mode1で始まるパラメーターのリストがありますが、これもmode0 同様、mode1というセット名のパラメーターの設定です。
+
+//------------------------------------------------------------
+*** (G)Extension
+**** (G)conf._ widget_ setting
+Next, there is a setting list that starts with conf._ widget_. This is a special parameter used in RTSystemEditor.
+I mentioned above that widget can be specified when setting configuration parameters with RTCBuilder, but the contents set here will be set to conf._ widget_.
+You can set four kinds of slider, radio, spin, text, and when you open the configuration parameter setting dialog in RTSystemEditor, you can control parameters with slider, radio button, spin button, text box respectively .
+//次に、conf._ widget_ で始まる設定リストがあります。これは、RTSystemEditor で使用される特殊なパラメーターです。
+//***拡張機能
+//****conf._ widget_ の設定
+//RTCBuilder でコンフィギュレーションパラメーターを設定するとき widget を指定できることを上で説明しましたが、ここで設定された内容が、conf._ widget_ に設定されます。
+//slider、radio、spin、text の4種類を設定することができ、それぞれ RTSystemEditor でコンフィギュレーションパラメーター設定ダイアログを開いたときに、スライダー、ラジオボタン、スピンボタン、テキストボックスでパラメーターを操作することができます。
+
+ conf.__widget __. <parameter name>: widget name
+// conf.__widget__.<パラメーター名>: ウィジェット名
+
+- When setting slider (slider)
+//- スライダー (slider) を設定した場合
+ conf.__widget__.int_param0: slider.5
+
+By setting as above, the step width of the slider can be set to 5. At this time, this step size can not be decimals.
+However, there is a possibility that it will be improved by future upgrading.
+//上記ののように設定することで、スライダーの刻み幅を5にすることができます。現在のところ、この刻み幅を小数にすることはできません。
+//ただし、今後のバージョンアップで改善される可能性があります。
+
+- When spin button (spin) is set
+//- スピンボタン (spin) を設定した場合
+ conf.__widget__.int_param1: spin
+
+The step width of the spin button is always 1 increment. It is recommended that it be used only for integer value parameters such as int.
+//スピンボタンのステップ幅は常に1刻みです。int 等の整数値パラメーターにのみ使用することをお勧めします。
+
+- When radio button (radio) is set
+//- ラジオボタン (radio) を設定した場合
+ conf__widget__str_param0: radio
+
+- When text (text) is set
+//- テキスト (text) を設定した場合
+ conf__widget__.str_param1: text
+
+If these conf._widget_ parameters are set, the conf._ constraints_ parameter must also be set.
+//これら conf._widget_パラメーターを設定した場合、conf._ constraints_パラメーターも設定する必要があります。
+
+**** (G)conf._constraints_ setting
+//****conf._ constraints_ の設定
+The conf._constraints_ parameter is a special parameter for setting a range of values. An example of setting is shown below. Be careful when setting invalid parameters because the widget will not be displayed properly.
+//conf._ constraints_  パラメーターは、値の範囲を設定するための特殊なパラメーターです。下記に設定例を示します。不正なパラメーターを設定すると、ウィジェットが正常に表示されないので注意が必要です。
+
+- If you set a slider (slider), use the equal sign and inequality signs for the temporary variable ''x'' as shown below.
+//- スライダー (slider) を設定した場合は、以下のように 仮変数 ''x'' と等号、不等号を用いて指定します。
+ conf.__constraints__.int_param0: 0<=x<=150
+
+- When you set the spin button (spin), specify it using the equal sign and the inequality sign of the temporary variable ''x'' like the slider.
+//- スピンボタン (spin) を設定した場合もスライダーと同様に 仮変数 ''x'' と等号、不等号を用いて指定します。
+ conf.__constraints__.int_param0: 0<=x<=1000
+
+- If you set the radio button (radio), separate the button names in parentheses with commas. Multiple button names can be specified.
+//- ラジオボタン (radio) を設定した場合は、括弧内にボタン名称をカンマで区切ります。複数のボタン名称を指定することができます。
+ conf.__constraints__.str_param0: (default,mode0,mode1)
+
+- If you set text (text), specify the character you want to display.
+//- テキスト (text) を設定した場合は、表示させたい文字を指定します。
+ conf.__constraints__.str_param1: AIST
+
+Below is an example of display in RTSystemEditor according to the above setting.
+//下記に、上記設定による RTSystemEditor での表示例を示します。
+
+#ref(configuration_constraints_ja.png,90%,center)
+CENTER: ''display example of conf._constraints_''
+//CENTER: ''conf._ constraints_の表示例''
+
+//------------------------------------------------------------
+*** (G)Conversion function
+//***変換関数について
+
+For C++ and others, you do not need to specify conversion functions, especially for built-in types such as int and double. Meanwhile, we used user-specific types such as structure and STL container
+There are also cases. In this case, it is necessary to give bindParameter () as a function how to convert from a character string to each type.
+//C++ 等では、int や double などの組込み型については特に変換関数を指定する必要はありません。一方で、構造体や STL コンテナなどユーザー独自の型を利用した
+//い場合もあります。この場合、文字列からそれぞれの型への変換をどのようにするかを bindParameter() に関数として与えてあげる必要があります。
+
+Regarding conversion functions, there are rules for each language as follows. The method for each language will be described below.
+//変換関数については以下のように、各言語ごとにルールがあります。以下、各言語ごとの方法を述べます。
+
+**** (G)Conversion function for C++
+//****C++の場合の変換関数
+
+In C++, the prototype declaration of bindParameter is
+//C++におおいては、bindParameterのプロトタイプ宣言は
+
+ template <typename VarType>
+     bool bindParameter(const char* param_name, VarType& var,
+ 		       const char* def_val,
+ 	            bool (*trans)(VarType&, const char*) = coil::stringTo)
+               
+The conversion from the character string to the relevant type is done by giving appropriate function pointer to the trans of the fourth argument. By default, the coil library function stringTo () function is given.
+You can write a conversion function equivalent to this stringTo () yourself, but you can also give a function pointer, but the coil :: stringTo () function itself is also a function template, and operator >> ( )function
+//のようになっており、第4引数の trans に適当な関数ポインタを与えることで、文字列から当該型への変換が行われます。デフォルトでは、coilライブラリ関数の stringTo() 関数が与えられています。
+//自分でこのstringTo() に相当する変換関数を書いて、関数ポインタを与えることもできますが、coil::stringTo() 関数自体も関数テンプレートとなっており、std::stream に対する operator >>()関数
+
+ std::istream& operator>>(std::istream&, T)
+
+If it is defined, it will automatically be used to convert from a string to a specific type.
+//が定義されていれば、自動的にこれを利用して文字列から特定の型への変換が行われます。
+
+That is, if std :: cin >> <variable of one type> can be written, operator >> () is defined for that type, and in particular as a configuration parameter without writing a conversion function You can use it.
+//すなわち、std::cin >> <ある型の変数> のような書き方ができるのであれば、その型はoperator>>()が定義されており、特に変換関数を書かなくともコンフィギュレーションのパラメーターとして利用することができます。
+
+If there is no conversion function, for example, a comma-separated numeric string
+//もし、変換関数がない場合、例えば、以下のようにカンマ区切りの数値列
+
+ 0.0,1.0,2.0,3.0,4.0
+
+To convert to std :: vector <double>
+//を std::vector<double> へ変換するための変換関数は、
+
+ #include <istream>
+ #include <ostream>
+ #include <vector>
+ #include <string>
+ #include <coil/stringutil.h>
+ 
+ template<typename T>
+ std::istream& operator>>(std::istream& is, std::vector<T>& v)
+ {
+   std::string s;
+   std::vector<std::string> sv;
+   is >> s;
+   sv = coil::split(s ,",");
+   v.resize(sv.size());
+   for (int i(0), len(sv.size()); i < len; ++i)
+     {
+       T tv;
+       if (coil::stringTo(tv, sv[i].c_str()))
+         {
+           v[i] = tv;
+         }
+     }
+   return is;
+ }
+
+It can be implemented in this way. This is VectorConvert.h included in the source of the OpenRTM-aist C++ version, ConfigSample component.
+//このように実装することができます。なお、これは OpenRTM-aist  C++版のサンプル、ConfigSample コンポーネントのソースに含まれる VectorConvert.h です。
+
+If we include this in the source called bindParameter () (eg ConfigSample.cpp if it is a ConfigSample component), usually in the implementation source of the component, the compiler will decide at compile time and the appropriate conversion function will be used .
+//これを、bindParameter() が呼ばれるソース (例えば、ConfigSampleコンポーネントであれば ConfigSample.cpp)、通常はコンポーネントの実装ソースでincludeしてあげれば、コンパイル時にコンパイラが判断して適当な変換関数が利用されます。
+
+**** (G)Conversion function for Java
+//****Java の場合の変換関数
+
+In the case of Java, instead of giving a conversion function separately, describe the conversion from character string to actual type in the stringFrom () method defined in the holder class of the configuration variable.
+//Java の場合は、変換関数というものを別途与えるのではなく、コンフィギュレーション変数のホルダクラスにおいて定義される stringFrom() メソッドに文字列から実際の型への変換を記述します。
+
+Below is the conversion function for converting a comma-separated numeric string to Vector type defined in ConfigSampole of OpenRTM-aist Java version.
+//以下に、OpenRTM-aist Java版のConfigSampoleで定義されている、カンマ区切り数値列を Vector型に変換するための変換関数を示します。
+
+ package RTMExamples.ConfigSample;
+ 
+ import java.io.Serializable;
+ import java.util.Vector;
+ 
+ import jp.go.aist.rtm.RTC.util.ValueHolder;
+ 
+ public class VectorHolder  implements ValueHolder, Serializable {
+ 
+     /**
+      * Vector type data setting value
+      */
+     public Vector value = null;
+ 
+     /**
+      * Default constructor
+      *
+      */
+     public VectorHolder() {
+     }
+ 
+     /**
+      * constructor
+      *
+      * @param initialValue　initial value
+      *
+      */
+     public VectorHolder(Vector initialValue) {
+         value = new Vector(initialValue);
+     }
+ 
+     /**
+      * Convert from character string to Vector type and set
+      *
+      * @param def_val　Set value string representation
+      *
+      */
+     public void stringFrom(String def_val) throws Exception {
+         value = new Vector();
+         String values[] = def_val.split(",");
+         for( int intIdx=0;intIdx<values.length;intIdx++ ) {
+             value.add(values[intIdx]);
+         }
+     }
+     /**
+      * Acquire setting value
+      *
+ 　   * @return Setting value
+      *
+      */
+     public Vector getValue(){
+         return value;
+     }
+     /**
+      * Convert setting value to character string
+      *
+ 　   * @return Conversion string
+      *
+      */
+     public String toString(){
+         StringBuffer retVal = new StringBuffer();
+         while(value.iterator().hasNext()) {
+             retVal.append(value.iterator().next());
+             if(value.iterator().hasNext()) retVal.append("'");
+         }
+         return retVal.toString();
+     }
+ }
+
+**** (G)Conversion function for Python
+//****Pythonの場合の変換関数
+
+In Python version OpenRTM - aist, by default, it corresponds to the basic type and its list, and if other conversion is necessary, define a function such as bool stringTo (type, string) and call the first of bindParameter () 4 Pass the function object as an argument.
+//Python版 OpenRTM-aistでは、デフォルトでは基本型とそのリストに対応しており、それ以外の変換が必要なら、bool stringTo(type, string) であるような関数を定義して、bindParameter() の第4引数に関数オブジェクトを渡します。
+
+
+//============================================================
+** (G)What to make as a parameter?
+//**何をパラメーターにするか？
+
+Let's think about what you need to make as a configuration parameter to create an RT component.
+//RTコンポーネントを作成するうえで、何をコンフィギュレーションパラメーターにすればよいのか考えてみましょう。
+
+There are certain parameters, and there are several ways to change this externally.
+How to change using the data port, change by using the service port, and change using the configuration.
+//あるパラメーターがあり、これを外部から変更するにはいくつかの方法が考えられます。
+//データポートを利用して変更する方法、サービスポートを利用して変更する方法、そしてコンフィギュレーションを利用して変更する方法です。
+
+The configuration function is used to change the parameters inside the component.
+Therefore, parameters in the logic should be externally changeable as configuration parameters.
+However, I think that there are cases where it is in doubt whether a certain variable should be used as a configuration parameter or not.
+Here I will think about a case like that.
+//コンフィギュレーション機能はコンポーネント内部のパラメーターを変更するための機能です。
+//したがって、ロジック内のパラメーターはコンフィギュレーションパラメーターとして外部から変更できるようにするべきです。
+//しかし、ある変量をコンフィギュレーションパラメーターにすべきなのかそうでないのか迷うケースもあると思います。
+//ここではそういったケースについて少し考えてみます。
+
+//------------------------------------------------------------
+*** (G)Update Frequency
+//***更新頻度
+
+Configuration parameters are usually used to give parameters externally only once the system is running or only when configuration changes are required.
+If the update frequency is about once or several times on the system life cycle, it is a good idea to use the configuration.
+//コンフィギュレーションパラメーターは、通常はシステムが動き出す前に1度だけ、あるいは設定変更が必要になった場合にだけ、外部からパラメーターを与えるために利用します。
+//更新頻度がシステムのライフサイクル上で1回ないしは数回程度であれば、コンフィギュレーションを使うのがよいでしょう。
+
+Also as mentioned above, the configuration is given as a string from the tool or application, and it is converted into each type in the component.
+It takes time to convert to some extent (although it is about several us to several hundreds of us in recent PCs), it is not suitable for use in sending data in 1 ms cycle, for example.
+How about changing the parameter at that frequency? When actually using it, although it depends on the number of parameters and the speed of the computer and the network, you can change the parameters with practically no problem at frequencies of hundreds of ms or more.
+However, if you need to change such values periodically, you should use the data port.
+//また、上記でも述べましたが、コンフィギュレーションはツールやアプリケーションからは文字列として与えられ、コンポーネント内でそれぞれの型に変換します。
+//変換にはある程度(最近のPCでは数usから数百us程度ですが)時間がかかりますので、例えば1ms周期でデータを送る用途には向きません。
+//ではそのくらいの頻度でパラメーターを変更できるのでしょうか？実際に使用する際には、パラメーターの数やコンピューター、ネットワークの速度にも依存しますが、数百msまたはそれ以上の頻度では事実上問題なくパラメーターを変更できます。
+//ただし、そのように周期的に何度も値を変更する必要があるものはデータポートを使うべきでしょう。
+
+//------------------------------------------------------------
+*** (G)Timing of update
+//***更新のタイミング
+
+The configuration parameters can be updated at any time from tools such as RTSystemEditor and RTShell.
+However, actually changed parameters are reflected in actual variables at a certain timing before being referenced in functions used in functions such as onExecute and onActivated.
+The update timing is as follows.
+//コンフィギュレーションパラメーターは RTSystemEditor や RTShell などのツールから、いつでも更新することができます。
+//しかし、実際に変更されたパラメーターは onExecute や onActivated などの関数で使用する関数内で参照される前にあるタイミングで実際の変数に反映されます。
+//更新のタイミングは以下の通りです。
+
+| LEFT:100 | LEFT:150 |c
+| At initialization | Immediately after onInitialize () |
+| When activated | Just before onActivated() is called |
+| On error | Immediately after onError() |
+| Active state | Immediately after onStateUpdate() ≒ After onExecute, immediately before the next onExecute() |
+//| 初期化時 | onInitialize() の直後 |
+//| アクティブ化時 | onActivated() が呼ばれる直前 |
+//| エラー時 | onError() の直後 |
+//| アクティブ状態 | onStateUpdate() の直後 ≒ onExecute の後、次のonExecute() の直前 |
+
+//------------------------------------------------------------
+*** (G)Is it data or parameters?
+//***データかパラメーターか？
+
+For example, consider a system that periodically sends data from a remote sensor to a central server.
+Data is sent only once per hour, and the server logs it.
+Should this data be sent using the data port? Or should I use the service port or should I use the configuration?
+//例えば、遠隔地のセンサーから定期的にデータを中央のサーバに送るシステムを考えます。
+//データは1時間に1回だけ送られ、サーバー側ではそれをログに記録するとします。
+//このとき、このデータはデータポートを使って送るべきでしょうか？それとも、サービスポートを使うべきか、あるいはコンフィギュレーションを使うべきなのでしょうか？
+
+Since what is sent is '' data '' of the sensor, it can be said that it is best to send using the data port.
+Since the configuration is a mechanism to '' set '' the parameters from the outside, even if the update frequency is once per hour, it is inappropriate to communicate this data to the components in the configuration .
+However, if you want to realize complicated interactions (such as transactions) between the client and the server that can be realized with the data port, the service port may be used.
+//送られるものはセンサーの''データ''ですので、データポートを利用して送るのが最も適しているといえます。
+//コンフィギュレーションは外部からパラメーターを''設定''するための仕組みですので、たとえ更新頻度が1時間に一回であっても、このデータをコンフィギュレーションでコンポーネントに伝達するのは不適切といえます。
+//ただし、データポートでは実現できなクライアントとサーバー側の複雑なやり取り(トランザクション等)を実現したい場合は、サービスポートが使われるかもしれません。
+
+//------------------------------------------------------------
+*** (G)Is it a service or parameter?
+//***サービスかパラメーターか？
+
+Whether it should be a data port or a configuration, in practice it will not get lost much.
+On the other hand, I think that there are many situations where you are at a loss as to whether you should change the parameters in the RTC logic from the service port or as configuration parameters.
+//データポートにすべきか、コンフィギュレーションにすべきかは、実際にはあまり迷うことはないでしょう。
+//一方で、RTC ロジック内のパラメーターをサービスポートから変更するべきか、コンフィギュレーションパラメーターにすべきか迷う場面は多いと思います。
+
+If a component provides some sort of typical and somewhat comprehensive functionality, that functionality is provided externally through the interface of the service port.
+The service interface provides operations to acquire the target state and change the setting · mode · parameters.
+Apart from acquiring the state, the function of setting up and changing the mode parameter is very similar to the configuration.
+//コンポーネントがある種の典型的かつある程度まとまった機能を提供する場合、その機能はサービスポートのインターフェースによって外部に提供されます。
+//サービスインターフェースでは、対象の状態を取得したり、設定・モード・パラメーターを変更したりするためのオペレーションを提供します。
+//状態の取得は別として、設定を行ったり、モード・パラメーターを変更したりする機能はコンフィギュレーションと大変似ています。
+
+As it turns out, it does not matter much which way you set it, but the function of the target RTC has already been defined as a service interface, and it is necessary to acquire and set the state, etc., to provide a somewhat complicated function In that case, it can be said that operation via the service interface is suitable.
+It is a good idea to use the configuration for setting other simple parameters and modes.
+//結局のところはどちらで設定しても大差ないのですが、対象とする RTC の機能がすでにサービスインターフェースとして定義されていたり、状態の取得と設定が必要になるなど、ある程度複雑な機能を提供する場合、サービスインターフェースを介した操作が適していると言えるでしょう。
+//それ以外の簡単なパラメーター・モード等の設定にはコンフィギュレーションを利用するとよいでしょう。
+
+//============================================================
+** (G)Summary
+//**まとめ
+
+In this theory, I explained how to define and how to use the configuration function.
+Parameters in the logic should be externalized using this function as much as possible to improve the reusability of the component.
+You also need to pay attention to what you should or should not do for the configuration parameters.
+If you use the configuration function effectively, the components you create will also be highly reusable.
+//この説では、コンフィギュレーション機能について定義の仕方や使い方について説明しました。
+//ロジック内のパラメーターはコンポーネントの再利用性を向上させるために、できるだけこの機能を利用して外部化するべきです。
+//何をコンフィギュレーションパラメーターにすべきか、すべきでないかといったことについても注意を払う必要があります。
+//コンフィギュレーション機能を有効に利用すれば、作成するコンポーネントも再利用性の高いものになるでしょう。

@@ -1,0 +1,434 @@
+﻿// Title: Development of RT Component (Java version)
+//*Development of RT-Component (Java)
+#contents
+*Overview 
+** OpenRTM-aist Java Overview 
+OpenRTM-aist is  a reference implementation of RT-Middleware which The National Institute of Advanced Industrial Science and Technology - Intelligent Systems Research Institute - Task Intelligence Research Group, has been implementing, distributing, maintaining.
+The RT-Middleware as well as OpenRTM-aist are the software platforms which divide the various functional components of the robot into the part unit called RT-Component and support the construction of various robotic systems by the integration of various these elements. Currently, in OMG(Object Management Group), these are conformed to the Robotic Technology Component Specification which have been decided. 
+&br; OpenRTM-aist Java is that OpenRTM-aist for C++ has been ported to Java. OpenRTM-aist Java which has OpenRTM-aist compatible interfaces for C++  enable to use both RT-Component developed using Java and RT-Component developed using C++.&br;
+
+** Target 
+This manual provides procedures for development of RT-Components for Java using OpenRTM-aist Java. This manual targets those who have the basic knowledge of Java.&br;
+
+** Prerequisites 
+Here is a list of environments that are required to run OpenRTM-aist Java.&br;
+
+CENTER:''Table 3-1 Prerequisites''
+|BGCOLOR(silver):CENTER: Environment |BGCOLOR(silver):CENTER: Notes |
+|Java Development Kit 5.0 (JDK 5)&br;(http://java.sun.com/products/archive/j2se/5.0_12/index.html )| Java1.4 is not supported.|
+&br;
+&br;
+For more details on the installation procedures, refer to [["OpenRTM-aist Java Installation manual:Install(Java, UNIX)_en]].
+Please check the following before moving on to the development procedures~
+---The version when running "java -version" matches the version of JDK above (Table1-1).
+---Tha path for above JDK installation folder is specified the environment variable JAVA_HOME.
+---OpenRTM-aist-0.4.x.jar and commons-cli-1.1.jar are under <JAVA_HOME>\jre\lib\ext\.
+-References
+--JDK 5 installation instruction [[Windows:Installation on Windows systems_java]],UNIX
+--How to set the JAVA_HOME environment variable [[Windows:Installation on Windows systems_java#JAVA_HOME]],UNIX
+--Installing OpenRTM-aist-Java-0.4.x [[Windows:Install(Java, Windows)_en ]],UNIX
+--[[FAQ:"java -version" shows a different version which I have installed. >Install_Windows_en#javaver]]
+#br
+
+
+*Development of RT-Component for Java 
+Here we explain on procedures to develop RT-Components for Java. 
+We will use a component with the following specifications as a sample.&br;
+CENTER:''Table 3-2 Specifications of the Sample Component''&br;&br;
+
+|>|BGCOLOR(silver):CENTER:''Basic profile''|
+|BGCOLOR(silver):Component Name|sample|
+|BGCOLOR(silver):Discription|SampleComponent|
+|BGCOLOR(silver):Version|1.0|
+|BGCOLOR(silver):Vendor|AIST|
+|BGCOLOR(silver):Category|example |
+|BGCOLOR(silver):Component Type|DataFlowComponent |
+|BGCOLOR(silver):Activity Type|SPORADIC|
+|BGCOLOR(silver):Maximum number of instances|5|
+|>|BGCOLOR(silver):CENTER:''Data InPort''|
+|BGCOLOR(silver):Name|in|
+|BGCOLOR(silver):Type|TimedLong|
+|>|BGCOLOR(silver):CENTER:''ServiceProvider''|
+|BGCOLOR(silver):IDLPath|IDLs/MyService.idl  ''See Note''|
+|BGCOLOR(silver):Port Name|MySvcPort|
+|BGCOLOR(silver):Service Name|myservice0|
+|BGCOLOR(silver):Service Type|MyService|
+|>|BGCOLOR(silver):CENTER:''Configuration parameter''|
+|BGCOLOR(silver):Name|multiply|
+|BGCOLOR(silver):Parameter Type|int|
+|BGCOLOR(silver):Default value|1|
+
+#br
+''Note:'' MyService.idl creates the following IDL file using the appropriate editor. Also, the "IDL Path" in above table is specified to the MyService.idl Path. On Windows, this "IDL Path" must be the full path to MyService.idl.
+ typedef sequence<string> EchoList;
+ typedef sequence<float> ValueList;
+ interface MyService
+ {
+   string echo(in string msg);
+   EchoList get_echo_history();
+   void set_value(in float value);
+   float get_value();
+   ValueList get_value_history();
+ };
+CENTER:''MyService.idl''
+#br
+The above MyService.idl is the same as the sample one in the folder of Examples/RTMExamples/SimpleService included in OpenRTM-aist-0.4 Java.
+#br
+#br
+
+** Development Procedure of RT-Component with CUI
+*** Generating Skeleton Code with rtc-template
+First, you generate the skeleton of RT-Component which you would like to develop using rtc-template. The rtc-templates which have used on CUI as well as GUI are distinguished as rtc-template (for CUI) and RtcTmplate (for GUI). (Otherwise, when rtc-template is described simply, it means that it is used as general term of CUI edition and GUI edition.)&br;
+#br
+#br
+-''rtc-template for CUI''~
+When RT-Component which has the following specifications described in ''Table3-2'' is generated using rtc-template for CUI, run this command.&br;&br;
+
+ 
+ rtc-template -bjava \
+    --module-name=Sample --desc= 'Sample Component' \
+    --module-version=1.0 --module-vendor=AIST --module-category=example \
+    --module-comp-type=DataFlowComponent --module-act-type=SPORADIC \
+    --module-max-inst=5 --inport=in:TimedLong \
+    --service=MySvcPort:myservice0:MyService --service-idl=IDLs/MyService.idl \
+    --config="multiply:int:1"
+
+''Note:''When rtc-template is executed in the windows environment, you must enclose in double quotation (") such as "Sample component". When enclose in single quotation ('), the options can't work. Also, the line continuous symbols are need to be modified from (\) to (^).
+
+
+
+#br
+:By this operation, these files are generated in the current directory.|
+--Sample.java ・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･ Classes to define Component Profile, Initialization etc
+--Sampleimpl.java ・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･ Main class for a RT-Component
+--SampleComp.java ・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･ Class for launching RT-Component
+--MyServiceSVC_impl.java ・･・･・･・･・･・･ Service implementation class
+--build_Sample.xml ・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･  Build file for the RT-Component
+--README.Sample ・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･ Read Me file
+
+#br
+
+*** Building RT-Component which was created
+We will imprement the target RT-Component for development based on the skeleton code which was generated with rtc-template. After implementing, buid RT-Component. In OpenRTM-aist Java, the component can be build on both CUI and GUI.
+In this section, we will explain how to build on CUI.&br;
+-''Build using Apache Ant''~
+RT-Component is built using Apache Ant of the build tool via the console. You can download Apache Ant from the following URL. (For more details on the installation procedures for Apache Ant, refer to it, too.)&br;
+http://ant.apache.org/ ~
+After installing Apache Ant, move the directory which the build target exists and build it with this command.&br;
+
+ > $ANT_HOME$bin\ant -f build_Sample.xml
+#br
+#br
+:After the build has completed successfully, the file class will be generated in the directory "classes" under the directory which the build executed. This is the sample screen for the build below.|
+#br
+
+#ref(RTcomponentsBuild.png,nolink,center)
+CENTER:''Fig.3-5 Build RT-Component using Apache Ant''
+&br; &br; &br;
+
+** Development Procedure of RT-Component with GUI
+*** Collaboration between RtcTemplate and JDT
+-''Open "New" on Eclipse''~
+It is also possible to develop RT-Component via Project on Eclipse which is Integrated Development Environment.
+Specify a new workspace and launch Eclipse.
+(Although you see a "Welcome" screen at that time, close this.)
+&br;
+
+#ref(CheckedWorkSpace2.png,nolink,center)
+CENTER:''Fig.3-6 Specify a New Workspace'' &br;
+
+-''Create the Java project file''&br;
+Select [File]-[New]-[Project] in the upper menu bar.&br;
+
+#ref(MakeProjectForBulid1.png,nolink,center)
+CENTER:''Fig.3-7 Create the project to build (1)''
+#br
+
+:Select "Java Project" in "New Project" wizard and Press [Next] button.|&br;
+
+#ref(MakeProjectForBulid2.png,nolink,center)
+CENTER:''Fig.3-8 Create the project to build (2)''
+#br
+:On the next step of "New Project" wizard, enter "project name" in the dialog box. Check setting of "Compiler compliance level" in "JDK Compliance" is over "5.0" (or over 1.5) and press [Next] button.|&br;
+
+#ref(MakeProjectForBulid3.png,nolink,center)
+CENTER:''Fig.3-9 Create the project to build (3)''
+#br
+
+:Set each setting of the creating project in "New Java Project" screen and click on [Finish] button.|
+
+#ref(ProjectSettings.png,nolink,center)
+CENTER:''Fig.3-10 Finished by setting each configuration''
+#br
+
+#br
+ 
+:The specified project is generated and displayed in the "Package Explorer" view.|
+
+#ref(PackageExplorerView.png,nolink,center)
+CENTER:''Fig.3-11 Display on Package Explorer view''
+#br
+#br
+#br
+
+''Note:'' For more details on the options, setting on Eclipse when creating the project, refer to Eclipse website(http://www.eclipse.org/).&br;&br;
+#br
+
+*** Generating Skeleton Code with RtcTemplate 
+-''Launch of RtcTemplate editor for GUI''~
+Open the editor window of RtcTemplate -> See [[Launching RtcTemplate directly >Launch of RtcTemplate Editor#Launch of RtcTemplate editor for GUI]]
+#br
+''Note:'' please refer [[RtcTemplate manuals >RtcTemplate_en]] about how to use RtcTemplate and other topics.
+#br
+#br
+
+-''Editing configuration items using RtcTemplate editor''~
+Here is the configurations when you generate skeleton codes for RT-Component which have the specification of ''Table 3-2'', using RtcTemplate for GUI.
+#br
+
+#ref(GUIrtc-templateSetting1.png,nolink,center)
+#br
+
+#ref(GUIrtc-templateSetting2.png,nolink,center)
+CENTER:''Fig.3-12 Settings of GUI RtcTemplate''
+#br
+#br
+:''Note:''On Windows you must specify a full path for "Output directory", "IDL path:", and so on.|
+#br
+#br
+
+-''Generating codes by [Generate] button''~
+Press [Generate] button to perform code generations. When you generate, make sure to specify the project directory which has been generated before, as "Output directory" field existing bottom of RtcTemplate editor.(''Note:'' "temp" is specified in the figure.)
+
+#ref(GenCode.png,nolink,center)
+CENTER:''Fig.3-13 Generate Codes''
+#br
+
+
+
+-''Adding a variety of generated files to the project''~
+These files are generated in the directory you specified as "Output directory".
+--Sample.java  ・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･  Class to define Component Profile, initialization process, and so on
+--Sampleimpl.java  ・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･  Main class for a RT-Component
+--SampleComp.java  ・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･  Class to launch the RT-Component
+--MyServiceSVC_impl.java  ・･・･・･・･・･・･・･・･・･・･・･・･・･・･  Service implementation class
+--build_Sample.xml ・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･  Build file for the RT-Component
+--README.Sample  ・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･・･   Read Me file
+
+#br
+:  By specifying the project directory as "Output directory" field,  a variety of generated files are to be added to the project (automatically).|
+
+#ref(Done.png,nolink,center)
+CENTER:''Fig.3-14 Adding a variety of files''
+#br
+
+ 
+''Note'' Even after code generations are finished, sometimes generated files are not reflected on the project at "Package Explorer". To refresh the information, right-click the target project and select [Refresh] from the context menu which is shown.
+#ref(UpdateProject.png,nolink,center)
+CENTER:''Fig.3-15 Refrech of the shown project''
+#br
+
+''Note'' In the case of RT-Components which define service ports, errors occur when there are only files generated by Rtctemplate. It is because some of generated files use classes which are generated from IDL files. These required classes will be generated automatically when you build the component.&br;&br;
+#br
+
+''Note:''If OpenRTM-aist Java is not installed on a location which the classpath of the project refers, errors occur, In this case, modify Java Build Path properly of the project, and include the install folder(directory) of OpenRTM-aist Java in the classpath.
+#br
+
+#ref(ProjectContextMenu.png,nolink,center)
+CENTER:''Fig.3-16 Right-click the project''
+#br
+
+#ref(ProjectProperty.png,nolink,center)
+CENTER:''Fig.3-17 Adding OpenRTM-aist Java to the build path''
+#br
+
+#br
+
+*** Building RT-Component with Eclipse
+
+-''Ant Build''~
+You can build a target RT-Component by right-click build_Sample.xml in Package Explorer, then select [Execute]-[Ant Build].
+&br;
+
+#ref(BuildProject.png,nolink,center)
+CENTER:''Fig.3-18 Build of the project''
+#br
+
+#ref(BuildProject-consoleview.png,nolink,center)
+CENTER:''Fig.3-19 Console pane when the build executes''&br;
+#br
+
+:If the build has completed successfully, the class file will be generated in the directory "classes" in project.|&br;&br;
+#br
+#br
+
+** Running RT-Component which was created 
+-''Create rtc.conf''~
+Create the file ''rtc.conf'' included the following contents in "classes" within the project.
+ corba.nameservers: localhost
+ naming.formats: %n.rtc
+CENTER:''rtc.conf''
+#br
+The above ''rtc.conf'' is the same as the sample in the folder of "Examples/RTMExamples/SimpleService" included in OpenRTM-aist-0.4 Java.
+#br
+#br
+-''Start the Name Server and RtcLink''~
+Double-click start-orbd.bat in the folder "Examples" of samples included in OpenRTM-aist-0.4 Java (Windows), or execute start-orbd.sh (UNIX) to start the Name Server.
+In addition, launch [[ RtcLink >RtcLink_en]].
+--References
+---Start Name Server
+---Starting RtcLink
+#br
+#br
+-''Execution of RT-Component''~
+Open a command prompt or terminal, and set the "classes" directory as current directory.
+If type like
+ > java SampleComp
+RT-Component will be shown on RtcLink.
+
+#ref(JavaSampleOnRtcLink.png,nolink,center)
+CENTER:''Fig.3-20 State of RtcLink when Sample component succeeds to execute''
+#br
+
+#br
+#br
+#br
+
+*Details on RT-Components for Java 
+** Structure of RT-Components for Java
+The relation between source files of RT-Components for Java, and general functions included in each file is shown in Fig.3-21. For comparison, RT-Components for C++ and RT-Components Java for OpenRTM-aist-0.3 are also shown.&br;
+
+#ref(InnerRTcomponents.png,nolink,center)
+CENTER:''Fig.3-21 Structure of RT-Components''
+#br
+
+
+There are these differences between existing RT-Components for C++ and RT-Components for Java. &br;
+-Separation of main body of RT-Components functions &br;
+In RT-Components for Java, issues about launching and others moved main body of RT-Components functions to XXXImpl classes (In Fig.3-21, <Sample>Impl.java). This makes original RT-Component classes (In Fig.3-21, <Sample>.java) consist of only Component Profile definitions and generating operations to generate a variety of components. &br;
+-Changing callback functions to interfaces &br;
+Parts defined as callback functions in RT-Components for C++ are interfaces in those for Java.&br;
+--ModuleInitProc: Interface for classes to launch components
+--RtcNewFunc: Interface to create RT-Components
+--RtcDeleteFunc: Interface to destruct RT-Components
+
+This change make it mandatory for component launch classes to implement those interfaces.
+
+** Point of Difference between RT-Components for Java and RT-Components for C++ 
+***Data Ports
+In OpenRTM-aist Java, Holder class (DataRef Class) is added to pass data. This changes on how to define and use data ports as follows:&br;
+&br;
+|BGCOLOR(silver):CENTER:RT-Components for Java|BGCOLOR(silver):CENTER:RT-Components for C++|
+|//Definition of InPort&br;protected TimedShort m_in_val&br;protected DataRef<TimedLong> m_in;&br;protected InPort<TimedLong> m_inIn;&br;&br;//Registration of InPort&br;m_in_val = new TimedLong();&br;m_in = new DataRef<TimedLong>(m_in_val);&br;m_inIn = new InPort<TimedLong>("in",m_in);&br;registerInPort(TimedLong.class,"in",m_inIn);&br;&br;//Reading data from InPort&br;m_inIn.read();&br;Input Data = m_in.v.data;|//Definition of InPort&br;TimedShort m_in;&br;InPort<TimedShort> m_inIn;&br;&br;//Registration of InPort&br;m_inIn = new InPort<TimedLong>("in",m_in);&br;registerInPort("in",m_inIn);&br;&br;//Reading data from InPort&br;m_inIn.read();&br;Input Data = m_in.data;|
+|//Definition of OutPort&br;protected TimedFloat m_out_val;&br;protected DataRef<TimedFloat> m_out;&br;protected OutPort<TimedFloat> m_outOut;&br;&br;//Registration of OutPort&br;m_out_val = new TimedFloat();&br;m_out = new DataRef<TimedFloat>(m_out_val);&br;m_outOut = new OutPort<TimedLong>("out",m_out);&br;registerOutPort(TimedLong.class,"out",m_outOut);&br;&br;//Writing data to OutPort&br;m_out_val.data = Output Data;&br;m_outOut.write();|//Definition of OutPort&br;TimedFloat m_out;&br;OutPort<TimedFLoat> m_outOut;&br;&br;//Registration of OutPort&br;m_outOut = new OutPort<TimedFloat>("out",m_out);&br;registerOutPort("out",m_outOut);&br;&br;//Writing data to OutPort&br;m_out.data = Output Data;&br;m_outOut.write();|
+
+&br; For more detail on how to use Data Ports, refer to the samples of "SeqIO" and "SimpleIO".
+&br;&br;
+ 
+***Service Ports
+In OpenRTM-aist Java, the auxiliary variables (<Service Name>Base) for using service ports are added. This changes on how to define and use service ports as follows. For more detail, refer to the samples of "SimpleService".&br;
+&br;
+|BGCOLOR(silver):CENTER:RT-Components for Java|BGCOLOR(silver):CENTER:RT-Components for C++|
+|//Definition of Consumer&br;protected CorbaPort m_MyServicePort;&br;protected CorbaConsumer<MyService> m_myservice0Base&br;= new CorbaConsumer<MyService>(MyService.class);&br;protected MyService m_myservice0;&br;&br;//Registration of Consumer&br;m_MyServiceRef = new CorbaPort("MyService");&br;m_MyServicePort.registerConsumer&br;("myservice0","MyService",m_myservice0Base);&br;registerPort(m_MyServicePort);&br;&br;//Use of Consumer&br;m_myservice0 = m_myservice0Base._ptr();&br;m_myservice0.echo(argv[1]);|//Definition of Consumer&br;RTC::CorbaPort m_MyServicePort;&br;RTC::CorbaConsumer<MyService> m_myservice0;&br;&br;//Registration of Consumer&br;m_MyServicePort = new RTC::CorbaPort("MyService");&br;m_MyServicePort.registerConsumer&br;("myservice0","MyService", m_myservice0);&br;registerPort(m_MyServicePort);&br;&br;//Use of Consumer&br;m_myservice0->echo(argv[1].c_str());|
+|//Definition of Provider&br;protected CorbaPort m_MyServicePort;&br;protected MyServiceSVC_impl m_myservice0&br;= new MyServiceSVC_impl();&br;&br;//Registration of Provider&br;m_MyServiceRef = new CorbaPort("MyService");&br;m_MyServicePort.registerProvider&br;("myservice0","MyService",m_myservice0);&br;registerPort(m_MyServicePort);|//Definition of Provider&br;RTC::CorbaPort m_MyServicePort;&br;MyServiceSVC_impl m_myservice0;&br;&br;//Registration of Provider&br;m_MyServicePort = new RTC::CorbaPort("MyService");&br;m_MyServicePort.registerProvider&br;("myservice0","MyService",m_myservice0);&br;registerPort(m_MyServicePort);|
+&br;&br;
+
+***Configuration 
+Holder classes are used for configurations as well as data ports. This changes the way how to define and use configuration data as follows:&br;
+&br;
+|BGCOLOR(silver):CENTER:RT-Components for Java|BGCOLOR(silver):CENTER:RT-Components for C++|
+|//Definition of Configuration Variable&br;protected IntegerHolder m_int_param0 = new IntegerHolder();&br;protected StringHolder m_str_param0 = new StringHolder();&br;protected VectorHolder m_vector_param0= new VectorHolder();&br;&br;//Bind parameters&br;bindParameter("int_param0",m_int_param_0,"0");&br;bindParameter("str_param0",m_str_param_0,"sample");&br;bindParameter("vector_param0",m_vector_param_0,"0.0,1.0,2.0,3.0,4.0");|//Definition of Configuration Variable&br;int m_int_param0;&br;str::string m_str_param0;&br;str::vector<double> m_vector_param0;&br;&br;//Bind parameters&br;bindParameter("int_param0",m_int_param_0,"0");&br;bindParameter("str_param0",m_str_param_0,"sample");&br;bindParameter("vector_param0",m_vector_param_0,"0.0,1.0,2.0,3.0,4.0");|
+
+Please refer to samples of "ConfigSample", about how to use configuration data.&br;
+Table 3-3 shows kinds of holder classes provided in OpenRTM-aist Java to hold configuration data, and their releations with their data types.&br;
+CENTER:''Table 3-3 Relation in holders for configuration data''&br;&br;
+|BGCOLOR(silver):CENTER:Data type|BGCOLOR(silver):CENTER:Holder class|
+|||
+|CENTER:short|CENTER:jp.go.aist.rtm.RTC.util.ShortHolder|
+|CENTER:int|CENTER:jp.go.aist.rtm.RTC.util.IntegerHolder|
+|CENTER:long|CENTER:jp.go.aist.rtm.RTC.util.LongHolder|
+|CENTER:float|CENTER:jp.go.aist.rtm.RTC.util.FloatHolder|
+|CENTER:double|CENTER:jp.go.aist.rtm.RTC.util.DoubleHolder|
+|CENTER:byte|CENTER:jp.go.aist.rtm.RTC.util.ByteHolder|
+|CENTER:String|CENTER:jp.go.aist.rtm.RTC.util.StringHolder|
+
+
+As well OpenRTM-aist for C++, users can create any holder for configuration data which corresponds with any type they define, in OpenRTM-aist Java.&br;
+To implement a holder for configuration data, implement stringFrom method of jp.go.aist.rtm.RTC.util.ValueHolder and declare the holder implements Serializable interface in its implements clause.&br;"stringFrom" method of jp.go.aist.rtm.RTC.util.ValueHolder is a method to convert a string passed by its argument to its targeted data type.&br;
+Please refer to VectorHolder class in "ConfigSample" sample, about holders for configuration data.&br;
+
+** Behavior when RT-Components for Java start
+Here is the behavior when RT-Components for C++ start. This is basically same as the behavior when RT-Components for Java start, however separation of main body of RT-Components for to XXXImpl classes change receivers of message which are sent when components are created and when components are initialized, to XXX classes.&br;
+
+#ref(JavaRTcomponent1.png,nolink,center)
+#br
+
+#ref(JavaRTcomponent2.png,nolink,center)
+#br
+
+** Relationship between IDL data types and Java language data types 
+Table 3-4 shows the relationship between CORBA IDL data types and Java language data types. &br;
+CENTER:''Table 3-4 Relationship between data types''
+|BGCOLOR(silver):CENTER:CORBA IDL|BGCOLOR(silver):CENTER:Java language|
+|||
+|short|short|
+|long|int|
+|float|float|
+|double|double|
+|long long|long|
+|long double|double|
+|char|char|
+|wchar|char|
+|octet|byte|
+|unsigned short|short|
+|unsigned long|int|
+|unsigned long long|long|
+|boolean|boolean|
+|string|String|
+|wstring|String|
+|any|org.omg.CORBA.Any|
+|void|void|
+
+*Others
+
+** Tips 
+*** Configuration to Start up Eclipse automatically 
+--On Windows
+---1. Select a ".project" file from the directory of Eclipse project, and right-click to select [Properties]from the shown context menu.&br;
+Note: you can select any Eclipse project.
+
+#ref(SelectProject.png,nolink,center)
+CENTER:''Fig.3-22 Selecting a ".project" file''
+
+
+---2. Click [Change] button which is in the right of "Program" line center at "General" tab in the displayed "Properties" dialog.
+
+#ref(Property.png,nolink,center)
+CENTER:''Fig.3-23 Changing an association with an application''
+
+---3. Click [Browse] button lower in "Open With" dialog.
+
+#ref(SelectApplication.png,nolink,center)
+CENTER:''Fig.3-24 Selecting Eclipse''
+
+---4. A dialog to select a file is shown, Go to the directory in which Eclipse you want to start up automatically existes, and select "Eclipse.exe".
+---5. Press [OK] to close "Open With" dialog and "Properties" dialog.
+#br
+::Once you set up as above, you can double-click a ".project" file to run the version of Eclipse you specified automatically. &br;|
+#br
+::''Note'' You must notice that the version you specified is always started up, even if several versions of Eclipse are installed. &br;|
+::''Note'' When the project you clicked is not included in the workspace set up for the starting Eclipse, the project does not appear in Package Explorer of the Eclipse. In this case, you need to import the target project to the workspace, or switch to another workspace.|
+#br
+#br
+--On Linux~
+You can specify a workspace with a data option when you start up Eclipse.
+ > eclipse ?data /home/devel/OpenRTM/workspace
+:::Please specify the workspace which contains the target project.|
+#br
+#br
+
+** Acknowledgments 
+OpenRTM-aist Java was developed using the following libraries. We would like to extend out thanks to anyone who was involved in the designing and developing of these projects.
+&br;
+Apache Commons CLI 1.1&br;
+This product includes software developed by The Apache Software Foundation (http://www.apache.org/ ).

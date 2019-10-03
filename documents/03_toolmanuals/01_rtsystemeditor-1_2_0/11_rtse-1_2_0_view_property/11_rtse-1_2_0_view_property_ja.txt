@@ -1,0 +1,46 @@
+﻿// Title: ビュー（プロパティビュー編）
+// #contents
+
+ここではプロパティビューについて説明します。
+#br
+
+#ref(SystemEditor_Property_01.jpg,85%,center)
+CENTER:''プロパティビューの位置''
+#br
+
+プロパティビューでは、 System Dialog で選択された RTC やコネクタのプロファイル情報をリアルタイムに表示します。（ RTC の選択中であっても変更が検出されれば即座に反映されます）
+#br
+
+|CENTER:RTCの場合|CENTER:複合RTCの場合|CENTER:マネージャの場合|
+|
+#ref(fig353TypePropertyView1.png,80%,center)|
+#ref(fig353TypePropertyView2.png,80%,center)|
+#ref(fig353TypePropertyView3.png,80%,center)|
+
+CENTER:''プロパティビュー''
+#br
+
+表示されるアイコンの意味は以下のとおりです。
+#br
+
+CENTER:''プロパティアイコンの一覧''
+|LEFT:1|LEFT:30|LEFT:70|LEFT:250|c
+|No.|アイコン|名前|表示内容|
+|1|
+#ref(IconRTC2.png,nolink,center)|RTC|InstanceName、TypeName、Description、Vender、Category、State(※1番目の ExecutionContext の LifeCycleState を基にして表示される)|
+|2|
+#ref(IconExecContext.png,nolink,center)|ExecutionContext|State、Kind、Rate|
+|3|
+#ref(IconServicePort.png,nolink,center)|ServicePort|Name、プロパティ情報のリスト|
+|4|
+#ref(IconOutPort.png,nolink,center)|Outport|Name、プロパティ情報のリスト|
+|5|
+#ref(IconInPort.png,nolink,center)|Inport|Name、プロパティ情報のリスト|
+|6|
+#ref(IconPIP.png,nolink,center)|PortInterfaceProfile|InterfaceName、TypeName、PortInterfacePolarity|
+|7|
+#ref(IconMgr.png,nolink,center)|マネージャー|Components (生成したコンポーネント名のリスト)&br;Loadable Modules (ロード可能なモジュール名のリスト)&br;Loaded Modules (ロード済みのモジュール名のリスト)|
+
+なお、RTC の仕様では、RTC  のLifeCycleState は ExecutionContext ごとに存在します。したがって、状態は複数存在しますが、RT System Editorでは1番目の ExecutionContext のみを使用して STATE を 表示します。
+#br
+#br

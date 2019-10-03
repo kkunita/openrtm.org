@@ -1,0 +1,43 @@
+﻿// Title:Case study
+#ref(tribot.png,right,around,30%,url=/en/node/378)
+-Create Image Processing Component
+--[[Windows 8.1, OpenRTM-aist-1.1.2, OpenRTP-1.1.2, CMake-3.5.2, VS2015:/ja/node/6057]]
+--[[Windows XP, OpenRTM-aist-1.1, rtmtools-1.1.0-RC3, CMake, VC2010:/ja/node/5022]]
+--[[Windows XP, OpenRTM-aist-1.1, CMake, VC2010:http://www.openrtm.org/openrtm/ja/node/4625]]
+--[[Ubuntu 16.04, OpenRTM-aist-1.1.2-RELEASE, OpenRTP-1.1.2, CMake-3.5.1, Code::Blocks-16.01:/ja/node/6058]]
+--[[Ubuntu 14.04, OpenRTM-aist-1.1, CMake:/ja/node/430]]
+
+-Create RT Component
+--[[Create RT Component Basic:/en/node/477]]
+--[[Using OpenCV CameraImage type:/en/node/748]]
+--[[VC++ Edition:/en/node/483]]
+--[[Java Edition:/en/node/478]]
+--[[OpenCV Edition for RTCB-RC1:/ja/node/1028]]
+--[[NXTway Edition:/ja/node/268]]
+--[[LEGO Mindstorm Edition:/en/node/762]]
+--[[Development of RT component(Raspberry Pi):/ja/node/5269]]
+--[[Cross development of RT component(Armadillo240):/en/node/170]]
+
+-[[Cooperation between GUI Toolkit and RTC:/ja/node/5317]]
+-[[LEGO Mindstorms EV 3 Case Study:/casestudy/lego_mindstorm_ev3]]
+-[[Control of Choreonoid with LeapMotion:/ja/node/5794]]
+-[[RTM network setting method using VPN:/ja/node/5475]]
+-[[Raspberry Pi Mouse Case Study:/ja/node/6005]]
+
+//-Create RTcomponent
+//-[[Development of RT-Component:/en/node/477]]
+//-[[Development of RT-Components (for OpenCV):/en/node/748]]
+//-[[Development of RT-Components (for LEGO Mindstorms):/en/node/762]]
+//<!--break-->
+//-[[Development of RT-Component (Java):/en/node/478]]
+//-[[Development of RT-Component (VC++):/en/node/483]]
+//-[[For Armadillo240(cross development):/en/node/170]]
+
+
+//-[[RTコンポーネント作成:/node/171]]
+//-[[RTコンポーネント作成(Java版):/node/172]]
+//-[[RTコンポーネント作成(OpenCV編):/node/183]]
+//-[[RTコンポーネント作成(VC++編):/node/185]]
+//-[[RTコンポーネント作成(OpenCV編):/node/183]]
+//-[[RTコンポーネント作成(LEGO Mindstorm編):/node/182]]
+//-[[RTコンポーネントのクロス開発(Armadillo240):/node/170]]

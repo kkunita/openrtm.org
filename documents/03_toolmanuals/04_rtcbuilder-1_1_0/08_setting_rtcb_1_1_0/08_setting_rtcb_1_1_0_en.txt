@@ -1,0 +1,199 @@
+﻿// Title: Various settings
+#contents
+
+This section explains the various settings of RTC Builder.
+The RTCBuilder setting screen is displayed by selecting "RTCBuilder" from the "Settings" screen displayed by selecting Window > Settings .... in the upper screen menu.
+//ここでは RTCBuilder の各種設定について説明します。
+//RTCBuilder の設定画面は、画面上部メニューの [ウィンドウ] > [設定....] を選択して表示される「設定」画面から ｢RTCBuilder｣ を選択すると表示されます。
+#br
+
+#ref(fig7-1SettingRTCBuilder2_ja.png,70%,center)
+
+** (G)Data type
+You can set the location of the IDL file that defines the data type to be set with the Data Port and the Configuration parameter.
+To add a new IDL storage directory, click the [New] button. In addition, you can delete the selected IDL storage directory by clicking the [Remove] button.
+The actual location of the IDL storage directory should be selected on the directory selection screen displayed by clicking in the "IDL File Directories" column.
+//**データ型
+//Data Port および Configuration パラメーターで設定するデータ型を定義した IDL ファイルの位置を設定することができます。
+//IDL 格納ディレクトリーを新規に追加する場合は、[新規] ボタンをクリックしてください。また、[除去] ボタンをクリックすると、選択中の IDL 格納ディレクトリーを削除することができます。
+//IDL 格納ディレクトリーの実際の位置は、｢IDL File Directories｣ 欄内をクリックして表示されるディレクトリー選択画面にて選択してください。
+
+#ref(fig7-1SettingRTCBuilder1_ja.png,70%,center)
+CENTER:''RTCBuilder setting screen''
+//CENTER:''RTCBuilder 設定画面''
+
+#br
+
+** (G)Code generation
+In the RTC profile editor's basic profile input page and configuration profile input page, you can set the contents set by default when new editor is displayed and when adding new item.
+//**コード生成
+//RTC プロファイルエディタの基本プロファイル入力ページおよびコンフィギュレーション・プロファイル入力ページにて新規エディタ表示時、新規項目追加時にデフォルトで設定される内容を設定することができます。
+#br
+
+#ref(fig7-2SettingGenerateCode_ja.png,70%,center)
+CENTER:''Code generation setting screen''
+//CENTER:''コード生成設定画面''
+#br
+The default setting (contents set when clicking the [Restore Defaults] button) in this setting screen is as follows.
+CENTER:''Code generation setting screen default value''
+| Item | default value |
+//なお、この設定画面中のデフォルト設定([デフォルトの復元] ボタンをクリックした際に設定される内容)は以下のとおりです。
+//CENTER:''コード生成設定画面　デフォルト値''
+//|項目|デフォルト値|
+|>|Basic|
+|Component name|ModuleName|
+|Description|ModuleDescription|
+|Version|1.0.0|
+|Vendor|VendorName|
+|Category|Category|
+|Component Type|STATIC|
+|Component’s activity type|PERIODIC|
+|Max. Instances|1|
+|Component kind|DataFlowComponent|
+|Execution type|PeriodicExecutionContext|
+|Execution rate|1.0|
+|>|Configuration|
+|Name|conf_name|
+|Type|conf_type|
+|Variable Name|conf_varname|
+|Default Value|conf_default|
+|Constraint|conf_constraint|
+|Unit||
+#br
+
+**(G)Port
+You can set the default settings when new items are added on the data port · profile input page and service port · profile input page of RTC profile editor.
+//RTC プロファイルエディタのデータポート・プロファイル入力ページおよびサービスポート・プロファイル入力ページにて新規項目を追加した際にデフォルトで設定される内容を設定することができます。
+#br
+
+#ref(fig7-3SettingPort_ja.png,70%,center)
+CENTER:''Port setting screen''
+//CENTER:''Port設定画面''
+#br
+The default setting (contents set when clicking the [Restore Defaults] button) in this setting screen is as follows.
+CENTER:''Port setting screen default value''
+| Item | default value |
+//なお、この設定画面中のデフォルト設定([デフォルトの復元] ボタンをクリックした際に設定される内容)は以下のとおりです。
+//CENTER:''Port設定画面　デフォルト値''
+//|項目|デフォルト値|
+|>|Data Port|
+|DataPort Name|dp_name|
+|DataPort Type|dp_type|
+|DataPort Variable Name|dp_vname|
+|DataPort Constraint|dp_constraint|
+|DataPort Unit||
+|>|Service Port|
+|ServicePort Name|sv_name|
+|>|Service Interface|
+|Interface Name|if_name|
+|Instance Name|if_instance|
+|Variable Name|if_varname|
+#br
+
+**(G)Configuration
+You can set items displayed in the system configuration information on the configuration profile input page of the RTC profile editor.
+//RTC プロファイルエディタのコンフィギュレーション・プロファイル入力ページのシステム・コンフィギュレーション情報に表示される項目を設定することができます。
+#br
+
+#ref(fig7-4SettingConfig_ja.png,70%,center)
+CENTER:''Configuration setting screen''
+//CENTER:''Configuration設定画面''
+#br
+The default setting (contents set when clicking the [Restore Defaults] button) in this setting screen is as follows.
+CENTER:''Configuration setting screen default value''
+//なお、この設定画面中のデフォルト設定([デフォルトの復元] ボタンをクリックした際に設定される内容)は以下のとおりです。
+//CENTER:''Configuration 設定画面　デフォルト値''
+//|項目|デフォルト値||項目|デフォルト値|
+
+| Item | default value |
+//|項目|デフォルト値|
+|exec_cxt.periodic.type|PeriodicExecutionContext|
+|exec_cxt.periodic.rate|1000|
+|exec_cxt.evdriven.type|EventDrivenExecutionContext|
+
+#br
+
+**(G)Export
+You can set the files to be included in each archive format of the RT component's packaging function.
+//RT コンポーネントのパッケージング機能の各アーカイブ形式に含めるファイルを設定することができます。
+#br
+
+#ref(fig7-4SettingExport_ja.png,70%,center)
+CENTER:''Export setting screen''
+//CENTER:''Export設定画面''
+#br
+The setting screen is divided into sections (Source Export, Binary Export, Source + Binary Export) for each archive format. Each section consists of an extension specification part and a file name specification part.
+//設定画面はアーカイブ形式ごとのセクション（Source Export，Binary Export，Source+Binary Export）に分かれています。また、各セクションは拡張子指定部と、ファイル名指定部から構成されています。
+#br
+
+
+#ref(fig7-5SettingExport_ja.png,50%,center)
+CENTER:''Export setting screen (section)''
+//CENTER:''Export設定画面(セクション)''
+#br
+In the extension specification part, you can set the extension of the file to be included in each archive format. When you click the [Select type] button, the following type selection screen is displayed. Please select the file type you want to include in the archive.
+//拡張子指定部では、各アーカイブ形式に含めるファイルの拡張子を設定することができます。[タイプの選択] ボタンをクリックすると、以下のようなタイプ選択画面が表示されますので、アーカイブに含めたいファイルタイプを選択してください。
+|BGCOLOR(white):
+#ref(fig7-6Select_ja.png,70%,left)|BGCOLOR(white): *Only the registered extensions are displayed in the file extension list. If you want to select a file that does not exist in the list, please enter the appropriate extension in "other extensions" column at the bottom of the screen with "," separator. |
+//※ファイル拡張子リストには登録済みの拡張子のみ表示されます。リスト内に存在しないファイルを選択したい場合は、画面下部の｢他の拡張子｣欄に該当する拡張子を「，」区切りで入力してください。|
+
+#br
+
+CENTER:''extension selection screen''
+//CENTER:''拡張子選択画面''
+#br
+In the file setting section, you can set the file names to include in the archive. If you click the [Add] button at the bottom of the "File name" list, a new line will be added. Please enter the file name you want to include in the archive directly. You can also delete the selected line by clicking the [Delete] button.
+'' In the example of the Export setting screen (section) 'in the above figure, when selecting "Source + Binary" as the archive method, the file whose extension is "cpp" "h" and the file whose file name is "Makefile "It is set to include the file which is" README "in the archive.
+The default setting (contents set when clicking the [Restore Defaults] button) in this setting screen is as follows.
+//ファイル設定部ではアーカイブに含めるファイル名を設定することができます。「ファイル名」リスト下部の [Add] ボタンをクリックすると新しい行が追加されますので、アーカイブに含めたいファイル名を直接入力してください。また、[Delete] ボタンをクリックすると、選択している行を削除することができます。
+//''上図の  Export 設定画面(セクション)''の例では、アーカイブ方式として ｢Source+Binary｣ を選択した際に、拡張子が ｢cpp｣ ｢h」であるファイルと、ファイル名が ｢Makefile｣ ｢README｣ であるファイルをアーカイブに含める設定となります。
+//なお、この設定画面中のデフォルト設定([デフォルトの復元] ボタンをクリックした際に設定される内容)は以下のとおりです。
+
+//CENTER:''Export 設定画面　デフォルト値''
+//|項目|デフォルト値|
+
+|Item|default value|
+|>|Source Export|
+|extension|conf, cpp, h, vcproj, java, xml, py|
+|file name|Makefile, README|
+|>|Binary Export|
+|extension|conf, exe, class, py|
+|file name|README|
+|>|Source+Binary Export|
+|extension|conf, cpp, h, vcproj, java, xml, py, exe, class|
+|file name|Makefile, README|
+#br
+
+** (G)Build View 
+You can set color information of the icon displayed in the Build View.
+//Build View 内に表示されるアイコンの色情報を設定することができます。
+#br
+
+#ref(fig7-7SettingBuildView_ja.png,70%,center)
+CENTER:''Build View setting screen''
+//CENTER:''Build View 設定画面''
+#br
+With each color setting button, it is possible to change the color setting of the component body, DataInPort, DataOutPort, ServicePort, ServiceInterface.
+//それぞれの色設定ボタンにより、コンポーネント本体、DataInPort、DataOutPort、ServicePort、ServiceInterface の色設定を変更することが可能です。
+#br
+
+
+// *Data Type
+// Data Port および Configuration パラメーターで設定するデータ型を定義した IDL ファイルの位置を設定することができます。
+// #br
+// 
+// #ref(fig7-6Datatype.png,nolink,center)
+// CENTER:''Data Type設定画面''
+// 
+// IDL格納ディレクトリを新規に追加する場合は、｢Add｣ボタンをクリックしてください。また、「Delete」ボタンをクリックすると、選択中のIDL格納ディレクトリを削除することができます。
+// #br
+// IDL格納ディレクトリの実際の位置は、｢IDL File Directories｣欄内をクリックして表示されるディレクトリ選択画面にて選択してください。
+// #br
+
+** (G)Document
+You can set the valid/invalid attribute (ON/OFF) of each activity.
+//各アクティビティの概要を説明するドキュメントの入力を設定することができます。
+//各アクティビティの有効無効属性（ON/OFF）を設定することができます。
+#ref(fig7-8SettingDocument_ja.png,70%,center)
+CENTER:''Document setting screen''
+//CENTER:''Document 設定画面''

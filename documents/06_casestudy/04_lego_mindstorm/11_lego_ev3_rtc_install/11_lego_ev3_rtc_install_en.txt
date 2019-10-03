@@ -1,0 +1,191 @@
+﻿// Title: Installing RTCs for Educator Vehicle (EV3)
+#contents
+
+このページでは Educator Vehicle を操作するための各RTC のインストール方法について説明します。
+
+
+
+
+** EducatorVehicle
+
+EducatorVehicle は EV3 の走行速度の入力、センサーのデータの出力等を行うためのコンポーネントです。
+
+- https://github.com/Nobu19800/EducatorVehicle
+
+クロス環境で以下のコマンドを入力してください。
+
+ git clone https://github.com/Nobu19800/EducatorVehicle
+ cd EducatorVehicle
+ cmake .
+ make
+
+生成された src/EducatorVehicleComp を EV3 に転送してください。
+
+|>|>|CENTER:EducatorVehicle|
+|>|>|CENTER:InPort|
+|名前|データ型|説明|
+|velocity2D|RTC::TimedVelocity2D|目標速度|
+|angle|RTC::TimedDouble|モーターMの角度|
+|lcd|RTC::CameraImage|LCDに表示する画像データ|
+|sound|RTC::TimedString|出力する音声|
+|>|>|CENTER:OutPort|
+|名前|データ型|説明|
+|odometry|RTC::TimedPose2D|現在の位置・姿勢|
+|current_vel|RTC::TimedVelocity2D|現在の速度・角速度|
+|ultrasonic|RTC::RangeData|超音波センサーで計測した距離|
+|gyro|RTC::TimedDouble|ジャイロセンサーで計測した角度|
+|color|RTC::TimedString|カラーセンサーで計測した色|
+|light_reflect|RTC::TimedDouble|カラーセンサーで計測した反射光の強さ|
+|touch|RTC::TimedBoolean|タッチセンサーのオンオフ。右側が0番目の要素、左側が1番目の要素|
+|>|>|CENTER:コンフィギュレーションパラメーター|
+|名前|デフォルト値|説明|
+|wheelRadius|0.028|車輪の半径|
+|wheelDistance|0.054|タイヤ間距離の1/2|
+|medium_motor_speed|1.6|モーターMの速度|
+
+#ref(simulator_ev3_2.png, center)
+
+***タッチセンサーの出力
+touch で入力したデータの0番目が右側(3番ポート)のタッチセンサー、1番目が左側(1番ポート)のタッチセンサーに対応しています。
+
+***音声の出力
+sound による音声の入力には以下のコマンドを利用できます。
+
+- beep
+#br
+
+beep と入力するとビープ音が鳴ります。
+
+- tone
+#br
+
+以下のように tone、周波数、時間と入力すると指定周波数の音を指定ミリ秒数だけ鳴らします。
+
+ tone,100,1000
+
+- それ以外
+#br
+
+それ以外は指定文字列を発音します
+
+
+***LCD に表示する画像について
+//LCDで表示する画像は [[ここ:https://github.com/Nobu19800/saveBinaryImage/archive/master.zip]] からダウンロードしたファイルを解凍したフォルダーの中にある、EXE/saveBinaryImage.exe で変換したものを利用してください。
+画像ファイルを saveBinaryImage.exe にドラッグ・アンド・ドロップすれば変換できます。
+
+
+
+LDC で表示する画像データは、以下のコンポーネントで画像データの変換を行えば入力可能です。
+Windows で使用する場合は、release フォルダーの ImageConversionLCDComp.exe で起動できます。
+
+- https://github.com/Nobu19800/ImageConversionLCD
+
+|>|>|CENTER:ImageConversionLCD|
+|>|>|CENTER:InPort|
+|名前|データ型|説明|
+|out|RTC::CameraImage|変換前の画像データ|
+|>|>|CENTER:OutPort|
+|名前|データ型|説明|
+|out|RTC::CameraImage|変換後の画像データ|
+
+
+#ref(ImageConversionLCD.png, center)
+
+
+例えば、OpenRTM-aist 付属のサンプルコンポーネント OpenCVCamera と接続すれば、EV3 にカメラ画像を表示させることができます。
+
+#ref(system_lcd.png, center)
+
+#ref(s_DSC00796.JPG, center)
+
+
+あるいは、指定の画像を入力するということもできます。
+
+&ref(s_DSC00797.JPG, center);&ref(s_DSC00798.JPG, 90%, center);
+
+
+** ControlEducatorVehicle
+ControlEducatorVehicle を用いることによって以下の移動ロボット(Educator Vehicle 改)の制御ができます。組み立て方は [[このページ>/ja/node/6038]] を参考にしてください。
+
+
+- https://github.com/Nobu19800/ControlEducatorVehicle
+
+
+#ref(s_DSC00443.JPG,/ja/node/6038,50%,center)
+#ref(s_DSC00440.JPG,/ja/node/6038/,50%,center)
+
+- タッチセンサーに障害物が当たった時に回避する
+- カラーセンサーで地面の反射光を計測して一定以下になったら停止する
+- 超音波センサーで地面までの距離を計測して一定上になったら停止して超音波センサーを回転させて走行可能な地面を探索する
+
+超音波センサーを使用しない場合は Educator Vehicle の制御にも使用できます。
+
+
+クロス環境で以下のコマンドを入力してください。
+
+ git clone https://github.com/Nobu19800/ControlEducatorVehicle
+ cd ControlEducatorVehicle
+ cmake .
+ make
+
+生成された src/ControlEducatorVehicleComp を EV3 に転送してください。
+
+
+|>|>|CENTER:ControlEducatorVehicle|
+|>|>|CENTER:InPort|
+|名前|データ型|説明|
+|target_velocity_in|RTC::TimedVelocity2D|目標速度|
+|current_pose|RTC::TimedPose2D|現在位置・姿勢|
+|ultrasonic|RTC::TimedRangeData|超音波センサーで計測した距離|
+|light_reflect|RTC::TimedDouble|カラーセンサーで計測した反射光の強さ|
+|touch|TimedBoolean|タッチセンサーのオンオフ|
+|>|>|CENTER:OutPort|
+|名前|データ型|説明|
+|target_velocity_out|RTC::TimedVelocity2D|補正後の目標速度|
+|angle|RTC::TimedDouble|モーターMの角度|
+|>|>|CENTER:コンフィギュレーションパラメーター|
+|名前|デフォルト値|説明|
+|sensor_height|0.2|走行できる地面があると判定する超音波センサーの計測値|
+|back_speed|0.1|後退運動をする速さ|
+|back_time|1.0|後退運動する時間|
+|rotate_speed|0.8|回転運動をする速さ|
+|rotate_time|2.0|回転運動する時間|
+|medium_motor_range|1.6|モーターMの動作範囲|
+
+
+
+#ref(ControlEducatorVehicle.png, center)
+
+
+
+***タッチセンサーの入力による回避運動
+
+#ref(ev3_4.png, center)
+
+
+タッチセンサーがオンになった場合、まず③のように back_speed で指定した速さで back_time で指定した時間だけ後退します。
+そして④のように rotate_speed で指定した角速度で rotate_time で指定した時間だけ回転します。
+回転する方向はオンになったタッチセンサーと逆方向です。
+
+
+
+***超音波センサーによる地面までの距離計測
+
+超音波センサーで地面までの距離を計測して停止、超音波センサーを回転させて走行可能な地面を探索する操作を実行するためには、EV3 の Education Vehicle を組み立ててさらに超音波センサーを回転させるように取り付ける必要があります。
+
+動作手順は以下のようになっています。
+
+#ref(ev3_sensor.png, center)
+
+机の上などを走行している場合で、②のようぬ机の端まで移動したとします。
+超音波センサーで計測した距離が sensor_height 以上になった場合、一旦停止します。
+そして③のように超音波センサーを右側に90度回転させて地面までの高さが sensor_height 以下かを判定します。
+sensor_height 以上だった場合は④のように左方向に180度回転させて地面までの高さが sensor_height 以下かを判定します。
+sensor_height 以下だった場合は、超音波センサーを向けた方向に Education Vehicle を回転させます。
+
+** 一括インストール
+上記の RTC を一括でインストールします。 以下のコマンドを入力してください。
+
+ git clone https://github.com/Nobu19800/EducatorVehicle_script_ev3dev
+ cd EducatorVehicle_script_ev3dev
+ sh Component/install_rtc.sh

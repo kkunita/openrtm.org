@@ -1,0 +1,28 @@
+﻿// Title: ラズパイマウス用 RTC のインストール(Windows)
+#contents
+
+
+*スクリプトファイル
+RTC の起動、RTシステムの復元を自動化するためのスクリプトファイルです。
+[[ここ>https://github.com/Nobu19800/RaspberryPiMouseRTSystem_script/archive/master.zip]] からダウンロードしてください。
+
+*RaspberryPiMouseGUI
+ラズパイマウス操作用GUIです。
+スクリプトファイルの項目でダウンロードしたファイルの中に同梱されています。
+
+#ref(https://raw.githubusercontent.com/Nobu19800/RaspberryPiMouseRTSystem_script/master/Components/RaspberryPiMouseGUI/RaspberryPiMouseGUI.png, center)
+
+#ref(https://raw.githubusercontent.com/Nobu19800/RaspberryPiMouseRTSystem_script/master/Components/RaspberryPiMouseGUI_comp.png, center)
+
+|>|>|CENTER:RaspberryPiMouseGUI|
+|>|>|CENTER:InPort|
+|名前|データ型|説明|
+|current_velocity|RTC::TimedVelocity2D|現在の速度|
+|current_pose|RTC::TimedPose2D|現在の位置、姿勢|
+|distance_sensor|RTC::TimedShortSeq|距離センサの計測値|
+|orientation|RTC::TimedOrientation3D|現在の姿勢|
+|>|>|CENTER:OutPort|
+|名前|データ型|説明|
+|target_velocity|RTC::TimedVelocity2D|目標速度|
+|target_position|RTC::TimedPoint2D|目標位置(未使用)|
+|update_pose|RTC::TimedPose2D|位置再設定|

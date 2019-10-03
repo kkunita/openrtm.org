@@ -1,0 +1,173 @@
+﻿// Title: System editor (Display/Edit drawing of RTC)
+#contents
+
+Describe RTC display and RTC drawing and editing operation.
+//RTC の表示と RTC の描画編集の操作を説明します。
+
+&aname(RTCcolor);
+*** (G)Display of RTC
+The RTC placed in the system editor is displayed as a rectangle and the port is displayed around that rectangle. Also, each state is expressed in color.
+//*** RTC の表示
+//システムエディタに配置された RTC は矩形で表示され、ポートはその矩形の周りに表示されます。また、それぞれの状態が色で表現されます。
+#br
+
+#ref(fig43RTCDisplayExample.png,100%,center)
+CENTER: ''RTC display example''
+//CENTER:''RTC 表示の例''
+#br
+
+The list of icons and status colors is as follows.
+//アイコンと状態色の一覧は以下のとおりです。
+#br
+
+CENTER: ''Component and port icon''
+|No.|name|shape|state|>|default color(*) |
+//CENTER:''コンポーネントとポートのアイコン''
+//|No.|名前|形状|状態|>|デフォルト色（※）|
+|１|RTC|
+#ref(IconShape.png,nolink,center)|CREATED|
+#ref(IconWhite.png,nolink,center)|White|
+|~|~|~|INACTIVE|
+#ref(IconBlue.png,nolink,center)|Blue|
+|~|~|~|ACTIVE|
+#ref(IconLightGreen.png,nolink,center)|Light Green|
+|~|~|~|ERROR|
+#ref(IconRed.png,nolink,center)|Red|
+|~|~|~|UNKNOWN|
+#ref(IconBlack.png,nolink,center)|Black|
+|2|Execution Context &br;（First only）|（Rectangular outer circumference of RTC）|RUNNING|
+#ref(IconGray.png,nolink,center)|Gray|
+|~|~|~|STOPPED|
+#ref(IconBlack.png,nolink,center)|Black|
+|3|InPort|
+#ref(IconInport.png,nolink,center)|disconnected|
+#ref(IconBlue.png,nolink,center)|Blue|
+|~|~|~|Connected（1 or more）|
+#ref(IconLightGreen.png,nolink,center)|Light Green|
+|4|OutPort|
+#ref(IconOutport.png,nolink,center)|disconnected|
+#ref(IconBlue.png,nolink,center)|Blue|
+|~|~|~|Connected（1 or more）|
+#ref(IconLightGreen.png,nolink,center)|Light Green|
+|5|ServicePort|
+#ref(IconServiceport.png,nolink,center)|disconnected|
+#ref(IconLightBlue.png,nolink,center)|Light Blue|
+|~|~|~|Connected（1 or more）|
+#ref(IconCyan.png,nolink,center)|Cyan|
+
+''The color of each state can be changed by [[display color>/en/node/4885#color]] on the setting screen.''
+//'''※各状態の色は、設定画面の [[表示色>/ja/node/4885#color]] にて変更することができます。'''
+
+In addition, icon images can be attached according to RTC type and category.
+//また、RTC の種別やカテゴリに合わせてアイコン画像をつけることができます。
+#br
+
+#ref(fig44RTCDisplayIconExample.png,100%,center)
+CENTER: ''RTC icon image example''
+//CENTER:''RTC のアイコン画像表示の例''
+#br
+
+''Icon images can be changed in the setting screen by [[icon>/en/node/4885#icon]]. ''
+//'''※アイコン画像は、設定画面の [[アイコン>/ja/node/4885#icon]] にて変更することができます。'''
+
+*** (G)RTC synchronization
+It monitors the status of the RTC placed in the system editor and updates the display in real time. & br;
+The monitoring method includes the status notification observer method (OpenRTM - aist 1.1 or later) or the periodic check by polling, and you can change the monitoring parameters by connecting the setting screen. & br;
+When placing RTC in the system editor, check the middleware version, if observer supported, register the observer to RTC. If the observer is not compatible, we will periodically query the state.
+//*** RTC の同期
+//システムエディタへ配置した RTC の状態を監視し、リアルタイムに表示を更新します。&br;
+//監視方法には状態通知オブザーバ方式（OpenRTM-aist 1.1以降）、もしくはポーリングによる周期チェックがあり、設定画面の接続にて監視パラメーターを変更することができます。&br;
+//システムエディタへ RTC を配置するときに、ミドルウェアのバージョンをチェックし、オブザーバ対応であれば RTC へオブザーバを登録します。オブザーバ未対応の場合は周期的に状態の問い合わせを行います。
+#br
+
+#ref(fig45StatusObserver.png,100%,center)
+CENTER: ''State Notification Observer''
+//CENTER:''状態通知オブザーバー''
+#br
+
+Deleting the RTC from the system editor also releases the observer. &br;
+The status notification observer notifies the following.
+//システムエディタから RTC を削除すると、オブザーバも解除します。&br;
+//状態通知オブザーバが通知する内容は次のとおりです。
+#br
+
+CENTER: ''Notification contents of status notification observer''
+|LEFT:230|LEFT|c
+| Notice | Description |
+| COMPONENT_PROFILE | Notify when RTC component profile changes |
+| RTC_STATUS | RTC status &br; Notify new status and target EC's ID |
+| EC_STATUS | status of execution context &br; change execution rate, EC start/stop, RTC attach/detach notification |
+| PORT_PROFILE | port state &br; notify of port addition/deletion, connection connection/disconnection |
+| CONFIGURATION | Configuration state &br; Notification of addition/change/deletion of configuration, switching of active configuration |
+//CENTER:''状態通知オブザーバの通知内容''
+//|LEFT:230|LEFT|c
+//|通知|説明|
+//|COMPONENT_PROFILE|RTC のコンポーネントプロファイルに変更があった場合に通知|
+//|RTC_STATUS|RTC の状態&br;新しい状態と対象となる EC の ID を通知|
+//|EC_STATUS|実行コンテキストの状態&br;実行レートの変更、EC の開始/停止、RTC のアタッチ/デタッチを通知|
+//|PORT_PROFILE|ポートの状態&br;ポートの追加/削除、コネクションの接続/切断を通知|
+//|CONFIGURATION|コンフィグレーションの状態&br;コンフィグレーションの追加/変更/削除、アクティブなコンフィグレーションの切り替えを通知|
+
+Also, in order to confirm the survival of RTC, we will notify the heartbeat at regular intervals. & br;
+If heartbeat is not notified for a certain number of times, RTC assumes abnormal termination and deletes it from the system editor.
+//また、RTC の生存確認のため、一定間隔でハートビートを通知します。&br;
+//ハートビートが一定回数通知されないと、RTC が異常終了したとみなしてシステムエディタ上から削除します。
+#br
+
+*** (G)RTC drawing edit
+Here, we will explain RTC drawing editing. (I am daring to "drawing editing" instead of "editing" because the work described here is drawing editing, since there is no influence on the system at all)
+//*** RTC の描画編集
+//ここでは、RTC の描画編集について説明していきます。(「編集」ではなく「描画編集」とあえてしているのは、ここで説明される作業は描画の編集であり、システムに対する影響は全くないためです。)
+
+- Changing and moving the size of RTC (No effect on system) ~
+To move RTC, select RTC and drag to move it. To change the size of the RTC, drag the handle displayed by selecting RTC and move it.
+//- RTC の大きさの変更と移動（システムに対する影響なし)~
+//RTC を移動するには、RTC を選択後、ドラッグして動かします。 RTC の大きさを変更するには、 RTC を選択することで表示されるハンドルをドラッグして動かします。
+#br
+
+#ref(fig46RTCMoveResize.png,nolink,center)
+CENTER: ''Move RTC (left) and RTC size (right)''
+//CENTER:'' RTC の移動（左）とRTC の大きさの変更（右）''
+#br
+
+Also, the position and size of the selected RTC are displayed in the status bar.
+//また、選択された RTC の位置と大きさがステータスバーに表示されます。
+#br
+
+#ref(fig47StatusBar.png,nolink,center)
+CENTER:''status bar''
+//CENTER:''ステータスバー''
+#br
+
+- RTC rotation (no effect on system) ~
+Select the target component and rotate it horizontally by holding down the Ctrl key and clicking the right mouse button. Rotate to the vertical direction by holding down the Shift key and clicking the right mouse button. By repeating the same operation for each, you can change to the opposite horizontal direction and the opposite vertical direction, you can operate in the upward, downward, leftward and rightward direction.
+//- RTC の回転（システムに対する影響なし）~
+//対象のコンポーネントを選択し、Ctrlキーを押しながらマウスの右ボタンをクリックすることで、水平の向きへ回転します。Shiftキーを押しながらマウスの右ボタンをクリックすることで、垂直の向きへ回転します。それぞれ同じ操作を繰り返し行うことで逆の水平の向き、逆の垂直の向きへ変更でき、上下左右の向きへ操作することができます。
+#br
+
+#ref(fig48RTCRotate.png,nolink,center)
+CENTER:''Rotated RTC''
+//CENTER:''回転された RTC''
+#br
+
+- Delete RTC (No effect on system) ~
+To delete the RTC, select RTC and click the [Delete] button, or select [Delete] from the context menu.
+//- RTC の削除（システムに対する影響なし）~
+//RTC を削除するには、RTCを選択し [Delete] ボタンをクリックするか、コンテキストメニューから [Delete] を選択してください。
+#br
+
+#ref(fig49DeleteComponent.png,100%,center)
+CENTER:''Delete RTC''
+//CENTER:''RTC の削除''
+#br
+
+- Move connections between ports (no effect on system) ~
+To move the connection line, select the connection line and move the displayed handler. You can move the vertical line to the left and right, and the horizontal line up and down.
+//-ポート間の接続線を移動する（システムに対する影響なし）~
+//接続線を移動するには、接続線を選択し表示されるハンドラを移動します。垂直線は左右に、水平線は上下に移動することができます。
+#br
+
+#ref(fig50MoveConnection.png,nolink,center)
+CENTER:''Movement of connecting wire (vertical) (left) and horizontal (right) connecting line''
+//CENTER:''垂直線（左）と水平線の（右）の接続線の移動''
+#br
