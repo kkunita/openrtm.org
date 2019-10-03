@@ -20,7 +20,7 @@ RTCの開発にはCMake、Doxygen、Visual Studioのインストールが必要�
 ** インストーラーの作業内容
 インストーラーは以下の作業を行います。
 
--インストールディレクトリー(デフォルトはC:\Program Files)下に各種ファイルをコピー
+-インストールディレクトリ(デフォルトはC:\Program Files)下に各種ファイルをコピー
 -スタートメニュー以下にOpenRTM-aistフォルダーを作成し各種ショートカットを設定
 -環境変数の設定
 --64bit用msi利用時の設定
@@ -29,7 +29,7 @@ RTCの開発にはCMake、Doxygen、Visual Studioのインストールが必要�
 
  RTM_ROOT=C:\Program Files\OpenRTM-aist\1.2.1\\
 
- RTM_VC_VERSION= //ここにはユーザが指定したVisual Studioに則ったVCのバージョンを指定するテキストが入ります
+ RTM_VC_VERSION= //ここにはユーザーが指定したVisual StudioにのっとったVCのバージョンを指定するテキストが入ります
  RTM_JAVA_ROOT=C:\Program Files\OpenRTM-aist\1.2.1\\
 
  OMNI_ROOT=C:\Program Files\OpenRTM-aist\1.2.1\omniORB\4.2.3_%RTM_VC_VERSION%\\
@@ -53,7 +53,7 @@ RTCの開発にはCMake、Doxygen、Visual Studioのインストールが必要�
 
  RTM_ROOT=C:\Program Files (x86)\OpenRTM-aist\1.2.1\\
 
- RTM_VC_VERSION= //ここにはユーザが指定したVisual Studioに則ったVCのバージョンを指定するテキストが入ります
+ RTM_VC_VERSION= //ここにはユーザーが指定したVisual StudioにのっとったVCのバージョンを指定するテキストが入ります
  RTM_JAVA_ROOT=C:\Program Files (x86)\OpenRTM-aist\1.2.1\\
 
  OMNI_ROOT=C:\Program Files (x86)\OpenRTM-aist\1.2.1\omniORB\4.2.3_%RTM_VC_VERSION%\\
@@ -78,7 +78,7 @@ RTCの開発にはCMake、Doxygen、Visual Studioのインストールが必要�
 
 ** インストールされるファイル
 ファイルは以下のような構造でインストールされます。&br;
-上記のインストール環境の設定を確認する[[スクリプト:/ja/node/6092]]を実行すると、tree コマンドによる OpenRTM-aist 下のディレクトリー構造をログファイルに保存しますので、詳細を確認することができます。 
+上記のインストール環境の設定を確認する[[スクリプト:/ja/node/6092]]を実行すると、tree コマンドによる OpenRTM-aist 下のディレクトリ構造をログファイルに保存しますので、詳細を確認できます。 
 
  <install_dir>
    + OpenRTM-aist
