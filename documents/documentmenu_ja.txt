@@ -16,7 +16,6 @@
           - OpenRTM-aist 1.2系のインストール(Windows、msiインストーラー使用): openrtm-aist_1_2_windows_msi_ja.txt
           - Visual Studio=> Visual Studioのインストール: visual_studio_1_2_ja.txt
             - Visula_Studio_2019 Community 2019のインストール: visual_studio_2019_ja.txt
-          - (スクリプト=> windows_installer_test.batの利用方法: windows_install_test_bat_ja.txt)
         - Ubunt/Debianへのインストール: 02_install_ubuntu_1_2_ja.txt
           - 一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt
         - Rasbianへのインストール: 03_install_rasbian_1_2_ja.txt

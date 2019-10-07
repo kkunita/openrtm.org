@@ -7,7 +7,7 @@ msiインストーラーによるOpenRTM-aistのインストール手順につ�
 - [[OpenRTM-aist 1.2系のインストール(Windows、msiインストーラー使用):/ja/node/6652]]
 
 
-** 開発に必要なソフトウェアのインストール
+** 開発に必要なソフトウエアのインストール
 RTCの開発にはCMake、Doxygen、Visual Studioのインストールが必要です。
 
 - [[CMake(3.11以上推奨):https://cmake.org/download/]]
@@ -47,7 +47,7 @@ RTCの開発にはCMake、Doxygen、Visual Studioのインストールが必要�
 
  C:\Program Files\OpenRTM-aist\1.2.1\OpenCV3.4\%RTM_VC_VERSION%\bin\\
 
---32bit用msi利用時の設定
+--32bit用msi利用時の設定(64bit版Windows 10での場合で、32bit版の場合は「Program Files (x86)」の部分が「Program Files」になります。)
 
  RTM_BASE=C:\Program Files (x86)\OpenRTM-aist\\
 
@@ -56,41 +56,41 @@ RTCの開発にはCMake、Doxygen、Visual Studioのインストールが必要�
  RTM_VC_VERSION= //ここにはユーザーが指定したVisual StudioにのっとったVCのバージョンを指定するテキストが入ります
  RTM_JAVA_ROOT=C:\Program Files (x86)\OpenRTM-aist\1.2.1\\
 
- OMNI_ROOT=C:\Program Files (x86)\OpenRTM-aist\1.2.1\omniORB\4.2.3_%RTM_VC_VERSION%\\
+ OMNI_ROOT=C:\Program Files\OpenRTM-aist\1.2.1\omniORB\4.2.3_%RTM_VC_VERSION%\\
 
- OpenCV_DIR=C:\Program Files (x86)\OpenRTM-aist\1.2.1\OpenCV3.4\\
+ OpenCV_DIR=C:\Program Files\OpenRTM-aist\1.2.1\OpenCV3.4\\
 
- OpenRTM_DIR=C:\Program Files (x86)\OpenRTM-aist\1.2.1\cmake\\
+ OpenRTM_DIR=C:\Program Files\OpenRTM-aist\1.2.1\cmake\\
 
 -PATHへの追加設定
---32bit用msi利用時の設定
+--32bit用msi利用時の設定(64bit版Windows 10での場合で、32bit版の場合は「Program Files (x86)」の部分が「Program Files」になります。)
 
  C:\Program Files (x86)\OpenRTM-aist\1.2.1\bin\%RTM_VC_VERSION%\\
 
- C:\Program Files (x86)\OpenRTM-aist\1.2.1\omniORB\4.2.1_%RTM_VC_VERSION%\bin\x86_win32\\
+ C:\Program Files(x86)\OpenRTM-aist\1.2.1\omniORB\4.2.3_%RTM_VC_VERSION%\bin\x86_win32\\
 
- C:\Program Files (x86)\OpenRTM-aist\1.2.1\OpenCV3.4\x86\%RTM_VC_VERSION%\bin\\
+ C:\Program Files(x86)\OpenRTM-aist\1.2.1\OpenCV3.4\x86\%RTM_VC_VERSION%\bin\\
 
-
-インストール環境の設定を確認するスクリプトを提供しています。スクリプトの使い方、確認できる内容について下記ページで解説しています。
-
-- http://openrtm.org/openrtm/ja/content/rtm-install-check-script
-
+//
+//インストール環境の設定を確認するスクリプトを提供しています。スクリプトの使い方、確認できる内容について下記ページで解説しています。
+//
+//- http://openrtm.org/openrtm/ja/content/rtm-install-check-script
+//
 ** インストールされるファイル
 ファイルは以下のような構造でインストールされます。&br;
-上記のインストール環境の設定を確認する[[スクリプト:/ja/node/6092]]を実行すると、tree コマンドによる OpenRTM-aist 下のディレクトリ構造をログファイルに保存しますので、詳細を確認できます。 
+//上記のインストール環境の設定を確認する[[スクリプト:/ja/node/6092]]を実行すると、treeコマンドによるOpenRTM-aist下のディレクトリ構造をログファイルに保存しますので、詳細を確認できます。 
 
  <install_dir>
    + OpenRTM-aist
       + 1.x.x  :旧バージョンのランタイム
       + 1.2.1
-         + bin: dll, lib, 各種コマンド
+         + bin: dll、lib各種コマンド
          + cmake: OpenRTMConfig.cmake
-         + coil: coil ヘッダファイル
+         + coil: coilヘッダファイル
          + Components
             + C++
-               + Examples: C++ サンプルコンポーネント
-               + OpenCV: OpenCVのC++ サンプルコンポーネント
+               + Examples: C++サンプルコンポーネント
+               + OpenCV: OpenCVのC++サンプルコンポーネント
             + Java: Java サンプルコンポーネント
             + Python: Python サンプルコンポーネント
          + etc: rtc.confサンプル
@@ -99,9 +99,9 @@ RTCの開発にはCMake、Doxygen、Visual Studioのインストールが必要�
          + jre: OpenJDK JRE
          + omniORB
          + OpenCV3.4
-         + rtm: OpenRTM-aist ヘッダファイル
+         + rtm: OpenRTM-aistヘッダファイル
             + ext: 拡張モジュール用ファイル 
-            + idl: OpenRTM-aist IDLファイル
+            + idl: OpenRTM-aistIDLファイル
          + util
             + ExcelControlpy: PythonベースのMicrosoft Office用RTC
             + OpenRTP: RTCBuilderとRTSystemEditorツール
