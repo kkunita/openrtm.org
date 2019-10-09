@@ -17,7 +17,7 @@
           - Visual Studio=> Visual Studioのインストール: visual_studio_1_2_ja.txt
             - Visula_Studio_2019 Community 2019のインストール: visual_studio_2019_ja.txt
         - Ubunt/Debianへのインストール: 02_install_ubuntu_1_2_ja.txt
-          - 一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt
+          - (一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt)
         - Rasbianへのインストール: 03_install_rasbian_1_2_ja.txt
         - Fedoraへのインストール: 04_install_fedora_1_2_ja.txt
           - (一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt)
@@ -56,7 +56,8 @@
         - RTCBuilderのインストール: 02_rtc_builder_ja.txt
         - RTSystemEditorのインストール: 03_rtsystemeditor_ja.txt
         - RTSystemEditor、RTCBuilder のデバッグ: 04_rtsystemeditor_rtcbuilder_debug_ja.txt
-    - 1.1系のインストール=> OpenRTM-aist 1.1系のインストール: 02_install_1_1_ja.txt
+      - 一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt
+    - 1.1系のインストール=> OpenRTM-aist 1.1系のインストール: 02_install_1_1_ja.txt // このページはディレクトリやBook的にここに存在するが、ここにはこのページをアクセスするリンクはないです。
       - C++版 1.1系=> OpenRTM-aist(C++版)1.1系のインストール; 01_cpp_1_1_ja.txt
         - Windowsへのインストール: 01_install_windows_1_1_ja.txt
           - (OpenRTM-aist C++ 1.1.2-RELEASE: openrtm-aist_cpp_1_1_2_ja.txt)
