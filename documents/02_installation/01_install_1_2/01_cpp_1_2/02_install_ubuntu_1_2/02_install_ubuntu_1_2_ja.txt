@@ -1,35 +1,138 @@
-﻿// Titile: Ubuntu/Debianへのインストール
-#ref(ubuntu_logo2.png,around,right)
+﻿// Title: 一括インストールスクリプト
+#contents(5)
 
 
-C++版の OpenRTM-aist は、Ubuntu や Debian GNU Linux で利用可能な deb パッケージが提供されています。
-対応しているディストリビューションのバージョンは、ダウンロードページから確認できます。
-Ubuntu/Debian GNU Linux への対応およびそのバージョンは、予告なしに変更または停止されることがありますので、予めご了承ください。
+openrtm.orgが提供するインストール・スクリプトを以下のURLを用いてダウンロードし、root権限で実行します。このスクリプトでは、必要なパッケージを順次apt-getでインストールしていきます。
 
-#contents
+// -[[パッケージインストールスクリプト:http://www.openrtm.org/pub/OpenRTM-aist/cxx/install_scripts/]]
+// -[[ソースコードリポジトリの最新スクリプト:http://svn.openrtm.org/OpenRTM-aist/trunk/OpenRTM-aist/build/pkg_install100_ubuntu.sh]]
 
-** 一括インストールスクリプト
-openrtm.org が提供するインストール・スクリプト ''pkg_install_ubuntu.sh'' または ''pkg_install_debian.sh'' をダウンロードページからダウンロードし、root 権限で実行します。このスクリプトは、必要なパッケージを順次 apt-get でインストールしていきます。
+//-[[一括インストールスクリプト(Ubuntu):http://svn.openrtm.org/OpenRTM-aist/tags/RELEASE_1_1_1/OpenRTM-aist/build/pkg_install_ubuntu.sh]]
+//-[[一括インストールスクリプト(Debian):http://svn.openrtm.org/OpenRTM-aist/tags/RELEASE_1_1_1/OpenRTM-aist/build/pkg_install_debian.sh]]
 
-オプションを指定することで、目的に合わせたパッケージをインストールできるようになったので、
-初めて OpenRTM-aist をインストールしてみる方にもソースをコンパイルしてみる方にもお勧めします。
+-一括インストールスクリプト(Ubuntu): #br
+https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_ubuntu.sh
+-一括インストールスクリプト(Debian):#br
+https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_debian.sh
+-一括インストールスクリプト(Raspbian):#br
+https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_raspbian.sh
+-一括インストールスクリプト(Fedora):#br
+https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_fedora.sh
 
-一括インストールスクリプトのダウンロード、及び、詳しいインストール方法や、オプション・パッケージの種類につきましては、「[[一括インストール・スクリプト:http://openrtm.org/openrtm/ja/node/6345]]」のページをご確認ください。
+オプションを指定することで、目的に合わせたパッケージをインストールで可能です。
+//初めてOpenRTM-aistをインストールしてみる方もソースをコンパイルしてみることをお勧めします。
+
+ただし、このスクリプトはOpenRTM-aist関係のすべてのパッケージをインストールするので、不必要なパッケージもインストールされる可能性があります。
+詳しく理解している場合は、手動でインストールすることを推奨します。
+
+** pkg_install_(ubuntu/debian/raspbian).sh
+
+使えるオプションは同じですが、pkg_install_raspbian.shではopenrtpとrtshellのインストールの対応はありません。従って-lオプションの引数としてopenrtpとrtshellは使用できません。
+
+*** オプション一覧
+ $ sudo sh ./pkg_install_ubuntu.sh --help
+  Usage:
+ 
+    pkg_install_ubuntu.sh [-l all/c++] [-r/-d/-s/-c] [-u]
+    pkg_install_ubuntu.sh [-l python/java] [-r/-d/-c] [-u]
+    pkg_install_ubuntu.sh [-l openrtp/rtshell] [-d] [-u]
+ 
+  Example:
+    pkg_install_ubuntu.sh  [= pkg_install_ubuntu.sh -l c++ -d]
+    pkg_install_ubuntu.sh -l all -d  [= -l c++ -l python -l java -l openrtp -l rtshell -d]
+    pkg_install_ubuntu.sh -l c++ -l python -c --yes
+ 
+  Options:
+    -l <argument>  language or tool [c++/python/java/openrtp/rtshell]
+    -r             install robot component runtime
+    -d             install robot component developer [default]
+    -s             install tool_packages for build source packages
+    -c             install tool_packages for core developer
+    -u             uninstall
+    --yes          force yes
+    --help, -h     print this
+
+*** pkg_install_ubuntu.shでインストールされるdebパッケージ一覧
+
+オプションを指定することで、以下に示されるパッケージがインストールされます。
+
+赤字は-u(アンインストール)指定時にアンインストールされるパッケージです。
+
+#ref(deb-list.png,nolink,right,center)
 
 
-***インストールの確認
-インストールを確認します。
+** pkg_install_fedora.sh
 
- $ dpkg -l 'openrtm*'
- ||/ 名前           バージョン   アーキテクチ 説明
- +++-==============-============-============-=================================
- ii  openrtm-aist:a 1.2.0-0      amd64        OpenRTM-aist, RT-Middleware distr
- ii  openrtm-aist-d 1.2.0-0      amd64        OpenRTM-aist headers for developm
- ii  openrtm-aist-e 1.2.0-0      amd64        OpenRTM-aist examples
+//pkg_install_fedora.shは次のパッケージに対応していません。
+
+//- OpenRTM-aist-1.1.2-RELEASE
+//- rtshell
 
 
-**パッケージの詳細
-各パッケージの内容は以下の通りです。
+*** オプション一覧
+ $ ./pkg_install_fedora.sh --help
+  Usage:
+ 
+    pkg_install_fedora.sh [-l all/c++] [-r/-d/-s/-c] [-u]
+    pkg_install_fedora.sh [-l python/java] [-r/-d/-c] [-u]
+    pkg_install_fedora.sh [-l openrtp] [-d] [-u]
+ 
+  Example:
+    pkg_install_fedora.sh  [= pkg_install_fedora19.sh -l c++ -d]
+    pkg_install_fedora.sh -l all -d  [= -l c++ -l python -l java -l openrtp -d]
+    pkg_install_fedora.sh -l c++ -l python -c --yes
+ 
+  Options:
+    -l <argument>  language or tool [c++/python/java/openrtp]
+    -r             install robot component runtime
+    -d             install robot component developer [default]
+    -s             install tool_packages for build source packages
+    -c             install tool_packages for core developer
+    -u             uninstall
+    --yes          force yes
+    --help, -h     print this
 
-加筆をお願いします。
+*** インストールパッケージ一覧
 
+赤字は-u指定時にアンインストールされるパッケージです。
+
+#ref(rpm-list.png,nolink,right,center)
+
+** 一括インストールスクリプトを使う方法
+
+以下、一括インストールスクリプトを使用したダウンロードとインストール方法です。
+
+お使いの環境に合わせた一括インストールスクリプトを次のコマンドでダウンロードします。
+
+ > wget [pkg_install_ubuntu.sh のダウンロードURL]
+
+
+**** C++ 版をインストールする
+
+初めてインストールする方に推奨します。オプション "-l" を追加することで目的の言語を指定し、オプション"-ｄ"を追加することでデフォルトインストールを行います。（このオプションは省略できるので下記では省略しています。）
+
+ > sudo sh ./pkg_install_ubuntu.sh -l c++
+ //途中、いくつかの質問をたずねられるので、''y'' あるいは ''Y'' を入力しながら完了させる。
+
+
+**** Python 版をインストールする("Y" の入力を省略する)
+
+初めてインストールする方に推奨します。オプション "--yes" を追加することで、インストールを確認する質問と "Y" の入力を省略できます。
+
+ > sudo sh ./pkg_install_ubuntu.sh -l python --yes
+ 
+
+**** C++版とPython版とコア開発(OpenRTM-aist本体の修正等の開発)に必要なパッケージをインストールする
+
+オプション "-c" を追加することでコア開発に必要なペッケージをインストールし、オプション "--yes" で "Y" の入力を省略します。
+
+ > sudo sh ./pkg_install_ubuntu.sh -l c++ -l python -c --yes
+
+
+**** C++ 版をアンインストールする
+
+オプション "-u" を追加することで、C++版をアンインストールします。
+
+アンインストールされるパッケージは、[[インストールされるdebパッケージ一覧 :#toc2]] を確認ください。
+
+ > sudo ./pkg_install_ubuntu.sh -l c++ -u

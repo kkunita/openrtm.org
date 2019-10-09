@@ -122,7 +122,7 @@ https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_instal
  > sudo sh ./pkg_install_ubuntu.sh -l python --yes
  
 
-**** C++版とPython版とコア開発(OpenRTM-aist配布パッケージの開発)に必要なパッケージをインストールする
+**** C++版とPython版とコア開発(OpenRTM-aist自体の開発)に必要なパッケージをインストールする
 
 オプション "-c" を追加することでコア開発に必要なペッケージをインストールし、オプション "--yes" で "Y" の入力を省略します。
 
