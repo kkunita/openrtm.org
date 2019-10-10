@@ -2,18 +2,19 @@
 #ref(ubuntu_logo2.png,around,right)
 
 
-C++版のOpenRTM-aistは、UbuntuやDebian GNU Linuxにおいて利用可能なdebパッケージが提供されています。
-それぞれのリリースが対応しているOSのディストリビューション・バージョンは、ダウンロードページで確認できます。
-Ubuntu/Debian GNU Linuxへの対応とそのバージョンは予告なしに停止されたり、変更されたりすることがあります。
+C++版の OpenRTM-aist は、Ubuntu や Debian GNU Linux で利用可能な deb パッケージが提供されています。
+対応しているディストリビューションのバージョンは、ダウンロードページから確認できます。
+Ubuntu/Debian GNU Linux への対応およびそのバージョンは、予告なしに変更または停止されることがありますので、予めご了承ください。
 
 #contents
 
 ** 一括インストールスクリプト
-openrtm.orgが提供するインストール・スクリプト''pkg_install_ubuntu.sh''または''pkg_install_debian.sh''を指定のURLからダウンロードし、root 権限で実行します。このスクリプトでは必要なパッケージを順次apt-getを用いてインストールしていきます。
+openrtm.org が提供するインストール・スクリプト ''pkg_install_ubuntu.sh'' または ''pkg_install_debian.sh'' をダウンロードページからダウンロードし、root 権限で実行します。このスクリプトは、必要なパッケージを順次 apt-get でインストールしていきます。
 
-オプションを指定することで、目的に合わせたパッケージをインストールすることが可能です。
+オプションを指定することで、目的に合わせたパッケージをインストールできるようになったので、
+初めて OpenRTM-aist をインストールしてみる方にもソースをコンパイルしてみる方にもお勧めします。
 
-一括インストールスクリプトのダウンロードや詳しいインストール方法、指定可能なオプションの種類につきましては、「[[一括インストール・スクリプト:http://openrtm.org/openrtm/ja/node/6345]]」のページをご確認ください。
+一括インストールスクリプトのダウンロード、及び、詳しいインストール方法や、オプション・パッケージの種類につきましては、「[[一括インストール・スクリプト:http://openrtm.org/openrtm/ja/node/6345]]」のページをご確認ください。
 
 
 ***インストールの確認
@@ -29,229 +30,6 @@ openrtm.orgが提供するインストール・スクリプト''pkg_install_ubun
 
 **パッケージの詳細
 各パッケージの内容は以下の通りです。
-***openrtm-aist
-openrtm-aist にはランタイムライブラリとコマンド群が含まれています。
 
--コマンド
- /usr/bin/rtcd
- /usr/bin/rtcprof
- /usr/bin/rtm-config
- /usr/bin/rtm-naming
-
-
--ライセンス等
- /usr/share/doc/openrtm-aist/changelog.gz
- /usr/share/doc/openrtm-aist/README.Debian
- /usr/share/doc/openrtm-aist/README
- /usr/share/doc/openrtm-aist/README.jp
- /usr/share/doc/openrtm-aist/copyright
- /usr/share/doc/openrtm-aist/changelog.Debian.gz
-
--設定ファイルサンプル
- /usr/etc/rtc.conf.sample
-
--ライブラリ
- ***** 32bit
- /usr/lib/i386-linux-gnu/libRTC-X.X.X.so
- /usr/lib/i386-linux-gnu/libRTC.a
- /usr/lib/i386-linux-gnu/libRTC.la
- /usr/lib/i386-linux-gnu/libcoil-X.X.X.so
- /usr/lib/i386-linux-gnu/libcoil.a
- /usr/lib/i386-linux-gnu/librtmCamera.a
- /usr/lib/i386-linux-gnu/librtmCamera.la
- /usr/lib/i386-linux-gnu/librtmCamera.so.X.X.X
- /usr/lib/i386-linux-gnu/librtmManipulator.a
- /usr/lib/i386-linux-gnu/librtmManipulator.la
- /usr/lib/i386-linux-gnu/librtmManipulator.so.X.X.X
- /usr/lib/i386-linux-gnu/openrtm-1.2/ec/FileNameservice.la
- /usr/lib/i386-linux-gnu/openrtm-1.2/ec/FileNameservice.so.X.X.X
- /usr/lib/i386-linux-gnu/openrtm-1.2/ec/LogicalTimeTriggeredEC.a
- /usr/lib/i386-linux-gnu/openrtm-1.2/ec/LogicalTimeTriggeredEC.la
- /usr/lib/i386-linux-gnu/openrtm-1.2/ec/LogicalTimeTriggeredEC.so.X.X.X
- /usr/lib/i386-linux-gnu/openrtm-1.2/sdo/LoggerConsumer.a
- /usr/lib/i386-linux-gnu/openrtm-1.2/sdo/LoggerConsumer.la
- /usr/lib/i386-linux-gnu/openrtm-1.2/sdo/LoggerConsumer.so.X.X.X
- /usr/lib/i386-linux-gnu/openrtm-1.2/ssl/SSLTransport.la
- /usr/lib/i386-linux-gnu/openrtm-1.2/ssl/SSLTransport.so.X.X.X
- /usr/lib/i386-linux-gnu/pigconfig/openrtm-aist.pc
- ***** 64bit
- /usr/lib/x86_64-linux-gnu/libRTC-X.X.X.so
- /usr/lib/x86_64-linux-gnu/libRTC.a
- /usr/lib/x86_64-linux-gnu/libRTC.la
- /usr/lib/x86_64-linux-gnu/libcoil-X.X.X.so
- /usr/lib/x86_64-linux-gnu/libcoil.a
- /usr/lib/x86_64-linux-gnu/librtmCamera.a
- /usr/lib/x86_64-linux-gnu/librtmCamera.la
- /usr/lib/x86_64-linux-gnu/librtmCamera.so.X.X.X
- /usr/lib/x86_64-linux-gnu/librtmManipulator.a
- /usr/lib/x86_64-linux-gnu/librtmManipulator.la
- /usr/lib/x86_64-linux-gnu/librtmManipulator.so.X.X.X
- /usr/lib/x86_64-linux-gnu/openrtm-1.2/ec/FileNameservice.la
- /usr/lib/x86_64-linux-gnu/openrtm-1.2/ec/FileNameservice.so.X.X.X
- /usr/lib/x86_64-linux-gnu/openrtm-1.2/ec/LogicalTimeTriggeredEC.a
- /usr/lib/x86_64-linux-gnu/openrtm-1.2/ec/LogicalTimeTriggeredEC.la
- /usr/lib/x86_64-linux-gnu/openrtm-1.2/ec/LogicalTimeTriggeredEC.so.X.X.X
- /usr/lib/x86_64-linux-gnu/openrtm-1.2/sdo/LoggerConsumer.a
- /usr/lib/x86_64-linux-gnu/openrtm-1.2/sdo/LoggerConsumer.la
- /usr/lib/x86_64-linux-gnu/openrtm-1.2/sdo/LoggerConsumer.so.X.X.X
- /usr/lib/x86_64-linux-gnu/openrtm-1.2/ssl/SSLTransport.la
- /usr/lib/x86_64-linux-gnu/openrtm-1.2/ssl/SSLTransport.so.X.X.X
- /usr/lib/x86_64-linux-gnu/pigconfig/openrtm-aist.pc
-
-***openrtm-aist-dev
-openrtm-aist-devには、開発に必要なコマンド群とヘッダが含まれています。
-
--コマンド
- /usr/bin/rtcd
- /usr/bin/rtcprof
- /usr/bin/rtm-config
- /usr/bin/rtm-naming
-
--ライセンス等
- /usr/share/doc/README
- /usr/share/doc/README.Debian
- /usr/share/doc/README.jp
- /usr/share/doc/openrtm-aist-dev/changelog.Debian.gz
- /usr/share/doc/openrtm-aist-dev/changelog.gz
- /usr/share/doc/openrtm-aist-dev/copyright
-
--ヘッダ
- /usr/include/Openrtm-1.2/rtm/BufferBase.h
- /usr/include/Openrtm-1.2/rtm/BufferStatus.h
- 中略
- /usr/include/Openrtm-1.2/rtm/Typename.h
- /usr/include/openrtm-1.2/rtm/ext/CameraCommonInterface.hh
- /usr/include/openrtm-1.2/rtm/ext/CameraCommonInterface.idl
- 中略
- /usr/include/openrtm-1.2/rtm/ext/ManipulatorCommonInterface_MiddleStub.h
- /usr/include/openrtm-1.2/ext/ec/artlinux/ArtExecutionContext.h
- /usr/include/openrtm-1.2/ext/ec/rtc.conf.sample
- /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/LogicalTimeTrggerdEC.h
- /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/LogicalTimeTriggedEC.idl
- 中略
- /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/LogicalTimeTriggeredECStub.h
- /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/idl/LogicalTimeTriggeredEC.hh
- 中略
- /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/idl/LogicalTimeTriggeredECSK.cc
- /usr/include/openrtm-1.2/rtm/ext/ec/rtpreempt/RTPreemptEC.h
- /usr/include/openrtm-1.2/rtm/ext/ec/rtpreempt/rtc.conf.sample
- /usr/include/openrtm-1.2/rtm/ext/local_service/nameservice_file/FileNameservice.h
- /usr/include/openrtm-1.2/rtm/ext/logger/fluentbit_stream/FluentBit.h
- /usr/include/openrtm-1.2/rtm/ext/logger/fluentbit_stream/fluentbit.conf
- /usr/include/openrtm-1.2/rtm/ext/sdo/logger/Logger.hh
- /usr/include/openrtm-1.2/rtm/ext/sdo/logger/Logger.idl
- 中略
- /usr/include/openrtm-1.2/rtm/ext/sdo/logger/LoggerStub.h
- /usr/include/openrtm-1.2/rtm/ext/sdo/observer/ComponetObserver.idl
- /usr/include/openrtm-1.2/rtm/ext/sdo/observer/ComponetObserver.Consumer.h
- 中略
- /usr/include/openrtm-1.2/rtm/ext/sdo/observer/ComponetObserverSK.cc
- /usr/include/openrtm-1.2/rtm/ext/sdo/observer/idl/ComponentObserver.hh
- 中略
- /usr/include/openrtm-1.2/rtm/ext/sdo/observer/idl/ComponetObserverSK.cc
- /usr/include/openrtm-1.2/rtm/idl/BasicDataType.hh
- /usr/include/openrtm-1.2/rtm/idl/BasicDataType.idl
- 中略
- /usr/include/openrtm-1.2/rtm/idl/SharedMemoryStub.h
- /usr/include/openrtm-1.2/rtm/idl/device_interfaces/AIO.idl
- /usr/include/openrtm-1.2/rtm/idl/device_interfaces/ActArray.idl
- 中略
- /usr/include/openrtm-1.2/rtm/idl/device_interfaces/Ranger.idl
- /usr/include/openrtm-1.2/rtm/version.h
- /usr/include/openrtm-1.2/rtm/version.txt
-
--ライブラリ・その他
- ***** 32bit
- /usr/lib/i386-linux-gnu/openrtm-1.2/cmake/OpenRTMConfig.cmake
- /usr/lib/i386-linux-gnu/openrtm-1.2/py_helper/README_gen.py
- /usr/lib/i386-linux-gnu/openrtm-1.2/py_helpver/cxx_gen.py
- 中略
- /usr/lib/i386-linux-gnu/openrtm-1.2/py_helpver/yat.py
- /usr/lib/i386-linux-gnu/pkgconfig/libcoil.pc
- /usr/lib/i386-linux-gnu/share/doc/openrtm-aist-dev/changelog.Debian.gz
- /usr/lib/i386-linux-gnu/share/doc/openrtm-aist-dev/changelog.gz
- /usr/lib/i386-linux-gnu/share/doc/openrtm-aist-dev/copyright
- ***** 64bit
- /usr/lib/x86_64-linux-gnu/openrtm-1.2/cmake/OpenRTMConfig.cmake
- /usr/lib/x86_64-linux-gnu/openrtm-1.2/py_helper/README_gen.py
- /usr/lib/x86-64-linux-gnu/openrtm-1.2/py_helpver/cxx_gen.py
- 中略
- /usr/lib/x86_64-linux-gnu/openrtm-1.2/py_helpver/yat.py
- /usr/lib/x86_64-linux-gnu/pkgconfig/libcoil.pc
- /usr/lib/x86_64-linux-gnu/share/doc/openrtm-aist-dev/changelog.Debian.gz
- /usr/lib/x86_64-linux-gnu/share/doc/openrtm-aist-dev/changelog.gz
- /usr/lib/x86_64-linux-gnu/share/doc/openrtm-aist-dev/copyright
-
-*** openrtm-aist-example
-openrtm-aist-example にはスタンドアロン RTC、ローダブル RTC それぞれのサンプルと、サンプル RTC のソースが含まれています。
-
--サンプル(スタンドアロンRTC)
- /usr/share/openrtm-1.2/Components/C++/examples/ConsoleOutComp
- /usr/share/openrtm-1.2/Components/C++/examples/ConsoleInComp
- 中略
- /usr/share/openrtm-1.2/Components/C++/examples/consout.conf
- /usr/share/openrtm-1.2/Components/C++/examples/rtc.composite.linux.conf
- /usr/share/openrtm-1.2/Components/C++/examples/rtc.conf
-
--サンプル(ソース)
- /usr/share/openrtm-1.2/Components/C++/examples/src/Composite/README.Motor
- /usr/share/openrtm-1.2/Components/C++/examples/src/Composite/Makefile.Sensor
- /usr/share/openrtm-1.2/Components/C++/examples/src/Composite/Motor.cpp
- 中略
- /usr/share/openrtm-1.2/Components/C++/examples/src/Throughput/rtc.conf
- /usr/share/openrtm-1.2/Components/C++/examples/src/Throughput/run.sh
- /usr/share/openrtm-1.2/Componnets/C++/examples/templates/AIO.xml
- /usr/share/openrtm-1.2/Components/C++/examples/templates/ActArray.xml
- 中略
- /usr/share/openrtm-1.2/Components/C++/examples/templates/VelocityControl3D.xml
- 
-
--サンプル(ローダブルRTC)
- /usr/share/openrtm-1.2/Components/C++/examples/rtc/ConfigSample.a
- /usr/share/openrtm-1.2/Components/C++/examples/rtc/ConfigSample.la
- 中略
- /usr/share/openrtm-1.2/Components/C++/examples/rtc/Throughput.so.X.X.X
- /usr/share/openrtm-1.2/Components/C++/examples/rtc/Cofig.sample.so
- /usr/share/openrtm-1.2/Components/C++/examples/rtc/Cofig.sample.so.X
- 中略
- /usr/share/openrtm-1.2/Components/C++/examples/rtc/Troughput.so.X
-
--ライセンス等
- /usr/share/doc/openrtm-aist-example/changelog.Debian.gz
- /usr/share/doc/openrtm-aist-example/changelog.gz
- /usr/share/doc/openrtm-aist-example/copyright
-
-***openrtm-aist-doc
-openrtm-aist-doc には、日本語と英語のクラスリファレンス、IDL インターフェース定義リファレンスが含まれています。
-
--クラスリファレンス
- /usr/share/openrtm-1.2/doc/C++/ClassReference/html/Affinity_8h.html
- /usr/share/openrtm-1.2/doc/C++/ClassReference/html/Affinity_8h_dep_incl.map
- 中略
- /usr/share/openrtm-1.1/doc/C++/ClassReference/html/version_8h_source.html
-
--IDL リファレンス
- /usr/share/openrtm-1.2/doc/idl/IDLReference/html/BasicDataType_8idl.html
- /usr/share/openrtm-1.2/doc/idl/IDLReference/html/BasicDataType_8idl_dep_incl.map
- 中略
- /usr/share/openrtm-1.2/doc/idl/IDLReference/html/unionSDOPackage_1_1Numeric.html
-
--クラスリファレンス(英語)
- /usr/share/openrtm-1.2/doc/C++/ClassReference-en/html/Affinity_8h.html
- /usr/share/openrtm-1.2/doc/C++/ClassReference-en/html/Affinity_8h_dep_incl.map
- 中略
- /usr/share/openrtm-1.1/doc/C++/ClassReference-en/html/version_8h_source.html
-
--IDL リファレンス(英語)
- /usr/share/openrtm-1.2/doc/idl/IDLReference-en/html/BasicDataType_8idl.html
- /usr/share/openrtm-1.2/doc/idl/IDLReference-en/html/BasicDataType_8idl_dep_incl.map
- 中略
- /usr/share/openrtm-1.2/doc/idl/IDLReference-en/html/unionSDOPackage_1_1Numeric.html
-
--ライセンス等
- /usr/share/doc/openrtm-aist-doc/changelog.Debian.gz
- /usr/share/doc/openrtm-aist-doc/changelog.gz
- /usr/share/doc/openrtm-aist-doc/copyright
-
-
+加筆をお願いします。
 
