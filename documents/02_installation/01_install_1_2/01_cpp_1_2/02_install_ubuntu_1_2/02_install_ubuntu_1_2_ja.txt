@@ -1,138 +1,257 @@
-﻿// Title: 一括インストールスクリプト
-#contents(5)
+﻿// Titile: Ubuntu/Debianへのインストール
+#ref(ubuntu_logo2.png,around,right)
 
 
-openrtm.orgが提供するインストール・スクリプトを以下のURLを用いてダウンロードし、root権限で実行します。このスクリプトでは、必要なパッケージを順次apt-getでインストールしていきます。
+C++版のOpenRTM-aistは、UbuntuやDebian GNU Linuxにおいて利用可能なdebパッケージが提供されています。
+それぞれのリリースが対応しているOSのディストリビューション・バージョンは、ダウンロードページで確認できます。
+Ubuntu/Debian GNU Linuxへの対応とそのバージョンは予告なしに停止されたり、変更されたりすることがあります。
 
-// -[[パッケージインストールスクリプト:http://www.openrtm.org/pub/OpenRTM-aist/cxx/install_scripts/]]
-// -[[ソースコードリポジトリの最新スクリプト:http://svn.openrtm.org/OpenRTM-aist/trunk/OpenRTM-aist/build/pkg_install100_ubuntu.sh]]
+#contents
 
-//-[[一括インストールスクリプト(Ubuntu):http://svn.openrtm.org/OpenRTM-aist/tags/RELEASE_1_1_1/OpenRTM-aist/build/pkg_install_ubuntu.sh]]
-//-[[一括インストールスクリプト(Debian):http://svn.openrtm.org/OpenRTM-aist/tags/RELEASE_1_1_1/OpenRTM-aist/build/pkg_install_debian.sh]]
+** 一括インストールスクリプト
+openrtm.orgが提供するインストール・スクリプト''pkg_install_ubuntu.sh''または''pkg_install_debian.sh''を指定のURLからダウンロードし、root 権限で実行します。このスクリプトでは必要なパッケージを順次apt-getを用いてインストールしていきます。
 
--一括インストールスクリプト(Ubuntu): #br
-https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_ubuntu.sh
--一括インストールスクリプト(Debian):#br
-https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_debian.sh
--一括インストールスクリプト(Raspbian):#br
-https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_raspbian.sh
--一括インストールスクリプト(Fedora):#br
-https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_fedora.sh
+オプションを指定することで、目的に合わせたパッケージをインストールすることが可能です。
 
-オプションを指定することで、目的に合わせたパッケージをインストールで可能です。
-//初めてOpenRTM-aistをインストールしてみる方もソースをコンパイルしてみることをお勧めします。
+一括インストールスクリプトのダウンロードや詳しいインストール方法、指定可能なオプションの種類につきましては、「[[一括インストールスクリプト:http://openrtm.org/openrtm/ja/node/6345]]」のページをご確認ください。
 
-ただし、このスクリプトはOpenRTM-aist関係のすべてのパッケージをインストールするので、不必要なパッケージもインストールされる可能性があります。
-詳しく理解している場合は、手動でインストールすることを推奨します。
 
-** pkg_install_(ubuntu/debian/raspbian).sh
+***インストールの確認
+インストールを確認します。
 
-使えるオプションは同じですが、pkg_install_raspbian.shではopenrtpとrtshellのインストールの対応はありません。従って-lオプションの引数としてopenrtpとrtshellは使用できません。
+ $ dpkg -l 'openrtm*'
+ ||/ 名前           バージョン   アーキテクチ 説明
+ +++-==============-============-============-=================================
+ ii  openrtm-aist:a 1.2.0-0      amd64        OpenRTM-aist, RT-Middleware distr
+ ii  openrtm-aist-d 1.2.0-0      amd64        OpenRTM-aist headers for developm
+ ii  openrtm-aist-e 1.2.0-0      amd64        OpenRTM-aist examples
 
-*** オプション一覧
- $ sudo sh ./pkg_install_ubuntu.sh --help
-  Usage:
+
+**パッケージの詳細
+各パッケージの内容は以下の通りです。
+***openrtm-aist
+openrtm-aist にはランタイムライブラリとコマンド群が含まれています。
+
+-コマンド
+ /usr/bin/rtcd
+ /usr/bin/rtcprof
+ /usr/bin/rtm-config
+ /usr/bin/rtm-naming
+
+
+-ライセンス等
+ /usr/share/doc/openrtm-aist/changelog.gz
+ /usr/share/doc/openrtm-aist/README.Debian
+ /usr/share/doc/openrtm-aist/README
+ /usr/share/doc/openrtm-aist/README.jp
+ /usr/share/doc/openrtm-aist/copyright
+ /usr/share/doc/openrtm-aist/changelog.Debian.gz
+
+-設定ファイルサンプル
+ /usr/etc/rtc.conf.sample
+
+-ライブラリ
+ ***** 32bit
+ /usr/lib/i386-linux-gnu/libRTC-X.X.X.so
+ /usr/lib/i386-linux-gnu/libRTC.a
+ /usr/lib/i386-linux-gnu/libRTC.la
+ /usr/lib/i386-linux-gnu/libcoil-X.X.X.so
+ /usr/lib/i386-linux-gnu/libcoil.a
+ /usr/lib/i386-linux-gnu/librtmCamera.a
+ /usr/lib/i386-linux-gnu/librtmCamera.la
+ /usr/lib/i386-linux-gnu/librtmCamera.so.X.X.X
+ /usr/lib/i386-linux-gnu/librtmManipulator.a
+ /usr/lib/i386-linux-gnu/librtmManipulator.la
+ /usr/lib/i386-linux-gnu/librtmManipulator.so.X.X.X
+ /usr/lib/i386-linux-gnu/openrtm-1.2/ec/FileNameservice.la
+ /usr/lib/i386-linux-gnu/openrtm-1.2/ec/FileNameservice.so.X.X.X
+ /usr/lib/i386-linux-gnu/openrtm-1.2/ec/LogicalTimeTriggeredEC.a
+ /usr/lib/i386-linux-gnu/openrtm-1.2/ec/LogicalTimeTriggeredEC.la
+ /usr/lib/i386-linux-gnu/openrtm-1.2/ec/LogicalTimeTriggeredEC.so.X.X.X
+ /usr/lib/i386-linux-gnu/openrtm-1.2/sdo/LoggerConsumer.a
+ /usr/lib/i386-linux-gnu/openrtm-1.2/sdo/LoggerConsumer.la
+ /usr/lib/i386-linux-gnu/openrtm-1.2/sdo/LoggerConsumer.so.X.X.X
+ /usr/lib/i386-linux-gnu/openrtm-1.2/ssl/SSLTransport.la
+ /usr/lib/i386-linux-gnu/openrtm-1.2/ssl/SSLTransport.so.X.X.X
+ /usr/lib/i386-linux-gnu/pigconfig/openrtm-aist.pc
+ ***** 64bit
+ /usr/lib/x86_64-linux-gnu/libRTC-X.X.X.so
+ /usr/lib/x86_64-linux-gnu/libRTC.a
+ /usr/lib/x86_64-linux-gnu/libRTC.la
+ /usr/lib/x86_64-linux-gnu/libcoil-X.X.X.so
+ /usr/lib/x86_64-linux-gnu/libcoil.a
+ /usr/lib/x86_64-linux-gnu/librtmCamera.a
+ /usr/lib/x86_64-linux-gnu/librtmCamera.la
+ /usr/lib/x86_64-linux-gnu/librtmCamera.so.X.X.X
+ /usr/lib/x86_64-linux-gnu/librtmManipulator.a
+ /usr/lib/x86_64-linux-gnu/librtmManipulator.la
+ /usr/lib/x86_64-linux-gnu/librtmManipulator.so.X.X.X
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/ec/FileNameservice.la
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/ec/FileNameservice.so.X.X.X
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/ec/LogicalTimeTriggeredEC.a
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/ec/LogicalTimeTriggeredEC.la
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/ec/LogicalTimeTriggeredEC.so.X.X.X
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/sdo/LoggerConsumer.a
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/sdo/LoggerConsumer.la
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/sdo/LoggerConsumer.so.X.X.X
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/ssl/SSLTransport.la
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/ssl/SSLTransport.so.X.X.X
+ /usr/lib/x86_64-linux-gnu/pigconfig/openrtm-aist.pc
+
+***openrtm-aist-dev
+openrtm-aist-devには、開発に必要なコマンド群とヘッダが含まれています。
+
+-コマンド
+ /usr/bin/rtcd
+ /usr/bin/rtcprof
+ /usr/bin/rtm-config
+ /usr/bin/rtm-naming
+
+-ライセンス等
+ /usr/share/doc/README
+ /usr/share/doc/README.Debian
+ /usr/share/doc/README.jp
+ /usr/share/doc/openrtm-aist-dev/changelog.Debian.gz
+ /usr/share/doc/openrtm-aist-dev/changelog.gz
+ /usr/share/doc/openrtm-aist-dev/copyright
+
+-ヘッダ
+ /usr/include/Openrtm-1.2/rtm/BufferBase.h
+ /usr/include/Openrtm-1.2/rtm/BufferStatus.h
+ 中略
+ /usr/include/Openrtm-1.2/rtm/Typename.h
+ /usr/include/openrtm-1.2/rtm/ext/CameraCommonInterface.hh
+ /usr/include/openrtm-1.2/rtm/ext/CameraCommonInterface.idl
+ 中略
+ /usr/include/openrtm-1.2/rtm/ext/ManipulatorCommonInterface_MiddleStub.h
+ /usr/include/openrtm-1.2/ext/ec/artlinux/ArtExecutionContext.h
+ /usr/include/openrtm-1.2/ext/ec/rtc.conf.sample
+ /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/LogicalTimeTrggerdEC.h
+ /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/LogicalTimeTriggedEC.idl
+ 中略
+ /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/LogicalTimeTriggeredECStub.h
+ /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/idl/LogicalTimeTriggeredEC.hh
+ 中略
+ /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/idl/LogicalTimeTriggeredECSK.cc
+ /usr/include/openrtm-1.2/rtm/ext/ec/rtpreempt/RTPreemptEC.h
+ /usr/include/openrtm-1.2/rtm/ext/ec/rtpreempt/rtc.conf.sample
+ /usr/include/openrtm-1.2/rtm/ext/local_service/nameservice_file/FileNameservice.h
+ /usr/include/openrtm-1.2/rtm/ext/logger/fluentbit_stream/FluentBit.h
+ /usr/include/openrtm-1.2/rtm/ext/logger/fluentbit_stream/fluentbit.conf
+ /usr/include/openrtm-1.2/rtm/ext/sdo/logger/Logger.hh
+ /usr/include/openrtm-1.2/rtm/ext/sdo/logger/Logger.idl
+ 中略
+ /usr/include/openrtm-1.2/rtm/ext/sdo/logger/LoggerStub.h
+ /usr/include/openrtm-1.2/rtm/ext/sdo/observer/ComponetObserver.idl
+ /usr/include/openrtm-1.2/rtm/ext/sdo/observer/ComponetObserver.Consumer.h
+ 中略
+ /usr/include/openrtm-1.2/rtm/ext/sdo/observer/ComponetObserverSK.cc
+ /usr/include/openrtm-1.2/rtm/ext/sdo/observer/idl/ComponentObserver.hh
+ 中略
+ /usr/include/openrtm-1.2/rtm/ext/sdo/observer/idl/ComponetObserverSK.cc
+ /usr/include/openrtm-1.2/rtm/idl/BasicDataType.hh
+ /usr/include/openrtm-1.2/rtm/idl/BasicDataType.idl
+ 中略
+ /usr/include/openrtm-1.2/rtm/idl/SharedMemoryStub.h
+ /usr/include/openrtm-1.2/rtm/idl/device_interfaces/AIO.idl
+ /usr/include/openrtm-1.2/rtm/idl/device_interfaces/ActArray.idl
+ 中略
+ /usr/include/openrtm-1.2/rtm/idl/device_interfaces/Ranger.idl
+ /usr/include/openrtm-1.2/rtm/version.h
+ /usr/include/openrtm-1.2/rtm/version.txt
+
+-ライブラリ・その他
+ ***** 32bit
+ /usr/lib/i386-linux-gnu/openrtm-1.2/cmake/OpenRTMConfig.cmake
+ /usr/lib/i386-linux-gnu/openrtm-1.2/py_helper/README_gen.py
+ /usr/lib/i386-linux-gnu/openrtm-1.2/py_helpver/cxx_gen.py
+ 中略
+ /usr/lib/i386-linux-gnu/openrtm-1.2/py_helpver/yat.py
+ /usr/lib/i386-linux-gnu/pkgconfig/libcoil.pc
+ /usr/lib/i386-linux-gnu/share/doc/openrtm-aist-dev/changelog.Debian.gz
+ /usr/lib/i386-linux-gnu/share/doc/openrtm-aist-dev/changelog.gz
+ /usr/lib/i386-linux-gnu/share/doc/openrtm-aist-dev/copyright
+ ***** 64bit
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/cmake/OpenRTMConfig.cmake
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/py_helper/README_gen.py
+ /usr/lib/x86-64-linux-gnu/openrtm-1.2/py_helpver/cxx_gen.py
+ 中略
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/py_helpver/yat.py
+ /usr/lib/x86_64-linux-gnu/pkgconfig/libcoil.pc
+ /usr/lib/x86_64-linux-gnu/share/doc/openrtm-aist-dev/changelog.Debian.gz
+ /usr/lib/x86_64-linux-gnu/share/doc/openrtm-aist-dev/changelog.gz
+ /usr/lib/x86_64-linux-gnu/share/doc/openrtm-aist-dev/copyright
+
+*** openrtm-aist-example
+openrtm-aist-example にはスタンドアロン RTC、ローダブル RTC それぞれのサンプルと、サンプル RTC のソースが含まれています。
+
+-サンプル(スタンドアロンRTC)
+ /usr/share/openrtm-1.2/Components/C++/examples/ConsoleOutComp
+ /usr/share/openrtm-1.2/Components/C++/examples/ConsoleInComp
+ 中略
+ /usr/share/openrtm-1.2/Components/C++/examples/consout.conf
+ /usr/share/openrtm-1.2/Components/C++/examples/rtc.composite.linux.conf
+ /usr/share/openrtm-1.2/Components/C++/examples/rtc.conf
+
+-サンプル(ソース)
+ /usr/share/openrtm-1.2/Components/C++/examples/src/Composite/README.Motor
+ /usr/share/openrtm-1.2/Components/C++/examples/src/Composite/Makefile.Sensor
+ /usr/share/openrtm-1.2/Components/C++/examples/src/Composite/Motor.cpp
+ 中略
+ /usr/share/openrtm-1.2/Components/C++/examples/src/Throughput/rtc.conf
+ /usr/share/openrtm-1.2/Components/C++/examples/src/Throughput/run.sh
+ /usr/share/openrtm-1.2/Componnets/C++/examples/templates/AIO.xml
+ /usr/share/openrtm-1.2/Components/C++/examples/templates/ActArray.xml
+ 中略
+ /usr/share/openrtm-1.2/Components/C++/examples/templates/VelocityControl3D.xml
  
-    pkg_install_ubuntu.sh [-l all/c++] [-r/-d/-s/-c] [-u]
-    pkg_install_ubuntu.sh [-l python/java] [-r/-d/-c] [-u]
-    pkg_install_ubuntu.sh [-l openrtp/rtshell] [-d] [-u]
- 
-  Example:
-    pkg_install_ubuntu.sh  [= pkg_install_ubuntu.sh -l c++ -d]
-    pkg_install_ubuntu.sh -l all -d  [= -l c++ -l python -l java -l openrtp -l rtshell -d]
-    pkg_install_ubuntu.sh -l c++ -l python -c --yes
- 
-  Options:
-    -l <argument>  language or tool [c++/python/java/openrtp/rtshell]
-    -r             install robot component runtime
-    -d             install robot component developer [default]
-    -s             install tool_packages for build source packages
-    -c             install tool_packages for core developer
-    -u             uninstall
-    --yes          force yes
-    --help, -h     print this
 
-*** pkg_install_ubuntu.shでインストールされるdebパッケージ一覧
+-サンプル(ローダブルRTC)
+ /usr/share/openrtm-1.2/Components/C++/examples/rtc/ConfigSample.a
+ /usr/share/openrtm-1.2/Components/C++/examples/rtc/ConfigSample.la
+ 中略
+ /usr/share/openrtm-1.2/Components/C++/examples/rtc/Throughput.so.X.X.X
+ /usr/share/openrtm-1.2/Components/C++/examples/rtc/Cofig.sample.so
+ /usr/share/openrtm-1.2/Components/C++/examples/rtc/Cofig.sample.so.X
+ 中略
+ /usr/share/openrtm-1.2/Components/C++/examples/rtc/Troughput.so.X
 
-オプションを指定することで、以下に示されるパッケージがインストールされます。
+-ライセンス等
+ /usr/share/doc/openrtm-aist-example/changelog.Debian.gz
+ /usr/share/doc/openrtm-aist-example/changelog.gz
+ /usr/share/doc/openrtm-aist-example/copyright
 
-赤字は-u(アンインストール)指定時にアンインストールされるパッケージです。
+***openrtm-aist-doc
+openrtm-aist-doc には、日本語と英語のクラスリファレンス、IDL インターフェース定義リファレンスが含まれています。
 
-#ref(deb-list.png,nolink,right,center)
+-クラスリファレンス
+ /usr/share/openrtm-1.2/doc/C++/ClassReference/html/Affinity_8h.html
+ /usr/share/openrtm-1.2/doc/C++/ClassReference/html/Affinity_8h_dep_incl.map
+ 中略
+ /usr/share/openrtm-1.1/doc/C++/ClassReference/html/version_8h_source.html
 
+-IDL リファレンス
+ /usr/share/openrtm-1.2/doc/idl/IDLReference/html/BasicDataType_8idl.html
+ /usr/share/openrtm-1.2/doc/idl/IDLReference/html/BasicDataType_8idl_dep_incl.map
+ 中略
+ /usr/share/openrtm-1.2/doc/idl/IDLReference/html/unionSDOPackage_1_1Numeric.html
 
-** pkg_install_fedora.sh
+-クラスリファレンス(英語)
+ /usr/share/openrtm-1.2/doc/C++/ClassReference-en/html/Affinity_8h.html
+ /usr/share/openrtm-1.2/doc/C++/ClassReference-en/html/Affinity_8h_dep_incl.map
+ 中略
+ /usr/share/openrtm-1.1/doc/C++/ClassReference-en/html/version_8h_source.html
 
-//pkg_install_fedora.shは次のパッケージに対応していません。
+-IDL リファレンス(英語)
+ /usr/share/openrtm-1.2/doc/idl/IDLReference-en/html/BasicDataType_8idl.html
+ /usr/share/openrtm-1.2/doc/idl/IDLReference-en/html/BasicDataType_8idl_dep_incl.map
+ 中略
+ /usr/share/openrtm-1.2/doc/idl/IDLReference-en/html/unionSDOPackage_1_1Numeric.html
 
-//- OpenRTM-aist-1.1.2-RELEASE
-//- rtshell
-
-
-*** オプション一覧
- $ ./pkg_install_fedora.sh --help
-  Usage:
- 
-    pkg_install_fedora.sh [-l all/c++] [-r/-d/-s/-c] [-u]
-    pkg_install_fedora.sh [-l python/java] [-r/-d/-c] [-u]
-    pkg_install_fedora.sh [-l openrtp] [-d] [-u]
- 
-  Example:
-    pkg_install_fedora.sh  [= pkg_install_fedora19.sh -l c++ -d]
-    pkg_install_fedora.sh -l all -d  [= -l c++ -l python -l java -l openrtp -d]
-    pkg_install_fedora.sh -l c++ -l python -c --yes
- 
-  Options:
-    -l <argument>  language or tool [c++/python/java/openrtp]
-    -r             install robot component runtime
-    -d             install robot component developer [default]
-    -s             install tool_packages for build source packages
-    -c             install tool_packages for core developer
-    -u             uninstall
-    --yes          force yes
-    --help, -h     print this
-
-*** インストールパッケージ一覧
-
-赤字は-u指定時にアンインストールされるパッケージです。
-
-#ref(rpm-list.png,nolink,right,center)
-
-** 一括インストールスクリプトを使う方法
-
-以下、一括インストールスクリプトを使用したダウンロードとインストール方法です。
-
-お使いの環境に合わせた一括インストールスクリプトを次のコマンドでダウンロードします。
-
- > wget [pkg_install_ubuntu.sh のダウンロードURL]
+-ライセンス等
+ /usr/share/doc/openrtm-aist-doc/changelog.Debian.gz
+ /usr/share/doc/openrtm-aist-doc/changelog.gz
+ /usr/share/doc/openrtm-aist-doc/copyright
 
 
-**** C++ 版をインストールする
 
-初めてインストールする方に推奨します。オプション "-l" を追加することで目的の言語を指定し、オプション"-ｄ"を追加することでデフォルトインストールを行います。（このオプションは省略できるので下記では省略しています。）
-
- > sudo sh ./pkg_install_ubuntu.sh -l c++
- //途中、いくつかの質問をたずねられるので、''y'' あるいは ''Y'' を入力しながら完了させる。
-
-
-**** Python 版をインストールする("Y" の入力を省略する)
-
-初めてインストールする方に推奨します。オプション "--yes" を追加することで、インストールを確認する質問と "Y" の入力を省略できます。
-
- > sudo sh ./pkg_install_ubuntu.sh -l python --yes
- 
-
-**** C++版とPython版とコア開発(OpenRTM-aist本体の修正等の開発)に必要なパッケージをインストールする
-
-オプション "-c" を追加することでコア開発に必要なペッケージをインストールし、オプション "--yes" で "Y" の入力を省略します。
-
- > sudo sh ./pkg_install_ubuntu.sh -l c++ -l python -c --yes
-
-
-**** C++ 版をアンインストールする
-
-オプション "-u" を追加することで、C++版をアンインストールします。
-
-アンインストールされるパッケージは、[[インストールされるdebパッケージ一覧 :#toc2]] を確認ください。
-
- > sudo ./pkg_install_ubuntu.sh -l c++ -u
