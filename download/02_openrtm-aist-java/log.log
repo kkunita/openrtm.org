@@ -1,0 +1,61 @@
+.:
+合計 44
+-rw-rw-r-- 1 openrtm openrtm    0 Oct 10 11:02 log.log
+drwxrwxr-x 9 openrtm openrtm 4096 Oct 10 11:02 .
+drwxrwxr-x 2 openrtm openrtm 4096 Oct 10 09:59 openrtm-aist-java_1_1_0_rc1
+drwxrwxr-x 2 openrtm openrtm 4096 Oct 10 09:58 openrtm-aist-java_1_0_0_release
+drwxrwxr-x 2 openrtm openrtm 4096 Oct 10 09:57 openrtm-aist-java_1_0_0_rc1
+drwxrwxr-x 2 openrtm openrtm 4096 Oct 10 09:55 02_openrtm-aist-java_1_1_2_release
+drwxrwxr-x 2 openrtm openrtm 4096 Oct 10 09:52 01_openrtm-aist-java_1_2_0_release
+drwxrwxr-x 8 openrtm openrtm 4096 Oct 10 09:44 ..
+-rw-rw-r-- 1 openrtm openrtm  837 Oct 10 09:44 02_openrtm-aist-java_en.txt
+-rw-rw-r-- 1 openrtm openrtm 1220 Oct 10 09:44 02_openrtm-aist-java_ja.txt
+drwxrwxr-x 2 openrtm openrtm 4096 Oct 10 09:44 03_openrtm-aist-java_1_1_0_release
+drwxrwxr-x 2 openrtm openrtm 4096 Oct 10 09:44 figs_ja
+
+./openrtm-aist-java_1_1_0_rc1:
+合計 16
+drwxrwxr-x 9 openrtm openrtm 4096 Oct 10 11:02 ..
+drwxrwxr-x 2 openrtm openrtm 4096 Oct 10 09:59 .
+-rw-rw-r-- 1 openrtm openrtm 1654 Oct 10 09:44 openrtm-aist-java_1_1_0_rc1_en.txt
+-rw-rw-r-- 1 openrtm openrtm 2463 Oct 10 09:44 openrtm-aist-java_1_1_0_rc1_ja.txt
+
+./openrtm-aist-java_1_0_0_release:
+合計 16
+drwxrwxr-x 9 openrtm openrtm 4096 Oct 10 11:02 ..
+drwxrwxr-x 2 openrtm openrtm 4096 Oct 10 09:58 .
+-rw-rw-r-- 1 openrtm openrtm 2078 Oct 10 09:44 openrtm-aist-java_1_0_0_release_en.txt
+-rw-rw-r-- 1 openrtm openrtm 2866 Oct 10 09:44 openrtm-aist-java_1_0_0_release_ja.txt
+
+./openrtm-aist-java_1_0_0_rc1:
+合計 16
+drwxrwxr-x 9 openrtm openrtm 4096 Oct 10 11:02 ..
+drwxrwxr-x 2 openrtm openrtm 4096 Oct 10 09:57 .
+-rw-rw-r-- 1 openrtm openrtm 1524 Oct 10 09:44 openrtm-aist-java_1_0_0_rc1_en.txt
+-rw-rw-r-- 1 openrtm openrtm 1537 Oct 10 09:44 openrtm-aist-java_1_0_0_rc1_ja.txt
+
+./02_openrtm-aist-java_1_1_2_release:
+合計 20
+drwxrwxr-x 9 openrtm openrtm 4096 Oct 10 11:02 ..
+drwxrwxr-x 2 openrtm openrtm 4096 Oct 10 09:55 .
+-rw-rw-r-- 1 openrtm openrtm 5319 Oct 10 09:44 02_openrtm-aist-java_1_1_2_release_en.txt
+-rw-rw-r-- 1 openrtm openrtm 3373 Oct 10 09:44 02_openrtm-aist-java_1_1_2_release_ja.txt
+
+./01_openrtm-aist-java_1_2_0_release:
+合計 16
+drwxrwxr-x 9 openrtm openrtm 4096 Oct 10 11:02 ..
+drwxrwxr-x 2 openrtm openrtm 4096 Oct 10 09:52 .
+-rw-rw-r-- 1 openrtm openrtm 6666 Oct 10 09:44 01_openrtm-aist-java_1_2_0_release_ja.txt
+
+./03_openrtm-aist-java_1_1_0_release:
+合計 16
+drwxrwxr-x 9 openrtm openrtm 4096 Oct 10 11:02 ..
+drwxrwxr-x 2 openrtm openrtm 4096 Oct 10 09:44 .
+-rw-rw-r-- 1 openrtm openrtm 2270 Oct 10 09:44 03_openrtm-aist-java_1_1_0_release_en.txt
+-rw-rw-r-- 1 openrtm openrtm 2486 Oct 10 09:44 03_openrtm-aist-java_1_1_0_release_ja.txt
+
+./figs_ja:
+合計 12
+drwxrwxr-x 9 openrtm openrtm 4096 Oct 10 11:02 ..
+drwxrwxr-x 2 openrtm openrtm 4096 Oct 10 09:44 .
+-rw-rw-r-- 1 openrtm openrtm 3330 Oct 10 09:44 java_logo.png
