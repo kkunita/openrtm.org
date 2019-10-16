@@ -1,6 +1,10 @@
 ﻿// Title: Fedoraへのインストール
 #ref(fedora_logo.png,around,40%,right)
 
+現状まだ対応ができていません。1.1系を利用ください。
+
+以下未検証
+
 C++版 OpenRTM-aist は Fedora Linux で利用可能な RPM パッケージが提供されています。
 対応している Fedora Linux のバージョンは、ダウンロードページから確認できます。
 Fedora Linux への対応およびそのバージョンは、予告なしに変更または停止されることがありますので、予めご了承ください。
