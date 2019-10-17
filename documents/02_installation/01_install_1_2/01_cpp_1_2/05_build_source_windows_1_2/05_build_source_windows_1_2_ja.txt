@@ -20,7 +20,7 @@ Windows用ソースコードのパッケージは
 
 を作るようになっています。
 
-#ref(src-conversion.png,/ja/node/793,70%,center,nolink)
+#ref(src-conversion_ja.png,/ja/node/793,70%,center,nolink)
 CENTER:''OpenRTM-aist のソースパッケージの生成''
 
 
@@ -107,7 +107,7 @@ SSL_ROOT に設定したディレクトリ以下は以下のような構造に�
   |  + openssl
 
 *** Python
-ビルドの途中でいくつかのPythonスクリプトを利用するので Python 2.7か3.6、または3.7 が必要です。
+ビルドの途中でいくつかのPythonスクリプトを利用するので Python 2.7か3.6、または3.7 が必要です。(現状2.7が必要で、3.7ではエラーが起きます)
 以下のサイトから最新のバージョンを取得しインストールしてください。
 
 -[[Python Official Website:https://www.python.org/]]
