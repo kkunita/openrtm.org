@@ -1,26 +1,25 @@
-﻿// Title: 動作確認 (Windows編)
+﻿// Title: 動作確認(Windows編)
 #contents
 
 ** サンプルコンポーネントの場所
 
 インストールまたはビルドが正常に終了したら、付属のサンプルで動作テストをします。
-サンプルは、通常は以下の場所にあります。
+サンプルは、64bit版の場合、通常は以下の場所にあります。
 
 -C:\Program Files\OpenRTM-aist\1.2.0\Components\C++\Examples
 -OpenRTM-aist\examples (ソースからビルドした場合)
 
-サンプルコンポーネントセット SimpleIO を使って、OpenRTM-aist が正しくビルド・インストールされているかを確認します。
+以下の手順で、サンプルコンポーネントセットSimpleIOを使用して、OpenRTM-aistが正しくビルド/インストールされているかを確認します。
 
 
 
-** サンプル (SimpleIO) を使用したテスト
+** サンプル (SimpleIO)を使用した確認
 
-RT コンポーネント ConsoleInComp、ConsoleOutComp からなるサンプルセットです。
-ConsoleInComp はコンソールから入力された数値を OutPort から出力するコンポーネント、ConsoleOutComp は InPort に入力された数値をコンソールに表示するコンポーネントです。
-これらは、最も Simple な I/O (入出力) を例示するためのサンプルです。
-ConsoleInComp の OutPort から ConsoleOutComp の InPort へ接続を構成し、これらの2つのコンポーネントをアクティブ化 (Activate) することで動作します。
+RTコンポーネントConsoleInComp、ConsoleOutCompからなるサンプルセットです。
+ConsoleInCompはコンソールから入力された数値をOutPort から出力するコンポーネント、ConsoleOutCompはInPortに入力された数値をコンソールに表示するコンポーネントです。これらは最も Simple なI/O(入出力)を例示するためのサンプルです。
+ConsoleInCompのOutPortからConsoleOutCompのInPortへ接続し、これらの2つのコンポーネントをアクティブ化(Activate)することで動作します。
 
-以下は、msi インストーラーで OpenRTM-aist をインストールした環境で、スタートメニューから各種プログラムを起動する前提で説明します。
+以下は、msiインストーラーでOpenRTM-aistをインストールした環境で、スタートメニューから各種プログラムを起動する前提で説明します。
 
 *** RT System Editor、ネームサーバー起動
 以下の手順に従ってRT System Editor、ネームサーバーを起動してください。
@@ -30,19 +29,29 @@ ConsoleInComp の OutPort から ConsoleOutComp の InPort へ接続を構成し
 *** サンプルコンポーネントの起動
 ネームサーバー起動後、適当なサンプルコンポーネントを起動します。
 
-Windows 10の場合は右下の「ここに入力して検索」に''C++_Examples''と入力してサンプルのフォルダを開きます。
+Windows 10の場合は右下の[ここに入力して検索]に''C++_Examples''と入力して、サンプルのフォルダを見つけ、それを開きます。
 
 #ref(rtm7.png,60%,center)
 CENTER:''ネームサーバーの起動を確認''
+
 
 #ref(rtm8.png,80%,center)
 CENTER:''サンプルコンポーネントフォルダー''
 
 ここでは、「ConsoleIn.bat」「ConsoleOut.bat」をそれぞれダブルクリックして2つのコンポーネントを起動します。
-起動すると、下図のような2つのコンソール画面が開きます。
+
+** Windows Defenderからの警告
+
+サンプルコンポーネントを起動しようとすると、Windows Defenderのファイアウォールにより[Windows セキュリティの重要な警告]ダイアログが表示されることがあります。[プライベート ネットワーク(ホームネットワークや社内ネットワークなど)(R)]にチェックを入れ[パブリックネットワーク(空港、喫茶店など)(非推奨)(U)]のチェックをはずして[アクセスを許可する(A)]をクリックしてください。この画面はWindows 10(build 1903)以外だと別の画面が表示されることがありますし、設定によっては表示されないこともあります。表示された場合は同様の設定をしてダイアログを閉じてください。
+ここでは、「ConsoleIn.bat」「ConsoleOut.bat」をそれぞれダブルクリックして2つのコンポーネントを起動します。起動後数秒で下図のような2つのコンソール画面が開きます。
+
+**　サンプルコンポーネント起動後の画面
+
+起動後数秒で下図のような2つのコンソール画面が開きます。
+
 
 #ref(rtm9.png,60%,center)
-CENTER:''ConsoleIn コンポーネントと ConsoleOut コンポーネント''
+CENTER:''ConsoleInコンポーネントとConsoleOutコンポーネント''
 
 **** コンポーネントが起動しない場合
 
@@ -51,33 +60,33 @@ CENTER:''ConsoleIn コンポーネントと ConsoleOut コンポーネント''
 ***** コンソール画面が開いてすぐに消える
 
 環境変数''RTM_VC_VERSION''、''OMNI_ROOT''、''RTM_ROOT''が設定されていないとRTCの起動に失敗します。
-msi インストーラーでインストールした場合はOSを再起動すると解決する場合があります。
+msiインストーラーでインストールした場合はOSを再起動すると解決する場合があります。
 
 
-また、rtc.conf の設定に問題があり、起動できないケースがあります。上記スタートメニューフォルダーの [rtc.conf for examples] を開いて設定を確認してください。
-例えば、corba.endpoint/corba.endpoints などの設定が現在実行中の PC のホストアドレスとミスマッチを起こしている場合などは、CORBA が異常終了します。
+また、rtc.confの設定に問題があり、起動できないケースがあります。上記の''C++_Example''を用いて検索したフォルダー下のVCxx(Visual Studio 2019使用時はVC14)にある[rtc.conf]を開いて設定を確認してください。
+例えば、corba.endpoint/corba.endpointsなどの設定が現在実行中のPCホストのIPアドレスとミスマッチを起こしている場合などは、CORBAが異常終了します。
 
-以下のような最低限の rtc.conf に設定しなおして試してみてください。
+以下のような内容(最低限の設定)にrtc.confを書きなおして試してみてください。
 
  corba.nameservers: localhost
 
 
 ***** ランタイムエラーが出て終了する
 
-ライブラリ等が適切にインストールされていない・設定されていない等の原因でラインタイムエラーが出る場合があります。
+ライブラリなどが適切にインストールされていなかったり、設定されていないなどの原因でラインタイムエラーが発生する場合があります。その場合は下記の方法を試してみてください。
 -再起動してみる
--OpenRTM-aist をすべてアンインストールし、再度インストールすることで改善される場合があります。
+-OpenRTM-aistをすべてアンインストールし、再度インストールすることで改善される場合があります。
 
-**** エディタへの配置
+**** RTSystem Editorでのエディタ画面への配置
 
-RT System Editorのツリー表示の [>] をクリックすると、先ほど起動した2つのコンポーネントが登録されていることがわかります。
+RT System Editorのツリー表示内の[localhost]‘の横の[>]をクリックし、そして&ref(icon_db.png );アイコンの横の[>]をクリックすると、先ほど起動した2つのコンポーネントが登録されていることがわかります。
 
 #ref(rtm10.png,60%,center)
-CENTER:''ConsoleIn コンポーネントと ConsoleOut コンポーネント''
+CENTER:''ConsoleInコンポーネントとConsoleOutコンポーネント''
 
-システムを編集するエディタを開きます。上部のエディタを [開く] ボタン&ref(rtse_open_editor_icon_ja.png, /ja/node/794); をクリックすると、中央のペインにエディタが開きます。
+システムを編集するエディタを開きます。上部のエディタを [Open New System Editor] ボタン&ref(icon_open_editor_ja.png,150%); をクリックすると、中央のペインにエディタが開きます。
 
-左側のネームサービスビューに &ref(rtse_rtc_icon.png, /ja/node/794); のアイコンで表示されているコンポーネント (2つ) を中央のエディタにドラッグアンドドロップします。
+左側のネームサービスビューに&ref(icon-rtce.png,200%);のアイコンで表示されているコンポーネント (2つ) を中央のエディタにドラッグアンドドロップします。
 
 #ref(rtm11.png,80%,center)
 CENTER: ''コンポーネントをエディタに配置''
@@ -85,19 +94,18 @@ CENTER: ''コンポーネントをエディタに配置''
 
 **** 接続とアクティブ化
 
-ConsoleIn0 コンポーネントの右側にはデータが出力される OutPort &ref(rtse_outport_icon.png, /ja/node/794); 、ConsoleOut0 コンポーネントの左側にはデータが入力される InPort &ref(rtse_inport_icon.png, /ja/node/794); がそれぞれついています。
-
-これら InPort/OutPort (まとめてデータポートと呼びます) を接続します。
-OutPort から InPort (または InPort から OutPort) へドラッグランドドロップすると、図のようなダイアログが現れますので、デフォルト設定のまま [OK] ボタンをクリックします。
+ConsoleIn0コンポーネントの右側にはデータが出力されるOutPort &ref(rtse_outport_icon.png, /ja/node/794); が、ConsoleOut0コンポーネントの左側にはデータが入力されるInPort &ref(rtse_inport_icon.png, /ja/node/794); が、それぞれ置かれています。
 
 #ref(rtm13.png,80%,center)
 CENTER: ''データポートの接続''
+
+これら InPort/OutPort (まとめてデータポートと呼びます) を接続します。OutPortからInPort (またはInPortからOutPort) へドラッグランドドロップすると、図のようなダイアログが現れますので、デフォルト設定のまま[OK]ボタンをクリックします。
 
 #ref(rtm12.png,80%,center)
 CENTER: ''データポート接続ダイアログ''
 
 
-2つのコンポーネントの間に接続線が現れます。次に、エディタ上部メニューの [All Activate] ボタン &ref(rtm14.png); をクリックし、これらのコンポーネントをアクティブ化します。
+2つのコンポーネントの間に接続線が現れます。次に、エディタ上部メニューの[All Activate]ボタン &ref(rtm14.png);をクリックし、これらのコンポーネントをアクティブ化します。
 アクティブ化されると、コンポーネントが緑色に変化します。
 
 #ref(rtm15.png,center)
@@ -106,32 +114,31 @@ CENTER: ''アクティブ化されたコンポーネント''
 
 
 
-コンポーネントがアクティブ化されると ConsoleIn コンポーネント側では
+コンポーネントがアクティブ化されるとConsoleInコンポーネント側のコンソール上の表示が
 
  Please input number: 
 
-というプロンプト表示に変わりますので、適当な数値 (short int の範囲内:32767以下) を入力し Enter キーを押します。
-すると、ConsoleOut 側では、入力した数値が表示され、ConsoleIn コンポーネントから ConsoleOut コンポーネントへデータが転送されたことがわかります。
+というプロンプト表示に変わりますので、適当な数値 (short int の範囲内:32767以下) を入力しEnterキーを押します。
+すると、ConsoleOut側のコンソール画面では、入力した数値が表示されます。ConsoleInコンポーネントからConsoleOutコンポーネントへデータが転送されたことがわかります。
 
 以上で、コンポーネントの基本動作の確認は終了です。
 
 
 ** 他のサンプル
 
-インストーラーには、このほかにもいくつかのサンプルコンポーネントが付属しています。
-これらのコンポーネントも同様に起動し、RTSystemEditor でポート同士を接続し、アクティブ化することで試すことができます。
+インストーラーには、このほかにもいくつかのサンプルコンポーネントが付属しています。これらのコンポーネントも同様に、ダブルクリックで起動、そしてRTSystemEditorを用いてポート間を接続し、アクティブ化することで試すことができます。
 
 付属しているコンポーネントのリストと簡単な説明を以下に示します。
 
-|ConsoleInComp.exe|コンソールから入力された数値を OutPort から出力する。ConsoleOutComp.exe に接続して使用する。|
-|ConsoleOutComp.exe|InPort に入力された数値をコンソールに表示する&color(default){コンポーネント};。ConsoleInComp.exe に接続して使用する。|
+|ConsoleInComp.exe|コンソールから入力された数値をOutPort から出力する。ConsoleOutComp.exeに接続して使用します。|
+|ConsoleOutComp.exe|InPort に入力された数値をコンソールに表示する&color(default){コンポーネント};。ConsoleInComp.exeに接続して使用します。|
 |SequenceInComp.exe|ランダムな数値(Short、Long、Float、Double とそのシーケンス型)を出力する&color(default){コンポーネント};。SequenceOutComp.exe に接続して使用する。|
-|SequenceOutComp.exe|InPort に入力される数値(Short、Long、Float、Double とそのシーケンス型)を表示。SequenceInComp.exe に接続して使用する。|
-|MyServiceProviderComp.exe|MyService 型のサービスを提供する&color(default){コンポーネント};。MyServiceConsumerComp.exe に接続して使用する。|
-|MyServiceConsumerComp.exe|MyService 型のサービスを提供する&color(default){コンポーネント};。MyServiceProviderComp.exe に接続して使用する。|
-|ConfigSampleComp.exe|Configuration のサンプル。RtcLink から Configuration を変更して Configuration の挙動を理解するためのサンプル。|
-|USBCameraAcquireComp.exe|USBカメラから画像を取得して OutPort から出力する&color(default){コンポーネント};。USBCameraMonitor.exe に接続して使用する。|
-|USBCameraMonitor.exe|InPort に入力される画像を画面に表示する&color(default){コンポーネント};。USBCameraAquire.exe に接続して使用する。|
+|SequenceOutComp.exe|InPort に入力される数値(Short、Long、Float、Double とそのシーケンス型)を表示。SequenceInComp.exeに接続して使用します。|
+|MyServiceProviderComp.exe|MyService型のサービスを提供する&color(default){コンポーネント};。MyServiceConsumerComp.exeに接続して使用します。|
+|MyServiceConsumerComp.exe|MyService型のサービスを提供する&color(default){コンポーネント};。MyServiceProviderComp.exeに接続して使用します。|
+|ConfigSampleComp.exe|Configuration のサンプル。RtcLinkからConfigurationを変更してConfiguration の挙動を理解するためのサンプルです。|
+|USBCameraAcquireComp.exe|USBカメラから画像を取得して OutPortから出力する&color(default){コンポーネント};。USBCameraMonitor.exeに接続して使用します。|
+|USBCameraMonitor.exe|InPort に入力される画像を画面に表示する&color(default){コンポーネント};。USBCameraAquire.exeに接続して使用します。|
 
 
 &br;
