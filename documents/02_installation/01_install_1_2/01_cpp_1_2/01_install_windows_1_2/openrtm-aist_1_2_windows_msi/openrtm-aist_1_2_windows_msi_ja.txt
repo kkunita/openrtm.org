@@ -2,7 +2,7 @@
 #ref(windows_logo.png,80%,around,nolink,left)
 
 openrtm.orgではWindows用のmsi(Microsoft Windowsインストーラー)パッケージを提供しています。
-msiパッケージを利用することで、依存ライブラリであるomniORBや、RTSystemEditorといったツールも同時にインストールすることができます。
+msiパッケージを利用することで、依存ライブラリであるomniORBや、RTSystemEditorといったツールも同時にインストールできます。
 
 #clear
 #contents
