@@ -84,9 +84,9 @@ RT System Editorのツリー表示内の[localhost]‘の横の[>]をクリッ�
 #ref(rtm10.png,60%,center)
 CENTER:''ConsoleInコンポーネントとConsoleOutコンポーネント''
 
-システムを編集するエディタを開きます。上部のエディタを [Open New System Editor] ボタン&ref(icon_open_editor_ja.png,150%); をクリックすると、中央のペインにエディタが開きます。
+システムを編集するエディタ画面を開きます。上部の[Open New System Editor]ボタン&ref(icon_open_editor_ja.png,150%); をクリックすると、中央のペインにエディタ画面が開きます。
 
-左側のネームサービスビューに&ref(icon-rtce.png,200%);のアイコンで表示されているコンポーネント (2つ) を中央のエディタにドラッグアンドドロップします。
+左側のネームサービスビューから&ref(icon-rtce.png,200%);のアイコンで表示されているコンポーネント(2つ)を中央のエディタ画面にドラッグアンドドロップします。
 
 #ref(rtm11.png,80%,center)
 CENTER: ''コンポーネントをエディタに配置''
@@ -94,12 +94,12 @@ CENTER: ''コンポーネントをエディタに配置''
 
 **** 接続とアクティブ化
 
-ConsoleIn0コンポーネントの右側にはデータが出力されるOutPort &ref(rtse_outport_icon.png, /ja/node/794); が、ConsoleOut0コンポーネントの左側にはデータが入力されるInPort &ref(rtse_inport_icon.png, /ja/node/794); が、それぞれ置かれています。
+ConsoleIn0コンポーネントの右側にはデータが出力されるOutPort &ref(rtse_outport_icon.png, /ja/node/794); が、ConsoleOut0コンポーネントの左側にはデータが入力されるInPort &ref(rtse_inport_icon.png, /ja/node/794); が、それぞれ配置されています。
 
 #ref(rtm13.png,80%,center)
 CENTER: ''データポートの接続''
 
-これら InPort/OutPort (まとめてデータポートと呼びます) を接続します。OutPortからInPort (またはInPortからOutPort) へドラッグランドドロップすると、図のようなダイアログが現れますので、デフォルト設定のまま[OK]ボタンをクリックします。
+これら InPort/OutPort(まとめてデータポートと呼びます)を接続します。OutPortからInPort(またはInPortからOutPort)へドラッグランドドロップすると、図のようなダイアログが現れますので、デフォルト設定のまま[OK]ボタンをクリックします。
 
 #ref(rtm12.png,80%,center)
 CENTER: ''データポート接続ダイアログ''
@@ -118,7 +118,7 @@ CENTER: ''アクティブ化されたコンポーネント''
 
  Please input number: 
 
-というプロンプト表示に変わりますので、適当な数値 (short int の範囲内:32767以下) を入力しEnterキーを押します。
+というプロンプト表示に変わりますので、適当な数値(short int の範囲内:32767以下)を入力しEnterキーを押します。
 すると、ConsoleOut側のコンソール画面では、入力した数値が表示されます。ConsoleInコンポーネントからConsoleOutコンポーネントへデータが転送されたことがわかります。
 
 以上で、コンポーネントの基本動作の確認は終了です。
@@ -130,15 +130,15 @@ CENTER: ''アクティブ化されたコンポーネント''
 
 付属しているコンポーネントのリストと簡単な説明を以下に示します。
 
-|ConsoleInComp.exe|コンソールから入力された数値をOutPort から出力する。ConsoleOutComp.exeに接続して使用します。|
-|ConsoleOutComp.exe|InPort に入力された数値をコンソールに表示する&color(default){コンポーネント};。ConsoleInComp.exeに接続して使用します。|
-|SequenceInComp.exe|ランダムな数値(Short、Long、Float、Double とそのシーケンス型)を出力する&color(default){コンポーネント};。SequenceOutComp.exe に接続して使用する。|
-|SequenceOutComp.exe|InPort に入力される数値(Short、Long、Float、Double とそのシーケンス型)を表示。SequenceInComp.exeに接続して使用します。|
+|ConsoleInComp.exe|コンソールから入力された数値をOutPortから出力する。ConsoleOutComp.exeに接続して使用します。|
+|ConsoleOutComp.exe|InPortに入力された数値をコンソールに表示する&color(default){コンポーネント};。ConsoleInComp.exeに接続して使用します。|
+|SequenceInComp.exe|ランダムな数値(Short、Long、Float、Doubleとそのシーケンス型)を出力する&color(default){コンポーネント};。SequenceOutComp.exeに接続して使用する。|
+|SequenceOutComp.exe|InPortに入力される数値(Short、Long、Float、Doubleとそのシーケンス型)を表示。SequenceInComp.exeに接続して使用します。|
 |MyServiceProviderComp.exe|MyService型のサービスを提供する&color(default){コンポーネント};。MyServiceConsumerComp.exeに接続して使用します。|
 |MyServiceConsumerComp.exe|MyService型のサービスを提供する&color(default){コンポーネント};。MyServiceProviderComp.exeに接続して使用します。|
-|ConfigSampleComp.exe|Configuration のサンプル。RtcLinkからConfigurationを変更してConfiguration の挙動を理解するためのサンプルです。|
-|USBCameraAcquireComp.exe|USBカメラから画像を取得して OutPortから出力する&color(default){コンポーネント};。USBCameraMonitor.exeに接続して使用します。|
-|USBCameraMonitor.exe|InPort に入力される画像を画面に表示する&color(default){コンポーネント};。USBCameraAquire.exeに接続して使用します。|
+|ConfigSampleComp.exe|Configurationのサンプル。RtcLinkからConfigurationを変更してConfigurationの挙動を理解するためのサンプルです。|
+|USBCameraAcquireComp.exe|USBカメラから画像を取得してOutPortから出力する&color(default){コンポーネント};。USBCameraMonitor.exeに接続して使用します。|
+|USBCameraMonitor.exe|InPortに入力される画像を画面に表示する&color(default){コンポーネント};。USBCameraAquire.exeに接続して使用します。|
 
 
 &br;
