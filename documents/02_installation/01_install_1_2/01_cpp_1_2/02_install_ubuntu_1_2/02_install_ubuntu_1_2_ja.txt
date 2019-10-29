@@ -39,8 +39,6 @@ OpenJDK8のインストールは
  現在の選択 [*] を保持するには <Enter>、さもなければ選択肢の番号のキーを押してください: 2
  update-alternatives: /usr/bin/java (java) を提供するためにマニュアルモードで /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java を使います
  
-   選択肢    パス                                                                           優先度  
- 
 
 ***インストールの確認
 インストールを確認します。
