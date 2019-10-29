@@ -81,7 +81,7 @@ openrtm-aist にはランタイムライブラリとコマンド群が含まれ�
  /usr/etc/rtc.conf.sample
 
 -ライブラリ
- ***** 32bit
+--32bit
  /usr/lib/i386-linux-gnu/libRTC-X.X.X.so
  /usr/lib/i386-linux-gnu/libRTC.a
  /usr/lib/i386-linux-gnu/libRTC.la
@@ -104,7 +104,7 @@ openrtm-aist にはランタイムライブラリとコマンド群が含まれ�
  /usr/lib/i386-linux-gnu/openrtm-1.2/ssl/SSLTransport.la
  /usr/lib/i386-linux-gnu/openrtm-1.2/ssl/SSLTransport.so.X.X.X
  /usr/lib/i386-linux-gnu/pigconfig/openrtm-aist.pc
- ***** 64bit
+--64bit
  /usr/lib/x86_64-linux-gnu/libRTC-X.X.X.so
  /usr/lib/x86_64-linux-gnu/libRTC.a
  /usr/lib/x86_64-linux-gnu/libRTC.la
@@ -190,7 +190,7 @@ openrtm-aist-devには、開発に必要なコマンド群とヘッダが含ま�
  /usr/include/openrtm-1.2/rtm/version.txt
 
 -ライブラリ・その他
-***** 32bit
+--32bit
  /usr/lib/i386-linux-gnu/openrtm-1.2/cmake/OpenRTMConfig.cmake
  /usr/lib/i386-linux-gnu/openrtm-1.2/py_helper/README_gen.py
  /usr/lib/i386-linux-gnu/openrtm-1.2/py_helpver/cxx_gen.py
@@ -198,7 +198,7 @@ openrtm-aist-devには、開発に必要なコマンド群とヘッダが含ま�
  /usr/lib/i386-linux-gnu/openrtm-1.2/py_helpver/yat.py
  /usr/lib/i386-linux-gnu/pkgconfig/libcoil.pc
  
-***** 64bit
+--64bit
  /usr/lib/x86_64-linux-gnu/openrtm-1.2/cmake/OpenRTMConfig.cmake
  /usr/lib/x86_64-linux-gnu/openrtm-1.2/py_helper/README_gen.py
  /usr/lib/x86-64-linux-gnu/openrtm-1.2/py_helpver/cxx_gen.py
