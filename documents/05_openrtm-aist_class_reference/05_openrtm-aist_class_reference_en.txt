@@ -3,14 +3,24 @@
 //-[[Detailed explanation for DataPort:/en/node/475]]
 
 #ref(reference.png,right,around,70%,url=/node/376)
-** The latest class references
+** The class reference of the latest version (1.2.1)
+The class references were automatically generated from the newest source codes on the repository. There might be some inconsistencies between it and the latest release version of OpenRTM-aist.
 
-This class references are automatically generated from the newest source codes on the repository. Some features must be different from release version's OpenRTM-aist.
+-[[C++ class reference>http://openrtm.org/doc/cxx/1.2.1/classreference_en/index.html]]
+-[[Python class reference>http://openrtm.org/doc/python/1.2.1/classreference_en/index.html]]
+-[[Java class reference>http://openrtm.org/doc/java/1.2.1/classreference_en/index.html]]
+<!--break-->
+
+** 1.2 IDL references
+
+-[[IDL references>http://openrtm.org/doc/idl/1.2/idlreference_en/index.html]]
+
+** 1.1.2 class references
 
 -[[C++ class reference>http://openrtm.org/doc/cxx/1.1.2/classreference_en/index.html]]
 -[[Python class reference>http://openrtm.org/doc/python/1.1.2/classreference_en/index.html]]
 -[[Java class reference>http://openrtm.org/doc/java/1.1.2/classreference_en/index.html]]
-<!--break-->
+
 ** 1.1 IDL references
 
 -[[IDL references>http://openrtm.org/doc/idl/1.1/idlreference_en/index.html]]
