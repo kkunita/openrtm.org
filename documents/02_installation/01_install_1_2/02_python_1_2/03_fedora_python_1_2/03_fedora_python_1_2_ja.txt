@@ -1,18 +1,76 @@
 ﻿// Title: Fedoraへのインストール
 #ref(fedora_logo.png,around,40%,right)
 
-Python版 OpenRTM-aist は Fedora Linux で利用可能な RPM パッケージが提供されています。
+Python版 OpenRTM-aist 1.2.xは Fedora Linux で利用可能な RPM パッケージが提供されています。(まだ未対応です。したがって以下のページは未完成です。)
 対応している Fedora Linux のバージョンは、ダウンロードページから確認できます。
 Fedora Linux への対応およびそのバージョンは、予告なしに変更または停止されることがありますので、予めご了承ください。
 
 #contents
 
-**一括インストール・スクリプト
-加筆をお願いします。
+openrtm.orgが提供するインストール・スクリプト''pkg_install_fedora.sh''を指定のURLからダウンロードし、root 権限で実行します。このスクリプトでは必要なパッケージを順次apt-getを用いてインストールしていきます。
+
+オプションを指定することで、目的に合わせたパッケージをインストールすることが可能です。
+
+一括インストールスクリプトのダウンロードや詳しいインストール方法、指定可能なオプションの種類につきましては、「[[一括インストールスクリプト:http://openrtm.org/openrtm/ja/node/6345]]」のページをご確認ください。
+** OpenRTPのインストール
+一般的なUbuntu/Debian環境の用途ではOpenRTPを使ったRTC Builderの使用やRTSystem Editorの使用が行われることが多いと思われるます。必要に応じてOpenRTPも一括インストールスクリプトを用いてインストールしてください。Ubuntuではpkg_install_fedora.shがおいてあるディレクトリで
+ # su
+ # sh ./pkg_install_fedra.sh -l openrtp --yes
+と入力するとOpenRTPをインストールできます。
+
+**yum を使う方法
+
+***/etc/yum.repos.d/openrtm.repo の作成
+
+openrtm.org では yum から利用可能なパッケージリポジトリを提供しています。
+ただし、デフォルトのパッケージリポジトリには含まれていませんので、yum の設定を変更する必要があります。
+
+以下のような設定を記録したファイル ''/etc/yum.repos.d/openrtm.repo'' を作成しておきます。作成には通常 root 権限が必要です。
+
+ [openrtm]
+ name=Fedora $releasever - $basearch
+ failovermethod=priority
+ baseurl=http://openrtm.org/pub/Linux/Fedora/releases/$releasever/Fedora/$basearch/os/Packages
+ enabled=1
+ gpgcheck=0
+ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora file:///etc/pki/rpm-gpg/RPM-GPG-KEY
+CENTER:''/etc/yum.repos.d/openrtm.repo''
+
+***yum によるインストール
+
+openrtm.repo を作成したら、次の手順でインストールを行います。
+途中、いくつかの応答を求められるので、''y'' を入力しながら完了させます。
+
+ > su
+ # yum install python
+ # yum install omniORB-servers omniORBpy omniORBpy-devel omniORBpy-standard
+ # yum install OpenRTM-aist-Python OpenRTM-aist-Python-example
 
 
+** JDK8のインストール
+
+OpenRTP(RTSystem EditorやRTC Builderなど)の実行にはJDK8相当のJava環境が必要です。(デフォルトの環境でJDK8がインストールされている場合もありますが、Ubuntu 18.04ではJDK11がインストールされているため、JDK8のインストールが必要です。) 以下ではUbuntu 18.04でOpenJDK8をインストールする方法を示します。OpenJDK8にこだわらずライセンス条件や必要サポート条件にあわせて必要なJDK8環境をインストールするようにしてください。
+
+OpenJDK8のインストールは
+// $ sudo apt-get install openjdk-8-jdk
+ 
+なお、UbuntuではデフォルトでJDK11がインストールされていますので、以下のようにしてJDK8を使うようにしてください。
+ $ sudo update-alternatives --config java
+  alternative java (/usr/bin/java を提供) には 2 個の選択肢があります。
+ 
+   選択肢    パス                                          優先度  状態
+ ------------------------------------------------------------
+ * 0            /usr/lib/jvm/java-11-openjdk-amd64/bin/java      1111      自動モード
+   1            /usr/lib/jvm/java-11-openjdk-amd64/bin/java      1111      手動モード
+   2            /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java   1081      手動モード
+ 
+ 現在の選択 [*] を保持するには <Enter>、さもなければ選択肢の番号のキーを押してください: 2
+ update-alternatives: /usr/bin/java (java) を提供するためにマニュアルモードで /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java を使います
+
+以下は対応リリースができた後にアップデートします。
 ***インストールの確認
-加筆をお願いします。
+最後に以下のコマンドでインストールの確認をします。
+
+ # rpm -qa | grep  OpenRTM-aist-Python
 
 **パッケージの詳細
-加筆をお願いします。
