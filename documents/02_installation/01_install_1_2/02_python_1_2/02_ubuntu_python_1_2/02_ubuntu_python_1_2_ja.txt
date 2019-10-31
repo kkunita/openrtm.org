@@ -4,7 +4,7 @@
 
 Python版の OpenRTM-aist は、Ubuntu や Debian GNU Linux で利用可能な deb パッケージが提供されています。
 対応しているディストリビューションのバージョンは、ダウンロードページで確認できます。
-Ubuntu/Debian GNU Linux への対応バージョンや対応自体は、予告なしに変更または停止されることがありますので、了承のもと使用してください。
+Ubuntu/Debian GNU Linuxへの対応とそのバージョンは、予告なしに停止/変更することがあります。
 
 #contents
 
@@ -16,7 +16,7 @@ openrtm.orgが提供するインストール・スクリプト''pkg_install_ubun
 一括インストールスクリプトのダウンロードや詳しいインストール方法、指定可能なオプションの種類につきましては、「[[一括インストールスクリプト:http://openrtm.org/openrtm/ja/node/6345]]」のページをご確認ください。
 
 ** OpenRTPのインストール
-一般的なUbuntu/Debian環境の用途ではOpenRTPを使ったRTC Builderの使用やRTSystem Editorの使用が行われることが多いと思われるます。必要に応じてOpenRTPも一括インストールスクリプトを用いてインストールしてください。Ubuntuではpkg_install_ubuntu.shがおいてあるディレクトリで
+Ubuntu/Debian環境でOpenRTM-aistを使用する場合、RTC BuilderやRTSystem Editorを用いた開発をすることが多いと思われます。その場合はOpenRTPが必要になります。一括インストールスクリプトを用いてOpenRTPをイストールしてください。Ubuntuではpkg_install_ubuntu.shが置いてあるディレクトリで
  $ sudo sh ./pkg_install_ubuntu.sh -l openrtp --yes
 と入力するとOpenRTPをインストールできます。
 
@@ -260,7 +260,7 @@ openrtm-aist-devには、開発に必要なコマンド群とヘッダが含ま�
  /usr/share/openrtm-1.2/doc/python/ClassReference-jp/html/uuid_8py.html 
 
 ***openrtp
-openrtpでインストールされるファイルはかなり大量のファイルとなるため、ここではリストしません。必要に応じて
+openrtpでは大量のファイルがインストールされるため、ここではリストしません。必要に応じて
  $ dpkg -L openrtp
 と入力して各自での確認をしてください。
 
