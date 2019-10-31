@@ -1,10 +1,10 @@
-﻿// Titile: Ubuntu/Debianへのインストール
+﻿// Title: Ubuntu/Debianへのインストール
 #ref(ubuntu_logo2.png,around,right)
 
 
 C++版のOpenRTM-aistは、UbuntuやDebian GNU Linuxにおいて利用可能なdebパッケージが提供されています。
 それぞれのリリースが対応しているOSのディストリビューション・バージョンは、ダウンロードページで確認できます。
-Ubuntu/Debian GNU Linuxへの対応とそのバージョンは予告なしに停止されたり、変更されたりすることがあります。
+Ubuntu/Debian GNU Linuxへの対応とそのバージョンは、予告なしに停止/変更されたりすることがあります。
 
 #contents
 
@@ -16,13 +16,13 @@ openrtm.orgが提供するインストール・スクリプト''pkg_install_ubun
 一括インストールスクリプトのダウンロードや詳しいインストール方法、指定可能なオプションの種類につきましては、「[[一括インストールスクリプト:http://openrtm.org/openrtm/ja/node/6345]]」のページをご確認ください。
 
 ** OpenRTPのインストール
-一般的なUbuntu/Debian環境の用途ではOpenRTPを使ったRTC Builderの使用やRTSystem Editorの使用が行われることが多いと思われるます。必要に応じてOpenRTPも一括インストールスクリプトを用いてインストールしてください。Ubuntuではpkg_install_ubuntu.shが置いてあるディレクトリで
+一般的なUbuntu/Debian環境ではRTC BuilderやRTSystem Editorを使った開発が行われることが多いと思われます。その場合はOpenRTPが必要です。一括インストールスクリプトを用いてOpenRTPをインストールしてください。Ubuntuではpkg_install_ubuntu.shが置いてあるディレクトリで
  $ sudo sh ./pkg_install_ubuntu.sh -l openrtp --yes
 と入力するとOpenRTPをインストールできます。
 
 ** JDK8のインストール
 
-OpenRTP(RTSystem EditorやRTC Builder等)の実行にはJDK8相当のJava環境が必要になります。(デフォルトの環境でJDK8がインストールされている場合もありますが、Ubuntu 18.04ではJDK11がインストールされているため、JDK8のインストールが必要となります。) 以下ではUbuntu 18.04でOpenJDK8をインストールする方法を示します。OpenJDK8にこだわらずライセンス条件や必要サポート条件にあわせて必要なJDK8環境をインストールするようにしてください。
+OpenRTP(RTSystem EditorやRTC Builder等)の実行にはJDK8相当のJava環境が必要です。(デフォルトの環境でJDK8がインストールされている場合もありますが、Ubuntu 18.04ではJDK11がインストールされているため、JDK8のインストールが必要です。) 以下ではUbuntu 18.04でOpenJDK8をインストールする方法を示します。OpenJDK8にこだわらずライセンス条件や必要サポート条件にあわせて必要なJDK8環境をインストールするようにしてください。
 
 OpenJDK8のインストールは
  $ sudo apt-get install openjdk-8-jdk
@@ -276,7 +276,7 @@ openrtm-aist-doc には、日本語と英語のクラスリファレンス、IDL
  /usr/share/doc/openrtm-aist-doc/copyright
 
 ***openrtp
-openrtpでインストールされるファイルは大量のファイルとなるため、ここではリストしません。必要に応じて
+openrtpでは大量のファイルがインストールされるため、ここではリストしません。必要に応じて
  $ dpkg -L openrtp
 と入力して各自での確認をしてください。
 
