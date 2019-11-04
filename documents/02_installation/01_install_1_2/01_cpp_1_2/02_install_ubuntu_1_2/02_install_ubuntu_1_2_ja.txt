@@ -4,7 +4,7 @@
 
 C++版のOpenRTM-aistは、UbuntuやDebian GNU Linuxにおいて利用可能なdebパッケージが提供されています。
 それぞれのリリースが対応しているOSのディストリビューション・バージョンは、ダウンロードページで確認できます。
-Ubuntu/Debian GNU Linuxへの対応とそのバージョンは、予告なしに停止/変更されたりすることがあります。
+Ubuntu/Debian GNU Linuxへのサポートバージョンや対応の有無は、予告なしに変更されることがありますので、あらかじめご了承ください。
 
 #contents
 
@@ -16,7 +16,7 @@ openrtm.orgが提供するインストール・スクリプト''pkg_install_ubun
 一括インストールスクリプトのダウンロードや詳しいインストール方法、指定可能なオプションの種類につきましては、「[[一括インストールスクリプト:http://openrtm.org/openrtm/ja/node/6345]]」のページをご確認ください。
 
 ** OpenRTPのインストール
-一般的なUbuntu/Debian環境ではRTC BuilderやRTSystem Editorを使った開発が行われることが多いと思われます。その場合はOpenRTPが必要です。一括インストールスクリプトを用いてOpenRTPをインストールしてください。Ubuntuではpkg_install_ubuntu.shが置いてあるディレクトリで
+一般的なUbuntu/Debian環境での開発にはRTC BuilderやRTSystem Editorを使用しますが、その場合にはOpenRTPが必要となりますので、一括インストールスクリプトを用いてOpenRTPをインストールしてください。Ubuntuではpkg_install_ubuntu.shが置いてあるディレクトリで
  $ sudo sh ./pkg_install_ubuntu.sh -l openrtp --yes
 と入力するとOpenRTPをインストールできます。
 
