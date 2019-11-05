@@ -1,22 +1,18 @@
 ﻿// Title: Installing OpenRTM-aist 1.2 (Windows、using msi Installer)
 #ref(windows_logo.png,80%,around,nolink,left)
 
-//openrtm.org では Windows 用の msi (Microsoft Windows インストーラー)パッケージを提供しています。
-//msi パッケージを利用することで、依存ライブラリである omniORB や、RTSystemEditor といったツールも同時にインストールすることができます。
-openrtm.org is providing msi (windows installer) package of OpenRTM-aist 1.2.
-By using msi package, you can install the required software packages like omniORB (depeding library) and the tools like RTSystemEditor at the same time.
+openrtm.org is providing msi (Microsoft Windows Installer) package of OpenRTM-aist 1.2.x
+By using msi package, you can install the required software packages like omniORB (depending library) and tools like RTSystemEditor at the same time.
 
 #clear
 #contents
 
+** Install dependent software
+You must install Python before installing OpenRTM-aist. '' You need to install the 32-bit version of Python when installing the 32-bit version of OpenRTM-aist, and install the 64-bit version of Python when installing the 64-bit version of OpenRTM-aist. ''
 
-** 依存ソフトウェアのインストール
-OpenRTM-aistのインストール前に必ずPythonをインストールする必要があります。
+-[[Python (2.7 or 3.6, 3.7):https://www.python.org/downloads/windows/]]
 
-- [[Python(2.7、もしくは3.6、3.7):https://www.python.org/downloads/windows/]]
-
-** OpenRTM-aistのインストール
-以下からインストーラー(OpenRTM-aist-1.2.x-RELEASE_x86_64.msi)をダウンロードしてインストールしてください。
-ただし、''Pythonを32bit版をインストールした場合はOpenRTM-aistも32bit(OpenRTM-aist-1.2.x-***_x86.msi)をインストールする必要があります。Pythonが64bit版の場合はOpenRTM-aistも64bit版(OpenRTM-aist-1.2.x-***_x86_x64.msi)をインストールします。''
+** Install OpenRTM-aist
+Download and install the installer from the link below, OpenRTM-aist-1.2.x-RELEASE_x86_64.msi for the 64-bit version, and OpenRTM-aist-1.2.x-RELEASE_x86.msi for the 32-bit version.
 
 - [[OpenRTM-aist 1.2.0:https://github.com/OpenRTM/OpenRTM-aist/releases/tag/v1.2.0]]
