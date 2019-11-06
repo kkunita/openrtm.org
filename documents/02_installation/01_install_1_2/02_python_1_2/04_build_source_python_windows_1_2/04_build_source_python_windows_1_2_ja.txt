@@ -15,8 +15,9 @@ Python 2.7(もしくは3.6、3.7)が必要です。以下のサイトから最�
 
 -[[Python Official Website:https://www.python.org/]] 
 
-基本的にはデフォルトの設定でインストールすれば良いのですが、インストール先はC:\PythonX.Y(X.Yは2.7か3.6か3.7をインストールするPythonに合わせて設定してください。Python3.7では[Customize Installation]を選択する必要があります。）まだ、インストール後、手動で環境変数PATHを設定して、サーチパスにPythonの実行ファイルがある場所を設定してください。(3.7では[Add Python to environmental variable]にインストール中にチェックをいれれば、インストーラが設定してくれます。)
-
+以降の説明は、次の2つの前提の元書いています。(そのはかのインストール設定はインストーラのデフォルト設定)
+-インストール先がC:\PythonX.Y(X.Yは2.7か3.6か3.7をインストールするPythonに合わせて設定してください。Python3.7では[Customize Installation]を選択する必要があります)。
+-サーチパスにPythonの実行ファイルがある場所が含まれていること(3.7では[Add Python to environmental variable]にインストール中にチェックをいれれば、インストーラが設定してくれます。)
 
 *** omniORBpy
 
@@ -28,7 +29,7 @@ OpenRTM-aist-PythonのビルドにはomniORBpyのライブリが必要です。o
 -[[omniORB official:http://omniorb.sourceforge.net/]]
 --[[sourceforge download page:http://sourceforge.net/projects/omniorb/files/omniORBpy/]]
 
-openrtm.orgのサイトのファイルは、特別な理由がない限りは最新版(現状では4.2.3)を使用することを推奨します。また、複数のファイルがありますが、そのファイル名の意味は以下のようになります。
+openrtm.orgのサイトのファイルは、特別な理由がない限りは最新版(現時点では4.2.3)を使用することを推奨します。また、複数のファイルがありますが、そのファイル名の意味は以下となりますので、その説明にあわせて使用するファイルを選択してください。
 
 **** openrtm.orgからダウンロードできるomniORBパッケージのファイル名の意味
 
@@ -38,7 +39,7 @@ omniORB-x.y.z-{Win32|x64}-{vc100|vc110|vc120|vc140}-{py27|py36|py37}.zip
 
 ここで、
 
-x.y.z: omniORBのバージョン、例えば4.2.3となります。
+x.y.z: omniORBのバージョン、例えば4.2.3。
 
 win32:32ビット版、32ビット版のPythonを使う場合#br
 x64: 64ビット版、64ビット版のPythonを使う場合
@@ -46,13 +47,13 @@ x64: 64ビット版、64ビット版のPythonを使う場合
 vc100:C++環境を使う場合で、Visual Studio 2010の場合#br
 vc110:C++環境を使う場合で、Visual Studio 2012の場合#br
 vc120:C++環境を使う場合で、Visual Studio 2013の場合#br
-vc140: C++環境を使う場合で、Visual Studio 2015/2017/2019の場合
-
+vc140: C++環境を使う場合で、Visual Studio 2015/2017/2019の場合#br
+Python環境だけで使う場合は、どれを選んでもかまいません。
 
 py27: Python 2.7を使う場合#br
 py36: Python 3.6を使う場合#br
 py37: Python 3.7を使う場合#br
-Python環境だけで使う場合は、どれを選んでもかまいません。
+
 
 
 OmniORB 4.2.3を64bitのPython 3.7の環境で使用するなら、omniORB-4.2.3-x64-vc140-py37.zipをダウンロードすれば良いでしょう。ファイルをダウンロードしたしZIPファイルを展開すると、以下の様なディレクトリツリーが展開されるはずです。それぞれのディレクトリー下のファイルを以下の指示通りに Python のディレクトリーにコピーしてください。
