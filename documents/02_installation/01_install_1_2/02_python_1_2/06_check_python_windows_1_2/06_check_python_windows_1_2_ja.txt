@@ -1,26 +1,23 @@
-﻿// Title: 動作確認 (Windows編)
+﻿// Title: 動作確認(Windows編)
 #contents
 
 ** サンプルコンポーネントの場所
 
-インストールまたはビルドが正常に終了したら、付属のサンプルで動作テストをします。
-サンプルは、通常は以下の場所にあります。
+インストールまたはビルドが正常に終了したら、付属のサンプルで動作テストをします。サンプルは、通常は以下の場所にあります。
 
--C:\Program Files\OpenRTM-aist\1.2.0\Components\Python
--OpenRTM-aist-Python/OpenRTM-aist/examples (ソースからビルドした場合)
+-C:\Program Files\OpenRTM-aist\1.2.&color(blue){x};\Components\Python
+-<ソースディレクトリ>/OpenRTM-aist/examples(ソースからビルドした場合)
 
-サンプルコンポーネントセット SimpleIO を使って、OpenRTM-aist が正しくビルド・インストールされているかを確認します。
-
+サンプルコンポーネントセットSimpleIOを使って、OpenRTM-aistが正しくビルド・インストールされているかを確認します。
 
 
-** サンプル (SimpleIO) を使用したテスト
 
-RT コンポーネント ConsoleIn、ConsoleOut からなるサンプルセットです。
-ConsoleIn はコンソールから入力された数値を OutPort から出力するコンポーネント、ConsoleOut は InPort に入力された数値をコンソールに表示するコンポーネントです。
-これらは、最も Simple な I/O (入出力) を例示するためのサンプルです。
-ConsoleIn の OutPort から ConsoleOut の InPort へ接続を構成し、これらの2つのコンポーネントをアクティブ化 (Activate) することで動作します。
+** サンプル(SimpleIO)を使用したテスト
 
-以下は、msi インストーラーで OpenRTM-aist をインストールした環境で、スタートメニューから各種プログラムを起動する前提で説明します。
+RTコンポーネント ConsoleIn、ConsoleOutからなるサンプルセットです。ConsoleInはコンソールから入力された数値をOutPortから出力するコンポーネント、ConsoleOutはInPortに入力された数値をコンソールに表示するコンポーネントです。
+これらは、最もSimpleなI/O(入出力)を例示するためのサンプルです。ConsoleInのOutPortからConsoleOutのInPortへ接続を構成し、これらの2つのコンポーネントをアクティブ化(Activate)することで動作します。
+
+以下は、msiインストーラーでOpenRTM-aistをインストールした環境で、スタートメニューから各種プログラムを起動する前提で説明します。
 
 *** RT System Editor、ネームサーバー起動
 以下の手順に従ってRT System Editor、ネームサーバーを起動してください。
@@ -39,11 +36,10 @@ CENTER:''ネームサーバーの起動を確認''
 #ref(rtm8-2.png,80%,center)
 CENTER:''サンプルコンポーネントフォルダー''
 
-ここでは、「ConsoleIn.bat」「ConsoleOut.bat」をそれぞれダブルクリックして2つのコンポーネントを起動します。
-起動すると、下図のような2つのコンソール画面が開きます。
+ここでは、「ConsoleIn.bat」「ConsoleOut.bat」をそれぞれダブルクリックして2つのコンポーネントを起動します。起動すると、下図のような2つのコンソール画面が開きます。
 
 #ref(rtm9-2.png,60%,center)
-CENTER:''ConsoleIn コンポーネントと ConsoleOut コンポーネント''
+CENTER:''ConsoleInコンポーネントとConsoleOutコンポーネント''
 
 **** コンポーネントが起動しない場合
 
@@ -51,45 +47,42 @@ CENTER:''ConsoleIn コンポーネントと ConsoleOut コンポーネント''
 
 ***** コンソール画面が開いてすぐに消える
 
-rtc.conf の設定に問題があり、起動できないケースがあります。上記スタートメニューフォルダーの [rtc.conf for examples] を開いて設定を確認してください。
-例えば、corba.endpoint/corba.endpoints などの設定が現在実行中の PC のホストアドレスとミスマッチを起こしている場合などは、CORBA が異常終了します。
+rtc.confの設定に問題があり、起動できないケースがあります。上記スタートメニューフォルダーの[rtc.conf for examples]を開いて設定を確認してください。例えば、corba.endpoint/corba.endpointsなどの設定が現在実行中のPCのホストアドレスとミスマッチを起こしている場合などは、CORBAが異常終了します。
 
-以下のような最低限の rtc.conf に設定しなおして試してみてください。
+以下のような最低限のrtc.confに設定しなおして試してみてください。
 
  corba.nameservers: localhost
 
 
-***** omniORBpy がインストールされていない。
+***** omniORBpyがインストールされていない。
 
-openrtm.org が提供する msi インストーラーには omniORBpy が含まれていますが、カスタムインストールを選択すると、omniORBpy をインストールせずに OpenRTM-aist-Python をインストールすることもできます。
+openrtm.orgが提供するmsiインストーラーにはomniORBpyが含まれていますが、カスタムインストールを選択すると、omniORBpyをインストールせずにOpenRTM-aist-Pythonをインストールできます。また、手動でインストールした場合には、omniORBpyが入っていない場合も考えられますので、omniORBpyがインストールされているか確認してください。
 
-また、手動でインストールした場合には、omniORBpy が入っていない場合も考えられますので、omniORBpy がインストールされているか確認してください。
+***** pyファイルの関連付けが違っている
 
-***** py ファイルの関連付けが違っている
+ConsoleIn、ConsoleOutを起動するファイルは、
 
-ConsoleIn、ConsoleOutを起動するファイルは、C:\Program Files\OpenRTM-aist\1.2.0\Components\Python\Examples\SimpleIO\ConsoleIn.py、ConsoleOut.py です。（64bit 版 msi でインストールした場合）
-このディレクトリーでコンソール画面を開き、python ConsoleIn.py を実行すると起動するが、ConsoleIn.py をダブルクリックして起動できない場合はインストールしている python を確認してください。
-Python の 32bit 版、64bit 版の両方をインストールしている場合、先にインストールしたものが py ファイルに関連付けられるようなので、OpenRTM-aist-Python のインストーラーと同じアーキテクチャの Python を先にインストールすると解決するかもしれません。
+C:\Program Files\OpenRTM-aist\1.2.&color(blue){x};\Components\Python\Examples\SimpleIO\ConsoleIn.py&br;
+C:\Program Files\OpenRTM-aist\1.2.&color(blue){x};\Components\Python\Examples\SimpleIO\ConsoleOut.py
+
+です。（64bit版msiでインストールした場合）このディレクトリでコンソール画面を開き、python ConsoleIn.pyを実行すると起動するが、ConsoleIn.pyをダブルクリックして起動できない場合はインストールしているpythonを確認してください。Pythonの32bit版、64bit版の両方をインストールしている場合、先にインストールしたものがpyファイルに関連付けられるようなので、OpenRTM-aist-Pythonのインストーラーと同じアーキテクチャのPythonを先にインストールすると解決するかもしれません。
 
 ***** その他
 
-ホスト名やアドレスの設定の問題で、起動がうまくいかないケースがあります。
-その場合、利用している PC の IP アドレスを omniNames.exe に教えてあげるとうまくいくケースがあります。
-環境変数 OMNIORB_USEHOSTNAME を以下のように設定します (以下は自ホストの IPアドレスが192.168.0.11の場合の例)。
+ホスト名やアドレスの設定の問題で、起動がうまくいかないケースがあります。その場合、利用しているPCのIPアドレスをomniNames.exeに教えてあげるとうまくいくケースがあります。
+環境変数OMNIORB_USEHOSTNAMEを以下のように設定します(以下は自ホストのIPアドレスが192.168.0.11の場合の例)。
 
  変数名(N): OMNIORB_USEHOSTNAME
  変数値(V): 192.168.0.11
 
 **** エディタへの配置
 
-RT System Editorのツリー表示の [>] をクリックすると、先ほど起動した2つのコンポーネントが登録されていることがわかります。
+RT System Editorのツリー表示の[>]をクリックすると、先ほど起動した2つのコンポーネントが登録されていることがわかります。
 
 #ref(rtm10.png,/ja/node/6614,60%,center)
-CENTER:''ConsoleIn コンポーネントと ConsoleOut コンポーネント''
+CENTER:''ConsoleInコンポーネントとConsoleOutコンポーネント''
 
-システムを編集するエディタを開きます。上部のエディタを [開く] ボタン&ref(rtse_open_editor_icon_ja.png, /ja/node/794); をクリックすると、中央のペインにエディタが開きます。
-
-左側のネームサービスビューに &ref(rtse_rtc_icon.png, /ja/node/794); のアイコンで表示されているコンポーネント (2つ) を中央のエディタにドラッグアンドドロップします。
+システムを編集するエディタを開きます。上部のエディタを[開く]ボタン&ref(rtse_open_editor_icon_ja.png, 200%); をクリックすると、中央のペインにエディタが開きます。左側のネームサービスビューに &ref(rtse_rtc_icon_n.png, 200%); のアイコンで表示されているコンポーネント(2つ)を中央のエディタにドラッグアンドドロップします。
 
 #ref(rtm11.png,/ja/node/6614,80%,center)
 CENTER: ''コンポーネントをエディタに配置''
@@ -97,10 +90,9 @@ CENTER: ''コンポーネントをエディタに配置''
 
 **** 接続とアクティブ化
 
-ConsoleIn0 コンポーネントの右側にはデータが出力される OutPort &ref(rtse_outport_icon.png, /ja/node/794); 、ConsoleOut0 コンポーネントの左側にはデータが入力される InPort &ref(rtse_inport_icon.png, /ja/node/794); がそれぞれついています。
+ConsoleIn0コンポーネントの右側にはデータが出力されるOutPort &ref(rtse_outport_icon_n.png,150%); 、ConsoleOut0コンポーネントの左側にはデータが入力されるInPort &ref(rtse_inport_icon_n.png, 150%); がそれぞれについています。
 
-これら InPort/OutPort (まとめてデータポートと呼びます) を接続します。
-OutPort から InPort (または InPort から OutPort) へドラッグランドドロップすると、図のようなダイアログが現れますので、デフォルト設定のまま [OK] ボタンをクリックします。
+これらInPort/OutPort(まとめてデータポートと呼びます)を接続します。OutPortからInPort(またはInPortからOutPort)へドラッグランドドロップすると、図のようなダイアログが現れますので、デフォルト設定のまま[OK]ボタンをクリックします。
 
 #ref(rtm13.png,/ja/node/6614,80%,center)
 CENTER: ''データポートの接続''
@@ -109,8 +101,7 @@ CENTER: ''データポートの接続''
 CENTER: ''データポート接続ダイアログ''
 
 
-2つのコンポーネントの間に接続線が現れます。次に、エディタ上部メニューの [All Activate] ボタン &ref(rtm14.png); をクリックし、これらのコンポーネントをアクティブ化します。
-アクティブ化されると、コンポーネントが緑色に変化します。
+2つのコンポーネントの間に接続線が現れます。次に、エディタ上部メニューの[All Activate]ボタン &ref(rtm14.png); をクリックし、これらのコンポーネントをアクティブ化します。アクティブ化されると、コンポーネントが緑色に変化します。
 
 #ref(rtm15.png,/ja/node/6614,center)
 CENTER: ''アクティブ化されたコンポーネント''
@@ -118,42 +109,38 @@ CENTER: ''アクティブ化されたコンポーネント''
 
 
 
-コンポーネントがアクティブ化されると ConsoleIn コンポーネント側では
+コンポーネントがアクティブ化されるとConsoleInコンポーネント側では
 
  Please input number: 
 
-というプロンプト表示に変わりますので、適当な数値 (short int の範囲内:32767以下) を入力し Enter キーを押します。
-すると、ConsoleOut 側では、入力した数値が表示され、ConsoleIn コンポーネントから ConsoleOut コンポーネントへデータが転送されたことがわかります。
+というプロンプト表示に変わりますので、適当な数値(short intの範囲内:32767以下)を入力しEnterキーを押します。すると、ConsoleOut側では、入力した数値が表示され、ConsoleInコンポーネントからConsoleOutコンポーネントへデータが転送されたことがわかります。
 
 以上で、コンポーネントの基本動作の確認は終了です。
 
 
 ** 他のサンプル
 
-インストーラーには、このほかにもいくつかのサンプルコンポーネントが付属しています。
-これらのコンポーネントも同様に起動し、RTSystemEditor でポート同士を接続し、アクティブ化することで試すことができます。
-
-付属しているコンポーネントのリストと簡単な説明を以下に示します。
+インストーラーには、このほかにもいくつかのサンプルコンポーネントが付属しています。これらのコンポーネントも同様に起動し、RTSystemEditorでポート同士を接続し、アクティブ化することで試すことができます。付属しているコンポーネントのリストと簡単な説明を以下に示します。
 
 |LEFT:250|LEFT|c
-|ConsoleIn.py|コンソールから入力された数値を OutPort から出力する。ConsoleOut.py に接続して使用する。|
-|ConsoleOut.py|InPort に入力された数値をコンソールに表示する&color(default){コンポーネント};。ConsoleIn.py に接続して使用する。|
-|SeqIn.py|ランダムな数値(Short、Long、Float、Double とそのシーケンス型)を出力する&color(default){コンポーネント};。SeqOut.py に接続して使用する。|
-|SeqOut.py|InPort に入力される数値(Short、Long、Float、Doubleとそのシーケンス型)を表示。SeqIn.py に接続して使用する。|
-|MyServiceProvider.py|MyService 型のサービスを提供する&color(default){コンポーネント};。MyServiceConsumer.py に接続して使用する。|
-|MyServiceConsumer.py|MyService 型のサービスを利用する&color(default){コンポーネント};。MyServiceProvider.py に接続して使用する。|
-|ConfigSample.py|Configuration のサンプル。RTSystemEditor から Configuration を変更して Configuration の挙動を理解するためのサンプル。|
-|TkMobileRobotSimulator.py|モバイルロボットの簡易シミュレーター。ロボットの速度を InPort で受け、移動後の位置を OutPort から出力する。|
-|NXTRTC.py|LEGO MINDSTORM にて作成したモバイルロボットを制御するためのサンプル。InPort にて速度を受け、赤外線センサーと現在位置をそれぞれ OutPort から出力する。|
-|AutoControl.py|モバイルロボット用の速度を出力する。測位センサーのデータを InPort で受け、ロボットの速度を計算して OutPort から出力する。|
-|Composite.py|Composite 用のサンプル。Motor、Controller、Sensorを包含するコンポーネント。Composite の使用方法を理解するためのサンプル。|
-|Motor.py|Composite コンポーネント用のサンプル。Composite の子要素として使用。|
-|Controller.py|Composite コンポーネント用のサンプル。Composite の子要素として使用。|
-|Sensor.py|Composite コンポーネント用のサンプル。Composite の子要素として使用。|
-|Slider.py|Tk を用いた GUI コンポーネントのサンプル。Slider で指定した値を OutPort から出力する。|
-|TkMotorComp.py|Tk を用いた GUI コンポーネントのサンプル。InPort で受け取った値を GUI で表示する。|
-|TkLRFViewer.py|Tk を用いた GUI コンポーネントのサンプル。レーザーレンジセンサーなどから出力されるデータを表示する。|
-|TkJoystickComp.py|Tk を用いた GUI コンポーネントのサンプル。簡易ジョイスティックコンポーネント。|
+|ConsoleIn.py|コンソールから入力された数値をOutPortから出力する。ConsoleOut.pyに接続して使用する。|
+|ConsoleOut.py|InPortに入力された数値をコンソールに表示する&color(default){コンポーネント};。ConsoleIn.pyに接続して使用する。|
+|SeqIn.py|ランダムな数値(Short、Long、Float、Doubleとそのシーケンス型)を出力する&color(default){コンポーネント};。SeqOut.pyに接続して使用する。|
+|SeqOut.py|InPortに入力される数値(Short、Long、Float、Doubleとそのシーケンス型)を表示。SeqIn.pyに接続して使用する。|
+|MyServiceProvider.py|MyService型のサービスを提供する&color(default){コンポーネント};。MyServiceConsumer.pyに接続して使用する。|
+|MyServiceConsumer.py|MyService型のサービスを利用する&color(default){コンポーネント};。MyServiceProvider.pyに接続して使用する。|
+|ConfigSample.py|Configurationのサンプル。RTSystemEditorからConfigurationを変更してConfigurationの挙動を理解するためのサンプル。|
+|TkMobileRobotSimulator.py|モバイルロボットの簡易シミュレーター。ロボットの速度をInPortで受け、移動後の位置をOutPortから出力する。|
+|NXTRTC.py|LEGO MINDSTORMを用いたモバイルロボットを制御するためのサンプル。InPortにて速度を受け、赤外線センサーと現在位置をそれぞれOutPortから出力する。|
+|AutoControl.py|モバイルロボット用のコンポーネントで速度を出力する。測位センサーのデータをInPortで受け、ロボットの速度を計算してOutPortから出力する。|
+|Composite.py|Composite用のサンプル。Motor、Controller、Sensorを包含するコンポーネント。Compositeの使用方法を理解するためのサンプル。|
+|Motor.py|Compositeコンポーネント用のサンプル。Compositeの子要素として使用。|
+|Controller.py|Compositeコンポーネント用のサンプル。Compositeの子要素として使用。|
+|Sensor.py|Compositeコンポーネント用のサンプル。Compositeの子要素として使用。|
+|Slider.py|Tkを用いたGUIコンポーネントのサンプル。Sliderで指定した値をOutPortから出力する。|
+|TkMotorComp.py|Tkを用いたGUIコンポーネントのサンプル。InPortで受け取った値をGUIで表示する。|
+|TkLRFViewer.py|Tkを用いたGUIコンポーネントのサンプル。レーザーレンジセンサーなどから出力されるデータを表示する。|
+|TkJoystickComp.py|Tkを用いたGUIコンポーネントのサンプル。簡易ジョイスティックコンポーネント。|
 
 
 &br;
