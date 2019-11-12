@@ -1,7 +1,7 @@
 ﻿// Title: Fedoraへのインストール
 #ref(fedora_logo.png,around,40%,right)
 
-Python版 OpenRTM-aist 1.2.xは Fedora Linux で利用可能な RPM パッケージが提供されています。(まだ未対応です。したがって以下のページは未完成です。)
+Python版 OpenRTM-aist 1.2.xは Fedora Linux で利用可能な RPM パッケージが提供されています。(未対応です。したがって以下のページは未完成です。)
 対応している Fedora Linux のバージョンは、ダウンロードページから確認できます。
 Fedora Linux への対応およびそのバージョンは、予告なしに変更または停止されることがありますので、予めご了承ください。
 
