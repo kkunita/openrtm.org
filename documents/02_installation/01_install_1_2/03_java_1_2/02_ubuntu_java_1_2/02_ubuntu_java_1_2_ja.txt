@@ -2,7 +2,7 @@
 #ref(ubuntu_logo2.png,around,right)
 
 
-Java版の OpenRTM-aistは、UbuntuやDebian GNU Linuxで利用可能なdebパッケージが提供されています。
+Java版のOpenRTM-aistは、UbuntuやDebian GNU Linuxで利用可能なdebパッケージが提供されています。
 対応しているディストリビューションのバージョンは、ダウンロードページから確認できます。
 Ubuntu/Debian GNU Linuxへの対応およびそのバージョンは、予告なしに変更または停止されることがありますので、あらかじめご了承ください。
 
