@@ -1,10 +1,10 @@
-﻿// Titile: Ubuntu/Debianへのインストール
+﻿// Title: Ubuntu/Debianへのインストール
 #ref(ubuntu_logo2.png,around,right)
 
 
 C++版のOpenRTM-aistは、UbuntuやDebian GNU Linuxにおいて利用可能なdebパッケージが提供されています。
 それぞれのリリースが対応しているOSのディストリビューション・バージョンは、ダウンロードページで確認できます。
-Ubuntu/Debian GNU Linuxへの対応とそのバージョンは予告なしに停止されたり、変更されたりすることがあります。
+Ubuntu/Debian GNU Linuxへのサポートバージョンや対応の有無は、予告なしに変更されることがありますので、あらかじめご了承ください。
 
 #contents
 
@@ -15,16 +15,44 @@ openrtm.orgが提供するインストール・スクリプト''pkg_install_ubun
 
 一括インストールスクリプトのダウンロードや詳しいインストール方法、指定可能なオプションの種類につきましては、「[[一括インストールスクリプト:http://openrtm.org/openrtm/ja/node/6345]]」のページをご確認ください。
 
+** OpenRTPのインストール
+一般的なUbuntu/Debian環境での開発にはRTC BuilderやRTSystem Editorを使用しますが、その場合にはOpenRTPが必要となりますので、一括インストールスクリプトを用いてOpenRTPをインストールしてください。Ubuntuではpkg_install_ubuntu.shが置いてあるディレクトリで
+ $ sudo sh ./pkg_install_ubuntu.sh -l openrtp --yes
+と入力するとOpenRTPをインストールできます。
+
+** JDK8のインストール
+
+OpenRTP(RTSystem EditorやRTC Builder等)の実行にはJDK8相当のJava環境が必要です。(デフォルトの環境でJDK8がインストールされている場合もありますが、Ubuntu 18.04ではJDK11がインストールされているため、JDK8のインストールが必要です。) 以下ではUbuntu 18.04でOpenJDK8をインストールする方法を示します。OpenJDK8にこだわらずライセンス条件や必要サポート条件にあわせて必要なJDK8環境をインストールするようにしてください。
+
+OpenJDK8のインストールは
+ $ sudo apt-get install openjdk-8-jdk
+なお、UbuntuではデフォルトでJDK11がインストールされていますので、以下のようにしてJDK8を使うようにしてください。
+ $ sudo update-alternatives --config java
+  alternative java (/usr/bin/java を提供) には 2 個の選択肢があります。
+ 
+   選択肢    パス                                          優先度  状態
+ ------------------------------------------------------------
+ * 0            /usr/lib/jvm/java-11-openjdk-amd64/bin/java      1111      自動モード
+   1            /usr/lib/jvm/java-11-openjdk-amd64/bin/java      1111      手動モード
+   2            /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java   1081      手動モード
+ 
+ 現在の選択 [*] を保持するには <Enter>、さもなければ選択肢の番号のキーを押してください: 2
+ update-alternatives: /usr/bin/java (java) を提供するためにマニュアルモードで /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java を使います
+ 
 
 ***インストールの確認
 インストールを確認します。
 
- $ dpkg -l 'openrtm*'
- ||/ 名前           バージョン   アーキテクチ 説明
- +++-==============-============-============-=================================
- ii  openrtm-aist:a 1.2.0-0      amd64        OpenRTM-aist, RT-Middleware distr
- ii  openrtm-aist-d 1.2.0-0      amd64        OpenRTM-aist headers for developm
- ii  openrtm-aist-e 1.2.0-0      amd64        OpenRTM-aist examples
+ $ dpkg -l 'openrt*'
+ 要望=(U)不明/(I)インストール/(R)削除/(P)完全削除/(H)保持
+ | 状態=(N)無/(I)インストール済/(C)設定/(U)展開/(F)設定失敗/(H)半インストール/(W)トリガ待ち/(T)トリガ保留
+ |/ エラー?=(空欄)無/(R)要再インストール (状態,エラーの大文字=異常)
+ ||/ 名前                     バージョン        アーキテクチャ    説明
+ +++-========================-=================-======================================================================
+ ii  openrtm-aist:amd64       1.2.0-0           amd64             OpenRTM-aist, RT-Middleware distributed by AIST
+ ii  openrtm-aist-doc         1.2.0-0           all               Documentation for openrtm-aist
+ ii  openrtm-aist-example:amd 1.2.0-0           amd64             OpenRTM-aist examples
+ ii  openrtp:amd64            1.2.0-1           amd64             OpenRTP, Open RT Platform distributed by AIST
 
 
 **パッケージの詳細
@@ -51,7 +79,7 @@ openrtm-aist にはランタイムライブラリとコマンド群が含まれ�
  /usr/etc/rtc.conf.sample
 
 -ライブラリ
- ***** 32bit
+--32bit
  /usr/lib/i386-linux-gnu/libRTC-X.X.X.so
  /usr/lib/i386-linux-gnu/libRTC.a
  /usr/lib/i386-linux-gnu/libRTC.la
@@ -74,7 +102,7 @@ openrtm-aist にはランタイムライブラリとコマンド群が含まれ�
  /usr/lib/i386-linux-gnu/openrtm-1.2/ssl/SSLTransport.la
  /usr/lib/i386-linux-gnu/openrtm-1.2/ssl/SSLTransport.so.X.X.X
  /usr/lib/i386-linux-gnu/pigconfig/openrtm-aist.pc
- ***** 64bit
+--64bit
  /usr/lib/x86_64-linux-gnu/libRTC-X.X.X.so
  /usr/lib/x86_64-linux-gnu/libRTC.a
  /usr/lib/x86_64-linux-gnu/libRTC.la
@@ -102,37 +130,39 @@ openrtm-aist にはランタイムライブラリとコマンド群が含まれ�
 openrtm-aist-devには、開発に必要なコマンド群とヘッダが含まれています。
 
 -コマンド
- /usr/bin/rtcd
- /usr/bin/rtcprof
- /usr/bin/rtm-config
- /usr/bin/rtm-naming
+ /usr/bin/coil-config
+ /usr/bin/rtc-template
+ /usr/bin/rtm-skelwrapper
 
 -ライセンス等
- /usr/share/doc/README
- /usr/share/doc/README.Debian
- /usr/share/doc/README.jp
  /usr/share/doc/openrtm-aist-dev/changelog.Debian.gz
  /usr/share/doc/openrtm-aist-dev/changelog.gz
  /usr/share/doc/openrtm-aist-dev/copyright
 
--ヘッダ
- /usr/include/Openrtm-1.2/rtm/BufferBase.h
- /usr/include/Openrtm-1.2/rtm/BufferStatus.h
+-ヘッダ等
+ /usr/include/coil-1.2/coil/Affinity.h
+ /usr/include/coil-1.2/coil/Allocator.h
  中略
- /usr/include/Openrtm-1.2/rtm/Typename.h
+ /usr/include/coil-1.2/coil/stringutil.h
+ /usr/include/openrtm-1.2/rtm/BufferBase.h
+ /usr/include/openrtm-1.2/rtm/BufferStatus.h
+ 中略
+ /usr/include/openrtm-1.2/rtm/config_rtc.h
  /usr/include/openrtm-1.2/rtm/ext/CameraCommonInterface.hh
  /usr/include/openrtm-1.2/rtm/ext/CameraCommonInterface.idl
  中略
  /usr/include/openrtm-1.2/rtm/ext/ManipulatorCommonInterface_MiddleStub.h
- /usr/include/openrtm-1.2/ext/ec/artlinux/ArtExecutionContext.h
- /usr/include/openrtm-1.2/ext/ec/rtc.conf.sample
- /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/LogicalTimeTrggerdEC.h
- /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/LogicalTimeTriggedEC.idl
+ /usr/include/openrtm-1.2/rtm/ext/ec/artlinux/ArtExecutionContext.h
+ /usr/include/openrtm-1.2/rtm/ext/ec/artlinux/rtc.conf.sample
+ /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/LogicalTimeTriggeredEC.h
+ /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/LogicalTimeTriggeredEC.idl
  中略
  /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/LogicalTimeTriggeredECStub.h
  /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/idl/LogicalTimeTriggeredEC.hh
- 中略
+ /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/idl/LogicalTimeTriggeredEC.idl
+ /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/idl/LogicalTimeTriggeredECDynSK.cc
  /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/idl/LogicalTimeTriggeredECSK.cc
+ /usr/include/openrtm-1.2/rtm/ext/ec/rtpreempt
  /usr/include/openrtm-1.2/rtm/ext/ec/rtpreempt/RTPreemptEC.h
  /usr/include/openrtm-1.2/rtm/ext/ec/rtpreempt/rtc.conf.sample
  /usr/include/openrtm-1.2/rtm/ext/local_service/nameservice_file/FileNameservice.h
@@ -142,45 +172,37 @@ openrtm-aist-devには、開発に必要なコマンド群とヘッダが含ま�
  /usr/include/openrtm-1.2/rtm/ext/sdo/logger/Logger.idl
  中略
  /usr/include/openrtm-1.2/rtm/ext/sdo/logger/LoggerStub.h
- /usr/include/openrtm-1.2/rtm/ext/sdo/observer/ComponetObserver.idl
- /usr/include/openrtm-1.2/rtm/ext/sdo/observer/ComponetObserver.Consumer.h
+ /usr/include/openrtm-1.2/rtm/ext/sdo/observer/ComponentObserver.idl
+ /usr/include/openrtm-1.2/rtm/ext/sdo/observer/ComponentObserverConsumer.h
  中略
- /usr/include/openrtm-1.2/rtm/ext/sdo/observer/ComponetObserverSK.cc
+ /usr/include/openrtm-1.2/rtm/ext/sdo/observer/ComponentObserverStub.h
  /usr/include/openrtm-1.2/rtm/ext/sdo/observer/idl/ComponentObserver.hh
- 中略
- /usr/include/openrtm-1.2/rtm/ext/sdo/observer/idl/ComponetObserverSK.cc
+ /usr/include/openrtm-1.2/rtm/ext/sdo/observer/idl/ComponentObserver.idl
+ /usr/include/openrtm-1.2/rtm/ext/sdo/observer/idl/ComponentObserverDynSK.cc
+ /usr/include/openrtm-1.2/rtm/ext/sdo/observer/idl/ComponentObserverSK.cc
  /usr/include/openrtm-1.2/rtm/idl/BasicDataType.hh
  /usr/include/openrtm-1.2/rtm/idl/BasicDataType.idl
- 中略
- /usr/include/openrtm-1.2/rtm/idl/SharedMemoryStub.h
- /usr/include/openrtm-1.2/rtm/idl/device_interfaces/AIO.idl
- /usr/include/openrtm-1.2/rtm/idl/device_interfaces/ActArray.idl
  中略
  /usr/include/openrtm-1.2/rtm/idl/device_interfaces/Ranger.idl
  /usr/include/openrtm-1.2/rtm/version.h
  /usr/include/openrtm-1.2/rtm/version.txt
 
 -ライブラリ・その他
- ***** 32bit
+--32bit
  /usr/lib/i386-linux-gnu/openrtm-1.2/cmake/OpenRTMConfig.cmake
  /usr/lib/i386-linux-gnu/openrtm-1.2/py_helper/README_gen.py
  /usr/lib/i386-linux-gnu/openrtm-1.2/py_helpver/cxx_gen.py
  中略
  /usr/lib/i386-linux-gnu/openrtm-1.2/py_helpver/yat.py
  /usr/lib/i386-linux-gnu/pkgconfig/libcoil.pc
- /usr/lib/i386-linux-gnu/share/doc/openrtm-aist-dev/changelog.Debian.gz
- /usr/lib/i386-linux-gnu/share/doc/openrtm-aist-dev/changelog.gz
- /usr/lib/i386-linux-gnu/share/doc/openrtm-aist-dev/copyright
- ***** 64bit
+ 
+--64bit
  /usr/lib/x86_64-linux-gnu/openrtm-1.2/cmake/OpenRTMConfig.cmake
  /usr/lib/x86_64-linux-gnu/openrtm-1.2/py_helper/README_gen.py
  /usr/lib/x86-64-linux-gnu/openrtm-1.2/py_helpver/cxx_gen.py
  中略
  /usr/lib/x86_64-linux-gnu/openrtm-1.2/py_helpver/yat.py
  /usr/lib/x86_64-linux-gnu/pkgconfig/libcoil.pc
- /usr/lib/x86_64-linux-gnu/share/doc/openrtm-aist-dev/changelog.Debian.gz
- /usr/lib/x86_64-linux-gnu/share/doc/openrtm-aist-dev/changelog.gz
- /usr/lib/x86_64-linux-gnu/share/doc/openrtm-aist-dev/copyright
 
 *** openrtm-aist-example
 openrtm-aist-example にはスタンドアロン RTC、ローダブル RTC それぞれのサンプルと、サンプル RTC のソースが含まれています。
@@ -252,6 +274,11 @@ openrtm-aist-doc には、日本語と英語のクラスリファレンス、IDL
  /usr/share/doc/openrtm-aist-doc/changelog.Debian.gz
  /usr/share/doc/openrtm-aist-doc/changelog.gz
  /usr/share/doc/openrtm-aist-doc/copyright
+
+***openrtp
+openrtpでは大量のファイルがインストールされるため、ここではリストしません。必要に応じて
+ $ dpkg -L openrtp
+と入力して各自での確認をしてください。
 
 
 
