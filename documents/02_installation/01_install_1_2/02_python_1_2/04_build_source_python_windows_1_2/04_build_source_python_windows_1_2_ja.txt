@@ -15,9 +15,14 @@ Python 2.7(もしくは3.6、3.7)が必要です。以下のサイトから最�
 
 -[[Python Official Website:https://www.python.org/]] 
 
-以降の説明は、次の2つの前提の元書いています。(そのはかのインストール設定はインストーラのデフォルト設定)
--インストール先がC:\PythonX.Y(X.Yは2.7か3.6か3.7をインストールするPythonに合わせて設定してください。Python3.7では[Customize Installation]を選択する必要があります)。
--サーチパスにPythonの実行ファイルがある場所が含まれていること(3.7では[Add Python to environmental variable]にインストール中にチェックをいれれば、インストーラが設定してくれます。)
+以降の説明では、Pythonのインストールに際して以下の設定が必要です。（その他はインストーラのデフォルト設定です。)
+
+- インストール先をC:\PythonX.Yに設定。
+-- X.Yは2.7か3.6か3.7, 例 C:¥Python2.7 など。
+-- Python3.7ではインストール時に[Customize Installation]を選択。
+-　コマンドサーチパス（環境変数 PATHに設定されるパス）に上記ディレクトリが含まれていること。
+-- 3.7ではインストール中に[Add Python to environmental variable]にチェックを入れればインストーラが設定します
+-- その他の場合は手動で設定する必要があります。
 
 *** omniORBpy
 
