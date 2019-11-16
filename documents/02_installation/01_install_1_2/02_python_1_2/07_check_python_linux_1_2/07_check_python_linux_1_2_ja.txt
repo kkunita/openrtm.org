@@ -5,12 +5,11 @@
 
 
 ソースからビルドした場合は、ソースディレクトリ下の
--OpenRTM_aist/examples/<サンプルコンポーネントセット名>
+- OpenRTM_aist/examples/<サンプルコンポーネントセット名>
 
 サンプルコンポーネントセットSimpleIOを使って、OpenRTM-aistが正しくビルド・インストールされているかを確認します。
 
 #contents
-
 
 ** サンプルコンポーネントセットSimpleIO
 
@@ -87,10 +86,7 @@ CENTER: ''データポート接続ダイアログ''
 #ref(rtm15.png,/ja/node/6614,center)
 CENTER: ''アクティブ化されたコンポーネント''
 
-
-
-
-コンポーネントがアクティブ化されるとConsoleInコンポーネント側では
+コンポーネントがアクティブ化されるとConsoleInコンポーネント側では、
 
  Please input number: 
 
