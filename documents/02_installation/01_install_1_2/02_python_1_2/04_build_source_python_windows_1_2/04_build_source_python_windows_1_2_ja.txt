@@ -72,7 +72,7 @@ omniORB 4.2.3を64bitのPython 3.7の環境で使用するなら、omniORB-4.2.3
   + examples -> 削除してもよい
   + idl -> 削除してもよいが C:\PythonX.Y\Lib\site-packages\omniORB\idl 以下においておいてもよい
   + lib
-    + python -> 以下のディレクトリとファイルを丸ごと C:\PythonXY\Lib\site-packages 直下へ
+    + python -> 以下のディレクトリとファイルを丸ごと C:\PythonX.Y\Lib\site-packages 直下へ
     + x86_win32 -> .pyd を C:\PythonX.Y\Lib\site-packages 直下へ
 
 *** Doxygen
@@ -82,7 +82,7 @@ omniORB 4.2.3を64bitのPython 3.7の環境で使用するなら、omniORB-4.2.3
 //------------------------------------------------------------
 **ソースパッケージの取得
 
-まず下記リンクよりソースコードファイルOpenRTM-aist-Pythoon-1.2.x.zipをダウンロードし、適当なディレクトリーに展開します。
+まず下記リンクよりソースコードファイルOpenRTM-aist-Python-1.2.x.zipをダウンロードし、適当なディレクトリーに展開します。
 
 -[[OpenRTM-aist-Python-1.2.0:https://github.com/OpenRTM/OpenRTM-aist-Python/releases/tag/v1.2.0/]]
 
