@@ -35,35 +35,33 @@ openrtm.orgのサイトのファイルは、特別な理由がない限りは最
 
 ファイル名の書式は:
 
-omniORB-x.y.z-{Win32|x64}-{vc100|vc110|vc120|vc140}-{py27|py36|py37}.zip
+omniORB-x.y.z-{win32|x64}-{vc100|vc110|vc120|vc140}-{py27|py36|py37}.zip
 
 ここで、
 
-x.y.z: omniORBのバージョン、例えば4.2.3。
+- omniORBのバージョン
+-- x.y.z: omniORBのバージョン、例えば4.2.3。
+- Windowsビット数
+-- win32:32ビット版、32ビット版のPythonを使う場合
+-- x64: 64ビット版、64ビット版のPythonを使う場合
+- Visual Studio のバージョン
+-- vc100: C++環境を使う場合で、Visual Studio 2010の場合
+-- vc110: C++環境を使う場合で、Visual Studio 2012の場合
+-- vc120: C++環境を使う場合で、Visual Studio 2013の場合
+-- vc140: C++環境を使う場合で、Visual Studio 2015/2017/2019の場合
+-- Python環境だけで使う場合は、どれを選んでもかまいません。
+- Pythonバージョン
+-- py27: Python 2.7を使う場合
+-- py36: Python 3.6を使う場合
+-- py37: Python 3.7を使う場合
 
-win32:32ビット版、32ビット版のPythonを使う場合#br
-x64: 64ビット版、64ビット版のPythonを使う場合
-
-vc100:C++環境を使う場合で、Visual Studio 2010の場合#br
-vc110:C++環境を使う場合で、Visual Studio 2012の場合#br
-vc120:C++環境を使う場合で、Visual Studio 2013の場合#br
-vc140: C++環境を使う場合で、Visual Studio 2015/2017/2019の場合#br
-Python環境だけで使う場合は、どれを選んでもかまいません。
-
-py27: Python 2.7を使う場合#br
-py36: Python 3.6を使う場合#br
-py37: Python 3.7を使う場合#br
-
-
-
-OmniORB 4.2.3を64bitのPython 3.7の環境で使用するなら、omniORB-4.2.3-x64-vc140-py37.zipをダウンロードすれば良いでしょう。ファイルをダウンロードしたしZIPファイルを展開すると、以下の様なディレクトリツリーが展開されるはずです。それぞれのディレクトリー下のファイルを以下の指示通りに Python のディレクトリーにコピーしてください。
+omniORB 4.2.3を64bitのPython 3.7の環境で使用するなら、omniORB-4.2.3-x64-vc140-py37.zipをダウンロードします。ファイルをダウンロードしたしZIPファイルを展開すると、以下の様なディレクトリツリーが展開されます。それぞれのディレクトリー下のファイルを以下の指示通りに Python のディレクトリーにコピーしてください。
 
 **** omniORBのファイルのインストールの仕方
 
 なお、omniORBpy のバージョンを x.y, Python のバージョンを X.Y として記述しています。
 
-
- + omniPRBpy-x.y
+ + omniORBpy-x.y
   + bin
     + x86_win32 -> exe, dllともに C:\PythonXY 直下へ
   + doc -> 削除してもよい
@@ -73,16 +71,16 @@ OmniORB 4.2.3を64bitのPython 3.7の環境で使用するなら、omniORB-4.2.3
     + python -> 以下のディレクトリとファイルを丸ごと C:\PythonXY\Lib\site-packages 直下へ
     + x86_win32 -> .pyd を C:\PythonXY\Lib\site-packages 直下へ
 
-***Doxygen
+*** Doxygen
 - [[Doxygen:http://www.doxygen.nl/download.html]]
 のWebページからWindows版のバイナリ実行形式ファイルをダウンロードして実行してインストールしてください。
 
 //------------------------------------------------------------
-**ソースパッケージの取得
+**　ソースパッケージの取得
 
 まず下記リンクよりソースコードファイルOpenRTM-aist-Pythoon-1.2.x.zipをダウンロードし、適当なディレクトリーに展開します。
 
--[[OpenRTM-aist-Python-1.2.0:https://github.com/OpenRTM/OpenRTM-aist-Python/releases/tag/v1.2.0/]]
+- [[OpenRTM-aist-Python-1.2.0:https://github.com/OpenRTM/OpenRTM-aist-Python/releases/tag/v1.2.0/]]
 
 ** ビルド
 
