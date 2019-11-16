@@ -3,17 +3,17 @@
 
 Windows上でソースパッケージからインストールしたい場合、OpenRTM-aist-Pythonを自分でビルドする必要があります。
 
-**ビルド環境
--Python
--omniORBpy
--Doxgen
+** ビルド環境
+- Python
+- omniORBpy
+- Doxgen
 
 が必要です。以下に入手方法を説明しますのでインストールしてください。
 
 *** Python
 Python 2.7(もしくは3.6、3.7)が必要です。以下のサイトから最新のものを取得しインストールしてください。
 
--[[Python Official Website:https://www.python.org/]] 
+- [[Python Official Website:https://www.python.org/]] 
 
 以降の説明では、Pythonのインストールに際して以下の設定が必要です。（その他はインストーラのデフォルト設定です。)
 
@@ -28,40 +28,37 @@ Python 2.7(もしくは3.6、3.7)が必要です。以下のサイトから最�
 
 OpenRTM-aist-PythonのビルドにはomniORBpyのライブリが必要です。omniORBpyは以下のリンクから、必要なファイルを入手できます。
 
--[[OpenRTM.orgサイト:https://openrtm.org/pub/omniORB/win32/]]
+- [[OpenRTM.orgサイト:https://openrtm.org/pub/omniORB/win32/]]
 
 また、公式サイトからはソースが入手できます。
--[[omniORB official:http://omniorb.sourceforge.net/]]
---[[sourceforge download page:http://sourceforge.net/projects/omniorb/files/omniORBpy/]]
+- [[omniORB official:http://omniorb.sourceforge.net/]]
+-- [[sourceforge download page:http://sourceforge.net/projects/omniorb/files/omniORBpy/]]
 
 openrtm.orgのサイトのファイルは、特別な理由がない限りは最新版(現時点では4.2.3)を使用することを推奨します。また、複数のファイルがありますが、そのファイル名の意味は以下となりますので、その説明にあわせて使用するファイルを選択してください。
 
 **** openrtm.orgからダウンロードできるomniORBパッケージのファイル名の意味
 
-ファイル名の書式は:
+ファイル名の書式は、以下のフォーマットになっています。
 
 omniORB-x.y.z-{Win32|x64}-{vc100|vc110|vc120|vc140}-{py27|py36|py37}.zip
 
-ここで、
+- omniORBのバージョン
+ -- x.y.z: omniORBのバージョン、例えば4.2.3。
+ - Windowsビット数
+ -- win32:32ビット版、32ビット版のPythonを使う場合
+ -- x64: 64ビット版、64ビット版のPythonを使う場合
+ - Visual Studio のバージョン
+ -- vc100: C++環境を使う場合で、Visual Studio 2010の場合
+ -- vc110: C++環境を使う場合で、Visual Studio 2012の場合
+ -- vc120: C++環境を使う場合で、Visual Studio 2013の場合
+ -- vc140: C++環境を使う場合で、Visual Studio 2015/2017/2019の場合
+ -- Python環境だけで使う場合は、どれを選んでもかまいません。
+ - Pythonバージョン
+ -- py27: Python 2.7を使う場合
+ -- py36: Python 3.6を使う場合
+ -- py37: Python 3.7を使う場合
 
-x.y.z: omniORBのバージョン、例えば4.2.3。
-
-win32:32ビット版、32ビット版のPythonを使う場合#br
-x64: 64ビット版、64ビット版のPythonを使う場合
-
-vc100:C++環境を使う場合で、Visual Studio 2010の場合#br
-vc110:C++環境を使う場合で、Visual Studio 2012の場合#br
-vc120:C++環境を使う場合で、Visual Studio 2013の場合#br
-vc140: C++環境を使う場合で、Visual Studio 2015/2017/2019の場合#br
-Python環境だけで使う場合は、どれを選んでもかまいません。
-
-py27: Python 2.7を使う場合#br
-py36: Python 3.6を使う場合#br
-py37: Python 3.7を使う場合#br
-
-
-
-OmniORB 4.2.3を64bitのPython 3.7の環境で使用するなら、omniORB-4.2.3-x64-vc140-py37.zipをダウンロードすれば良いでしょう。ファイルをダウンロードしたしZIPファイルを展開すると、以下の様なディレクトリツリーが展開されるはずです。それぞれのディレクトリー下のファイルを以下の指示通りに Python のディレクトリーにコピーしてください。
+omniORB 4.2.3を64bitのPython 3.7の環境で使用するなら、omniORB-4.2.3-x64-vc140-py37.zipをダウンロードすれば良いでしょう。ファイルをダウンロードしたしZIPファイルを展開すると、以下の様なディレクトリツリーが展開されるはずです。それぞれのディレクトリー下のファイルを以下の指示通りに Python のディレクトリーにコピーしてください。
 
 **** omniORBのファイルのインストールの仕方
 
@@ -70,15 +67,15 @@ OmniORB 4.2.3を64bitのPython 3.7の環境で使用するなら、omniORB-4.2.3
 
  + omniPRBpy-x.y
   + bin
-    + x86_win32 -> exe, dllともに C:\PythonXY 直下へ
+    + x86_win32 -> exe, dllともに C:\PythonX.Y 直下へ
   + doc -> 削除してもよい
   + examples -> 削除してもよい
-  + idl -> 削除してもよいが C:\PythonXY\Lib\site-packages\omniORB\idl 以下においておいてもよい
+  + idl -> 削除してもよいが C:\PythonX.Y\Lib\site-packages\omniORB\idl 以下においておいてもよい
   + lib
     + python -> 以下のディレクトリとファイルを丸ごと C:\PythonXY\Lib\site-packages 直下へ
-    + x86_win32 -> .pyd を C:\PythonXY\Lib\site-packages 直下へ
+    + x86_win32 -> .pyd を C:\PythonX.Y\Lib\site-packages 直下へ
 
-***Doxygen
+*** Doxygen
 - [[Doxygen:http://www.doxygen.nl/download.html]]
 のWebページからWindows版のバイナリ実行形式ファイルをダウンロードして実行してインストールしてください。
 
