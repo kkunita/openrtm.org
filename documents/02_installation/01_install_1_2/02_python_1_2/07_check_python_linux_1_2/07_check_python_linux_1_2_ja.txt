@@ -7,14 +7,11 @@
 ソースからビルドした場合は、ソースディレクトリ下の
 - OpenRTM_aist/examples/<サンプルコンポーネントセット名>
 
-
-
 サンプルコンポーネントセットSimpleIOを使って、OpenRTM-aistが正しくビルド・インストールされているかを確認します。
 
 #contents
 
-
-**　サンプルコンポーネントセットSimpleIO
+** サンプルコンポーネントセットSimpleIO
 
 RTコンポーネントConsoleIn、ConsoleOutからなるサンプルセットです。ConsoleInはコンソールから入力された数値をOutPortから出力するコンポーネント、ConsoleOutはInPortに入力された数値をコンソールに表示するコンポーネントです。これらは、SimpleなI/O(入出力)を例示するためのサンプルです。ConsoleInのOutPortからConsoleOutのInPortへ接続を構成し、これらの2つのコンポーネントをアクティブ化(Activate)することで動作します。
 

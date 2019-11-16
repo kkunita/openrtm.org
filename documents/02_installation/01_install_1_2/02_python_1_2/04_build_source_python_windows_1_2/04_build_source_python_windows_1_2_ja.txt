@@ -40,7 +40,8 @@ openrtm.orgのサイトのファイルは、特別な理由がない限りは最
 
 ファイル名の書式は、以下のフォーマットになっています。
 
-omniORB-x.y.z-{Win32|x64}-{vc100|vc110|vc120|vc140}-{py27|py36|py37}.zip
+omniORB-x.y.z-{win32|x64}-{vc100|vc110|vc120|vc140}-{py27|py36|py37}.zip
+
 
 - omniORBのバージョン
  -- x.y.z: omniORBのバージョン、例えば4.2.3。
@@ -64,8 +65,7 @@ omniORB 4.2.3を64bitのPython 3.7の環境で使用するなら、omniORB-4.2.3
 
 なお、omniORBpy のバージョンを x.y, Python のバージョンを X.Y として記述しています。
 
-
- + omniPRBpy-x.y
+ + omniORBpy-x.y
   + bin
     + x86_win32 -> exe, dllともに C:\PythonX.Y 直下へ
   + doc -> 削除してもよい
@@ -76,15 +76,17 @@ omniORB 4.2.3を64bitのPython 3.7の環境で使用するなら、omniORB-4.2.3
     + x86_win32 -> .pyd を C:\PythonX.Y\Lib\site-packages 直下へ
 
 *** Doxygen
+
 - [[Doxygen:http://www.doxygen.nl/download.html]]
+
 のWebページからWindows版のバイナリ実行形式ファイルをダウンロードして実行してインストールしてください。
 
 //------------------------------------------------------------
-**ソースパッケージの取得
+**　ソースパッケージの取得
 
 まず下記リンクよりソースコードファイルOpenRTM-aist-Python-1.2.x.zipをダウンロードし、適当なディレクトリーに展開します。
 
--[[OpenRTM-aist-Python-1.2.0:https://github.com/OpenRTM/OpenRTM-aist-Python/releases/tag/v1.2.0/]]
+- [[OpenRTM-aist-Python-1.2.0:https://github.com/OpenRTM/OpenRTM-aist-Python/releases/tag/v1.2.0/]]
 
 ** ビルド
 
@@ -92,13 +94,9 @@ omniORB 4.2.3を64bitのPython 3.7の環境で使用するなら、omniORB-4.2.3
 
  > python setup.py build
 
-
 ** インストール
 すべてが正しくビルドできたら、以下のコマンドにてインストールを完了させます。
 
  > python setup.py install
 
 以上で、OpenRTM-aist のインストールは終了です。
-
-
-

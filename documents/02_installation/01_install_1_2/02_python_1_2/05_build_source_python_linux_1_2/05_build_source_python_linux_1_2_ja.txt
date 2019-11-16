@@ -1,7 +1,7 @@
 ﻿// Title: ソースからのビルド(Linux編)
 #contents
 
-Linux上でソースパッケージからインストールしたい場合、OpenRTM-aist-Pythonを自分でビルドする必要があります。以下にUbuntu 18.04でのビルド作業の手順を説明します。ほかの環境では
+Linux上でソースパッケージからインストールしたい場合、OpenRTM-aist-Pythonを自分でビルドする必要があります。以下にUbuntu 18.04でのビルド作業の手順を説明します。
 
 
 *** 対応 OS およびディストリビューション 
@@ -27,14 +27,11 @@ Ubuntu, Debianでは以下のコマンドでインストールできます。
 
  sudo apt-get install python-omniorb-omg omniidl-python
 
-** ソースコード
-ソースコードは以下のリンクから入手できます。
-
-*** ソースのダウンロード
+***ソースのダウンロード
 
 OpenRTM-aist-Pythonのソースをダウンロードします。
 
--https://github.com/OpenRTM/OpenRTM-aist-Python/releases/tag/v1.2.0
+-　https://github.com/OpenRTM/OpenRTM-aist-Python/releases/tag/v1.2.0
 
 *** ソースコードの展開 
 
