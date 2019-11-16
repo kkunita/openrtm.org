@@ -7,12 +7,12 @@ msiインストーラーによるOpenRTM-aistのインストール手順につ�
 - [[OpenRTM-aist 1.2系のインストール(Windows、msiインストーラー使用):/ja/node/6652]]
 
 *** JDK のインストール
-OpenRTM-aist-Java-1.２.ｘの動作にはJDK8相当のもの(JDK11では正常動作しません)が前もってインストールされている必要があります。JDK8相当のJDKとしては、OpenJDKをベースとしたものを用意しているベンダーがいくつかあります。各自、ライセン条件やサポート条件を考慮して選択してください。ここでは、GitHub上でメインテナンスされているOpenJDK8を使うこととして説明をします。
+OpenRTM-aist-Java-1.2.xの動作にはJDK8相当のもの(JDK11では正常動作しません)が前もってインストールされている必要があります。JDK8相当のJDKとしては、OpenJDKをベースとしたものを用意しているベンダーがいくつかあります。各自、ライセン条件やサポート条件を考慮して選択してください。ここでは、GitHub上でメインテナンスされているOpenJDK8を使うこととして説明をします。
 
 [[OpenJDK8の入手先:https://github.com/ojdkbuild/ojdkbuild/releases]]
 
 より、.msiファイルをダウンロードしてください。ファイル名は64ビット版ならx86_64.msiで32bit版なら64.msiで終端された名前となります。ダウンロードした後は、拡張子.msiのファイルをダブルクリックすればインストールプログラムが起動されます。
-#br
+
 **** JDK のインストール確認
 コマンド プロンプトを実行し、
 
@@ -33,58 +33,40 @@ OpenRTM-aist-Java-1.２.ｘの動作にはJDK8相当のもの(JDK11では正常�
 ** インストーラーの作業内容
 インストーラーは以下の作業を行います。
 
--インストールディレクトリー (デフォルトは C:\Program Files) 以下に各種ファイルをコピー
--スタートメニュー以下に OpenRTM-aist フォルダーを作成し各種ショートカットを設定
--環境変数の設定
---64bit版msiファイルの場合
- RTM_BASE=C:\Program Files\OpenRTM-aist\\
-
- RTM_IDL_DIR=C:\Program Files\OpenrRTM-aist\1.2.x\rtm\idl\\
-
- RTM_JAVA_ROOT=C:\Program Files\OpenRTM-aist\1.2.x\\
-
- RTM_ROOT=C:\Program Files\OpenRTM-aist\1.２.ｘ\\
-
- RTM_VC_VERSION=vc14
- OMNI_ROOT=C:\Program Files\OpenRTM-aist\1.2.x\omniORB\4.2.1_%RTM_VC_VERSION%\\
-
- OpenCV_DIR=C:\Program Files\OpenRTM-aist\1.2.x\OpenCV3.4\\
-
- OpenRTM_DIR=C:\Program Files\OpenRTM-aist\1.2.x\cmake\\
-
---32bit用msi利用時の設定
- RTM_BASE=C:\Program Files (x86)\OpenRTM-aist\\
-
- RTM_IDL_DIR=C:\Program Files (x86)\OpenrRTM-aist\1.2.x\rtm\idl\\
-
- RTM_JAVA_ROOT=C:\Program Files (x86)\OpenRTM-aist\1.2.x\\
-
- RTM_ROOT=C:\Program Files (x86)\OpenRTM-aist\1.２.ｘ\\
-
- RTM_VC_VERSION=vc14
- OMNI_ROOT=C:\Program Files\OpenRTM-aist\1.2.x\omniORB\4.2.3_%RTM_VC_VERSION%\\
-
- OpenCV_DIR=C:\Program Files\OpenRTM-aist\1.2.x\OpenCV3.4\\
-
- OpenRTM_DIR=C:\Program FilessOpenRTM-aist\1.2.x\cmake\\
-
--PATH への追加設定
+- インストールディレクトリー (デフォルトは C:\Program Files) 以下に各種ファイルをコピー
+- スタートメニュー以下に OpenRTM-aist フォルダーを作成し各種ショートカットを設定
+- 環境変数の設定
+--　64bit版msiファイルの場合
+--- RTM_BASE=C:\Program Files\OpenRTM-aist\\
+--- RTM_IDL_DIR=C:\Program Files\OpenrRTM-aist\1.2.x\rtm\idl\\
+--- RTM_JAVA_ROOT=C:\Program Files\OpenRTM-aist\1.2.x\\
+--- RTM_ROOT=C:\Program Files\OpenRTM-aist\1.２.ｘ\\
+--- RTM_VC_VERSION=vc14
+--- OMNI_ROOT=C:\Program Files\OpenRTM-aist\1.2.x\omniORB\4.2.1_%RTM_VC_VERSION%\\
+--- OpenCV_DIR=C:\Program Files\OpenRTM-aist\1.2.x\OpenCV3.4\\
+--- OpenRTM_DIR=C:\Program Files\OpenRTM-aist\1.2.x\cmake\\
+-- 32bit用msi利用時の設定
+--- RTM_BASE=C:\Program Files (x86)\OpenRTM-aist\\
+--- RTM_IDL_DIR=C:\Program Files (x86)\OpenrRTM-aist\1.2.x\rtm\idl\\
+--- RTM_JAVA_ROOT=C:\Program Files (x86)\OpenRTM-aist\1.2.x\\
+--- RTM_ROOT=C:\Program Files (x86)\OpenRTM-aist\1.２.ｘ\\
+--- RTM_VC_VERSION=vc14
+--- OMNI_ROOT=C:\Program Files\OpenRTM-aist\1.2.x\omniORB\4.2.3_%RTM_VC_VERSION%\\
+--- OpenCV_DIR=C:\Program Files\OpenRTM-aist\1.2.x\OpenCV3.4\\
+--- OpenRTM_DIR=C:\Program FilessOpenRTM-aist\1.2.x\cmake\\
+- PATH への追加設定
 -- 64bit版msiファイルの場合
- C:\Program Files\OpenRTM-aist\12.x\bin\vc12\\
-
- C:\Program Files\OpenRTM-aist\1.2.x\omniORB\4.2.1_vc14\bin\x86_win32\\
-
- C:\Program Files\OpenRTM-aist\1.2.x\OpenCV3.4\x64\vc14\bin\\
-
---32bit用msi利用時の設定
- C:\Program Files (x86)\OpenRTM-aist\12.x\bin\vc12\\
-
- C:\Program Files (x86)\OpenRTM-aist\1.2.x\omniORB\4.2.1_vc14\bin\x86_win32\\
-
- C:\Program Files (x86)\OpenRTM-aist\1.2.x\OpenCV3.4\x86\vc14\bin\\
+--- C:\Program Files\OpenRTM-aist\12.x\bin\vc12\\
+--- C:\Program Files\OpenRTM-aist\1.2.x\omniORB\4.2.1_vc14\bin\x86_win32\\
+--- C:\Program Files\OpenRTM-aist\1.2.x\OpenCV3.4\x64\vc14\bin\\
+-- 32bit用msi利用時の設定
+--- C:\Program Files (x86)\OpenRTM-aist\12.x\bin\vc12\\
+--- C:\Program Files (x86)\OpenRTM-aist\1.2.x\omniORB\4.2.1_vc14\bin\x86_win32\\
+--- C:\Program Files (x86)\OpenRTM-aist\1.2.x\OpenCV3.4\x86\vc14\bin\\
 
 ** インストールされるファイル
-ファイルは以下のような構造でインストールされます。&br;
+ファイルは以下のような構造でインストールされます。
+
 上記のインストール環境の設定を確認する[[スクリプト:/ja/node/6092]]を実行すると、tree コマンドによる OpenRTM-aist ディレクトリー構造をログファイルに保存しますので、詳細を確認することができます。
 
  <install_dir>
