@@ -1,4 +1,4 @@
-﻿// Title: ソースからのビルド(Windows編)
+// Title: ソースからのビルド(Windows編)
 #contents
 
 Windows上でソースパッケージからインストールしたい場合、OpenRTM-aist-Pythonを自分でビルドする必要があります。

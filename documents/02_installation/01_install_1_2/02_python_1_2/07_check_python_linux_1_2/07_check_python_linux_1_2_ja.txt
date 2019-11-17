@@ -1,4 +1,4 @@
-﻿// Title: 動作確認(Linux編)
+// Title: 動作確認(Linux編)
 インストールが正常に終了したら、付属のサンプルで動作テストをします。サンプルは、通常は以下の場所にあります。
 -/usr/share/openrtm-1.2/components/python/<サンプルコンポーネントセット名>
 // -/opt/local/share/openrtm-1.1/examples (Mac OS XにMacPortsでインストールした場合)

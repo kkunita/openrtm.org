@@ -1,4 +1,4 @@
-﻿// Title: ソースからのビルド(Linux編)
+// Title: ソースからのビルド(Linux編)
 #contents
 
 Linux上でソースパッケージからインストールしたい場合、OpenRTM-aist-Pythonを自分でビルドする必要があります。以下にUbuntu 18.04でのビルド作業の手順を説明します。
