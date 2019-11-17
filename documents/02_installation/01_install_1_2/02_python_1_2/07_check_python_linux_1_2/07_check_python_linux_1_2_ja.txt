@@ -1,20 +1,17 @@
-﻿// Title: 動作確認(Linux編)
+// Title: 動作確認(Linux編)
 インストールが正常に終了したら、付属のサンプルで動作テストをします。サンプルは、通常は以下の場所にあります。
 -/usr/share/openrtm-1.2/components/python/<サンプルコンポーネントセット名>
 // -/opt/local/share/openrtm-1.1/examples (Mac OS XにMacPortsでインストールした場合)
 
 
 ソースからビルドした場合は、ソースディレクトリ下の
--OpenRTM_aist/examples/<サンプルコンポーネントセット名>
-
-
+- OpenRTM_aist/examples/<サンプルコンポーネントセット名>
 
 サンプルコンポーネントセットSimpleIOを使って、OpenRTM-aistが正しくビルド・インストールされているかを確認します。
 
 #contents
 
-
-**サンプルコンポーネントセットSimpleIO
+** サンプルコンポーネントセットSimpleIO
 
 RTコンポーネントConsoleIn、ConsoleOutからなるサンプルセットです。ConsoleInはコンソールから入力された数値をOutPortから出力するコンポーネント、ConsoleOutはInPortに入力された数値をコンソールに表示するコンポーネントです。これらは、SimpleなI/O(入出力)を例示するためのサンプルです。ConsoleInのOutPortからConsoleOutのInPortへ接続を構成し、これらの2つのコンポーネントをアクティブ化(Activate)することで動作します。
 
@@ -89,10 +86,7 @@ CENTER: ''データポート接続ダイアログ''
 #ref(rtm15.png,/ja/node/6614,center)
 CENTER: ''アクティブ化されたコンポーネント''
 
-
-
-
-コンポーネントがアクティブ化されるとConsoleInコンポーネント側では
+コンポーネントがアクティブ化されるとConsoleInコンポーネント側では、
 
  Please input number: 
 
