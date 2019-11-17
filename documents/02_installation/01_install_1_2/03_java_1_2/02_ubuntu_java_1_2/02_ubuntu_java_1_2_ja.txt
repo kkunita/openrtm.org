@@ -2,7 +2,7 @@
 #ref(ubuntu_logo2.png,around,right)
 
 
-Java版の OpenRTM-aistは、UbuntuやDebian GNU Linuxで利用可能なdebパッケージが提供されています。
+Java版のOpenRTM-aistは、UbuntuやDebian GNU Linuxで利用可能なdebパッケージが提供されています。
 対応しているディストリビューションのバージョンは、ダウンロードページから確認できます。
 Ubuntu/Debian GNU Linuxへの対応およびそのバージョンは、予告なしに変更または停止されることがありますので、あらかじめご了承ください。
 
@@ -18,7 +18,7 @@ openrtm.orgが提供するインストール・スクリプト''pkg_install_ubun
 一括インストールスクリプトを入手したら、そのファイルを置いたディレクトリに移動し、
 Ubuntuの場合は、
  ＄sudo sh ./pkg_install_ubuntu.sh -l java --yes
-Debianの場合は、sudoをつけずに、rootユーザとして(suコマンドを実行して)、上記コマンドを入力してください。また以下のコマンド入力も同様にsudoをつけずに実行してください。
+Debianの場合は、sudoをつけずに、rootユーザーとして(suコマンドを実行して)、上記コマンドを入力してください。また以下のコマンド入力も同様にsudoをつけずに実行してください。
 
 とすると、Java版OpenRTMがインストールできます。
 
@@ -61,6 +61,13 @@ OpenJDK8のインストールは
  ii  openrtm-aist-java-doc      1.2.0-0            all                Documentation for openrtm-aist-java
  ii  openrtm-aist-java-example: 1.2.0-0            amd64              OpenRTM-aist-Java examples
  ii  openrtp:amd64              1.2.0-1            amd64              OpenRTP, Open RT Platform distributed by AIST
+
+***環境変数の設定
+OpenRTM-aist-1.2.0の場合は、RTM_JAVA_ROOTという環境変数の設定が必要です。現在ログイン中のユーザーのみへの設定とする場合は、~/.bash_profileに、そのシステムを使用するすべてのユーザー用として設定する場合は、/etc/profileに以下の行を付け加えてください。(OpenRTM-1.2.1ではこの操作は必要なくなる予定です。)
+
+ RTM_JAVA_ROOT=/usr/lib/x86_64-linux-gnu/opertm-1.2
+ export RTM_JAVA_ROOT
+
 
 
 **パッケージの詳細
