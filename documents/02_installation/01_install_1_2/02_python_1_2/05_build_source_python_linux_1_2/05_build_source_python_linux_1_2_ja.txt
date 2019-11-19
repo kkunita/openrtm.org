@@ -1,51 +1,49 @@
-﻿// Title: ソースからのビルド (Linux編)
+// Title: ソースからのビルド(Linux編)
 #contents
 
-Linux 上でソースパッケージからインストールしたい場合、OpenRTM-aist-Python を自分でビルドする必要があります。
+Linux上でソースパッケージからインストールしたい場合、OpenRTM-aist-Pythonを自分でビルドする必要があります。以下にUbuntu 18.04でのビルド作業の手順を説明します。
 
-** ソースコード
-ソースコードは以下のリポジトリから入手できます。
 
-***対応 OS およびディストリビューション 
-OpenRTM-aist-Python は下記の OS および Linux ディストリビューションで動作することが確認されています。
+*** 対応 OS およびディストリビューション 
+OpenRTM-aist-Pythonは下記のOSおよびLinuxディストリビューションで動作することが確認されています。
 
-- Fedora
-- Debian
 - Ubuntu
+- Debian
+- Fedora(予定)
 
-これ以外の環境でも、一般的な Linux/UNIX 環境であれば、ビルドできる可能性があります。
 
-***依存ライブラリ
+上記以外の環境でも一般的なLinux/UNIX環境であれば、ビルドできる可能性があります。
 
-OpenRTM-aist-Python-1.2.0 のインストールには下記の開発環境およびライブラリが必要です。
+*** 依存ライブラリ
 
--python: ビルドツールを利用するために必要
--omniORBpy: OpenRTM-aist のビルド (IDL コンパイル) に必要
+OpenRTM-aist-Python-1.2.0のインストールには下記の開発環境およびライブラリが必要です。
 
-それぞれのライブラリ等のドキュメントに従いインストールを行ってください。
-これらのパッケージが、標準のディレクトリー(/usr、/usr/lib/ 等)下にインストールされていると、以降の OpenRTM-aist-Python のビルド作業を比較的簡単に行うことができます。
+- python: ビルドツールを利用するために必要
+- omniORBpy: OpenRTM-aistのビルド(IDLコンパイル)に必要
 
-Ubuntu、Debianでは以下のコマンドでインストールできます。
+それぞれのソフトウェアのドキュメントに従いインストールを行ってください。これらのパッケージが、標準のディレクトリー(/usr、/usr/lib/ など)下にインストールされていると、以降のOpenRTM-aist-Pythonのビルド作業を比較的簡単に行うことができます。
+
+Ubuntu, Debianでは以下のコマンドでインストールできます。
 
  sudo apt-get install python-omniorb-omg omniidl-python
 
 ***ソースのダウンロード
 
-OpenRTM-aist-Python のソースをダウンロードします。
+OpenRTM-aist-Pythonのソースをダウンロードします。
 
--https://github.com/OpenRTM/OpenRTM-aist-Python/releases/tag/v1.2.0
+-　https://github.com/OpenRTM/OpenRTM-aist-Python/releases/tag/v1.2.0
 
-***ソースコードの展開 
+*** ソースコードの展開 
 
-まずソースコード OpenRTM-aist-Python-1.2.0.tar.gz を適当なディレクトリに展開します。
+まずソースコードパッケージOpenRTM-aist-Python-1.2.0.tar.gzを適当なディレクトリに展開します。
 
  $ tar xvzf OpenRTM-aist-Python-X.X.X.tar.gz
  $ cd OpenRTM-aist-Python-X.X.X
 
 *** ビルド 
 
-OpenRTM-aist-Python はパッケージのビルドに distutils モジュール を使用しています。
-ビルドの仕方は、他の distutils を使用したパッケージと同様に行います。
+OpenRTM-aist-Pythonはパッケージのビルドにdistutilsモジュールを使用しています。
+ビルドの仕方は、他のdistutilsを使用したパッケージと同様に行います。
 
  $ python setup.py build [options]
 
@@ -53,11 +51,11 @@ OpenRTM-aist-Python はパッケージのビルドに distutils モジュール 
 
  $ python setup.py --help
 
-で参照して下さい。
+で参照してください。
 
 *** インストール
 
-ビルド が正常に終了したら、Python モジュール、ユーティリティコマンド群をインストールします。
+ビルド が正常に終了したら、Pythonモジュール、ユーティリティコマンド群をインストールします。
 
  $ sudo python setup.py install
 

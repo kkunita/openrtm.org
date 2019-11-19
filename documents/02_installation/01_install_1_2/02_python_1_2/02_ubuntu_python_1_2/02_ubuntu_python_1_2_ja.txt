@@ -1,7 +1,6 @@
 ﻿// Title: Ubuntu/Debianへのインストール
 #ref(ubuntu_logo2.png,/ja/node/1182,around,right)
 
-
 Python版の OpenRTM-aist は、Ubuntu や Debian GNU Linux で利用可能な deb パッケージが提供されています。
 対応しているディストリビューションのバージョンは、ダウンロードページで確認できます。
 Ubuntu/Debian GNU Linuxへのサポートバージョンや対応の有無は、予告なしに変更されることがありますので、あらかじめご了承ください。

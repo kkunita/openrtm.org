@@ -1,29 +1,21 @@
-﻿// Title: 動作確認 (Linux編)
+// Title: 動作確認(Linux編)
 インストールが正常に終了したら、付属のサンプルで動作テストをします。サンプルは、通常は以下の場所にあります。
-
--/usr/share/openrtm-1.2/components/python
-// -/opt/local/share/openrtm-1.1/examples (Mac OS X に MacPorts でインストールした場合)
-
-
-ソースからビルドした場合は、ソースディレクトリー以下の
-
--OpenRTM-aist-Python/OpenRTM_aist/examples/<サンプルコンポーネントセット名>
+-/usr/share/openrtm-1.2/components/python/<サンプルコンポーネントセット名>
+// -/opt/local/share/openrtm-1.1/examples (Mac OS XにMacPortsでインストールした場合)
 
 
+ソースからビルドした場合は、ソースディレクトリ下の
+- OpenRTM_aist/examples/<サンプルコンポーネントセット名>
 
-サンプルコンポーネントセット SimpleIO を使って、OpenRTM-aist が正しくビルド・インストールされているかを確認します。
+サンプルコンポーネントセットSimpleIOを使って、OpenRTM-aistが正しくビルド・インストールされているかを確認します。
 
 #contents
 
+** サンプルコンポーネントセットSimpleIO
 
-**サンプルコンポーネントセット SimpleIO
+RTコンポーネントConsoleIn、ConsoleOutからなるサンプルセットです。ConsoleInはコンソールから入力された数値をOutPortから出力するコンポーネント、ConsoleOutはInPortに入力された数値をコンソールに表示するコンポーネントです。これらは、SimpleなI/O(入出力)を例示するためのサンプルです。ConsoleInのOutPortからConsoleOutのInPortへ接続を構成し、これらの2つのコンポーネントをアクティブ化(Activate)することで動作します。
 
-RT コンポーネント ConsoleIn、ConsoleOut からなるサンプルセットです。
-ConsoleIn はコンソールから入力された数値を OutPort から出力するコンポーネント、ConsoleOut は InPort に入力された数値をコンソールに表示するコンポーネントです。
-これらは、最も Simple な I/O (入出力) を例示するためのサンプルです。
-ConsoleIn の OutPort から ConsoleOut の InPort へ接続を構成し、これらの2つのコンポーネントをアクティブ化 (Activate) することで動作します。
-
-以降、簡単のためサンプルは /usr/share/openrtm-1.2/components/python/SimpleIO 以下にあるものとして説明を記述します。
+以降、サンプルは/usr/share/openrtm-1.2/components/python/SimpleIO下にあるか、ソースコードからビルドした場合は<source_dir>/OpenRTM_aist/examples/SimpleIO/にあり、Python本体の実行ファイルにはサーチパスが設定されているものとして説明を記述します。
 
 
 ** サンプルを使用したテスト
@@ -33,75 +25,71 @@ ConsoleIn の OutPort から ConsoleOut の InPort へ接続を構成し、こ�
 
 - [[OpenRTP起動手順:/ja/node/6654]]
 
-*** ConsoleIn の起動
+*** ConsoleInの起動
 
-ターミナルを起動してConsoleIn を起動します。
+ターミナルを起動してConsoleInを起動します。
 
  $ python /usr/share/openrtm-1.2/components/python/SimpleIO/ConsoleIn.py
 
 自分でビルド・インストールした場合は、
 
- $ python <source_dir>/OpenRTM-aist-Python/OpenRTM_aist/examples/SimpleIO/ConsoleIn.py
+ $ python <source_dir>/OpenRTM_aist/examples/SimpleIO/ConsoleIn.py
 
-などとして ConsoleIn を起動します。
+などとしてConsoleInを起動します。
 
 
-*** ConsoleOut の起動
+*** ConsoleOutの起動
 
-別のターミナルを起動して ConsoleOut を起動します。
+別のターミナルを起動してConsoleOutを起動します。
 
- $ /usr/share/openrtm-1.2/components/python/SimpleIO/ConsoleOut 
+ $ /usr/share/openrtm-1.2/components/python/SimpleIO/ConsoleOut
 
 自分でビルド・インストールした場合は、同様に
 
- $ python <source_dir>/OpenRTM-aist-Python/OpenRTM_aist/examples/SimpleIO/ConsoleOut.py
+ $ python <source_dir>/OpenRTM_aist/examples/SimpleIO/ConsoleOut.py
 
-などとして ConsoleOut を起動します。
+などとしてConsoleOutを起動します。
 
 
-**** エディタへの配置
+*** エディタへの配置
 
-RT System Editorのツリー表示の [>] をクリックすると、先ほど起動した2つのコンポーネントが登録されていることがわかります。
+RT System Editorのツリー表示の[>]をクリックすると、先ほど起動した2つのコンポーネントが登録されていることがわかります。
 
 #ref(rtm10.png,/ja/node/6614,60%,center)
-CENTER:''ConsoleIn コンポーネントと ConsoleOut コンポーネント''
+CENTER:''ConsoleInコンポーネントとConsoleOutコンポーネント''
 
-システムを編集するエディタを開きます。上部のエディタを [開く] ボタン&ref(rtse_open_editor_icon_ja.png, /ja/node/794); をクリックすると、中央のペインにエディタが開きます。
+システムを編集するエディタを開きます。上部のエディタを[開く]ボタン&ref(rtse_open_editor_icon_ja.png,150%);をクリックすると、中央のペインにエディタが開きます。
 
-左側のネームサービスビューに &ref(rtse_rtc_icon.png, /ja/node/794); のアイコンで表示されているコンポーネント (2つ) を中央のエディタにドラッグアンドドロップします。
+左側のネームサービスビューに&ref(rtse_rtc_icon_n.png,150%);のアイコンで表示されているコンポーネント(2つ)を中央のエディタにドラッグアンドドロップします。
 
 #ref(rtm11.png,/ja/node/6614,80%,center)
 CENTER: ''コンポーネントをエディタに配置''
 
 
-**** 接続とアクティブ化
+*** 接続とアクティブ化
 
-ConsoleIn0 コンポーネントの右側にはデータが出力される OutPort &ref(rtse_outport_icon.png, /ja/node/794); 、ConsoleOut0 コンポーネントの左側にはデータが入力される InPort &ref(rtse_inport_icon.png, /ja/node/794); がそれぞれついています。
-
-これら InPort/OutPort (まとめてデータポートと呼びます) を接続します。
-OutPort から InPort (または InPort から OutPort) へドラッグランドドロップすると、図のようなダイアログが現れますので、デフォルト設定のまま [OK] ボタンをクリックします。
+ConsoleIn0コンポーネントの右側にはデータが出力されるOutPort&ref(rtse_outport_icon_n.png,200%);、ConsoleOut0コンポーネントの左側にはデータが入力されるInPort&ref(rtse_inport_icon_n.png, 200%);がそれぞれついています。
 
 #ref(rtm13.png,/ja/node/6614,80%,center)
 CENTER: ''データポートの接続''
+
+これらInPort/OutPort(まとめてデータポートと呼びます)を接続します。
+OutPortからInPort(またはInPortからOutPort)へドラッグランドドロップすると、図のようなダイアログが現れますので、デフォルト設定のまま[OK]ボタンをクリックします。
 
 #ref(rtm12.png,/ja/node/6614,80%,center)
 CENTER: ''データポート接続ダイアログ''
 
 
-2つのコンポーネントの間に接続線が現れます。次に、エディタ上部メニューの [All Activate] ボタン &ref(rtm14.png); をクリックし、これらのコンポーネントをアクティブ化します。
+2つのコンポーネントの間に接続線が現れます。次に、エディタ上部メニューの[All Activate]ボタン&ref(rtm14.png);をクリックし、これらのコンポーネントをアクティブ化します。
 アクティブ化されると、コンポーネントが緑色に変化します。
 
 #ref(rtm15.png,/ja/node/6614,center)
 CENTER: ''アクティブ化されたコンポーネント''
 
-
-
-
-コンポーネントがアクティブ化されると ConsoleIn コンポーネント側では
+コンポーネントがアクティブ化されるとConsoleInコンポーネント側では、
 
  Please input number: 
 
-というプロンプト表示に変わりますので、適当な数値 (short int の範囲内:32767以下) を入力し Enter キーを押します。
-すると、ConsoleOut 側では、入力した数値が表示され、ConsoleIn コンポーネントから ConsoleOut コンポーネントへデータが転送されたことがわかります。
+というプロンプト表示に変わりますので、適当な数値(short intの範囲内:32767以下)を入力しEnterキーを押します。すると、ConsoleOut側では、入力した数値が表示され、ConsoleInコンポーネントからConsoleOutコンポーネントへデータが転送されたことがわかります。
 
 以上で、コンポーネントの基本動作の確認は終了です。
