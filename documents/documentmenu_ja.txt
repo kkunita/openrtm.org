@@ -250,6 +250,8 @@
           - (トラブルシューティング=> 開発環境のインストール: 04_install_development_env_ja.txt)
         - Kobukiにロボットアームを搭載する手順:  08_adding_robotarm_kobuki_ja.txt
         - 付録: 09_appendix_ja.txt
+   - Common
+     - JDK8のインストール; install_jdk8_ja.txt
   - ツール: 03_toolmanuals_ja.txt
     - RTSystemEditor-1.2.0: 01_rtsystemeditor-1_2_0_ja.txt
       - 概要・システム構築の流れ: 01_rtse-1_2_0_overview_ja.txt
@@ -619,7 +621,7 @@
     - 過去のに掲載した FAQ: 10_faq_old_6431_ja.txt
 - ダウンロード: download_frontpage_ja.txt
   - C++版: 01_openrtm-aist-cpp_jp.txt
-　　- 1.2.0-RELEASE: OpenRTM-aist C++ 1.2.0-RELEASE: 01_openrtm-aist-cpp_1_2_0_release_ja.txt
+　　- 1.2.1-RELEASE: OpenRTM-aist C++ 1.2.1-RELEASE: 01_openrtm-aist-cpp_1_2_1_release_ja.txt
       - (VCVerChanger=> システム環境変数設定ツールの使い方: 15_howtouse_env_ver_tool_1_1_ja.txt)
       - Visual Studio 2017 インストール方法: visual_studio_2017_install_ja.txt
     - 1.1.2-RELEASE=> OpenRTM-aist C++ 1.1.2-RELEASE: openrtm-aist-cpp_1_1_2_ja.txt
@@ -692,7 +694,7 @@
       - (0.4.0-RELEASE 韓国語オンリーのページのみ)
       - (0.4.0-RC2: 韓国語オンリーのページのみ)
   - Java版=> OpenRTM-aist (Java版): 02_openrtm-aist-java_ja.txt
-    - 1.2.0-RELEASE=> OpenRTM-aist-Java-1.2.0-RELEASE: 01_openrtm-aist-java_1_2_0_release_ja.txt
+    - 1.2.1-RELEASE=> OpenRTM-aist-Java-1.2.1-RELEASE: 01_openrtm-aist-java_1_2_1_release_ja.txt
       - (OpenRTM-aist (Java版) 1.2系のインストール: java_1_2_ja.txt)
       - (OpenRTM-aistを10分で始めよう！: lets_start_jp.txt)
     - 1.1.2-RELEASE=> OpenRTM-aist-Java-1.1.2-RELEASE: 02_openrtm-aist-java_1_1_2_release_ja.txt
@@ -716,7 +718,7 @@
       - Java-0.4.1-RELEASE //リンク切れ
       - 0.4.1-RC1 // リンク切れ
   - Python版=>OpenRTM-aist (Python版): 03_openrtm-aist-python_ja.txt
-    - OpenRTM-aist-Python-1.2.0-RELEASE: 01_openrtm-aist-python_1_2_0_release_ja.txt
+    - OpenRTM-aist-Python-1.2.1-RELEASE: 01_openrtm-aist-python_1_2_1_release_ja.txt
       - (OpenRTM-aist (Python版) 1.2系のインストール: 02_python_1_2_ja.txt)
       - (OpenRTM-aistを10分で始めよう！: lets_start_jp.txt)
       - (一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt)
@@ -743,7 +745,7 @@
       - (Fedoraへのインストール: 03_install_fedora_python_1_1_ja.txt)
       - (Using apt-get in Debian or Ubuntu to install OpenRTM-aist=> Ubuntu/Debianへのインストール: 02_install_ubuntu_python_1_1_ja.txt)
   - ツール: 04_tools_ja.txt
-    - OpenRTP 1.2.0: 01_openrtp_1_2_0_ja.txt
+    - OpenRTP 1.2.1: 01_openrtp_1_2_1_ja.txt
       - (OpenRTM-aist を10分で始めよう！:lets_start_jp.txt)
       - (一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt)
     - OpenRTP 1.1.2: o2_openrtp_1_1_2_ja.txt

@@ -60,7 +60,7 @@
     - 1.1系のインストール=> OpenRTM-aist 1.1系のインストール: 02_install_1_1_ja.txt // このページはディレクトリやBook的にここに存在するが、ここにはこのページをアクセスするリンクはないです。
       - C++版 1.1系=> OpenRTM-aist(C++版)1.1系のインストール; 01_cpp_1_1_ja.txt
         - Windowsへのインストール: 01_install_windows_1_1_ja.txt
-          - (OpenRTM-aist C++ 1.1.2-RELEASE: openrtm-aist_cpp_1_1_2_ja.txt)
+          - (OpenRTM-aist C++ 1.1.2-RELEASE: openrtm-aist-cpp_1_1_2_ja.txt)
           - OpenRTM-aistを10分で始めよう！=> 10分で始めよう！: quick_start_1_1_2_ja.txt
           - OpenRTM-aistを10分で始めよう！(OpenRTM-aist 1.1.1): quick_start_1_1_1_ja.txt
           - OpenRTM-aistを10分で始めよう！(OpenRTM-aist 1.0.0)=> OpenRTM-aistを10分で始めよう！: quick_start_1_0_0_ja.txt
@@ -101,7 +101,7 @@
         - システム環境変数設定ツールの使い方: 15_howtouse_env_ver_tool_1_1_ja.txt
       - Python版 1.1系=> OpenRTM-aist(Python版) 1.1系のインストール: 02_python_1_1_ja.txt
         - Windowsへのインストール: 01_install_windows_python_1_1_ja.txt
-          - (ダウンロードサイト=> OpenRTM-aist-Python-1.1.2-RELEASE: openrtm_python_1_1_2_release_ja.txt)
+          - (ダウンロードサイト=> OpenRTM-aist-Python-1.1.2-RELEASE: openrtm-aist-python_1_1_2_release_ja.txt)
           - (OpenRTM-aistを10分で始めよう！=> 10分で始めよう！: quick_start_1_1_2_ja.txt)
           - (http://openrtm.org/openrtm/ja/content/rtm-install-check-script=> windows_installer_test.batの利用方法: windows_install_test_bat_ja.txt)
           - (スクリプト=> windows_installer_test.batの利用方法: windows_install_test_bat_ja.txt)
@@ -126,7 +126,7 @@
           - (こちら: RTSystemEditor-1.0.0: rtsystemeditor_1_0_0_ja.txt)
       - Java版 1.1系: 03_java_1_1_ja.txt
         - Windows へのインストール: 01_install_windows_java_1_1_ja.txt
-          - (ダウンロードサイト=> OpenRTM-aist C++ 1.1.2-RELEASE: openrtm-aist_cpp_1_1_2_ja.txt)
+          - (ダウンロードサイト=> OpenRTM-aist C++ 1.1.2-RELEASE: openrtm-aist-cpp_1_1_2_ja.txt)
           - FAQ: 「java -version」がインストールした JDK のバージョンと異なります。=> openrtm-aist(c++版、python版、java版)に関するトラブルシューティング:openrtm-aist_troubleshooting_ja.txt
             - (JDKインストールのためのヒント: Tips: jdk_tips_ja.txt)
             - (UNIX系環境で簡易に Oracle の Java を Eclipse に適用する方法=> RTSystemEditor、RTCBuilder、rtshell 等ツールに関する FAQ: faq_rtp_tools_ja.txt)
@@ -134,7 +134,7 @@
           - (http://openrtm.org/openrtm/ja/content/rtm-install-check-script=> windows_installer_test.batの利用方法: windows_install_test_bat_ja.txt)
           - (スクリプト: windows_installer_test.batの利用方法: windows_install_test_bat_ja.txt)
         - Linuxへのインストール: 02_install_linux_java_1_1_ja.txt
-          - (JDK インストールのためのヒント: Tips: jdk_tips_ja.txt)
+          - (JDK インストールのためのヒント: Tips: jdk_tipsja.txt)
           - (''FAQ:'' Java をインストールする際の FedoraCore での対応について=> openrtm-aist(c++版、python版、java版)に関するトラブルシューティング:openrtm-aist_troubleshooting_ja.txt)
           - (''FAQ:'' Q. Fedora Core 上でRtcLink の NameService View にエラーがでる: RTSystemEditor、RTCBuilder、rtshell 等ツールに関する FAQ: faq_rtp_tools_ja.txt)
 	  - (こちら: OpenRTM-aist-Java-1.1.0-RELEASE: openrtm-aist-java_1_1_0_release_ja.txt)
@@ -143,7 +143,7 @@
           - (Eclipseの起動方法: RTSystemEditor、RTCBuilder、rtshell 等ツールに関する FAQ: faq_rtp_tools_ja.txt)
           - (動作確認 (Linux編): 05_test_linux_java_1_1_ja.txt)
         - ソースからのビルド: 03_build_source_java_1_1_ja.txt
-          - (OpenRTM-aist の C++版のダウンロードのページ=> OpenRTM-aist C++ 1.1.1-RELEASE: openrtm-aist_cpp_1_1_release_ja.txt)
+          - (OpenRTM-aist の C++版のダウンロードのページ=> OpenRTM-aist C++ 1.1.1-RELEASE: openrtm-aist-cpp_1_1_release_ja.txt)
         - 動作確認 (Windows編): 04_test_windows_java_1_1_ja.txt
         - 動作確認 (Linux編): 05_test_linux_java_1_1_ja.txt
           - (JDKインストールのためのヒント: Tips: jdk_tips_ja.txt)
@@ -243,13 +243,15 @@
             - (Raspberry Pi の初期設定: 02_raspi_init_setting_ja.txt)
           - IOのテスト: 02_io_test_ja.txt
           - Ministickコンポーネントの作成: 03_create_ministick_comp_ja.txt
-            - (移動ロボットKobukiの制御: 07_control_mobilerobot_kabuki_ja.txt)
+            - (移動ロボットKobukiの制御: 07_control_mobilerobot_kobuki_ja.txt)
           - PiRT-UnitによるXBeeモジュールの利用: 04_xbee_use_pirt-unit_ja.txt
           - PiRT-UnitによるI2Cデバイスの利用: 05_i2c_use_pirt-unit_ja.txt
-        - 移動ロボットKobukiの制御: 07_control_mobilerobot_kabuki_ja.txt
+        - 移動ロボットKobukiの制御: 07_control_mobilerobot_kobuki_ja.txt
           - (トラブルシューティング=> 開発環境のインストール: 04_install_development_env_ja.txt)
-        - Kobukiにロボットアームを搭載する手順:  08_adding_robotarm_kabuki_ja.txt
+        - Kobukiにロボットアームを搭載する手順:  08_adding_robotarm_kobuki_ja.txt
         - 付録: 09_appendix_ja.txt
+   - Common
+     - JDK8のインストール; install_jdk8_ja.txt
   - ツール: 03_toolmanuals_ja.txt
     - RTSystemEditor-1.2.0: 01_rtsystemeditor-1_2_0_ja.txt
       - 概要・システム構築の流れ: 01_rtse-1_2_0_overview_ja.txt
@@ -487,7 +489,7 @@
 　    - NXTway編=> RTコンポーネント作成(NXTway編): 06_rtc_development_nxtway_ja.txt
       - LEGO Mindstorm編=> LEGO Mindstorm NXT RTコンポーネント : 07_rtc_development_logo_mindstorm_ja.txt
         - Mindstorm NXT 設定: 01_mindstorm_nxt_setup_ja.txt
-        - (OpenRTM-aist-1.1.0-RC1: openrtm-aist_cpp_1_1_0_rc1_ja.txt)
+        - (OpenRTM-aist-1.1.0-RC1: openrtm-aist-cpp_1_1_0_rc1_ja.txt)
         - NXT Python のインストール: 03_install_nxt_rtc_python_ja.txt
         - NXT Python RTC 化: 04_make_nxt_python_rtc_ja.txt
         - NXT Python Facade クラス: 05_nxt_python_facde_class_ja.txt
@@ -536,7 +538,7 @@
           - (ジョイスティックコンポーネントで2台同時に操作=> チュートリアル(EV3): 01_lego_tutorial_ev3_ja.txt)
           - (EV3をしゃべらせる=> Educator Vehicle用 RTC のインストール (EV3): 11_lego_ev3_rtc_install_ja.txt)
       - 組み立て方: 18_lego_howtobuild_ja.txt
-    - LeapMotionでChoreonoidの制御: 05_leapmotion_chorenoid_ja.txt
+    - LeapMotionでChoreonoidの制御: 05_leapmotion_choreonoid_ja.txt
           - (OpenRTMのドキュメント=> OpenRTM-aistを10分で始めよう！: quick_start_1_0_0_ja.txt)
     - VPNを利用したRTMネットワーク設定方法: 06+vpn_setup_for_rtmnetwork_ja.txt
       - (corba.alternate_iiop_addresses=> rtc.conf設定項目一覧: 07_rtc_conf_reference_141_ja.txt)
@@ -618,11 +620,11 @@
     - その他 FAQ: 09_faq_other_6430_ja.txt
     - 過去のに掲載した FAQ: 10_faq_old_6431_ja.txt
 - ダウンロード: download_frontpage_ja.txt
-  - C++版: 01_openrtm-aist_cpp_jp.txt
-　　- 1.2.0-RELEASE: OpenRTM-aist C++ 1.2.0-RELEASE: 01_openrtm-aist_cpp_1_2_0_release_ja.txt
+  - C++版: 01_openrtm-aist-cpp_jp.txt
+　　- 1.2.1-RELEASE: OpenRTM-aist C++ 1.2.0-RELEASE: 01_openrtm-aist-cpp_1_2_1_release_ja.txt
       - (VCVerChanger=> システム環境変数設定ツールの使い方: 15_howtouse_env_ver_tool_1_1_ja.txt)
       - Visual Studio 2017 インストール方法: visual_studio_2017_install_ja.txt
-    - 1.1.2-RELEASE=> OpenRTM-aist C++ 1.1.2-RELEASE: openrtm-aist_cpp_1_1_2_ja.txt
+    - 1.1.2-RELEASE=> OpenRTM-aist C++ 1.1.2-RELEASE: openrtm-aist-cpp_1_1_2_ja.txt
       - (OpenRTM-aistを10分で始めよう！;10分で始めよう！: Quick_Start_1_1_2_ja.txt)
       - (http://openrtm.org/openrtm/ja/content/vc_version_changer=> VCVerChanger: システム環境変数設定ツールの使い方: 15_howtouse_env_ver_tool_1_1_ja.txt)
       - http://openrtm.org/openrtm/ja/content/tool_trouble_shooting_ja#toc1=> RTSystemEditor、RTCBuilder、rtshell 等ツールに関する FAQ: FAQ_RTP_Tools_ja.txt )
@@ -630,59 +632,59 @@
       - (一括インストール・スクリプト:bulk_installation_script_ubuntu_1_1_ja.txt)
       - (ソースからのビルド (Windows編): 09_build_source_windows_1_1_ja.txt)
       - (ソースからのビルド (Linux編): 10_build_source_linux_1_1_ja.txt)
-    - 1.1.1-RELEASE: OpenRTM-aist C++ 1.1.1-RELEASE: openrtm-aist_cpp_1_1_release_ja.txt
+    - 1.1.1-RELEASE: OpenRTM-aist C++ 1.1.1-RELEASE: openrtm-aist-cpp_1_1_release_ja.txt
       - (OpenRTM-aistを10分で始めよう！(OpenRTM-aist 1.1.1): quick_start_1_1_1_ja.txt)
       - (こちら(C++)=> OpenRTM-aist(C++版)1.1系のインストール; 01_cpp_1_1_ja.txt)
       - (ソースからのビルド (Windows編): 09_build_source_windows_1_1_ja.txt)
       - (ソースからのビルド (Linux編): 10_build_source_linux_1_1_ja.txt)
       - (OpenRTP 1.1.0-RC5: openrtp_1_1_0_rc5_ja.txt)
-    - 1.1.0-RELEASE: openrtm-aist_cpp_1_1_0_release_ja.txt
+    - 1.1.0-RELEASE: openrtm-aist-cpp_1_1_0_release_ja.txt
       - (こちら(C++)=> Ubuntu/Debianへのインストール: 02_install_ubuntu_python_1_1_ja.txt)
       - (ソースからのビルド=> ソースからのビルド (Linux編): 10_build_source_linux_1_1_ja.txt)
-    - 1.1.0-RC3: openrtm-aist_cpp_1_1_0_rc3_ja.txt
+    - 1.1.0-RC3: openrtm-aist-cpp_1_1_0_rc3_ja.txt
       - (ソースからのビルド=> ソースからのビルド (Linux編): 10_build_source_linux_1_1_ja.txt)
-    - 1.1.0-RC2: openrtm-aist_cpp_1_1_0_rc2_ja.txt
+    - 1.1.0-RC2: openrtm-aist-cpp_1_1_0_rc2_ja.txt
       - (ソースからのビルド=> ソースからのビルド (Linux編): 10_build_source_linux_1_1_ja.txt)
-      - (1.0.0-RELEASE=> OpenRTM-aist-1.0.0-RELEASE: openrtm-aist_cpp_1_0_0_release_ja.txt)
-      - (1.0.0-RC1=> OpenRTM-aist-1.0.0-RC1: openrtm-aist_cpp_1_0_0_rc1_ja.txt)
+      - (1.0.0-RELEASE=> OpenRTM-aist-1.0.0-RELEASE: openrtm-aist-cpp_1_0_0_release_ja.txt)
+      - (1.0.0-RC1=> OpenRTM-aist-1.0.0-RC1: openrtm-aist-cpp_1_0_0_rc1_ja.txt)
       - (0.4.2-RELESE 韓国語オンリーのページのみ)
       - (0.4.2-RC2 韓国語オンリーのページのみ)
       - (0.4.1-RELEASE 韓国語オンリーのページのみ)
       - (0.4.0-RELEASE 韓国語オンリーのページのみ)
       - (0.4.0-RC2: 韓国語オンリーのページのみ)
-    - 1.1.0-RC1=>OpenRTM-aist-1.1.0-RC1: openrtm-aist_cpp_1_1_0_rc1_ja.txt
+    - 1.1.0-RC1=>OpenRTM-aist-1.1.0-RC1: openrtm-aist-cpp_1_1_0_rc1_ja.txt
       - (Vine Linux=> Vine Linuxへのインストール: 05_install_vine_1_1_ja.txt)
       - (Fedora=> Fedoraへのインストール: 04_install_fedora_1_1_ja.txt)
       - (Debian/Ubuntu=> Ubuntu/Debianへのインストール: 02_install_ubuntu_1_1_ja.txt)
-      - (1.0.0-RELEASE=> OpenRTM-aist-1.0.0-RELEASE: openrtm-aist_cpp_1_0_0_release_ja.txt)
-      - (1.0.0-RC1=> OpenRTM-aist-1.0.0-RC1: openrtm-aist_cpp_1_0_0_rc1_ja.txt)
+      - (1.0.0-RELEASE=> OpenRTM-aist-1.0.0-RELEASE: openrtm-aist-cpp_1_0_0_release_ja.txt)
+      - (1.0.0-RC1=> OpenRTM-aist-1.0.0-RC1: openrtm-aist-cpp_1_0_0_rc1_ja.txt)
       - (0.4.2-RELESE 韓国語オンリーのページのみ)
       - (0.4.2-RC2 韓国語オンリーのページのみ)
       - (0.4.1-RELEASE 韓国語オンリーのページのみ)
       - (0.4.0-RELEASE 韓国語オンリーのページのみ)
       - (0.4.0-RC2: 韓国語オンリーのページのみ)
-    - 1.0.2-RELEASE: openrtm-aist_cpp_1_0_2_release_ja.txt
+    - 1.0.2-RELEASE: openrtm-aist-cpp_1_0_2_release_ja.txt
       - (Vine Linux=> Vine Linuxへのインストール: 05_install_vine_1_1_ja.txt)
       - (Fedora=> Fedoraへのインストール: 04_install_fedora_1_1_ja.txt)
       - (Debian/Ubuntu=> Ubuntu/Debianへのインストール: 02_install_ubuntu_1_1_ja.txt)
-      - (1.0.0-RELEASE=> OpenRTM-aist-1.0.0-RELEASE: openrtm-aist_cpp_1_0_0_release_ja.txt)
-      - (1.0.0-RC1=> OpenRTM-aist-1.0.0-RC1: openrtm-aist_cpp_1_0_0_rc1_ja.txt)
+      - (1.0.0-RELEASE=> OpenRTM-aist-1.0.0-RELEASE: openrtm-aist-cpp_1_0_0_release_ja.txt)
+      - (1.0.0-RC1=> OpenRTM-aist-1.0.0-RC1: openrtm-aist-cpp_1_0_0_rc1_ja.txt)
       - (0.4.2-RELESE 韓国語オンリーのページのみ)
       - (0.4.2-RC2 韓国語オンリーのページのみ)
       - (0.4.1-RELEASE 韓国語オンリーのページのみ)
       - (0.4.0-RELEASE 韓国語オンリーのページのみ)
       - (0.4.0-RC2: 韓国語オンリーのページのみ)
-    - 1.0.0-RELEASE=> OpenRTM-aist-1.0.0-RELEASE: openrtm-aist_cpp_1_0_0_release_ja.txt
+    - 1.0.0-RELEASE=> OpenRTM-aist-1.0.0-RELEASE: openrtm-aist-cpp_1_0_0_release_ja.txt
       - (Vine Linux=> Vine Linuxへのインストール: 05_install_vine_1_1_ja.txt)
       - (Fedora=> Fedoraへのインストール: 04_install_fedora_1_1_ja.txt)
       - (Debian/Ubuntu=> Ubuntu/Debianへのインストール: 02_install_ubuntu_1_1_ja.txt)
-      - (1.0.0-RC1=> OpenRTM-aist-1.0.0-RC1: openrtm-aist_cpp_1_0_0_rc1_ja.txt)
+      - (1.0.0-RC1=> OpenRTM-aist-1.0.0-RC1: openrtm-aist-cpp_1_0_0_rc1_ja.txt)
       - (0.4.2-RELESE 韓国語オンリーのページのみ)
       - (0.4.2-RC2 韓国語オンリーのページのみ)
       - (0.4.1-RELEASE 韓国語オンリーのページのみ)
       - (0.4.0-RELEASE 韓国語オンリーのページのみ)
       - (0.4.0-RC2: 韓国語オンリーのページのみ)
-    - 1.0.0-RC1=> OpenRTM-aist-1.0.0-RC1: openrtm-aist_cpp_1_0_0_rc1_ja.txt
+    - 1.0.0-RC1=> OpenRTM-aist-1.0.0-RC1: openrtm-aist-cpp_1_0_0_rc1_ja.txt
       - (Vine Linux上でapt-getを使ってOpenRTM-aistをインストールする=> Vine Linuxへのインストール: 05_install_vine_1_1_ja.txt)
       - (Fedora上でyumを使ってOpenRTM-aistをインストールする=> Fedoraへのインストール: 04_install_fedora_1_1_ja.txt)
       - (debian/Ubuntu上でapt-getを使ってOpenRTM-aistをインストールする=> Ubuntu/Debianへのインストール: 02_install_ubuntu_1_1_ja.txt)
@@ -692,35 +694,35 @@
       - (0.4.0-RELEASE 韓国語オンリーのページのみ)
       - (0.4.0-RC2: 韓国語オンリーのページのみ)
   - Java版=> OpenRTM-aist (Java版): 02_openrtm-aist-java_ja.txt
-    - 1.2.0-RELEASE=> OpenRTM-aist-Java-1.2.0-RELEASE: 01_openrtm-aist-java-1_2_0_release_ja.txt
+    - 1.2.1-RELEASE=> OpenRTM-aist-Java-1.2.1-RELEASE: 01_openrtm-aist-java_1_2_1_release_ja.txt
       - (OpenRTM-aist (Java版) 1.2系のインストール: java_1_2_ja.txt)
       - (OpenRTM-aistを10分で始めよう！: lets_start_jp.txt)
-    - 1.1.2-RELEASE=> OpenRTM-aist-Java-1.1.2-RELEASE: 02_openrtm-aist-java-1_1_2_release_ja.txt
-    - 1.1.0-RELEASE=> OpenRTM-aist-Java-1.1.0-RELESE: 03_openrtm-aist-java-1_1_0_release_ja.txt\
+    - 1.1.2-RELEASE=> OpenRTM-aist-Java-1.1.2-RELEASE: 02_openrtm-aist-java_1_1_2_release_ja.txt
+    - 1.1.0-RELEASE=> OpenRTM-aist-Java-1.1.0-RELESE: 03_openrtm-aist-java_1_1_0_release_ja.txt\
       - (インストール方法=> Windows へのインストール: 01_install_windows_java_1_1_ja.txt)
-      - (1.1.0-RC1=> OpenRTM-aist-Java-1.1.0-RC1: openrtm-aist-java-1_1_0_rc1_ja.txt)
-      - (1.0.0-RELEASE=> OpenRTM-aist-Java-1.0.0-RELEASE: openrtm-aist-java-1_0_0_release_ja.txt)
-      - (1.0.0-RC1: openrtm-aist-java-1_0_0_rc1_ja.txt)
+      - (1.1.0-RC1=> OpenRTM-aist-Java-1.1.0-RC1: openrtm-aist-java_1_1_0_rc1_ja.txt)
+      - (1.0.0-RELEASE=> OpenRTM-aist-Java-1.0.0-RELEASE: openrtm-aist-java_1_0_0_release_ja.txt)
+      - (1.0.0-RC1: openrtm-aist-java_1_0_0_rc1_ja.txt)
       - Java-0.4.2-RELEASE //リンク切れ
       - Java-0.4.1-RELEASE //リンク切れ
       - 0.4.1-RC1 // リンク切れ
-    - 1.1.0-RC1=> OpenRTM-aist-Java-1.1.0-RC1: openrtm-aist-java-1_1_0_rc1_ja.txt
-      - (1.0.0-RELEASE=> OpenRTM-aist-Java-1.0.0-RELEASE: openrtm-aist-java-1_0_0_release_ja.txt)
-      - (1.0.0-RC1=> openrtm-aist-java-1_0_0_rc1_ja.txt)
+    - 1.1.0-RC1=> OpenRTM-aist-Java-1.1.0-RC1: openrtm-aist-java_1_1_0_rc1_ja.txt
+      - (1.0.0-RELEASE=> OpenRTM-aist-Java-1.0.0-RELEASE: openrtm-aist-java_1_0_0_release_ja.txt)
+      - (1.0.0-RC1=> openrtm-aist-java_1_0_0_rc1_ja.txt)
       - Java-0.4.2-RELEASE //リンク切れ
       - Java-0.4.1-RELEASE //リンク切れ
       - 0.4.1-RC1 // リンク切れ
-    - 1.0.0-RELEASE=> OpenRTM-aist-Java-1.0.0-RELEASE: openrtm-aist-java-1_0_0_release_ja.txt
-    - 1.0.0-RC1=> openrtm-aist-java-1_0_0_rc1_ja.txt)
+    - 1.0.0-RELEASE=> OpenRTM-aist-Java-1.0.0-RELEASE: openrtm-aist-java_1_0_0_release_ja.txt
+    - 1.0.0-RC1=> openrtm-aist-java_1_0_0_rc1_ja.txt)
       - Java-0.4.2-RELEASE //リンク切れ
       - Java-0.4.1-RELEASE //リンク切れ
       - 0.4.1-RC1 // リンク切れ
   - Python版=>OpenRTM-aist (Python版): 03_openrtm-aist-python_ja.txt
-    - OpenRTM-aist-Python-1.2.0-RELEASE: 01_openrtm_python_1_2_0_release_ja.txt
+    - OpenRTM-aist-Python-1.2.1-RELEASE: 01_openrtm-aist-python_1_2_1_release_ja.txt
       - (OpenRTM-aist (Python版) 1.2系のインストール: 02_python_1_2_ja.txt)
       - (OpenRTM-aistを10分で始めよう！: lets_start_jp.txt)
       - (一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt)
-    - OpenRTM-aist-Python-1.1.2-RELEASE: 02_openrtm_python_1_1_2_release_ja.txt
+    - OpenRTM-aist-Python-1.1.2-RELEASE: 02_openrtm-aist-python_1_1_2_release_ja.txt
       - (Ubuntu/Debian へのインストール=> Ubuntu/Debianへのインストール: 02_install_ubuntu_python_1_1_ja.txt)
       - (Fedora へのインストール=> Fedoraへのインストール: 03_install_fedora_python_1_1_ja.txt)
     - OpenRTM-aist-Python-1.1.0-RELEASE: 03_openrtm-aist-python_1_1_0_release_ja.txt
@@ -743,7 +745,7 @@
       - (Fedoraへのインストール: 03_install_fedora_python_1_1_ja.txt)
       - (Using apt-get in Debian or Ubuntu to install OpenRTM-aist=> Ubuntu/Debianへのインストール: 02_install_ubuntu_python_1_1_ja.txt)
   - ツール: 04_tools_ja.txt
-    - OpenRTP 1.2.0: 01_openrtp_1_2_0_ja.txt
+    - OpenRTP 1.2.1: 01_openrtp_1_2_1_ja.txt
       - (OpenRTM-aist を10分で始めよう！:lets_start_jp.txt)
       - (一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt)
     - OpenRTP 1.1.2: o2_openrtp_1_1_2_ja.txt
