@@ -1,26 +1,20 @@
 ﻿// Title: 一括インストールスクリプト
 #contents(5)
 
-
+** 一括インストールスクリプト入手先
 openrtm.orgが提供するインストール・スクリプトを以下のURLを用いてダウンロードし、root権限で実行します。このスクリプトでは、必要なパッケージを順次apt-getを用いてインストールしていきます。
 
-// -[[パッケージインストールスクリプト:http://www.openrtm.org/pub/OpenRTM-aist/cxx/install_scripts/]]
-// -[[ソースコードリポジトリの最新スクリプト:http://svn.openrtm.org/OpenRTM-aist/trunk/OpenRTM-aist/build/pkg_install100_ubuntu.sh]]
+ Ubuntu用一括インストールスクリプト URL:
+ https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_ubuntu.sh
+ Debian用一括インストールスクリプト URL:
+ https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_debian.sh
+ Raspbian用一括インストールスクリプトURL:
+ https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_raspbian.sh
+ Fedora用一括インストールスクリプトURL:
+ https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_fedora.sh
 
-//-[[一括インストールスクリプト(Ubuntu):http://svn.openrtm.org/OpenRTM-aist/tags/RELEASE_1_1_1/OpenRTM-aist/build/pkg_install_ubuntu.sh]]
-//-[[一括インストールスクリプト(Debian):http://svn.openrtm.org/OpenRTM-aist/tags/RELEASE_1_1_1/OpenRTM-aist/build/pkg_install_debian.sh]]
-
--一括インストールスクリプト(Ubuntu): #br
-https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_ubuntu.sh
--一括インストールスクリプト(Debian):#br
-https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_debian.sh
--一括インストールスクリプト(Raspbian):#br
-https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_raspbian.sh
--一括インストールスクリプト(Fedora):#br
-https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_fedora.sh
-
-オプションを指定することで、目的に合わせたパッケージをインストールで可能です。
-//初めてOpenRTM-aistをインストールしてみる方もソースをコンパイルしてみることをお勧めします。
+このスクリプトはオプションを指定することで、目的に合わせたパッケージをインストールで可能です。
+//初めてOpenRTM-aistをインストールしてみる方もソースをコンパイルしてみることを推奨します。
 
 ただし、このスクリプトはOpenRTM-aist関係のすべてのパッケージをインストールするので、不必要なパッケージもインストールされる可能性があります。
 詳しく理解している場合は、手動でインストールすることを推奨します。
@@ -30,31 +24,36 @@ https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_instal
 使えるオプションは同じですが、pkg_install_raspbian.shではopenrtpとrtshellのインストールの対応はありません。従って-lオプションの引数としてopenrtpとrtshellは使用できません。
 
 *** オプション一覧
- $ sudo sh ./pkg_install_ubuntu.sh --help
   Usage:
- 
-    pkg_install_ubuntu.sh [-l all/c++] [-r/-d/-s/-c] [-u]
-    pkg_install_ubuntu.sh [-l python/java] [-r/-d/-c] [-u]
-    pkg_install_ubuntu.sh [-l openrtp/rtshell] [-d] [-u]
- 
+    pkg_install_ubuntu.sh -l {all|c++} [-r|-d|-s|-c|-u|-ur|-ud|-us|-uc] [--yes]
+    pkg_install_ubuntu.sh [-u]
+    pkg_install_ubuntu.sh -l {python|java} [-r|-d|-c|-u|-ur|-ud|-uc] [--yes]
+    pkg_install_ubuntu.sh -l {openrtp|rtshell} [-d|-u|-ud] [--yes]
+    pkg_install_ubuntu.sh  {--help|-h}
+
   Example:
     pkg_install_ubuntu.sh  [= pkg_install_ubuntu.sh -l c++ -d]
-    pkg_install_ubuntu.sh -l all -d  [= -l c++ -l python -l java -l openrtp -l rtshell -d]
-    pkg_install_ubuntu.sh -l c++ -l python -c --yes
- 
+    pkg_install_ubuntu.sh -l all -d  
+    pkg_install_ubuntu.sh -l c++ -c --yes
+    pkg_install_ubuntu.sh -l all -u
+   
   Options:
-    -l <argument>  language or tool [c++/python/java/openrtp/rtshell]
+    -l <argument>  language or tool {c++|python|java|openrtp|rtshell}
     -r             install robot component runtime
     -d             install robot component developer [default]
     -s             install tool_packages for build source packages
     -c             install tool_packages for core developer
-    -u             uninstall
-    --yes          force yes
+    -u             uninstall robot component developer
+    -ur            uninstall robot component runtime
+    -ud            uninstall robot component developer
+    -us            uninstall tool packages for build source packages
+    -uc            uninstall tool packages for core developer
+    --yes          force yes (it can not be specified with -u and -u? options
     --help, -h     print this
-
 
 オプションを指定することで、以下に示されるパッケージがインストールされます。
 
+*** インストールされるdebパッケージ一覧
 赤字は-u(アンインストール)指定時にアンインストールされるパッケージです。
 
 #ref(deb-list.png,nolink,right,center)
@@ -69,32 +68,35 @@ https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_instal
 
 
 *** オプション一覧
- $ ./pkg_install_fedora.sh --help
   Usage:
- 
-    pkg_install_fedora.sh [-l all/c++] [-r/-d/-s/-c] [-u]
-    pkg_install_fedora.sh [-l python/java] [-r/-d/-c] [-u]
-    pkg_install_fedora.sh [-l openrtp] [-d] [-u]
- 
+    pkg_install_fedora.sh -l {all|c++} [-r|-d|-s|-c|-u|-ur|-ud|-us|-uc] [--yes]
+    pkg_install_fedora.sh [-u]
+    pkg_install_fedora.sh -l {python|java} [-r|-d|-c|-u|-ur|-ud|-uc] [--yes]
+    pkg_install_fedora.sh -l {openrtp|rtshell} [-d|-u|-ud] [--yes]
+    pkg_install_fedroa.sh  {--help|-h}
+
   Example:
-    pkg_install_fedora.sh  [= pkg_install_fedora19.sh -l c++ -d]
-    pkg_install_fedora.sh -l all -d  [= -l c++ -l python -l java -l openrtp -d]
-    pkg_install_fedora.sh -l c++ -l python -c --yes
+    pkg_install_fedora.sh  [= pkg_install_fedora.sh -l c++ -d]
+    pkg_install_fedora.sh -l all -d  
+    pkg_install_fedora.sh -l python -c --yes
  
   Options:
-    -l <argument>  language or tool [c++/python/java/openrtp]
+    -l <argument>  language or tool {c++|python|java|openrtp|rtshell}
     -r             install robot component runtime
     -d             install robot component developer [default]
     -s             install tool_packages for build source packages
     -c             install tool_packages for core developer
-    -u             uninstall
-    --yes          force yes
+    -u             uninstall robot component developer
+    -ur            uninstall robot component runtime
+    -ud            uninstall robot component developer
+    -us            uninstall tool packages for build source packages
+    -uc            uninstall tool packages for core developer
+    --yes          force yes (it can not be specified with -u and -u? options
     --help, -h     print this
 
-*** インストールパッケージ一覧
+*** インストールされるrpmパッケージ一覧
 
 赤字は-u指定時にアンインストールされるパッケージです。
-
 #ref(rpm-list.png,nolink,right,center)
 
 ** 一括インストールスクリプトを使う方法
@@ -102,35 +104,25 @@ https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_instal
 以下、一括インストールスクリプトを使用したダウンロードとインストール方法です。（"ubuntu"の文字はそれぞれインストールされるディストリビューションに合わせて"debian"や"raspbian"、"fedora"としてください。)
 
 お使いの環境に合わせた一括インストールスクリプトを次のコマンドでダウンロードします。
-
- > wget [pkg_install_ubuntu.shのダウンロードURL]
+ ＄ wget [pkg_install_ubuntu.shのダウンロードURL]
 
 
 **** C++版をインストールする
 
-初めてC++版をインストールする方への推奨入力例です。オプション "-l" だけを追加することで目的の言語を指定し、他のオプションは指定せずに(ないしは-dオプションを指定して)、デフォルトインストール実行します。
- > sudo sh ./pkg_install_ubuntu.sh -l c++
+初めてC++版をインストールする方への推奨入力例です。オプション"-l"だけを追加することで目的の言語を指定し、他のオプションは指定せずに(ないしは-dオプションを指定して)、デフォルトインストール実行します。
+ ＄ sudo sh ./pkg_install_ubuntu.sh -l c++
  //途中、いくつかの質問をたずねられるので、''y''あるいは''Y''を入力しながら完了させる。
 
-
 **** Python版をインストールする("Y"の入力を省略する)
-
-初めてPython版をインストールする方への推奨入力例です。オプション "--yes" を追加することで、インストールを確認する質問と "Y" の入力を省略できます。他のオプションは指定されてないので、-dオプションを指定したのと同じものがインストールされます。
-
- > sudo sh ./pkg_install_ubuntu.sh -l python --yes
- 
+初めてPython版をインストールする方への推奨入力例です。オプション"--yes"を追加することで、インストールを確認する質問と"Y"の入力を省略できます。他のオプションは指定されてないので、-dオプションを指定したのと同じものがインストールされます。
+ ＄ sudo sh ./pkg_install_ubuntu.sh -l python --yes
 
 **** C++版とPython版とコア開発(OpenRTM-aist自体の開発)に必要なパッケージをインストールする
+オプション"-c"を追加することでコア開発に必要なパッケージをインストールし、オプション"--yes"で"Y"の入力を省略します。
+ ＄ sudo sh ./pkg_install_ubuntu.sh -l c++ -l python -c --yes
 
-オプション"-c"を追加することでコア開発に必要なパッケージをインストールし、オプション "--yes" で "Y" の入力を省略します。
-
- > sudo sh ./pkg_install_ubuntu.sh -l c++ -l python -c --yes
-
-
-**** C++ 版をアンインストールする
-
+**** C++版をアンインストールする
 オプション"-u"を追加することで、C++版をアンインストールします。
 
-アンインストールされるパッケージは、[[インストールされるdebパッケージ一覧 :#toc2]] を確認ください。
-
- > sudo ./pkg_install_ubuntu.sh -l c++ -u
+アンインストールされるパッケージは、[[インストールされるdebパッケージ一覧:#toc3]] 、[[インストールされるrpmパッケージ一覧:#toc6]]を確認ください。
+ ＄ sudo ./pkg_install_ubuntu.sh -l c++ -u
