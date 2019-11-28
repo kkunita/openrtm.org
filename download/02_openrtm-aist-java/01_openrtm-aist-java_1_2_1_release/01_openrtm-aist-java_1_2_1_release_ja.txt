@@ -19,7 +19,7 @@
 |CMake |[[cmake-3.15.5-win64-x64.msi:https://github.com/Kitware/CMake/releases/download/v3.15.5/cmake-3.15.5-win64-x64.msi]] |[[cmake:https://cmake.org/]]|
 |Doxygen|[[doxygen-1.8.16-setup.exe:http://doxygen.nl/files/doxygen-1.8.16-setup.exe]] |[[doxygen:http://www.doxygen.nl/index.html]]|
 
--&color(red){※Pythonは、"3.7"、"3.6"、"2.7"のいずれかのバージョンをインストールして下さい。};
+-&color(red){※Pythonは、"3.7"、"3.6"、"2.7"のいずれかのバージョンをインストールしてください。};
 //-&color(red){※古いRTShellは事前に削除しておいてください。ただし、OpenRTM-aist 1.1.2版をmsiファイルを用いてインストールしている場合は対応不要です。};
 
 **** 32bit用
@@ -32,8 +32,8 @@
 |CMake|[[cmake-3.15.5-win32-x86.msi:https://github.com/Kitware/CMake/releases/download/v3.15.5/cmake-3.15.5-win32-x86.msi]] |[[cmake:https://cmake.org/]]|
 |Doxygen|[[doxygen-1.8.16-setup.exe:http://doxygen.nl/files/doxygen-1.8.16-setup.exe]] |[[doxygen:http://www.doxygen.nl/index.html]]|
 
--&color(red){※Pythonは、"3.7"、"3.6"、"2.7"のいずれかのバージョンをインストールして下さい。};
-//-&color(red){※古いRTShellは事前に削除しておいてください。ただし、OpenRTM-aist 1.1.2版をmsiでインストールしている場合は対応不要です。};
+-&color(red){※Pythonは、"3.7"、"3.6"、"2.7"のいずれかのバージョンをインストールしてください。};
+//-&color(red){※古いRTShellは事前に削除しておいてください。ただし、OpenRTM-aist 1.1.2版をmsiファイルを用いてインストールしている場合は対応不要です。};
 
 
 インストールについては、[[OpenRTM-aistを10分で始めよう！:/ja/node/6521]]のページで手順を紹介しています。&br;
@@ -42,7 +42,7 @@
 ***Linuxパッケージ
 
 現在のところ、以下のディストリビューション・バージョンでパッケージを提供しています。&br;
-以下で配布しているインストールスクリプトを利用すれば、必要なパッケージを一括でインストールすることができます。
+以下で配布しているインストールスクリプトを利用すれば、必要なパッケージを一括でインストールできます。
 
 
 | ディストリビューション・バージョン | 一括インストールスクリプト |
@@ -52,7 +52,7 @@
 
 //※Fedora用一括インストール・スクリプトはOpenRTM-aist 1.2.0版以降対応予定です。
 
-オプションを指定することで、目的に合わせたパッケージをインストールすることができるようになりました。インストール方法やオプション、パッケージの種類につきましては、[[一括インストール・スクリプト:/ja/node/6345]]をご確認ください。
+オプションを指定することで、目的に合わせたパッケージをインストールできるようになりました。インストール方法やオプション、パッケージの種類につきましては、[[一括インストール・スクリプト:/ja/node/6345]]をご確認ください。
 
 
 
@@ -77,7 +77,7 @@ OpenRTM-aist-Java-1.2.1の動作および開発には以下のJDKが必要です
 *** deb/rpmパッケージ作成
 
 jarファイルおよびサンプルからのUbuntu、Debian用debパッケージ、Fedora用rpmパッケージの作成が正式にサポートされました。&br;
-以下の手順でパッケージを作成することができます。パッケージ作成に当たっては、一括インストールスクリプト（pkg_install_***.sh）を利用して必要なパッケージを予めインストールしておいてください。
+以下の手順でパッケージを作成できます。パッケージ作成に当たっては、一括インストールスクリプト（pkg_install_***.sh）を利用して必要なパッケージをあらかじめインストールしておいてください。
 
  $ tar xvzf OpenRTM-aist-Java-1.2.1.tar.gz
  $ unzip OpenRTM-aist-Java-1.2.1-jar.zip
@@ -92,9 +92,9 @@ jarファイルおよびサンプルからのUbuntu、Debian用debパッケー�
  $ cd packages/rpm
  $ sh rpm_build.sh
 
-パッケージはpacakgesディレクトリー内に作成されます。
+パッケージはpacakgesディレクトリ内に作成されます。
 
-&color(red){※UbuntuやDebianにてdebパッケージを作成する場合は"dpkg-dev build-essential debhelper devscripts"、Fedoraにてrpmパッケージを作成する場合は"rpm-build createrepo"といったツールを予めインストールしておく必要があります。};
+&color(red){※UbuntuやDebianにてdebパッケージを作成する場合は"dpkg-dev build-essential debhelper devscripts"、Fedoraにてrpmパッケージを作成する場合は"rpm-build createrepo"といったツールをあらかじめインストールしておく必要があります。};
 これらは、[[一括インストール・スクリプト:/ja/node/6345]]を-cオプションで実行すればインストールされます。
 
 
