@@ -1,376 +1,218 @@
-﻿// Title: OpenRTM-aist を10分で始めよう！
+﻿// Title: OpenRTM-aistを10分で始めよう！
 #contents
-#br
+最新バージョンOpenRTM-aist-1.2.1-RELEASEではC++版、Python版、Java版、OpenRTPがインストールされます。また、rtshellも同時にインストールされます。
 
-最新バージョン OpenRTM-aist-1.2.0-RELEASE では C++版、Python版、Java版 がインストールされます。#br
-また、rtshell も同時にインストールされます。
+* 事前準備
+** Pythonのインストール
+Pythonをインストールしていない場合は、OpenRTM-aistをインストールできません。
+OpenRTM-aistをインストールする前に、Pythonをインストールしてください。バージョンは、"3.7"、"3.6"、"2.7"に対応しています。
 
-**事前準備
-***Python のインストール
-Python をインストールしていない場合は、OpenRTM-aist をインストールすることができません。#br
-OpenRTM-aist をインストールする前に、Python をインストールしてください。バージョンは、"2.7"  "3.6"  "3.7" に対応しています。 #br
-#br
-Python のダウンロードは [[OpenRTM-aist-1.2.0-RELEASE:/ja/node/6570]] をご覧ください。
+Pythonのダウンロードは[[OpenRTM-aist-1.2.1-RELEASE:/ja/node/6570]]をご覧ください。
 
-http://opensource.org/licenses/eclipse-1.0.php
-http://sourceforge.jp/projects/opensource/wiki/licenses%2FEclipse_Public_License(日本語訳)
+//http://opensource.org/licenses/eclipse-1.0.php
+//http://sourceforge.jp/projects/opensource/wiki/licenses%2FEclipse_Public_License(日本語訳)
 
-Python のインストール先は、3.6 または 3.7 の場合はインストール時の選択 [Install Now] [Customize installation] のどちらにも対応しています。
-2.7 の場合はデフォルトの [Install for all users] 設定のみに対応しています。
+Pythonのインストール先は、3.6または3.7の場合はインストール時の選択[Install Now] [Customize installation]のどちらにも対応しています。
+2.7の場合はデフォルトの[Install for all users]設定のみに対応しています。
 
-Python のパスは、自動で設定されるようにして下さい。こうすると、python.exe と Scripts が Path に追加されます。（例：Path=C:\Python27\; C:\Python27\Scripts;...）
+サーチパスは、以下の方法で自動で設定されるようにしてください。こうすると、python.exeが置いてあるディレクトリとScriptsディレクトリがPathに追加されます。&br; (例: Path=C:\Python27;C:\Python27\Scripts;...）
 
-Python 3.6 または 3.7 のインストールでは、最初の画面の一番下にある [add python *** to PATH] にチェックを入れてください。
-Python 2.7 のインストールを実行した際は、以下の画面で [Add python.exe to Path] を [Will be installed on local hard drive] に設定してください。&br;
+- Python 3.6または3.7のインストールでは、最初の画面の下部にある[add python *** to PATH]にチェックを入れてください。
+- Python 2.7のインストールを実行した際は、以下の画面で[Add python.exe to Path]を[Will be installed on local hard drive]に設定してください。
 
-#br
-&br;
 
 #ref(Python-install001.png,center)
-&br;
-#br
 
-**OpenRTM-aist のインストール
-ここでは Windows10 で 32bit 用インストーラー OpenRTM-aist-1.2.0-RELEASE_x86.msi を使ったインストール手順を紹介します。#br
-#br
 
-インストーラーのダウンロードは [[OpenRTM-aist-1.2.0-RELEASE:/ja/node/6570]] をご覧ください。
+** OpenRTM-aistのインストール
+ここではWindows 10で64bit用インストーラーOpenRTM-aist-1.2.1-RELEASE_x86_64.msiを使ったインストール手順を紹介します。
 
+インストーラーのダウンロードは[[OpenRTM-aist-1.2.1-RELEASE:/ja/node/6570]]をご覧ください。
 
 ''[インストール手順]''
-+インストーラーを起動して [次へ] をクリックします。
++インストーラーを起動します。[WindowsによってPCが保護されました]の画面が表示されたら[詳細情報]をクリックして[実行]ボタンを表示させて、[実行]をクリックします。(この画面はWindowsのあるバージョン以降でMicrosoft Corp.に登録されていないアプリケーションのインストール時に表示される画面で、本ソフトウエアは登録をしていないため、この画面が表示されます。)
++ [次へ]をクリックします。
+#ref(Openrtm121-Install001.png,center,50%)
 &br;
-#br
-
-#ref(Openrtm120-Install001.png,center)
++使用承諾契約書のページです。ソフトウェアライセンス条項に同意して[次へ]をクリックします。
+#ref(Openrtm121-Install002.png,center,50%)
 &br;
-#br
-
-+使用承諾契約書のページです。ソフトウェアライセンス条項に同意して [次へ] をクリックします。
++インストールの種類を選択します。デフォルトのまま[次へ]をクリックします。
+#ref(Openrtm121-Install003.png,center,50%)
 &br;
-#br
-
-#ref(Openrtm120-Install002.png,center)
++Visual Studioのバージョンを選択します。
+-- C++版で使用するVisual Studioのバージョンをシステム環境変数に設定します。
+-- インストールされている Visual Studioのバージョンを選択して[次へ]をクリックします。
+--- Visual Studioのダウンロードは[[OpenRTM-aist-1.2.1-RELEASE:/ja/node/6570]]をご覧ください。
+--- Visual Studioのバージョンは、インストール終了後にツールのVCVerChangerで変更できます。[[(VCVerChangerの使い方):/ja/node/6136/]]
+--- Python版、Java版では無関係ですのでデフォルトのまま[次へ]をクリックしてください。
+#ref(Openrtm121-Install004.png,center,50%)
 &br;
-#br
-
-+インストールの種類を選択します。デフォルトのまま [次へ] をクリックします。
++セットアップの種類を選択します。
+[標準]を選択した場合、OpenRTM-aistのC++版、Java版、Python版、OpenRTP、RTSystemEditorRCP、RTShell、OpenRTM-aist-C++版のVisual Studio 20010から2019までのランタイムライブラリ、OpenRTM-aist-1.0.0から1.2.1までのランタイムライブラリがインストールされます。特に変更理由がないようであれば[標準]をクリックします。
 &br;
-#br
-
-#ref(Openrtm120-Install003.png,center)
+#ref(Openrtm121-Install005.png,center,50%)
 &br;
-#br
-
-+Visual Studio のバージョンを選択します。#br
-C++版で使用する Visual Studio のバージョンをシステム環境変数に設定します。#br
-インストールされている Visual Studio のバージョンを選択して [次へ] をクリックします。#br
-#br
-※Visual Studio のダウンロードは [[OpenRTM-aist-1.2.0-RELEASE:/ja/node/6570]] をご覧ください。#br
-※Visual Studio のバージョンは、インストール終了後にツールの VCVerChanger で変更することができます。#br
-[[( VCVerChangerの使い方 ):/ja/node/6136/]]#br
-※Python版、Java版では無関係ですのでデフォルトのまま [次へ] をクリックしてください。
++[インストール]をクリックするとインストールが開始されます。
+#ref(Openrtm121-Install006.png,center,50%)
 &br;
-#br
-
-#ref(Openrtm120-Install004.png,center)
+#ref(Openrtm121-Install007.png,center,50%)
 &br;
-#br
-
-+セットアップの種類を選択します。#br
-[標準] を選択した場合、OpenRTM-aist の C++版、Java版、Python版、OpenRTP、RTSystemEditorRCP、RTShell、OpenRTM-aist-C++版の Visual Studio 2008 から 2017 までのランタイムライブラリ、OpenRTM-aist-1.0.0 から 1.1.2 までのランタイムライブラリがインストールされます。特に変更理由がないようであれば [標準] をクリックします。
++インストールが終了しました。[完了]をクリックしてインストーラーを終了します。
+#ref(Openrtm121-Install008.png,center,50%)
 &br;
-#br
-
-#ref(Openrtm120-Install005.png,center)
-&br;
-#br
-
-+[インストール] をクリックするとインストールが開始されます。
-&br;
-#br
-
-#ref(Openrtm120-Install006.png,center)
-&br;
-
-#ref(Openrtm120-Install007.png,center)
-&br;
-#br
-
-+インストールが終了しました。[完了] をクリックしてインストーラーを終了します。
-&br;
-#br
-
-#ref(Openrtm120-Install008.png,center)
-&br;
-#br
-
-//※使用している Visual Studio のバージョンが 2017(vc141) 以外の場合は、以下のページを参考に環境変数の RTM_VC_VERSION を変更してください。#br
+//※使用しているVisual Studio のバージョンが2019(vc14)以外の場合は、以下のページを参考に環境変数のRTM_VC_VERSIONを変更してください。&br;
 //[[RTM_VC_VERSIONの変更:/ja/node/6136/]]
 
-**サンプルコンポーネントを実行する
-必須ではありませんが、ここからはスタートメニューに登録されたアプリケーションを多数起動します。毎回スタートメニューから順番にたどるのは大変ですので、
-スタートボタンからスタートメニューを表示させ [OpenRTM-aist 1.2.0 x86] > [OpenRTP] を右クリックして [ファイルの場所を開く] を選択してください。
-#br
-
-#ref(Startmenu001.png,center)&br;
+** サンプルコンポーネントを実行する
+*** 事前準備
+- 必須ではありませんが、ここからはスタートメニューに登録されたアプリケーションを多数起動します。毎回スタートメニューから順番にたどるのは大変ですので、
+スタートボタンからスタートメニューを表示させ[OpenRTM-aist 1.2.1 x86_64]>[OpenRTP]を右クリックして[ファイルの場所を開く]を選択してください。
+&br;
+#ref(Startmenu001.png,center,50%)
 CENTER:''ファイルの場所を開く''
 &br;
-
-#ref(Startmenu002.png,center)&br;
+#ref(Startmenu002.png,center,50%)&br;
 CENTER:''スタートメニューフォルダー''
 &br;
-このように、スタートメニューのフォルダーが開かれ、様々なアプリケーションにアクセスしやすくなります。
-では、インストールされたサンプルコンポーネントを実行してみます。
+-- このように、スタートメニューのフォルダーが開かれ、メニューに登録されているアプリケーションにアクセスしやすくなります。
 
-***ConsoleInComp、ConsoleOutCompを使用する
-ConsoleInComp、ConsoleOutComp は DataInPort、DataOutPort の使用方法を示したサンプルです。ConsoleIn 側で入力した数字が，ConsoleOut 側に表示されます。
-#br
-
-
-**** rtm-naming の起動
-
-Start Naming Service をクリックします。以下のようなコンソール画面が表示されます。
-#br
-
-#ref(StartNameService001.png,center)&br;
+** Naming Serviceの起動
+- Start Naming Serviceをダブルクリックします。以下のようなコンソール画面が表示されます。
+#ref(StartNameService001.png,center)
 CENTER:''Start Naming Service''
 &br;
-#br
-
-**** サンプルコンポーネント起動
-
-[OpenRTM-aist 1.2.0 x86] > [C++_Example] フォルダー内の ConsoleIn.bat と ConsoleOut.bat をクリックします。以下のようなコンソール画面が表示されます。
-#br
-
-CENTER:&ref(ConsoleIn001.png,center);  &ref(ConsoleOut001.png,center);
-
-CENTER:''ConsoleIn.bat と ConsoleOut.bat''
+** サンプルコンポーネント
+*** ConsoleInComp、ConsoleOutCompを使用する
+ConsoleInComp、ConsoleOutCompはDataInPort、DataOutPortの使用方法を示したサンプルです。ConsoleIn側で入力した数字が，ConsoleOut側に表示されます。ここではこの二つのコンポーネントを使用し、動作確認を行います。
+*** サンプルコンポーネントの起動
+- [OpenRTM-aist 1.2.1 x86_64]>[C++_Example]フォルダー内のConsoleIn.batとConsoleOut.batをダブルクリックします。もし[Windows セキュリティのの重要な警告]画面が表示されたら[プライベートネットワーク(ホームネットワーク社内ネットワークなど)(R)]にチェックマークをつけて[アクセスを許可する(A)]をクリックしてください。以下のようなコンソール画面が表示されます。
+CENTER:&ref(ConsoleIn001.png,center,90%);&ref(ConsoleOut001.png,center,90%);
+CENTER:''ConsoleIn.batとConsoleOut.bat''
 &br;
-#br
 
 &aname(openrtp_start);
-**** OpenRTP起動
-デスクトップのショートカットを クリックして起動します。スタートメニューでは、[OpenRTM-aist 1.2.0 x86] フォルダー内の OpenRTP をクリックです。
-ワークスペースは適当な場所を指定してください。
-#br
-
-#ref(OpenRTP001.png,center)&br;
+** OpenRTP起動
+- デスクトップのショートカットをクリックして起動します。スタートメニューでは、[OpenRTM-aist 1.2.1 x86_64]>[OpenRTP]と選択してください。先ほど開いたフォルダー画面からOpenRTPをダブルクリックすることによっても起動できます。
+-- ワークスペースは適当な場所を指定してください。
+#ref(OpenRTP001.png,center)
 CENTER:''ワークスペースの選択''
 &br;
-#br
-
-「ようこそ」画面は今のところ必要ないので左上の [ようこそ] タブの [×] ボタンをクリックして画面を閉じてください。
-#br
-
-#ref(OpenRTP002.png,90%,center)&br;
+-「ようこそ」画面は必要ないので左上の[ようこそ]タブの[×]ボタンをクリックして画面を閉じてください。
+#ref(OpenRTP002.png,90%,center)
 CENTER:''初期起動時の画面''
 &br;
-#br
-
-画面右上の [パースペクティブを開く] をクリックします。表示されるダイアログで [RT System Editor] を選択して [開く] をクリックすると RTSystemEditor が起動します。 
-#br
-
+** RTSystemEditorの使用
+- 画面右上の[パースペクティブを開く]をクリックします。表示されるダイアログで[RT System Editor]を選択して[開く]をクリックするとRTSystemEditorが起動します。
 CENTER:&ref(OpenRTP003.png,center);  &ref(OpenRTP004.png,center);
-
 CENTER:''パースペクティブの切り替え''
 &br;
-#br
-
-
-NameServiceView にコンポーネントが表示されます。最初は折りたたまれているため表示されていませんが、[>] をクリックし展開すると、ConsoleIn、ConsoleOut コンポーネントが確認できます。 
-#br
-
-#ref(OpenRTP005.png,center)&br;
+- [NameServiceView]にコンポーネントが表示されます。最初は折りたたまれているため表示されていませんが、[>]をクリックし展開すると、ConsoleIn、ConsoleOutコンポーネントが確認できます。
+#ref(OpenRTP005.png,center)
 CENTER:''コンポーネント起動確認''
 &br;
-#br
-
-※NameServerView にネームサーバーが表示されない時は、手動で localhost を追加します。画像の [ネームサーバを追加] をクリックしてダイアログを表示します。「localhost」 と入力し [OK] をクリックして追加します。 
-#br
-
+-- NameServerViewにネームサーバーが表示されない時は、手動でlocalhostを追加します。画像の[ネームサーバを追加]をクリックしてダイアログを表示します。「localhost」と入力し[OK]をクリックして追加します。それでも起動されなかった場合は、一度すべてのコンソール画面を閉じてNaming Serviceの起動からの手順をやり直してみてください。
 CENTER:&ref(OpenRTP006.png,center);  &ref(OpenRTP007.png,center);
-
 CENTER:''ネームサーバの追加''
 &br;
-#br
-
-
-ツールバーから [Open New System Editor] をクリックして、System Diagram を表示します。 
-#br
-
-#ref(OpenRTP008.png,center)&br;
+- ツールバーから [Open New System Editor]をクリックして、[System Diagram]を表示します。
+#ref(OpenRTP008.png,center)
 CENTER:''System Diagramを表示''
 &br;
-#br
-
-NameServiceView にある ConsoleIn、ConsoleOut のコンポーネントを System Diagram上にドラッグ＆ドロップすると、以下の画像のように表示されます。 
-#br
-
-#ref(OpenRTP009.png,center)&br;
+- [NameServiceView]にあるConsoleIn、ConsoleOutのコンポーネントを[System Diagram]上にドラッグ＆ドロップすると、以下の画像のように表示されます。
+#ref(OpenRTP009.png,center)
 CENTER:''コンポーネントをドラッグ＆ドロップ''
 &br;
-#br
-
-データポート間でドラッグ＆ドロップしてコンポーネントを接続します。その後、接続に必要な情報の入力を促すダイアログが表示されるので [OK] をクリックします。 
-#br
-
+- データポート間でドラッグ＆ドロップしてコンポーネントを接続します。その後、接続に必要な情報の入力を促すダイアログが表示されるので[OK]をクリックします。
 CENTER:&ref(OpenRTP010.png,center);  &ref(OpenRTP011.png,center);
-
 CENTER:''コンポーネント接続''
 &br;
-#br
-
-
-以下の画像のように接続されます。 
-#br
-
-#ref(OpenRTP012.png,center)&br;
+-- 以下の画像のように接続されます。
+#ref(OpenRTP012.png,center)
 CENTER:''接続完了''
 &br;
-#br
-
-コンポーネントの状態を Activate にします。[All Activate] クリックしてください。コンポーネントの色が青から明るい緑に変わったら成功です。コンポーネントは個別に選択して Activate にすることも可能です。 
-#br
-
-#ref(OpenRTP013.png,center)&br;
-
-#ref(OpenRTP014.png,center)&br;
-CENTER:''Activate 完了''
+- コンポーネントの状態をActiveにします。[All Activate]クリックしてください。コンポーネントの色が青から明るい緑に変わったら成功です。コンポーネントは個別に選択して右クリックをすることに個別にActiveにすることも可能です。([All Activate]が表示されていない場合は、Openrtpを再起動してみてください。または、コンポーネントを個別にActiveにしても良いです。）
+#ref(OpenRTP013.png,center)
 &br;
-#br
-
-*** コンソール画面での動作確認
-次にコンソール画面で動作確認します。RTSystemEditor で接続後、ConsoleIn 画面に「Please input number:」と表示されます。 
-#br
-
-#ref(Console001.png,center)&br;
+#ref(OpenRTP014.png,center)
+CENTER:''Activate完了''
+&br;
+*** コンポーネントのコンソール画面での動作確認
+- 次にコンソール画面で動作確認します。RTSystemEditorで接続後、ConsoleIn画面に「Please input number:」と表示されます。
+#ref(Console001.png,center)
 CENTER:''「Please input number:」と表示''
 &br;
-
-ConsoleIn 画面で任意の数値を入力し [Enter] を押すと、ConsoleOut 画面に数値が表示されます。 
-
-CENTER:&ref(Console002.png,center);  &ref(Console003.png,center);
-
+- ConsoleIn画面で任意の数値を入力し[Enter]を押すと、ConsoleOut画面に数値が表示されます。
+CENTER:&ref(Console002.png,center,90%);  &ref(Console003.png,center,90%);
 CENTER:''動作確認''
-
-※数値以外の入力や、大きすぎる数値を入力するとエラー(赤)になります。コンポーネントがエラーを起こしたら、RTSystemEditor でコンポーネントを右クリックして [Reset] を選択してください。
-&br;&br;
-
-コンポーネントを終了する場合は、ツールバーから [All Deactivate] をクリックします。その後、コンポーネントを右クリックして [Exit] してください。 #br
-※Deactivate に時間がかかる場合は ConsoleIn の数値入力で止まっているので、何か数値を入力してください。
-#br
-
-#ref(Console004.png,center)&br;
-CENTER:''コンポーネントの非アクティブ化''
-
-#ref(Console005.png,center)&br;
+&br;
+-- 数値以外の入力や、大きすぎる数値を入力すると動作がおかしくなることがあります。その場合はCntrl-Cキーでバッチファイルの動作を停止させ、再度バッチファイルの起動からやり直してください。
+- コンポーネントを終了する場合は、ツールバーから[All Deactivate]をクリックします。その後、コンポーネントを右クリックして[Exit]してください。
+-- Deactivateに時間がかかる場合はConsoleInの数値入力で止まっているので、その場合は何か数値を入力してください。
+#ref(Console004.png,center)
+CENTER:''コンポーネントのDeactivate''
+&br;
+#ref(Console005.png,center)
 CENTER:''コンポーネントの終了''
 &br;
-以上で ConsoleIn と ConsoleOut を使用した動作確認は終了です。
+- 以上でConsoleInとConsoleOutを使用した動作確認は終了です。
 
-#br
-
-** rtshell を利用する
-
-OpenRTM-aist-1.2.0 では rtshell が標準でインストールされます。
-rtshell を利用することでコマンドラインから RTC のアクティブ化、非アクティブ化、終了等ができるようになります。
-
-※64bit版をインストールした場合に dll の不足により動作できない場合があります。その場合は Windows Update を実行してください。
-
-*** RTC の操作
-サンプルコンポーネントを起動し、rtshell によりコマンドラインからデータポートの接続、RTC のアクティブ化、非アクティブ化、終了を行います。
-
-
-**** rtm-naming を起動
-[OpenRTM-aist 1.2.0 x86] フォルダー内の Start Naming Service をクリックして起動します。 
-
-
-**** サンプルコンポーネント の起動
-まずはサンプルコンポーネントを起動して、起動したコンポーネントを rtshell で操作します。
-[OpenRTM-aist 1.2.0 x86] > [Python_Examples] フォルダー内の ConsoleIn.bat と ConsoleOut.bat をクリックするとコンソール画面が起動します。
-
-
+** rtshellを利用する
+OpenRTM-aist-1.2.1ではrtshellが標準でインストールされます。
+rtshellを利用することでコマンドラインからRTCのActivate、Deactivate、終了等ができるようになります。
+- 64bit版をインストールした場合にdllの不足により正常動作しない場合があります。その場合はWindows Updateを実行してください。
+*** RTCの操作
+サンプルコンポーネントを起動し、rtshellによりコマンドラインからデータポートの接続、RTCのActivate、Deactivate、終了を行います。
+*** rtm-namingを起動
+- [OpenRTM-aist 1.2.1 x86_64]フォルダー内のStart Naming Serviceをダブルクリックして起動します。
+**** サンプルコンポーネントの起動
+まずはサンプルコンポーネントを起動して、起動したコンポーネントをrtshellで操作します。
+- [OpenRTM-aist 1.2.1 x86_64]>[Python_Examples]フォルダー内のConsoleIn.batとConsoleOut.batをクリックするとコンソール画面が起動します。もし[Windows セキュリティのの重要な警告]画面が表示されたら[プライベートネットワーク(ホームネットワーク社内ネットワークなど)(R)]にチェックマークをつけて[アクセスを許可する(A)]をクリックしてください。この時点ではコンソール画面上は起動時のpyプログラムの起動コマンドが表示されるだけで、先に実行したC++ Exampleの場合とは画面が出力が異なります。
 **** コマンドプロンプトからの操作
-
-次にスタートメニューから [Windows システム ツール] > [コマンドプロンプト] を起動してください。
-
-#ref(Console006.png,center)&br;
+- 次にスタートメニューから[Windows システム ツール]>[コマンドプロンプト]を起動してください。
+#ref(Console006.png,center)
 CENTER:''コマンドプロンプトの起動''
 &br;
-
-まず、C:\Python27\Scripts にパスを設定していない場合は以下のコマンドでパスを設定してください。
-
+- C:\Python27\Scriptsをパスを設定していない場合は以下のコマンドでパスを設定してください。
  set PATH=C:\Python27\Scripts;%PATH%
-
-次に以下のコマンドでデータポートを接続します。
-
+- 次に以下のコマンドでデータポートを接続します。
  rtcon /localhost/ConsoleIn0.rtc:out /localhost/ConsoleOut0.rtc:in
-
-すると ConsoleIn.py、ConsoleOut.py コンソールに以下のような文字列が表示されます。
-
+-- すると ConsoleIn.py、ConsoleOut.pyコンソールに以下のような文字列が表示されます。
  ------------------------------
  Listener:        ON_CONNECT
  Profile::name:   outin
  Profile::id:     4d622f80-135f-11e6-b923-001c4231a7a3
  ------------------------------
 
-//#ref(Console007.png,center)&br;
+//#ref(Console007.png,center)
 //CENTER:''データポート接続の表示''
-//&br;
-//#br
 
-#br
-念のため RTSystemEditor で確認します。~
-NameServiceView のコンポーネントをSystem Diagramにドラッグ＆ドロップすると、データポートが接続されたことが確認できます。
-
-#ref(Console007.png,center)&br;
+- 念のためRTSystemEditorで確認します。&br;
+-- [NameServiceView]のコンポーネントをSystem Diagramにドラッグ＆ドロップすると、データポートが接続されたことが確認できます。
+#ref(Console007.png,center)
 CENTER:''データポート接続の確認''
 &br;
-#br
-
-次に、以下のコマンドで RTC をアクティブ化します。
-
+- 次に、以下のコマンドでRTCをActivateします。
  rtact /localhost/ConsoleIn0.rtc /localhost/ConsoleOut0.rtc
-#br
-
-アクティブ化に成功していると ConsoleIn.py コンソールに「Please input number:」と表示されます。 RTSystemEditor を見ると、RTC がアクティブ化されたことが確認できます。
+-- Activateに成功するとConsoleIn.pyコンソールに「Please input number:」と表示されます。RTSystemEditorを見ると、RTCがActivateされたことが確認できます。
+#ref(Console008.png,center)
+CENTER:''Activateの確認''
 &br;
-#br
-
-#ref(Console008.png,center)&br;
-CENTER:''アクティブ化の確認''
+- そしてConsoleIn.py画面で数値を入力し[Enter]を押すと、ConsoleOut.py画面に数値が表示されます。
+CENTER:&ref(Console009.png,center,90%);  &ref(Console010.png,center,90%);
+CENTER:''ConsoleIn.pyとConsoleOut.py''
 &br;
-
-そして ConsoleIn.py 画面で数値を入力し [Enter] を押すと、ConsoleOut.py 画面に数値が表示されます。 
-
-CENTER:&ref(Console009.png,center);  &ref(Console010.png,center);
-
-CENTER:''ConsoleIn.py と ConsoleOut.py''
-&br;
-#br
-
-以下のコマンドで RTC を非アクティブ化してください。
-
+- 以下のコマンドでRTCをDeactivateしてください。
  rtdeact /localhost/ConsoleIn0.rtc /localhost/ConsoleOut0.rtc
-
-※ConsoleIn が非アクティブ化できない場合、数値入力で止まっているので何か数値を入力してください。
-
-最後に以下のコマンドで RTC を終了させてください。
-
+-- ConsoleInがDeactivateできない場合、数値入力で止まっているので何か数値を入力してください。
+- 最後に以下のコマンドでRTCを終了させてください。
  rtexit /localhost/ConsoleIn0.rtc
  rtexit /localhost/ConsoleOut0.rtc
-
-#br
-
-** 次は。。。
-
+** 次は...
 下記リンク先をご覧ください。
+- ''もっとサンプルを動かしてみる　&t;：　''[[サンプルコンポーネント:/ja/node/811]]
+- ''コンポーネントを作ってみる　　&t;：　''[[ケーススタディー:/ja/node/110]]
+- ''OpenRTMの基礎から学ぶ　　　&t;：　''[[デベロッパーズガイド:/ja/node/113]]
+- ''コミュニティーに参加する　　　&t;：　''[[コミュニティー:/ja/node/624]]
+- ''公開コンポーネントを見てみる　&t;：　''[[プロジェクト:/ja/node/123]]
 
-- ''もっとサンプルを動かしてみる　：　''[[サンプルコンポーネント:/ja/node/811]]
-- ''コンポーネントを作ってみる　：　''[[ケーススタディー:/ja/node/110]]
-- ''OpenRTM の基礎から学ぶ　：　''[[デベロッパーズガイド:/ja/node/113]]
-- ''コミュニティーに参加する　：　''[[コミュニティー:/ja/node/624]]
-- ''公開されているコンポーネントを見てみる　：　''[[プロジェクト:/ja/node/123]]
-
-#br
