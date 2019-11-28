@@ -1,4 +1,4 @@
-﻿// Title: 動作確認 (Windows編)
+﻿// Title: 動作確認(Windows編)
 #contents
 
 ** サンプルコンポーネントの場所
@@ -7,20 +7,20 @@
 サンプルは、通常は以下の場所にあります。
 
 -C:\Program Files\OpenRTM-aist\1.2.0\Components\Java
--OpenRTM-aist\jp.go.aist.rtm.RTC\bin\RTMExamples (ソースからビルドした場合)
+-OpenRTM-aist\jp.go.aist.rtm.RTC\bin\RTMExamples(ソースからビルドした場合)
 
-サンプルコンポーネントセット SimpleIO を使って、OpenRTM-aist が正しくビルド・インストールされているかを確認します。
+サンプルコンポーネントセットSimpleIOを使って、OpenRTM-aistが正しくビルド・インストールされているかを確認します。
 
 
 
-** サンプル (SimpleIO) を使用したテスト
+** サンプル(SimpleIO)を使用したテスト
 
-RT コンポーネント ConsoleIn、ConsoleOut からなるサンプルセットです。
-ConsoleIn はコンソールから入力された数値を OutPort から出力するコンポーネント、ConsoleOut は InPort に入力された数値をコンソールに表示するコンポーネントです。
-これらは、最も Simple な I/O (入出力) を例示するためのサンプルです。
-ConsoleIn の OutPort から ConsoleOut の InPort へ接続を構成し、これらの2つのコンポーネントをアクティブ化 (Activate) することで動作します。
+RTコンポーネントConsoleIn、ConsoleOutからなるサンプルセットです。
+ConsoleInはコンソールから入力された数値をOutPortから出力するコンポーネント、ConsoleOutはInPortに入力された数値をコンソールに表示するコンポーネントです。
+これらは、最も簡単な(Simpleな)I/O(入出力)を例示するためのサンプルです。
+ConsoleInのOutPortからConsoleOutのInPortへ接続を構成し、これらの2つのコンポーネントをアクティブ化(Activate)することで動作します。
 
-以下は、msi インストーラーで OpenRTM-aist をインストールした環境で、スタートメニューから各種プログラムを起動する前提で説明します。
+以下は、msiインストーラーでOpenRTM-aistをインストールした環境で、スタートメニューから各種プログラムを起動する前提での説明です。
 
 *** RT System Editor、ネームサーバー起動
 以下の手順に従ってRT System Editor、ネームサーバーを起動してください。
@@ -30,7 +30,7 @@ ConsoleIn の OutPort から ConsoleOut の InPort へ接続を構成し、こ�
 *** サンプルコンポーネントの起動
 ネームサーバー起動後、適当なサンプルコンポーネントを起動します。
 
-Windows 10の場合は右下の「ここに入力して検索」に''Java_Examples''と入力してサンプルのフォルダを開きます。
+Windows 10の場合は右下の[ここに入力して検索]に''Java_Examples''と入力してサンプルのフォルダーを開きます。
 
 #ref(rtm27.png,60%,center)
 CENTER:''ネームサーバーの起動を確認''
@@ -42,7 +42,7 @@ CENTER:''サンプルコンポーネントフォルダー''
 起動すると、下図のような2つのコンソール画面が開きます。
 
 #ref(rtm29.png,60%,center)
-CENTER:''ConsoleIn コンポーネントと ConsoleOut コンポーネント''
+CENTER:''ConsoleInコンポーネントとConsoleOutコンポーネント''
 
 **** コンポーネントが起動しない場合
 
@@ -51,38 +51,38 @@ CENTER:''ConsoleIn コンポーネントと ConsoleOut コンポーネント''
 ***** コンソール画面が開いてすぐに消える
 
 環境変数''RTM_ROOT''、''RTM_JAVA_ROOT''が正しく設定されていない場合に問題が発生する可能性があります。
-msi インストーラーでインストールした場合はOSを再起動すると解決する場合があります。
+msiインストーラーでインストールした場合はOSを再起動すると解決する場合があります。
 
 
-また、rtc.conf の設定に問題があり、起動できないケースがあります。上記スタートメニューフォルダーの [rtc.conf for examples] を開いて設定を確認してください。
-例えば、corba.endpoint/corba.endpoints などの設定が現在実行中の PC のホストアドレスとミスマッチを起こしている場合などは、CORBA が異常終了します。
+また、rtc.confの設定に問題があり、起動できないケースがあります。上記スタートメニューフォルダーの[rtc.conf for examples]を開いて設定を確認してください。
+例えば、corba.endpoint/corba.endpointsなどの設定が現在実行中のPCのホストアドレスとミスマッチを起こしている場合などは、CORBAが異常終了します。
 
-以下のような最低限の rtc.conf に設定しなおして試してみてください。
+以下のような最低限のrtc.confに設定しなおして試してみてください。
 
  corba.nameservers: localhost
 
 
 **** エディタへの配置
 
-RT System Editorのツリー表示の [>] をクリックすると、先ほど起動した2つのコンポーネントが登録されていることがわかります。
+RT System Editorのツリー表示の[>]をクリックすると、先ほど起動した2つのコンポーネントが登録されていることがわかります。
 
 #ref(rtm10.png,/ja/node/6614,60%,center)
-CENTER:''ConsoleIn コンポーネントと ConsoleOut コンポーネント''
+CENTER:''ConsoleInコンポーネントとConsoleOutコンポーネント''
 
-システムを編集するエディタを開きます。上部のエディタを [開く] ボタン&ref(rtse_open_editor_icon_ja.png, /ja/node/794); をクリックすると、中央のペインにエディタが開きます。
+システムを編集するエディタを開きます。上部のエディタを[開く]ボタン&ref(rtse_open_editor_icon_ja.png, 150%); をクリックすると、中央のペインにエディタが開きます。
 
-左側のネームサービスビューに &ref(rtse_rtc_icon.png, /ja/node/794); のアイコンで表示されているコンポーネント (2つ) を中央のエディタにドラッグアンドドロップします。
+左側のネームサービスビューに &ref(icon-rtce.png,200%); のアイコンで表示されているコンポーネント(2つ)を中央のエディタにドラッグアンドドロップします。
 
 #ref(rtm11.png,/ja/node/6614,80%,center)
 CENTER: ''コンポーネントをエディタに配置''
 
 
-**** 接続とアクティブ化
+**** 接続とActivate
 
-ConsoleIn0 コンポーネントの右側にはデータが出力される OutPort &ref(rtse_outport_icon.png, /ja/node/794); 、ConsoleOut0 コンポーネントの左側にはデータが入力される InPort &ref(rtse_inport_icon.png, /ja/node/794); がそれぞれついています。
+ConsoleIn0コンポーネントの右側にはデータが出力されるOutPort &ref(rtse_outport_icon_n.png, /ja/node/794,150%); 、ConsoleOut0コンポーネントの左側にはデータが入力されるInPort &ref(rtse_inport_icon_n.png, /ja/node/794,150%); がそれぞれついています。
 
-これら InPort/OutPort (まとめてデータポートと呼びます) を接続します。
-OutPort から InPort (または InPort から OutPort) へドラッグランドドロップすると、図のようなダイアログが現れますので、デフォルト設定のまま [OK] ボタンをクリックします。
+これらInPort/OutPort(まとめてデータポートと呼びます)を接続します。
+OutPortからInPort(またはInPortからOutPort)へドラッグランドドロップすると、図のようなダイアログが現れますので、デフォルト設定のまま[OK]ボタンをクリックします。
 
 #ref(rtm13.png,/ja/node/6614,80%,center)
 CENTER: ''データポートの接続''
@@ -91,8 +91,8 @@ CENTER: ''データポートの接続''
 CENTER: ''データポート接続ダイアログ''
 
 
-2つのコンポーネントの間に接続線が現れます。次に、エディタ上部メニューの [All Activate] ボタン &ref(rtm14.png); をクリックし、これらのコンポーネントをアクティブ化します。
-アクティブ化されると、コンポーネントが緑色に変化します。
+2つのコンポーネントの間に接続線が現れます。次に、エディタ上部メニューの[All Activate]ボタン &ref(rtm14.png); をクリックし、これらのコンポーネントをアクティブ化します。
+Activateされると、コンポーネントが緑色に変化します。
 
 #ref(rtm15.png,/ja/node/6614,center)
 CENTER: ''アクティブ化されたコンポーネント''
@@ -100,12 +100,12 @@ CENTER: ''アクティブ化されたコンポーネント''
 
 
 
-コンポーネントがアクティブ化されると ConsoleIn コンポーネント側では
+コンポーネントがアクティブ化されるとConsoleInコンポーネント側コンソールが
 
  Please input number: 
 
-というプロンプト表示に変わりますので、適当な数値 (short int の範囲内:32767以下) を入力し Enter キーを押します。
-すると、ConsoleOut 側では、入力した数値が表示され、ConsoleIn コンポーネントから ConsoleOut コンポーネントへデータが転送されたことがわかります。
+というプロンプト表示に変わりますので、適当な数値(short intの範囲内:32767以下)を入力しEnterキーを押します。
+すると、ConsoleOut側では、入力した数値が表示され、ConsoleInコンポーネントからConsoleOutコンポーネントへデータが転送されたことがわかります。
 
 以上で、コンポーネントの基本動作の確認は終了です。
 
@@ -113,18 +113,15 @@ CENTER: ''アクティブ化されたコンポーネント''
 ** 他のサンプル
 
 インストーラーには、このほかにもいくつかのサンプルコンポーネントが付属しています。
-これらのコンポーネントも同様に起動し、RTSystemEditor でポート同士を接続し、アクティブ化することで試すことができます。
+これらのコンポーネントも同様に起動し、RTSystemEditorでポート同士を接続し、アクティブ化することで試すことができます。
 
-付属しているコンポーネントのリストと簡単な説明を以下に示します。
+付属しているコンポーネント起動用のバッチファイルのリストとそれにより起動されるコンポーネントの簡単な説明を以下に示します。
 
 |LEFT:270|LEFT|c
-|ConsoleInComp.bat|コンソールから入力された数値を OutPort から出力する。ConsoleOutComp.exe に接続して使用する。|
-|ConsoleOutComp.bat|InPort に入力された数値をコンソールに表示する&color(default){コンポーネント};。ConsoleInComp.exe に接続して使用する。|
-|SeqInComp.bat|ランダムな数値(Short、Long、Float、Double とそのシーケンス型)を出力する&color(default){コンポーネント};。SequenceOutComp.bat に接続して使用する。|
-|SeqOutComp.bat|InPort に入力される数値(Short、Long、Float、Double とそのシーケンス型)を表示。SequenceInComp.exe に接続して使用する。|
-|MyServiceProviderComp.bat|MyService 型のサービスを提供する&color(default){コンポーネント};。MyServiceConsumerComp.exe に接続して使用する。|
-|MyServiceConsumerComp.bat|MyService 型のサービスを提供する&color(default){コンポーネント};。MyServiceProviderComp.exe に接続して使用する。|
-|ConfigSampleComp.bat|Configuration のサンプル。RtcLink から Configuration を変更して Configuration の挙動を理解するためのサンプル。|
-
-
-&br;
+|ConsoleInComp.bat|LEFT:コンソールから入力された数値をOutPortから出力する。ConsoleOutComp.classに接続して使用する。|
+|ConsoleOutComp.bat|LEFT:InPortに入力された数値をコンソールに表示する&color(default){コンポーネント};。ConsoleInComp.classに接続して使用する。|
+|SeqInComp.bat|LEFT:ランダムな数値(Short、Long、Float、Doubleとそのシーケンス型)を出力する&color(default){コンポーネント};。SequenceOutComp.classに接続して使用する。|
+|SeqOutComp.bat|LEFT:InPortに入力される数値(Short、Long、Float、Doubleとそのシーケンス型)を表示。SequenceInComp.classに接続して使用する。|
+|MyServiceProviderComp.bat|LEFT:MyService型のサービスを提供する&color(default){コンポーネント};。MyServiceConsumerComp.classに接続して使用する。|
+|MyServiceConsumerComp.bat|LEFT:MyService型のサービスを提供する&color(default){コンポーネント};。MyServiceProviderComp.classに接続して使用する。|
+|ConfigSampleComp.bat|LEFT:Configurationのサンプル。RtcLinkからConfigurationを変更してConfigurationの挙動を理解するためのサンプル。|
