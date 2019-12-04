@@ -20,10 +20,10 @@ RTCの開発にはCMake、Doxygen、Visual Studioのインストールが必要�
 ** インストーラーの作業内容
 インストーラーは以下の作業を行います。
 
--インストールディレクトリ(デフォルトはC:\Program Files)下に各種ファイルをコピー
--スタートメニュー以下にOpenRTM-aistフォルダーを作成し各種ショートカットを設定
--環境変数の設定
---64bit用msi利用時の設定
+- インストールディレクトリ(デフォルトはC:\Program Files)下に各種ファイルをコピー
+- スタートメニュー以下にOpenRTM-aistフォルダーを作成し各種ショートカットを設定
+- 環境変数の設定
+-- 64bit用msi利用時の設定
 
  RTM_BASE=C:\Program Files\OpenRTM-aist\\
 
@@ -38,8 +38,7 @@ RTCの開発にはCMake、Doxygen、Visual Studioのインストールが必要�
 
  OpenRTM_DIR=C:\Program Files\OpenRTM-aist\1.2.1\cmake\\
 
--PATHへの追加設定
---64bit用msi利用時の設定
+--- PATHへの追加設定(64bit用msi利用時の設定)
 
  C:\Program Files\OpenRTM-aist\1.2.1\bin\%RTM_VC_VERSION%\\
 
@@ -47,7 +46,7 @@ RTCの開発にはCMake、Doxygen、Visual Studioのインストールが必要�
 
  C:\Program Files\OpenRTM-aist\1.2.1\OpenCV3.4\%RTM_VC_VERSION%\bin\\
 
---32bit用msi利用時の設定(64bit版Windows 10での場合で、32bit版の場合は「Program Files (x86)」の部分が「Program Files」になります。)
+-- 32bit用msi利用時の設定
 
  RTM_BASE=C:\Program Files (x86)\OpenRTM-aist\\
 
@@ -62,8 +61,7 @@ RTCの開発にはCMake、Doxygen、Visual Studioのインストールが必要�
 
  OpenRTM_DIR=C:\Program Files\OpenRTM-aist\1.2.1\cmake\\
 
--PATHへの追加設定
---32bit用msi利用時の設定(64bit版Windows 10での場合で、32bit版の場合は「Program Files (x86)」の部分が「Program Files」になります。)
+---PATHへの追加設定
 
  C:\Program Files (x86)\OpenRTM-aist\1.2.1\bin\%RTM_VC_VERSION%\\
 
@@ -94,7 +92,6 @@ RTCの開発にはCMake、Doxygen、Visual Studioのインストールが必要�
             + Java: Java サンプルコンポーネント
             + Python: Python サンプルコンポーネント
          + etc: rtc.confサンプル
-         + ext: ComponentObserverConsumer
          + jar: jarファイル
          + jre: OpenJDK JRE
          + omniORB
