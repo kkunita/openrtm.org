@@ -19,37 +19,37 @@ openrtm.orgが提供するインストール・スクリプトを以下のURLを
 ただし、このスクリプトはOpenRTM-aist関係のすべてのパッケージをインストールするので、不必要なパッケージもインストールされる可能性があります。
 詳しく理解している場合は、手動でインストールすることを推奨します。
 
-** pkg_install_(ubuntu/debian/raspbian).sh
+** pkg_install_{ubuntu|debian|raspbian}.sh
 
-使えるオプションは同じですが、pkg_install_raspbian.shではopenrtpとrtshellのインストールの対応はありません。従って-lオプションの引数としてopenrtpとrtshellは使用できません。
+使えるオプションは同じですが、pkg_install_raspbian.shではjavaとopenrtpとrtshellのインストールの対応はありません。従って-lオプションの引数としてopenrtpとrtshellは使用できません。
 
 *** オプション一覧
   Usage:
-    pkg_install_ubuntu.sh -l {all|c++} [-r|-d|-s|-c|-u|-ur|-ud|-us|-uc] [--yes]
+    pkg_install_ubuntu.sh -l {all|c++} [-r|-d|-s|-c] [-u|--yes]
     pkg_install_ubuntu.sh [-u]
-    pkg_install_ubuntu.sh -l {python|java} [-r|-d|-c|-u|-ur|-ud|-uc] [--yes]
-    pkg_install_ubuntu.sh -l {openrtp|rtshell} [-d|-u|-ud] [--yes]
-    pkg_install_ubuntu.sh  {--help|-h}
-
+    pkg_install_ubuntu.sh -l {python|java} [-r|-d|-c] [-u|--yes]
+    pkg_install_ubuntu.sh -l {openrtp|rtshell} [-d] [-u|--yes]
+    pkg_install_ubuntu.sh  {--help|-h|--version}
+ 
   Example:
-    pkg_install_ubuntu.sh  [= pkg_install_ubuntu.sh -l c++ -d]
+    pkg_install_ubuntu.sh  [= pkg_install_ubuntu.sh -l all -d]
     pkg_install_ubuntu.sh -l all -d  
     pkg_install_ubuntu.sh -l c++ -c --yes
     pkg_install_ubuntu.sh -l all -u
    
   Options:
-    -l <argument>  language or tool {c++|python|java|openrtp|rtshell}
+    -l <argument>  language or tool {c++|python|java|openrtp|rtshell|all}
+       all        install packages of all the supported languages and tools
     -r             install robot component runtime
-    -d             install robot component developer [default]
-    -s             install tool_packages for build source packages
-    -c             install tool_packages for core developer
-    -u             uninstall robot component developer
-    -ur            uninstall robot component runtime
-    -ud            uninstall robot component developer
-    -us            uninstall tool packages for build source packages
-    -uc            uninstall tool packages for core developer
-    --yes          force yes (it can not be specified with -u and -u? options
+    -d             install for robot component developer [default]
+    -s             install tool packages for building from the source code
+    -c             install tool packages for core developer
+    -u             uninstall packages
+    --yes          force yes 
     --help, -h     print this
+    --version      print the version number
+
+ここで-l allは全ての対応可能な言語、ツール用のパッケージがインストールされることを指定するものです。
 
 オプションを指定することで、以下に示されるパッケージがインストールされます。
 
@@ -69,30 +69,28 @@ openrtm.orgが提供するインストール・スクリプトを以下のURLを
 
 *** オプション一覧
   Usage:
-    pkg_install_fedora.sh -l {all|c++} [-r|-d|-s|-c|-u|-ur|-ud|-us|-uc] [--yes]
+    pkg_install_fedora.sh -l {all|c++} [-r|-d|-s|-c] [-u|--yes]
     pkg_install_fedora.sh [-u]
-    pkg_install_fedora.sh -l {python|java} [-r|-d|-c|-u|-ur|-ud|-uc] [--yes]
-    pkg_install_fedora.sh -l {openrtp|rtshell} [-d|-u|-ud] [--yes]
-    pkg_install_fedroa.sh  {--help|-h}
-
+    pkg_install_fedora.sh -l {python|java} [-r|-d|-c] [-u|--yes]
+    pkg_install_fedora.sh -l {openrtp|rtshell} [-d] [-u|--yes]
+    pkg_install_fedroa.sh  {--help|-h|--version}
+ 
   Example:
-    pkg_install_fedora.sh  [= pkg_install_fedora.sh -l c++ -d]
+    pkg_install_fedora.sh  [= pkg_install_fedora.sh -l all -d]
     pkg_install_fedora.sh -l all -d  
     pkg_install_fedora.sh -l python -c --yes
  
   Options:
-    -l <argument>  language or tool {c++|python|java|openrtp|rtshell}
+    -l <argument>  language or tool {c++|python|java|openrtp|rtshell|all}
+       all:       install packages for all the supported languages and tools
     -r             install robot component runtime
-    -d             install robot component developer [default]
-    -s             install tool_packages for build source packages
-    -c             install tool_packages for core developer
-    -u             uninstall robot component developer
-    -ur            uninstall robot component runtime
-    -ud            uninstall robot component developer
-    -us            uninstall tool packages for build source packages
-    -uc            uninstall tool packages for core developer
-    --yes          force yes (it can not be specified with -u and -u? options
+    -d             install for robot component developer [default]
+    -s             install tool packages for building from the source code
+    -c             install tool packages for core developer
+    -u             uninstall packages
+    --yes          force yes
     --help, -h     print this
+    --version      print the version number
 
 *** インストールされるrpmパッケージ一覧
 
