@@ -754,8 +754,9 @@
       - (更新方法: Update_Method_ja.txt)      -
       - (OpenRTP 1.1.0-RC5: OpenRTP 1.1.0-RC5: openrtp_1_1_0_rc5_ja.txt)
     - RTShell: 03_rtshell_ja.txt
-      - (rtshell: 07_rtshell_ja.txt)
+      - (追加説明=> rtshell: 07_rtshell_ja.txt)
       - (OpenRTM-aistを10分で始めよう！: lets_start_jp.txt)
+      - (一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt)
     - rtctree/rtsprofile: 04_rtctree_rtsprofile_ja.txt
       - (rtctreeモジュール)
       - (rtprofileモジュール)

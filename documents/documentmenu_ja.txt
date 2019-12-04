@@ -621,7 +621,7 @@
     - 過去のに掲載した FAQ: 10_faq_old_6431_ja.txt
 - ダウンロード: download_frontpage_ja.txt
   - C++版: 01_openrtm-aist-cpp_jp.txt
-　　- 1.2.1-RELEASE: OpenRTM-aist C++ 1.2.1-RELEASE: 01_openrtm-aist-cpp_1_2_1_release_ja.txt
+　　- 1.2.1-RELEASE: OpenRTM-aist C++ 1.2.0-RELEASE: 01_openrtm-aist-cpp_1_2_1_release_ja.txt
       - (VCVerChanger=> システム環境変数設定ツールの使い方: 15_howtouse_env_ver_tool_1_1_ja.txt)
       - Visual Studio 2017 インストール方法: visual_studio_2017_install_ja.txt
     - 1.1.2-RELEASE=> OpenRTM-aist C++ 1.1.2-RELEASE: openrtm-aist-cpp_1_1_2_ja.txt
@@ -754,8 +754,9 @@
       - (更新方法: Update_Method_ja.txt)      -
       - (OpenRTP 1.1.0-RC5: OpenRTP 1.1.0-RC5: openrtp_1_1_0_rc5_ja.txt)
     - RTShell: 03_rtshell_ja.txt
-      - (rtshell: 07_rtshell_ja.txt)
+      - (追加説明=> rtshell: 07_rtshell_ja.txt)
       - (OpenRTM-aistを10分で始めよう！: lets_start_jp.txt)
+      - (一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt)
     - rtctree/rtsprofile: 04_rtctree_rtsprofile_ja.txt
       - (rtctreeモジュール)
       - (rtprofileモジュール)
