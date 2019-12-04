@@ -1,59 +1,68 @@
 ﻿// Title: RTShell
-**RTShell（CUIツール）
+**RTShell(CUIツール)
 
-RTShell（[[マニュアル>rtshell]]）はシェルで RTコンポーネントと RTシステムの管理をするためのスクリプトです。
-RTSystemEditor の代わりで、RTSystemEditor を使わなくてコンポーネントを activate したり接続したりなどができます。
-スクリプト（バッチファイルや Bashscript 等）により自動化も可能になります。
+RTShell([[マニュアル>rtshell]])はコマンドラインからRTコンポーネントとRTシステムの管理をするためのコマンド(スクリプト)の集合です。RTSystemEditorを使わなくてもコマンドラインシェルよりコンポーネントをactivateしたり接続したりなどができます。スクリプト(バッチファイルやBash scriptなど)により自動化も可能です。
 <!--break-->
 &br;
 **パッケージ
-***Windows インストーラー
+***Windowsインストーラー
+msiファイルは900MB以上のサイズがあります。ダウンロードを数分で行うためにはある程度高速な回線(50Mbps以上)を用いてください。
 
+**** 64bit用
 
-**** 32bit 用
+|LEFT:300|LEFT|LEFT:120|c
+|Windows用インストーラー&br; (OpenRTM-aist、C++、Python、&br;Java版、およびOpenRTP、&br; RTShell(4.2.2)を含む)&br;(Visual Studio 2010、2012、&br; 2013、2015、2017、2019共通)|[[OpenRTM-aist-1.2.1-RELEASE_x86_64.msi:https://github.com/OpenRTM/OpenRTM-aist/releases/download/v1.2.1/OpenRTM-aist-1.2.1-RELEASE_x86_64.msi]] &br;MD5:be6b346d61768435d812cc032bc7a529 | 2019/11/25 |
+|Python-2.7|[[python-2.7.16.amd64.msi:https://www.python.org/ftp/python/2.7.16/python-2.7.16.amd64.msi]]|[[python.org:https://www.python.org]]|
+|Python-3.6|[[python-3.6.8-amd64.exe:https://www.python.org/ftp/python/3.6.8/python-3.6.8-amd64.exe]]|[[python.org:https://www.python.org]]|
+|Python-3.7|[[python-3.7.5-amd64.exe:https://www.python.org/ftp/python/3.7.5/python-3.7.5-amd64.exe]]|[[python.org:https://www.python.org]]|
+|CMake |[[cmake-3.15.5-win64-x64.msi:https://github.com/Kitware/CMake/releases/download/v3.15.5/cmake-3.15.5-win64-x64.msi]] |[[cmake:https://cmake.org/]]|
+|Doxygen|[[doxygen-1.8.16-setup.exe:http://doxygen.nl/files/doxygen-1.8.16-setup.exe]] |[[doxygen:http://www.doxygen.nl/index.html]]|
 
-|LEFT:200|LEFT|LEFT:100|c
-|Windows 用インストーラー&br; (OpenRTM-aist C++、Python、Java版&br; および OpenRTP、RTShell (4.1.0)含む) |[[OpenRTM-aist-1.1.2-RELEASE_x86.msi:http://openrtm.org/pub/Windows/OpenRTM-aist/1.1/OpenRTM-aist-1.1.2-RELEASE_x86.msi]] &br;MD5:59be8603f3fc007c2aed4476052886ce | 2016/05/27 |
-|Python-2.7|[[python-2.7.10.msi:https://www.python.org/ftp/python/2.7.10/python-2.7.10.msi]]|[[python.org:https://www.python.org]]|
+-&color(red){※Pythonは、"3.7"、"3.6"、"2.7"のいずれかのバージョンをインストールしてください。};
+//-&color(red){※古いRTShellは事前に削除しておいてください。ただし、OpenRTM-aist 1.1.2版をmsiを用いてインストールしている場合は対応不要です。};
 
--&color(red){※ Python 2.7.10 推奨。2.7.11 は PYTHONPATH 等環境変数の設定が必要な場合があります。};
--&color(red){※ 古い RTShell は事前に削除しておいてください。};
+**** 32bit用
 
-**** 64bit 用
+|LEFT:300|LEFT|LEFT:120|c
+|Windows用インストーラー&br; (OpenRTM-aist、C++、Python、&br;Java版、およびOpenRTP、&br;RTShell(4.2.2)を含む)&br;(Visual Studio 2010、2012、&br;2013、2015、2017、2019共通)|[[OpenRTM-aist-1.2.1-RELEASE_x86.msi:https://github.com/OpenRTM/OpenRTM-aist/releases/download/v1.2.1/OpenRTM-aist-1.2.1-RELEASE_x86.msi]] &br;MD5:a9186d409cafc039432a0e1c6e7e02ef | 2019/11/25 |
+|Python-2.7|[[python-2.7.16.msi:https://www.python.org/ftp/python/2.7.16/python-2.7.16.msi]]|[[python.org:https://www.python.org]]|
+|Python-3.6|[[python-3.6.8.exe:https://www.python.org/ftp/python/3.6.8/python-3.6.8.exe]]|[[python.org:https://www.python.org]]|
+|Python-3.7|[[python-3.7.5.exe:https://www.python.org/ftp/python/3.7.5/python-3.7.5.exe]]|[[python.org:https://www.python.org]]|
+|CMake|[[cmake-3.15.5-win32-x86.msi:https://github.com/Kitware/CMake/releases/download/v3.15.5/cmake-3.15.5-win32-x86.msi]] |[[cmake:https://cmake.org/]]|
+|Doxygen|[[doxygen-1.8.16-setup.exe:http://doxygen.nl/files/doxygen-1.8.16-setup.exe]] |[[doxygen:http://www.doxygen.nl/index.html]]|
 
-|LEFT:200|LEFT|LEFT:100|c
-|Windows 用インストーラー&br; (OpenRTM-aist C++,Python,Java版,&br; および OpenRTP,RTShell(4.1.0)含む)|[[OpenRTM-aist-1.1.2-RELEASE_x86_64.msi:http://openrtm.org/pub/Windows/OpenRTM-aist/1.1/OpenRTM-aist-1.1.2-RELEASE_x86_64.msi]] &br;MD5:ee8db7c1682cb21dce963207e0484fb3 | 2016/05/27 |
-|Python-2.7|[[python-2.7.10.amd64.msi:https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi]]|[[python.org:https://www.python.org]]|
+-&color(red){※Pythonは、"3.7"、"3.6"、"2.7"のいずれかのバージョンをインストールしてください。};
+//-&color(red){※古いRTShellは事前に削除しておいてください。ただし、OpenRTM-aist 1.1.2版をmsiを用いてインストールしている場合は対応不要です。};
 
--&color(red){※ Python 2.7.10推奨。2.7.11はPYTHONPATH等環境変数の設定が必要な場合があります。};
--&color(red){※ 古い RTShell は事前に削除しておいてください。};
+msiを用いたインストールについては、[[OpenRTM-aistを10分で始めよう！:http://openrtm.org/openrtm/ja/node/6026]]のページで手順を紹介しています。&br;
 
-インストールについては、[[OpenRTM-aistを10分で始めよう！:http://openrtm.org/openrtm/ja/node/6026]] のページで手順を紹介しています。&br;
+*** Linux
+以下にはUbuntuでのやり方を示します。他のプラットフォームではsudo以外の方法でroot権限を得る点やスクリプトの名前が別の名前になったりしますので(スクリプトの「ubuntu.sh」の部分が「debian.sh」などの別の名前になります)、読みかえて下記の情報を利用ください。
 
-*** Linux (pipパッケージ)
+まずは[[一括インストールスクリプト>/ja/node/6345]]を用いて
+ $ sudo sh pkg_install_ubuntu -l python --yes
+と、OpenRTM-pythonをインストールしてください。次に
+ $sudo sh pkg_install_ubuntu -l rtshell --yes
+でRTShellのインストールができます。
 
-RTShell は pip によりインストール可能です。
+また、RTShellはpipによりインストール可能です。
 
-&color(red){Fedora の omniORB4.2 の環境では pip でインストールできません。ソースからインストールしてください。};
+  $ sudo pip install rtshell-aist
 
-  # pip install rtshell
+pipは自動的に依存パッケージ（RTCTreeとRTSProfile）もインストールします。
 
-pip は自動的に依存パッケージ（RTCTree と RTSProfile）もインストールします。pip が完了したら、必ず以下のコマンドを実行してください
+pip用パッケージは下記からも入手可能です。
+- [[RTShell pipパッケージ>https://pypi.org/project/rtshell-aist/]]
 
-  # rtshell_post_install
+一括インストールスクリプトかpipでのインストールが完了したら、つぎのコマンドを実行してください
 
-|LEFT:200|LEFT|LEFT:100|c
-|pip パッケージ|[[https://pypi.python.org/pypi/rtshell/>https://pypi.python.org/pypi/rtshell/]]| 2016/05/27 |
-
-
-&color(red){RTShell は omniORB-py 4.x 以上が必要となります。あらかじめ omniORBpy をインストールしてください。};
-&color(red){RTShell の最新版をインストールする前に、古いバージョンは完全削除されていることを確認してください。};
+  $ sudo rtshell_post_install
 
 
 **ソースコード
 
-OpenRTM-aist-1.1.0 以上に対応。
+OpenRTM-aist-1.1.0以上に対応。
 
-|LEFT:200|LEFT|LEFT:100|c
-|>|>|CENTER: CUI ツール|
-|RTShellソースコード|[[githubのページ:http://github.com/gbiggs/rtshell/tree/v4.1.0]]&br;「Download ZIP」をクリックする|2015.09.17|
+|LEFT:200|LEFT|LEFT:110|c
+|>|>|CENTER: CUIツール|
+|RTShellソースコード|[[githubのページ:https://github.com/OpenRTM/rtshell/tree/v4.2.2]]&br; [Clone or Download]をクリックして&br; [Download ZIP]をクリックする|2019.03.18|
