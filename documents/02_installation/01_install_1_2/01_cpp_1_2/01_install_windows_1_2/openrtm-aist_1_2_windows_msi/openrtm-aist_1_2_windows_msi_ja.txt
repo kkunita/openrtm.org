@@ -7,7 +7,7 @@ msiパッケージを利用することで、依存ライブラリであるomniO
 #clear
 #contents
 
-** 依存ソフトウェアのインストール
+** 依存ソフトウエアのインストール
 OpenRTM-aistのインストール前に必ずPythonをインストールする必要があります。''OpenRTM-aistの32bit版をインストールする場合は32bit版のPythonを、64bit版の場合は64bit版のPythonをインストールしてください。''
 
 - [[Python(2.7、もしくは3.6、3.7):https://www.python.org/downloads/windows/]]
@@ -15,4 +15,5 @@ OpenRTM-aistのインストール前に必ずPythonをインストールする�
 ** OpenRTM-aistのインストール
 以下リンクからインストーラー、64bit版はOpenRTM-aist-1.2.x-RELEASE_x86_64.msi、32bit版はOpenRTM-aist-1.2.x-RELEASE_x86.msiをダウンロードしてインストールしてください。
 
-- [[OpenRTM-aist 1.2.0:https://github.com/OpenRTM/OpenRTM-aist/releases/tag/v1.2.0]]
+- [[OpenRTM-aist 1.2.1:https://github.com/OpenRTM/OpenRTM-aist/releases/tag/v1.2.1]]
+- [[OpenRTM.orgダウンロードページ>/ja/download/openrtm-aist-cpp/openrtm-aist-cpp_1_2_1_release]]
