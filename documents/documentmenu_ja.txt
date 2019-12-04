@@ -621,7 +621,7 @@
     - 過去のに掲載した FAQ: 10_faq_old_6431_ja.txt
 - ダウンロード: download_frontpage_ja.txt
   - C++版: 01_openrtm-aist-cpp_jp.txt
-　　- 1.2.1-RELEASE: OpenRTM-aist C++ 1.2.0-RELEASE: 01_openrtm-aist-cpp_1_2_1_release_ja.txt
+　　- 1.2.1-RELEASE=> OpenRTM-aist C++ 1.2.1-RELEASE: 01_openrtm-aist-cpp_1_2_1_release_ja.txt
       - (VCVerChanger=> システム環境変数設定ツールの使い方: 15_howtouse_env_ver_tool_1_1_ja.txt)
       - Visual Studio 2017 インストール方法: visual_studio_2017_install_ja.txt
     - 1.1.2-RELEASE=> OpenRTM-aist C++ 1.1.2-RELEASE: openrtm-aist-cpp_1_1_2_ja.txt
@@ -632,7 +632,7 @@
       - (一括インストール・スクリプト:bulk_installation_script_ubuntu_1_1_ja.txt)
       - (ソースからのビルド (Windows編): 09_build_source_windows_1_1_ja.txt)
       - (ソースからのビルド (Linux編): 10_build_source_linux_1_1_ja.txt)
-    - 1.1.1-RELEASE: OpenRTM-aist C++ 1.1.1-RELEASE: openrtm-aist-cpp_1_1_release_ja.txt
+    - 1.1.1-RELEASE=> OpenRTM-aist C++ 1.1.1-RELEASE: openrtm-aist-cpp_1_1_release_ja.txt
       - (OpenRTM-aistを10分で始めよう！(OpenRTM-aist 1.1.1): quick_start_1_1_1_ja.txt)
       - (こちら(C++)=> OpenRTM-aist(C++版)1.1系のインストール; 01_cpp_1_1_ja.txt)
       - (ソースからのビルド (Windows編): 09_build_source_windows_1_1_ja.txt)
