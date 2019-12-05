@@ -29,7 +29,7 @@ ConsoleInCompのOutPortからConsoleOutCompのInPortへ接続し、これらの2
 *** サンプルコンポーネントの起動
 ネームサーバー起動後、適当なサンプルコンポーネントを起動します。
 
-Windows 10の場合は右下の[ここに入力して検索]に''C++_Examples''と入力して、サンプルのフォルダを見つけ、それを開きます。
+Windows 10の場合は右下の[ここに入力して検索]に''C++_Examples''と入力して、サンプルのフォルダーを見つけ、それを開きます。
 
 #ref(rtm7.png,60%,center)
 CENTER:''ネームサーバーの起動を確認''
@@ -138,7 +138,7 @@ CENTER: ''アクティブ化されたコンポーネント''
 |MyServiceProviderComp.bat|MyService型のサービスを提供する&color(default){MyServiceProviderコンポーネント}; を起動します。MyServiceConsumerに接続して使用します。|
 |MyServiceConsumerComp.bat|MyService型のサービスを提供する&color(default){MyServiceConsumerコンポーネント}; を起動します。MyServiceProviderに接続して使用します。|
 |ConfigSample.bat|Configuration機能の使用例のサンプル&color(default){ConfigSampleコンポーネント}; を起動します。RtcLinkからConfigurationを変更してConfigurationの挙動を理解するためのサンプルです。|
-|Composite.bat|複合コンポーネント作成サンプル&color(default){PeriodicECSharedComponentコンポーネント}; を起動します。Sensor、Controller、Motorの3つサブ・コンポネントを複合しています。 ConsoleIn等のコンポーネント接続して使ってみると良いでしょう。|
+|Composite.bat|複合コンポーネント作成サンプル&color(default){PeriodicECSharedComponentコンポーネント}; を起動します。Sensor、Controller、Motorの3つサブ・コンポネントを複合しています。 ConsoleInなどのコンポーネント接続して使ってみると良いでしょう。|
 
 
 
