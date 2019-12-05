@@ -66,9 +66,9 @@ OpenRTM-aist-Java-1.2.1の動作および開発には以下のJDKが必要です
 **ソースコード
 
 |LEFT:200|LEFT|LEFT:100|c
-|Java版ソースコード|[[OpenRTM-aist-Java-1.2.1.tar.gz:https://github.com/OpenRTM/OpenRTM-aist-Java/releases/download/v1.2.1/OpenRTM-aist-Java-1.2.1-RELEASE.tar.gz]] &br;MD5:0db80c61d07d69d5790116f95c7dfbfd | 2019/11/25 |
-|Java版ソースコード|[[OpenRTM-aist-Java-1.2.1.zip:https://github.com/OpenRTM/OpenRTM-aist-Java/releases/download/v1.2.1/OpenRTM-aist-Java-1.2.1-RELEASE.zip]] &br;MD5:be5082e762ec45f17434a9072ed2ba7d | 2019/11/25 |
-|jarファイルおよびサンプル|[[OpenRTM-aist-Java-1.2.1-jar.zip:https://github.com/OpenRTM/OpenRTM-aist-Java/releases/download/v1.2.1/OpenRTM-aist-Java-1.2.1-RELEASE-jar.zip]] &br;MD5:359384b4be31524ad84ed06cf6477c39 | 2019/11/25 |
+|Java版ソースコード|[[OpenRTM-aist-Java-1.2.1.tar.gz:https://github.com/OpenRTM/OpenRTM-aist-Java/releases/download/v1.2.1/OpenRTM-aist-Java-1.2.1.tar.gz]] &br;MD5:0db80c61d07d69d5790116f95c7dfbfd | 2019/11/25 |
+|Java版ソースコード|[[OpenRTM-aist-Java-1.2.1.zip:https://github.com/OpenRTM/OpenRTM-aist-Java/releases/download/v1.2.1/OpenRTM-aist-Java-1.2.1.zip]] &br;MD5:be5082e762ec45f17434a9072ed2ba7d | 2019/11/25 |
+|jarファイルおよびサンプル|[[OpenRTM-aist-Java-1.2.1-jar.zip:https://github.com/OpenRTM/OpenRTM-aist-Java/releases/download/v1.2.1/OpenRTM-aist-Java-1.2.1-jar.zip]] &br;MD5:359384b4be31524ad84ed06cf6477c39 | 2019/11/25 |
 
 
 *** ソースからのビルド
