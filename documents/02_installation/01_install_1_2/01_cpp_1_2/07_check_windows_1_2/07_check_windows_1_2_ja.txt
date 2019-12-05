@@ -6,7 +6,7 @@
 インストールまたはビルドが正常に終了したら、付属のサンプルで動作テストをします。
 サンプルは、64bit版の場合、通常は以下の場所にあります。
 
--C:\Program Files\OpenRTM-aist\1.2.0\Components\C++\Examples
+-C:\Program Files\OpenRTM-aist\1.2.１\Components\C++\Examples
 -OpenRTM-aist\examples (ソースからビルドした場合)
 
 以下の手順で、サンプルコンポーネントセットSimpleIOを使用して、OpenRTM-aistが正しくビルド/インストールされているかを確認します。
@@ -128,17 +128,18 @@ CENTER: ''アクティブ化されたコンポーネント''
 
 インストーラーには、このほかにもいくつかのサンプルコンポーネントが付属しています。これらのコンポーネントも同様に、ダブルクリックで起動、そしてRTSystemEditorを用いてポート間を接続し、アクティブ化することで試すことができます。
 
-付属しているコンポーネントのリストと簡単な説明を以下に示します。
+付属しているコンポーネント起動用バッチファイルのリストと簡単な説明を以下に示します。
 
-|ConsoleInComp.exe|コンソールから入力された数値をOutPortから出力する。ConsoleOutComp.exeに接続して使用します。|
-|ConsoleOutComp.exe|InPortに入力された数値をコンソールに表示する&color(default){コンポーネント};。ConsoleInComp.exeに接続して使用します。|
-|SequenceInComp.exe|ランダムな数値(Short、Long、Float、Doubleとそのシーケンス型)を出力する&color(default){コンポーネント};。SequenceOutComp.exeに接続して使用する。|
-|SequenceOutComp.exe|InPortに入力される数値(Short、Long、Float、Doubleとそのシーケンス型)を表示。SequenceInComp.exeに接続して使用します。|
-|MyServiceProviderComp.exe|MyService型のサービスを提供する&color(default){コンポーネント};。MyServiceConsumerComp.exeに接続して使用します。|
-|MyServiceConsumerComp.exe|MyService型のサービスを提供する&color(default){コンポーネント};。MyServiceProviderComp.exeに接続して使用します。|
-|ConfigSampleComp.exe|Configurationのサンプル。RtcLinkからConfigurationを変更してConfigurationの挙動を理解するためのサンプルです。|
-|USBCameraAcquireComp.exe|USBカメラから画像を取得してOutPortから出力する&color(default){コンポーネント};。USBCameraMonitor.exeに接続して使用します。|
-|USBCameraMonitor.exe|InPortに入力される画像を画面に表示する&color(default){コンポーネント};。USBCameraAquire.exeに接続して使用します。|
+|LEFT:250|LEFT|c
+|ConsoleIn.bat|LEFT:コンソールから入力された数値をOutPortから出力する&color(default){ConsoleInコンポーネント}; を起動します。ConsoleOutに接続して使用します。|
+|ConsoleOut.bat|InPortに入力された数値をコンソールに表示する&color(default){ConsoleOutコンポーネント};  を起動します。ConsoleInに接続して使用します。|
+|SeqIn.bat|ランダムな数値(Short、Long、Float、Doubleとそのシーケンス型)を出力する&color(default){SequenceInComponentコンポーネント};を起動します。SequenceOutComponentに接続して使用する。|
+|SeqOut.bat|InPortに入力される数値(Short、Long、Float、Doubleとそのシーケンス型)を表示する&color(default){SequenceOutComponent};を起動します。SequenceInComponentに接続して使用します。|
+|MyServiceProviderComp.bat|MyService型のサービスを提供する&color(default){MyServiceProviderコンポーネント}; を起動します。MyServiceConsumerに接続して使用します。|
+|MyServiceConsumerComp.bat|MyService型のサービスを提供する&color(default){MyServiceConsumerコンポーネント}; を起動します。MyServiceProviderに接続して使用します。|
+|ConfigSample.bat|Configuration機能の使用例のサンプル&color(default){ConfigSampleコンポーネント}; を起動します。RtcLinkからConfigurationを変更してConfigurationの挙動を理解するためのサンプルです。|
+|Composite.bat|複合コンポーネント作成サンプル&color(default){PeriodicECSharedComponentコンポーネント}; を起動します。Sensor、Controller、Motorの3つサブ・コンポネントを複合しています。 ConsoleIn等のコンポーネント接続して使ってみると良いでしょう。|
+
 
 
 &br;
