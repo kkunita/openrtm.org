@@ -2,22 +2,17 @@
 #contents(5)
 
 ** 一括インストールスクリプト入手先
-openrtm.orgが提供するインストール・スクリプトを以下のURLを用いてダウンロードし、root権限で実行します。このスクリプトでは、必要なパッケージを順次apt-getを用いてインストールしていきます。
+openrtm.orgが提供するインストール・スクリプトの入手先です。以下のリンクを右クリックして[リンクのURLのコピー](Firefoxの場合)を選び、URLを入手してwget等のコマンドでダウンロードするか(下記にはその方法を示しています)、[名前を付けてリンク先を保存](Firefoxの場合)を選んでダウンロードしてください。ダウンロードしたスクリプトはroot権限で実行してください。これらのスクリプトでは、必要なパッケージを順次apt-getを用いてインストールしていきます。
 
- Ubuntu用一括インストールスクリプト URL:
- https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_ubuntu.sh
- Debian用一括インストールスクリプト URL:
- https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_debian.sh
- Raspbian用一括インストールスクリプトURL:
- https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_raspbian.sh
- Fedora用一括インストールスクリプトURL:
- https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_fedora.sh
+- [[Ubuntu用一括インストールスクリプト>https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_ubuntu.sh]]
+- [[Debian用一括インストールスクリプト>https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_debian.sh]]
+- [[Raspbian用一括インストールスクリプト>https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_raspbian.sh]]
+- [[Fedora用一括インストールスクリプト>https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_fedora.sh]]
 
 このスクリプトはオプションを指定することで、目的に合わせたパッケージをインストールで可能です。
-//初めてOpenRTM-aistをインストールしてみる方もソースをコンパイルしてみることを推奨します。
 
 ただし、このスクリプトはOpenRTM-aist関係のすべてのパッケージをインストールするので、不必要なパッケージもインストールされる可能性があります。
-詳しく理解している場合は、手動でインストールすることを推奨します。
+詳しく理解している場合は、手動でインストールすることも可能です。
 
 ** pkg_install_{ubuntu|debian|raspbian}.sh
 
@@ -102,7 +97,7 @@ openrtm.orgが提供するインストール・スクリプトを以下のURLを
 以下、一括インストールスクリプトを使用したダウンロードとインストール方法です。（"ubuntu"の文字はそれぞれインストールされるディストリビューションに合わせて"debian"や"raspbian"、"fedora"としてください。)
 
 お使いの環境に合わせた一括インストールスクリプトを次のコマンドでダウンロードします。
- $ wget [pkg_install_ubuntu.shのダウンロードURL]
+ $ wget <pkg_install_ubuntu.shのダウンロードURL>
 
 
 **** C++版をインストールする
