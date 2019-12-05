@@ -39,12 +39,12 @@ Amazon CorrettoはAmazonの長期サポートを含むOpenJDKのビルドです�
 *** Ubuntu/Debian/Raspbian
 Ubuntu Linux, Debian Linuxなどでは apt コマンドで以下のようにインストールすることができます。
 
- $ sudo aptinstall openjdk-8-jdk
+ $ sudo apt install openjdk-8-jdk
 
 *** Fedora
 Fedora Linuxではyumコマンドで以下のようにインストールすることができます。
 
- sudo yam -y install java-1.8.0-openjdk
+ $ sudo yam -y install java-1.8.0-openjdk
 
 *** リポジトリからのパッケージ入手以外の方法
 上記のサードパーティベンダのURLから入手することもできます。インストール方法についてはそのサイトの情報に従うか、Javaの標準的方法でインストールしてください。
@@ -52,12 +52,12 @@ Fedora Linuxではyumコマンドで以下のようにインストールする�
 *** 既にJDK8以外がインストールされている場合
 なお、JDK8以外のJDKがデフォルト状態でインストールされている可能性がありますので、
 
- java -version
+ $ java -version
 
 コマンドでバージョンが1.8で始まるバージョンなどJDK8を意味するバージョンになっていることを確認してください。
 もし、そうでなかったら
 
- update-alternative --config java
+ $ sudo update-alternative --config java
 
 コマンドを用いてJDK8ベースのJava環境を選択してください。
 ubuntu18.04の環境でopenjdk-8-jdkをインストールした後での実行例は以下のようになります。
