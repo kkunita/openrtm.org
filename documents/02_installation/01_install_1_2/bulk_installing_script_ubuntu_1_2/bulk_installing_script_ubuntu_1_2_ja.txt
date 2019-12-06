@@ -16,12 +16,12 @@ openrtm.orgが提供するインストール・スクリプトの入手先です
 
 ** pkg_install_{ubuntu|debian|raspbian}.sh
 
-使えるオプションは同じですが、pkg_install_raspbian.shではjavaとopenrtpとrtshellのインストールの対応はありません。従って-lオプションの引数としてopenrtpとrtshellは使用できません。
+使えるオプションは同じですが、pkg_install_raspbian.shではjavaとopenrtpインストールの対応はありません。従って-lオプションの引数としてjavaとopenrtplは使用できません。
 
 *** オプション一覧
   Usage:
     pkg_install_ubuntu.sh -l {all|c++} [-r|-d|-s|-c] [-u|--yes]
-    pkg_install_ubuntu.sh [-u]
+    pkg_install_ubuntu.sh [-u|--yes]
     pkg_install_ubuntu.sh -l {python|java} [-r|-d|-c] [-u|--yes]
     pkg_install_ubuntu.sh -l {openrtp|rtshell} [-d] [-u|--yes]
     pkg_install_ubuntu.sh  {--help|-h|--version}
@@ -65,7 +65,7 @@ openrtm.orgが提供するインストール・スクリプトの入手先です
 *** オプション一覧
   Usage:
     pkg_install_fedora.sh -l {all|c++} [-r|-d|-s|-c] [-u|--yes]
-    pkg_install_fedora.sh [-u]
+    pkg_install_fedora.sh [-u|--yes]
     pkg_install_fedora.sh -l {python|java} [-r|-d|-c] [-u|--yes]
     pkg_install_fedora.sh -l {openrtp|rtshell} [-d] [-u|--yes]
     pkg_install_fedroa.sh  {--help|-h|--version}
