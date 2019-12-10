@@ -1,4 +1,4 @@
-﻿// Titile: Rasbianへのインストール
+﻿// Titile: Raspbianへのインストール
 #ref(Raspberry_Pi_Logo.svg_.png,50%,margin=10,around,right)
 
 #contents
