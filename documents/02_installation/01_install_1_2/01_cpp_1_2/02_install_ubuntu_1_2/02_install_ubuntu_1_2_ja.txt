@@ -13,11 +13,27 @@ openrtm.orgが提供するインストール・スクリプト''pkg_install_ubun
 
 オプションを指定することで、目的に合わせたパッケージをインストールすることが可能です。
 
+一括インストールスクリプトは、ダウンロードした後、ダウンロード先ディレクトリに移動し、
+
+Ubuntuの場合は
+ $ sudo sh pkg_install_ubuntu.sh -l c++ --yes
+
+Debianの場合はsuでroot権限を得た後に
+ # sh pkg_install_debian.sh -l c++ --yes
+
+でインストールできます。
+
 一括インストールスクリプトのダウンロードや詳しいインストール方法、指定可能なオプションの種類につきましては、「[[一括インストールスクリプト:http://openrtm.org/openrtm/ja/node/6345]]」のページをご確認ください。
 
 ** OpenRTPのインストール
 一般的なUbuntu/Debian環境での開発にはRTC BuilderやRTSystem Editorを使用しますが、その場合にはOpenRTPが必要ですので、一括インストールスクリプトを用いてOpenRTPをインストールしてください。Ubuntuではpkg_install_ubuntu.shが置いてあるディレクトリで
- $ sudo sh ./pkg_install_ubuntu.sh -l openrtp --yes
+
+Ubuntuは:
+ $ sudo sh pkg_install_ubuntu.sh -l openrtp --yes
+
+Debianはsuでroot権限を得た後に:
+ # sh pkg_install_debian.sh -l openrtp --yes
+
 と入力するとOpenRTPをインストールできます。
 
 ** JDK8のインストール
