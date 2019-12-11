@@ -216,9 +216,6 @@ openrtm-aist-devには、開発に必要なコマンド群とヘッダが含ま�
  中略
  /usr/lib/arm-linux-gnueabihf/openrtm-1.2/py_helpver/yat.py
  /usr/lib/arm-linux-gnueabihf/pkgconfig/libcoil.pc
- /usr/lib/arm-linux-gnueabihf/share/doc/openrtm-aist-dev/changelog.Debian.gz
- /usr/lib/arm-linux-gnueabihf/share/doc/openrtm-aist-dev/changelog.gz
- /usr/lib/arm-linux-gnueabihf/share/doc/openrtm-aist-dev/copyright
 
 *** openrtm-aist-idl
 - スクリプトファイル
