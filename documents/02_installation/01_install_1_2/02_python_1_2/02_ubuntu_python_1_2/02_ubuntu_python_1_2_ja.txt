@@ -12,48 +12,90 @@ openrtm.orgが提供するインストール・スクリプト''pkg_install_ubun
 
 オプションを指定することで、目的に合わせたパッケージをインストールすることが可能です。
 
+一括インストールスクリプトは、ダウンロードした後、ダウンロード先ディレクトリに移動し、
+
+Ubuntuの場合は
+
+ $ sudo sh pkg_install_ubuntu.sh -l c++ --yes
+Debianの場合はsuでroot権限を得た後に
+
+ # sh pkg_install_debian.sh -l c++ --yes
+でインストールできます。
+
+
 一括インストールスクリプトのダウンロードや詳しいインストール方法、指定可能なオプションの種類につきましては、「[[一括インストールスクリプト:http://openrtm.org/openrtm/ja/node/6345]]」のページをご確認ください。
 
 ** OpenRTPのインストール
 一般的なUbuntu/Debian環境での開発にはRTC BuilderやRTSystem Editorを使用しますが、その場合にはOpenRTPが必要です。一括インストールスクリプトを用いてOpenRTPをインストールしてください。Ubuntuではpkg_install_ubuntu.shが置いてあるディレクトリで
+
+Ubuntuの場合は
  $ sudo sh ./pkg_install_ubuntu.sh -l openrtp --yes
+
+Debianの場合はsuでroot権限を得た後に
+ # sh pkg_install_debian.sh -l openrtp --yes
+
 と入力するとOpenRTPをインストールできます。
 
 ** JDK8のインストール
 
-OpenRTP(RTSystem EditorやRTC Builderなど)の実行にはJDK8相当のJava環境が必要です。(デフォルトの環境でJDK8がインストールされている場合もありますが、Ubuntu 18.04ではJDK11がインストールされているため、JDK8のインストールが必要です。) 以下ではUbuntu 18.04でOpenJDK8をインストールする方法を示します。OpenJDK8にこだわらずライセンス条件や必要サポート条件にあわせて必要なJDK8環境をインストールするようにしてください。
+OpenRTP(RTSystem EditorやRTC Builderなど)の実行にはJDK8相当のJava環境が必要です。(デフォルトの環境でJDK8がインストールされている場合もありますが、Ubuntu 18.04ではJDK11がインストールされているため、JDK8のインストールが必要です。) 　なお、RTShell/RTCTree/RTSprofileの使用にはJDKは必要ありませんのでOpenRTPを使わない場合にはJDK8をインストールする必要はありません。 JDK8の入手やインストールについては以下を参照してください。
+- [[JDK8のインストール>/ja/node/6911]]
 
-OpenJDK8のインストールは
- $ sudo apt-get install openjdk-8-jdk
-なお、UbuntuではデフォルトでJDK11がインストールされていますので、以下のようにしてJDK8を使うようにしてください。
- $ sudo update-alternatives --config java
-  alternative java (/usr/bin/java を提供) には 2 個の選択肢があります。
- 
-   選択肢    パス                                          優先度  状態
- ------------------------------------------------------------
- * 0            /usr/lib/jvm/java-11-openjdk-amd64/bin/java      1111      自動モード
-   1            /usr/lib/jvm/java-11-openjdk-amd64/bin/java      1111      手動モード
-   2            /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java   1081      手動モード
- 
- 現在の選択 [*] を保持するには <Enter>、さもなければ選択肢の番号のキーを押してください: 2
- update-alternatives: /usr/bin/java (java) を提供するためにマニュアルモードで /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java を使います
+** RTShellのインストール
+制御コンピュータが小規模のシステムの場合など、CUIでRTCを制御したい場合にはOpenRTPのRTSystemEditor相当の機能をCUIから実行できるようなツールとしてRTShellと呼ばれるツールが提供されています。RTShellのインストールは一括インストールスクリプトを用いて、一括インストールスクリプト・ファイルが置かれているディレクトリで
 
+Ubuntuの場合は
+ $ sudo sh pkg_install_ubuntu.sh -l rtshell --yes
+
+Debianの場合はsuでroot権限を得た後に
+ # sh pkg_install_debian.sh -l rtshell --yes
+でインストールできます。
 
 ***インストールの確認
-インストールを確認します。(下記はopenrtpもインストールした1.2.0の例です。)
+- openrtpをインストールした場合
+
+インストールを確認します。(下記は1.2.1の例です。)
 
  $ dpkg -l 'openrt*'
  要望=(U)不明/(I)インストール/(R)削除/(P)完全削除/(H)保持
  | 状態=(N)無/(I)インストール済/(C)設定/(U)展開/(F)設定失敗/(H)半インストール/(W)トリガ待ち/(T)トリガ保留
  |/ エラー?=(空欄)無/(R)要再インストール (状態,エラーの大文字=異常)
- ||/ 名前                     バージョン        アーキテクチャ    説明
- +++-========================-=================-=================-=====================================================
- ii  openrtm-aist:amd64       1.2.0-0           amd64             OpenRTM-aist, RT-Middleware distributed by AIST
- ii  openrtm-aist-dev:amd64   1.2.0-0           amd64             OpenRTM-aist headers for development
- ii  openrtm-aist-python      1.2.0-0           amd64             OpenRTM-aist, RT-Middleware distributed by AIST
- ii  openrtm-aist-python-doc  1.2.0-0           all               Documentation for openrtm-aist-python
- ii  openrtm-aist-python-exam 1.2.0-0           amd64             OpenRTM-aist-Python examples
- ii  openrtp:amd64            1.2.0-1           amd64             OpenRTP, Open RT Platform distributed by AIST
+ ||/ 名前                          バージョン          アーキテクチャ      説明
+ +++-=============================-===================-===================-===============================================================
+ ii  openrtm-aist:amd64            1.2.1-0             amd64               OpenRTM-aist, RT-Middleware distributed by AIST
+ ii  openrtm-aist-dev:amd64        1.2.1-0             amd64               OpenRTM-aist headers for development
+ ii  openrtm-aist-idl:amd64        1.2.1-0             amd64               OpenRTM-aist idls for development
+ ii  openrtm-aist-python           1.2.1-0             amd64               OpenRTM-aist, RT-Middleware distributed by AIST
+ ii  openrtm-aist-python-doc       1.2.1-0             all                 Documentation for openrtm-aist-python
+ ii  openrtm-aist-python-example   1.2.1-0             amd64               OpenRTM-aist-Python examples
+ ii  openrtp:amd64                 1.2.1-0             amd64               OpenRTP, Open RT Platform distributed by AIST
+
+- openrtpの代わりにrtshellをインストールした場合
+
+インストールを確認します。(下記は1.2.1の例です。)
+
+ $ dpkg -l 'openrt*'
+ 要望=(U)不明/(I)インストール/(R)削除/(P)完全削除/(H)保持
+ | 状態=(N)無/(I)インストール済/(C)設定/(U)展開/(F)設定失敗/(H)半インストール/(W)トリガ待ち/(T)トリガ保留
+ |/ エラー?=(空欄)無/(R)要再インストール (状態,エラーの大文字=異常)
+ ||/ 名前                          バージョン          アーキテクチャ      説明
+ +++-=============================-===================-===================-===============================================================
+ ii  openrtm-aist-python           1.2.1-0             amd64               OpenRTM-aist, RT-Middleware distributed by AIST
+ ii  openrtm-aist-python-doc       1.2.1-0             all                 Documentation for openrtm-aist-python
+ ii  openrtm-aist-python-example   1.2.1-0             amd64               OpenRTM-aist-Python examples
+
+rtshellのインストールは
+ $ pip show rtshell-aist
+ Name: rtshell-aist
+ Version: 4.2.2
+ Summary: Shell commands for managing RT Components and RT Systems.
+ Home-page: http://github.com/gbiggs/rtshell
+ Author: Geoffrey Biggs and contributors
+ Author-email: geoffrey.biggs@aist.go.jp
+ License: LGPL3
+ Location: /usr/local/lib/python2.7/dist-packages
+ Requires: rtctree-aist, rtsprofile-aist
+と確認できます。
 
 
 **パッケージの詳細
@@ -69,7 +111,7 @@ openrtm-aist にはランタイムライブラリとコマンド群が含まれ�
  /usr/bin/rtm-naming
 
 
--ライセンス等
+-ライセンスなど
  /usr/share/doc/openrtm-aist/changelog.gz
  /usr/share/doc/openrtm-aist/README.Debian
  /usr/share/doc/openrtm-aist/README
@@ -136,12 +178,12 @@ openrtm-aist-devには、開発に必要なコマンド群とヘッダが含ま�
  /usr/bin/rtc-template
  /usr/bin/rtm-skelwrapper
 
--ライセンス等
+-ライセンスなど
  /usr/share/doc/openrtm-aist-dev/changelog.Debian.gz
  /usr/share/doc/openrtm-aist-dev/changelog.gz
  /usr/share/doc/openrtm-aist-dev/copyright
 
--ヘッダ等
+-ヘッダなど
  /usr/include/coil-1.2/coil/Affinity.h
  /usr/include/coil-1.2/coil/Allocator.h
  中略
@@ -224,8 +266,6 @@ openrtm-aist-devには、開発に必要なコマンド群とヘッダが含ま�
  /usr/lib/python2.7/dist-packages/OpenRTM_aist/utils/rtcprof/*
  /usr/lib/python2.7/dist-packages/OpenRTM_aist/utils/rtm-naming/*
 
-// /usr/lib/python2.7/dist-packages/OpenRTM_aist_Python-1.2.0.egg-info
-
 *** openrtm-aist-python-example
 
  /usr/share/openrtm-1.2/components/python/AutoControl/
@@ -262,5 +302,48 @@ openrtm-aist-devには、開発に必要なコマンド群とヘッダが含ま�
 openrtpでは大量のファイルがインストールされるため、ここではリストしません。必要に応じて
  $ dpkg -L openrtp
 と入力して各自での確認をしてください。
+
+*** rtshell
+
+- コマンド用スクリプト
+ /usr/local/bin/rtact
+ /usr/local/bin/rtcat
+ /usr/local/bin/rtcheck
+ /usr/local/bin/rtcomp
+ /usr/local/bin/rtcon
+ /usr/local/bin/rtconf
+ /usr/local/bin/rtcryo
+ /usr/local/bin/rtdeact
+ /usr/local/bin/rtdel
+ /usr/local/bin/rtdis
+ /usr/local/bin/rtdoc
+ /usr/local/bin/rtexit
+ /usr/local/bin/rtfind
+ /usr/local/bin/rtfsm
+ /usr/local/bin/rtinject
+ /usr/local/bin/rtlog
+ /usr/local/bin/rtls
+ /usr/local/bin/rtmgr
+ /usr/local/bin/rtprint
+ /usr/local/bin/rtpwd
+ /usr/local/bin/rtreset
+ /usr/local/bin/rtresurrect
+ /usr/local/bin/rtshell_post_install
+ /usr/local/bin/rtstart
+ /usr/local/bin/rtstodot
+ /usr/local/bin/rtstop
+ /usr/local/bin/rtteardown
+ /usr/local/bin/rtvlog
+ /usr/local/bin/rtwatch
+
+- コマンド本体
+ /usr/local/lib/python2.7/dist-packages/rtctree/*
+ /usr/local/lib/python2.7/dist-packages/rtshell/*
+ /usr/local/lib/python2.7/dist-packages/rtsprofile/*
+
+- パッケージ情報
+ /usr/local/lib/python2.7/dist-packages/rtctree_aist-4.2.0.egg-info/*
+ /usr/local/lib/python2.7/dist-packages/rtshell_aist-4.2.2.dist-info/*
+ /usr/local/lib/python2.7/dist-packages/rtsprofile_aist-4.1.2.dist-info/*
 
 
