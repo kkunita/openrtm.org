@@ -307,7 +307,7 @@ openrtm-aist-doc には、日本語と英語のクラスリファレンス、IDL
  /usr/share/openrtm-1.2/doc/C++/ClassReference/html/Affinity_8h.html
  /usr/share/openrtm-1.2/doc/C++/ClassReference/html/Affinity_8h_dep_incl.map
  中略
- /usr/share/openrtm-1.1/doc/C++/ClassReference/html/version_8h_source.html
+ /usr/share/openrtm-1.2/doc/C++/ClassReference/html/version_8h_source.html
 
 -IDL リファレンス
  /usr/share/openrtm-1.2/doc/idl/IDLReference/html/BasicDataType_8idl.html
@@ -319,7 +319,7 @@ openrtm-aist-doc には、日本語と英語のクラスリファレンス、IDL
  /usr/share/openrtm-1.2/doc/C++/ClassReference-en/html/Affinity_8h.html
  /usr/share/openrtm-1.2/doc/C++/ClassReference-en/html/Affinity_8h_dep_incl.map
  中略
- /usr/share/openrtm-1.1/doc/C++/ClassReference-en/html/version_8h_source.html
+ /usr/share/openrtm-1.2/doc/C++/ClassReference-en/html/version_8h_source.html
 
 -IDL リファレンス(英語)
  /usr/share/openrtm-1.2/doc/idl/IDLReference-en/html/BasicDataType_8idl.html
