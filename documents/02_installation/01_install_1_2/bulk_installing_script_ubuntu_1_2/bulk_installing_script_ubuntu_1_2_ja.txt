@@ -16,7 +16,7 @@ openrtm.orgが提供するインストール・スクリプトの入手先です
 
 ** pkg_install_{ubuntu|debian|raspbian}.sh
 
-使えるオプションは同じですが、pkg_install_raspbian.shではjavaとopenrtpインストールの対応はありません。従って-lオプションの引数としてjavaとopenrtplは使用できません。
+使えるオプションは同じですが、pkg_install_raspbian.shではopenrtpインストールの対応はありません。従って-lオプションの引数としてopenrtplは使用できません。
 
 *** オプション一覧
   Usage:
