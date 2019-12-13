@@ -268,20 +268,23 @@ openrtm-aist-devには、開発に必要なコマンド群とヘッダが含ま�
 
 *** openrtm-aist-python-example
 
- /usr/share/openrtm-1.2/components/python/AutoControl/
- /usr/share/openrtm-1.2/components/python/AutoTest/
- /usr/share/openrtm-1.2/components/python/Composite/
- /usr/share/openrtm-1.2/components/python/ConfigSample/
- /usr/share/openrtm-1.2/components/python/ExtTrigger/
- /usr/share/openrtm-1.2/components/python/MobileRobotCanvas/
- /usr/share/openrtm-1.2/components/python/SeqIO/
- /usr/share/openrtm-1.2/components/python/SimpleIO/
- /usr/share/openrtm-1.2/components/python/SimpleService/
- /usr/share/openrtm-1.2/components/python/Slider_and_Motor/
- /usr/share/openrtm-1.2/components/python/Templates/
- /usr/share/openrtm-1.2/components/python/Throughput/
+ /usr/share/openrtm-1.2/components/python/__init__.py
+ /usr/share/openrtm-1.2/components/python/rtcd.conf
+ /usr/share/openrtm-1.2/components/python/components.conf
+ /usr/share/openrtm-1.2/components/python/AutoControl/*
+ /usr/share/openrtm-1.2/components/python/AutoTest/*
+ /usr/share/openrtm-1.2/components/python/Composite/*
+ /usr/share/openrtm-1.2/components/python/ConfigSample/*
+ /usr/share/openrtm-1.2/components/python/ExtTrigger/*
+ /usr/share/openrtm-1.2/components/python/MobileRobotCanvas/*
+ /usr/share/openrtm-1.2/components/python/SeqIO/*
+ /usr/share/openrtm-1.2/components/python/SimpleIO/*
+ /usr/share/openrtm-1.2/components/python/SimpleService/*
+ /usr/share/openrtm-1.2/components/python/Slider_and_Motor/*
+ /usr/share/openrtm-1.2/components/python/Templates/*
+ /usr/share/openrtm-1.2/components/python/Throughput/*
  /usr/share/openrtm-1.2/components/python/TkJoyStick/
- /usr/share/openrtm-1.2/components/python/TkLRFViewer/
+ /usr/share/openrtm-1.2/components/python/TkLRFViewer/*
 
 ***openrtm-aist-python-doc
 
@@ -289,13 +292,11 @@ openrtm-aist-devには、開発に必要なコマンド群とヘッダが含ま�
  /usr/share/openrtm-1.2/doc/python/ClassReference-en/html/_async_8py.html
  /usr/share/openrtm-1.2/doc/python/ClassReference-en/html/_buffer_base_8py.html
  中略
- /usr/share/openrtm-1.2/doc/python/ClassReference-en/html/tabs.css
  /usr/share/openrtm-1.2/doc/python/ClassReference-en/html/uuid_8py.html
 - クラスリファレンス(日本語)
  /usr/share/openrtm-1.2/doc/python/ClassReference-jp/html/_async_8py.html
  /usr/share/openrtm-1.2/doc/python/ClassReference-jp/html/_buffer_base_8py.html
  中略
- /usr/share/openrtm-1.2/doc/python/ClassReference-jp/html/tabs.css
  /usr/share/openrtm-1.2/doc/python/ClassReference-jp/html/uuid_8py.html 
 
 ***openrtp
