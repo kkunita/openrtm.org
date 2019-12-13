@@ -18,7 +18,7 @@
             - Visula_Studio_2019 Community 2019のインストール: visual_studio_2019_ja.txt
         - Ubunt/Debianへのインストール: 02_install_ubuntu_1_2_ja.txt
           - (一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt)
-        - Rasbianへのインストール: 03_install_rasbian_1_2_ja.txt
+        - Raspbianへのインストール: 03_install_raspbian_1_2_ja.txt
         - Fedoraへのインストール: 04_install_fedora_1_2_ja.txt
           - (一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt)
         - ソースからのビルド (Windows編)): 05_build_source_windows_1_2_ja.txt
