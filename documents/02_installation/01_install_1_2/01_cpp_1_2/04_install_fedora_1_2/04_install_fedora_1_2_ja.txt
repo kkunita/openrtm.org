@@ -15,11 +15,15 @@ openrtm.orgが提供するインストール・スクリプト''pkg_install_fedo
 
 OpenRTM-aistを開発・実行するために必要なパッケージをもれなくインストールしてくれるので大変便利です。オプションを指定することで、目的に合わせたパッケージをインストールできるので、初めてOpenRTM-aistをインストールしてみる方にもソースをコンパイルしてみる方にも推奨します。
 
+一括インストールスクリプトは、ダウンロードした後、ダウンロード先ディレクトリに移動し、
+ $ sudo sh pkg_install_fedora.sh -l c++ --yes
+でインストールできます。
+
 一括インストールスクリプトのダウンロードや詳しいインストール方法、指定可能なオプションの種類につきましては、「[[一括インストールスクリプト:http://openrtm.org/openrtm/ja/node/6345]]」のページをご確認ください。
 
 ** OpenRTPのインストール
-一般的なUbuntu/Debian環境での開発にはRTC BuilderやRTSystem Editorを使用しますが、その場合にはOpenRTPが必要ですので、一括インストールスクリプトを用いてOpenRTPをインストールしてください。Ubuntuではpkg_install_ubuntu.shが置いてあるディレクトリで
- $ sudo sh ./pkg_install_fedora.sh -l openrtp --yes
+一般的なUbuntu/Debian環境での開発にはRTC BuilderやRTSystem Editorを使用しますが、その場合にはOpenRTPが必要ですので、一括インストールスクリプトを用いてOpenRTPをインストールしてください。Ubuntuではpkg_install_fedora.shが置いてあるディレクトリで
+ $ sudo sh pkg_install_fedora.sh -l openrtp --yes
 と入力するとOpenRTPをインストールできます。
 
 ** yumを用いる方法
