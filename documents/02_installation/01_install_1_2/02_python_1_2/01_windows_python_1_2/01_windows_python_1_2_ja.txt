@@ -94,7 +94,6 @@ RTCの開発にはCMake、Doxygen、Visual Studioのインストールが必要�
             + Java: Java サンプルコンポーネント
             + Python: Python サンプルコンポーネント
          + etc: rtc.confサンプル
-         + ext: ComponentObserverConsumer
          + jar: jarファイル
          + jre: OpenJDK JRE
          + omniORB
