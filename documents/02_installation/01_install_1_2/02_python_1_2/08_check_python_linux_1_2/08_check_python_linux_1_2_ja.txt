@@ -3,93 +3,128 @@
 -/usr/share/openrtm-1.2/components/python/<サンプルコンポーネントセット名>
 // -/opt/local/share/openrtm-1.1/examples (Mac OS XにMacPortsでインストールした場合)
 
-
 ソースからビルドした場合は、ソースディレクトリ下の
-- OpenRTM_aist/examples/<サンプルコンポーネントセット名>
+-OpenRTM_aist/examples/<サンプルコンポーネントセット名>
+
 
 サンプルコンポーネントセットSimpleIOを使って、OpenRTM-aistが正しくビルド・インストールされているかを確認します。
 
 #contents
 
-** サンプルコンポーネントセットSimpleIO
+
+**サンプルコンポーネントセットSimpleIO
 
 RTコンポーネントConsoleIn、ConsoleOutからなるサンプルセットです。ConsoleInはコンソールから入力された数値をOutPortから出力するコンポーネント、ConsoleOutはInPortに入力された数値をコンソールに表示するコンポーネントです。これらは、SimpleなI/O(入出力)を例示するためのサンプルです。ConsoleInのOutPortからConsoleOutのInPortへ接続を構成し、これらの2つのコンポーネントをアクティブ化(Activate)することで動作します。
 
 以降、サンプルは/usr/share/openrtm-1.2/components/python/SimpleIO下にあるか、ソースコードからビルドした場合は<source_dir>/OpenRTM_aist/examples/SimpleIO/にあり、Python本体の実行ファイルにはサーチパスが設定されているものとして説明を記述します。
 
 
-** サンプルを使用したテスト
-
-*** RT System Editor、ネームサーバー起動
+** サンプルを使用した動作確認
+*** RTSystemEditorを使った動作確認
+**** ネームサーバーの起動
 以下の手順に従ってRT System Editor、ネームサーバーを起動してください。
 
 - [[OpenRTP起動手順:/ja/node/6654]]
 
-*** ConsoleInの起動
-
-ターミナルを起動してConsoleInを起動します。
-
+**** ConsoleInの起動
+- ターミナルを起動してConsoleInを起動します。
  $ python /usr/share/openrtm-1.2/components/python/SimpleIO/ConsoleIn.py
-
 自分でビルド・インストールした場合は、
-
  $ python <source_dir>/OpenRTM_aist/examples/SimpleIO/ConsoleIn.py
-
 などとしてConsoleInを起動します。
 
-
-*** ConsoleOutの起動
-
-別のターミナルを起動してConsoleOutを起動します。
-
+**** ConsoleOutの起動
+- 別のターミナルを起動してConsoleOutを起動します。
  $ /usr/share/openrtm-1.2/components/python/SimpleIO/ConsoleOut
-
 自分でビルド・インストールした場合は、同様に
-
  $ python <source_dir>/OpenRTM_aist/examples/SimpleIO/ConsoleOut.py
-
 などとしてConsoleOutを起動します。
 
-
-*** エディタへの配置
-
-RT System Editorのツリー表示の[>]をクリックすると、先ほど起動した2つのコンポーネントが登録されていることがわかります。
-
+**** エディタへの配置
+- RT System Editorのツリー表示の[>]をクリックすると、先ほど起動した2つのコンポーネントが登録されていることがわかります。
 #ref(rtm10.png,/ja/node/6614,60%,center)
 CENTER:''ConsoleInコンポーネントとConsoleOutコンポーネント''
-
-システムを編集するエディタを開きます。上部のエディタを[開く]ボタン&ref(rtse_open_editor_icon_ja.png,150%);をクリックすると、中央のペインにエディタが開きます。
-
-左側のネームサービスビューに&ref(rtse_rtc_icon_n.png,150%);のアイコンで表示されているコンポーネント(2つ)を中央のエディタにドラッグアンドドロップします。
-
+- システムを編集するエディタを開きます。上部のエディタを[開く]ボタン&ref(rtse_open_editor_icon_ja.png,150%);をクリックすると、中央のペインにエディタが開きます。
+- 左側のネームサービスビューに&ref(rtse_rtc_icon_n.png,150%);のアイコンで表示されているコンポーネント(2つ)を中央のエディタにドラッグアンドドロップします。
 #ref(rtm11.png,/ja/node/6614,80%,center)
 CENTER: ''コンポーネントをエディタに配置''
 
-
-*** 接続とアクティブ化
-
-ConsoleIn0コンポーネントの右側にはデータが出力されるOutPort&ref(rtse_outport_icon_n.png,200%);、ConsoleOut0コンポーネントの左側にはデータが入力されるInPort&ref(rtse_inport_icon_n.png, 200%);がそれぞれついています。
-
+**** 接続とアクティブ化
+- ConsoleIn0コンポーネントの右側にはデータが出力されるOutPort&ref(rtse_outport_icon_n.png,200%);、ConsoleOut0コンポーネントの左側にはデータが入力されるInPort&ref(rtse_inport_icon_n.png, 200%);がそれぞれついています。
 #ref(rtm13.png,/ja/node/6614,80%,center)
 CENTER: ''データポートの接続''
-
-これらInPort/OutPort(まとめてデータポートと呼びます)を接続します。
+- これらInPort/OutPort(まとめてデータポートと呼びます)を接続します。
 OutPortからInPort(またはInPortからOutPort)へドラッグランドドロップすると、図のようなダイアログが現れますので、デフォルト設定のまま[OK]ボタンをクリックします。
-
 #ref(rtm12.png,/ja/node/6614,80%,center)
 CENTER: ''データポート接続ダイアログ''
-
-
-2つのコンポーネントの間に接続線が現れます。次に、エディタ上部メニューの[All Activate]ボタン&ref(rtm14.png);をクリックし、これらのコンポーネントをアクティブ化します。
-アクティブ化されると、コンポーネントが緑色に変化します。
-
+- 2つのコンポーネントの間に接続線が現れます。次に、エディタ上部メニューの[All Activate]ボタン&ref(rtm14.png);をクリックし、これらのコンポーネントをアクティブ化します。
+- アクティブ化されると、コンポーネントが緑色に変化します。
 #ref(rtm15.png,/ja/node/6614,center)
 CENTER: ''アクティブ化されたコンポーネント''
-
-コンポーネントがアクティブ化されるとConsoleInコンポーネント側では、
-
+- コンポーネントがアクティブ化されるとConsoleInコンポーネント側では
  Please input number: 
-
 というプロンプト表示に変わりますので、適当な数値(short intの範囲内:32767以下)を入力しEnterキーを押します。すると、ConsoleOut側では、入力した数値が表示され、ConsoleInコンポーネントからConsoleOutコンポーネントへデータが転送されたことがわかります。
 
-以上で、コンポーネントの基本動作の確認は終了です。
+以上で、RTSystemEditorを用いたコンポーネントの基本動作の確認は終了です。
+
+*** コマンドラインからの確認
+以下は一括インストールスクリプトを-l pythonオプションで実行するか、[[ソースビルドの手順>/ja/node/6651]]に従ってPython版OpenRTM-aistをインストールし、その後一括インストールスクリプトを-l rtshellオプションで実行しRTShellがインストールされている前提での説明です。
+
+- 環境変数のRTCTREE_NAMESERVERSが設定されているかどうか確認します。設定されいていない場合は、/etc/profile.dディレクトリに適当な名前の.shファイル、例えばrtctree_env.shを作って、その中に
+ export RTCTREE_NAMESERVERS=127.0.0.1
+の行を挿入してOSを再起動してください。
+
+**** ネームサーバーの起動
+- ネームサーバーを起動します。以下のコマンドで起動ができます。
+ $ sudo python /user/local/lib/{python2.7|python3.6|python3.7}/dist-packages/OpenRTM_aist/utils/rtm-naming/rtm-naming.py
+ここで{Python2.7|python3.6|python3.7}は、Python版のOpenRTM-aistをインストールした時のLinux環境でインストールしてあったPythonのバージョンによって変わり、Python 2.7がインストールされていた場合は"Python2.7"となります。(Ubuntu18.04のデフォルトはPython2.7となります。)
+以下のような画面が表示されます。
+#ref(startnameservice002.png, center)
+CENTER:''ネームサーバー画面''
+
+**** サンプルコンポーネントの起動
+- ターミナルを開きます。
+- ターミナルでカレントディレクトリを/usr/share/openrtm-1.2/components/python/SimpleIO/か、ソースビルドした場合は<ソースディレクトリ>/OpenRTM_aist/examples/SimpleIOにします。例えば
+ $ cd /usr/share/openrtm-1.2/components/python/SimpleIO
+と入力します。
+- ConsoleInコンポーネントを以下のコマンド起動します。
+ $ python ConsoleIn.py
+- 別ターミナルを開きます。
+- カレントディレクトリを上記と同じところに設定します。
+- ConsoleOutコンポーネントを以下のコマンドで起動します。
+ $ python ConsoleOut.py
+
+**** ネームサービス上の名前の確認
+- 別ターミナルを開きます
+以下のようにして名前を確認してください。
+ $ rtls -R
+ .:
+ 127.0.0.1/
+ 
+ ./127.0.0.1:
+ ConsoleIn0.rtc  ConsoleOut0.rtc
+
+**** サンプルコンポーネントの接続
+- ConsoleIn0コンポネントとConsoleOut0を以下のコマンド接続します。
+上記で開いたターミナルで
+ rtcon /localhost/ConsoleIn0.rtc:out /localhost/ConsoleOut0.rtc:in
+と入力します。
+
+**** サンプルコンポーネントのアクティブ化
+- 上記のターミナルで
+ rtact /localhost/ConsoleIn0.rtc /localhost/ConsoleOut0.rtc
+と入力します。すると、Consolein.pyとConsoleOut.pyを起動したターミナルの画面がとなり、ConsoleIn.pyを起動したターミナルではPlease input number:というプロンプト表示に変わります。
+#ref(simpleio_ubuntu.png, center)
+CENTER:''アクティブ化後のConsoleInコンポーネントとConsoleOutコンポーネントのターミナル画面''
+- 適当な数値(short intの範囲内:32767以下)を入力しEnterキーを押します。
+- ConsoleOut.pyターミナル画面に入力した数値と同じものが表示されます。これでConsoleInコンポーネントからConsoleOutコンポーネントへデータが転送されたことがわかります。
+
+**** サンプルコンポーネントの非アクティブ化と終了
+- 以下のコマンドで非アクティブ化します。 
+ rtdeact /localhost/ConsoleIn0.rtc /localhost/ConsoleOut0.rtc
+- ConsoleIn.pyのターミナルは入力待ちになっているので、適当な数値: 32767以下を入力してEnterキーを押します。
+- 以下のコマンドを入力し、ConsoleIn.pyとConsoleOut.pyの実行が終了するのを、それぞれのターミナルで確認してください。
+ rtexit /localhost/ConsoleIn0.rtc
+ rtexit /localhost/ConsoleOut0.rtc
+
+以上で、コマンドラインを用いたコンポーネントの基本動作の確認は終了です。
