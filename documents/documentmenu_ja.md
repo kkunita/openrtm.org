@@ -18,9 +18,11 @@
             - Visula_Studio_2019 Community 2019のインストール: visual_studio_2019_ja.txt
         - Ubunt/Debianへのインストール: 02_install_ubuntu_1_2_ja.txt
           - (一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt)
+          - (JDK8のインストール; install_jdk8_ja.txt)
         - Raspbianへのインストール: 03_install_raspbian_1_2_ja.txt
         - Fedoraへのインストール: 04_install_fedora_1_2_ja.txt
           - (一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt)
+          - (JDK8のインストール; install_jdk8_ja.txt)
         - ソースからのビルド (Windows編)): 05_build_source_windows_1_2_ja.txt
           - (Visual Studioのインストール手順=> Visual Studioのインストール: visual_studio_1_2_ja.txt)
         - ソースからのビルド (Linux編): 06_build_source_linux_1_2_ja.txt
@@ -33,12 +35,18 @@
         - Windowsへのインストール: 01_windows_python_1_2_ja.txt
            - (OpenRTM-aist 1.2系のインストール(Windows、msiインストーラー使用): openrtm-aist_1_2_windows_msi_ja.txt)
         - Ubuntu/Debianへのインストール: 02_ubuntu_python_1_2_ja.txt
-        - Fedoraへのインストール: 03_fedora_python_1_2_ja.txt
-        - ソースからのビルド (windows編):04_build_source_python_windows_1_2_ja.txt
-        - ソースからのビルド (Linux編): 05_build_source_python_linux_1_2_ja.txt
-        - 動作確認 (Windows編): 06_check_python_windows_1_2_ja.txt
+          - (一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt)
+          - (JDK8のインストール; install_jdk8_ja.txt)
+        - Raspbianへのインストール 03_raspbian_python_1_2_ja.txt
+          - (一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt)
+        - Fedoraへのインストール: 04_fedora_python_1_2_ja.txt
+          - (一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt)
+          - (JDK8のインストール; install_jdk8_ja.txt)
+        - ソースからのビルド (windows編):05_build_source_python_windows_1_2_ja.txt
+        - ソースからのビルド (Linux編): 06_build_source_python_linux_1_2_ja.txt
+        - 動作確認 (Windows編): 07_check_python_windows_1_2_ja.txt
           - (OpenRTP起動手順=> OpenRTPの起動手順(1.2系、Windows): start_openrtp_proc_windows_1_2_ja.txt)
-        - 動作確認 (Linux編): 07_check_python_linux_1_2_ja.txt
+        - 動作確認 (Linux編): 08_check_python_linux_1_2_ja.txt
           - (OpenRTP起動手順=> OpenRTPの起動手順(1.2系、Linux): start_openrtp_proc_linux_1_2_ja.txt)
       - Java版 1.2系: OpenRTM-aist (Java版) 1.2系のインストール: java_1_2_ja.tx
         - Windowsへのインストール: 01_windows_java_1_2_ja.txt
@@ -628,7 +636,6 @@
       - (OpenRTM-aistを10分で始めよう！;10分で始めよう！: Quick_Start_1_1_2_ja.txt)
       - (http://openrtm.org/openrtm/ja/content/vc_version_changer=> VCVerChanger: システム環境変数設定ツールの使い方: 15_howtouse_env_ver_tool_1_1_ja.txt)
       - http://openrtm.org/openrtm/ja/content/tool_trouble_shooting_ja#toc1=> RTSystemEditor、RTCBuilder、rtshell 等ツールに関する FAQ: FAQ_RTP_Tools_ja.txt )
-      - (http://openrtm.org/openrtm/ja/content/rtm-install-check-script=> windows_installer_test.batの利用方法: windows_install_test_bat_ja.txt
       - (一括インストール・スクリプト:bulk_installation_script_ubuntu_1_1_ja.txt)
       - (ソースからのビルド (Windows編): 09_build_source_windows_1_1_ja.txt)
       - (ソースからのビルド (Linux編): 10_build_source_linux_1_1_ja.txt)
