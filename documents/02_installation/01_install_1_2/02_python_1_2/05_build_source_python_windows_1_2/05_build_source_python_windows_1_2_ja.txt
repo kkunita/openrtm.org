@@ -84,7 +84,7 @@ omniORB 4.2.3を64bitのPython 3.7の環境で使用する場合、omniORB-4.2.3
 
 まず下記リンクよりソースコードファイルOpenRTM-aist-Python-1.2.x.zipをダウンロードし、適当なディレクトリーに展開します。
 
-- [[OpenRTM-aist-Python-1.2.0:https://github.com/OpenRTM/OpenRTM-aist-Python/releases/tag/v1.2.0/]]
+- [[OpenRTM-aist-Python-1.2.1:https://github.com/OpenRTM/OpenRTM-aist-Python/releases/tag/v1.2.1/]]
 
 ** ビルド
 
