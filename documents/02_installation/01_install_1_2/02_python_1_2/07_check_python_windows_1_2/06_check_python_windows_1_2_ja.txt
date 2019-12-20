@@ -11,14 +11,15 @@
 サンプルコンポーネントセットSimpleIOを使って、OpenRTM-aistが正しくビルド・インストールされているかを確認します。
 
 
-
-** サンプル(SimpleIO)を使用したテスト
+** サンプル(SimpleIO)を使用した動作確認
 
 RTコンポーネント ConsoleIn、ConsoleOutからなるサンプルセットです。ConsoleInはコンソールから入力された数値をOutPortから出力するコンポーネント、ConsoleOutはInPortに入力された数値をコンソールに表示するコンポーネントです。
 これらは、最もSimpleなI/O(入出力)を例示するためのサンプルです。ConsoleInのOutPortからConsoleOutのInPortへ接続を構成し、これらの2つのコンポーネントをアクティブ化(Activate)することで動作します。
 
-以下は、msiインストーラーでOpenRTM-aistをインストールした環境で、スタートメニューから各種プログラムを起動する前提で説明します。
+** 動作確認環境
+以下では、msiインストーラーでOpenRTM-aistをデフォルトでインストールした環境で、スタートメニューから各種プログラムを起動する場合しOpenRTPを使う方法をまず説明し、その後、インストール時にOpenRTM-aist-PythonとRTShellだけをインストールした場合や、ソースビルド後に動作確認をする方法を説明します。
 
+** OpenRTPを使う方法
 *** RT System Editor、ネームサーバー起動
 以下の手順に従ってRT System Editor、ネームサーバーを起動してください。
 
@@ -115,8 +116,117 @@ CENTER: ''アクティブ化されたコンポーネント''
 
 というプロンプト表示に変わりますので、適当な数値(short intの範囲内:32767以下)を入力しEnterキーを押します。すると、ConsoleOut側では、入力した数値が表示され、ConsoleInコンポーネントからConsoleOutコンポーネントへデータが転送されたことがわかります。
 
-以上で、コンポーネントの基本動作の確認は終了です。
+以上で、OpenRTPを用いたコンポーネントの基本動作の確認は終了です。
 
+
+** ソースビルドした場合に動作を確認する方法
+*** RTShellのインストール
+- [[rtshellのインストール>/ja/node/5013]]の手順を用いてRTShellをインストールします。
+
+*** 環境変数の設定
+- Windows 10の場合は右下の「ここに入力して検索」に''システム環境変数''と入力して表示されるものから[システム環境変数の編集]を選択し、[システムのプロパティ]ダイアログを開きます。
+#ref(rtshell1.png, center, 50%)
+
+
+- [環境変数(N)...]ボタンをクリックします。
+#ref(rtshell2.png, center, 50%)
+
+
+- 下側の[システム環境変数(S)]の方の[新規(W)...]ボタンをクリックします。
+#ref(rtshell3.png, center,50%)
+
+
+- [変数名(N):]に”RTCTREE_NAMESERVERS"と入力し[変数値(V):]に"127.0.0.1"と入力し[OK]をクリックします。
+#ref(rtshell4.png, center, 50%)
+- [OK]を何度かクリックし開いたダイアログを閉じます。
+
+*** Name Serverの起動
+以下はPython3.7をPython37ディレクトリにインストールしてある前提で説明します。
+- エクスプローラで<'''ソースディレクトリ'''>\OpenRTM_aist\utils\rtm-namingに移動し、rtm-naming.pyをダブルクリックします。以下のような画面が表示されるはずです。
+
+#ref(rtshell5.png, center,50%)
+
+
+*** サンプルコンポネントの起動
+
+- エクスプローラで<'''ソースディレクトリ'''>\OpenRTM-aist\examples\SimpleIOに移動し、[ConsoleIn.py]と[ConsoleOut.py]をダブルクリックします。
+- コマンドラインコンソールを開きます。
+- コマンドラインから以下のようにコマンドrtlsを実行し、以下のように表示されることを確認します。
+ C:\Users\openrtm>rtls -R
+ .:
+ 127.0.0.1/
+ 
+ ./127.0.0.1:
+ ConsoleIn0.rtc  ConsoleOut0.rtc
+
+- ConsoleInコンポーネントとConsoleOutコンポーネントを接続します。
+ rtcon /localhost/ConsoleIn0.rtc:out /localhost/ConsoleOut0.rtc:in
+- ConsoleInコンポーネントとConsoleOutコンポーネントをActivateします。
+ rtact /localhost/ConsoleIn0.rtc /localhost/ConsoleOut0.rtc
+- するとConsoleIn.pyとConsoleOut.pyのコンソールが以下のように変わり、ConsoleIn.py側コンソールに"Please Input number:"と表示されます。
+#ref(rtm9-3.png, center,50%)
+- ConsoleIn.pyのコンソールから数値を(16bit 整数の範囲で)入力しEnterキーを押します。
+- ConsoleOut.pyのコンソールにConsoleIn.pyのコンソールで入力した数値が表示されるのを確認します。
+同じ数値が表示されていれば動作は確認できました。
+- 以下のように入力しDeactivateします。
+ rtdeact /localhost/ConsoleIn0.rtc /localhost/ConsoleOut0.rtc
+この時ConsoleIn.py側のコンソールに数値を入力しEnterキーを押すことにより、入力待ち状態を解消してください。 その後
+ rtexit /localhost/ConsoleIn0.rtc
+ rtexit /localhost/ConsoleOut0.rtc
+と入力し、コンソールが閉じることを確認してください。
+
+** RTShellとOpenRTM-aist-Pythonをmsiファイルを用いてインストールした場合の確認方法
+*** 環境変数の設定
+- Windows 10の場合は右下の「ここに入力して検索」に''システム環境変数''と入力して表示されるものから[システム環境変数の編集]を選択し、[システムのプロパティ]ダイアログを開きます。
+#ref(rtshell1.png, center, 50%)
+
+
+- [環境変数(N)...]ボタンをクリックします。
+#ref(rtshell2.png, center, 50%)
+
+
+- 下側の[システム環境変数(S)]の方の[新規(W)...]ボタンをクリックします。
+#ref(rtshell3.png, center,50%)
+
+
+- [変数名(N):]に”RTCTREE_NAMESERVERS"と入力し[変数値(V):]に"127.0.0.1"と入力し[OK]をクリックします。
+#ref(rtshell4.png, center, 50%)
+- [OK]を何度かクリックし開いたダイアログを閉じます。
+
+*** Name Serverの起動
+- 画面の左下の[ここに入力して検索]に"start naming service"と入力します。
+- [Start Naming Service]をクリックします。
+#ref(rtshell6.png, center,50%)
+- 以下のような画面が表示されます。
+#ref(rtshell5.png, center,50%)
+
+*** サンプルコンポネントの起動
+
+- エクスプローラで<'''ソースディレクトリ'''>\OpenRTM-aist\examples\SimpleIOに移動し、[ConsoleIn.py]と[ConsoleOut.py]をダブルクリックします。
+- コマンドラインコンソールを開きます。
+- コマンドラインから以下のようにコマンドrtlsを実行し、以下のように表示されることを確認します。
+ C:\Users\openrtm>rtls -R
+ .:
+ 127.0.0.1/
+ 
+ ./127.0.0.1:
+ ConsoleIn0.rtc  ConsoleOut0.rtc
+- ConsoleInコンポーネントとConsoleOutコンポーネントを接続します。
+ rtcon /localhost/ConsoleIn0.rtc:out /localhost/ConsoleOut0.rtc:in
+- ConsoleInコンポーネントとConsoleOutコンポーネントをActivateします。
+ rtact /localhost/ConsoleIn0.rtc /localhost/ConsoleOut0.rtc
+- するとConsoleIn.pyとConsoleOut.pyのコンソールが以下のように変わり、ConsoleIn.py側コンソールに"Please Input number:"と表示されます。
+#ref(rtm9-3.png, center,50%)
+- ConsoleIn.pyのコンソールから数値を(16bit 整数の範囲で)入力しEnterキーを押します。
+- ConsoleOut.pyのコンソールにConsoleIn.pyのコンソールで入力した数値が表示されるのを確認します。
+
+同じ数値が表示されていれば動作は確認できました。
+- 以下のように入力しDeactivateします。
+ rtdeact /localhost/ConsoleIn0.rtc /localhost/ConsoleOut0.rtc
+この時ConsoleIn.py側のコンソールに数値を入力しEnterキーを押すことにより、入力待ち状態を解消してください。 その後
+ rtexit /localhost/ConsoleIn0.rtc
+ rtexit /localhost/ConsoleOut0.rtc
+と入力し、コンソールが閉じることを確認してください。
 
 ** 他のサンプル
 
@@ -137,10 +247,11 @@ CENTER: ''アクティブ化されたコンポーネント''
 |Motor.py|Compositeコンポーネント用のサンプル。Compositeの子要素として使用。|
 |Controller.py|Compositeコンポーネント用のサンプル。Compositeの子要素として使用。|
 |Sensor.py|Compositeコンポーネント用のサンプル。Compositeの子要素として使用。|
-|Slider.py|Tkを用いたGUIコンポーネントのサンプル。Sliderで指定した値をOutPortから出力する。|
-|TkMotorComp.py|Tkを用いたGUIコンポーネントのサンプル。InPortで受け取った値をGUIで表示する。|
-|TkLRFViewer.py|Tkを用いたGUIコンポーネントのサンプル。レーザーレンジセンサーなどから出力されるデータを表示する。|
-|TkJoystickComp.py|Tkを用いたGUIコンポーネントのサンプル。簡易ジョイスティックコンポーネント。|
+|SliderComp.py|Tcl/Tkを用いたGUIコンポーネントのサンプル。Sliderで指定した値をOutPortから出力する。|
+|TkMotorComp.py|Tcl/Tkを用いたGUIコンポーネントのサンプル。InPortで受け取った値の速度で回転する様子をGUIで表示する。|
+|TkMotorPosComp.py|Tcl/TKを用いたGUIコンポーネントのサンプル。InPortで受け取った値を回転角として動く様子をGUIで表示する。|
+|TkLRFViewer.py|Tcl/Tkを用いたGUIコンポーネントのサンプル。レーザーレンジセンサーなどから出力されるデータを表示する。|
+|TkJoystickComp.py|Tcl/Tkを用いたGUIコンポーネントのサンプル。簡易ジョイスティックコンポーネント。|
 
 
 &br;
