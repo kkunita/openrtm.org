@@ -44,7 +44,7 @@ Ubuntu Linux, Debian Linuxなどでは apt コマンドで以下のようにイ�
 *** Fedora
 Fedora Linuxではyumコマンドで以下のようにインストールすることができます。
 
- $ sudo yam -y install java-1.8.0-openjdk
+ $ sudo yum -y install java-1.8.0-openjdk
 
 *** リポジトリからのパッケージ入手以外の方法
 上記のサードパーティベンダのURLから入手することもできます。インストール方法についてはそのサイトの情報に従うか、Javaの標準的方法でインストールしてください。
