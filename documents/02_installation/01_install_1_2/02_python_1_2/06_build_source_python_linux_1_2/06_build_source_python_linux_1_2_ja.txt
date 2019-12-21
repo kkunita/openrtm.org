@@ -16,7 +16,7 @@ OpenRTM-aist-Pythonは下記のOSおよびLinuxディストリビューション
 
 *** 依存ライブラリ
 
-OpenRTM-aist-Python-1.2.0のインストールには下記の開発環境およびライブラリが必要です。
+OpenRTM-aist-Python-1.2.1のインストールには下記の開発環境およびライブラリが必要です。
 
 - python: ビルドツールを利用するために必要
 - omniORBpy: OpenRTM-aistのビルド(IDLコンパイル)に必要
@@ -25,17 +25,17 @@ OpenRTM-aist-Python-1.2.0のインストールには下記の開発環境およ�
 
 Ubuntu, Debianでは以下のコマンドでインストールできます。
 
- sudo apt-get install python-omniorb-omg omniidl-python
+ sudo apt-get install python-omniorb-omg omniidl-python omniorb-nameserver
 
 ***ソースのダウンロード
 
 OpenRTM-aist-Pythonのソースをダウンロードします。
 
--　https://github.com/OpenRTM/OpenRTM-aist-Python/releases/tag/v1.2.0
+-　https://github.com/OpenRTM/OpenRTM-aist-Python/releases/tag/v1.2.1
 
 *** ソースコードの展開 
 
-まずソースコードパッケージOpenRTM-aist-Python-1.2.0.tar.gzを適当なディレクトリに展開します。
+まずソースコードパッケージOpenRTM-aist-Python-1.2.1.tar.gzを適当なディレクトリに展開します。
 
  $ tar xvzf OpenRTM-aist-Python-X.X.X.tar.gz
  $ cd OpenRTM-aist-Python-X.X.X
@@ -60,3 +60,8 @@ OpenRTM-aist-Pythonはパッケージのビルドにdistutilsモジュールを�
  $ sudo python setup.py install
 
 以上で、ソースコードからのビルドおよびインストールは終了です。
+
+なお、この後にPython版のName Serverを起動して使う場合は、/etc/profile.dディレクトリに適当な名前の.shファイル、例えばrtctree_env.shを作って、その中に
+ RTCTREE_NAMESERVERS=127.0.0.1
+の行を挿入して再起動してください。
+
