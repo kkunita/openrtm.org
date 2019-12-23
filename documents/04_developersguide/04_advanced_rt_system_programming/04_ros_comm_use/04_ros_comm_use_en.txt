@@ -39,7 +39,7 @@ CMake実行時に''ROS_ENABLE''のオプションをONにします。
 
 OpenRTM-aistのシリアライザー(ROSTransport.dll)が対応しているメッセージ型を以下にしめします。
 
-- [[ROS、ROS2にデフォルトで対応しているメッセージ型>/ja/node/6585]]
+- [[ROS/ROS2 Message Types suppoted by the serializer modules of OpenRTM-aist>/ja/node/6585]]
 
 RTCを起動して動作確認します。
 以下のファイルをダブルクリックします。この時上記の変更をしたrtc.confは、VC14等のOpenRTM-aistをインストール時に指定したVisual Studioのバージョンに関連したのフォルダー(デフォルトではExamplesの下のVC14)に実行するexeファイルがありますので、そこと同じディレクトリに置くようにしてください。
@@ -92,7 +92,7 @@ CMake実行時に''ROS_ENABLE''のオプションをONにします。
 
 OpenRTM-aistのシリアライザー(ROSTransport.so)が対応しているメッセージ型は以下のようになります。
 
-- [[ROS、ROS2にデフォルトで対応しているメッセージ型>/ja/node/6585]]
+- [[ROS/ROS2 Message Types suppoted by the serializer modules of OpenRTM-aist>/ja/node/6585]]
 
 ConsoleInComp、ConsoleOutCompを起動して動作確認します。
 
@@ -134,7 +134,8 @@ OpenRTM-aist Python版のソースコードを入手してください。
 
  > set PYTHONPATH=%PYTHONPATH%;C:\Python37\Lib\site-packages;C:\Python37\Lib\site-packages\OpenRTM_aist;C:\Python37\Lib\site-packages\OpenRTM_aist\utils;C:\Python37\Lib\site-packages\OpenRTM_aist\RTM_IDL
 
-以下のrtc.confを作成します。
+以下のrtc.confを作成します。(rtc.confはRTCのexeファイルが実行される時のディレクトリに作成してください。サンプルバッチファイルを使う場合は、バッチファイルから起動されるexeファイルが置かれているディレクトリになります。)
+
 
  manager.modules.load_path: C:\\Python37\\Lib\\site-packages\\OpenRTM_aist\\ext\\transport\\ROSTransport
  manager.modules.preload: ROSTransport.py
@@ -144,7 +145,13 @@ OpenRTM-aist Python版のソースコードを入手してください。
 : ''manager.modules.load_path''| シリアライザーモジュール(ROSTransport.py)を置く場所を指定します。
 : ''manager.modules.preload''| ROS通信のためのシリアライザーモジュールのの指定をします。Pythonの場合には''ROSTransport.py''を指定します。
 : ''manager.components.preconnect''| コネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)にROSのメッセージ型、ros.topic(トピック名)に適当な任意の名前を設定します。
-上記のrtc.confでRTCを起動して動作確認してください。
+
+
+OpenRTM-aistのシリアライザー(ROSTransport.so)が対応しているメッセージ型は以下のようになります。
+
+- [[ROS/ROS2 Message Types suppoted by the serializer modules of OpenRTM-aist>/ja/node/6585]]
+
+上記のrtc.confを用いてRTCを起動して動作確認してください。
 
 *** Ubuntu
 **** ROSのインストール
@@ -163,7 +170,7 @@ C++版と同じ手順でROSをインストールしてください。
  $ sudo python setup.py install
 
 **** 動作確認
-以下のrtc.confを作成します。
+以下のrtc.confを作成します。(rtc.confはRTCを実行する時のカレントワーキングディレクトリに作成してください。)
 
  manager.modules.load_path: /usr/local/lib/python2.7/dist-packages/OpenRTM_aist/ext/transport/ROSTransport/
  manager.modules.preload: ROSTransport.py
@@ -173,6 +180,11 @@ C++版と同じ手順でROSをインストールしてください。
 : ''manager.modules.load_path''| シリアライザーモジュール(ROSTransport.py)を置く場所を指定します。
 : ''manager.modules.preload''| ROS通信のためのシリアライザーモジュールのの指定をします。Pythonの場合には''ROSTransport.py''を指定します。
 : ''manager.components.preconnect''| コネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)にROSのメッセージ型、ros.topic(トピック名)に適当な任意の名前を設定します。
+
+OpenRTM-aistのシリアライザー(ROSTransport.so)が対応しているメッセージ型は以下のようになります。
+
+- [[ROS/ROS2 Message Types suppoted by the serializer modules of OpenRTM-aist>/ja/node/6585]]
+
 以下のコマンドでRTCを起動して動作確認してください。
 
  $ python /usr/local/share/openrtm-2.0/components/python/SimpleIO/ConsoleIn.py
