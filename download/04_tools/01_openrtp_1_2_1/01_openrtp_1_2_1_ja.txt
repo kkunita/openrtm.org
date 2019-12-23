@@ -1,4 +1,4 @@
-﻿// Title: OpenRTP 1.2.0
+﻿// Title: OpenRTP 1.2.1
 #ref(eclipse_logo.png,right,around)
 #contents(5)
 
@@ -69,22 +69,6 @@ msiファイルは900MB以上のサイズがあります。ダウンロードを
 
 任意のディレクトリで、openrtpコマンドで起動できます。
 
-**リリースノート: 1.2.1-RELEASE
+**リリースノート
 
--- Managerのinit関数を2回実行しようとする
--- idlcompile.bat、idlcompile.shのomniidl実行時のインクルードパスの設定方法の修正
--- JavaのRTCでBasicDataType.idlなどにidljを実行しようとする
--- JavaのRTCでidlj実行時にインクルードパスにBasicDataType.idl等を配置したパスを指定する
--- 存在しないデータ型を指定してもコード生成時にエラーにならない
--- データポートに指定された型の整合性チェックを追加
--- IDLビルド用ファイルのインクルードパスを修正
--- IDLコンパイルが必要なRTCでもビルドが通るbuild_***.xmlを生成する
--- Python版RTCのサービスポートのプロバイダのコードを修正
--- エディタ上のRTCを1回のクリックで選択できない現象を修正
--- RTCBuilderの｢基本｣タブの表記などを修正
--- JARA_ARMのインターフェースを指定した場合の生成コードを修正
--- C++版RTCの生成コードを修正
--- Java版RTCのインクルード用環境変数を変更
--- IDLファイルのチェック方法を修正
--- C++版CMakeLists.txtのCPackでIDLファイルを含める
--- サービスポートのインターフェース型にManipulatorCommonInterface_XXXを指定した場合でも***_idl_example.pyを生成するように修正
+- [[1.2.1-RELEASE >https://github.com/OpenRTM/OpenRTP-aist/releases/tag/v1.2.1]]
