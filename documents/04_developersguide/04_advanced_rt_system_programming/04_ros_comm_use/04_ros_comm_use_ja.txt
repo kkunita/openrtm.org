@@ -33,9 +33,9 @@ CMake実行時に''ROS_ENABLE''のオプションをONにします。
  manager.components.preconnect: ConsoleOut0.in?interface_type=ros&marshaling_type=ros:std_msgs/Float32&ros.topic=chatter, ConsoleIn0.out?interface_type=ros&marshaling_type=ros:std_msgs/Float32&ros.topic=chatter
  manager.components.preactivation: ConsoleOut0, ConsoleIn0
 
-''manager.modules.load_path''には、シリアライザーモジュール‘（ROSTransport.dll)を置く場所を指定します。
-’manager.modules.preload’’オプションでROS通信のためのシリアライザーモジュールのの指定をします。Windowsの場合には''ROSTransport.dll''を指定します。
-’’manager.components.preconnect''オプションではコネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)にROSのメッセージ型、ros.topic(トピック名)に適当な任意の名前を設定します。
+: ''manager.modules.load_path''| シリアライザーモジュール(ROSTransport.dll)を置く場所を指定します。
+: ''manager.modules.preload''| ROS通信のためのシリアライザーモジュールのの指定をします。Windowsの場合には''ROSTransport.dll''を指定します。
+: ''manager.components.preconnect''| コネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)にROSのメッセージ型、ros.topic(トピック名)に適当な任意の名前を設定します。
 
 OpenRTM-aistのシリアライザー(ROSTransport.dll)が対応しているメッセージ型を以下にしめします。
 
@@ -86,9 +86,9 @@ CMake実行時に''ROS_ENABLE''のオプションをONにします。
  manager.components.preconnect: ConsoleOut0.in?interface_type=ros&marshaling_type=ros:std_msgs/Float32&ros.topic=chatter, ConsoleIn0.out?interface_type=ros&marshaling_type=ros:std_msgs/Float32&ros.topic=chatter
  manager.components.preactivation: ConsoleOut0, ConsoleIn0
 
-''manager.modules.load_path:''にシリアライザーモジュールがある場所を指定します。
-’’manager.modules.preload’’オプションでROS通信のためのシリアライザーモジュールのの指定をします。Ubuntuの場合には''ROSTransport.so''を指定します。
-’’manager.components.preconnect''オプションではコネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)にROSのメッセージ型、ros.topic(トピック名)に適当な任意の名前を設定します。
+: ''manager.modules.load_path''| シリアライザーモジュール(ROSTransport.so)を置く場所を指定します。
+: ''manager.modules.preload''| ROS通信のためのシリアライザーモジュールのの指定をします。Ubuntuの場合には''ROSTransport.so''を指定します。
+: ''manager.components.preconnect''| コネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)にROSのメッセージ型、ros.topic(トピック名)に適当な任意の名前を設定します。
 
 OpenRTM-aistのシリアライザー(ROSTransport.so)が対応しているメッセージ型は以下のようになります。
 
@@ -141,10 +141,9 @@ OpenRTM-aist Python版のソースコードを入手してください。
  manager.components.preconnect: ConsoleOut0.in?interface_type=ros&marshaling_type=ros:std_msgs/Float32&ros.topic=chatter, ConsoleIn0.out?interface_type=ros&marshaling_type=ros:std_msgs/Float32&ros.topic=chatter
  manager.components.preactivation: ConsoleOut0, ConsoleIn0
 
-''manager.modules.load_path''には、シリアライザーモジュール‘（ROSTransport.py)を置く場所を指定します。
-’manager.modules.preload’’オプションでROS通信のためのシリアライザーモジュールのの指定をします。Pythonの場合には''ROSTransport.py''を指定します。
-’’manager.components.preconnect''オプションではコネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)にROSのメッセージ型、ros.topic(トピック名)に適当な任意の名前を設定します。
-
+: ''manager.modules.load_path''| シリアライザーモジュール(ROSTransport.py)を置く場所を指定します。
+: ''manager.modules.preload''| ROS通信のためのシリアライザーモジュールのの指定をします。Pythonの場合には''ROSTransport.py''を指定します。
+: ''manager.components.preconnect''| コネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)にROSのメッセージ型、ros.topic(トピック名)に適当な任意の名前を設定します。
 上記のrtc.confでRTCを起動して動作確認してください。
 
 *** Ubuntu
@@ -171,10 +170,9 @@ C++版と同じ手順でROSをインストールしてください。
  manager.components.preconnect: ConsoleOut0.in?interface_type=ros&marshaling_type=ros:std_msgs/Float32&ros.topic=chatter, ConsoleIn0.out?interface_type=ros&marshaling_type=ros:std_msgs/Float32&ros.topic=chatter
  manager.components.preactivation: ConsoleOut0, ConsoleIn0
 
-''manager.modules.load_path''には、シリアライザーモジュール‘（ROSTransport.py)を置く場所を指定します。
-’manager.modules.preload’’オプションでROS通信のためのシリアライザーモジュールのの指定をします。Pythonの場合には''ROSTransport.py''を指定します。
-’’manager.components.preconnect''オプションではコネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)にROSのメッセージ型、ros.topic(トピック名)に適当な任意の名前を設定します。
-
+: ''manager.modules.load_path''| シリアライザーモジュール(ROSTransport.py)を置く場所を指定します。
+: ''manager.modules.preload''| ROS通信のためのシリアライザーモジュールのの指定をします。Pythonの場合には''ROSTransport.py''を指定します。
+: ''manager.components.preconnect''| コネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)にROSのメッセージ型、ros.topic(トピック名)に適当な任意の名前を設定します。
 以下のコマンドでRTCを起動して動作確認してください。
 
  $ python /usr/local/share/openrtm-2.0/components/python/SimpleIO/ConsoleIn.py
