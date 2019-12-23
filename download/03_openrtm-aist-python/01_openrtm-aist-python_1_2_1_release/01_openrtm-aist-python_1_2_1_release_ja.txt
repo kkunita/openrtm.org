@@ -50,8 +50,9 @@ msiファイルは900MB以上のサイズがあります。ダウンロードを
 以下で配布しているインストールスクリプトを利用すれば、必要なパッケージを一括でインストールできます。
 
 
-| ディストリビューション・バージョン | 一括インストールスクリプト |
+| ディストリビューション・バージョン | 一括インストールスクリプト (右クリックでURLを入手) |
 | Ubuntu 16.04 (xenial) i386/amd64 &br; Ubuntu 18.04 (bionic) amd64 &br; | [[pkg_install_ubuntu.sh >https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_ubuntu.sh]] |
+| Raspbian Buster armhf | [[pkg_install_raspbian.sh>https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_raspbian.sh]] |
 //| Debian  8.0  (jessie) i386/amd64 &br; Debian  9.0  (stretch) i386/amd64| [[pkg_install_debian.sh >https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_debian.sh]] |
 //| Fedora 27 i686/x86_64 &br; Fedora 28 i686/x86_64 &br; Fedora 29 i686/x86_64| [[pkg_install_fedora.sh >https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_fedora.sh]] |
 
@@ -119,6 +120,7 @@ OpenRTM-aist Official Websiteからソースコード、Windowsインストー�
 - [[1.2.1-RELEASE >https://github.com/OpenRTM/OpenRTM-aist-Python/releases/tag/v1.2.1]]
 
 *** 対応(ビルド検証済)OS
----Ubuntu 16.04 i386、amd64
----Ubuntu 18.04 amd64
----Windows 10 (32/64bit)
+--- Ubuntu 16.04 i386、amd64
+--- Ubuntu 18.04 amd64
+--- Raspian Buster armhf
+--- Windows 10 (32/64bit)
