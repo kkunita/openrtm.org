@@ -113,61 +113,12 @@ Ubuntu/Debianの場合
 //ツールを別途インストールする方法については、　[[OpenRTP 1.1.0-RC5:/ja/node/5778]] をご覧ください。
 
 &br;
-**リリースノート: 1.2.1-RELEASE
+**リリースノート
 OpenRTM-aist Official Websiteからソースコード、Windowsインストーラー、Linux用パッケージなどがLGPLライセンスもしくは産総研との個別契約のうち一つから選択するデュアルライセンス方式で利用可能です。
 
-//- [[OpenRTM-aist-1.1.0-RELEASE.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/cxx/1.1.0/OpenRTM-aist-1.1.0-RELEASE.tar.gz]] -- 2012.05.25リリース
-
-*** 不具合修正
-
--- トピック接続機能が動作していなかったため修正
--- corba.argsに設定したオプションが正しく設定されない問題の修正
--- サービスポート接続時にコネクタのコールバック関数が呼ばれない問題の修正
--- コンポーネントオブザーバーのタイマースレッドをonFinalizeで終了する処理に変更
--- エラー遷移時にonExecuteとonStateUpdateを呼ばないようにする
--- Linux、Python3でビルドを実行するとエラーになる問題の修正
--- ConfigSample.pyがPython3で正常に動作しないバグの修正
--- ManagerActionListenerの基底クラス追加、引数ありListenerの修正
--- rtc.confのパスの修正
--- CameraCommonInterface、ManipulatorCommonInterfaceに関連するファイルが正常にインストールされない
--- RTCが状態遷移しない問題の修正
--- 雑多なバグフィックス
-
-
-*** ポータビリティに関する変更
-//-- 64bit Linunxへの雑多な対応
-//-- 64bit Windowsへの対応
-//-- Mac OS Xへの正式な対応
-//-- Linux+RtORBの正式サポート
-//-- Cygwin+RtORBの正式サポート
-//-- MacOS+RtORBの正式サポート
--- VC2019(32bit/64bit)の正式サポート
-
-
-//*** 拡張機能に関する変更
-//-- ComponentObserver がRTCのdll, libに含まれるようになったため、ext\sdo下に配置していた処理を外した
-
-
-//*** ユーザービリティに関する変更
-//-- インストール時、VisualStudioのバージョンを指定できる機能を組み込む
-//-- Windows7, 8.1, 10の環境でスタートメニュー表示が同じように見えるよう整備
-//-- ExtTriggerサンプルを起動するbatスクリプトを追加
-//-- OpenRTM-aistの32bit版、64bit版の両方をインストールされた環境に対応するためスタートメニューを別々に定義
-//-- ネームサービス終了スクリプトを定義する
-//-- Windows インストーラーで omniORBを4.2.3に更新
-//-- Windows インストーラーで RTShellを4.2.0に更新
-//-- Windows インストーラーで OpenCVを3.4に更新し、インテルTBBを使うように再コンパイル、GStreamer対応
-//-- RTSE上でマネジャー経由でOpenCVサンプルRTCを起動できるようにrtc.confを整備する
-
+- [[1.2.1-RELEASE >https://github.com/OpenRTM/OpenRTM-aist-Python/releases/tag/v1.2.1]]
 
 *** 対応(ビルド検証済)OS
-//---Debian 8.0 i386, amd64
-//---Debian 9.0 i386, amd64
 ---Ubuntu 16.04 i386、amd64
 ---Ubuntu 18.04 amd64
-//---Fedora release 27 i686, x86_64
-//---Fedora release 28 i686, x86_64
-//---Fedora release 29 i686, x86_64
----Windows 7 (32/64bit)
----Windows 8.1 (32/64bit)
 ---Windows 10 (32/64bit)
