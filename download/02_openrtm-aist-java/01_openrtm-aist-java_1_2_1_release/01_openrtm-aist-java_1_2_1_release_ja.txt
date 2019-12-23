@@ -99,7 +99,7 @@ jarファイルおよびサンプルからのUbuntu、Debian用debパッケー�
 **リリースノート
 - [[1.2.1-RELEASE >https://github.com/OpenRTM/OpenRTM-aist-Java/releases/tag/v1.2.1]]
 
-*** 対応 (ビルド検証済) OS
+*** 対応(ビルド検証済)OS
 --- Ubuntu 16.04 i386、 amd64
 --- Ubuntu 18.04 amd64
 --- Raspbian Buster armhf
