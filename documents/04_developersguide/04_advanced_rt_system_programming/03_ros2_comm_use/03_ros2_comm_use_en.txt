@@ -84,11 +84,11 @@ CMake実行時に''FASTRTPS_ENABLE''、''ROS2_ENABLE''のオプションをONに
 
 : manager.module.load_path | シリアライザ用モジュール(FastRTPSTransport.dllとROS2Transport.dll)が置かれている場所
 : manager.modules.preload | シリアライザ用モジュールを読み込む順番で指定
-: manager.components.preconnect | コネクタ生成時の設定を記述します。interface_type(インターフェース型)に''fast-rtps''を、marshaling_type(マーシャリング型)にROS2メッセージ型を、fastrtps.topic(トピック)に適当な任意の名前を記述します。
+: manager.components.preconnect | コネクタ生成時の設定を記述します。interface_type(インターフェース型)に''fast-rtps''を、marshaling_type(マーシャリング型)に対応シリアライザ名を、fastrtps.topic(トピック)に適当な任意の名前を記述します。
 
-OpenRTM-aistのシリアライザが対応しているメッセージ型を以下に示します。
+ROS/ROS2用のシリアライザと対応するROS/ROS2メッセージ型の関係を以下のリンクで示します。
 
-- [[ROS/ROS2 Message Types suppoted by the serializer modules of OpenRTM-aist>/ja/node/6585]]
+- [[Serializer Names and ROS/ROS2 Message Types>/ja/node/6585]]
 
 コネクタの生成は''manager.components.preconnect''オプションにより設定します。
 この例では''ConsoleOut0''コンポーネントの''in''のポート、''ConsoleIn0''コンポーネントの''out''のポートにそれぞれコネクタを生成しています。
@@ -146,11 +146,11 @@ CMake実行時に''FASTRTPS_ENABLE''、''ROS2_ENABLE''のオプションをONに
 
 : manager.module.load_path | シリアライザ用モジュール(FastRTPSTransport.soとROS2Transport.so)が置かれている場所
 : manager.modules.preload | シリアライザ用モジュールを読み込む順番で指定
-: manager.components.preconnect | コネクタ生成時の設定を記述します。interface_type(インターフェース型)に''fast-rtps''を、marshaling_type(マーシャリング型)にROS2メッセージ型を、fastrtps.topic(トピック)に適当な任意の名前を記述します。
+: manager.components.preconnect | コネクタ生成時の設定を記述します。interface_type(インターフェース型)に''fast-rtps''を、marshaling_type(マーシャリング型)に対応シリアライザ名を、fastrtps.topic(トピック)に適当な任意の名前を記述します。
 
 OpenRTM-aistのシリアライザが対応しているメッセージ型を以下に示します。
 
-- [[ROS/ROS2 Message Types suppoted by the serializer modules of OpenRTM-aist>/ja/node/6585]]
+- [[Serializer Names and ROS/ROS2 Message Types>/ja/node/6585]]
 
 RTCを起動して動作確認します。
 
@@ -200,7 +200,7 @@ ros2のsetup.bashを実行するとPYTHONPATHが上書きされるようなの�
 
 omniORBpyがインストールされているディレクトリにあわせて変更してください。
 
-以下のようなrtc.confを作成し、''ROS2Transport.py''をロード後、インターフェース型に''ros2''、シリアライザに''ros2:std_msgs/Float32''を指定して起動します。
+以下のようなrtc.confを作成し、''ROS2Transport.py''をロードし、インターフェース型に''ros2''、シリアライザに''ros2:std_msgs/Float32''を指定して起動するように指定します。
 
  manager.modules.load_path: /usr/local/lib/python3.6/site-packages/OpenRTM_aist/ext/transport/ROS2Transport/
  manager.modules.preload: ROS2Transport.py
@@ -208,11 +208,11 @@ omniORBpyがインストールされているディレクトリにあわせて�
 
 : manager.module.load_path | シリアライザ用モジュール(ROS2Transport.py)が置かれている場所
 : manager.modules.preload | シリアライザ用モジュールを読み込む順番で指定
-: manager.components.preconnect | コネクタ生成時の設定を記述します。interface_type(インターフェース型)に''fast-rtps''を、marshaling_type(マーシャリング型)にROS2メッセージ型を、fastrtps.topic(トピック)に適当な任意の名前を記述します。
+: manager.components.preconnect | コネクタ生成時の設定を記述します。interface_type(インターフェース型)に''ros2''を、marshaling_type(マーシャリング型)に対応シリアライザ名を、fastrtps.topic(トピック)に適当な任意の名前を記述します。
 
 OpenRTM-aistのシリアライザが対応しているメッセージ型を以下に示します。
 
-- [[ROS/ROS2 Message Types suppoted by the serializer modules of OpenRTM-aist>/ja/node/6585]]
+- [[Serializer Names and ROS/ROS2 Message Types>/ja/node/6585]]
 
 
 以下のコマンドでRTCを起動して動作確認してください。
