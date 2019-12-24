@@ -35,11 +35,11 @@ CMake実行時に''ROS_ENABLE''のオプションをONにします。
 
 : ''manager.modules.load_path''| シリアライザーモジュール(ROSTransport.dll)を置く場所を指定します。
 : ''manager.modules.preload''| ROS通信のためのシリアライザーモジュールのの指定をします。Windowsの場合には''ROSTransport.dll''を指定します。
-: ''manager.components.preconnect''| コネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)にROSのメッセージ型、ros.topic(トピック名)に適当な任意の名前を設定します。
+: ''manager.components.preconnect''| コネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)に対応シリアライザの名前、ros.topic(トピック名)に適当な任意の名前を設定します。
 
-OpenRTM-aistのシリアライザー(ROSTransport.dll)が対応しているメッセージ型を以下にしめします。
+OpenRTM-aistのシリアライザーモジュール(ROSTransport.dll)が対応しているメッセージ型は以下のようになります。
 
-- [[OpenRTM-aistのシリアライザが対応しているROS/ROS2メッセージ型>/ja/node/6585]]
+- [[シリアライザ名とROS/ROS2メッセージ型>/ja/node/6585]]
 
 RTCを起動して動作確認します。
 以下のファイルをダブルクリックします。この時上記の変更をしたrtc.confは、VC14等のOpenRTM-aistをインストール時に指定したVisual Studioのバージョンに関連したのフォルダー(デフォルトではExamplesの下のVC14)に実行するexeファイルがありますので、そこと同じディレクトリに置くようにしてください。
@@ -88,11 +88,11 @@ CMake実行時に''ROS_ENABLE''のオプションをONにします。
 
 : ''manager.modules.load_path''| シリアライザーモジュール(ROSTransport.so)を置く場所を指定します。
 : ''manager.modules.preload''| ROS通信のためのシリアライザーモジュールのの指定をします。Ubuntuの場合には''ROSTransport.so''を指定します。
-: ''manager.components.preconnect''| コネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)にROSのメッセージ型、ros.topic(トピック名)に適当な任意の名前を設定します。
+: ''manager.components.preconnect''| コネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)に対応シリアライザの名前、ros.topic(トピック名)に適当な任意の名前を設定します。
 
-OpenRTM-aistのシリアライザー(ROSTransport.so)が対応しているメッセージ型は以下のようになります。
+OpenRTM-aistのシリアライザーモジュール(ROSTransport.so)が対応しているメッセージ型は以下のようになります。
 
-- [[OpenRTM-aistのシリアライザが対応しているROS/ROS2メッセージ型>/ja/node/6585]]
+- [[シリアライザ名とROS/ROS2メッセージ型>/ja/node/6585]]
 
 ConsoleInComp、ConsoleOutCompを起動して動作確認します。
 
@@ -144,12 +144,12 @@ OpenRTM-aist Python版のソースコードを入手してください。
 
 : ''manager.modules.load_path''| シリアライザーモジュール(ROSTransport.py)を置く場所を指定します。
 : ''manager.modules.preload''| ROS通信のためのシリアライザーモジュールのの指定をします。Pythonの場合には''ROSTransport.py''を指定します。
-: ''manager.components.preconnect''| コネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)にROSのメッセージ型、ros.topic(トピック名)に適当な任意の名前を設定します。
+: ''manager.components.preconnect''| コネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)に対応シリアライザの名前、ros.topic(トピック名)に適当な任意の名前を設定します。
 
 
-OpenRTM-aistのシリアライザー(ROSTransport.so)が対応しているメッセージ型は以下のようになります。
+OpenRTM-aistのシリアライザーモジュール(ROSTransport.py)が対応しているメッセージ型は以下のようになります。
 
-- [[OpenRTM-aistのシリアライザが対応しているROS/ROS2メッセージ型>/ja/node/6585]]
+- [[シリアライザ名とROS/ROS2メッセージ型>/ja/node/6585]]
 
 上記のrtc.confを用いてRTCを起動して動作確認してください。
 
@@ -179,11 +179,11 @@ C++版と同じ手順でROSをインストールしてください。
 
 : ''manager.modules.load_path''| シリアライザーモジュール(ROSTransport.py)を置く場所を指定します。
 : ''manager.modules.preload''| ROS通信のためのシリアライザーモジュールのの指定をします。Pythonの場合には''ROSTransport.py''を指定します。
-: ''manager.components.preconnect''| コネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)にROSのメッセージ型、ros.topic(トピック名)に適当な任意の名前を設定します。
+: ''manager.components.preconnect''| コネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)に対応シリアライザの名前、ros.topic(トピック名)に適当な任意の名前を設定します。
 
-OpenRTM-aistのシリアライザー(ROSTransport.so)が対応しているメッセージ型は以下のようになります。
+OpenRTM-aistのシリアライザーモジュール(ROSTransport.py)が対応しているメッセージ型は以下のようになります。
 
-- [[OpenRTM-aistのシリアライザが対応しているROS/ROS2メッセージ型>/ja/node/6585]]
+- [[シリアライザ名とROS/ROS2メッセージ型>/ja/node/6585]]
 
 以下のコマンドでRTCを起動して動作確認してください。
 
