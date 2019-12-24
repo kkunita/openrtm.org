@@ -25,10 +25,10 @@ openrtm.orgが提供するインストール・スクリプト''pkg_install_rasp
 
 
 ** RTShellのインストール
-Raspbianの環境では現在OpenRTPの対応がありません。よってRaspianの環境では、ローカルでGUI(RTSystemEditor)を用いたRTCの制御をすることはできません。RTCの制御を行うための方法としては、リモートで他の対応ホスト上でRTSystemEditorを起動してそこから制御を行うという方法と、ローカルでRTShellというツールを用いて制御を行うという方法があります。RTShellを使うためには、RTShellがPythonで書かれたツールであるためPython環境のセットアップが必要になります。これらの条件を踏まえてRTShellをインストールするためには
- $ sudo sh pkg_install_raspbian.sh -l python 
+Raspbianの環境では現在OpenRTPの対応がありません。よってRaspianの環境では、ローカルでGUI(RTSystemEditor)を用いたRTCの制御ができません。RTCの制御を行うための方法としては、リモートで他の対応ホスト上でRTSystemEditorを起動してそこから制御を行うという方法と、ローカルでRTShellというツールを用いて制御を行うという方法があります。RTShellを使うためには、RTShellがPythonで書かれたツールであるためPython環境のセットアップが必要です。これらの条件を踏まえてRTShellをインストールするためには
+ $ sudo sh pkg_install_raspbian.sh -l python -r --yes
  $ sudo sh pkg_install_raspbian.sh -l rtshell --yes
-でインストールができます。
+のコマンドを実行します。
 
 
 ***インストールの確認
@@ -38,14 +38,29 @@ Raspbianの環境では現在OpenRTPの対応がありません。よってRaspi
  要望=(U)不明/(I)インストール/(R)削除/(P)完全削除/(H)保持
  | 状態=(N)無/(I)インストール済/(C)設定/(U)展開/(F)設定失敗/(H)半インストール/(W)トリガ待ち/(T)トリガ保留
  |/ エラー?=(空欄)無/(R)要再インストール (状態,エラーの大文字=異常)
- ||/ 名前                     バージョン        アーキテクチャ    説明
- +++-===========================-============-============-======================================================
- ii  openrtm-aist-java:amd64     1.2.1-0      armhf        OpenRTM-aist, RT-Middleware distributed by AIST
- ii  openrtm-aist-java-doc       1.2.1-0      all          Documentation for openrtm-aist-java
- ii  openrtm-aist-java-example   1.2.1-0      armhf        OpenRTM-aist-Java examples
- ii  openrtm-aist-python         1.2.1-0      armhf        OpenRTM-aist, RT-Middleware distributed by AIST
- ii  openrtm-aist-python-doc     1.2.1-0      all          Documentation for openrtm-aist-python
- ii  openrtm-aist-python-example 1.2.1-0      armhf        OpenRTM-aist-Python examples 
+ ||/ 名前                            バージョン   アーキテクチ 説明 
+ +++-===============================-============-============-===============================================
+ ii  openrtm-aist:armhf              1.2.1-0      armhf        OpenRTM-aist, RT-Middleware distributed by AIST
+ ii  openrtm-aist-dev:armhf          1.2.1-0      armhf        OpenRTM-aist headers for development
+ ii  openrtm-aist-idl:armhf          1.2.1-0      armhf        OpenRTM-aist idls for development
+ ii  openrtm-aist-java:armhf         1.2.1-0      armhf        OpenRTM-aist, RT-Middleware distributed by AIST
+ ii  openrtm-aist-java-doc           1.2.1-0      all          Documentation for openrtm-aist-java
+ ii  openrtm-aist-java-example:armhf 1.2.1-0      armhf        OpenRTM-aist-Java examples
+ ii  openrtm-aist-python             1.2.1-0      armhf        OpenRTM-aist, RT-Middleware distributed by AIST
+ ii  openrtm-aist-python-example     1.2.1-0      armhf        OpenRTM-aist-Python examples
+
+ $ pip show rtshell-aist
+ Name: rtshell-aist
+ Version: 4.2.2
+ Summary: Shell commands for managing RT Components and RT Systems.
+ Home-page: http://github.com/gbiggs/rtshell
+ Author: Geoffrey Biggs and contributors
+ Author-email: geoffrey.biggs@aist.go.jp
+ License: LGPL3
+ Location: /usr/local/lib/python2.7/dist-packages
+ Requires: rtsprofile-aist, rtctree-aist
+ Required-by:
+
 
 //***環境変数の設定
 //OpenRTM-aist-1.2.0の場合は、RTM_JAVA_ROOTという環境変数の設定が必要です。現在ログイン中のユーザーのみへの設定とする場合は、~/.bash_profileに、そのシステムを使用するすべてのユーザー用として設定する場合は、/etc/profileに以下の行を付け加えてください。(OpenRTM-1.2.1ではこの操作は必要なくなる予定です。)
@@ -56,6 +71,136 @@ Raspbianの環境では現在OpenRTPの対応がありません。よってRaspi
 
 **パッケージの詳細
 各パッケージの内容は以下の通りです。
+***openrtm-aist
+openrtm-aistにはランタイムライブラリとコマンド群が含まれています。
+
+-コマンド
+ /usr/bin/rtcd
+ /usr/bin/rtcprof
+ /usr/bin/rtm-config
+ /usr/bin/rtm-naming
+
+
+-ライセンスなど
+ /usr/share/doc/openrtm-aist/changelog.gz
+ /usr/share/doc/openrtm-aist/README.Debian
+ /usr/share/doc/openrtm-aist/README
+ /usr/share/doc/openrtm-aist/README.jp
+ /usr/share/doc/openrtm-aist/copyright
+ /usr/share/doc/openrtm-aist/changelog.Debian.gz
+
+-設定ファイルサンプル
+ /usr/etc/rtc.conf.sample
+
+-ライブラリ
+ /usr/lib/x86_64-linux-gnu/libRTC-X.X.X.so
+ /usr/lib/x86_64-linux-gnu/libRTC.a
+ /usr/lib/x86_64-linux-gnu/libRTC.la
+ /usr/lib/x86_64-linux-gnu/libcoil-X.X.X.so
+ /usr/lib/x86_64-linux-gnu/libcoil.a
+ /usr/lib/x86_64-linux-gnu/librtmCamera.a
+ /usr/lib/x86_64-linux-gnu/librtmCamera.la
+ /usr/lib/x86_64-linux-gnu/librtmCamera.so.X.X.X
+ /usr/lib/x86_64-linux-gnu/librtmManipulator.a
+ /usr/lib/x86_64-linux-gnu/librtmManipulator.la
+ /usr/lib/x86_64-linux-gnu/librtmManipulator.so.X.X.X
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/ec/FileNameservice.la
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/ec/FileNameservice.so.X.X.X
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/ec/LogicalTimeTriggeredEC.a
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/ec/LogicalTimeTriggeredEC.la
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/ec/LogicalTimeTriggeredEC.so.X.X.X
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/sdo/LoggerConsumer.a
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/sdo/LoggerConsumer.la
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/sdo/LoggerConsumer.so.X.X.X
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/ssl/SSLTransport.la
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/ssl/SSLTransport.so.X.X.X
+ /usr/lib/x86_64-linux-gnu/pigconfig/openrtm-aist.pc
+
+***openrtm-aist-dev
+openrtm-aist-devには、開発に必要なコマンド群とヘッダが含まれています。
+
+-コマンド
+ /usr/bin/coil-config
+ /usr/bin/rtc-template
+ /usr/bin/rtm-skelwrapper
+
+-ライセンスなど
+ /usr/share/doc/openrtm-aist-dev/changelog.Debian.gz
+ /usr/share/doc/openrtm-aist-dev/changelog.gz
+ /usr/share/doc/openrtm-aist-dev/copyright
+
+-ヘッダなど
+ /usr/include/coil-1.2/coil/Affinity.h
+ /usr/include/coil-1.2/coil/Allocator.h
+ 中略
+ /usr/include/coil-1.2/coil/stringutil.h
+ /usr/include/openrtm-1.2/rtm/BufferBase.h
+ /usr/include/openrtm-1.2/rtm/BufferStatus.h
+ 中略
+ /usr/include/openrtm-1.2/rtm/config_rtc.h
+ /usr/include/openrtm-1.2/rtm/ext/CameraCommonInterface.hh
+ /usr/include/openrtm-1.2/rtm/ext/CameraCommonInterface.idl
+ 中略
+ /usr/include/openrtm-1.2/rtm/ext/ManipulatorCommonInterface_MiddleStub.h
+ /usr/include/openrtm-1.2/rtm/ext/ec/artlinux/ArtExecutionContext.h
+ /usr/include/openrtm-1.2/rtm/ext/ec/artlinux/rtc.conf.sample
+ /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/LogicalTimeTriggeredEC.h
+ /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/LogicalTimeTriggeredEC.idl
+ 中略
+ /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/LogicalTimeTriggeredECStub.h
+ /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/idl/LogicalTimeTriggeredEC.hh
+ /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/idl/LogicalTimeTriggeredEC.idl
+ /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/idl/LogicalTimeTriggeredECDynSK.cc
+ /usr/include/openrtm-1.2/rtm/ext/ec/logical_time/idl/LogicalTimeTriggeredECSK.cc
+ /usr/include/openrtm-1.2/rtm/ext/ec/rtpreempt
+ /usr/include/openrtm-1.2/rtm/ext/ec/rtpreempt/RTPreemptEC.h
+ /usr/include/openrtm-1.2/rtm/ext/ec/rtpreempt/rtc.conf.sample
+ /usr/include/openrtm-1.2/rtm/ext/local_service/nameservice_file/FileNameservice.h
+ /usr/include/openrtm-1.2/rtm/ext/logger/fluentbit_stream/FluentBit.h
+ /usr/include/openrtm-1.2/rtm/ext/logger/fluentbit_stream/fluentbit.conf
+ /usr/include/openrtm-1.2/rtm/ext/sdo/logger/Logger.hh
+ /usr/include/openrtm-1.2/rtm/ext/sdo/logger/Logger.idl
+ 中略
+ /usr/include/openrtm-1.2/rtm/ext/sdo/logger/LoggerStub.h
+ /usr/include/openrtm-1.2/rtm/ext/sdo/observer/ComponentObserver.idl
+ /usr/include/openrtm-1.2/rtm/ext/sdo/observer/ComponentObserverConsumer.h
+ 中略
+ /usr/include/openrtm-1.2/rtm/ext/sdo/observer/ComponentObserverStub.h
+ /usr/include/openrtm-1.2/rtm/ext/sdo/observer/idl/ComponentObserver.hh
+ /usr/include/openrtm-1.2/rtm/ext/sdo/observer/idl/ComponentObserver.idl
+ /usr/include/openrtm-1.2/rtm/ext/sdo/observer/idl/ComponentObserverDynSK.cc
+ /usr/include/openrtm-1.2/rtm/ext/sdo/observer/idl/ComponentObserverSK.cc
+ /usr/include/openrtm-1.2/rtm/idl/BasicDataType.hh
+ /usr/include/openrtm-1.2/rtm/idl/BasicDataType.idl
+ 中略
+ /usr/include/openrtm-1.2/rtm/idl/device_interfaces/Ranger.idl
+ /usr/include/openrtm-1.2/rtm/version.h
+ /usr/include/openrtm-1.2/rtm/version.txt
+
+- ライブラリ・その他
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/cmake/OpenRTMConfig.cmake
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/py_helper/README_gen.py
+ /usr/lib/x86-64-linux-gnu/openrtm-1.2/py_helpver/cxx_gen.py
+ 中略
+ /usr/lib/x86_64-linux-gnu/openrtm-1.2/py_helpver/yat.py
+ /usr/lib/x86_64-linux-gnu/pkgconfig/libcoil.pc
+
+***openrtm-aist-idl
+- idlファイルなど
+ /etc/profile.d/openrtm-aist-idl.sh
+ /usr/include/openrtm-1.2/rtm/idl/BasicDataType.idl
+ /usr/include/openrtm-1.2/rtm/idl/CameraCommonInterface.idl
+ 中略
+ /usr/include/openrtm-1.2/rtm/idl/SharedMemory.idl
+ /usr/share/openrtm-1.2/idl/BasicDataType.idl
+ /usr/share/openrtm-1.2/idl/CameraCommonInterface.idl
+ 中略
+ /usr/share/openrtm-1.2/idl/SharedMemory.idl
+
+- ライセンスなど
+ /usr/share/doc/openrtm-aist-idl/changelog.Debian.gz
+ /usr/share/doc/openrtm-aist-idl/changelog.gz
+ /usr/share/doc/openrtm-aist-idl/copyright
 
 *** openrtm-aist-java
 - コマンド
