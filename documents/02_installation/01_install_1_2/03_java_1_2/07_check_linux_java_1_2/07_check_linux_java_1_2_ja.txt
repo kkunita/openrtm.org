@@ -21,9 +21,9 @@ ConsoleInのOutPortからConsoleOutのInPortへ接続を構成し、これらの
 以降、簡単のためサンプルは/usr/share/openrtm-1.2/components/java/SimpleIO以下にあるものとして説明を記述します。
 
 ** サンプルを使用したテスト
-*** RT System Editorを用いた動作確認
+*** RTSystemEditorを用いた動作確認
 **** ネームサーバー起動
-以下の手順に従ってRT System Editor、ネームサーバーを起動してください。
+以下の手順に従ってRTSystemEditor、ネームサーバーを起動してください。
 
 - [[OpenRTP起動手順:/ja/node/6654]]
 
@@ -61,7 +61,7 @@ ConsoleInのOutPortからConsoleOutのInPortへ接続を構成し、これらの
 
 **** エディタへの配置
 
-RT System Editorのツリー表示の[>]をクリックすると、先ほど起動した2つのコンポーネントが登録されていることがわかります。
+RTSystemEditorのツリー表示の[>]をクリックすると、先ほど起動した2つのコンポーネントが登録されていることがわかります。
 
 #ref(rtm10.png,/ja/node/6614,60%,center)
 CENTER:''ConsoleInコンポーネントとConsoleOutコンポーネント''
