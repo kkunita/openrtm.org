@@ -17,9 +17,9 @@ Source and binary packages for ''Linux'' and ''Windows'' are available from [[he
 //Source and binary packages for ''Linux'' and ''Windows'' are available from [[here>/node/6040]].
 Current versions for each language are:
 
-- '' [[C++: 1.2.1-RELEASE:/ja/node/6877]]''
-- '' [[Python: 1.2.1-RELEASE:/ja/node/6913]]''
-- '' [[Java: 1.2.1-RELEASE:/ja/node/6912]]''
+- '' [[C++: 1.2.1-RELEASE:/ja/node/6935]]''
+- '' [[Python: 1.2.1-RELEASE:/ja/node/6937]]''
+- '' [[Java: 1.2.1-RELEASE:/ja/node/6936]]''
 - '' [[tools: 1.2.1:/ja/node/6914]]''
 
 &br;

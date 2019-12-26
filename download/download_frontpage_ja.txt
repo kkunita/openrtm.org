@@ -31,8 +31,8 @@ OpenRTM-aistは他のパッケージに依存します。以下のリンクか�
 //- ''Java: 1.2.0-RELEASE''
 //- ''tools: 1.2.0''
 - '' [[C++: 1.2.1-RELEASE:/ja/node/6877]]''
-- '' [[Python: 1.2.1-RELEASE:/ja/node/6913]]''
-- '' [[Java: 1.2.1-RELEASE:/ja/node/6912]]''
+- '' [[Python: 1.2.1-RELEASE:/ja/node/6912]]''
+- '' [[Java: 1.2.1-RELEASE:/ja/node/6913]]''
 - '' [[tools: 1.2.1:/ja/node/6914]]''
 
 
