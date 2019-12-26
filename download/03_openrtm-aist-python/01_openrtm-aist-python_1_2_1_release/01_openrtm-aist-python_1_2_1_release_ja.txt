@@ -1,4 +1,4 @@
-﻿// Title: OpenRTM-aist C++ 1.2.1-RELEASE
+﻿// Title: OpenRTM-aist-Python 1.2.1-RELEASE
 #ref(cpp_logo.png,nolink,right,around)
 #contents(4)
 
