@@ -1,9 +1,9 @@
 ﻿// Title: OpenRTM-aist (Java)
 #ref(java_logo.png,right,around,url=/node/117)
 Libraries for RTC development in Java language. Source code, a Windows installer and jar files are available.
-
--[[1.1.0-RC1:/en/node/4530]]
--[[1.0.0-RELEASE:/en/node/953]]
+- [[1.2.1-RELEASE:/en/node/6936]]
+- [[1.1.0-RC1:/en/node/4530]]
+- [[1.0.0-RELEASE:/en/node/953]]
 &br;
 
 &br;
