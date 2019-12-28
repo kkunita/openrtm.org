@@ -1,0 +1,116 @@
+// Title: OpenRTM-aist C++ 1.2.1-RELEASE
+#ref(cpp_logo.png,nolink,right,around)
+#contents(4)
+
+(G)Please refer to the following page for the installation procedure.
+
+-[[OpenRTM-aist (C ++ version) 1.2 Family installation:/ja/node/6600]]
+
+** Package
+*** Windows Installer
+The msi file is over 900MB in size. Use a high-speed line (50Mbps or more) to download in minutes.
+
+**** For 64bit
+|LEFT:300|LEFT|LEFT:120|c
+| Windows Installer &br; (including OpenRTM-aist, C ++, Python, &br; Java version and OpenRTP, &br; RTShell (4.2.2)) &br; (Visual Studio 2010, 2012, &br; 2013, 2015, 2017, 2019) | [[OpenRTM-aist-1.2.1-RELEASE_x86_64.msi:https://github.com/OpenRTM/OpenRTM-aist/releases/download/v1.2.1/OpenRTM-aist-1.2.1-RELEASE_x86_64.msi]] &br; MD5:be6b346d61768435d812cc032bc7a529 | November 25, 2019 |
+| Python-2.7 | [[python-2.7.16.amd64.msi:https://www.python.org/ftp/python/2.7.16/python-2.7.16.amd64.msi]] | [[python .org:https://www.python.org]] |
+| Python-3.6 | [[python-3.6.8-amd64.exe:https://www.python.org/ftp/python/3.6.8/python-3.6.8-amd64.exe]] | [[python .org:https://www.python.org]] |
+| Python-3.7 | [[python-3.7.5-amd64.exe:https://www.python.org/ftp/python/3.7.5/python-3.7.5-amd64.exe]] | [[python .org:https://www.python.org]] |
+| CMake | [[cmake-3.15.5-win64-x64.msi:https://github.com/Kitware/CMake/releases/download/v3.15.5/cmake-3.15.5-win64-x64.msi]] | [[cmake:https://cmake.org/]] |
+| Doxygen | [[doxygen-1.8.16-setup.exe:http://doxygen.nl/files/doxygen-1.8.16-setup.exe]] | [[doxygen:http://www.doxygen.nl/index.html]] |
+
+- &color(red){* Install Python version "3.7", "3.6", or "2.7". };
+//- &color (red){* Please delete the old RTShell beforehand. However, if the OpenRTM-aist 1.1.2 version is installed using the msi file, no action is required. };
+
+**** For 32bit
+|LEFT:300|LEFT|LEFT:120|c
+|Installer for Windows&br; (OpenRTM-aist、C++、Python、&br;Java version, and OpenRTP、&br;including RTShell(4.2.2))&br;(Visual Studio 2010、2012、&br;2013、2015、2017、2019)|[[OpenRTM-aist-1.2.1-RELEASE_x86.msi:https://github.com/OpenRTM/OpenRTM-aist/releases/download/v1.2.1/OpenRTM-aist-1.2.1-RELEASE_x86.msi]] &br;MD5:a9186d409cafc039432a0e1c6e7e02ef | 2019/11/25 |
+|Python-2.7|[[python-2.7.16.msi:https://www.python.org/ftp/python/2.7.16/python-2.7.16.msi]]|[[python.org:https://www.python.org]]|
+|Python-3.6|[[python-3.6.8.exe:https://www.python.org/ftp/python/3.6.8/python-3.6.8.exe]]|[[python.org:https://www.python.org]]|
+|Python-3.7|[[python-3.7.5.exe:https://www.python.org/ftp/python/3.7.5/python-3.7.5.exe]]|[[python.org:https://www.python.org]]|
+|CMake|[[cmake-3.15.5-win32-x86.msi:https://github.com/Kitware/CMake/releases/download/v3.15.5/cmake-3.15.5-win32-x86.msi]] |[[cmake:https://cmake.org/]]|
+|Doxygen|[[doxygen-1.8.16-setup.exe:http://doxygen.nl/files/doxygen-1.8.16-setup.exe]] |[[doxygen:http://www.doxygen.nl/index.html]]|
+
+- &color(red){※Please install one of the version of Python "3.7", "3.6" or "2.7".};
+***** Confirm installation
+It is recommended that you confirm that you can create a Visual C ++ project before the workshop.
+
+First, start Visual Studio and click "File"-> "New"-> "Project". &br;
+Select '' Visual C ++ '' for the template and select '' Empty project ''.
+
+
+#ref (vc2017.png, 70%, center)
+
+
+After entering the project name and clicking OK, a Visual C ++ project is created.
+
+If you cannot select '' Visual C ++ '', install "Desktop development with C ++" according to the procedure of [[How to install Visual Studio Community 2019:/ja/node/6650]].
+
+Also, when using other than Visual Studio 2019, it is recommended to confirm that you can create a Visual C ++ project just in case.
+
+**** How to use the old version runtime of C ++ version
+The old version runtime is installed under the OpenRTM-aist directory as 1.0.0 (only for 32bit), 1.1.0, 1.1.1, 1.1.2, 1.2.0.
+Use the system environment variable "RTM_BASE" through the path.
+
+Example) The 1.1.1 version vc12 runtime path can be specified as "% RTM_BASE% \ 1.1.1 \ vc12 \ bin".
+
+**** How to handle when OpenRTP / RTSystemEditor is reduced in high resolution (HiDPI) mode such as Windows10
+If you use a high resolution mode such as Windows 10, Eclipse icons etc. may be displayed in a reduced size. The following FAQ explains the solution.
+- [[On Windows10, etc., in high resolution mode, icons are too small and hard to see:/ja/content/tool_trouble_shooting_ja # toc1]]
+
+*** Linux package
+We currently offer packages in the following distribution versions: &br;
+You can use the installation script distributed below to install the required packages at once.
+
+| Distribution version | Bulk installation script (right click to get URL) |
+| Ubuntu 16.04 (xenial) i386 / amd64 &br; Ubuntu 18.04 (bionic) amd64 &br; | [[pkg_install_ubuntu.sh>https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_ubuntu.sh]] |
+| Raspbian Buster | [[pkg_install_raspbian.sh>https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_raspbian.sh]] |
+
+By specifying options, you can now install packages that meet your needs. Please refer to [[Bulk installation script:/ja/node/6345]] for installation method, options and package types.
+
+If you have already installed 1.2.0-RELEASE, you can update it.
+
+Ubuntu / Debian
+ $ sudo apt-get update
+ $ sudo apt-get dist-upgrade
+
+Please see [[OpenRTM-aist (C ++ version) 1.2 family installation:/ja/node/6600]] for download method and installation method.
+
+&aname(src);
+** Source code
+
+|LEFT:200|LEFT|LEFT:100|c
+| C ++ version source code | [[OpenRTM-aist-1.2.1.tar.bz2:https://github.com/OpenRTM/OpenRTM-aist/releases/download/v1.2.1/OpenRTM-aist-1.2.1. tar.bz2]] &br; MD5: 890ad85f3d6f6afd7d24d68c4aa6c290 | 2019.11.25 |
+| C ++ source code | [[OpenRTM-aist-1.2.1.tar.gz:https://github.com/OpenRTM/OpenRTM-aist/releases/download/v1.2.1/OpenRTM-aist-1.2.1. tar.gz]] &br; MD5: dc7075480642017ea228d04c8bde6ca8 | 2019.11.25 |
+| C ++ version Windows only source | [[OpenRTM-aist-1.2.1-win32.zip:https://github.com/OpenRTM/OpenRTM-aist/releases/download/v1.2.1/OpenRTM-aist-1.2.1 -win32.zip]] &br; MD5: 5dd560c1ba2297b048a8a03c8db88632 | 2019.11.25 |
+
+*** Build from source
+
+For details on how to build from source, see [[Building from Source (Windows):/ja/node/6611]] or [[Building from Source (Linux):/ja/node/6612]] .
+
+*** Create deb / rpm package
+
+From 1.1, the creation of deb packages for Ubuntu and Debian and rpm packages for Fedora from the above source code is officially supported.
+
+You can create a package by following the steps below. When creating a package, use the bulk installation script (pkg_install _ ***. Sh) to install the necessary packages in advance.
+
+ $ tar xvzf OpenRTM-aist-1.2.1-RELEASE.tar.gz
+ $ cd OpenRTM-aist-1.2.1
+ $ ./configure --prefix = /usr --enable-fluentd = yes --enable-observer = yes --enable-ssl = yes
+ $ cd packages
+ $ make
+
+Packages are created in the pacakges directory.
+
+&color(red){* Install tools such as "dpkg-dev build-essential debhelper devscripts" when creating deb packages on Ubuntu and Debian, and "rpm-build createrepo" before creating rpm packages on Fedora. Must be kept. };
+These can be installed by executing [[Bulk installation script:/ja/node/6345]] with the -c option.
+
+**Release notes
+OpenRTM-aist Official Website can use source code, Windows installer, Linux package, etc. in dual license system which can be selected from LGPL license or individual contract with AIST.
+-[[1.2.1-RELEASE>https://github.com/OpenRTM/OpenRTM-aist/releases/tag/v1.2.1]]
+
+*** Supported (build verified) OS
+--- Ubuntu 16.04 i386, amd64
+--- Ubuntu 18.04 amd64
+--- Raspbian Buster armhf
+--- Windows-10 (32 / 64bit)
