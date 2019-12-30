@@ -1,32 +1,30 @@
-﻿// Title: ROS、ROS2にデフォルトで対応しているメッセージ型
+﻿// Title: シリアライザ名とROS/ROS2メッセージ型
 #contents
 
-ROS,ROS2通信機能を使用する場合、OpenRTM-aistのデータ型からROS、ROS2に変換するシリアライザは独自に実装する必要があります。
+ROS,ROS2通信機能を使用する場合、以下のROS/ROS2メッセージ型に対応のシリアライザをOpenRTM-aistは備えています。以下のメッセージ型以外が必要な場合は、そのメッセージ型に変換するシリアライザを独自に実装してください。
 
-ただし、以下のデータ型を変換するシリアライザについては最初から使用可能です。
-
-|名前|RTMデータ型|ROS、ROS2メッセージ型|
-|ROSFloat32/ROS2Float32|TimedState、TimedShort、TimedLong、TimedUShort、TimedULong、TimedFloat、TimedDouble|Float32|
-|ROSFloat64/ROS2Float64|TimedState、TimedShort、TimedLong、TimedUShort、TimedULong、TimedFloat、TimedDouble|Float64|
-|ROSInt8/ROS2Int8|TimedState、TimedShort、TimedLong、TimedUShort、TimedULong、TimedFloat、TimedDouble|Int8|
-|ROSInt16/ROS2Int16|TimedState、TimedShort、TimedLong、TimedUShort、TimedULong、TimedFloat、TimedDouble|Int16|
-|ROSInt32/ROS2Int32|TimedState、TimedShort、TimedLong、TimedUShort、TimedULong、TimedFloat、TimedDouble|UInt8|
-|ROSInt64/ROS2Int64|TimedState、TimedShort、TimedLong、TimedUShort、TimedULong、TimedFloat、TimedDouble|UInt16|
-|ROSUInt32/ROS2UInt32|TimedState、TimedShort、TimedLong、TimedUShort、TimedULong、TimedFloat、TimedDouble|UInt32|
-|ROSUInt64/ROS2UInt64|TimedState、TimedShort、TimedLong、TimedUShort、TimedULong、TimedFloat、TimedDouble|UInt64|
-|ROSFloat32MultiArray/ROS2Float32MultiArray|TimedShortSeq、TimedLongSeq、TimedUShortSeq、TimedULongSeq、TimedFloatSeq、TimedDoubleSeq|Float32MultiArray|
-|ROSFloat32MultiArray/ROS2Float32MultiArray|TimedShortSeq、TimedLongSeq、TimedUShortSeq、TimedULongSeq、TimedFloatSeq、TimedDoubleSeq|Float32MultiArray|
-|ROSFloat64MultiArray/ROS2Float64MultiArray|TimedShortSeq、TimedLongSeq、TimedUShortSeq、TimedULongSeq、TimedFloatSeq、TimedDoubleSeq|Float64MultiArray|
-|ROSInt8MultiArray/ROS2Int8MultiArray|TimedShortSeq、TimedLongSeq、TimedUShortSeq、TimedULongSeq、TimedFloatSeq、TimedDoubleSeq|Int8MultiArray|
-|ROSInt16MultiArray/ROS2Int16MultiArray|TimedShortSeq、TimedLongSeq、TimedUShortSeq、TimedULongSeq、TimedFloatSeq、TimedDoubleSeq|Int16MultiArray|
-|ROSInt32MultiArray/ROS2Int32MultiArray|TimedShortSeq、TimedLongSeq、TimedUShortSeq、TimedULongSeq、TimedFloatSeq、TimedDoubleSeq|Int32MultiArray|
-|ROS2Int64MultiArray/ROS2Int64MultiArray|TimedShortSeq、TimedLongSeq、TimedUShortSeq、TimedULongSeq、TimedFloatSeq、TimedDoubleSeq|Int64MultiArray|
-|ROSUInt8MultiArray/ROS2UInt8MultiArray|TimedShortSeq、TimedLongSeq、TimedUShortSeq、TimedULongSeq、TimedFloatSeq、TimedDoubleSeq|UInt8MultiArray|
-|ROSUInt16MultiArray/ROS2UInt16MultiArray|TimedShortSeq、TimedLongSeq、TimedUShortSeq、TimedULongSeq、TimedFloatSeq、TimedDoubleSeq|UInt16MultiArray|
-|ROSUInt32MultiArray/ROS2UInt32MultiArray|TimedShortSeq、TimedLongSeq、TimedUShortSeq、TimedULongSeq、TimedFloatSeq、TimedDoubleSeq|UInt32MultiArray|
-|ROSUInt64MultiArray/ROS2UInt64MultiArray|TimedShortSeq、TimedLongSeq、TimedUShortSeq、TimedULongSeq、TimedFloatSeq、TimedDoubleSeq|UInt64MultiArray|
-|ROSString/ROS2String|TimedString|String|
-|ROSPointStamped/ROS2PointStamped|TimedPoint3D|PointStamped|
-|ROSQuaternionStamped/ROS2QuaternionStamped|TimedQuaternion|QuaternionStamped|
-|ROSVector3Stamped/ROS2Vector3Stamped|TimedVector3D|Vector3Stamped|
-|ROSImage/ROS2Image|CameraImage|Image|
+|シリアライザ名|                   RTMデータ型                    |ROS,ROS2メッセージ型|
+|ros:std_msgs/Float32,&br; ros2:std_msgs/Float32|TimedState,TimedShort,&br; TimedLong,TimedUShort,&br; TimedULong,TimedFloat,&br; TimedDouble|std_msgs/Float32|
+|ros:std_msgs/Float64,&br; ros2:std_msgs/Float64|TimedState,TimedShort,&br; TimedLong,TimedUShort,&br; TimedULong,TimedFloat,&br; TimedDouble|std_msgs/Float64|
+|ros:std_msgs/Int8,&br; ros2:std_msgs/Int8|TimedState,TimedShort,&br; TimedLong,TimedUShort,&br; TimedULong,TimedFloat,&br; TimedDouble|std_msgs/Int8|
+|ros:std_msgs/Int16,&br; ros2:std_msgs/Int16|TimedState,TimedShort,&br; TimedLong,TimedUShort,&br; TimedULong,TimedFloat,&br; TimedDouble|std_msgs/Int16|
+|ros:std_msgs/Int32,&br; ros2:std_msgs/Int32|TimedState,TimedShort,&br; TimedLong,TimedUShort,&br; TimedULong,TimedFloat,&br; TimedDouble|std_msgs/UInt8|
+|ros:std_msgs/Int64,&br; ros2:std_msgs/Int64|TimedState,TimedShort,&br; TimedLong,TimedUShort,&br; TimedULong,TimedFloat,&br; TimedDouble|std_msgs/UInt16|
+|ros:std_msgs/UInt32,&br; ros2:std_msgs/UInt32|TimedState,TimedShort,&br; TimedLong,TimedUShort,&br; TimedULong,TimedFloat,&br; TimedDouble|std_msgs/UInt32|
+|ros:std_msgs/UInt64,&br; ros2:std_msgs/UInt64|TimedState,TimedShort,&br; TimedLong,TimedUShort,&br; TimedULong,TimedFloat,&br; TimedDouble|std_msgs/UInt64|
+|ros:std_msgs/Float32MultiArray,&br; ros2:std_msgs/Float32MultiArray|TimedShortSeq,TimedLongSeq,&br; TimedUShortSeq,TimedULongSeq,&br; TimedFloatSeq,TimedDoubleSeq|std_msgs/Float32MultiArray|
+|ros:std_msgs/Float32MultiArray,&br; ros2:std_msgs/Float32MultiArray|TimedShortSeq,TimedLongSeq,&br; TimedUShortSeq,TimedULongSeq,&br; TimedFloatSeq,TimedDoubleSeq|std_msgs/Float32MultiArray|
+|ros:std_msgs/Float64MultiArray,&br; ros2:std_msgs/Float64MultiArray|TimedShortSeq,TimedLongSeq,&br; TimedUShortSeq, TimedULongSeq,&br; TimedFloatSeq,TimedDoubleSeq|std_msgs/Float64MultiArray|
+|ros:std_msgs/Int8MultiArray,&br; ros2:std_msgs/Int8MultiArray|TimedShortSeq,TimedLongSeq,&br; TimedUShortSeq,TimedULongSeq,&br; TimedFloatSeq,TimedDoubleSeq|std_msgs/Int8MultiArray|
+|ros:std_msgs/Int16MultiArray,&br; ros2:std_msgs/nt16MultiArray|TimedShortSeq,TimedLongSeq,&br; TimedUShortSeq,TimedULongSeq,&br; TimedFloatSeq,TimedDoubleSeq|std_msgs/Int16MultiArray|
+|ros:std_msgs/Int32MultiArray,&br; ros2:std_msgs/Int32MultiArray|TimedShortSeq,TimedLongSeq,&br; TimedUShortSeq,TimedULongSeq,&br; TimedFloatSeq,TimedDoubleSeq|std_msgs/Int32MultiArray|
+|ros:std_msgs/Int64MultiArray,&br; ros2:std_msgs/Int64MultiArray|TimedShortSeq,TimedLongSeq,&br; TimedUShortSeq,TimedULongSeq,&br; TimedFloatSeq,TimedDoubleSeq|std_msgs/Int64MultiArray|
+|ros:std_msgs/UInt8MultiArray,&br; ros2:std_msgs/UInt8MultiArray|TimedShortSeq,TimedLongSeq,&br; TimedUShortSeq,TimedULongSeq,&br; TimedFloatSeq,TimedDoubleSeq|std_msgs/UInt8MultiArray|
+|ros:std_msgs/UInt16MultiArray,&br; ros2:std_msgs/UInt16MultiArray|TimedShortSeq,TimedLongSeq,&br; TimedUShortSeq,TimedULongSeq,&br; TimedFloatSeq,TimedDoubleSeq|std_msgs/UInt16MultiArray|
+|ros:std_msgs/UInt32MultiArray,&br; ros2:std_msgs/UInt32MultiArray|TimedShortSeq,TimedLongSeq,&br; TimedUShortSeq,TimedULongSeq,&br; TimedFloatSeq,TimedDoubleSeq|std_msgs/UInt32MultiArray|
+|ros:std_msgs/UInt64MultiArray,&br; ros2:std_msgs/UInt64MultiArray|TimedShortSeq,TimedLongSeq,&br; TimedUShortSeq,TimedULongSeq,&br; TimedFloatSeq,TimedDoubleSeq|std_msgs/UInt64MultiArray|
+|ros:std_msgs/String,&br; ros2:std_msgs/String|TimedString|std_msgs/String|
+|ros:geometry_msgs/PointStamped,&br; ros2:geometry_msgs/PointStamped|TimedPoint3D|geometry_msgs/PointStamped|
+|ros:geometry_msgs/QuaternionStamped,&br; ros2:geometry_msgs/QuaternionStamped|TimedQuaternion|geometry_msgs/QuaternionStamped|
+|ros:geometry_msgs/Vector3Stamped,&br; ros2:geometry_msgs/Vector3Stamped|TimedVector3D|geometry_msgs/Vector3Stamped|
+|ros:sensor_msgs/Image,&br; ros2:sensor_msgs/Image|CameraImage|sensor_msgs/Image|
