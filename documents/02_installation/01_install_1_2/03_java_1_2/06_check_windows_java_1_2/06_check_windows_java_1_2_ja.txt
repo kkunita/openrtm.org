@@ -6,7 +6,7 @@
 インストールまたはビルドが正常に終了したら、付属のサンプルで動作テストをします。
 サンプルは、通常は以下の場所にあります。
 
--C:\Program Files\OpenRTM-aist\1.2.0\Components\Java
+-C:\Program Files\OpenRTM-aist\1.2.1\Components\Java
 -OpenRTM-aist\jp.go.aist.rtm.RTC\bin\RTMExamples(ソースからビルドした場合)
 
 サンプルコンポーネントセットSimpleIOを使って、OpenRTM-aistが正しくビルド・インストールされているかを確認します。
@@ -77,7 +77,7 @@ CENTER:''ConsoleInコンポーネントとConsoleOutコンポーネント''
 CENTER: ''コンポーネントをエディタに配置''
 
 
-**** 接続とActivate
+**** 接続とアクティブ化
 
 ConsoleIn0コンポーネントの右側にはデータが出力されるOutPort &ref(rtse_outport_icon_n.png, /ja/node/794,150%); 、ConsoleOut0コンポーネントの左側にはデータが入力されるInPort &ref(rtse_inport_icon_n.png, /ja/node/794,150%); がそれぞれついています。
 
@@ -92,7 +92,7 @@ CENTER: ''データポート接続ダイアログ''
 
 
 2つのコンポーネントの間に接続線が現れます。次に、エディタ上部メニューの[All Activate]ボタン &ref(rtm14.png); をクリックし、これらのコンポーネントをアクティブ化します。
-Activateされると、コンポーネントが緑色に変化します。
+アクティブ化されると、コンポーネントが緑色に変化します。
 
 #ref(rtm15.png,/ja/node/6614,center)
 CENTER: ''アクティブ化されたコンポーネント''
@@ -125,3 +125,8 @@ CENTER: ''アクティブ化されたコンポーネント''
 |MyServiceProviderComp.bat|LEFT:MyService型のサービスを提供する&color(default){コンポーネント};。MyServiceConsumerComp.classに接続して使用する。|
 |MyServiceConsumerComp.bat|LEFT:MyService型のサービスを提供する&color(default){コンポーネント};。MyServiceProviderComp.classに接続して使用する。|
 |ConfigSampleComp.bat|LEFT:Configurationのサンプル。RtcLinkからConfigurationを変更してConfigurationの挙動を理解するためのサンプル。|
+|ExtConsoleIn.bat|LEFT:外部からのトリガで制御されるコンソール入力された数値をOutportから出力する。ExtTrigger/ConsoleOutComp.classに接続して使用する。|
+|ExtConsoleOut.bat|LEFT:外部からのトリガで制御されるInportに入力された数値をコンソールに出力する。ExtTrigger/ConsoleInComp.classに接続して使用する。|
+|ExtConnector.bat|ExtTrigger/ConsoleInComp.classとExtTrigger/ConsoleOutComp.classへの外部トリガー送るプログラムを起動する。|
+|GUIIn.bat|スライダーの位置をOutportから出力するGUIのサンプルを起動する。ConsoleOutComp.classと接続することもできる。|
+|Composite.bat|複合コンポーネントのサンプルを起動する。3つのコンポーネントを内包した複合コンポーネントが起動される。｜
