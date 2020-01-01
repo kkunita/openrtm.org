@@ -3,33 +3,38 @@
 
 //&color(red){[[※旧Webサイトはこちらからご覧いただけます。:http://old.openrtm.org]]};
 
-//*** 現在の最新RELEASEバージョン: 1.1.1-RELEASE
-//#ref(openrtm-1.1.1-download.png,right,40%,around,url=http://www.openrtm.org/pub/Windows/OpenRTM-aist/cxx/1.1/OpenRTM-aist-1.1.1-RELEASE_x86_vc12.msi,,download)
-//*** 現在の最新RELEASEバージョン: 1.1.2-RELEASE
-//#ref(openrtm-1.1.2-download.png,right,40%,around,url=http://openrtm.org/pub/Windows/OpenRTM-aist/1.1/OpenRTM-aist-1.1.2-RELEASE_x86.msi,,download)
-*** 現在の最新RELEASEバージョン: 1.2.0-RELEASE
+//*** 現在の最新RELEASEバージョン: 1.2.0-RELEASE
+*** 現在の最新RELEASEバージョン: 1.2.1-RELEASE
 
-//#ref(openrtm-1.1.2-x64-5pt-download.png,right,60%,around,url=http://openrtm.org/pub/Windows/OpenRTM-aist/1.1/OpenRTM-aist-1.1.2-RELEASE_x86_64.msi,,download)
-//#ref(openrtm-1.1.2-x86-5pt-download.png,right,60%,around,url=http://openrtm.org/pub/Windows/OpenRTM-aist/1.1/OpenRTM-aist-1.1.2-RELEASE_x86.msi,,download)
-//#ref(openrtm-1.1.2-x64-5pt-download.png,right,60%,around,url=https://github.com/n-ando/win64_package/raw/master/OpenRTM-aist-1.1.2-RELEASE_x86_64.msi,,download)
-//#ref(openrtm-1.1.2-x86-5pt-download.png,right,60%,around,url=https://github.com/n-ando/win32_package/raw/master/OpenRTM-aist-1.1.2-RELEASE_x86.msi,download)
-#ref(openrtm-1.2.0-x86-5pt-download.png,right,60%,around,url=https://github.com/OpenRTM/OpenRTM-aist/releases/download/v1.2.0/OpenRTM-aist-1.2.0-RELEASE_x86.msi,,download)
-#ref(openrtm-1.2.0-x64-5pt-download.png,right,60%,around,url=https://github.com/OpenRTM/OpenRTM-aist/releases/download/v1.2.0/OpenRTM-aist-1.2.0-RELEASE_x86_64.msi,download)
+//#ref(openrtm-1.2.0-x86-5pt-download.png,right,60%,around,url=https://github.com/OpenRTM/OpenRTM-aist/releases/download/v1.2.0/OpenRTM-aist-1.2.0-RELEASE_x86.msi,,download)
+//#ref(openrtm-1.2.0-x64-5pt-download.png,right,60%,around,url=https://github.com/OpenRTM/OpenRTM-aist/releases/download/v1.2.0/OpenRTM-aist-1.2.0-RELEASE_x86_64.msi,download)
+#ref(openrtm-1.2.1-x86-5pt-download.png,right,60%,around,url=https://github.com/OpenRTM/OpenRTM-aist/releases/download/v1.2.1/OpenRTM-aist-1.2.1-RELEASE_x86.msi,,download)
+#ref(openrtm-1.2.1-x64-5pt-download.png,right,60%,around,url=https://github.com/OpenRTM/OpenRTM-aist/releases/download/v1.2.1/OpenRTM-aist-1.2.1-RELEASE_x86_64.msi,download)
 
-//現在の最新RELEASEバージョンは OpenRTM-aist-1.1.1-RELEASE です。
-//[[こちら:/ja/node/5711]]からダウンロードできます。
-//現在の最新RELEASEバージョンは OpenRTM-aist-1.1.2-RELEASE です。
-//[[こちら:/ja/node/6034]]からダウンロードできます。
-現在の最新RELEASEバージョンは OpenRTM-aist-1.2.0-RELEASE です。
-[[こちら:/ja/node/6570]]からダウンロードできます。
 
+//現在の最新RELEASEバージョンは OpenRTM-aist-1.2.0-RELEASE です。
+//[[こちら:/ja/node/6570]]からダウンロードできます。
+現在の最新RELEASEバージョンは OpenRTM-aist-1.2.1-RELEASE です。
+[[こちら:/ja/node/6877]]からダウンロードできます。
+
+- '' リリースノート ''
+-- '' [[C++ >https://github.com/OpenRTM/OpenRTM-aist/releases/tag/v1.2.1]]''
+-- '' [[Python >https://github.com/OpenRTM/OpenRTM-aist-Python/releases/tag/v1.2.1]]''
+-- '' [[Java >https://github.com/OpenRTM/OpenRTM-aist-Java/releases/tag/v1.2.1]]''
+-- '' [[tools (OpenRTP) >https://github.com/OpenRTM/OpenRTP-aist/releases/tag/v1.2.1]]''
 
 現在の各言語、ツールのバージョンは以下の通りです。
+OpenRTM-aistは他のパッケージに依存します。以下のリンクからダウンロードできます。
 
-- ''C++: 1.2.0-RELEASE''
-- ''Python: 1.2.0-RELEASE''
-- ''Java: 1.2.0-RELEASE''
-- ''tools: 1.2.0''
+//- ''C++: 1.2.0-RELEASE''
+//- ''Python: 1.2.0-RELEASE''
+//- ''Java: 1.2.0-RELEASE''
+//- ''tools: 1.2.0''
+- '' [[C++: 1.2.1-RELEASE:/ja/node/6877]]''
+- '' [[Python: 1.2.1-RELEASE:/ja/node/6912]]''
+- '' [[Java: 1.2.1-RELEASE:/ja/node/6913]]''
+- '' [[tools: 1.2.1:/ja/node/6914]]''
+
 
 #clear
 
