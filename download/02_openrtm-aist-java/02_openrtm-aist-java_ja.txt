@@ -2,7 +2,8 @@
 #ref(java_logo.png,right,around,url=/node/117)
 Java で RTコンポーネントをプログラミングするためのライブラリです。Windows インストーラーとビルド済みの jar ファイルがダウンロードできます。
 
--[[1.2.0-RELESE:/ja/node/6571]]
+-[[1.2.1-RELESE:/ja/node/6913]]
+//-[[1.2.0-RELESE:/ja/node/6571]]
 -[[1.1.2-RELESE:/ja/node/6036]]
 
 &br;
