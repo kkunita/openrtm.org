@@ -1,23 +1,18 @@
 ﻿// Title: 動作確認(Linux編)
 インストールが正常に終了したら、付属のサンプルで動作テストをします。サンプルは、通常は以下の場所にあります。
-
--/usr/share/openrtm-1.2/components/java/
+- /usr/share/openrtm-1.2/components/java/
 // -/opt/local/share/openrtm-1.1/examples (Mac OS X に MacPorts でインストールした場合)
 
-
 ソースからビルドした場合は、ソースディレクトリ以下の
+- OpenRTM-aist-Java/jp.go.aist.rtm.RTC/bin/RTMExamples/<サンプルコンポーネントセット名>
 
--OpenRTM-aist-Java/jp.go.aist.rtm.RTC/bin/RTMExamples/<サンプルコンポーネントセット名>
-
-
+にあります。
 
 サンプルコンポーネントセットSimpleIOを使って、OpenRTM-aistが正しくビルド・インストールされているかを確認します。
 
-#contents
-
+#contents(5)
 
 **サンプルコンポーネントセットSimpleIO
-
 RTコンポーネントConsoleIn、ConsoleOutからなるサンプルセットです。
 ConsoleInはコンソールから入力された数値をOutPortから出力するコンポーネント、ConsoleOutはInPortに入力された数値をコンソールに表示するコンポーネントです。
 これらは、最も簡単な(Simpleな)I/O(入出力)を例示するためのサンプルです。
@@ -25,16 +20,15 @@ ConsoleInのOutPortからConsoleOutのInPortへ接続を構成し、これらの
 
 以降、簡単のためサンプルは/usr/share/openrtm-1.2/components/java/SimpleIO以下にあるものとして説明を記述します。
 
-
 ** サンプルを使用したテスト
-
-*** RT System Editor、ネームサーバー起動
-以下の手順に従ってRT System Editor、ネームサーバーを起動してください。
+*** RTSystemEditorを用いた動作確認
+**** ネームサーバー起動
+以下の手順に従ってRTSystemEditor、ネームサーバーを起動してください。
 
 - [[OpenRTP起動手順:/ja/node/6654]]
 
 
-*** ConsoleInの起動
+**** ConsoleInの起動
 
 ターミナルを起動してConsoleInを起動します。
 
@@ -52,7 +46,7 @@ ConsoleInのOutPortからConsoleOutのInPortへ接続を構成し、これらの
 などとしてConsoleInを起動します。
 
 
-*** ConsoleOutの起動
+**** ConsoleOutの起動
 
 別のターミナルを起動してConsoleOutを起動します。
 
@@ -67,7 +61,7 @@ ConsoleInのOutPortからConsoleOutのInPortへ接続を構成し、これらの
 
 **** エディタへの配置
 
-RT System Editorのツリー表示の[>]をクリックすると、先ほど起動した2つのコンポーネントが登録されていることがわかります。
+RTSystemEditorのツリー表示の[>]をクリックすると、先ほど起動した2つのコンポーネントが登録されていることがわかります。
 
 #ref(rtm10.png,/ja/node/6614,60%,center)
 CENTER:''ConsoleInコンポーネントとConsoleOutコンポーネント''
@@ -101,8 +95,6 @@ CENTER: ''データポート接続ダイアログ''
 CENTER: ''アクティブ化されたコンポーネント''
 
 
-
-
 コンポーネントがアクティブ化されるとConsoleInコンポーネント側では
 
  Please input number: 
@@ -110,4 +102,64 @@ CENTER: ''アクティブ化されたコンポーネント''
 というプロンプト表示に変わりますので、適当な数値(short intの範囲内:32767以下)を入力しEnterキーを押します。
 すると、ConsoleOut側では、入力した数値が表示され、ConsoleInコンポーネントからConsoleOutコンポーネントへデータが転送されたことがわかります。
 
-以上で、コンポーネントの基本動作の確認は終了です。
+以上で、RTSystemEditorを用いたコンポーネントの基本動作の確認は終了です。
+
+*** コマンドラインからの確認
+以下はOpenRTM-aist-javaをインストール後、一括インストールスクリプトを-l pythonオプションで実行し、その後一括インストールスクリプトを-l rtshellオプションで実行しRTShellがインストールされている前提での説明です。
+- 環境変数のRTCTREE_NAMESERVERSが設定されているかどうか確認します。設定されいていない場合は、/etc/profile.dディレクトリに適当な名前の.shファイル、例えばrtctree_env.shを作って、その中に
+ export RTCTREE_NAMESERVERS=127.0.0.1
+の行を挿入して、sourceで実行してください。例えば/etc/profile.d/rtctree_env.shを作った場合は
+ $ source /etc/profile.d/rtctee_env.sh
+としてください。
+**** ネームサーバーの起動
+- ネームサーバーを起動します。以下のコマンドで起動ができます。
+ $ sudo rtm-naming
+#ref(startnameservice002.png, center)
+CENTER:''ネームサーバー画面''
+
+**** サンプルコンポーネントの起動
+- ターミナルを開きます。
+- ターミナルでカレントディレクトリを/usr/share/openrtm-1.2/components/python/SimpleIO/か、ソースビルドした場合は<ソースディレクトリ>/OpenRTM_aist/examples/SimpleIOにします。例えば
+ $ cd /usr/share/openrtm-1.2/components/python/SimpleIO
+と入力します。
+- ConsoleInコンポーネントを以下のコマンド起動します。
+ $ python ConsoleIn.py
+- 別ターミナルを開きます。
+- カレントディレクトリを上記と同じところに設定します。
+- ConsoleOutコンポーネントを以下のコマンドで起動します。
+ $ python ConsoleOut.py
+
+**** ネームサービス上の名前の確認
+- 別ターミナルを開きます
+以下のようにして名前を確認してください。
+ $ rtls -R
+ .:
+ 127.0.0.1/
+ 
+ ./127.0.0.1:
+ ConsoleIn0.rtc  ConsoleOut0.rtc
+
+**** サンプルコンポーネントの接続
+- ConsoleIn0コンポネントとConsoleOut0を以下のコマンド接続します。
+上記で開いたターミナルで
+ rtcon /localhost/ConsoleIn0.rtc:out /localhost/ConsoleOut0.rtc:in
+と入力します。
+
+**** サンプルコンポーネントのアクティブ化
+- 上記のターミナルで
+ rtact /localhost/ConsoleIn0.rtc /localhost/ConsoleOut0.rtc
+と入力します。すると、Consolein.pyとConsoleOut.pyを起動したターミナルの画面がとなり、ConsoleIn.pyを起動したターミナルではPlease input number:というプロンプト表示に変わります。
+#ref(simpleio_ubuntu.png, center)
+CENTER:''アクティブ化後のConsoleInコンポーネントとConsoleOutコンポーネントのターミナル画面''
+- 適当な数値(short intの範囲内:32767以下)を入力しEnterキーを押します。
+- ConsoleOut.pyターミナル画面に入力した数値と同じものが表示されます。これでConsoleInコンポーネントからConsoleOutコンポーネントへデータが転送されたことがわかります。
+
+**** サンプルコンポーネントの非アクティブ化と終了
+- 以下のコマンドで非アクティブ化します。 
+ rtdeact /localhost/ConsoleIn0.rtc /localhost/ConsoleOut0.rtc
+- ConsoleIn.pyのターミナルは入力待ちになっているので、適当な数値: 32767以下を入力してEnterキーを押します。
+- 以下のコマンドを入力し、ConsoleIn.pyとConsoleOut.pyの実行が終了するのを、それぞれのターミナルで確認してください。
+ rtexit /localhost/ConsoleIn0.rtc
+ rtexit /localhost/ConsoleOut0.rtc
+
+以上で、コマンドラインを用いたコンポーネントの基本動作の確認は終了です。

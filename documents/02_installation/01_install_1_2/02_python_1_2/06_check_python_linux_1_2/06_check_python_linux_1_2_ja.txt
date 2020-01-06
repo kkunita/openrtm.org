@@ -9,7 +9,7 @@
 
 サンプルコンポーネントセットSimpleIOを使って、OpenRTM-aistが正しくビルド・インストールされているかを確認します。
 
-#contents
+#contents(5)
 
 
 **サンプルコンポーネントセットSimpleIO
@@ -67,17 +67,17 @@ CENTER: ''アクティブ化されたコンポーネント''
 
 以上で、RTSystemEditorを用いたコンポーネントの基本動作の確認は終了です。
 
-*** コマンドラインからの確認
+*** コマンドラインからの動作確認
 以下は一括インストールスクリプトを-l pythonオプションで実行するか、[[ソースビルドの手順>/ja/node/6651]]に従ってPython版OpenRTM-aistをインストールし、その後一括インストールスクリプトを-l rtshellオプションで実行しRTShellがインストールされている前提での説明です。
-
 - 環境変数のRTCTREE_NAMESERVERSが設定されているかどうか確認します。設定されいていない場合は、/etc/profile.dディレクトリに適当な名前の.shファイル、例えばrtctree_env.shを作って、その中に
  export RTCTREE_NAMESERVERS=127.0.0.1
-の行を挿入してOSを再起動してください。
-
+の行を挿入して、sourceで実行してください。例えば/etc/profile.d/rtctree_env.shを作った場合は
+ $ source /etc/profile.d/rtctee_env.sh
+としてください。
 **** ネームサーバーの起動
 - ネームサーバーを起動します。以下のコマンドで起動ができます。
  $ sudo python /user/local/lib/{python2.7|python3.6|python3.7}/dist-packages/OpenRTM_aist/utils/rtm-naming/rtm-naming.py
-ここで{Python2.7|python3.6|python3.7}は、Python版のOpenRTM-aistをインストールした時のLinux環境でインストールしてあったPythonのバージョンによって変わり、Python 2.7がインストールされていた場合は"Python2.7"となります。(Ubuntu18.04のデフォルトはPython2.7となります。)
+ここで{Python2.7|python3.6|python3.7}は、Python版のOpenRTM-aistをインストールした時のLinux環境でインストールしてあったPythonのバージョンによって変わり、Python 2.7がインストールされていた場合は"Python2.7"です。(Ubuntu18.04のデフォルトはPython2.7です。)
 以下のような画面が表示されます。
 #ref(startnameservice002.png, center)
 CENTER:''ネームサーバー画面''
@@ -103,13 +103,11 @@ CENTER:''ネームサーバー画面''
  
  ./127.0.0.1:
  ConsoleIn0.rtc  ConsoleOut0.rtc
-
 **** サンプルコンポーネントの接続
 - ConsoleIn0コンポネントとConsoleOut0を以下のコマンド接続します。
 上記で開いたターミナルで
  rtcon /localhost/ConsoleIn0.rtc:out /localhost/ConsoleOut0.rtc:in
 と入力します。
-
 **** サンプルコンポーネントのアクティブ化
 - 上記のターミナルで
  rtact /localhost/ConsoleIn0.rtc /localhost/ConsoleOut0.rtc
@@ -118,7 +116,6 @@ CENTER:''ネームサーバー画面''
 CENTER:''アクティブ化後のConsoleInコンポーネントとConsoleOutコンポーネントのターミナル画面''
 - 適当な数値(short intの範囲内:32767以下)を入力しEnterキーを押します。
 - ConsoleOut.pyターミナル画面に入力した数値と同じものが表示されます。これでConsoleInコンポーネントからConsoleOutコンポーネントへデータが転送されたことがわかります。
-
 **** サンプルコンポーネントの非アクティブ化と終了
 - 以下のコマンドで非アクティブ化します。 
  rtdeact /localhost/ConsoleIn0.rtc /localhost/ConsoleOut0.rtc
