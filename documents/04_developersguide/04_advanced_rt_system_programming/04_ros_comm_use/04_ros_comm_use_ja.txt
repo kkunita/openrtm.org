@@ -9,9 +9,9 @@
 - http://hara.jpn.com/_default/ja/Topics/ROS_Windows_Install.html
 
 
-以下のコマンドでClinkを起動してください。インストールしたドライブが違う場合は適宜変更してください。
+以下のコマンドでClinkを起動してください。ここではドライブ"D:"にインストールしたUSBドライブが刺さっている前提でコマンドを示していますが、違うドライブに刺さっている場合は"D:"の部分をそのドライブ名に変更してください。
 
- D:\opt\start_ros.bat
+ > D:\opt\start_ros.bat
 
 移行の作業はClink上で実行します。
 
@@ -19,7 +19,7 @@
 
 CMake実行時に''ROS_ENABLE''のオプションをONにします。
 
- cmake -DOMNI_VERSION=42  -DOMNI_MINOR=3 -DOMNITHREAD_VERSION=41 -DORB_ROOT=C:/workspace/omniORB-4.2.3-win64-vc141 -DCORBA=omniORB -G "Visual Studio 15 2017" -A x64 -DROS_ENABLE=ON ..
+ > cmake -DORB_ROOT=C:/workspace/omniORB-4.2.3-win64-vc14 -DCORBA=omniORB -G "Visual Studio 15 2017" -A x64 -DROS_ENABLE=ON ..
 
 その他の手順は通常と同じです。
 
@@ -27,48 +27,48 @@ CMake実行時に''ROS_ENABLE''のオプションをONにします。
 
 **** 動作確認
 以下のrtc.confを作成します。
-''manager.modules.load_path''はビルドしたフォルダによって適宜変更してください。
 
  manager.modules.load_path: C:\\workspace\\openrtm\\build_omni\\devel\\bin\\Release
  manager.modules.preload: ROSTransport.dll
- manager.components.preconnect: ConsoleOut0.in?interface_type=ros&marshaling_type=ROSFloat32&topic=chatter, ConsoleIn0.out?interface_type=ros&marshaling_type=ROSFloat32&topic=chatter
+ manager.components.preconnect: ConsoleOut0.in?interface_type=ros&marshaling_type=ros:std_msgs/Float32&ros.topic=chatter, ConsoleIn0.out?interface_type=ros&marshaling_type=ros:std_msgs/Float32&ros.topic=chatter
  manager.components.preactivation: ConsoleOut0, ConsoleIn0
 
-まず''ROSTransport.dll''のロードが必要になります。
-ロードするモジュールは''manager.modules.preload''オプションで設定します。
-コネクタの生成は''manager.components.preconnect''のオプションで設定します。
-インターフェース型に''ros''、マーシャリング型にROSのシリアライザ、トピック名に適当な名前を設定します。
+: ''manager.modules.load_path''| シリアライザーモジュール(ROSTransport.dll)を置く場所を指定します。
+: ''manager.modules.preload''| ROS通信のためのシリアライザーモジュールのの指定をします。Windowsの場合には''ROSTransport.dll''を指定します。
+: ''manager.components.preconnect''| コネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)に対応シリアライザの名前、ros.topic(トピック名)に適当な任意の名前を設定します。
 
-デフォルトで使用可能なシリアライザ一覧は以下の通り。
+OpenRTM-aistのシリアライザーモジュール(ROSTransport.dll)が対応しているメッセージ型は以下のようになります。
 
-- [[ROS、ROS2にデフォルトで対応しているメッセージ型>/ja/node/6585]]
+- [[シリアライザ名とROS/ROS2メッセージ型>/ja/node/6585]]
 
 RTCを起動して動作確認します。
-
+以下のファイルをダブルクリックします。この時上記の変更をしたrtc.confは、VC14等のOpenRTM-aistをインストール時に指定したVisual Studioのバージョンに関連したのフォルダー(デフォルトではExamplesの下のVC14)に実行するexeファイルがありますので、そこと同じディレクトリに置くようにしてください。
+ \Program Files\OpenRTM-aist\2.0\Components\C++\Examples\ConsoleIn.bat
+ \Program Files\OpenRTM-aist\2.0\Components\C++\Examples\ConsoleOut.bat
 
 *** Ubuntu
 **** ROSのインストール
 
 以下のコマンドでインストールしてください。
 
- export ROS_DISTRO=melodic
- sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
- sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
- sudo apt-get -y update
- sudo apt-get -y install ros-${ROS_DISTRO}-ros-base
- sudo rosdep init
- rosdep update
+ $ export ROS_DISTRO=melodic
+ $ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+ $ sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+ $ sudo apt-get -y update
+ $ sudo apt-get -y install ros-${ROS_DISTRO}-ros-base
+ $ sudo rosdep init
+ $ rosdep update
 
-ROSの環境設定のbashを実行するようにします。
+ROS用にbashの設定を以下のように行います。(次回以降のbash起動時の設定と、現在実行中のbashの設定を行います。)
 
- echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
- source ~/.bashrc
+ $ echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
+ $ source ~/.bashrc
 
 **** OpenRTM-aistのビルド
 
 CMake実行時に''ROS_ENABLE''のオプションをONにします。
 
- cmake -DCORBA=omniORB -DCMAKE_BUILD_TYPE=Release -DROS_ENABLE=ON ..
+ $ cmake -DCORBA=omniORB -DCMAKE_BUILD_TYPE=Release -DROS_ENABLE=ON ..
 
 その他の手順は通常と同じです。
 
@@ -76,32 +76,31 @@ CMake実行時に''ROS_ENABLE''のオプションをONにします。
 
 ビルド後にインストールしてください。
 
- cmake --build . --target install
+ $ cmake --build . --target install
 
 **** 動作確認
-以下のrtc.confを作成します。
+以下のrtc.confを作成します。このファイルは下記のRTCコンポーネントを起動する時に使うカレントワーキングディレクトリにおいてください。
 
  manager.modules.load_path: /usr/local/lib/openrtm-2.0/transport/
  manager.modules.preload: ROSTransport.so
- manager.components.preconnect: ConsoleOut0.in?interface_type=ros&marshaling_type=ROSFloat32&topic=chatter, ConsoleIn0.out?interface_type=ros&marshaling_type=ROSFloat32&topic=chatter
+ manager.components.preconnect: ConsoleOut0.in?interface_type=ros&marshaling_type=ros:std_msgs/Float32&ros.topic=chatter, ConsoleIn0.out?interface_type=ros&marshaling_type=ros:std_msgs/Float32&ros.topic=chatter
  manager.components.preactivation: ConsoleOut0, ConsoleIn0
 
-まず''ROSTransport.so''のロードが必要になります。
-ロードするモジュールは''manager.modules.preload''オプションで設定します。
-コネクタの生成は''manager.components.preconnect''のオプションで設定します。
-インターフェース型に''ros''、マーシャリング型にROSのシリアライザ、トピック名に適当な名前を設定します。
+: ''manager.modules.load_path''| シリアライザーモジュール(ROSTransport.so)を置く場所を指定します。
+: ''manager.modules.preload''| ROS通信のためのシリアライザーモジュールのの指定をします。Ubuntuの場合には''ROSTransport.so''を指定します。
+: ''manager.components.preconnect''| コネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)に対応シリアライザの名前、ros.topic(トピック名)に適当な任意の名前を設定します。
 
-デフォルトで使用可能なシリアライザ一覧は以下の通り。
+OpenRTM-aistのシリアライザーモジュール(ROSTransport.so)が対応しているメッセージ型は以下のようになります。
 
-- [[ROS、ROS2にデフォルトで対応しているメッセージ型>/ja/node/6585]]
+- [[シリアライザ名とROS/ROS2メッセージ型>/ja/node/6585]]
 
-ConsoleInComp.exe、ConsoleOutComp.exeを起動して動作確認します。
+ConsoleInComp、ConsoleOutCompを起動して動作確認します。
 
 それぞれ別のターミナルから起動してください。
 
- /usr/local/share/openrtm-2.0/components/c++/examples/ConsoleInComp
+ $ /usr/local/share/openrtm-2.0/components/c++/examples/ConsoleInComp
 
- /usr/local/share/openrtm-2.0/components/c++/examples/ConsoleOutComp
+ $ /usr/local/share/openrtm-2.0/components/c++/examples/ConsoleOutComp
 
 ** Python版
 *** Windows
@@ -118,31 +117,41 @@ OpenRTM-aist Python版のソースコードを入手してください。
 
 以下のコマンドでOpenRTM-aist Python版をインストールしてください。
 
- python setup.py build
- python setup.py install
+ > python setup.py build
+ > python setup.py install
 
 
 **** 動作確認
 ''start_ros.bat''を2回実行して、ROSの環境設定をしたウインドウを2つ開いてください。
 
- D:\opt\start_ros.bat
+ > D:\opt\start_ros.bat
 
 片方のウインドウで''roscore''を起動します。
 
- roscore
+ > roscore
 
-もう片方のウインドウでOpenRTM-aistをインストールしたディレクトリのPYTHONPATHに設定します。
+もう片方のウインドウでOpenRTM-aistをインストールしたディレクトリをPYTHONPATHに設定します。
 
- set PYTHONPATH=%PYTHONPATH%;C:\Python37\Lib\site-packages;C:\Python37\Lib\site-packages\OpenRTM_aist;C:\Python37\Lib\site-packages\OpenRTM_aist\utils;C:\Python37\Lib\site-packages\OpenRTM_aist\RTM_IDL
+ > set PYTHONPATH=%PYTHONPATH%;C:\Python37\Lib\site-packages;C:\Python37\Lib\site-packages\OpenRTM_aist;C:\Python37\Lib\site-packages\OpenRTM_aist\utils;C:\Python37\Lib\site-packages\OpenRTM_aist\RTM_IDL
 
-以下のrtc.confを作成します。
+以下のrtc.confを作成します。(rtc.confはRTCのexeファイルが実行される時のディレクトリに作成してください。サンプルバッチファイルを使う場合は、バッチファイルから起動されるexeファイルが置かれているディレクトリになります。)
+
 
  manager.modules.load_path: C:\\Python37\\Lib\\site-packages\\OpenRTM_aist\\ext\\transport\\ROSTransport
  manager.modules.preload: ROSTransport.py
- manager.components.preconnect: ConsoleOut0.in?interface_type=ros&marshaling_type=ROSFloat32&topic=chatter, ConsoleIn0.out?interface_type=ros&marshaling_type=ROSFloat32&topic=chatter
+ manager.components.preconnect: ConsoleOut0.in?interface_type=ros&marshaling_type=ros:std_msgs/Float32&ros.topic=chatter, ConsoleIn0.out?interface_type=ros&marshaling_type=ros:std_msgs/Float32&ros.topic=chatter
  manager.components.preactivation: ConsoleOut0, ConsoleIn0
 
-上記のrtc.confでRTCを起動して動作確認してください。
+: ''manager.modules.load_path''| シリアライザーモジュール(ROSTransport.py)を置く場所を指定します。
+: ''manager.modules.preload''| ROS通信のためのシリアライザーモジュールのの指定をします。Pythonの場合には''ROSTransport.py''を指定します。
+: ''manager.components.preconnect''| コネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)に対応シリアライザの名前、ros.topic(トピック名)に適当な任意の名前を設定します。
+
+
+OpenRTM-aistのシリアライザーモジュール(ROSTransport.py)が対応しているメッセージ型は以下のようになります。
+
+- [[シリアライザ名とROS/ROS2メッセージ型>/ja/node/6585]]
+
+上記のrtc.confを用いてRTCを起動して動作確認してください。
 
 *** Ubuntu
 **** ROSのインストール
@@ -151,25 +160,33 @@ C++版と同じ手順でROSをインストールしてください。
 **** OpenRTM-aistのインストール
 以下のパッケージをインストールしてください。
 
- sudo apt-get install python-omniorb-omg omniidl-python doxygen
+ $ sudo apt-get install python-omniorb-omg omniidl-python doxygen
 
 以下のコマンドでOpenRTM-aist Python版をインストールします。
 
- git clone https://github.com/OpenRTM/OpenRTM-aist-Python
- cd OpenRTM-aist-Python
- python setup.py build
- sudo python setup.py install
+ $ git clone https://github.com/OpenRTM/OpenRTM-aist-Python
+ $ cd OpenRTM-aist-Python
+ $ python setup.py build
+ $ sudo python setup.py install
 
 **** 動作確認
-以下のrtc.confを作成します。
+以下のrtc.confを作成します。(rtc.confはRTCを実行する時のカレントワーキングディレクトリに作成してください。)
 
  manager.modules.load_path: /usr/local/lib/python2.7/dist-packages/OpenRTM_aist/ext/transport/ROSTransport/
  manager.modules.preload: ROSTransport.py
- manager.components.preconnect: ConsoleOut0.in?interface_type=ros&marshaling_type=ROSFloat32&topic=chatter, ConsoleIn0.out?interface_type=ros&marshaling_type=ROSFloat32&topic=chatter
+ manager.components.preconnect: ConsoleOut0.in?interface_type=ros&marshaling_type=ros:std_msgs/Float32&ros.topic=chatter, ConsoleIn0.out?interface_type=ros&marshaling_type=ros:std_msgs/Float32&ros.topic=chatter
  manager.components.preactivation: ConsoleOut0, ConsoleIn0
+
+: ''manager.modules.load_path''| シリアライザーモジュール(ROSTransport.py)を置く場所を指定します。
+: ''manager.modules.preload''| ROS通信のためのシリアライザーモジュールのの指定をします。Pythonの場合には''ROSTransport.py''を指定します。
+: ''manager.components.preconnect''| コネクタ生成に関する設定をしています。interface_type(インターフェース型)に''ros''、marshaling_type(マーシャリング型)に対応シリアライザの名前、ros.topic(トピック名)に適当な任意の名前を設定します。
+
+OpenRTM-aistのシリアライザーモジュール(ROSTransport.py)が対応しているメッセージ型は以下のようになります。
+
+- [[シリアライザ名とROS/ROS2メッセージ型>/ja/node/6585]]
 
 以下のコマンドでRTCを起動して動作確認してください。
 
- /usr/local/share/openrtm-2.0/components/python/SimpleIO/ConsoleIn.py
+ $ python /usr/local/share/openrtm-2.0/components/python/SimpleIO/ConsoleIn.py
 
- /usr/local/share/openrtm-2.0/components/python/SimpleIO/ConsoleOut.py
+ $ python /usr/local/share/openrtm-2.0/components/python/SimpleIO/ConsoleOut.py
