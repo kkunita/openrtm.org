@@ -46,16 +46,15 @@ msiファイルは900MB以上のサイズがあります。ダウンロードを
 以下で配布しているインストールスクリプトを利用すれば、必要なパッケージを一括でインストールできます。
 
 
-| ディストリビューション・バージョン | 一括インストールスクリプト |
+| ディストリビューション・バージョン | 一括インストールスクリプト(右クリックでURLを入手) |
 | Ubuntu 16.04 (xenial) i386/amd64 &br; Ubuntu 18.04 (bionic) amd64 &br; | [[pkg_install_ubuntu.sh >https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_ubuntu.sh]] |
+| Raspbian Buster armhf | [[pkg_install_raspbian.sh>https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_raspbian.sh]] |
 //| Debian  8.0  (jessie) i386/amd64 &br; Debian  9.0  (stretch) i386/amd64| [[pkg_install_debian.sh >https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_debian.sh]] |
 //| Fedora 27 i686/x86_64 &br; Fedora 28 i686/x86_64 &br; Fedora 29 i686/x86_64| [[pkg_install_fedora.sh >https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_fedora.sh]] |
 
 //※Fedora用一括インストール・スクリプトはOpenRTM-aist 1.2.0版以降対応予定です。
 
 オプションを指定することで、目的に合わせたパッケージをインストールできるようになりました。インストール方法やオプション、パッケージの種類につきましては、[[一括インストール・スクリプト:/ja/node/6345]]をご確認ください。
-
-
 
 **Java開発環境
 
@@ -79,7 +78,6 @@ OpenRTM-aist-Java-1.2.1の動作および開発には以下のJDKが必要です
 
 jarファイルおよびサンプルからのUbuntu、Debian用debパッケージ、Fedora用rpmパッケージの作成が正式にサポートされました。&br;
 以下の手順でパッケージを作成できます。パッケージ作成に当たっては、一括インストールスクリプト（pkg_install_***.sh）を利用して必要なパッケージをあらかじめインストールしておいてください。
-
  $ tar xvzf OpenRTM-aist-Java-1.2.1.tar.gz
  $ unzip OpenRTM-aist-Java-1.2.1-jar.zip
  $ cd OpenRTM-aist/1.2/
@@ -98,14 +96,11 @@ jarファイルおよびサンプルからのUbuntu、Debian用debパッケー�
 &color(red){※UbuntuやDebianにてdebパッケージを作成する場合は"dpkg-dev build-essential debhelper devscripts"、Fedoraにてrpmパッケージを作成する場合は"rpm-build createrepo"といったツールをあらかじめインストールしておく必要があります。};
 これらは、[[一括インストール・スクリプト:/ja/node/6345]]を-cオプションで実行すればインストールされます。
 
+**リリースノート
+- [[1.2.1-RELEASE >https://github.com/OpenRTM/OpenRTM-aist-Java/releases/tag/v1.2.1]]
 
-
-**リリースノート: 1.2.1-RELEASE
-*** 不具合修正
--- エラー遷移時にonExecuteとonStateUpdateを呼ばないようにする
--- 1つのポートに2本以上のコネクタを生成できないバグの修正
--- Java向けにIDLのパスを定義したシステム環境変数RTM_IDL_DIRを新設
--- その他のバグフィックス
-
-//*** ユーザービリティに関する変更
-//-- Ubuntu、Debian、Fedora環境でパッケージによるインストール可能
+*** 対応(ビルド検証済)OS
+--- Ubuntu 16.04 i386、 amd64
+--- Ubuntu 18.04 amd64
+--- Raspbian Buster armhf
+--- Windows-10 (32/64bit)

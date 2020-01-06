@@ -1,4 +1,4 @@
-// Title: OpenRTM-aist C++ 1.2.0-RELEASE
+// Title: OpenRTM-aist C++ 1.2.1-RELEASE
 #ref(cpp_logo.png,nolink,right,around)
 #contents(4)
 
@@ -39,7 +39,7 @@ msiファイルは900MB以上のサイズがあります。ダウンロードを
 
 
 
-インストールについては、[[OpenRTM-aistを10分で始めよう！:/ja/node/6521]] のページで手順を紹介しています。&br;
+インストールについては、[[OpenRTM-aistを10分で始めよう！:/ja/node/6521]]のページで手順を紹介しています。&br;
 
 **** Visual Studioのバージョン指定
 
@@ -74,10 +74,10 @@ MicrosoftのダウンロードページからVisual Studio Community 2019をダ�
 //
 //vc2013 のインストール方法を紹介します。
 //
-//- Visual Studio Dev Essential 画面を開き、左端にある「Visual sutdio Community」の Download をクリックします
+//- Visual Studio Dev Essential 画面を開き、左端にある「Visual sutdio Community」の[Download]をクリックします
 //- 検索窓に「Visual Studio Express 2013 for Windows Desktop with Update 5」と入力して検索してください
-//- インストーラーのデフォルト言語は English となっていますが、Japanese を選択可能です
-//- EXE の web インストーラーをダウンロードしてインストールしてください
+//- インストーラーのデフォルト言語は[English]となっていますが、[Japanese]を選択可能です
+//- EXE の webインストーラーをダウンロードしてインストールしてください
 
 
 
@@ -113,10 +113,8 @@ MicrosoftのダウンロードページからVisual Studio Community 2019をダ�
 
 **** Windows10などの高解像度(HiDPI)モードでOpenRTP/RTSystemEditorが縮小表示される場合の対処方法
 
-Windows10などの高解像度モードを利用すると、Eclipseのアイコンなどが縮小表示される場合があります。
-以下のFAQで解決方法を説明しています。
-#br
-[[Windows10 などで、高解像度モードのときにアイコンなどが小さすぎて見にくくなる:/ja/content/tool_trouble_shooting_ja#toc1]]
+Windows10などの高解像度モードを利用すると、Eclipseのアイコンなどが縮小表示される場合があります。以下のFAQで解決方法を説明しています。
+- [[Windows10 などで、高解像度モードのときにアイコンなどが小さすぎて見にくくなる:/ja/content/tool_trouble_shooting_ja#toc1]]
 
 
 //**** インストール環境の設定を確認する方法
@@ -148,12 +146,12 @@ Windows10などの高解像度モードを利用すると、Eclipseのアイコ�
 
 
 
-オプションを指定することで、目的に合わせたパッケージをインストールできるようになりました。インストール方法やオプション、パッケージの種類につきましては、[[一括インストール・スクリプト:/ja/node/6345]] をご確認ください。
+オプションを指定することで、目的に合わせたパッケージをインストールできるようになりました。インストール方法やオプション、パッケージの種類につきましては、[[一括インストール・スクリプト:/ja/node/6345]]をご確認ください。
 
 
 1.2.0-RELEASEを既にインストールしている場合はアップデートが可能です。
 
-Ubuntu / Debian の場合
+Ubuntu / Debianの場合
 
  $ sudo apt-get update
  $ sudo apt-get dist-upgrade
@@ -205,56 +203,14 @@ Ubuntu / Debian の場合
 //ツールを別途インストールする方法については、　[[OpenRTP 1.1.0-RC5:/ja/node/5778]] をご覧ください。
 
 &br;
-**リリースノート: 1.2.1-RELEASE
+**リリースノート
 OpenRTM-aist Official Websiteからソースコード、Windowsインストーラー、Linux用パッケージなどがLGPLライセンスもしくは産総研との個別契約のうち一つから選択するデュアルライセンス方式で利用可能です。
 
-//- [[OpenRTM-aist-1.1.0-RELEASE.tar.gz:http://www.openrtm.org/pub/OpenRTM-aist/cxx/1.1.0/OpenRTM-aist-1.1.0-RELEASE.tar.gz]] -- 2012.05.25リリース
-
-*** 不具合修正
-
--- Python 3でrtm-skelwrapperコマンド実行時にエラーが発生する問題の対応
--- コンポーネントオブザーバーのタイマースレッドが正常終了しない問題の対応
--- ログをファイルに出力する場合にログファイル名などを標準出力をしないようにする
--- ChoreonoidのOpenRTMプラグインで正常に動作しない問題の修正
--- グローバルな設定に使用するrtc.confのパスをOpenRTM-aistのインストールしたディレクトリから%ProgramData%\OpenRTM-aistに変更
--- 雑多なバグフィックス
+- [[1.2.1-RELEASE >https://github.com/OpenRTM/OpenRTM-aist/releases/tag/v1.2.1]]
 
 
-*** ポータビリティに関する変更
-//-- 64bit Linunxへの雑多な対応
-//-- 64bit Windowsへの対応
-//-- Mac OS Xへの正式な対応
-//-- Linux+RtORBの正式サポート
-//-- Cygwin+RtORBの正式サポート
-//-- MacOS+RtORB 正式サポート
--- VC2019(32bit/64bit)の正式サポート
-
-
-//*** 拡張機能に関する変更
-//-- ComponentObserverがRTCのdll、libに含まれるようになったため、ext\sdo下に配置していた処理を外した
-
-
-//*** ユーザービリティに関する変更
-//-- インストール時、VisualStudioのバージョンを指定できる機能を組み込む
-//-- Windows7、8.1、10の環境でスタートメニュー表示が同じように見えるよう整備
-//-- ExtTriggerサンプルを起動するbatスクリプトを追加
-//-- OpenRTM-aistの32bit版、64bit版の両方をインストールされた環境に対応するためスタートメニューを別々に定義
-//-- ネームサービス終了スクリプトを定義する
-//-- WindowsインストーラーでomniORBを4.2.3に更新
-//-- WindowsインストーラーでRTShellを4.2.0に更新
-//-- WindowsインストーラーでOpenCVを3.4に更新し、インテルTBBを使うように変更して再コンパイル、GStreamer対応
-//-- RTSE上でマネジャー経由でOpenCVサンプルRTCを起動できるようにrtc.confを整備する
-
-
-*** 対応 (ビルド検証済) OS
-//---Debian 8.0 i386, amd64
-//---Debian 9.0 i386, amd64
+*** 対応(ビルド検証済)OS
 --- Ubuntu 16.04 i386、 amd64
 --- Ubuntu 18.04 amd64
 --- Raspbian Buster armhf
-//---Fedora release 27 i686, x86_64
-//---Fedora release 28 i686, x86_64
-//---Fedora release 29 i686, x86_64
---- Windows-7 (32/64bit)
---- Windows-8.1 (32/64bit)
 --- Windows-10 (32/64bit)
