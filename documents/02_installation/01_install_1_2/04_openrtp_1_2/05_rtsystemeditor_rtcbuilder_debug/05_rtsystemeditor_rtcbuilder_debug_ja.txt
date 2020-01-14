@@ -1,9 +1,9 @@
-﻿#@// Title: RTSystemEditor、RTCBuilder のデバッグ
+﻿#@// Title: RTSystemEditor、RTCBuilderのデバッグ
 #contents
 
 このページではRTSystemEditor、RTCBuilderのデバッグの手順を説明します。
 
-** 必要なソフトウェアの入手
+** 必要なソフトウエアの入手
 
 *** eclipse
 
@@ -18,10 +18,8 @@ Standard Editionだとプラグイン開発環境を手動でインストール�
 
 *** JDK
 
-JRE 1.8以上が必要なため、以下からAmazon CorrettoかOracle Javaをインストールしてください。
-
-- [[Amazon Corretto:https://aws.amazon.com/jp/corretto/]]
-- [[Oracle Java:https://www.oracle.com/technetwork/java/javase/downloads/index.html]]
+JDK8相当のJREかJDKが必要なため、以下のリンクを参照してJDK8をインストールしてください。
+- [[JDK8のインストール>/ja/node/6911]]
 
 
 *** RTSystemEditor、RTCBuilderのソースコード
@@ -29,7 +27,7 @@ JRE 1.8以上が必要なため、以下からAmazon CorrettoかOracle Javaを�
 以下のリポジトリからOpenRTPのソースコードを入手してください。
 
 
-- [[OpenRTP-aist:https://github.com/OpenRTM/OpenRTP-aist/tree/RELENG_1_2]]
+- [[OpenRTP-aist:https://github.com/OpenRTM/OpenRTP-aist/tree/RELENG_1_2_1]]
 
 
 ** ビルド
@@ -39,7 +37,7 @@ eclipse.exeを実行してください。
 *** JREの設定
 使用するJREを設定します。
 
-「ウインドウ」→「設定」→「Java」→「インストール済みのJRE」で、「追加」→「標準 VM」を選択後にJREのパス(例：C:\Program Files (x86)\Java\jdk1.8.0_131\jre)を追加後にチェックを入れる
+[ウィンドウ]→[設定]→[Java]→[インストール済みのJRE]で、[追加]→[標準 VM]を選択後にJREのパス(例：C:\Program Files (x86)\Java\jdk1.8.0_131\jre)を追加後にチェックを入れる
 
 #br
 
@@ -66,7 +64,7 @@ eclipse.exeを実行してください。
 
 
 *** コンパイラー準拠レベルの設定
-初期の状態でコンパイラー準拠レベルが1.6に設定されている場合があるようなので、「ウインドウ」→「設定」→「Java」→「コンパイラー」でコンパイラー準拠レベルを1.8に設定してください。
+初期の状態でコンパイラー準拠レベルが1.6に設定されている場合があるようなので、[ウィンドウ]→[設定]→[Java]→[コンパイラー]でコンパイラー準拠レベルを1.8に設定してください。
 
 #br
 
@@ -76,8 +74,8 @@ eclipse.exeを実行してください。
 
 
 *** RTSystemEditor、RTCBuilderプロジェクトのインポート
-RT System Editor、RTC Builderを開発環境のeclipseにインポートします。
-「ファイル」→「インポート」→「プラグイン開発」→「プラグインおよびフラグメント」を選択後「次へ」を押してください。
+RTSystemEditor、RTCBuilderを開発環境のeclipseにインポートします。
+[ファイル]→[インポート]→[プラグイン開発]→[プラグインおよびフラグメント]を選択後、[次へ]をクリックしてください。
 
 #br
 
@@ -91,7 +89,7 @@ RT System Editor、RTC Builderを開発環境のeclipseにインポートしま�
 
 #br
 
-「インポート先」の「ディレクトリー」をオンにして、rtmtoolsをチェックアウトしたディレクトリを設定して次へ進んでください。
+[インポート先]の[ディレクトリ]をオンにして、rtmtoolsをチェックアウトしたディレクトリを設定して次へ進んでください。
 
 #br
 
@@ -112,7 +110,7 @@ RT System Editor、RTC Builderを開発環境のeclipseにインポートしま�
 
 *** IDLコンパイル
 IDLファイルのコンパイルを行います。
-パッケージエクスプローラーでjp.go.aist.rtm.toolscommonプロジェクトの「buildForCliant」を右クリックして「実行」→「Antビルド」を選択すれば開始します。
+パッケージエクスプローラーでjp.go.aist.rtm.toolscommonプロジェクトの「buildForCliant」を右クリックして[実行]→[Antビルド]を選択すれば開始します。
 
 
 #br
@@ -122,7 +120,7 @@ IDLファイルのコンパイルを行います。
 #br
 
 **** Antビルドで文字化けする場合
-Antビルドで文字化けする場合は、「実行」→「外部ツール」→「外部ツールの構成」→「Antビルド」をダブルクリックして、「共通」タブ→「エンコード」でその他「MS932」に設定してください。
+Antビルドで文字化けする場合は、[実行]→[外部ツール]→[外部ツールの構成]→[Antビルド]をダブルクリックして、[共通]タブ→[エンコード]でその他[MS932]に設定してください。
 
 
 #br
@@ -141,7 +139,7 @@ Antビルドで文字化けする場合は、「実行」→「外部ツール�
 *** クラスパスの修正
 環境によってはクラスパスが正しく設定されない場合があります。
 その場合はデバッグ時にClassNotFoundExceptionの例外が発生するため、rtmtoolsに存在するplugin.xml全てを修正してください。
-パッケージエクスプローラーでplugin.xmlをダブルクリックして、「ランタイム」タブから「クラスパス」に「.」を追加してください。(「MANIFEST.MF」の「Bundle-ClassPath」に追加しても可)
+パッケージエクスプローラーでplugin.xmlをダブルクリックして、[ランタイム]タブから[クラスパス]に「.」を追加してください。([MANIFEST.MF]の[Bundle-ClassPath]に追加しても可)
 
 
 #br
@@ -154,7 +152,7 @@ Antビルドで文字化けする場合は、「実行」→「外部ツール�
 
 
 ** デバッグ実行
-上部の虫のマークのボタンから、「デバッグ」→「Eclipse アプリケーション」でデバッグが開始します。
+上部の虫のマークのボタンから、[デバッグ]→[Eclipse アプリケーション]でデバッグが開始します。
 
 #br
 
