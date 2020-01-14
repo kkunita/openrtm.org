@@ -1,0 +1,6 @@
+﻿// Title: OpenRTP 1.2系のインストール
+#ref(eclipse_logo.png,around,left)
+
+RT Systemの開発を支援するために、RTCBuilderとRTSystemEditorを提供しております。この二つのツールをまとめてOpenRTPと呼びます。
+RTCBuilderとRTSystemEditorは、Eclipse 統合開発環境のプラグインとして作成された開発ツールです。そのため、RTCBuilderとRTSystemEditorを使用するには、EclipseとJavaの開発環境をインストールする必要があります。一括インストールスクリプトやmsiファイルを利用することにより簡単にインストールできますが、Eclipseのインストールから個別にインストールする方法についても、ここで説明します。
+

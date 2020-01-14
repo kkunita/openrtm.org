@@ -53,7 +53,7 @@
         - ソースからのビルド (Linux編): 08_build_source_python_linux_1_2_ja.txt
       - Java版 1.2系: OpenRTM-aist (Java版) 1.2系のインストール: java_1_2_ja.tx
         - Windowsへのインストール: 01_windows_java_1_2_ja.txt
-            - (OpenRTM-aist 1.2系のインストール(Windows、msiインストーラー使用): openrtm-aist_1_2_windows_msi_ja.txt)
+          - (OpenRTM-aist 1.2系のインストール(Windows、msiインストーラー使用): openrtm-aist_1_2_windows_msi_ja.txt)
         - Ubuntu/Debianへのインストール: 02_ubuntu_java_1_2_ja.txt
           - (JDK8のインストール; install_jdk8_ja.txt)
           - (一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt)
@@ -68,13 +68,17 @@
         - 動作確認 (Linux編): 06_check_windows_java_1_2_ja.txt
           - (OpenRTP起動手順=> OpenRTPの起動手順(1.2系、Linux): start_openrtp_proc_linux_1_2_ja.txt)
         - ソースからのビルド: 07_build_source_java_1_2_ja.txt
-      - OpenRTM Eclipse tools のインストール 1.2系: 04_eclipse_1_2_ja.txt
-        - Eclipse について: 01_eaclipse_ja.txt
+      - OpenRTPのインストール1.2系: 04_openrtp_1_2_ja.txt
+        - インストーラによるインストール: 01_installer_install_ja.txt
           - (OpenRTM-aist 1.2系のインストール(Windows、msiインストーラー使用): openrtm-aist_1_2_windows_msi_ja.txt)
-        - RTCBuilderのインストール: 02_rtc_builder_ja.txt
-        - RTSystemEditorのインストール: 03_rtsystemeditor_ja.txt
-        - RTSystemEditor、RTCBuilder のデバッグ: 04_rtsystemeditor_rtcbuilder_debug_ja.txt
-      - 一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt
+          - (一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt)
+          - (JDK8のインストール; install_jdk8_ja.txt)
+        - Eclipse について: 02_eaclipse_ja.txt
+          (- OpenRTM-aistのインストール=>インストーラによるインストール; 01_installer_install_ja.txt)
+          - (JDK8のインストール; install_jdk8_ja.txt)
+        - RTCBuilderのインストール: 03_rtc_builder_ja.txt
+        - RTSystemEditorのインストール: 04_rtsystemeditor_ja.txt
+        - RTSystemEditor、RTCBuilder のデバッグ: 05_rtsystemeditor_rtcbuilder_debug_ja.txt
     - 1.1系のインストール=> OpenRTM-aist 1.1系のインストール: 02_install_1_1_ja.txt // このページはディレクトリやBook的にここに存在するが、ここにはこのページをアクセスするリンクはないです。
       - C++版 1.1系=> OpenRTM-aist(C++版)1.1系のインストール; 01_cpp_1_1_ja.txt
         - Windowsへのインストール: 01_install_windows_1_1_ja.txt
@@ -270,6 +274,7 @@
         - 付録: 09_appendix_ja.txt
    - Common
      - JDK8のインストール; install_jdk8_ja.txt
+     - 一括インストール・スクリプト: bulk_installation_script_ubuntu_1_2_ja.txt
   - ツール: 03_toolmanuals_ja.txt
     - RTSystemEditor-1.2.0: 01_rtsystemeditor-1_2_0_ja.txt
       - 概要・システム構築の流れ: 01_rtse-1_2_0_overview_ja.txt
