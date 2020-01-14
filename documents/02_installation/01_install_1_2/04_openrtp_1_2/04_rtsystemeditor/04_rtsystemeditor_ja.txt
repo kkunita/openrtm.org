@@ -1,12 +1,12 @@
 ﻿// Title: RTSystemEditorのインストール
 #contents
-** RTSystemEditor とは
-RTSystemEditor は、OpenRTM-aist に含まれる開発ツールの１つであり、RTC をリアルタイムにグラフィカル操作する機能を持っています。また、Eclipse 統合開発環境のプラグインとして作成されており、Eclipse 上にて既存のプラグインとシームレスに操作を行うことができます。
+** RTSystemEditorとは
+RTSystemEditorは、OpenRTM-aistに含まれる開発ツールの１つであり、RTCをリアルタイムにグラフィカル操作する機能を持っています。また、Eclipse統合開発環境のプラグインとして作成されており、Eclipse上にて既存のプラグインとシームレスに操作を行うことができます。
 
 #clear
 
-***機能概要 
-RTSystemEditorは、RTC をリアルタイムにグラフィカル操作する機能を持っています。提供される機能の一覧は以下のとおりです。
+***機能概要
+RTSystemEditorは、RTCをリアルタイムにグラフィカル操作する機能を持っています。提供される機能の一覧は以下のとおりです。
 
 |№|機能名称|機能概要|
 |１|コンポーネントコンフィグレーション表示/編集機能|選択したコンポーネントのコンフィギュレーションプロファイル情報をコンフィグレーションビューに表示し編集する。|
@@ -16,47 +16,43 @@ RTSystemEditorは、RTC をリアルタイムにグラフィカル操作する�
 |５|システム復元機能|保存したシステムエディタの内容をシステムに復元する。|
 
 ***動作環境
-RTSystemEditor の動作に必要な環境は以下のとおりです。
+RTSystemEditorの動作に必要な環境は以下のとおりです。
 
 |№|環境|備考|
 |１|[[Java Runtime Environment 8:https://docs.aws.amazon.com/ja_jp/corretto/latest/corretto-8-ug/downloads-list.html]]|;|
 |２|Eclipse 3.4.2以上 &br; http://www.eclipse.org/downloads/index.php &br; http://archive.eclipse.org/eclipse/downloads/index.php|Eclipse本体|
-|３|Eclipse EMF 2.2.4 [[EMF＋SDO Runtime:http://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/downloads/drops/2.2.4/R200710030400/emf-sdo-runtime-2.2.4.zip]] および [[XSD Runtime:http://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/downloads/drops/2.2.4/R200710030400/xsd-runtime-2.2.4.zip]]| RT System Editor が依存する Eclipse プラグイン|
-|４|[[Eclipse GEF 3.2.2:http://www.eclipse.org/downloads/download.php?file=/tools/gef/downloads/drops/R-3.2.2-200702081315/GEF-runtime-3.2.2.zip]]|RT System Editor が依存する Eclipse プラグイン|
-|５|[[Eclipse Java development tools(JDT):http://www.eclipse.org/projects/project_summary.php?projectid=eclipse.jdt]]|''※''ご使用になられる Eclipse のバージョンに合ったものをご使用ください。|
+|３|Eclipse EMF 2.2.4 [[EMF＋SDO Runtime:http://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/downloads/drops/2.2.4/R200710030400/emf-sdo-runtime-2.2.4.zip]]および[[XSD Runtime:http://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/downloads/drops/2.2.4/R200710030400/xsd-runtime-2.2.4.zip]]|RTSystemEditorが依存するEclipseプラグイン|
+|４|[[Eclipse GEF 3.2.2:http://www.eclipse.org/downloads/download.php?file=/tools/gef/downloads/drops/R-3.2.2-200702081315/GEF-runtime-3.2.2.zip]]|RTSystemEditorが依存するEclipseプラグイン|
+|５|[[Eclipse Java development tools(JDT):http://www.eclipse.org/projects/project_summary.php?projectid=eclipse.jdt]]|''※''使用するEclipseのバージョンに合ったものをご使用ください。|
 
 
-**RTSystemEditor のインストール
-RTSystemEditor は Eclipse プラグインであるため、 Eclipse 本体をインストールする必要があります。さらに、 Eclipse は Java アプリケーションなので、Eclipse 本体をインストールする前に Java 実行環境（あるいは JDK：Java 開発環境でもよい）をインストールする必要があります。
--Java 実行環境のインストールについては、[[Eclipseについて の JDK(Java Development Kit)のインストール:/node/6656#jdk_install]] を参照してください。
--Eclipseのインストールについては、[[Eclipseについて の Eclipseのインストール:/node/6656#eclipse_install]] を参照してください。
+**RTSystemEditorのインストール
+RTSystemEditorはEclipseプラグインであるため、Eclipse本体をインストールする必要があります。さらに、EclipseはJavaアプリケーションなので、Eclipse本体をインストールする前にJava実行環境(あるいはJDK：Java開発環境でもよい）をインストールする必要があります。
+- Java実行環境のインストールについては、[[EclipseについてのJDK(Java Development Kit)のインストール:/node/6656#jdk_install]]を参照してください。
+- Eclipseのインストールについては、[[EclipseについてのEclipseのインストール:/node/6656#eclipse_install]]を参照してください。
 
-*** RT System Editorのビルド
-Eclipseを直接導入した場合はRT System Editorのビルドが必要です。
+*** RTSystemEditorのビルド
+Eclipseを直接導入した場合はRTSystemEditorのビルドが必要です。
 以下のページの手順でプラグインの生成、導入を行ってください。
 
-- [[RTC Builder、RT System Editorのビルド:https://openrtm.org/openrtm/ja/build_12_openrtp]]
+- [[RTCBuilder、RTSystemEditorのビルド:https://openrtm.org/openrtm/ja/build_12_openrtp]]
 
-*** RTSystemEditor のインストールと起動
+*** RTSystemEditorのインストールと起動
 
-Eclipse を起動し、 メニューから [ウインドウ] > [パースペクティブを開く] > [その他] を選択すると、 次のようなパースペクティブ選択画面が表示されます。
+Eclipseを起動し、メニューから[ウィンドウ]>[パースペクティブを開く]>[その他]を選択すると、次のようなパースペクティブ選択画面が表示されます。
 
 #ref(fig4PerspectiveSelection_ja.png,/ja/node/677,90%,center)
 #br
-パースペクティブ一覧にある RT System Editor を選択すると、 次のような画面が表示されて RTSystemEditor が起動されます。
+パースペクティブ一覧にあるRTSystemEditorを選択すると、次のような画面が表示されてRTSystemEditorが起動されます。
 
 #ref(fig5InitialOfRTSystemEditorstarts_ja.png,/ja/node/677,80%,center)
 #br
 
-もし、 パースペクティブの一覧に RT System Editor が表示されない場合は、EMF や GEF や XSD や JDT が正しくインストールできているか、 RT System Editorがplugin ディレクトリーに正しくコピーされているかを再度チェックしてください。
-***Eclipse の再起動
-RTSystemEditor の起動が確認できましたら、一旦、Eclipse を終了してください。再度、同じワークスペースを指定して Eclipse を起動すると、RTSystemEditor が起動された状態から始まります。
+もし、パースペクティブの一覧にRTSystemEditorが表示されない場合は、EMFやGEFやXSDやJDTが正しくインストールできているか、RTSystemEditorがpluginディレクトリに正しくコピーされているかを再度チェックしてください。
+***Eclipseの再起動
+RTSystemEditorの起動が確認できましたら、いったん、Eclipseを終了してください。再度、同じワークスペースを指定してEclipseを起動すると、RTSystemEditorが起動された状態から始まります。
 
-#br
-#br
-参考：
-　→ [[''FAQ:'' Eclipseの起動方法 >/ja/node/248#toc9]]
-#br
-#br
+参考:
+- [[''FAQ:''Eclipseの起動方法>/ja/node/248#toc9]]
 
 
