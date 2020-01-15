@@ -1,70 +1,36 @@
 // Title: SimpleIO
-//&br;
-//**SimpleIO 
+
 #contents
+このサンプルは、OpenRTM-aistのC++版、Python版、Java版に付属されています。
 
-このサンプルは、OpenRTM-aist の C++版、Python版、Java版 に同梱されています。
-&br;
-***概要 
-InPort、OutPort の使用方法を示したサンプルです．ConsoleIn コンポーネントと ConsoleOut コンポーネントを起動させます。
-Port 間を接続すると、ConsoleIn 側で入力した数字が、ConsoleOut 側に表示されます．Port 間は RTSystemEditor を用いる他に、Connector を実行することで接続することができます。
-#br
+***概要
+InPort、OutPortの使用方法のサンプルです．ConsoleInコンポーネントとConsoleOutコンポーネントを起動させます。
+Port間を接続すると、ConsoleIn側で入力した数字が、ConsoleOut側に表示されます．Port間はRTSystemEditorを用いる以外にRTShellコマンドを実行することで接続できます。
 
-&br;
 ***起動画面
 
 #ref(SimpleIO_example_rtse_ja.png,60%,center)
-CENTER:''SimpleIO 実行例 (RTSystemEditor 接続画面)''
-#br
-#br
+CENTER:''SimpleIO実行例(RTSystemEditor接続画面)''
 
 #ref(open_consolein_out.png,60%,center)
-CENTER:''ConsoleIn コンポーネントと ConsoleOut コンポーネントの実行例''
+CENTER:''ConsoleInコンポーネントとConsoleOutコンポーネントの実行例''
 ***使い方
-SimpleIO のサンプルは、ConsoleIn で入力された数字をデータポートから ConsoleOut へ送って、ConsoleOut 側にも同じ数字を表示させるサンプルです。
-ConsoleIn の画面から数字を入力してください。そうすると ConsoleOut で入力した数字が出力されます。
-#br
+SimpleIOのサンプルは、ConsoleInで入力された数字をデータポートからConsoleOutへ送って、ConsoleOut側にも同じ数字を表示させるサンプルです。
+ConsoleInの画面から数字を入力してください。そうするとConsoleOutで入力した数字が出力されます。
 
-//- 方法１:Connector を使う方法（※この場合、RTSystemEditor は不要）
-//
-//-- ConsoleIn と ConsoleOut の両コンポーネントを起動します。
-//コンポーネントの起動は OS や OpenRTM-aist の言語によってことなりますので、以下の表を参考に起動します。
-//|LEFT:110|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c
-//||>|CENTER:Windows の場合|>|CENTER:Linuxの場合|
-//||ConsoleIn コンポーネント|ConsoleOut コンポーネント|ConsoleIn コンポーネント|ConsoleOut コンポーネント|
-//|C++版|ConsoleInComp.exe|ConsoleOutComp.exe|ConsoleInComp|ConsoleOutComp|
-//|Python版|ConsoleIn.py|ConsoleOut.py|ConsoleIn.py|ConsoleOut.py|
-//|Java版|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.sh|ConsoleOut.sh|
-//-- Connector を実行します。
-//Connector の実行は OS や OpenRTM-aist の言語によってことなりますので、以下の表を参考に起動します。
-//|LEFT:110|LEFT:120|LEFT:120|c
-//||CENTER:Windows の場合|CENTER:Linux の場合|
-//|C++版|Connector.exe|Connector|
-//|Python版|Connector.py|Connector.py|
-//|Java版|Connector.bat|Connector.sh|
-//-- ConsoleIn の画面に「Please input number:」とプロンプトされるので、数字を入力します。
-//-- ConsoleOut の画面にその数字が表示されます。
-//#br
-//
-//- 方法２:RTSystemEditorを使う方法
 
--- Eclipse を起動し、RTSystemEditor を用意します。→RTSystemEditor の使用方法の詳細については [[RTSystemEditor >/node/1175]] を参照
--- ConsoleIn と ConsoleOut の両コンポーネントを起動します。
-コンポーネントの起動は OS や OpenRTM-aist の言語によってことなりますので、以下の表を参考に起動します。
-|LEFT:110|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c
-||>|CENTER:Windows の場合|>|CENTER:Linux の場合|
-||ConsoleIn コンポーネント|ConsoleOut コンポーネント|ConsoleIn コンポーネント|ConsoleOut コンポーネント|
-|C++版|ConsoleInComp.exe|ConsoleOutComp.exe|ConsoleInComp|ConsoleOutComp|
-|Python版|ConsoleIn.py|ConsoleOut.py|ConsoleIn.py|ConsoleOut.py|
+-- OpenRTPを起動し、RTSystemEditorを開きます。RTSystemEditorの使用方法の詳細については[[RTSystemEditor>/node/6401]]を参照
+-- ConsoleInとConsoleOutの両コンポーネントを起動します。
+コンポーネントの起動はOSやOpenRTM-aistの言語によって異なってます。以下の表を参考に起動します。
+|LEFT:110|LEFT:120|LEFT:120|LEFT:130|LEFT:130|c
+||>|CENTER:Windowsの場合|>|CENTER:Linuxの場合|
+||ConsoleInコンポーネント|ConsoleOutコンポーネント|ConsoleInコンポーネント|ConsoleOutコンポーネント|
+|C++版|ConsoleIn.bat|ConsoleOut.bat|ConsoleInComp|ConsoleOutComp|
+|Python版|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.py|ConsoleOut.py|
 |Java版|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.sh|ConsoleOut.sh|
--- RTSystemEditor の NameServiceView に両コンポーネントが現れるので、それらを SystemEditor 上にドラッグします。
--- 両コンポーネントのポートを結びます。（上図 SimpleIO 実行例を参照）
--- どちらかのコンポーネントを右クリックし、「All Activate」を選択します。
--- ConsoleIn の画面に「Please input number:」とプロンプトされるので、数字を入力します。
--- ConsoleOut の画面にその数字が表示されます。
-
-#br
-#br
-
-
+-- RTSystemEditorのNameServiceViewに両コンポーネントが現れるので、それらをSystemEditor上にドラッグします。
+-- 両コンポーネントのポートを結びます。（上図SimpleIO実行例を参照）
+-- どちらかのコンポーネントを右クリックし、[All Activate]を選択します。
+-- ConsoleInの画面に「Please input number:」のプロンプトが現れるので、数字を入力します。
+-- ConsoleOutの画面にその数字が表示されます。
 
