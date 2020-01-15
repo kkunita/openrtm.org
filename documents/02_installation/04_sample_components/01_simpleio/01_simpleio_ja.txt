@@ -1,36 +1,36 @@
-// Title: SimpleIO
+﻿// Title: SimpleIO
 
 #contents
-���̃T���v���́AOpenRTM-aist��C++�ŁAPython�ŁAJava�łɕt������Ă��܂��B
+このサンプルは、OpenRTM-aistのC++版、Python版、Java版に付属されています。
 
-***�T�v
-InPort�AOutPort�̎g�p���@�̃T���v���ł��DConsoleIn�R���|�[�l���g��ConsoleOut�R���|�[�l���g���N�������܂��B
-Port�Ԃ�ڑ�����ƁAConsoleIn���œ��͂����������AConsoleOut���ɕ\������܂��DPort�Ԃ�RTSystemEditor��p����ȊO��RTShell�R�}���h�����s���邱�ƂŐڑ��ł��܂��B
+***概要
+InPort、OutPortの使用方法のサンプルです．ConsoleInコンポーネントとConsoleOutコンポーネントを起動させます。
+Port間を接続すると、ConsoleIn側で入力した数字が、ConsoleOut側に表示されます．Port間はRTSystemEditorを用いる以外にRTShellコマンドを実行することで接続できます。
 
-***�N�����
+***起動画面
 
 #ref(SimpleIO_example_rtse_ja.png,60%,center)
-CENTER:''SimpleIO���s��(RTSystemEditor�ڑ����)''
+CENTER:''SimpleIO実行例(RTSystemEditor接続画面)''
 
 #ref(open_consolein_out.png,60%,center)
-CENTER:''ConsoleIn�R���|�[�l���g��ConsoleOut�R���|�[�l���g�̎��s��''
-***�g����
-SimpleIO�̃T���v���́AConsoleIn�œ��͂��ꂽ�������f�[�^�|�[�g����ConsoleOut�֑����āAConsoleOut���ɂ�����������\��������T���v���ł��B
-ConsoleIn�̉�ʂ��琔������͂��Ă��������B���������ConsoleOut�œ��͂����������o�͂���܂��B
+CENTER:''ConsoleInコンポーネントとConsoleOutコンポーネントの実行例''
+***使い方
+SimpleIOのサンプルは、ConsoleInで入力された数字をデータポートからConsoleOutへ送って、ConsoleOut側にも同じ数字を表示させるサンプルです。
+ConsoleInの画面から数字を入力してください。そうするとConsoleOutで入力した数字が出力されます。
 
 
--- OpenRTP���N�����ARTSystemEditor���J���܂��BRTSystemEditor�̎g�p���@�̏ڍׂɂ��Ă�[[RTSystemEditor>/node/6401]]���Q��
--- ConsoleIn��ConsoleOut�̗��R���|�[�l���g���N�����܂��B
-�R���|�[�l���g�̋N����OS��OpenRTM-aist�̌���ɂ���ĈقȂ��Ă܂��B�ȉ��̕\���Q�l�ɋN�����܂��B
+-- OpenRTPを起動し、RTSystemEditorを開きます。RTSystemEditorの使用方法の詳細については[[RTSystemEditor>/node/6401]]を参照
+-- ConsoleInとConsoleOutの両コンポーネントを起動します。
+コンポーネントの起動はOSやOpenRTM-aistの言語によって異なってます。以下の表を参考に起動します。
 |LEFT:110|LEFT:120|LEFT:120|LEFT:130|LEFT:130|c
-||>|CENTER:Windows�̏ꍇ|>|CENTER:Linux�̏ꍇ|
-||ConsoleIn�R���|�[�l���g|ConsoleOut�R���|�[�l���g|ConsoleIn�R���|�[�l���g|ConsoleOut�R���|�[�l���g|
-|C++��|ConsoleIn.bat|ConsoleOut.bat|ConsoleInComp|ConsoleOutComp|
-|Python��|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.py|ConsoleOut.py|
-|Java��|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.sh|ConsoleOut.sh|
--- RTSystemEditor��NameServiceView�ɗ��R���|�[�l���g�������̂ŁA������SystemEditor��Ƀh���b�O���܂��B
--- ���R���|�[�l���g�̃|�[�g�����т܂��B�i��}SimpleIO���s����Q�Ɓj
--- �ǂ��炩�̃R���|�[�l���g���E�N���b�N���A[All Activate]��I�����܂��B
--- ConsoleIn�̉�ʂɁuPlease input number:�v�̃v�����v�g�������̂ŁA��������͂��܂��B
--- ConsoleOut�̉�ʂɂ��̐������\������܂��B
+||>|CENTER:Windowsの場合|>|CENTER:Linuxの場合|
+||ConsoleInコンポーネント|ConsoleOutコンポーネント|ConsoleInコンポーネント|ConsoleOutコンポーネント|
+|C++版|ConsoleIn.bat|ConsoleOut.bat|ConsoleInComp|ConsoleOutComp|
+|Python版|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.py|ConsoleOut.py|
+|Java版|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.sh|ConsoleOut.sh|
+-- RTSystemEditorのNameServiceViewに両コンポーネントが現れるので、それらをSystemEditor上にドラッグします。
+-- 両コンポーネントのポートを結びます。（上図SimpleIO実行例を参照）
+-- どちらかのコンポーネントを右クリックし、[All Activate]を選択します。
+-- ConsoleInの画面に「Please input number:」のプロンプトが現れるので、数字を入力します。
+-- ConsoleOutの画面にその数字が表示されます。
 
