@@ -1,44 +1,36 @@
 ﻿// Title: SimpleIO
+
 #contents
+This sample is included with C ++, Python and Java versions of OpenRTM-aist.
 
-This sample is included with the C++, Python and the Java editions of OpenRTM-aist.
+***Overview
+Sample of how to use InPort and OutPort. Start the ConsoleIn and ConsoleOut components.
+When the ports are connected, the numbers entered on the ConsoleIn side are displayed on the ConsoleOut side. Ports can be connected by executing RTShell commands in addition to using RTSystemEditor.
 
+*** Start screen
 
-**Introduction
+#ref(SimpleIO_example_rtse_ja.png, 60%, center)
+CENTER:''SimpleIO execution example (RTSystemEditor connection screen)''
 
-This is a sample showing how to use InPort and OutPort. Launch the ConsoleIn component and the ConsoleOut component.
-When connecting between ports, the number entered on the ConsoleIn side is displayed on the ConsoleOut side. In addition to using RTSystemEditor between Port, you can connect by running Connector.
+#ref(open_consolein_out.png, 60%, center)
+CENTER:''Execution example of ConsoleIn and ConsoleOut components''
 
-
-**Screenshots
-
-#ref(java_simpleio0_en.png,center,70%)
-CENTER:''The SimpleIO sample viewed in RTSystemEditor.''
-
-
-#ref(open_simpleIO_en.png,60%,center)
-CENTER:''Running the SimpleIO sample.''
-
-
-**Running the sample
-
-This sample transmits data using data ports.  ConsoleIn sends ConsoleOut the input numerical value via data port.  ConsoleOut displays the numerical value.
-Input the numerical value in ConsoleIn's window.  ConsoleOut will display the numerical value that you entered.
+*** How to use
+The sample of SimpleIO is a sample that sends the number input by ConsoleIn from the data port to ConsoleOut and displays the same number on ConsoleOut side.
+Enter a number from the ConsoleIn screen. Then the number entered in ConsoleOut will be output.
 
 
--- Launch Eclipse and prepare the RTSystemEditor. For details on how to use RTSystemEditor, see [[RTSystemEditor >/node/6968]]
--- Start both ConsoleIn and ConsoleOut components.
-Since the startup of the component depends on the OS and the language of OpenRTM-aist, start it with reference to the following table.
-|LEFT:110|LEFT:125|LEFT:125|LEFT:130|LEFT:130|c
-||>|CENTER:Windows|>|CENTER:Linux|
+- Start OpenRTP and open RTSystemEditor. See [[RTSystemEditor>/node/6401]] for details on how to use RTSystemEditor
+- Start both ConsoleIn and ConsoleOut components.
+Component startup differs depending on the OS and OpenRTM-aist language. Start by referring to the table below.
+|LEFT:115|LEFT:120|LEFT:120|LEFT:130|LEFT:130|c
+||>|CENTER:For Windows|>|CENTER:For Linux|
 ||ConsoleIn component|ConsoleOut component|ConsoleIn component|ConsoleOut component|
-|C++|ConsoleIn.bat|ConsoleOut.bat|ConsoleInComp|ConsoleOutComp|
-|Python|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.py|ConsoleOut.py|
-|Java|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.sh|ConsoleOut.sh|
-
--- Both components will appear in NameServiceView of RTSystemEditor, so drag them onto SystemEditor.
--- Connect the ports of both components. (See SimpleIO execution example above)
--- Right-click on either component and select "All Activate".
--- ConsoleIn prompts you to "Please input number:", so enter the number.
--- The number is displayed on the ConsoleOut screen.
-
+|C++ version|ConsoleIn.bat|ConsoleOut.bat|ConsoleInComp|ConsoleOutComp|
+|Python version|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.py|ConsoleOut.py|
+|Java version|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.sh| ConsoleOut.sh|
+- Drag both components onto the SystemEditor as both components appear in the NameServiceView of RTSystemEditor.
+- Connect the ports of both components. (Refer to SimpleIO execution example above)
+- Right-click either component and select [All Activate].
+- The "Please input number:" prompt appears on the ConsoleIn screen. Enter the number.
+- The number is displayed on the ConsoleOut screen.
