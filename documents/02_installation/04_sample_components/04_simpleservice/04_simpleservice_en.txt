@@ -4,10 +4,8 @@ OpenRTM-aist.
 
 #contents
 
-**Introduction
-
-This sample shows how to use ServicePorts. The service is defined using the
-following IDL.
+*** Overview
+This is a sample that shows how to use ServicePort. The service is defined using the IDL shown below.
 
  typedef sequence<string> EchoList;
  typedef sequence<float> ValueList;
@@ -21,55 +19,42 @@ following IDL.
    ValueList get_value_history();
  };
 
-Start MyServiceConsumer and MyServiceProvider. After connecting the service
-ports using RTSystemEditor, activate MyServiceConsumer and a
-command list will be displayed.
+Start the MyServiceConsumer and MyServiceProvider components.
+Activate the Consumer component and a list of available commands will be displayed on the console. Try each command. (Use RTSystemEditor for connection between ports.)
 
-#br
 
-**Screenshots
+*** Screenshots
 
 #ref(MyService_example_en.png,60%,center)
 CENTER:''Running the SimpleService sample.''
-#br
 
 #ref(SimpleService_example_rtse_en.png,60%,center)
 CENTER:''The SimpleService sample viewed in RTSystemEditor.''
-#br
 
-**Running the sample
+*** How to use
+SimpleService is a sample that sends a command from MyServiceConsumer and causes it to be processed by MyServiceProvider.
+Connect the corresponding ports of MyServiceConsumer and MyServiceProvider on RTSystemEditor.
+Activate both components (If the Consumer component is activated, it may activate the Provider too). A list of commands will be displayed at the Consumer prompt, so try to use the commands. The response of the Provider can be observed on the prompt.
 
-SimpleService is a sample to send commands from MyServiceConsumer to
-MyServiceProvider and return a result. The Consumer side parses the command and
-calls the function of the Provider side. When both components are activated,
-the command list is displayed in the prompt on the Consumer side. Input a
-command to observe the response from the Provider. The procedure is given
-below.
+- Procedure
+-- Start RTSystemEditor and open a new SystemEditor. See [[RTSystemEditor>/node/6401]] for details on how to use RTSystemEditor
+-- Start both MyServiceConsumer and MyServiceProvider components.
 
-#br
+The startup of the component differs depending on the OS and the language of OpenRTM-aist, so start regarding the table below.
 
-- Start RTSystemEditor.
-- Run MyServiceConsumer and MyServiceProvider. Starting the components varies
-  by operating system and OpenRTM-aist version. Please refer to the following
-  table.
-|LEFT:40|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c
+|LEFT:40|LEFT:140|LEFT:140|LEFT:140|LEFT:140|c
 ||>|CENTER:Windows|>|CENTER:Linux|
 ||MyServiceConsumer component|MyServiceProvider component|MyServiceConsumer component|MyServiceProvider component|
-|C++|MyServiceConsumerComp.exe|MyServiceProviderComp.exe|MyServiceConsumerComp|MyServiceProviderComp|
-|Python|MyServiceConsumer.py|MyServiceProvider.py|MyServiceConsumer.py|MyServiceProvider.py|
+|C++|MyServiceConsumer.bat|MyServiceProvider.bat|MyServiceConsumerComp|MyServiceProviderComp|
+|Python|MyServiceConsumer.bat|MyServiceProvider.bat|MyServiceConsumer.py|MyServiceProvider.py|
 |Java|MyServiceConsumer.bat|MyServiceProvider.bat|MyServiceConsumer.sh|MyServiceProvider.sh|
-- Both components are displayed on NameServiceView of RTSystemEditor. To
-add a RTcomponent to the System Editor from the Name Service View into the
+-- Both components are displayed on Name Service View of RTSystemEditor.   Drag and drop the components from the Name Service View into the
 System Editor.
-- Drag and drop between two ports to connect them.
-- Activate the components.
-- Input commands at the Consumer.
-- The input command and values of MyServiceConsumer are displayed by
-MyServiceProvider.
+-- Drag and drop between two ports to connect them.
+-- Activate both components by right-clinking one of components and selecting [Activate Systems] (in this case, if the Consumer is activated, the provider is activated too.)
+-- Input commands at the Consumer console.
 
-#br
-
-** Commands
+-  Commands
 -- echo <message>: Displays a message.
 -- set_value <value>: Sets a value to the Provider.
 -- get_value: Displays the value set on the Provider.
