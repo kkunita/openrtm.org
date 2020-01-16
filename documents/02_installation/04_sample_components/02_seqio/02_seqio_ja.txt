@@ -25,7 +25,6 @@ SeqIOのサンプルは、SeqOutから連続して出力される数値データ
 SeqOutとSeqInの対応するポートをRTSystemEditor上で接続してください。両コンポーネントをアクティベートするとSeqOutだけでなくSeqInのGUI上の数値も連続的に変化し、データポートの入出力が観察できます。
 
 - 手順
-
 -- RTSystemEditorを起動し、SystemEditorを用意します。RTSystemEditorの使用方法の詳細については[[RTSystemEditor>/node/6401]]を参照
 -- SeqOutとSeqInの両コンポーネントを起動します。コンポーネントの起動はOSやOpenRTM-aistの言語によって異なりますので、以下の表を参考に起動します。
 |LEFT:110|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c
@@ -35,6 +34,6 @@ SeqOutとSeqInの対応するポートをRTSystemEditor上で接続してくだ�
 |Python版|SeqIn.bat|SeqOut.bat|SeqIn.py|SeqOut.py|
 |Java版|SeqIn.bat|SeqOut.bat|SeqIn.sh|SeqOut.sh|
 -- RTSystemEditorのNameServiceViewに両コンポーネントが現れるので、それらをSystemEditor上にドラッグします。
--- 両コンポーネントの対応ポートを結びます。(上図SeqIO実行例を参照)
--- どちらかのコンポーネントを右クリックし、[All Activate]を選択します。
+-- 両コンポーネントの対応ポートを接続します。(上図SeqIO実行例を参照)
+-- どちらかのコンポーネントを右クリックし、[Activate System]を選択します。
 
