@@ -1,40 +1,31 @@
 ﻿// Title: GUIIn
-This sample is included with the Java edition of OpenRTM-aist. It is not
-included in the C++ or Python editions.
+This sample is included only with Java version of OpenRTM-aist. Please note that it is not included with C ++ version and Python version.
 
 #contents
 
-**Introduction
+*** Overview
+RT component sample with GUI screen. Execute the GUIIn.bat for Windows and GUIIn.sh for Linux to start the sample component.
 
-This is a sample RT-Component using a GUI.
-
-**Screenshots
-
+*** Screenshots
 #ref(GUIIn_example_en.png,center)
 CENTER:''Running the GUIIn sample component.''
 
 #ref(GUIIn_example_rtse_en.png,50%,center)
 CENTER:''The GUIIn sample component viewed in RTSystemEditor.''
 
-Each port of the component transmits input data by turning on the check box on the GUI
-after it is connected to a corresponding port. Use another sample component,
-such as SeqIn, for displaying the output.
+The relationship between each GUI element and Port is as follows.
+- Slider (top): TimedLong type OutPort
+- Text box (medium): TimedString type OutPort
+- Spinner (bottom): TimedDouble type OutPort
 
-The relationship between each GUI element and the ports is as follows:
-:Slider(Upper)|TimedLong
-:Text box(Middle)|TimedString
-:Spinner (Lower)|TimedDouble
+Each port transmits input data by connecting the corresponding ports and turning on the check box next to the GUI element. (Use RTSystemEditor for connection between ports. Use other samples such as SeqIn to check output data.)
 
-**Running the sample
+*** How to use
+If you operate the checked controls (sliders, spinners) on the GUI screen of the GUIIn component, the values ​​on the SeqIn console screen will change as the values ​​change.
 
-The value received by the output component changes by operating the controls in
-the GUIIn component.
-
--Start RTSystemEditor.
--Run GUIIn and SeqIn. Starting the components differs by operating system. Use
-GUIIn.bat on Windows and GUIIn.sh on Linux.
--Both components are displayed in the name service view of RTSystemEditor. Add
-the components to the System Editor.
--Drag and drop between the two ports to connect them.
--Activate the components.
-
+- Procedure
+-- Start RTSystemEditor and open a new System Editor. See [[RTSystemEditor>/node/6401]] for details on how to use RTSystemEditor
+-- Start both GUIIn and SeqIn components. Component startup depends on the operating system. Start GUIIn.bat for Windows and GUIIn.sh for Linux.
+-- Since these components appear in the Name Service View of RTSystemEditor, drag both of them to the System Editor.
+-- Connect the corresponding ports of both components. (See GUIIn execution example above)
+-- Right-click either component and select [Activate Systems].
