@@ -40,11 +40,11 @@ In the sample of Composite, the value received from the input data port is doubl
 
 - Start RTSystemEditor and open a new SystemEditor. See [[RTSystemEditor>/node/6401]] for details on how to use RTSystemEditor
 - Start the Composite component. The startup of the component differs depending on the OS and the language of OpenRTM-aist, so start regarding the table below.
-|LEFT:110|LEFT:120|LEFT:120|c
-|| CENTER: Windows case | CENTER: Linux case |
-| C++ version | Composite.bat | Composite |
-| Python version | Composite.bat | Composite.py |
-| Java version | Composite.bat | Composite.sh |
+|LEFT:100|LEFT:100|LEFT:100|c
+||Windows case|Linux case|
+|C++ version |Composite.bat|Composite|
+|Python version|Composite.bat|Composite.py|
+|Java version|Composite.bat|Composite.sh|
 - Since PeriodicECShareComposite appears in Name Service View of RTSystemEditor, drag them onto SystemEditor.
 - Double click PeriodicECShareComposite and tie the port between the child components
 - Launch both ConsoleIn and ConsoleOut components and connect PeriodicECShareComposite to the corresponding port. (See Composite execution example above)

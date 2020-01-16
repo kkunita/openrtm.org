@@ -40,15 +40,14 @@ CENTER:''Composite実行例(左：複合コンポーネント画面、右：Cons
 Compositeのサンプルは、入力データポートから受け取った値を、３つの子コンポーネントがそれぞれ2倍の値にして出力しているので、最終的にCompositeの出力データポートから8倍の値が出力されるサンプルです。
 
 - 手順
-
 -- RTSystemEditorを起動し、新規SystemEditorを開きます。RTSystemEditorの使用方法の詳細については[[RTSystemEditor>/node/6401]]を参照
 -- Compositeコンポーネントを起動します。コンポーネントの起動はOSやOpenRTM-aistの言語によって異なりますので、以下の表を参考に起動します。
-|LEFT:110|LEFT:120|LEFT:120|c
-||CENTER:Windowsの場合|CENTER:Linuxの場合|
+|LEFT:100|LEFT:100|LEFT:100|c
+||Windowsの場合|Linuxの場合|
 |C++版|Composite.bat|Composite|
 |Python版|Composite.bat|Composite.py|
 |Java版|Composite.bat|Composite.sh|
 -- RTSystemEditorのName Service ViewにPeriodicECShareCompositeが現れるので、それらをSystemEditor上にドラッグします。
 -- PeriodicECShareCompositeをダブルクリックし、子コンポーネント間のポートを結びます
--- ConsoleInとConsoleOutの両コンポーネントを起動し、PeriodicECShareCompositeと対応ポートを結びます。(上図Composite実行例を参照)
+-- ConsoleInとConsoleOutの両コンポーネントを起動し、PeriodicECShareCompositeと対応ポートを接続します。(上図Composite実行例を参照)
 -- どちらかのコンポーネントを右クリックし、[Activate Systems]を選択します。
