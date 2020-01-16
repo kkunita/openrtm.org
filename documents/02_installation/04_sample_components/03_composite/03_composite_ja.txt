@@ -1,57 +1,54 @@
 ﻿// Title: Composite
 #contents
-このサンプルは、OpenRTM-aist の C++版、Python版、Java版 に同梱されています。 
+このサンプルは、OpenRTM-aistのC++版、Python版、Java版に付属されています。 
 ***概要 
-複合コンポーネント Composite の使用方法を示したサンプルです。
-複合コンポーネントを Activate する前に、複合コンポーネントを構成している子のコンポーネント間を接続する必要があります。&br;
-Composite コンポーネントは、Sensor、Controller、Motor の３つのコンポーネントを子に持っています。
-Composite コンポーネントの動作は、ConsoleIn / ConsoleOut コンポーネントと接続して確認できます。
+複合コンポーネントCompositeの使用方法を示したサンプルです。
+複合コンポーネントをActivateする前に、複合コンポーネントを構成している子のコンポーネント間を接続する必要があります。
 
-&br;
+- Compositeコンポーネントは、Sensor、Controller、Motorの３つのコンポーネントを子に持っています。
+- Compositeコンポーネントの動作は、ConsoleIn/ConsoleOutコンポーネントと接続して確認できます。
+
 ***起動画面
-Composite コンポーネントを実行すると、Name Service View に４つのコンポーネント名が表示されます。
-Controller、Motor、Sensor の３つを復号化したコンポーネントが PeriodicECShareComposite ですので、これを System Diagram にドラッグ＆ドロップします。
-&br;
+- Compositeコンポーネントを実行すると、Name Service Viewに４つのコンポーネント名が表示されます。
+- Controller、Motor、Sensorの３つを複合化したコンポーネントがPeriodicECShareCompositeですので、これをSystem Editorにドラッグ＆ドロップします。
 
 #ref(composite_001.jpg,60%,center)
-CENTER:''Composite 実行例(複合コンポーネントをドラッグ＆ドロップ)''
+CENTER:''Composite実行例(複合コンポーネントをドラッグ＆ドロップ)''
 &br;
 
-複合コンポーネント内を表示させるため、PeriodicECShareComposite をダブルクリックすると、別のエディタに表示されますので、コンポーネント間を接続します。
+複合コンポーネント内を表示させるため、PeriodicECShareCompositeをダブルクリックすると、別のエディタに表示されますので、コンポーネント間を接続します。
 &br;
 
 #ref(composite_002.jpg,60%,center)
-CENTER:''Composite 実行例(複合コンポーネントの子コンポーネント間を接続する)''
+CENTER:''Composite実行例(複合コンポーネントの子コンポーネント間を接続する)''
 &br;
 
-ここでは ConsoleIn / ConsoleOut コンポーネントと接続した場合の動作例を示します。
+ここではConsoleIn/ConsoleOutコンポーネントと接続した場合の動作例を示します。
 &br;
 
 #ref(composite_003.jpg,60%,center)
-CENTER:''Composite 実行例(RTSystemEditor 接続画面)''
+CENTER:''Composite実行例(RTSystemEditor接続画面)''
 &br;
 
-ConsoleIn で「111」と入力した場合、ConsoleOut で「888」と表示されれば正しい動作です。
+ConsoleInで「111」と入力した場合、ConsoleOutで「888」と表示されれば正しい動作です。
 複合コンポーネントを構成している子コンポーネントは、入力値（コンソール画面に表示されている値）を2倍して出力しています。
 
-&br;
-CENTER:&ref(composite_004.jpg,50%);  &ref(composite_005.jpg,50%);
-CENTER:''Composite 実行例(左：複合コンポーネント画面、　右：ConsoleOut 画面)''
-&br;
+CENTER:&ref(composite_004.jpg,50%); &ref(composite_005.jpg,50%);
+CENTER:''Composite実行例(左：複合コンポーネント画面、右：ConsoleOut画面)''
 
-***使い方
-Composite のサンプルは、入力データポートから受け取った値を、３つの子コンポーネントがそれぞれ2倍の値にして出力しているので、最終的に Composite の出力データポートから8倍の値が出力されるサンプルです。
+*** 使い方
+Compositeのサンプルは、入力データポートから受け取った値を、３つの子コンポーネントがそれぞれ2倍の値にして出力しているので、最終的にCompositeの出力データポートから8倍の値が出力されるサンプルです。
 
 - 手順
 
--- RTSystemEditor を起動し、SystemEditor を用意します。→RTSystemEditor の使用方法の詳細については [[RTSystemEditor >/node/1175]] を参照
--- Composite コンポーネントを起動します。コンポーネントの起動は OS や OpenRTM-aist の言語によってことなりますので、以下の表を参考に起動します。
+-- RTSystemEditorを起動し、新規SystemEditorを開きます。RTSystemEditorの使用方法の詳細については[[RTSystemEditor>/node/6401]]を参照
+-- Compositeコンポーネントを起動します。コンポーネントの起動はOSやOpenRTM-aistの言語によって異なりますので、以下の表を参考に起動します。
 |LEFT:110|LEFT:120|LEFT:120|c
-||CENTER:Windows の場合|CENTER:Linux の場合|
-|C++版|Composite.exe|Composite|
-|Python版|Composite.py|Composite.py|
+||CENTER:Windowsの場合|CENTER:Linuxの場合|
+|C++版|Composite.bat|Composite|
+|Python版|Composite.bat|Composite.py|
 |Java版|Composite.bat|Composite.sh|
--- RTSystemEditor の NameServiceView に PeriodicECShareComposite が現れるので、それらを SystemEditor 上にドラッグします。
--- PeriodicECShareComposite をダブルクリックし、子コンポーネント間のポートを結びます
--- ConsoleInとConsoleOut の両コンポーネントを起動し、PeriodicECShareComposite と対応ポートを結びます。（上図 Composite 実行例を参照）
--- どちらかのコンポーネントを右クリックし、「All Activate」を選択します。
+-- RTSystemEditorのName Service ViewにPeriodicECShareCompositeが現れるので、それらをSystemEditor上にドラッグします。
+-- PeriodicECShareCompositeをダブルクリックし、子コンポーネント間のポートを結びます
+-- ConsoleInとConsoleOutの両コンポーネントを起動し、PeriodicECShareCompositeと対応ポートを結びます。(上図Composite実行例を参照)
+-- どちらかのコンポーネントを右クリックし、[Activate Systems]を選択します。
