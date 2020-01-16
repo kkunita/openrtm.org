@@ -28,9 +28,9 @@ ConsoleInの画面から数字を入力してください。そうするとConso
 |C++版|ConsoleIn.bat|ConsoleOut.bat|ConsoleInComp|ConsoleOutComp|
 |Python版|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.py|ConsoleOut.py|
 |Java版|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.sh|ConsoleOut.sh|
--- RTSystemEditorのNameServiceViewに両コンポーネントが現れるので、それらをSystemEditor上にドラッグします。
+-- RTSystemEditorのName Service Viewに両コンポーネントが現れるので、それらをSystemEditor上にドラッグします。
 -- 両コンポーネントのポートを結びます。（上図SimpleIO実行例を参照）
--- どちらかのコンポーネントを右クリックし、[All Activate]を選択します。
+-- どちらかのコンポーネントを右クリックし、[Activate Systems]を選択します。
 -- ConsoleInの画面に「Please input number:」のプロンプトが現れるので、数字を入力します。
 -- ConsoleOutの画面にその数字が表示されます。
 

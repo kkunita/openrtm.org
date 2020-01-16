@@ -29,8 +29,8 @@ Component startup differs depending on the OS and OpenRTM-aist language. Start b
 |C++ version|ConsoleIn.bat|ConsoleOut.bat|ConsoleInComp|ConsoleOutComp|
 |Python version|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.py|ConsoleOut.py|
 |Java version|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.sh| ConsoleOut.sh|
-- Drag both components onto the SystemEditor as both components appear in the NameServiceView of RTSystemEditor.
+- Drag both components onto the SystemEditor as both components appear in the Name Service View of RTSystemEditor.
 - Connect the ports of both components. (Refer to SimpleIO execution example above)
-- Right-click either component and select [All Activate].
+- Right-click either component and select [Activate Systems].
 - The "Please input number:" prompt appears on the ConsoleIn screen. Enter the number.
 - The number is displayed on the ConsoleOut screen.
