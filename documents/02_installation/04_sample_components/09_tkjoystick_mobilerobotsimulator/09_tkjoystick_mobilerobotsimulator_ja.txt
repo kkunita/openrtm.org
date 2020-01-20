@@ -1,0 +1,45 @@
+﻿// Title: TkJoyStick/TkMobileRobotSimulator
+#contents
+** TkJoyStick
+このサンプルは、OpenRTM-aistのPython版に付属しています。 
+C++版、Java版には付属していませんのでご注意ください。
+
+*** 概要
+GUI画面を持ったRTコンポーネントのサンプルです。TkJoyStickComp.batを実行することでサンプル・コンポーネントが起動します。
+
+GUIのスティックをドラッグで移動した値(x、y)を出力します。
+
+*** 起動画面
+#ref(TkJoystick.png,center)
+CENTER:''TkJoyStick実行例''
+
+*** 使い方
+下記を参照してください。
+
+** TkMobileRobotSimulator
+このサンプルは、OpenRTM-aistのPython版に付属しています。
+C++版、Java版には付属していませんのでご注意ください。
+
+*** 概要
+GUI画面を持ったRTコンポーネントのサンプルです。TkMobileRobotSimulator.batを実行することでサンプル・コンポーネントが起動します。
+
+*** 起動画面
+
+#ref(TkMobileRobotSimulator.png,60%,center)
+CENTER:''TkMobileRobotSimulator実行例''
+
+#ref(SysEdit.png,center)
+CENTER:''RTSystemEditor実行例''
+
+*** 使い方
+TkJoystick(入力デバイス)などと接続し、GUI上でモーターで動くロボットのシミュレーションをします。
+
+- 手順
+-- RTSystemEditorを起動し、新規SystemEditorを開きます。RTSystemEditorの使用方法の詳細については[[RTSystemEditor>/node/6401]]を参照
+-- TkJoyStickComp.py、TkMobileRobotSimulator.py、両コンポーネントを起動します。
+-- TkMobileRobotSimulator.pyのGUIの[Create]ボタンを１回クリックします。
+-- RTSystemEditorのName Service Viewに両コンポーネントが表示されるので、それらをSystemEditor上にドラッグします。
+-- 両コンポーネントの対応ポートを結びます。(上図RTSystemEditor実行例を参照)
+-- どちらかのコンポーネントを右クリックし、[Activate Systems]を選択します。
+-- TkJoystickCompの画面上で中心点をドラッグすることにより、TkMobileRobotSimulator上の5角形のオブジェクト(ロボットを表しています)が動きます。Y方向(上下方向)にTkJoystickコンポーネントを動かすと進行方向への移動速度が決まり、X方向(左右方向)に動かすと、回転速度と回転方向が決まります。
+

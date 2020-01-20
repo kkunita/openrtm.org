@@ -1,0 +1,46 @@
+﻿// Title: TkJoyStick / TkMobileRobotSimulator
+#contents
+
+** TkJoyStick
+This sample comes with the Python version of OpenRTM-aist. Please note that it is not included in C ++ version and Java version.
+
+*** Overview
+RT component sample with GUI screen. The sample component is started by executing TkJoyStickComp.bat.
+
+Outputs the value (x, y) of the GUI stick moved by dragging.
+
+***Screenshots
+
+#ref(TkJoystick_en.png,center)
+CENTER:''TkJoyStick execution example''
+
+*** How to use
+Please refer to the following.
+
+&aname(mbs);
+** TkMobileRobotSimulator
+This sample comes with the Python version of OpenRTM-aist.
+Please note that it is not included in C ++ version and Java version.
+
+*** Overview
+RT component sample with GUI screen. The sample component starts by executing TkMobileRobotSimulator.bat.
+
+*** Start screen
+
+#ref(TkMobileRobotSimulator_en.png,60%,center)
+CENTER:''TkMobileRobotSimulator execution example''
+
+#ref(SysEdit_en.png, center)
+CENTER:''RTSystemEditor execution example''
+
+*** How to use
+Connect with TkJoystick (input device) and simulate a robot that runs with a motor on the GUI.
+
+- Procedure
+-- Start RTSystemEditor and open a new SystemEditor. See [[RTSystemEditor>//en/node/6968]] for details on how to use RTSystemEditor
+-- Start both components by double-clicking TkJoyStickComp.bat and TkMobileRobotSimulator.bat.
+-- Click once on the [Create] button in the GUI of TkMobileRobotSimulator.
+-- Since both components are displayed in the Name Service View of RTSystemEditor, drag them onto SystemEditor.
+-- Connect the corresponding ports of both components. (Refer to RTSystemEditor execution example above)
+-- Right-click either component and select [Activate Systems].
+-- By dragging the center point on the screen of TkJoystickComp, the pentagonal object (representing the robot) on TkMobileRobotSimulator moves. Moving the TkJoystick component in the Y direction (vertical direction) determines the speed of movement in the direction of the pentagonal object, and moving the component in the X direction (left and right) determines the speed and direction of rotation.
