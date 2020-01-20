@@ -1,0 +1,45 @@
+﻿// Title: OpenCVCamera
+#contents
+
+このサンプルは、OpenRTM-aist C++Windows版に付属しています。
+OpenRTM-aistのC++版Linuxパッケージや、Python版、Java版には付属していませんのでご注意ください。
+
+***概要
+OpenCVCamera、CameraViewerを起動することで、USBカメラの画像をモニターに表示します。OpenCV画像処理サンプルRTCコンポーネントを接続し、エフェクトをかけられます。
+
+***起動画面
+
+#ref(new_00.png,60%,center)
+CENTER:''OpenCVCameraコンポーネントとCameraViewerコンポーネントの実行例''
+
+#ref(new_01.png,60%,center)
+CENTER:''OpenCVCamera実行例(RTSystemEditor)''
+
+#ref(new_02.png,60%,center)
+CENTER:''CameraViewer実行例(モニター)''
+
+***使い方
+OpenCVCameraはUSBカメラの画像データを取得し、CameraViewerコンポーネントでモニター上に表示するサンプルです。
+OpenCVのRTサンプルコンポーネントを間に接続し、画像データにエフェクトをかけることもできます。
+
+
+- 手順
+--  RTSystemEditorを起動し、新規SystemEditorを開きます。RTSystemEditorの使用方法の詳細については[[RTSystemEditor>//ja/node/6401]]を参照
+--  OpenCVCamera(openCVCamera.bat)とCameraViewer(CameraViewer.bat)の両コンポーネントを起動します。
+--- サンプルOpenCV画像処理RTコンポーネントを使用する場合は、インストール後、スタート＞OpenRTM-aist 1.2.1 x86_64＞C++_OpenCV-Examplesから(32bit環境では、スタート>OpenRTM-aist 1.2.1 x86>C++_OpenCV-Examplesから)起動してください。
+--  RTSystemEditorのName Service Viewにこれらのコンポーネントが現れるので、二つともSystemEditor上にドラッグします。
+--  両コンポーネントの対応ポートを結びます。(上図RTSystemEditor実行例を参照)
+-- どちらかのコンポーネントを右クリックし、[Activate Systems]を選択します。
+
+- OpenCVのFlipCompを使用する
+-- Flipコンポーネントをスタート＞OpenRTM-aist 1.2.1 x86_64＞C++_OpenCV-Examplesから(32bit環境では、スタート>OpenRTM-aist 1.2.1 x86>C++_OpenCV-Examplesから)起動してください。
+-- SystemEditor上にドラッグして表示し、OpenCVCameraとCameraViewer両コンポーネントと接続し「Activate」します。（下図FlipComp実行例を参照）
+-- FlipCompはConfigure「flip_mode」の値を変更する事で、出力データを変更することも可能です。（下図flip_modeの変更を参照）
+--- FlipCompの詳しい使い方・解説は[[こちら:http://www.openrtm.org/openrtm/ja/node/6057]]をご確認ください。
+
+#ref(new_05.png,40%,center)
+CENTER:''Flip実行例(RTSystemEditor)''
+
+
+#ref(new_03_04.png,60%,center)
+CENTER:''flip_modeの変更(RTSystemEditorとモニター)''
