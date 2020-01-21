@@ -1,38 +1,29 @@
-// Title: GUIIn
+﻿// Title: GUIIn
 #contents
-//**GUIIn
-���̃T���v���́AOpenRTM-aist �� Java�� �ɓ�������Ă��܂��B 
-C++�ŁAPython�� �ɂ͓�������Ă��܂���̂ł����ӂ��������B
-***�T�v�E�N�����
-GUI ��ʂ�������RT�R���|�[�l���g�̃T���v���ł��BWindows �̏ꍇ�� GUIIn.bat�ALinux �̏ꍇ�� GUIIn.sh �����s���邱�ƂŃT���v���E�R���|�[�l���g���N�����܂��B
+このサンプルは、OpenRTM-aistのJava版のみに付属しています。C++版、Python版に付属していませんので注意ください。
 
-#br
+***概要・起動画面
+GUI画面を持ったRTコンポーネントのサンプルです。Windowsの場合はGUIIn.bat、Linuxの場合はGUIIn.shを実行することでサンプル・コンポーネントが起動します。
 
 #ref(GUIIn_example.png,center)
-CENTER:''GUIIn ���s��(GUIIn)''
-#br
-#br
+CENTER:''GUIIn実行例(GUIIn)''
 
 #ref(GUIIn_example_rtse_ja.png,60%,center)
-CENTER:''GUIIn ���s��(RTSystemEditor �ڑ����)''
-#br
+CENTER:''GUIIn実行例(RTSystemEditor接続画面)''
 
-�eGUI�v�f�� Port�Ԃ̊֌W�͈ȉ��̂Ƃ���ł��B
--�X���C�_�i��j: TimedLong�^OutPort
--�e�L�X�g�E�{�b�N�X�i���j: TimedString�^OutPort
--�X�s�i�i���j: TimedDouble�^OutPort
+各GUI要素とPort間の関係は以下のとおりです。
+- スライダ(上): TimedLong型OutPort
+- テキスト・ボックス(中): TimedString型OutPort
+- スピナ(下): TimedDouble型OutPort
 
-�ePort�͊Y������ Port�Ԃ�ڑ���AGUI�v�f���̃`�F�b�N�{�b�N�X�� ON �ɂ��邱�ƂŁA���̓f�[�^�𑗐M���܂��B�iPort�Ԃ̐ڑ��ɂ� RTSystemEditor �������p���������B�o�̓f�[�^�̊m�F�ɂ� SeqIn �Ȃǂ̑��T���v���������p���������B�j
-#br
+各Portは該当するPort間を接続後、GUI要素横のチェックボックスをONにすることで、入力データを送信します。（Port間の接続にはRTSystemEditorをご利用ください。出力データの確認にはSeqInなどの他サンプルをご利用ください。）
 
-***�g����
-GUIIn �R���|�[�l���g�� GUI��ʂŃ`�F�b�N����ꂽ�R���g���[���i�X���C�_�[�A�X�s�i�j�𑀍삷��ƁA���̒l�̕ω��ɂ��������� SeqIn �� GUI��ʏ�̒l���ω����܂��B
-#br
+***使い方
+GUIInコンポーネントのGUI画面でチェックを入れたコントロール(スライダー、スピナ)を操作すると、その値の変化にしたがってSeqInのコンソール画面上の値も変化します。
 
-- �菇
--- RTSystemEditor ���N�����ASystemEditor ��p�ӂ��܂��B��RTSystemEditor�̎g�p���@�̏ڍׂɂ��Ă� [[RTSystemEditor >/node/1175]] ���Q��
--- GUIIn �� SeqIn �̗��R���|�[�l���g���N�����܂��B �R���|�[�l���g�̋N���� OS �ɂ���Ă��ƂȂ�܂��BWindows �̏ꍇ�� GUIIn.bat�ALinux �̏ꍇ�� GUIIn.sh ���N�����܂��B
--- RTSystemEditor �� NameServiceView �ɂ����̃R���|�[�l���g�������̂ŁA��Ƃ� SystemEditor ��Ƀh���b�O���܂��B
--- ���R���|�[�l���g�̑Ή��|�[�g�����т܂��B�i��} GUIIn ���s����Q�Ɓj
--- �ǂ��炩�̃R���|�[�l���g���E�N���b�N���A�uAll Activate�v��I�����܂��B
-
+- 手順
+-- RTSystemEditorを起動し、新規のSystemEditorを開きます。RTSystemEditorの使用方法の詳細については[[RTSystemEditor>/node/6401]]を参照
+-- GUIInとSeqInの両コンポーネントを起動します。コンポーネントの起動はOSによって異なります。Windowsの場合はGUIIn.bat、Linuxの場合はGUIIn.shを起動します。
+-- RTSystemEditorのName Service Viewにこれらのコンポーネントが現れるので、二つともSystem Editor上にドラッグします。
+-- 両コンポーネントの対応ポートを結びます。(上図GUIIn実行例を参照)
+-- どちらかのコンポーネントを右クリックし、[Activate Systems]を選択します。
