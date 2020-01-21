@@ -26,6 +26,7 @@ GUI画面を持ったRTコンポーネントのサンプルです。SliderComp.b
 #ref(SliderComp.png,center)
 CENTER:''SliderComp実行例''
 
+** システム構築
 #ref(RTSE_Slider_Motor.png, center)
 CENTER:''RTSystemEditor上のSliderCompとTkMotorComp''
 

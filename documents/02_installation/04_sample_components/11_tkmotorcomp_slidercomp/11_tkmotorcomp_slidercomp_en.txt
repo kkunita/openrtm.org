@@ -25,8 +25,8 @@ RT component sample with GUI screen. Executing SliderComp.bat starts the sample 
 #ref(SliderComp.png,center)
 CENTER:''The SliderComp component's GUI.''
 
-
-#ref (RTSE_Slider_Motor.png, center)
+** System Construction
+#ref(RTSE_Slider_Motor_en.png,center)
 CENTER:''SliderComp and TkMotorComp on RTSystemEditor''
 
 *** How to use
