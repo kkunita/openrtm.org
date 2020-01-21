@@ -3,7 +3,7 @@
 
 本ページはOpenRTP自体を開発デバッグする人が、RTCBuilder/RTSystemEditorのプラグインのデバッグをするのためのページです。基本知識としてEclipseにおけるPluginの開発に関する知識が別途必要になります。
 
-RTCBuilderとRTSystemEditorをOpenRTPとしてインストールしてをOpenRTM-aist自体の開発を行わずにユーザとして使用する場合には、このページの情報は特に必要ありません。OpenRTPをインストールして使用するための情報は[[インストーラによるインストール>//ja/node/6938]]を参照してしてください。
+RTCBuilderとRTSystemEditorをOpenRTPとしてインストールしてをOpenRTM-aist自体の開発を行わずにユーザーとして使用する場合には、このページの情報は特に必要ありません。OpenRTPをインストールして使用するための情報は[[インストーラによるインストール>//ja/node/6938]]を参照してしてください。
 
 ** 必要なソフトウエアの入手
 
