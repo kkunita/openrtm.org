@@ -1,18 +1,23 @@
 ﻿// Title: RTCBuilderのインストール
 #contents
-**RTCBuilderとは
+
+本ページはOpenRTP自体を開発デバッグする人が、RTCBuilderのプラグインをEclipse環境にインストールするのためのページです。基本知識としてEclipseにおけるPluginの開発に関する知識が別途必要になります。
+
+RTCBuilderとRTSystemEditorをOpenRTPとしてインストールしてをOpenRTM-aist自体の開発を行わずにユーザーとして使用する場合には、このページの情報は特に必要ありません。OpenRTPをインストールして使用するための情報は[[インストーラによるインストール>//ja/node/6938]]を参照してしてください。
+
+** RTCBuilderとは
 RTCBuilderはRTコンポーネントのテンプレートを生成する開発ツールです。パラメーターを基にRTコンポーネントのテンプレートを生成する機能を持っています。
 また、RTCBuilderはEclipseにて動作し、直感的な操作と他のEclipseプラグインとのシームレスな連携が可能です。~
 
 
-***機能概要
+*** 機能概要
 提供される機能の一覧は以下のとおりです。
 | № | 画面要素名 | 説明 |
 |１|RTCプロファイルエディタ|RTコンポーネントの仕様であるプロファイル、データポート定義、サービスポート定義、コンフィギュレーション定義、その他拡張プロファイルを編集します。|
 |２|ビルドビュー|編集中のRTコンポーネントおよびデータポート、サービスポート、サービスインターフェースをアイコンでグラフィカルに表示します。|
 |３|リポジトリビュー|選択したRTリポジトリの情報を表示します。|
 
-***動作環境
+*** 動作環境
 RTCBuilderの動作に必要な環境は以下のとおりです。
 
 
@@ -34,8 +39,8 @@ RTCBuilderの動作に必要な環境は以下のとおりです。
 
 RTCBuilderはEclipseプラグインであるため、Eclipse本体をインストールする必要があります。
 さらに、EclipseはJavaアプリケーションなので、Eclipse本体をインストールする前にJava実行環境（あるいはJDK：Java開発環境でもよい）をインストールする必要があります。
--Java実行環境のインストールについては、[[EclipseについてのJDK(Java Development Kit)のインストール:/node/6656#jdk_install]]を参照してください。
--Eclipseのインストールについては、[[EclipseについてのEclipseのインストール:/node/6656#eclipse_install]]を参照してください。
+- Java実行環境のインストールについては、[[EclipseについてのJDK(Java Development Kit)のインストール:/node/6656#jdk_install]]を参照してください。
+- Eclipseのインストールについては、[[EclipseについてのEclipseのインストール:/node/6656#eclipse_install]]を参照してください。
 
 *** RTCBuilderのビルド
 Eclipseを直接導入した場合はRTCBuilderのビルドが必要です。
@@ -46,29 +51,18 @@ Eclipseを直接導入した場合はRTCBuilderのビルドが必要です。
 *** RTCBuilderの起動
 
 Eclipseを起動し、メニューから[ウインドウ]>[パースペクティブを開く]>[その他]を選択すると、次のようなパースペクティブ選択画面が表示されます。
-#br
 
 #ref(fig2-3PerspectiveSelection_ja.png,/ja/node/678,50%,center)
-//CENTER:''ツールバーからの起動''
-#br
+
 パースペクティブ一覧にある[RTC Builder]を選択すると、次のような画面が表示されてRTCBuilderが起動されます。
-#br
 
 
 #ref(fig2-4RTCBuilderInit_ja.png,60%,/ja/node/678,center)
-#br
+
 ~ツールバーの[Open New RTC Builder Editor]ボタンをクリックするか、メニューバーの[ファイル]>[Open New Builder Editor]を選択することで、Builderエディタが起動します。
-#br
 
 #ref(fig2-9ToolsBarOpenNewRtcBuilder_ja.png,/ja/node/678,nolink,center)
-#br
 
 #ref(fig2-10FileMenuOpenNewBuilder_ja.png,/ja/node/678,80%,center)
-#br
-
-//#ref(fig2-4RTCBuilderInit.png,/ja/node/678,80%,center)
-#br
 
 参考：[[''FAQ:''Eclipseの起動方法>/ja/node/248#eclipse]]
-#br
-#br
