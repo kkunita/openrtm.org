@@ -1,0 +1,2 @@
+We provide RTCBuilder and RTSystemEditor to support the development of RT System. These two tools are collectively called OpenRTP.
+RTCBuilder and RTSystemEditor are development tools created as plug-ins for the Eclipse integrated development environment. Therefore, to use RTCBuilder and RTSystemEditor, you need to install Eclipse and Java development environment. It can be easily installed by using the bulk installation script and msi file. (See the link below). 
