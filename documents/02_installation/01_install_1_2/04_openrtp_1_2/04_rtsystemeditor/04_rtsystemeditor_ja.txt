@@ -1,11 +1,16 @@
 ﻿// Title: RTSystemEditorのインストール
 #contents
+
+本ページはOpenRTP自体を開発デバッグする人が、RTSystemのプラグインをEclipse環境にインストールするのためのページです。基本知識としてEclipseにおけるPluginの開発に関する知識が別途必要になります。
+
+RTCBuilderとRTSystemEditorをOpenRTPとしてインストールしてをOpenRTM-aist自体の開発を行わずにユーザーとして使用する場合には、このページの情報は特に必要ありません。OpenRTPをインストールして使用するための情報は[[インストーラによるインストール>//ja/node/6938]]を参照してしてください。
+
 ** RTSystemEditorとは
 RTSystemEditorは、OpenRTM-aistに含まれる開発ツールの１つであり、RTCをリアルタイムにグラフィカル操作する機能を持っています。また、Eclipse統合開発環境のプラグインとして作成されており、Eclipse上にて既存のプラグインとシームレスに操作を行うことができます。
 
 #clear
 
-***機能概要
+*** 機能概要
 RTSystemEditorは、RTCをリアルタイムにグラフィカル操作する機能を持っています。提供される機能の一覧は以下のとおりです。
 
 |№|機能名称|機能概要|
