@@ -6,9 +6,9 @@ OpenRTM-aist.
 
 **Introduction
 
-This sample shows how to use InPort and OutPort. When you start the SeqIn and SeqOut components, the GUI screen will be displayed.
+This sample shows how to use InPort and OutPort. When you start the SeqIn and SeqOut components, a GUI or console screen will be displayed.
 Both SeqIn and SeqOut have the following types of DataPort.
-TimedShort, TimedLong, TimedFLoat, TimedDouble, TimedShortSeq, TimedLongSeq, TimedFLoatSeq, TimedDoubleSeq, Output of each port are determined by random numbers, and when each port is connected, the output value of SeqOut and the input value of SeqIn are shown on GUI screens. (Use RTSystemEditor for connection between ports.)
+TimedShort, TimedLong, TimedFLoat, TimedDouble, TimedShortSeq, TimedLongSeq, TimedFLoatSeq, TimedDoubleSeq, Output of each port are determined by random numbers, and when each port is connected, the output value of SeqOut and the input value of SeqIn are shown on the GUI or console screens. (Use RTSystemEditor for connection between ports.)
 #br
 
 **Screenshots
@@ -23,8 +23,8 @@ CENTER:''The SeqIO sample viewed in RTSystemEditor.''
 
 ** How to use
 
-The SeqIO sample is a sample that sends numerical data continuously from the output of SeqOut. And the data is sent to the data port of SeqIn. Both output data and input data are displayed on each UI screen.
-Connection of the corresponding ports of SeqOut and SeqIn are done on RTSystemEditor. When both components are activated, not only SeqOut but also the numerical value on the SeqIn UI changes continuously, and you can observe the input and output of the data port.
+The SeqIO sample is a sample that sends numerical data continuously from the output of SeqOut. And the data is sent to the data port of SeqIn. Both output data and input data are displayed on each GUI / console screen.
+Connection of the corresponding ports of SeqOut and SeqIn are done on RTSystemEditor. When both components are activated, not only SeqOut but also the numerical value on the SeqIn GUI / console changes continuously, and you can observe the input and output of the data port.
 
 #br
 

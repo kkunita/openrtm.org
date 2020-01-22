@@ -2,9 +2,9 @@
 #contents
 このサンプルは、OpenRTM-aistのC++版、Python版、Java版に付属しています。 
 *** 概要
-InPort、OutPortの使用方法を示したサンプルです。SeqInコンポーネントとSeqOutコンポーネントを起動するとGUI画面が表示されます。
+InPort、OutPortの使用方法を示したサンプルです。SeqInコンポーネントとSeqOutコンポーネントを起動するとGUIまたはコンソール画面が表示されます。
 SeqIn、SeqOutともに以下の型のDataPortを備えています。
-TimedShort、TimedLong、TimedFLoat、TimedDouble、TimedShortSeq、TimedLongSeq、TimedFLoatSeq、TimedDoubleSeq、各Portの出力は乱数で決定しており、各Port間を接続するとSeqOut側の出力値、SeqIn側の入力値がそれぞれのGUI画面に表示されます。(Port間の接続にはRTSystemEditorを利用ください。)
+TimedShort、TimedLong、TimedFLoat、TimedDouble、TimedShortSeq、TimedLongSeq、TimedFLoatSeq、TimedDoubleSeq、各Portの出力は乱数で決定しており、各Port間を接続するとSeqOut側の出力値、SeqIn側の入力値がそれぞれのGUIまたはコンソール画面に表示されます。(Port間の接続にはRTSystemEditorを利用ください。)
 
 *** 起動画面
 
@@ -21,8 +21,8 @@ CENTER:''SeqInコンポーネントとSeqOutコンポーネントの実行例(Py
 CENTER:''SeqInコンポーネントとSeqOutコンポーネントの実行例(Java版)''
 
 *** 使い方
-SeqIOのサンプルは、SeqOutから連続して出力される数値データをデータポートからSeqInへ送り、GUI上に表示させるサンプルです。
-SeqOutとSeqInの対応するポートをRTSystemEditor上で接続してください。両コンポーネントをアクティベートするとSeqOutだけでなくSeqInのGUI上の数値も連続的に変化し、データポートの入出力が観察できます。
+SeqIOのサンプルは、SeqOutから連続して出力される数値データをデータポートからSeqInへ送り、GUIまたはコンソール上に表示させるサンプルです。
+SeqOutとSeqInの対応するポートをRTSystemEditor上で接続してください。両コンポーネントをアクティベートするとSeqOutだけでなくSeqInの出力される数値も連続的に変化し、データポートの入出力が観察できます。
 
 - 手順
 -- RTSystemEditorを起動し、SystemEditorを用意します。RTSystemEditorの使用方法の詳細については[[RTSystemEditor>/node/6401]]を参照
