@@ -1,6 +1,6 @@
 ﻿// Title: The sample components came with OpenRTM-aist
 #contents
-// ** OpenRTM-aist sample
+
 OpenRTM-aist comes with some sample components that are easy to use.
 (OpenCV is required for CameraViewer / OpenCVCamera components.)
 Also, the source code of the sample component is included, so please refer to it for development.
