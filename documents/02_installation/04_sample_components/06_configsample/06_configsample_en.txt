@@ -5,7 +5,7 @@ This sample is included with the C++, Python and the Java editions of OpenRTM-ai
 
 **Introduction
 
-This sample shows how to use configuration sets for RT-Components. When you launch the ConfigSample component, its configuration set is set up automatically. You can check and alter the configuration using RTSystemEditor.
+This example shows how to use the configuration-set feature of the RT-Component. When you launch the ConfigSample component, its configuration sets are set up automatically. You can check and alter configuration parameters using RTSystemEditor.
 
 Note: If an error "Specified path cannot be found" occurs, modify the value of "example.ConfigSample.config_file" in rtc.conf file under the RTMExamples\ConfigSample directory. Change it to:
 
