@@ -1,9 +1,9 @@
 ﻿// Title: RTCBuilderのインストール
 #contents
 
-本ページはOpenRTP自体を開発デバッグする人が、RTCBuilderのプラグインをEclipse環境にインストールするのためのページです。基本知識としてEclipseにおけるPluginの開発に関する知識が別途必要になります。
+本ページはRTCBuilderのプラグインを個別に開発・デバッグをする目的で、Eclipse環境にインストールする方法を説明しています。
 
-RTCBuilderとRTSystemEditorをOpenRTPとしてインストールしてをOpenRTM-aist自体の開発を行わずにユーザーとして使用する場合には、このページの情報は特に必要ありません。OpenRTPをインストールして使用するための情報は[[インストーラによるインストール>//ja/node/6938]]を参照してしてください。
+単にRTCBuilderを使用する場合は、[[インストーラによるインストール>//ja/node/6938]]を参照してOpenRTP(RTCBUilder、RTSystemEditorを含む)をインストールして使用してください。
 
 ** RTCBuilderとは
 RTCBuilderはRTコンポーネントのテンプレートを生成する開発ツールです。パラメーターを基にRTコンポーネントのテンプレートを生成する機能を持っています。
