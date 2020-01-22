@@ -6,14 +6,9 @@ OpenRTM-aist.
 
 **Introduction
 
-The sample shows how to use InPorts and OutPorts. Execute the SeqIn and SeqOut
-components to display their windows. Both SeqIn and SeqOut have the following
-types of DataPort: TimedShort, TimedLong, TimedFloat, TimedDouble
-TimedShortSeq, TimedLongSeq, TimedFloatSeq and TimedDoubleSeq. The values sent
-over each port are random numbers, and once you connect ports, the output
-values of SeqOut and input values of SeqIn are displayed.  (You may use
-RTSystemEditor to connect between Ports.)
-
+This sample shows how to use InPort and OutPort. When you start the SeqIn and SeqOut components, a GUI or console screen will be displayed.
+Both SeqIn and SeqOut have the following types of DataPort.
+TimedShort, TimedLong, TimedFLoat, TimedDouble, TimedShortSeq, TimedLongSeq, TimedFLoatSeq, TimedDoubleSeq, Output of each port are determined by random numbers, and when each port is connected, the output value of SeqOut and the input value of SeqIn are shown on the GUI or console screens. (Use RTSystemEditor for connection between ports.)
 #br
 
 **Screenshots
@@ -26,29 +21,25 @@ CENTER:''Running the SeqIO sample.''
 CENTER:''The SeqIO sample viewed in RTSystemEditor.''
 #br
 
-**Running the sample
+** How to use
 
-This sample demonstrates using data ports and the sequence data types.  SeqOut
-outputs numerical data, while SeqIn inputs numerical data and displays it.
-Connect the ports using RTSystemEditor.  When both components are activated,
-the numerical values of SeqOut and SeqIn change continuously. The I/O of the
-data port can be observed.
+The SeqIO sample is a sample that sends numerical data continuously from the output of SeqOut. And the data is sent to the data port of SeqIn. Both output data and input data are displayed on each GUI / console screen.
+Connection of the corresponding ports of SeqOut and SeqIn are done on RTSystemEditor. When both components are activated, not only SeqOut but also the numerical value on the SeqIn GUI / console changes continuously, and you can observe the input and output of the data port.
 
 #br
 
 You can execute this sample using the following procedure.
 -- Start RTSystemEditor.
--- Run SeqIn and SeqOut. Starting the components varies
-by operating system and OpenRTM-aist version. Please refer to the following
+-- Run SeqIn and SeqOut components. Starting the components varies
+Depend on the OS and OpenRTM-aist version. Please refer to the following
 table.
 |LEFT:110|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c
 ||>|CENTER:Windows|>|CENTER:Linux|
 ||SeqIn component|SeqOut component|SeqIn component|SeqOut component|
-|C++|SeqInComp.exe|SeqOutComp.exe|SeqInComp|SeqOutComp|
-|Python|SeqIn.py|SeqOut.py|SeqIn.py|SeqOut.py|
+|C++|SeqIn.bat|SeqOut.bat|SeqInComp|SeqOutComp|
+|Python|SeqIn.bat|SeqOut.bat|SeqIn.py|SeqOut.py|
 |Java|SeqIn.bat|SeqOut.bat|SeqIn.sh|SeqOut.sh|
--- Both components are displayed in the Name Service View of RTSystemEditor.
+-- Both components are shown in the Name Service View of RTSystemEditor.
 Add the RT-Components to the System Editor.
--- Drag and drop between two ports to connect them.
--- Activate the components.
-
+-- Drag and drop between each ports to connect them.
+-- Right-click one of the components and activate the components by selecting [Activate Systems]
