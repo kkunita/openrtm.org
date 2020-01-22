@@ -6,16 +6,15 @@ This sample comes with the Python version of OpenRTM-aist. Please note that it i
 
 *** Overview
 RT component sample with GUI screen. The sample component is started by executing TkJoyStickComp.bat.
-
-Outputs the value (x, y) of the GUI stick moved by dragging.
+The value (x, y) corresponding to the position where the joystick on the GUI is moved by dragging is output.
 
 ***Screenshots
-
 #ref(TkJoystick_en.png,center)
 CENTER:''TkJoyStick execution example''
 
 *** How to use
-Please refer to the following.
+- Drag the small circle displayed in the center of the screen to output the (x, y) value according to the position of the circle. You can adjust the scale of the output coordinate values ​​by adjusting the [Scale Factor] slider at the top right. At the bottom right of the screen, the value of (x, y) in the rectangular coordinate system and (r, theta) in the polar coordinate system are displayed.
+- There are two OutPorts, from the "pos" value according to the position, from the "vel" value in which the coordinates are turned 45 degrees counterclockwise, for example, if the "pos" output value is (10,10), then the "vel" output value will be (14.142, 0).
 
 &aname(mbs);
 ** TkMobileRobotSimulator
@@ -26,15 +25,19 @@ Please note that it is not included in C ++ version and Java version.
 RT component sample with GUI screen. The sample component starts by executing TkMobileRobotSimulator.bat.
 
 *** Start screen
-
 #ref(TkMobileRobotSimulator_en.png,60%,center)
 CENTER:''TkMobileRobotSimulator execution example''
 
+*** How to use
+For the system to recognize it as an RTC and make the RTC visible in the Name Service, press the [Create] button in the center-right of the GUI. A pentagonal object imitating an object that moves back and forth and left and right with a motor is displayed on the GUI. 
+The pentagonal object on the screen moves according to the input value to InPort. The input to InPort is two value vector values and one is the rotation speed of the left wheel motor and the other is the rotation speed of the right wheel motor. The speed of both wheels must be the same to go straight apex. 
+
+** System configuration
 #ref(SysEdit_en.png, center)
 CENTER:''RTSystemEditor execution example''
 
 *** How to use
-Connect with TkJoystick (input device) and simulate a robot that runs with a motor on the GUI.
+Connect TkJoystick (input device) and TkMobileRobotSimulator, and simulate a robot that the joystick controls the moving speed on the GUI.
 
 - Procedure
 -- Start RTSystemEditor and open a new SystemEditor. See [[RTSystemEditor>//en/node/6968]] for details on how to use RTSystemEditor
@@ -43,4 +46,4 @@ Connect with TkJoystick (input device) and simulate a robot that runs with a mot
 -- Since both components are displayed in the Name Service View of RTSystemEditor, drag them onto SystemEditor.
 -- Connect the corresponding ports of both components. (Refer to RTSystemEditor execution example above)
 -- Right-click either component and select [Activate Systems].
--- By dragging the center point on the screen of TkJoystickComp, the pentagonal object (representing the robot) on TkMobileRobotSimulator moves. Moving the TkJoystick component in the Y direction (vertical direction) determines the speed of movement in the direction of the pentagonal object, and moving the component in the X direction (left and right) determines the speed and direction of rotation.
+-- By dragging the center point on the screen of TkJoystickComp, the pentagonal object (representing the robot) on TkMobileRobotSimulator moves. Moving the TkJoystick component in the Y direction (vertical direction) determines the speed of movement in the direction of the pentagonal object, and moving the component in the X direction (left and right) determines the speed and direction of rotation.   (When using TkJoyStick's "vel" OutPort, moving the joystick up and down will make the two-element values of the vector the same. Moving it to the left and right will reverse the sign of them. When this is sent to TkMobileRobotSimulator, it operates as a speed control input to each of the left and right motors, so moving up and down is made, straight-line speed control in the vertex direction in such a way that two motors move in the same direction and at the same speed. Also, the movement of the joystick in the left and right direction causes an output vector in which two elements values are inverted values of the positive and negative and they are the control values of the left and right motor speeds for TkMobileRobotSimulator. In this case, since the motor rotates in the opposite direction at the same speed, the robot rotates on the spot.)
