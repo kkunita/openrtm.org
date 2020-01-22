@@ -1,48 +1,36 @@
 ﻿// Title: ConfigSample
-This sample is included with the C++, Python and the Java editions of
-OpenRTM-aist.
+This sample is included with the C++, Python and the Java editions of OpenRTM-aist.
 
 #contents
 
 **Introduction
 
-This sample shows how to use configuration sets for RT-Components. When you
-launch the ConfigSample component, its configuration set is set up
-automatically. You can check and alter the configuration using RTSystemEditor.
+This example shows how to use the configuration-set feature of the RT-Component. When you launch the ConfigSample component, its configuration sets are set up automatically. You can check and alter configuration parameters using RTSystemEditor.
 
-Note: If an error "Specified path cannot be found" occurs, modify the value of
-"example.ConfigSample.config_file" in rtc.conf file under the
-RTMExamples/ConfigSample directory. Change it to:
+Note: If an error "Specified path cannot be found" occurs, modify the value of "example.ConfigSample.config_file" in rtc.conf file under the RTMExamples\ConfigSample directory. Change it to:
 
  .\\RTMExamples\\ConfigSample\\configsample.conf
+ (Use '\\' instead of '\' for the separator between file name and directory names. )
 
-(Any characters between folder names are represented by '\' and not '\\'.)
-
-or rewrite it to the full path of "configsample.conf". In this case, you
-need to specify '\\' as a folder separator, as well.
+or rewrite it to the full path of "configsample.conf". In this case, you need to specify '\\' as a directory separator, as well.
 
 **Screenshots
-
 
 #ref(ConfigSample_example_rtse_en.png,50%,center)
 CENTER:''The ConfigSample sample viewed in RTSystemEditor.''
 
 **Running the sample
 
-This sample keeps displaying the configuration set data of the component in the
-shell. It updates the display when the configuration data is changed in
-RTSystemEditor.
+This sample keeps displaying the configuration set data of the component on the console screen. It updates the display when the configuration data is changed in RTSystemEditor.
 
-- Start RTSystemEditor.
-- Run ConfigSample. Starting the components varies by operating system and
-  OpenRTM-aist version. Please refer to the following table.
+- Procedure
+-- Start RTSystemEditor.
+-- Run ConfigSample. Starting the components varies by operating system and  OpenRTM-aist version. Please refer to the following table.
 |LEFT:110|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c
-||CENTER:Windows|CENTER:Linux|
-|C++|ConfigSampleComp.exe|ConfigSampleComp|
-|Python|ConfigSample.py|ConfigSample.py|
+||Windows|Linux|
+|C++|ConfigSample.bat|ConfigSampleComp|
+|Python|ConfigSample.bat|ConfigSample.py|
 |Java|ConfigSample.bat|ConfigSample.sh|
-- Activate the component in RTSystemEditor.
-- In the "Configuration" view of RTSystemEditor, choose a set to activate and
-  edit configuration parameters, clicking Apply to make the changes take
-  effect. View the changes in the shell.
-
+-- Select an appropriate ConfigurationSet (default, mode0, mode1) on the Configuration View of RTSystemEditor.
+-- Change the value as needed.
+-- Click [Apply] button.
