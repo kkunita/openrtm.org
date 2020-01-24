@@ -1,6 +1,11 @@
 ﻿// Title: Eclipseについて
 #ref(eclipse_logo.png,around,left)
 #contents
+
+本ページはOpenRTP自体を開発デバッグする人のためのページで、OpenRTPをユーザーとして使用する場合には、この情報は特に必要ありません。OpenRTPをインストールして使用するための情報は[[インストーラによるインストール>//ja/node/6938]]を参照してしてください。
+
+また本ページの情報は最新のEclipseには適合しない場合があります。
+
 ** Eclipseの概要
 [[Eclipse:http://www.eclipse.org/]]はEclipse Foundationが開発するオープンソースのJava言語およびその他の言語のための統合開発環境を構築するためのフレームワークです。
 Eclipseの基本部分はplug-inを実行するためのプラットフォームで、いろいろな開発環境は多くのplug-inの集合体として構築されます。
