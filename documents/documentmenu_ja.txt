@@ -190,28 +190,25 @@
     - OpenRTM付属のサンプルコンポーネント=> OpenRTM付属のサンプルコンポーネントについて: 04_sample_components_ja.txt
       - (OpenRTM Eclipse tools のインストール=> OpenRTM Eclipse tools のインストール 1.1系: 04_openrtm_eclipse_tools_1_1_ja.txt)
       - SimpleIO: 01_simpleio_ja.txt
-        - (RTSystemEditor: リンク切れ)
+        - (RTSystemEditor=> RTSystemEditor-1.2.0:01_rtsystemeditor-1_2_0_ja.txt)
       - SeqIO: 02_seqio_ja.txt
-        - (RTSystemEditor: リンク切れ)
+        - (RTSystemEditor=> RTSystemEditor-1.2.0:01_rtsystemeditor-1_2_0_ja.txt)
       - Composite: 03_composite_ja.txt
-        - (RTSystemEditor: リンク切れ)
+        - (RTSystemEditor=> RTSystemEditor-1.2.0:01_rtsystemeditor-1_2_0_ja.txt)
       - SimpleService: 04_simpleservice_ja.txt
-        - (RTSystemEditor: リンク切れ)
+        - (RTSystemEditor=> RTSystemEditor-1.2.0:01_rtsystemeditor-1_2_0_ja.txt)
       - ExtTrigger: 05_exttrigger_ja.txt
       - ConfigSample: 06_configsample_ja.txt
-        - (RTSystemEditor: リンク切れ)
+        - (RTSystemEditor=> RTSystemEditor-1.2.0:01_rtsystemeditor-1_2_0_ja.txt)
       - GUIIn: 07_guiin_ja.txt
-        - (RTSystemEditor: リンク切れ)
-      - OpenCVCameraComp: 08_opencvcameracomp_ja.txt
-        - (RTSystemEditor: リンク切れ)
-      - TkJoyStick・MobileRobotSimulator: 09_tkjoystick_mobilerobotsimulator_ja.txt
-        - (RTSystemEditor: リンク切れ)
-        - (MobileRobotSimulator=> リンク間違い)
-        - (NXTRTC: 10_nxrtc_ja.txt)
-      - NXTRTC: 10_nxrtc_ja.txt
-        - (RTコンポーネント作成(LEGO Mindstorm編)=> LEGO Mindstorm NXT RTコンポーネント: rtc_development_lego_mindstorm_ja.txt)
-      - TkMotorComp・SliderComp: 11_tkmotorcomp_slidercomp_ja.txt
-      - TkCalibGUI: 12_tkcalibgui_ja.txt
+        - (RTSystemEditor=> RTSystemEditor-1.2.0:01_rtsystemeditor-1_2_0_ja.txt)
+      - OpenCVCamera: 08_opencvcamera_ja.txt
+        - (RTSystemEditor=> RTSystemEditor-1.2.0:01_rtsystemeditor-1_2_0_ja.txt)
+      - TkJoyStick/MobileRobotSimulator: 09_tkjoystick_mobilerobotsimulator_ja.txt
+        - (RTSystemEditor=> RTSystemEditor-1.2.0:01_rtsystemeditor-1_2_0_ja.txt)
+      - TkMotorComp・SliderComp: 10_tkmotorcomp_slidercomp_ja.txt
+        - (RTSystemEditor=> RTSystemEditor-1.2.0:01_rtsystemeditor-1_2_0_ja.txt)
+      - TkCalibGUI: 11_tkcalibgui_ja.txt
         - (OpenRTM-aist Python版=> OpenRTM-aist-Python-1.1.0-RELEASE: 03_openrtm-aist-python_1_1_0_release_ja.txt)
     - rtshell のインストール: install_rtshell_ja.txt
       - (rtshell: 07_rtshell_ja.txt)
@@ -250,10 +247,6 @@
         - RTSystemEditor のインストール: 03_install_rtse_2_0_ja.txt
         - RTSystemEditor、RTCBuilder のデバッグ: 04_debug_rtse_rtcb_2_0_ja.txt
     - その他: 07_other_ja.txt
-      - 玄箱HGへのインストール: 01_kuroboxhg_ja.txt
-        - Installation of OpenRTM(on PPC): リンク切れ
-      - 玄箱PROへのインストール: 02_kuroboxpro_ja.txt
-      - Armadillo240へのインストール: 03_armadilo240_ja.txt
       - Raspberry Pi + OpenRTM-aist 活用事例: 04_raspi_openrtm-aist_example_ja.txt
         - SDカードの準備: 01_prep_sdc_ja.txt
         - Raspberry Pi の初期設定: 02_raspi_init_setting_ja.txt
@@ -642,6 +635,15 @@
     - RTSystemEditor、RTCBuilder、rtshell 等ツールに関する FAQ: 08_faq_rtp_tools_248_ja.txt
     - その他 FAQ: 09_faq_other_6430_ja.txt
     - 過去のに掲載した FAQ: 10_faq_old_6431_ja.txt
+  - 過去文書
+    - NXTRTC: nxrtc_ja.txt
+      - (RTコンポーネント作成(LEGO Mindstorm編)=> LEGO Mindstorm NXT RTコンポーネント: rtc_development_lego_mindstorm_ja.txt)
+      - (RTSystemEditor=> RTSystemEditor-1.2.0:01_rtsystemeditor-1_2_0_ja.txt)
+      - (こちら=> Mindstorm NXT設定: 01_mindstorm_nxt_setup_ja.txt)
+      - 玄箱HGへのインストール: kuroboxhg_ja.txt
+        - Installation of OpenRTM(on PPC): リンク切れ
+      - 玄箱PROへのインストール: kuroboxpro_ja.txt
+      - Armadillo240へのインストール: armadilo240_ja.txt
 - ダウンロード: download_frontpage_ja.txt
   - C++版: 01_openrtm-aist-cpp_jp.txt
 　　- 1.2.1-RELEASE=> OpenRTM-aist C++ 1.2.1-RELEASE: 01_openrtm-aist-cpp_1_2_1_release_ja.txt
