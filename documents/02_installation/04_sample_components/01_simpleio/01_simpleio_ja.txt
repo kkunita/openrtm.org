@@ -1,70 +1,36 @@
-// Title: SimpleIO
-//&br;
-//**SimpleIO 
+ï»¿// Title: SimpleIO
+
 #contents
+ã“ã®ã‚µãƒ³ãƒ—ãƒ«ã¯ã€OpenRTM-aistã®C++ç‰ˆã€Pythonç‰ˆã€Javaç‰ˆã«ä»˜å±žã•ã‚Œã¦ã„ã¾ã™ã€‚
 
-‚±‚ÌƒTƒ“ƒvƒ‹‚ÍAOpenRTM-aist ‚Ì C++”ÅAPython”ÅAJava”Å ‚É“¯«‚³‚ê‚Ä‚¢‚Ü‚·B
-&br;
-***ŠT—v 
-InPortAOutPort ‚ÌŽg—p•û–@‚ðŽ¦‚µ‚½ƒTƒ“ƒvƒ‹‚Å‚·DConsoleIn ƒRƒ“ƒ|[ƒlƒ“ƒg‚Æ ConsoleOut ƒRƒ“ƒ|[ƒlƒ“ƒg‚ð‹N“®‚³‚¹‚Ü‚·B
-Port ŠÔ‚ðÚ‘±‚·‚é‚ÆAConsoleIn ‘¤‚Å“ü—Í‚µ‚½”Žš‚ªAConsoleOut ‘¤‚É•\Ž¦‚³‚ê‚Ü‚·DPort ŠÔ‚Í RTSystemEditor ‚ð—p‚¢‚é‘¼‚ÉAConnector ‚ðŽÀs‚·‚é‚±‚Æ‚ÅÚ‘±‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
-#br
+***æ¦‚è¦
+InPortã€OutPortã®ä½¿ç”¨æ–¹æ³•ã®ã‚µãƒ³ãƒ—ãƒ«ã§ã™ï¼ŽConsoleInã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¨ConsoleOutã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’èµ·å‹•ã•ã›ã¾ã™ã€‚
+Porté–“ã‚’æŽ¥ç¶šã™ã‚‹ã¨ã€ConsoleInå´ã§å…¥åŠ›ã—ãŸæ•°å­—ãŒã€ConsoleOutå´ã«è¡¨ç¤ºã•ã‚Œã¾ã™ï¼ŽPorté–“ã¯RTSystemEditorã‚’ç”¨ã„ã‚‹ä»¥å¤–ã«RTShellã‚³ãƒžãƒ³ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã“ã¨ã§æŽ¥ç¶šã§ãã¾ã™ã€‚
 
-&br;
-***‹N“®‰æ–Ê
+***èµ·å‹•ç”»é¢
 
 #ref(SimpleIO_example_rtse_ja.png,60%,center)
-CENTER:''SimpleIO ŽÀs—á (RTSystemEditor Ú‘±‰æ–Ê)''
-#br
-#br
+CENTER:''SimpleIOå®Ÿè¡Œä¾‹(RTSystemEditoræŽ¥ç¶šç”»é¢)''
 
 #ref(open_consolein_out.png,60%,center)
-CENTER:''ConsoleIn ƒRƒ“ƒ|[ƒlƒ“ƒg‚Æ ConsoleOut ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌŽÀs—á''
-***Žg‚¢•û
-SimpleIO ‚ÌƒTƒ“ƒvƒ‹‚ÍAConsoleIn ‚Å“ü—Í‚³‚ê‚½”Žš‚ðƒf[ƒ^ƒ|[ƒg‚©‚ç ConsoleOut ‚Ö‘—‚Á‚ÄAConsoleOut ‘¤‚É‚à“¯‚¶”Žš‚ð•\Ž¦‚³‚¹‚éƒTƒ“ƒvƒ‹‚Å‚·B
-ConsoleIn ‚Ì‰æ–Ê‚©‚ç”Žš‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B‚»‚¤‚·‚é‚Æ ConsoleOut ‚Å“ü—Í‚µ‚½”Žš‚ªo—Í‚³‚ê‚Ü‚·B
-#br
-
-//- •û–@‚P:Connector ‚ðŽg‚¤•û–@i¦‚±‚Ìê‡ARTSystemEditor ‚Í•s—vj
-//
-//-- ConsoleIn ‚Æ ConsoleOut ‚Ì—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ð‹N“®‚µ‚Ü‚·B
-//ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì‹N“®‚Í OS ‚â OpenRTM-aist ‚ÌŒ¾Œê‚É‚æ‚Á‚Ä‚±‚Æ‚È‚è‚Ü‚·‚Ì‚ÅAˆÈ‰º‚Ì•\‚ðŽQl‚É‹N“®‚µ‚Ü‚·B
-//|LEFT:110|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c
-//||>|CENTER:Windows ‚Ìê‡|>|CENTER:Linux‚Ìê‡|
-//||ConsoleIn ƒRƒ“ƒ|[ƒlƒ“ƒg|ConsoleOut ƒRƒ“ƒ|[ƒlƒ“ƒg|ConsoleIn ƒRƒ“ƒ|[ƒlƒ“ƒg|ConsoleOut ƒRƒ“ƒ|[ƒlƒ“ƒg|
-//|C++”Å|ConsoleInComp.exe|ConsoleOutComp.exe|ConsoleInComp|ConsoleOutComp|
-//|Python”Å|ConsoleIn.py|ConsoleOut.py|ConsoleIn.py|ConsoleOut.py|
-//|Java”Å|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.sh|ConsoleOut.sh|
-//-- Connector ‚ðŽÀs‚µ‚Ü‚·B
-//Connector ‚ÌŽÀs‚Í OS ‚â OpenRTM-aist ‚ÌŒ¾Œê‚É‚æ‚Á‚Ä‚±‚Æ‚È‚è‚Ü‚·‚Ì‚ÅAˆÈ‰º‚Ì•\‚ðŽQl‚É‹N“®‚µ‚Ü‚·B
-//|LEFT:110|LEFT:120|LEFT:120|c
-//||CENTER:Windows ‚Ìê‡|CENTER:Linux ‚Ìê‡|
-//|C++”Å|Connector.exe|Connector|
-//|Python”Å|Connector.py|Connector.py|
-//|Java”Å|Connector.bat|Connector.sh|
-//-- ConsoleIn ‚Ì‰æ–Ê‚ÉuPlease input number:v‚Æƒvƒƒ“ƒvƒg‚³‚ê‚é‚Ì‚ÅA”Žš‚ð“ü—Í‚µ‚Ü‚·B
-//-- ConsoleOut ‚Ì‰æ–Ê‚É‚»‚Ì”Žš‚ª•\Ž¦‚³‚ê‚Ü‚·B
-//#br
-//
-//- •û–@‚Q:RTSystemEditor‚ðŽg‚¤•û–@
-
--- Eclipse ‚ð‹N“®‚µARTSystemEditor ‚ð—pˆÓ‚µ‚Ü‚·B¨RTSystemEditor ‚ÌŽg—p•û–@‚ÌÚ×‚É‚Â‚¢‚Ä‚Í [[RTSystemEditor >/node/1175]] ‚ðŽQÆ
--- ConsoleIn ‚Æ ConsoleOut ‚Ì—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ð‹N“®‚µ‚Ü‚·B
-ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì‹N“®‚Í OS ‚â OpenRTM-aist ‚ÌŒ¾Œê‚É‚æ‚Á‚Ä‚±‚Æ‚È‚è‚Ü‚·‚Ì‚ÅAˆÈ‰º‚Ì•\‚ðŽQl‚É‹N“®‚µ‚Ü‚·B
-|LEFT:110|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c
-||>|CENTER:Windows ‚Ìê‡|>|CENTER:Linux ‚Ìê‡|
-||ConsoleIn ƒRƒ“ƒ|[ƒlƒ“ƒg|ConsoleOut ƒRƒ“ƒ|[ƒlƒ“ƒg|ConsoleIn ƒRƒ“ƒ|[ƒlƒ“ƒg|ConsoleOut ƒRƒ“ƒ|[ƒlƒ“ƒg|
-|C++”Å|ConsoleInComp.exe|ConsoleOutComp.exe|ConsoleInComp|ConsoleOutComp|
-|Python”Å|ConsoleIn.py|ConsoleOut.py|ConsoleIn.py|ConsoleOut.py|
-|Java”Å|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.sh|ConsoleOut.sh|
--- RTSystemEditor ‚Ì NameServiceView ‚É—¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚ªŒ»‚ê‚é‚Ì‚ÅA‚»‚ê‚ç‚ð SystemEditor ã‚Éƒhƒ‰ƒbƒO‚µ‚Ü‚·B
--- —¼ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒ|[ƒg‚ðŒ‹‚Ñ‚Ü‚·Biã} SimpleIO ŽÀs—á‚ðŽQÆj
--- ‚Ç‚¿‚ç‚©‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ð‰EƒNƒŠƒbƒN‚µAuAll Activatev‚ð‘I‘ð‚µ‚Ü‚·B
--- ConsoleIn ‚Ì‰æ–Ê‚ÉuPlease input number:v‚Æƒvƒƒ“ƒvƒg‚³‚ê‚é‚Ì‚ÅA”Žš‚ð“ü—Í‚µ‚Ü‚·B
--- ConsoleOut ‚Ì‰æ–Ê‚É‚»‚Ì”Žš‚ª•\Ž¦‚³‚ê‚Ü‚·B
-
-#br
-#br
+CENTER:''ConsoleInã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¨ConsoleOutã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å®Ÿè¡Œä¾‹''
+***ä½¿ã„æ–¹
+SimpleIOã®ã‚µãƒ³ãƒ—ãƒ«ã¯ã€ConsoleInã§å…¥åŠ›ã•ã‚ŒãŸæ•°å­—ã‚’ãƒ‡ãƒ¼ã‚¿ãƒãƒ¼ãƒˆã‹ã‚‰ConsoleOutã¸é€ã£ã¦ã€ConsoleOutå´ã«ã‚‚åŒã˜æ•°å­—ã‚’è¡¨ç¤ºã•ã›ã‚‹ã‚µãƒ³ãƒ—ãƒ«ã§ã™ã€‚
+ConsoleInã®ç”»é¢ã‹ã‚‰æ•°å­—ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚ãã†ã™ã‚‹ã¨ConsoleOutã§å…¥åŠ›ã—ãŸæ•°å­—ãŒå‡ºåŠ›ã•ã‚Œã¾ã™ã€‚
 
 
+-- OpenRTPã‚’èµ·å‹•ã—ã€RTSystemEditorã‚’é–‹ãã¾ã™ã€‚RTSystemEditorã®ä½¿ç”¨æ–¹æ³•ã®è©³ç´°ã«ã¤ã„ã¦ã¯[[RTSystemEditor>/node/6401]]ã‚’å‚ç…§
+-- ConsoleInã¨ConsoleOutã®ä¸¡ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’èµ·å‹•ã—ã¾ã™ã€‚
+ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®èµ·å‹•ã¯OSã‚„OpenRTM-aistã®è¨€èªžã«ã‚ˆã£ã¦ç•°ãªã£ã¦ã¾ã™ã€‚ä»¥ä¸‹ã®è¡¨ã‚’å‚è€ƒã«èµ·å‹•ã—ã¾ã™ã€‚
+|LEFT:110|LEFT:120|LEFT:120|LEFT:130|LEFT:130|c
+||>|CENTER:Windowsã®å ´åˆ|>|CENTER:Linuxã®å ´åˆ|
+||ConsoleInã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ|ConsoleOutã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ|ConsoleInã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ|ConsoleOutã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ|
+|C++ç‰ˆ|ConsoleIn.bat|ConsoleOut.bat|ConsoleInComp|ConsoleOutComp|
+|Pythonç‰ˆ|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.py|ConsoleOut.py|
+|Javaç‰ˆ|ConsoleIn.bat|ConsoleOut.bat|ConsoleIn.sh|ConsoleOut.sh|
+-- RTSystemEditorã®Name Service Viewã«ä¸¡ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒç¾ã‚Œã‚‹ã®ã§ã€ãã‚Œã‚‰ã‚’SystemEditorä¸Šã«ãƒ‰ãƒ©ãƒƒã‚°ã—ã¾ã™ã€‚
+-- ä¸¡ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒãƒ¼ãƒˆã‚’çµã³ã¾ã™ã€‚ï¼ˆä¸Šå›³SimpleIOå®Ÿè¡Œä¾‹ã‚’å‚ç…§ï¼‰
+-- ã©ã¡ã‚‰ã‹ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å³ã‚¯ãƒªãƒƒã‚¯ã—ã€[Activate Systems]ã‚’é¸æŠžã—ã¾ã™ã€‚
+-- ConsoleInã®ç”»é¢ã«ã€ŒPlease input number:ã€ã®ãƒ—ãƒ­ãƒ³ãƒ—ãƒˆãŒç¾ã‚Œã‚‹ã®ã§ã€æ•°å­—ã‚’å…¥åŠ›ã—ã¾ã™ã€‚
+-- ConsoleOutã®ç”»é¢ã«ãã®æ•°å­—ãŒè¡¨ç¤ºã•ã‚Œã¾ã™ã€‚
 

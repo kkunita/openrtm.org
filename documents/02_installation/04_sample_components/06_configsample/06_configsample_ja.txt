@@ -1,51 +1,39 @@
 ﻿// Title: ConfigSample
 #contents
-//**ConfigSample
-このサンプルは、OpenRTM-aist の C++版、Python版、Java版 に同梱されています。
+このサンプルは、OpenRTM-aist のC++版、Python版、Java版に付属しています。
 ***概要
 RTコンポーネントのコンフィギュレーションセットの使用方法を示したサンプルです。
-ConfigSample コンポーネントを起動します。コンポーネントが正常に起動されると、コンフィギュレーション・セットが予め設定された状態となっております。
-RTSystemEditor を利用してコンフィギュレーション・セットを確認してみてください。
+ConfigSampleコンポーネントを起動します。コンポーネントが正常に起動されると、コンフィギュレーション・セットが予め設定された状態となっております。
+RTSystemEditorを利用してコンフィギュレーション・セットを確認してみてください。
 
-#br
 ※コンポーネント起動時に｢指定されたパスが見つかりません。｣というエラーが発生してしまう場合は、
 
-RTMExamples/ConfigSample ディレクトリー内にある rtc.conf ファイル内の｢example.ConfigSample.config_file｣を次のように修正してください。
+RTMExamples/ConfigSampleディレクトリ内にあるrtc.confファイル内の｢example.ConfigSample.config_file｣を次のように修正してください。
 
--次に示すパスに置き換えます。
+- 次に示すパスに置き換えます。
+ .\\RTMExamples\\ConfigSample\\configsample.conf
+ (ディレクトリ名やファイル名の間の文字は'\'ではなく、'\\'とします)
 
-　　　.\\RTMExamples\\ConfigSample\\configsample.conf
+- または「configsample.conf」へのフルパスに書き換えます。この場合も、上記と同様にディレクトリ名やファイル名の間の文字に'\\'を使用します。
 
-　　　（フォルダーとフォルダーの間の文字は'\'ではなく、'\\'とします）
-
--あるいは、「configsample.conf」へのフルパスに書き換えます。この場合も、上記と同様にフォルダーとフォルダーの間の文字に'\\'を使用します。
-
-***起動画面
+*** 起動画面
 
 #ref(ConfigSample_example_rtse_ja.png,60%,center)
-CENTER:''ConfigSample 実行例''
-#br
-#br
-&br;
+CENTER:''ConfigSample実行例''
+
 ***使い方
-RTSystemEditor の ConfigrationView で選択・設定した ConfigrationSet に従ったデータセットをプロンプト上に表示し、絶えず表示更新をし続けます。
-#br
+RTSystemEditorのConfigrationViewで選択・設定したConfigrationSetに従ったデータセットをプロンプト上に表示し、絶えず表示更新をし続けます。
 
 - 手順
--- RTSystemEditor を起動し、SystemEditor を用意します。→RTSystemEditor の使用方法の詳細については [[RTSystemEditor >/node/1175]] を参照
--- ConfigSample コンポーネントを起動します。コンポーネントの起動は OS や OpenRTM-aist の言語によってことなりますので、以下の表を参考に起動します。
+-- RTSystemEditorを起動し、SystemEditorを用意します。RTSystemEditorの使用方法の詳細については[[RTSystemEditor >/node/6401]]を参照
+-- ConfigSampleコンポーネントを起動します。コンポーネントの起動はOSやOpenRTM-aistの言語によって異なりますので、以下の表を参考に起動します。
 |LEFT:110|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c
-||CENTER:Windows の場合|CENTER:Linux の場合|
-|C++版|ConfigSampleComp.exe|ConfigSampleComp|
-|Python版|ConfigSample.py|ConfigSample.py|
+||Windowsの場合|Linuxの場合|
+|C++版|ConfigSample.bat|ConfigSampleComp|
+|Python版|ConfigSample.bat|ConfigSample.py|
 |Java版|ConfigSample.bat|ConfigSample.sh|
--- RTSystemEditor の NameServiceView にこのコンポーネントが表示されるので、SystemEditor 上にドラッグします。
+-- RTSystemEditorのName Service Viewにこのコンポーネントが表示されるので、SystemEditor上にドラッグします。
+-- RTSystemEditorのConfigration Viewから適当なConfigrationSet(default、mode0、mode1)を選びます。
+-- 必要に応じてvalueを変更します。
+-- [適用]ボタンをクリックします。
 
-#br
-
-- 操作
--- RtcLink の ConfigrationView から適当な ConfigrationSet（default、mode0、mode1）を選びます。
--- 必要があれば、value を変更します。
--- 「Apply」ボタンをクリックします。
-
-#br

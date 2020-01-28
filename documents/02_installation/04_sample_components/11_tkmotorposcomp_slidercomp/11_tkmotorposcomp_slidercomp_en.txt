@@ -1,0 +1,41 @@
+﻿// Title: TkMotorPosComp / SliderComp 
+#contents
+
+** TkMotorPosComp
+This sample comes with the Python version of OpenRTM-aist.
+Please note that it is not included in C ++ version and Java version.
+
+*** Overview
+RT component sample with GUI screen. The sample component is started by executing TkMotorComp.bat.
+
+*** Screenshots
+
+#ref(TkMotorPosComp_en.png,center,70%)
+CENTER:''The TkMotorPosComp component's GUI.''
+
+** SliderComp
+This sample comes with the Python version of OpenRTM-aist.
+Please note that it is not included in C ++ version and Java version.
+
+*** Overview
+RT component sample with GUI screen. Executing SliderComp.bat starts the sample component. (The following screen is for Windows.)
+
+***Screenshots
+
+#ref(SliderCompN.png,center)
+CENTER:''The SliderComp component's GUI.''
+
+** System Construction
+#ref(RTSE_Slider_MotorPos_en.png,center)
+CENTER:''SliderComp and TkMotorPosComp on RTSystemEditor''
+
+*** How to use
+Simulate the environment of controlling the rotation of the motor with the slide knob on the GUI with SliderComp and TkMotorPosComp.
+
+- Procedure
+-- Start RTSystemEditor and open a new SystemEditor. See [[RTSystemEditor>/node/6401]] for details on how to use RTSystemEditor
+-- Start SliderComp.bat and TkMotorComp.bat, both components.
+-- Since both components are displayed in the Name Service View of RTSystemEditor, drag them onto SystemEditor.
+-- Connect the corresponding ports of both components. (Refer to "SlideComp and TkMotorPosComp on RTSystemEditor" above)
+-- Right-click either component and select [Activate Systems].
+-- On the GUI of TkMotorComp, six models simulating a rotating disk driven by a motor are displayed and confirm that the rotation angles can be controlled by the up / down slide knobs on the GUI of SliderComp. Each GUI shows the six controlling knobs and the rotation algle of six motors.

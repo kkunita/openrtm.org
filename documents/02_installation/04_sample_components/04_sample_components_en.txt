@@ -1,14 +1,17 @@
-﻿// Title: The sample components came with OpenRTM-aist
+﻿// Title: About the sample attached to OpenRTM
 #contents
 
 OpenRTM-aist comes with some sample components that are easy to use.
 (OpenCV is required for CameraViewer / OpenCVCamera components.)
 Also, the source code of the sample component is included, so please refer to it for development.
 
-This chapter describes the samples provided with OpenRTM-aist. If you want to use the sample component, start the name service before starting the sample component. The following programs are provided for the name service.
+In this chapter, we will explain the sample attached to OpenRTM-aist. &br;
+If you are going to try out the sample, please activate the name service you installed before starting each sample component.
+#br
 
--Start Naming Service.bat (C ++)
--rtm-naming.py (Python)
+--Start Naming Service.bat (C++)
+--rtc-naming.py (Python)
+--start-orbd.vbs (Java)
 
 To run the name server on Windows, locate the file in Explorer and double-click it. If you installed using the installer, you can also start the name service by selecting [Start Menu]> [OpenRTM-aist]> [Start Naming Service].
 Note that this chapter assumes that RTSystemEditor is installed in your environment.

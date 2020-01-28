@@ -1,7 +1,10 @@
-﻿#@// Title: RTSystemEditor、RTCBuilderのデバッグ
+﻿// Title: RTSystemEditor、RTCBuilderのデバッグ
 #contents
 
-このページではRTSystemEditor、RTCBuilderのデバッグの手順を説明します。
+本ページはRTCBuilder/RTSystemEditorの開発・デバッグに関する情報を記したページです。EclipseにおけるPlugin開発の知識が必要になります。
+
+RTCBuilderとRTSystemEditorを利用するのみであれば、このページの情報は不要です。
+OpenRTP （RTCBuilder、RTSystemEditor）をインストールして使用するための情報は[[インストーラによるインストール>//ja/node/6938]]を参照してしてください。
 
 ** 必要なソフトウエアの入手
 
@@ -39,123 +42,66 @@ eclipse.exeを実行してください。
 
 [ウィンドウ]→[設定]→[Java]→[インストール済みのJRE]で、[追加]→[標準 VM]を選択後にJREのパス(例：C:\Program Files (x86)\Java\jdk1.8.0_131\jre)を追加後にチェックを入れる
 
-#br
 
 #ref(plugin4_1_ja.png)
 
-#br
 
 #ref(plugin5_1_ja.png,)
 
-#br
 
 #ref(plugin6_ja.png)
 
-#br
 
 #ref(plugin7_1_ja.png)
 
-#br
 
 #ref(plugin8_1_ja.png, 80%)
-
-#br
-
 
 
 *** コンパイラー準拠レベルの設定
 初期の状態でコンパイラー準拠レベルが1.6に設定されている場合があるようなので、[ウィンドウ]→[設定]→[Java]→[コンパイラー]でコンパイラー準拠レベルを1.8に設定してください。
 
-#br
-
 #ref(plugin9_1_ja.png, 80%)
-
-#br
-
 
 *** RTSystemEditor、RTCBuilderプロジェクトのインポート
 RTSystemEditor、RTCBuilderを開発環境のeclipseにインポートします。
 [ファイル]→[インポート]→[プラグイン開発]→[プラグインおよびフラグメント]を選択後、[次へ]をクリックしてください。
 
-#br
-
 #ref(plugin12_ja.png)
-
-#br
-
-#br
 
 #ref(plugin13_ja.png)
 
-#br
-
 [インポート先]の[ディレクトリ]をオンにして、rtmtoolsをチェックアウトしたディレクトリを設定して次へ進んでください。
-
-#br
 
 #ref(plugin14_1_ja.png)
 
-#br
-
 全て追加を選択して、完了ボタンを押してください。
 
-
-
-#br
-
 #ref(plugin15_1_ja.png)
-
-#br
-
 
 *** IDLコンパイル
 IDLファイルのコンパイルを行います。
 パッケージエクスプローラーでjp.go.aist.rtm.toolscommonプロジェクトの「buildForCliant」を右クリックして[実行]→[Antビルド]を選択すれば開始します。
 
-
-#br
-
 #ref(plugin2_1_ja.png)
-
-#br
 
 **** Antビルドで文字化けする場合
 Antビルドで文字化けする場合は、[実行]→[外部ツール]→[外部ツールの構成]→[Antビルド]をダブルクリックして、[共通]タブ→[エンコード]でその他[MS932]に設定してください。
 
-
-#br
-
 #ref(plugin10_ja.png)
 
-#br
-
-#br
-
 #ref(plugin11_1_ja.png)
-
-#br
-
 
 *** クラスパスの修正
 環境によってはクラスパスが正しく設定されない場合があります。
 その場合はデバッグ時にClassNotFoundExceptionの例外が発生するため、rtmtoolsに存在するplugin.xml全てを修正してください。
 パッケージエクスプローラーでplugin.xmlをダブルクリックして、[ランタイム]タブから[クラスパス]に「.」を追加してください。([MANIFEST.MF]の[Bundle-ClassPath]に追加しても可)
 
-
-#br
-
 #ref(plugin1_1_ja.png)
 
-#br
-
 これで準備完了です。
-
 
 ** デバッグ実行
 上部の虫のマークのボタンから、[デバッグ]→[Eclipse アプリケーション]でデバッグが開始します。
 
-#br
-
 #ref(plugin3_1_ja.png,)
-
-#br

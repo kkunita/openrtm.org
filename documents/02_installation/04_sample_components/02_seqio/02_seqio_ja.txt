@@ -1,49 +1,39 @@
 ﻿//**SeqIO
 #contents
-このサンプルは、OpenRTM-aist の C++版、Python版、Java版 に同梱されています。 
-***概要 
-InPort、OutPort の使用方法を示したサンプルです。SeqIn コンポーネントと SeqOut コンポーネントを起動すると GUI 画面が表示されます。
-SeqIn、SeqOut ともに以下の型の DataPort を保持しています。
-TimedShort、TimedLong、TimedFLoat、TimedDouble、TimedShortSeq、TimedLongSeq、TimedFLoatSeq、TimedDoubleSeq、各Port の出力は乱数で決定しており、各Port 間を接続すると SeqOut側の出力値、SeqIn側の入力値がそれぞれの GUI 画面に表示されます。(Port間の接続には RTSystemEditor をご利用ください。)
+このサンプルは、OpenRTM-aistのC++版、Python版、Java版に付属しています。 
+*** 概要
+InPort、OutPortの使用方法を示したサンプルです。SeqInコンポーネントとSeqOutコンポーネントを起動するとGUIまたはコンソール画面が表示されます。
+SeqIn、SeqOutともに以下の型のDataPortを備えています。
+TimedShort、TimedLong、TimedFLoat、TimedDouble、TimedShortSeq、TimedLongSeq、TimedFLoatSeq、TimedDoubleSeq、各Portの出力は乱数で決定しており、各Port間を接続するとSeqOut側の出力値、SeqIn側の入力値がそれぞれのGUIまたはコンソール画面に表示されます。(Port間の接続にはRTSystemEditorを利用ください。)
 
-#br
-&br;
-***起動画面
+*** 起動画面
 
 #ref(SeqIO_example_rtse_ja.png,60%,center)
-CENTER:''SeqIO 実行例(RTSystemEditor 接続画面)''
-#br
-#br
+CENTER:''SeqIO実行例(RTSystemEditor接続画面)''
 
 #ref(SeqIO_example_cpp.png,60%,center)
-CENTER:''SeqIn コンポーネントと SeqOut コンポーネントの実行例(C++版)''
-#br
+CENTER:''SeqInコンポーネントとSeqOutコンポーネントの実行例(C++版)''
 
 #ref(SeqIO_example_python.png,60%,center)
-CENTER:''SeqIn コンポーネントと SeqOut コンポーネントの実行例(Python版)''
-#br
+CENTER:''SeqInコンポーネントとSeqOutコンポーネントの実行例(Python版)''
 
 #ref(SeqIO_example_java.png,60%,center)
-CENTER:''SeqIn コンポーネントと SeqOut コンポーネントの実行例(Java版)''
-#br
+CENTER:''SeqInコンポーネントとSeqOutコンポーネントの実行例(Java版)''
 
-&br;
-***使い方
-SeqIO のサンプルは、SeqOut から連続して出力される数値データをデータポートから SeqIn へ送り、GUI 上に表示させるサンプルです。
-SeqOut と SeqIn の対応するポートを RTSystemEditor 上で接続してください。両コンポーネントをアクティベートすると SeqOut だけでなく SeqIn の GUI 上の数値も連続的に変化し、データポートの入出力が観察できます。
-#br
+*** 使い方
+SeqIOのサンプルは、SeqOutから連続して出力される数値データをデータポートからSeqInへ送り、GUIまたはコンソール上に表示させるサンプルです。
+SeqOutとSeqInの対応するポートをRTSystemEditor上で接続してください。両コンポーネントをアクティベートするとSeqOutだけでなくSeqInの出力される数値も連続的に変化し、データポートの入出力が観察できます。
 
 - 手順
-
--- RTSystemEditor を起動し、SystemEditor を用意します。→RTSystemEditor の使用方法の詳細については [[RTSystemEditor >/node/1175]] を参照
--- SeqOutとSeqInの両コンポーネントを起動します。コンポーネントの起動は OS や OpenRTM-aist の言語によってことなりますので、以下の表を参考に起動します。
+-- RTSystemEditorを起動し、SystemEditorを用意します。RTSystemEditorの使用方法の詳細については[[RTSystemEditor>/node/6401]]を参照
+-- SeqOutとSeqInの両コンポーネントを起動します。コンポーネントの起動はOSやOpenRTM-aistの言語によって異なりますので、以下の表を参考に起動します。
 |LEFT:110|LEFT:120|LEFT:120|LEFT:120|LEFT:120|c
-||>|CENTER:Windows の場合|>|CENTER:Linux の場合|
-||SeqIn コンポーネント|SeqOut コンポーネント|SeqIn コンポーネント|SeqOut コンポーネント|
-|C++版|SeqInComp.exe|SeqOutComp.exe|SeqInComp|SeqOutComp|
-|Python版|SeqIn.py|SeqOut.py|SeqIn.py|SeqOut.py|
+||>|CENTER:Windowsの場合|>|CENTER:Linuxの場合|
+||SeqInコンポーネント|SeqOutコンポーネント|SeqInコンポーネント|SeqOutコンポーネント|
+|C++版|SeqIn.bat|SeqOut.bat|SeqInComp|SeqOutComp|
+|Python版|SeqIn.bat|SeqOut.bat|SeqIn.py|SeqOut.py|
 |Java版|SeqIn.bat|SeqOut.bat|SeqIn.sh|SeqOut.sh|
--- RTSystemEditor の NameServiceView に両コンポーネントが現れるので、それらを SystemEditor 上にドラッグします。
--- 両コンポーネントの対応ポートを結びます。（上図 SeqIO 実行例を参照）
--- どちらかのコンポーネントを右クリックし、「All Activate」を選択します。
+-- RTSystemEditorのNameServiceViewに両コンポーネントが現れるので、それらをSystemEditor上にドラッグします。
+-- 両コンポーネントの対応ポートを接続します。(上図SeqIO実行例を参照)
+-- どちらかのコンポーネントを右クリックし、[Activate System]を選択します。
 
