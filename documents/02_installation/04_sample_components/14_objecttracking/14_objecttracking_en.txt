@@ -1,0 +1,39 @@
+// Title: ObjectTracking
+
+#contents
+
+Please note that it is not included in Python and Java versions of OpenRTM-aist. On Linux, build and install it according to [[OpenCV Sample Code Build Procedure>//node/6974]].
+
+*** Overview
+ObjectTracking is a sample OpenCV component that tracks an object selected on the screen and show the position by a red oval.
+It is Used with OpenCVCamera and CameraViewer.
+
+*** Start screen
+
+#ref(ObjectTrackingConsole.png,30%,center)
+CENTER:''ObjectTracking Console  Screen''
+
+*** How to use
+ObjectTracking is a component that tracks the object selected on the screen and indicates its position with a red oval. It is used here with the OpenCVCamera component to capture images from a USB Camera, the CameraViewer component used to display processed images and to select objects with the mouse.
+
+- Procedure
+-- Start OpenRTP according to [[OpenRTP>//node/6654]] and start RTSystemEditor so that RTC is displayed in Name Service View. See [[RTSystemEditor>//node/6401]] for details on how to use RTSystemEditor.
+-- Navigate to \Program Files\OpenRTM-aist\1.2.1\Components\C ++\OpenCV in Explorer.
+-- Double click CameraViewer.bat.
+-- Double-click OpenCVCamera.bat.
+-- Double-click ObjectTracker.bat.
+-- Click [>] in the Name Service view on the RTSystemEditor screen and confirm that the launched components CameraViewer, ObjectTracking, and OpenCVCamera are displayed.
+-- Click [Open New System Editor] button &ref(icon_open_editor_ja.png,150%); at the top of RTSystemEditor to open a new System Editor and display [System Dialgram] newly.
+-- Drag&drop the above three components onto the System Diagram.
+-- Connect the ports of each component as shown below.
+
+#ref(RTSE_ObjectTracking.png,75%,center)
+CENTER:''Connection of ObjectTracking component''
+
+-- Right-click on any component and select [Activate Systems].
+-- Display the CameraViewer screen by adjusting the positions of the windows.
+#ref(ObjectTrackingCameraViewer.png,50%,center)
+CENTER:''ObjectTracking output image''
+-- By Hold down the left mouse button and select the object you want to select. At this time, make sure that the rectangle selection screen appears. (Depending on the case, it may take some time until it comes out.)
+-- If the selection is successful, a red oval will appear as shown above. Notice that when you physically move this object, the ellipse moves with it on the screen.
+-- When the above-mentioned rectangle is selected, from OutPort of "img_hist", the histogram data of the image of the selected part is displayed for a moment.
