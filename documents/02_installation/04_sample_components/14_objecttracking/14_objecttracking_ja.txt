@@ -14,10 +14,10 @@ OpenCVCamera、CameraViewerといっしょに使用します。
 CENTER:''ObjectTrackingコンポーネンの実行画面''
 
 ***使い方
-ObjectTrackingは、画面上から選択したオブジェクトを追跡して、その位置を赤い楕円形でかこんでしめすコンポーネントです。ここではUSB Cameraから画像を取り込むためのOpenCVCameraコンポーネント、処理した画像を表示し、またマウスを用いてオブジェクトを選択するために使われるCameraViewerコンポーネントと共に使用します。
+ObjectTrackingは、画面上から選択したオブジェクトを追跡して、その位置を赤い楕円形でかこんでしめすコンポーネントです。ここではUSB Cameraから画像を取り込むためのOpenCVCameraコンポーネント、処理した画像を表示し、またマウスを用いてオブジェクトを選択するために使われるCameraViewerコンポーネントと共に使用します。以下ではWindowsにおいての使い方の説明をします。
 
 - 手順 
--- [[OpenRTP>//node/6654]]に従いOpenRTPを起動しRTSystemEditorを起動し、Name Service ViewにRTCが表示されるようにします。RTSystemEditorの使用方法の詳細については[[RTSystemEditor>//ja/node/6401]]を参照してください。
+-- [[OpenRTPの起動手順(1.2系、Windows)>//node/6653]]に従いOpenRTPを起動しRTSystemEditorを起動し、Name Service ViewにRTCが表示されるようにします。RTSystemEditorの使用方法の詳細については[[RTSystemEditor>//ja/node/6401]]を参照してください。
 -- エクスプローラーで\Program Files\OpenRTM-aist\1.2.1\Components\C++\OpenCVとたどります。
 -- CameraViewer.batをダブルクリックします。
 -- OpenCVCamera.batをダブルクリックします。
