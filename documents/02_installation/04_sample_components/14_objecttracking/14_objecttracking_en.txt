@@ -17,7 +17,7 @@ CENTER:''ObjectTracking Console  Screen''
 ObjectTracking is a component that tracks the object selected on the screen and indicates its position with a red oval. It is used here with the OpenCVCamera component to capture images from a USB Camera, the CameraViewer component used to display processed images and to select objects with the mouse.
 
 - Procedure
--- Start OpenRTP according to [[OpenRTP startup procedure >//node/6653]] and start RTSystemEditor so that RTC is displayed in Name Service View. See [[RTSystemEditor>//node/6401]] for details on how to use RTSystemEditor.
+-- Start OpenRTP according to [[OpenRTP startup procedure >//node/6980]] and start RTSystemEditor so that RTC is displayed in Name Service View. See [[RTSystemEditor>//node/6401]] for details on how to use RTSystemEditor.
 -- Navigate to \Program Files\OpenRTM-aist\1.2.1\Components\C ++\OpenCV in Explorer.
 -- Double click CameraViewer.bat.
 -- Double-click OpenCVCamera.bat.
