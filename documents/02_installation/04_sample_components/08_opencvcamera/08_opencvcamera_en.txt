@@ -50,7 +50,6 @@ CENTER:''Change flip_mode (RTSystemEditor and monitor)''
 |Affine.bat|Affine transforms the input image|Affine matrix|
 |BackgroundSubtractionSimple.bat|Outputs the change from the image when the key was input in the input image|Parameter indicating the method of detecting image change|
 |Binarization.bat|Converts an input image to a binary black and white image|Binarization threshold|
-|Chromakey.bat|Performs chroma key synthesis of the input images|Chroma key color|
 |DialationErosion.bat|Perform dialing / erosion processing|Binarization threshold|
 |Edge.bat|Outputs the first-order derivative image in the X direction, the first-order derivative image in the Y direction, and the Laplacian image (second-order derivative image)|Aperture size|
 |Findcontour.bat|Extract the outline and display the outline in the image.|Threshold for binarization before processing, level of layering, size of outline at the display, outline approximation method|

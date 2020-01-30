@@ -49,7 +49,6 @@ CENTER:''flip_modeの変更(RTSystemEditorとモニター)''
 |Affine.bat               |入力画像のアフィン変換をします。|Affine行列|
 |BackgroundSubtractionSimple.bat|入力画像においてKey入力があった時点の画像から変化分を出力します。|画像の変化検出の方法示すパラメータ|
 |Binarization.bat      |入力画像を二値化した白黒画像に変換します。|二値化の閾値|
-|Chromakey.bat       |入力画像のクロマキー合成を行います。|クロマキーの色|
 |DialationErosion.bat|ダイアレーション/エロージョン処理を行います。|二値化の閾値|
 |Edge.bat     |X方向一次微分画像、Y方向一次微分画像、ラプラシアン画像(二次微分画像)を出力します|アパーチャーサイズ|
 |Findcontour.bat|輪郭抽出をして、輪郭を画像中に表示します。|処理前の二値化の閾値、階層化のレベル、表示時の輪郭線のサイズ、輪郭の近似手法|
