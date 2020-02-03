@@ -21,33 +21,19 @@ CENTER:''Background Image''
 
 - Procedure (on Windows environment)
 -- Start OpenRTP according to [[Start procedure of OpenRTP (1.2 series, Windows)>//node/6980]], start RTSystemEditor, and display RTC in Name Service View. See [[RTSystemEditor>//node/6401]] for details on how to use RTSystemEditor.
--- Open a command prompt with administrator privileges so that you can execute two OpenCVCamera components.
---- Execute the following commands to copy the bat file and conf files.
- > cd "\ Program Files \ OpenRTM-aist \ 1.2.1 \ Components \ C ++"
- > copy OpenCVCamera.bat OpenCVCamera1.bat
- > cd vc14
- > copy rtc.conf rtc1camera.conf
-
---- Edit the copied rtc1camera.conf. For example
- > notepad rtc1camera.conf
-And modified to as the following.
- corba.nameservers: localhost
- logger.enable: NO
- corba.args: -ORBgiopMaxMsgSize 4194304
- naming.formats:% h.host_cxt / OpenCVCamera1.rtc
---- Edit OpenCVCamera1.bat. For example
- > cd ..
- > notepad OpenCVCamera1.bat
-And modified it to the following.
- @call rtm_env.bat
- OpenCVCameraComp.exe -f rtc1camera.conf
+-- Open a command prompt with administrator privileges to execute two OpenCVCamera components instance.
+--- Edit the copied rtc.conf. For example
+ > cd "\ Program Files \ OpenRTM-aist \ 1.2.1 \ Components \ C++\vc14"
+ > notepad rtc.conf
+Add the following line.
+ manager.components.naming_policy: ns_unique 
 --- Close the command prompt.
 -- Navigate to "\Program Files\OpenRTM-aist\1.2.1\Components\C ++\OpenCV" in Explorer.
 -- Double-click CameraViewer.bat.
 -- Double-click OpenCVCamera.bat.
--- Double-click OpenCVCamera1.bat.
+-- Double-click OpenCVCamera.bat again.
 -- Double-click Chromakey.bat.
--- Click [>] in the Name Service view on the RTSystemEditor screen, and confirm that the components of the launched components CameraViewer, Chromakey, OpenCVCamera, and OpenCVCamera1 are displayed.
+-- Click [>] in the Name Service view on the RTSystemEditor screen, and confirm that the components of the launched components CameraViewer0, Chromakey0, OpenCVCamera0, and OpenCVCamera1 are displayed.
 -- Click [Open New System Editor] button &ref (icon_open_editor_en.png,150%); at the top of RTSystemEditor to open a new System Editor and display [System Dialgram] newly.
 -- Drag&drop the above four components onto the System Diagram.
 -- Connect the ports of each component as shown below.
