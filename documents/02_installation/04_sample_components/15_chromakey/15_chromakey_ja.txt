@@ -21,31 +21,19 @@ CENTER:''背景画像''
 - 手順 (Windows環境)
 -- [[OpenRTPの起動手順(1.2系、Windows)>//node/6653]]に従いOpenRTPを起動しRTSystemEditorを起動し、Name Service ViewにRTCが表示されるようにします。RTSystemEditorの使用方法の詳細については[[RTSystemEditor>//ja/node/6401]]を参照してください。
 -- 管理者権限でコマンドプロンプトを開きOpenCVCameraコンポーネントを2つ実行できるようにします。
---- 以下のコマンドを実行して、batファイルとconfファイルをコピーします。
- > cd "\Program Files\OpenRTM-aist\1.2.1\Components\C++"
- > copy OpenCVCamera.bat OpenCVCamera1.bat
- > cd vc14
- > copy rtc.conf rtc1camera.conf
---- コピーしたrtc1camera.confを編集します。例えば
- > notepad rtc1camera.conf
-とし、以下のように書きかえます。
- corba.nameservers: localhost
- logger.enable: NO
- corba.args: -ORBgiopMaxMsgSize 4194304
- naming.formats: %h.host_cxt/OpenCVCamera1.rtc
---- 次にOpenCVCamera1.batを編集します。例えば
- > cd ..
- > notepad OpenCVCamera1.bat
-とし、以下のように書きかえます。
- @call rtm_env.bat
- OpenCVCameraComp.exe -f rtc1camera.conf
+--- rtc.confを編集します。例えば、以下のようなコマンドを入力し編集を行います。
+ > cd "\Program Files\OpenRTM-aist\1.2.1\Components\C++\OpenCV\vc14"
+ > notepad rtc.conf
+とし、以下の行を付け加えます。
+ manager.components.naming_policy: ns_unique
+
 --- コマンドプロンプトを閉じます。
 -- エクスプローラーで\Program Files\OpenRTM-aist\1.2.1\Components\C++\OpenCVとたどります。
 -- CameraViewer.batをダブルクリックします。
 -- OpenCVCamera.batをダブルクリックします。
--- OpenCVCamera1.batをダブルクリックします。
+-- OpenCVCamera.batをもう一度ダブルクリックします。
 -- Chromakey.batをダブルクリックします。
--- RTSystemEditorの画面のName Service viewのところの[>]をクリックして、起動したコンポーネントCameraViewer、Chromakey、OpenCVCamera、OpenCVCamera1のコンポーネントが表示されているのを確認します。
+-- RTSystemEditorの画面のName Service viewのところの[>]をクリックして、起動したコンポーネントCameraViewer0、Chromakey0、OpenCVCamera0、OpenCVCamera1のコンポーネントが表示されているのを確認します。
 -- RTSystemEditorで上部の[Open New System Editor]ボタン&ref(icon_open_editor_ja.png,150%); をクリックし、新規System Editorを開き、[System Dialgram]を新たに表示させます。
 -- 上記の4つのコンポーネントをSystem Diagram上にドラッグ&ドロップします。
 -- 下記の画面のように各コンポーネントのポートを接続します。
