@@ -1,4 +1,5 @@
-//** OpenRTM-aistのサンプルについて
+// Title: OpenRTM-aist付属のサンプルについて
+
 OpenRTM-aistにはいくつかのサンプルコンポーネントが付属しており、簡単に使ってみれます。
 (CameraViewer/OpenCVCameraコンポーネントにはOpenCVが必要です。）
 また、サンプルコンポーネントのソースコードも付属していますので、開発の参考にしてください。
@@ -11,11 +12,12 @@ OpenRTM-aistにはいくつかのサンプルコンポーネントが付属し�
 --rtc-naming.py　(Python)
 --start-orbd.vbs　(Java)
 
-#br
-Windows でネーム・サーバーを実行するには、該当するファイルをダブルクリックしてください。インストーラーを用いてインストールした場合は、[スタートメニュー] > [OpenRTM-aist] > [Tools] から実行することもできます。
-なお、本章では RTSystemEditor がインストールされた環境であることを想定して説明しています。
-RTSystemEditor のインストールについての詳細は、[[OpenRTM Eclipse tools のインストール>/ja/content/openrtm-eclipse-tools-のインストール]]を参照してください（一部のサンプルは RTSystemEditor がなくても動作します）。
-#br
+
+Windowsでネーム・サーバーを実行するには、該当するファイルをエクスプローラーで見つけダブルクリックしてください。インストーラーを用いてインストールした場合は、[スタートメニュー]>[OpenRTM-aist]>[Start Naming Service]としてもネームサービスを起動できます。
+なお、本章ではRTSystemEditorがインストールされた環境であることを想定して説明しています。
+RTSystemEditorのインストールについての詳細は、[[OpenRTPのインストール>//ja/node/6655]]を参照してください。
+
+
 
 //&color(red){''※'' すでに OpenRTM-aist-0.4 をインストールされている方へ};
 //
