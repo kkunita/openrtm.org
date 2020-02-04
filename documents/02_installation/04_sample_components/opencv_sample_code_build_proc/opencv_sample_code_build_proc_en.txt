@@ -1,0 +1,19 @@
+// Title:OpenCV Sample Code Build Procedure
+
+On Linux, the bulk installation script can not install OpenCV sample code. To install the OpenCV sample code, you need to build executable code by using the source code. The source code can be gotten from OpenRTM.org github repository. The procedure is following.
+
+- Install OpenRTM-aist by the bulk installation script. The command option is depends on what language you want to use with OpenRTM-aist.  (In case of the following steps, you must install c++ version and Python version at least. Also to execute the components might require OpenRTP.  Please specify the options based on your requirements.)  For example, the following commands can be used. 
+ $ sudo sh pkg_install_ubuntu.sh -l all --yes
+- Install OpenCV3.4 or later version (Currently, only 3.4.5 is tested.  In some case, build from source code might be required.)
+- By using following steps, getting the source code of OpenCV sample and build it. 
+ $ sudo apt-get install git
+ $ git clone https://github.com/OpenRTM/ImageProcessing.git
+ $ cd ImageProcessing/opencv
+ $ mkdir build
+ $ cd build
+ $ cmake ..
+ $ make
+ $ ./build_linux_package.sh
+ $ sudo dpkg -i imageprocessing_1.2.1_amd64.deb
+
+

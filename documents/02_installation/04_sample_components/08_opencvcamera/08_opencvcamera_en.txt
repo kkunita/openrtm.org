@@ -1,0 +1,63 @@
+﻿// Title: OpenCVCamera
+#contents
+
+This sample is included with OpenRTM-aist C ++ Windows version.
+Note that OpenRTM-aist is not included in the C ++ version and you need to build and install them on Linux by using [[OpenCV Sample Code Build Procedure>//node/6975]]. It is not included in the Python version or the Java version.
+
+*** Overview
+By starting OpenCVCamera and CameraViewer, the image of the USB camera is displayed on the monitor. You can connect the OpenCV image processing sample RTC component and apply effects.
+
+*** Start Screen
+#ref(new_00.png,60%,center)
+CENTER: ''Example of executing OpenCVCamera component and CameraViewer component''
+
+#ref(new_01.png,60%,center)
+CENTER: ''OpenCVCamera execution example (RTSystemEditor)''
+
+#ref(new_02.png,60%,center)
+CENTER: ''CameraViewer execution example (monitor)''
+
+
+*** How to use
+OpenCVCamera is a sample that acquires image data of a USB camera and displays it on a monitor with the CameraViewer component.
+You can also connect an Image processing OpenCV sample RT component between them to apply effects to image data.
+
+
+-Procedure
+-- Start RTSystemEditor and open a new SystemEditor. See [[RTSystemEditor>//en/node/6968]] for details on how to use RTSystemEditor.
+-- Start both OpenCVCamera (openCVCamera.bat) and CameraViewer (CameraViewer.bat) components.
+--- To use the sample OpenCV image processing RT component, after installation, from Start> OpenRTM-aist 1.2.1 x86_64> C ++ _ OpenCV-Examples (Start in a 32bit environment> OpenRTM-aist 1.2.1 x86> Start from C ++ _ OpenCV-Examples).
+-- Since these components appear in the Name Service View of RTSystemEditor, drag both of them to SystemEditor.
+-- Connect the corresponding ports of both components. (Refer to RTSystemEditor execution example above)
+-- Right-click either component and select [Activate Systems].
+
+- Use OpenCV's Flip
+-- Start the Flip component from Start> OpenRTM-aist 1.2.1 x86_64> C ++ _ OpenCV-Examples (in a 32-bit environment, start from Start> OpenRTM-aist 1.2.1 x86> C ++ _ OpenCV-Examples).
+-- Drag it onto the SystemEditor to display it, connect to both the OpenCVCamera and CameraViewer components and activate it. (See "Example of Flip execution (RTSystemEditor)" below)
+-- Flip can change the output data by changing the value of Configure “flip_mode”. (Refer to "Change flip_mode (RTSystemEditor and monitor)" below.)
+--- Click [[here>//en/node/6807]] for the detailed usage and the explanation of Flip RT component.
+
+#ref(new_05.png, 40%, center)
+CENTER:''Example of Flip execution (RTSystemEditor)''
+
+
+#ref(new_03_04.png, 60%, center)
+CENTER:''Change flip_mode (RTSystemEditor and monitor)''
+
+*** Other OpenCV Samples
+|LEFT:200|LEFT|LEFT:300|c
+|Startup command|Function|Configuration parameter|
+|Affine.bat|Affine transforms the input image|Affine matrix|
+|BackgroundSubtractionSimple.bat|Outputs the change from the image when the key was input in the input image|Parameter indicating the method of detecting image change|
+|Binarization.bat|Converts an input image to a binary black and white image|Binarization threshold|
+|DialationErosion.bat|Perform dialing / erosion processing|Binarization threshold|
+|Edge.bat|Outputs the first-order derivative image in the X direction, the first-order derivative image in the Y direction, and the Laplacian image (second-order derivative image)|Aperture size|
+|Findcontour.bat|Extract the outline and display the outline in the image.|Threshold for binarization before processing, level of layering, size of outline at the display, outline approximation method|
+|Histgram.bat|Displays changes in histogram while changing brightness / contrast of black and white image|Brightness, contrast|
+|Hough.bat|Line extraction by Hough transform | Hough transform parameters and drawing parameters of detected straight lines|
+|Perspective.bat|Perspective conversion of image (Convert as viewed from below. | No item|
+|RockPaperScissors.bat|Judgment of Goocho kipper in image. | Janken judgment threshold for solidity and missing interpolation parameter by dilation / reduction processing|
+|Rotate.bat| Rotates and scales images|Counterclockwise rotation angle and reduction / enlargement ratio|
+|Scale.bat| Processes images for scaling|Scale in the X and Y directions|
+|Sepia.bat| Separates images|Sepia color satulation / hue|
+|Translate.bat | Performs two-dimensional translation of images|Moving direction|
