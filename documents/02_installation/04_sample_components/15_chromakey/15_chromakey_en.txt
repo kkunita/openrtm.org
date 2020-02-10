@@ -5,13 +5,13 @@
 Please note that it is not included in Python and Java versions of OpenRTM-aist. On Linux, build and install it according to [[OpenCV Sample Code Build Procedure on Linux>//node/6974]].
 
 *** Overview
-Chromakey is a sample OpenCV component that synthesizes two screens with chroma key.
+Chromakey RTC is an OpenCV component example that synthesizes two screens with chroma key.
 It is used with OpenCVCamera and CameraViewer component.
 
 *** How to use
-Chromakey is an RTC component that realizes a technique called chroma key synthesis that makes an image taken with a specific color as the background (for example, green) and make it transparent then synthesize it with another screen. In this execution, it uses two OpenCVCamera components to capture two image data. The output uses CameraViewer component.
+Chromakey is an RT component that realizes a technique called chroma key synthesis that makes an image taken with a specific color as the background (for example, green) and make it transparent then synthesize it with another screen. In this execution, it uses two OpenCVCamera components to capture two image data. The output uses CameraViewer component.
 
-- Synthesizing Tow screen images
+- Synthesizing tow screen images
 
 #ref(foreground.png, center, 50%)
 CENTER:''FrontImage''
