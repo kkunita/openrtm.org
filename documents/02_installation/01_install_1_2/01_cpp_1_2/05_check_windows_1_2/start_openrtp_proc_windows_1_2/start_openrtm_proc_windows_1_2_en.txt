@@ -1,0 +1,82 @@
+﻿// Title: OpenRTP startup procedure (1.2 Series, Widnows)
+#contents
+
+** Launch OpenRTP
+Start RTSystemEditor, a tool for operating the RTC and building the RT system.
+RTSystemEditor is included in a tool called OpenRTP, so you need to start OpenRTP first. Double-click the desktop shortcut or, in the case of Windows 10, enter "OpenRTP" in [Type here to search] at the lower left and click [OpenRTP] displayed in the search results to start Please give me.
+
+#ref(rtm1.png,/ja/node/6614,60%,center)
+CENTER:''The desktop shortcut''
+
+
+#ref(rtm2_en.png,/ja/node/6614,60%,center)
+CENTER:''Type here to search''
+
+*** Choose a workspace and welcome to Eclipse
+The first time you launch OpenRTP, it will ask you for the location of a directory to use as your workspace. If you have set it and want to use it again with the same settings and do not need to be asked again, click the checkbox for Use this setting as default and do not show this question again, Click the [Start] button. Also, the [Welcome to eclipse] screen may open at the first startup. In that case, click the [X] button on the [Welcome] tab at the top left to close it.
+
+*** Start RTSystemEditor (RTSE)
+
+Click the Open Perspective button in OpenRTP.
+
+
+#ref(rtm3_en.png,/ja/node/6614,60%,center)
+CENTER:''Click "Open Perspective"''
+
+Select the "RT System Editor" on the "Open Perspective" list box and click the "Open" button.
+
+#ref(rtm4_en.png,/ja/node/6614,60%,center)
+CENTER:''RT System Editorの起動''
+
+** Start Name server
+At first, start the name server to see the components.
+
+#ref(rtm5_en.png,/ja/node/6614,60%,center)
+CENTER:''Start the name server''
+
+** Warning from Windows Defender
+
+When trying to start a name server, Windows Defender Firewall may display a Windows Security Alert dialog. The path of eclipse.exe of the installation path of OpenRTM, for example, ''C:\Program files\OpenRTM-aist\1.2.x\utils\openrtp\eclipse.exe'' is displayed in [Path:] Check that [Private networks such home or network] is checked and uncheck [Public networks such as those in airports and coffee shops (not recommended because those networks often have little or no security)] Click [Allow access]. This screen may be displayed differently on Windows 10 (other than build 1909, and may not be displayed depending on the setting. If it is displayed, make the same setting and close the dialog. A similar dialog may be displayed for Omniorb. Click [Allow access (A)] to allow access.
+
+When the name server starts successfully, [localhost] is displayed in the name service view.
+
+#ref(rtm6_en.png,/ja/node/6614,60%,center)
+CENTER:''Confirm name server start''
+
+*** If the name server was not started:
+
+**** omniORB was not installed.
+
+The msi installer from openrtm.org includes omniORB. However, if you install OpenRTM-aist manually, OmniORB might not be installed. In this case, please check if OmniORB was installed.
+
+**** Environmental variable OMNI_ROOT was not set
+
+[Start Naming Service] trigger the batch file "rtm-naming.bat" on %RTM_ROOT%\bin and start the name server executable (omniNames.exe). At that time, the program is using an environmental variable OMNI_NAMES. If you used the installer software, the environmental variable is automatically set. However, in case of what the variable is not valid and you install OpenRTM-aist without using the installer software, the variable may not be set.
+
+Please check if the environmental variable OMNI_ROOT is also set.  The variable can be shown or modified by the following steps.
+- Type "system environment variable" in to [Type here to search] text box at the bottom of the screen.  
+- Click "Edit System Environmental variable"
+- Click [Environmental Variable ...] button.
+
+*** Others
+If the user name is using 2 bytes code, you may see a failure to start omniNames.exe due to inappropriate log output folder name setting. In the case, the environmental variable TEMP   can be failed to execute
+*** その他
+
+If the user name contains 2-byte characters, omniNames.exe may fail to start because the log output folder cannot be set properly.
+In this case, setting the environment variable TEMP to a location that does not include double-byte characters may improve the situation.
+Create an appropriate temporary directory (C: \ temp in the following case), set it to point to the environment variable TEMP, and start the name server.
+
+ set TEMP=C:\temp
+ cmd /c rtm-naming.bat
+
+
+Also, in rare cases, there are cases where the startup does not work properly due to a problem with the hostname or address settings.
+In that case, if you tell omniNames.exe the IP address of the PC you are using, it may work well.
+Set the environment variable OMNIORB_USEHOSTNAME as follows (example below is when the IP address of the local host is 192.168.0.11).
+ 
+
+ set cosnames="omninames"
+ set orb="omniORB"
+ set port=%1
+ set OMNIORB_USEHOSTNAME=192.168.0.11
+ set PATH=%PATH%;%OMNI_ROOT%\bin\x86_win32
