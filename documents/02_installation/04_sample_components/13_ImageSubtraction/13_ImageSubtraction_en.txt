@@ -1,0 +1,62 @@
+// Title: ImageSubtraction
+
+#contents
+
+Please note that it is not included in Python and Java versions of OpenRTM-aist. On Linux, build and install it according to[[OpenCV Sample Code Build Procedure>//node/6974]]
+
+***Overview
+By starting ImageSubtraction component, the background image is extracted from the input image, the foreground image part is output as a mask image and the background image is output. Used with OpenCVCamera and CameraViewer component. (Note that this component currently does not work properly in a Windows environment, so please use it in Linux (Ubuntu 18.04) environment.)
+
+*** Start screen
+
+#ref(ImageSubtract_exe.png,30%,center)
+CENTER: ''Execution screen of ImageSubtraction component''
+
+*** How to use
+ImageSubtraction is a component for extracting the background image from the input image. Here, it is used together with OpenCVCamera for capturing images from USB Camera and CameraViewer component for displaying processed images.
+
+- Procedure (The following is the procedure on Ubuntu 18.04.)
+-- Open a new terminal.
+-- Install the sample code according to the above [[OpenCV sample code build procedure for Linux>//node/6974].
+-- Start OpenRTP according to [[OpenRTP>//node/6654]] and start RTSystemEditor, and display RTC in Name Service View. Open a new SystemEditor. See [[RTSystemEditor>//node/6401]]  details on how to use RTSystemEditor
+-- Open a new terminal.
+-- Create rtc1.conf, rtc2.conf, rtc3.conf by the following steps.
+ $ cp rtc.conf rtc1.conf
+ $ cp rtc.conf rtc2.conf
+ $ cp rtc.conf rtc3.conf
+-- Open an editor software to edit each "rtc?.conf" and add the following line to the end of the each files.
+ naming.formats:% h.host_cxt/CameraViewer?.rtc
+ (Where "?" Is the number "1", "2", "3")
+--Start a new terminal and input the following commands
+ $ cd ImageProcessing/opencv/bin
+ $ ./CameraViewerComp
+-- Repeat to start a new terminal and execute CameraViewerComp with adding "-f rtc1.conf", "-f rtc2.conf", and "-f rtc3.conf" option. Then, you will see 4 CameraViewer screen.
+-- Start another terminal and start OpenCVCamera component by inputing following commands.
+ $ cd ImageProcessing/opencv/bin
+ $ ./OpenCVCameraComp
+-- Start Terminal again to launch ImageSubtraction component. 
+ $ cd ImageProcessing/opencv/bin
+ $ ./ImageSubtractionComp
+-- Click [>] in the Name Service view on the RTSystemEditor screen and confirm that the components "CameraView0", "CameraViewer1", "CameraViewer2", "CameraViewe3", "OpenCVCamera", and "ImageSubtraction" are displayed.
+-- Click [Open New System Editor] button &ref(icon_open_editor_ja.png,150%); at the top of RTSystemEditor to open a new System Editor and display [System Dialgram] newly.
+-- Drag and drop the above five components onto the System Diagram.
+-- Connect the ports of each component as shown below.
+
+#ref(RTSystemEditor_ImageSubtraction_en.png)
+CENTER: ''Execution example of ImageSubtraction component''
+
+-- Right-click on any component and select [Activate Systems].
+-- Display the CameraViewer screens by adjusting the positions of the windows like the following.
+#ref(compexec.png)
+CENTER:''ImageSubtraction Outputs''
+
+--When you move the mouse out of the "capture_image" window, the background image is captured at that timing and displayed it on the back_image. Check what happens to the other screens as well.
+ 
+The following can be set as configuration parameters.
+|LEFT:20|LEFT:80|c
+|Parameter name|meaning|
+|control_mode|''b'' and ''m'' can be selected. In the case of ''b'', the background image is captured according to the key event. In the case of ''m'', the mode switches between DYNAMIC_MODE, which determines the threshold a pixel by a pixel, and CONSTANT_MODE, which uses one threshold for the entire screen. |
+|image_height|Specifies the number of pixels in the vertical direction, but does not work in this sample.|
+|image_width|Specifies the number of pixels in the horizontal direction, but does not work in this sample.|
+|threshold_coefficient |Coefficient used in DYNAMIC_MODE|
+|constant_threshold |Threshold used in CONSTANT_MODE|

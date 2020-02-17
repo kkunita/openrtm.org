@@ -1,0 +1,62 @@
+// Title: ImageSubtraction
+
+#contents
+
+OpenRTM-aistのPython版、Java版には付属していませんのでご注意ください。また、Linux上では、[[LinuxにおけるOpenCVサンプルコードのビルド手順>//node/6974]]に従ってビルドしてインストールしてください。
+
+***概要
+ImageSubtractionを起動することによって入力画像から背景画像を取り出し、前景画像部を判定し、それを取り出すマスク画像を、背景画像を出力します。
+OpenCVCamera、CameraViewerといっしょに使用します。（なおWindows環境では現状このコンポーネントは再ビルドしないと現在正常に動作しないようなので、Ubuntu 18.04環境での使用を推奨いたします。)
+
+***起動画面
+
+#ref(ImageSubtract_exe.png,30%,center)
+CENTER:''ImageSubtractionコンポーネンの実行例''
+
+***使い方
+ImageSubtractionは、入力画像から背景画像を取り出すためのコンポーネントです。ここではUSB Cameraから画像を取り込むためのOpenCVCameraと、処理した画像を表示するためのCameraViewerコンポーネントと使用します。
+
+- 手順 (以下はUbuntu 18.04での手順です。)
+--  ターミナルを起動します。
+--  上記の[[LinuxにおけるOpenCVサンプルコードのビルド手順>//node/6974]に従いサンプルコードのインストールをします。
+-- [[OpenRTP>//node/6654]]に従いOpenRTPを起動しRTSystemEditorを起動し、Name Service ViewにRTCが表示されるようにします。新規SystemEditorを開きます。RTSystemEditorの使用方法の詳細については[[RTSystemEditor>//ja/node/6401]]を参照してください。
+-- 新規にターミナル画面を開きます。
+-- 以下のコマンドを実行して、rtc.confを編集します。
+ $ cd ImageProcessing/opencv/bin
+ $ sudo vi rtc.conf
+-- 最終行に以下の行を付け加えます。
+ manager.components.naming_policy: ns_unique
+-- 新規にターミナルを起動して
+ $ cd ImageProcessing/opencv/bin
+ $ ./CameraViewerComp
+ターミナルを起動後の上記コマンドをさらに3回くり返し、4つのCameraViewerコンポーネントを起動します。
+-- 新規にターミナルを起動します。
+ $ cd ImageProcessing/opencv/bin
+ $ ./OpenCVCameraComp
+としてOpenCVCameraCompを起動します。
+-- さらにもう一度ターミナルを起動して
+ $ cd ImageProcessing/opencv/bin
+ $ ./ImageSubtractionComp
+と入力してImageSubtractionコンポーネントを起動します。
+-- RTSystemEditorの画面のName Service viewのところの[>]をクリックして、起動したコンポーネントCameraView0, CameraViewer1, CameraViewer2, CameraViewe3, OpenCVCamera0, ImageSubtraction0のコンポーネントが表示されているのを確認します。
+-- RTSystemEditorで上部の[Open New System Editor]ボタン&ref(icon_open_editor_ja.png,150%); をクリックし、新規System Editorを開き、[System Dialgram]を新たに表示させます。
+-- 上記の5つのコンポーネントをSystem Diagram上にドラッグ&ドロップします。
+-- 下記の画面のように各コンポーネントのポートを接続します。
+
+#ref(RTSystemEditor_ImageSubtraction.png)
+CENTER:''ImageSubtractionコンポーネンの実行例''
+
+-- どれかのコンポーネントを右クリックし、[Activate Systems]を選択します。
+-- 画面のウィンドウを動かしながら4つのCameraViewerの画面を表示させます。
+#ref(compexec.png)
+CENTER:''ImageSubtraction出力画像''
+-- マウスをcapture_imageのウィンドウから外に移動するとそのタイミングで背景画面が取り込まれ、それがback_imageに表示されます。他の画面もどうなるか確認してください。
+
+なお、コンフィギュレーション・パラメータとして以下のようなものが設定可能です。
+|LEFT:20|LEFT:80|c
+|パラメータ名|意味|
+|control_mode|bとmが選択でき、bの時はkeyイベントに伴いバックグラウンドイメージの取り込みが行われ、mの時は画素ごとに閾値を決めるDYNAMIC_MODEと画面全体で一つの閾値を使うCONSTANT_MODEが切り替わります。|
+|image_height|縦方向の画素数を指定しますが、このサンプルでは機能しません。|
+|image_width|横方向の画素数を指定しますが、このサンプルでは機能しません。|
+|threshold_coefficient|DYNAMIC_MODEで使う係数|
+|constant_threshold|CONSTANT_MODEで使う閾値|
