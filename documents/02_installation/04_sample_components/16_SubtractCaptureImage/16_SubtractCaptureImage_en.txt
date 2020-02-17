@@ -1,0 +1,53 @@
+// Title: SubtractCaptureImage
+
+#contents
+
+Please note that it is not included in Python and Java versions of OpenRTM-aist. On Linux, build and install it according to [[OpenCV Sample Code Build Procedure on Linux>//node/6975]].
+
+*** Overview
+SubtractCaptureImage is a component that outputs a mask image that extracts the foreground (moving object) from the input image by determining the unchanged part as the background, and is a sample component that updates the background in real-time using the dynamic background subtraction method. You can use it with OpenCVCamera and CameraViewer components.
+
+*** How to use
+SubtractCaptureImage considers the input image that does not move as the background and sets it as the background and if a newly added thing on the screen does not move and is kept for a while, it is also judged as a part of the background and incorporate it into the background image. The output includes an input image, a mask image of the foreground (indicating a moving object)  a mask image indicating neither a moving object nor a background, a background image, and an image showing the background of a still object.
+To use this component, start multiple CameraViewers and view multiple output images at the same time, or look at each output image while changing the connection with CameraViewer. You may also want to use the OpenCVCamera component for the input image.
+
+- Procedure (Windows environment)
+-- Start OpenRTP according to [[Start procedure of OpenRTP (1.2 series, Windows)>//node/6980]], start RTSystemEditor, and display RTC in Name Service View. See [[RTSystemEditor>//node/6968]] for details on how to use RTSystemEditor.
+-- Open a command prompt with administrator privileges so that multiple CameraViewer components can be executed.
+--- Edit rtc.conf. For example, enter the following command to edit.
+ > cd "\Program Files\OpenRTM-aist\1.2.1\ Components\C++\OpenCV\vc14"
+ > notepad rtc.conf
+And add the following line:
+ manager.components.naming_policy: ns_unique
+--- Close the command prompt.
+-- Navigate to "\Program Files\OpenRTM-aist\1.2.1\Components\C++\OpenCV" in Explorer.
+-- Double click CameraViewer.bat.
+-- Double-click CameraViewer.bat to launch all five CameraVieweer components.
+-- Double-click OpenCVCamera.bat.
+-- Double-click SubtractCaptureImage.bat.
+-- Click [>] in the Name Service view on the RTSystemEditor screen, and confirm that the components of the started components CameraViewer0, CameraViewer1, CameraViewer2, CameraViewer3, CameraViewer4, SubtractCaputreImage0, OpenCVCamera0, OpenCVCamera1 are displayed.
+-- Click [Open New System Editor] button &ref(icon_open_editor_ja.png,150%); at the top of RTSystemEditor to open a new System Editor and display [System Dialgram] newly.
+-- Drag&Drop the above seven components onto the System Diagram.
+-- Connect the ports of each component as shown below.
+
+#ref(RTSE_SubtractCaptureImage_en.png,75%, center)
+CENTER:''Connection of SubtractCaptureImage component''
+
+-- Right-click on any component and select [Activate Systems].
+-- Display the CameraViewer screens while moving the screen windows.
+-- First, let's look at the CameraViewer3 screen connected to backGraoundImg OutPort and the CameraViewer0 screen connected to output_image OutPort which is the same screen as the input screen. Check that some images are displayed on both.
+-If you look at the CameraViewer1 screen to which foreMaskImg OutPort is connected, you can see some white color parts at first, but it gradually turned black. This screen shows that the black part is considered the background and the white part is considered the foreground. The part considered as a foreground part is a changing part (a moving thing). Then, after the screen turns black, capture some moving object and you'll see that the moving object appears as a white color object on the screen. Also, in the output of CameraView3, which is StillImg, you can see that when the object moving is stooped, the view of the object gradually becomes to be clear. The below shows the example of the output images from the component.
+
+#ref(SubtractCaptureImageOut1.png,75%, center)
+CENTER:''Image of each output port - Moving object detection''
+
+- The image above is an example of backGroundMaskImg turning black after a while and then slowly moving your finger from the side to the screen. When you look at backGroundMaskImg, you can see that the part of the finger that is moving is regarded as the foreground (moving object) and that the finger is partially regarded as a stationary object at the stillImg OutPort because the movement is slow.
+- The following image is a picture of a small robot controlled by a Raspberry Pi called "Rasp-pi mouse" for a while, and at a certain point, a cat figure is placed over the Rasp-pi mouse. It is an image of the process of being considered as an object and gradually being judged as a background.
+
+#ref(SubtractCaptureImageOut2.png,75%,center)
+CENTER:''Image of each output port-Still object detection, background update''
+
+- StillImg's image shows that the cat figure is considered almost stationary. The algorithm requires more time to consider a stationary object as the background and gradually considers that part as the background. The backGroundImg image shows a part of the cat's figure, and you can see that part is considered the background. After that, backGroundImg changes to be almost the same image as StillImg. ForeMaskImg, on the other hand, has a white area, which is still considered the foreground (moving object image).
+- Since it is difficult to express stillMaskImg as a still image, here only the sample image is shown in whole white. To understand this image, I recommend you to use the component and display the image and check it. Note that this output is normally a white image as a whole, and only the part where the background and foreground (moving object) are not considered, that is, the part where the stationary object is removed immediately before it is determined to be the background An image with black is output in short time.
+
+As of February 7, 2020, this sample is considered to need modification and is being modified. We will update the source code on GitHub soon. Please wait for the update and build and use it. For details on building the source code, refer [[Development of Image Processing Component>//node/6807]].
