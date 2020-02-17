@@ -1,123 +1,75 @@
 ﻿// Title: TkCalibGUI
 #contents
-**(G)TkCalibGUI
-This sample is included in the C ++ version of OpenRTM-aist. Please note that it is not included in Python version, Java version.
-//このサンプルは、OpenRTM-aist の C++版 に同梱されています。 
-//Python版、Java版 には同梱されていませんのでご注意ください。
+** TkCalibGUI
+Please note that it is not included in Python and Java versions of OpenRTM-aist. On Linux, build and install it according to [[OpenCV sample code for Linux>//node/6975]].
 
-#br
-***(G)Overview
-//***概要 
-It is a sample of RT component with GUI screen. Running TkCalibGUIComp starts the sample component.
+*** Overview
+RT component sample with GUI screen. The sample component starts by executing TkCalibGUI.bat.
 GUI for ImageCalibration component that performs camera calibration.
-//GUI 画面を持った RTコンポーネントのサンプルです。TkCalibGUIComp を実行することでサンプル・コンポーネントが起動します。
-//カメラキャリブレーションを行う ImageCalibration コンポーネント用のGUIです。
 
-When this component is executed and the camera component is specified from the selectable list, it is automatically activated together with ImageCalibrationComp and the connection between the components is automatically done.
-You can save the camera image necessary for the calibration and calculate the camera parameters by operating the GUI buttons.
-//本コンポーネントを実行して選択可能リストの中からカメラコンポーネントを指定すると、ImageCalibrationComp と合わせて自動起動し、コンポーネント間のポート接続も自動で行います。
-//GUI のボタン操作でキャリブレーションに必要なカメラ画像の保存、及び、カメラパラメーターの算出を行うことができます。
+When this component is executed and a camera component is specified from the selectable list, it is automatically started together with ImageCalibrationComp, and the port connection between the components is also performed automatically.
+You can save camera images required for calibration and calculate camera parameters by operating the buttons on the GUI.
 
-#br
-*** (G)Component execution condition
-//***コンポーネントの実行条件
-OpenRTM-aist If installed using Windows installer for C ++, just run TkCalibGUIComp.exe and it works. & br;
-//OpenRTM-aist C++ の Windows用インストーラーを使ってインストールされた場合は、TkCalibGUIComp.exe を実行するだけで動作します。&br;
+*** Component execution conditions
+If installed using the OpenRTM-aist C ++ installer for Windows, it only needs to be executed by running TkCalibGUI.bat.
 
-When building from the source, it is necessary to prepare the execution condition. &br;
-This component checks the environment required for execution.
-If it does not meet the condition, the following message dialog will be displayed. Follow the instructions to install.
-//ソースからビルドされた場合は、実行条件を整える必要があります。&br;
-//本コンポーネントでは実行に必要な環境のチェックを行っています。
-//条件に合わないと以下のようなメッセージダイアログを表示します。指示に従ってインストールしてください。
-#br
+If you build from source, you need to arrange the execution conditions. This component checks the environment required for execution.
+If the conditions are not met, the following message dialog will be displayed. Follow the instructions to install.
 
-#ref(calib9.jpg,80%,center)
-CENTER: ''Message displayed when the execution condition is not satisfied''
-//CENTER:''実行条件を満たさない場合に表示されるメッセージ''
+#ref(calib9.jpg,80%, center)
+CENTER:''Message displayed when execution conditions are not met''
 
-**** (G)For Windows environment
-//**** Windows環境向け
 
-| Message Contents | Corresponding Processing |
-| OpenRTM-aist Python is not installed.|[[OpenRTM-aist Python version:http://openrtm.org/openrtm/en/content/openrtm-aist-python-110-release]] to install Windows installer You can download it. &br;Please match the installer OS version (32bit or 64bit) to OpenRTM-aist C++ version.
-| Ttk is not installed.|[[Pyttk:https://pypi.python.org/pypi/pyttk/0.3]] Please install. Although it is included in python 2.7, it is necessary to install it separately in python 2.6. |
-| PIL is not installed.|[[PIL:http://www.pythonware.com/products/pil/]] Please install. |
-| NumPy is not installed. | [[numpy:http://sourceforge.net/projects/numpy/files/NumPy/]] Please install. |
-| rtctree is not installed. | Requires rtctree-3.0.1 or higher.&br;Upcoming installer will be released, but until then, click "Download Zip" at the bottom right of [[github page:http://github.com/gbiggs/rtctree]] and download the rtc-master.zip file Please deploy and run setup.py to install. (> Python setup.py install) &br; Add the path to site-packages \rtctree\rtmidl to the system environment variable PYTHONPATH. &br; eg) C:\Python27\Lib\site-packages\rtctree\rtmidl ||
-//|メッセージ内容|対応処理|
-//|OpenRTM-aist Python is not installed.|[[OpenRTM-aist Python版:http://openrtm.org/openrtm/ja/content/openrtm-aist-python-110-release]] のページから Windows用インストーラーをダウンロードできます。&br; インストーラーの OS のバージョン(32bit or 64bit)は、OpenRTM-aist C++版に合わせて下さい。
-//|Ttk is not installed.|[[pyttk:https://pypi.python.org/pypi/pyttk/0.3]] をインストールしてください。python2.7 には含まれていますが、python2.6 では別途インストールが必要です。  |
-//|PIL is not installed.|[[PIL:http://www.pythonware.com/products/pil/]] をインストールしてください。  |
-//|NumPy is not installed.|[[numpy:http://sourceforge.net/projects/numpy/files/NumPy/]] をインストールしてください。|
-//|rtctree is not installed.|rtctree-3.0.1 以上が必要 &br; 近日インストーラーを公開予定ですが、それまでは [[githubのページ:http://github.com/gbiggs/rtctree]] の右下の「Download Zip」をクリックし、rtc-master.zip ファイルをダウンロード・展開し、setup.py を実行してインストールしてください。（> python setup.py install）&br; site-packages\rtctree\rtmidlへのパスをシステム環境変数の PYTHONPATH に追加してください。 &br; 例）C:\Python27\Lib\site-packages\rtctree\rtmidl|
+**** For Windows environment
+|LEFT:25|LEFT:65|c
+| Message contents | Correspondence processing |
+| OpenRTM-aist Python is not installed. | [[OpenRTM-aist Python version://node/6937]] You can download it. &br; Please match the OS version (32bit or 64bit) of the installer with the OpenRTM-aist C ++ version.
+| Ttk is not installed. | Please install [[pyttk:https://pypi.python.org/pypi/pyttk/0.3]]. It is included in python2.7, but needs to be installed separately in python2.6. |
+| PIL is not installed. | Please install [[PIL:http://www.pythonware.com/products/pil/]]. |
+| NumPy is not installed. | Please install [[numpy:http://sourceforge.net/projects/numpy/files/NumPy/]]. |
+| rtctree is not installed. | Requires rtctree-3.0.1 or higher &br; The installer will be released soon, but until then, [[github page:http://github.com/gbiggs/rtctree]] Click "Download Zip", download and extract the rtc-master.zip file, and execute setup.py to install. (> Python setup.py install) Add the path to site-packages\rtctree\rtmidl to the system environment variable PYTHONPATH. &br; eg) C:\Python27\Lib\site-packages\rtctree\rtmidl |
 
-**** (G)For the Linux (Ubuntu) environment
-//**** Linux(Ubuntu）環境向け
-| Message Contents | Corresponding Processing |
-| OpenRTM-aist Python is not installed. | [[OpenRTM-aist Python version: http: // openrtm.org/openrtm/en/content/openrtm-aist-python-110-release]] to the bulk installation script You can download it.
+**** For Linux (Ubuntu) environment
+|LEFT:25|LEFT:65|c
+|Message contents|Required processing |
+|OpenRTM-aist Python is not installed.| Execute [[Bulk installation script>//node/6990]] with -l python option.  |
 | Ttk is not installed. | $ Sudo apt-get install python-tk |
-| PIL is not installed. | $ Sudo apt - get install python - pil.imagetk |
-| NumPy is not installed. | $ Sudo apt - get install python - numpy |
-| rtctree is not installed. | Requires rtctree-3.0.1 or higher &br;The procedure for downloading from github and installing it by running setup.py is the same as Windows environment. Please add PYTHONPATH to ~ /.bashrc etc. &br;export PYTHONPATH="/usr/local/lib/python2.7/dist-packages/rtctree/rtmidl" |
-//|メッセージ内容|対応処理|
-//|OpenRTM-aist Python is not installed.|[[OpenRTM-aist Python版:http://openrtm.org/openrtm/ja/content/openrtm-aist-python-110-release]] のページから一括インストールスクリプトをダウンロードできます。
-//|Ttk is not installed.|$ sudo apt-get install python-tk  |
-//|PIL is not installed.|$ sudo apt-get install python-pil.imagetk  |
-//|NumPy is not installed.|$ sudo apt-get install python-numpy|
-//|rtctree is not installed.|rtctree-3.0.1 以上が必要 &br; github からダウンロードし、setup.py を実行してインストールする手順は Windows環境と同じ。~/.bashrc などに PYTHONPATH を追加してください。 &br; export PYTHONPATH="/usr/local/lib/python2.7/dist-packages/rtctree/rtmidl"|
+| PIL is not installed. | $ Sudo apt-get install python-pil.imagetk |
+| NumPy is not installed. | $ Sudo apt-get install python-numpy |
+| rtctree is not installed. | Requires rtctree-3.0.1 or higher &br; Download from github and run setup.py to install. Add PYTHONPATH to ~/.bashrc or other way. &br;export PYTHONPATH = "/usr/local/lib/python2.7/dist-packages/rtctree/rtmidl" |
 
 
-#br
-*** (G)Boot screen
-//***起動画面
+*** Start screen
 
-#br
+#ref(calib1.jpg, 60%, center)
 
-#ref(calib1.jpg,60%,center)
+At first, select the camera component to use from the list. This list shows the camera component names that can be used in the current environment. The selection can be done by the input-box at the right top side of the dialog.  
+OpenCVCameraComp and MFCameraComp can be selected in the environment of VC2019 of Windows 10. Both of them work in the same way, but OpenCVCameraCompp seems to be newer and less dependent on the environment. The ImageCalibration component is started by the execution file started by tkCalibGUI.bat. This component can be started alone by ImageCalibration.bat, but we did not provide stand-alone components to connect to the ImageCalibration component in the release. If you want to use the ImageCalibration component without using tkCalibGUI you may need to create the component which can be connected to ImageCalibration component by yourself. 
 
-Select the first camera component to use from the list. This list shows the camera component names that can be used in the execution environment.
-As an example, DirectShowCamComp can be selected in the environment up to vc 2010, but after vc 2012 it is MFCameraComp.
-//最初に使用するカメラコンポーネントをリストの中から選択します。このリストには実行環境で使用可能なカメラコンポーネント名が表示されています。
-//例として、DirectShowCamComp は vc2010 までの環境で選択可能ですが、vc2012 以降は MFCameraComp となっています。
 
-#br
-
-#ref(calib2.jpg,60%,center)
+#ref(calib2.jpg, 60%, center)
 
 Click the [All Activate] button to display the camera image.
-The connection state of all components at this time is as follows. Components other than TkCalibGUIComp are automatically started up, and the components are automatically connected.
-//[All Activate] ボタンをクリックするとカメラ映像が表示されます。
-//この時の全コンポーネントの接続状態は下図の通りです。 TkCalibGUIComp 以外のコンポーネントは自動起動され、コンポーネント間も自動接続しています。
+The connection status of all components at this time is as shown below. Components other than TkCalibGUI are started automatically, and components are also connected automatically.
 
-#br
 
-#ref(calib10.jpg,60%,center)
+#ref(calib10_en.jpg, 60%, center)
 
-#br
-*** (G)How to use
-Prepare a checker pattern (calibration pattern). For reference, here &ref(checkerboard.pdf); is used.
-The number of corners of the checker pattern must be specified in ImageCalibrationComp's Configuration. (Checker_h, checker_w) The number of images (image_num) can also be changed by Configuration.
-The checker pattern changes the posture and saves the specified number of sheets. Confirmation of saved images is possible with [Confirm] button. Clicking the [Cancel] button deletes the image, so please save again.
+*** How to use
 
-//***使い方
-//チェッカーパターン（キャリブレーションパターン）を用意します。参考として、ここでは &ref(checkerboard.pdf); を使っています。 
-//チェッカーパターンのコーナー数は、ImageCalibrationComp の Configuration で指定する必要があります。（checker_h, checker_w)　撮影枚数（image_num）も Configuration で変更可能です。
-//チェッカーパターンは姿勢を変えて指定枚数保存します。[確認] ボタンで保存画像の確認が可能です。[取消し] ボタンをクリックするとその画像は削除されますので保存し直してください。
+Prepare a checker pattern (calibration pattern). For your reference, we use &ref(checkerboard.pdf); here.
+The number of corners of the checker pattern must be specified in the ImageCalibration Configuration. The number of shared vertices of the vertical and horizontal white and black squares of the pattern (checker_h, checker_w) - this is the number of black and white squares-1, and the number of shots (image_num) can also be changed in Configuration.
 
-#br
-CENTER:&ref(calib3.jpg,50%);  &ref(calib4.jpg,50%);
-CENTER:&ref(calib5.jpg,50%);  &ref(calib6.jpg,50%);
+To capture checker patterns, save (by click [保存] button) the specified number of patterns at various angles to cover the entire screen as much as possible. Click the [確認] button to check the saved image. Clicking the [取り消し] button deletes the image, so please save it again.
 
-#br
-When saving the specified number of sheets is completed, the "Result display" button becomes effective. Clicking on this will display the camera parameter value.
-//指定枚数の保存が終了すると [結果表示] ボタンが有効となります。これをクリックするとカメラパラメーター値が表示されます。
+CENTER:&ref(calib3.jpg, 50%); &ref(calib4.jpg, 50%);
+CENTER:&ref(calib5.jpg, 50%); &ref(calib6.jpg, 50%);
 
-#br
+After saving the specified number of sheets, the [結果表示] button is enabled. Click this to display the camera parameter values.
 
-#ref(calib8.jpg,60%,center)
-Camera parameters are the camera.yml file name and are output to the same directory as the component's executable file.
-//カメラパラメーターは camera.yml のファイル名でコンポーネントの実行ファイルと同じディレクトリーに出力されます。
+#ref(calib8.jpg, 60%, center)
+
+The camera parameters are output to the same directory as the component executable file with the file name camera.yml.
 
   %YAML:1.0
   calibration_time: "Thu May 22 16:38:06 2014\n"
@@ -140,24 +92,17 @@ Camera parameters are the camera.yml file name and are output to the same direct
          -9.8011775330916773e-001 ]
 
 
-#br
-*** (G)Image output (reference material)
-//***画像出力（参考資料）
 
-For reference, the image file when clicking the [Save] button is output to the system environment variable TEMP or TMP directory.
-- File name: capture0.jpg ~ capture4.jpg (When saving 5 images: Grayscale image)
-//参考として [保存] ボタンをクリックした時の画像ファイルをシステム環境変数の TEMP、または TMP のディレクトリーに出力しています。
-//- ファイル名：capture0.jpg　～　capture4.jpg　（５枚保存した場合：グレースケール画像）
+*** Image output (reference material)
 
-#br
+For reference, when the [保存] button is clicked, the captured image file is output to the directory which is specified by the system environment variable TEMP or TMP.
+- Filename: capture0.jpg ~ capture4.jpg (5 images saved: grayscale image)
 
-#ref(capture0.jpg,70%,center)
 
-The distortion-corrected image is output to the same directory using the camera parameters output for the above image.
-- File name: undistorted0.jpg ~ undistorted4.jpg (File number corresponds to capture*.jpg)
-//上記の画像に対して出力したカメラパラメーターを用いて歪み補正した画像も同じディレクトリーに出力しています。
-//- ファイル名：undistorted0.jpg　～　undistorted4.jpg　（ファイルの番号は capture*.jpg に対応）
+#ref(capture0.jpg, 70%, center)
 
-#br
+The above-captured images's distortion is corrected by using the camera parameter made by this calibration process and the corrected image is output to the same directory.
+- Filename: undistorted0.jpg ~ undistorted4.jpg (File numbers correspond to capture*.jpg)
 
-#ref(undistorted0.jpg,70%,center)
+
+#ref(undistorted0.jpg, 70%, center)
