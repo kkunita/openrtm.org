@@ -1,0 +1,77 @@
+#contents(5)
+
+Communication middleware called CORBA is required to execute OpenRTM-aist-Java. In Java, CORBA functionality was originally included as a standard function, but since Java 9 it is treated as deprecated (the deprecated function that will be removed in the future) and will be completely removed in Java 11 and later. Therefore, to use OpenRTM-aist-Java, it is necessary to use the Java 8 development environment package JDK8.
+Original developer Oracle is decreasing the support of JDK8 (Oracle had already stopped the update support for free commercial users and will stop it to non-commercial user in 2020).  But many people still need Java8, so JDK8 itself is available for some time from several vendors. Here, we will introduce how to obtain and install JDK8.
+
+** JDK8 distributors
+Here are some of the things we found about distributors of JDK8: Please note that it is only a list of some of the ones we have found, and that there are no intentions, if any, are not listed here. Also, there are various conditions, such as the distribution of each site for paid use and support for the fee, so please check each site before using it.
+
+*** Oracle
+As of November 2019, JDK8 download is available from Oracle for the developer and distributor of Java. It seems that personal use and development use have a free license, but commercial use seems to require a paid license. Please refer to the link below and the message from Oracle for the exact license conditions.
+
+
+- [[Oracle Java SE Subscription>https://www.oracle.com/technetwork/java/javaseproducts/overview/index.html]]
+-- [[JDK8 Download>https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html]] 
+-- These pages may be deleted if Oracle stops distributing Java8.
+
+*** OpenJDK
+OpenJDK is an open-source Java implementation by Oracle, distributed under GPLv2 with Classpath Exception. Most JDK implementations are based on this OpenJDK.
+- [[OpenJDK>http://openjdk.java.net/]]
+
+There is a button of JDK DOWNLOAD from Java SE 8xxxx (xxxx is u231 as of November 2019) from the link below, so click it and get the one that is suitable for your platform.
+-- [[OpenJDK8 download>https://www.oracle.com/technetwork/java/javase/downloads/index.html]] 
+
+*** Adopt Open JDK
+AdoptOpenJDK is a project to provide an OpenJDK build sponsored by IBM and maintained by the community. Two types of JVMs are provided, one developed by the OpenJDK community called HotSpot and the other developed by the Eclipse community called OpenJ9.
+
+Select [OpenJDK8 (LTS)] and JVM ([HotSpot] or [OpenJ9]) from the link below and click the [Latest release] button. The download for the platform should begin. If you want something for a different platform, click the [Other platforms] button to get the required JDK. For information on how to install, please refer to the link [Installation].
+- [[AdoptOpenJDK>https://adoptopenjdk.net/]]
+
+*** Amazon Open JDK
+Amazon Corretto is a build of OpenJDK that includes Amazon's long-term support. Go to the website from the link below and click the [Download Amazon Corretto8] button. A list of builds for each platform will be displayed. Get the necessary installation files for your platform.
+
+- [[Amazon Corretto>https://aws.amazon.com/jp/corretto/]]
+
+
+** Installation in Linux environment
+*** Get the package from the repository
+OpenJDK packages equivalent to JDK8 are distributed as standard packages in major Linux distributions.
+
+*** Ubuntu / Debian / Raspbian
+On Ubuntu Linux, Debian Linux, etc., you can install using the apt command as follows.
+ $ sudo apt install openjdk-8-jdk
+
+*** Fedora
+In Fedora Linux, you can install with yum command as follows.
+ $ sudo yum -y install java-1.8.0-openjdk
+
+*** Other than obtaining the package from the repository
+It can also be obtained from the URL of the above third party vendor. Follow the information on the site for the installation method, or install using the standard Java method.
+
+*** When other than JDK8 is already installed
+Note that a JDK other than JDK8 may be installed in the default state.
+ $ java -version
+
+Make sure that the command version is JDK8, such as the version starting with 1.8.
+If not
+ $ sudo update-alternative --config java
+
+Use the command to select a Java environment based on JDK8.
+The execution example after installing openjdk-8-jdk in the environment of ubuntu18.04 is as follows.
+ $ sudo update-alternatives --config java
+ 
+ Choice Path Priority Status
+ -------------------------------------------------- ----------
+ * 0 /usr/lib/jvm/java-11-openjdk-amd64/bin/java 1111 automatic mode
+   1 /usr/lib/jvm/java-11-openjdk-amd64/bin/java 1111 Manual mode
+   2 /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java 1081 Manual mode
+ 
+ Press <Enter> to keep the current selection [*], otherwise press the number of the choice: 2
+ update-alternatives: use/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java in manual mode to provide /usr/bin/java (java)
+
+** Installation on Windows environment
+
+To install JDK8 on Windows, obtain the MSI file from the above site and execute it to install it, or for files other than MSI, install according to the instructions of the source. After installation, open the command prompt as in the case of Linux above
+ java -version
+
+And confirm the installation.

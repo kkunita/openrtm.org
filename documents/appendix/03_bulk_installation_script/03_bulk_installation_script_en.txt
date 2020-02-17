@@ -1,0 +1,120 @@
+// Title: Bulk Installation script
+#contents(5)
+
+** Where to get the bulk installation script
+Where to get the installation scripts provided by openrtm.org. Right-click the following link and select [Copy Link URL] (for Firefox) to get the URL and download it with a command such as wget (the method is shown below), or [Name Select "Save link as" (for Firefox) and download. Please execute the downloaded script with root authority. In these scripts, the necessary packages are installed sequentially using apt-get (in Ubuntu, Debian, and Raspbian case).
+
+- [[Bulk installation script for Ubuntu>https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_ubuntu.sh]]
+- [[Bulk installation script for Debian>https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_debian.sh]]
+- [[Bulk installation script for Raspbian>https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_raspbian.sh]]
+- [[Bulk installation script for Fedora>https://raw.githubusercontent.com/OpenRTM/OpenRTM-aist/master/scripts/pkg_install_fedora.sh]]
+
+This script can be installed by specifying the options, according to the purpose.
+
+However, this script installs all packages related to OpenRTM-aist, so unnecessary packages may also be installed.
+If you are familiar with it, you can also install it manually.
+
+** pkg_install_{ubuntu|debian|raspbian}.sh
+
+The available options are the same, but pkg_install_raspbian.sh does not support openrtp installation. Therefore, openrtp cannot be used as an argument of the -l option.
+
+*** Option list
+  Usage:
+    pkg_install_ubuntu.sh -l {all|c++} [-r|-d|-s|-c] [-u|--yes]
+    pkg_install_ubuntu.sh [-u|--yes]
+    pkg_install_ubuntu.sh -l {python|java} [-r|-d|-c] [-u|--yes]
+    pkg_install_ubuntu.sh -l {openrtp|rtshell} [-d] [-u|--yes]
+    pkg_install_ubuntu.sh  {--help|-h|--version}
+ 
+  Example:
+    pkg_install_ubuntu.sh  [= pkg_install_ubuntu.sh -l all -d]
+    pkg_install_ubuntu.sh -l all -d  
+    pkg_install_ubuntu.sh -l c++ -c --yes
+    pkg_install_ubuntu.sh -l all -u
+   
+  Options:
+    -l <argument>  language or tool {c++|python|java|openrtp|rtshell|all}
+        all        install packages of all the supported languages and tools
+    -r             install robot component runtime
+    -d             install for robot component developer [default]
+    -s             install tool packages for building from the source code
+    -c             install tool packages for core developer
+    -u             uninstall packages
+    --yes          force yes 
+    --help, -h     print this
+    --version      print the version number
+
+Where "-l all" specifies that packages for all supported languages ​​and tools will be installed.
+
+By specifying the option, the package shown below will be installed.
+
+*** List of deb packages to be installed
+Red letters indicate packages that are uninstalled when -u (uninstall) is specified.
+
+#ref(deb-list.png,nolink,right,center)
+
+
+** pkg_install_fedora.sh
+
+//pkg_install_fedora.sh does not support the following packages:
+
+//-OpenRTM-aist-1.1.2-RELEASE
+//-rtshell
+
+
+*** Option list
+  Usage:
+    pkg_install_fedora.sh -l {all|c++} [-r|-d|-s|-c] [-u|--yes]
+    pkg_install_fedora.sh [-u|--yes]
+    pkg_install_fedora.sh -l {python|java} [-r|-d|-c] [-u|--yes]
+    pkg_install_fedora.sh -l {openrtp|rtshell} [-d] [-u|--yes]
+    pkg_install_fedroa.sh  {--help|-h|--version}
+ 
+  Example:
+    pkg_install_fedora.sh  [= pkg_install_fedora.sh -l all -d]
+    pkg_install_fedora.sh -l all -d  
+    pkg_install_fedora.sh -l python -c --yes
+ 
+  Options:
+    -l <argument>  language or tool {c++|python|java|openrtp|rtshell|all}
+        all:       install packages for all the supported languages and tools
+    -r             install robot component runtime
+    -d             install for robot component developer [default]
+    -s             install tool packages for building from the source code
+    -c             install tool packages for core developer
+    -u             uninstall packages
+    --yes          force yes
+    --help, -h     print this
+    --version      print the version number
+
+*** List of rpm packages to be installed
+
+Red letters indicate packages that are uninstalled when -u is specified.
+#ref(rpm-list.png, nolink, right, center)
+
+** How to use batch installation script
+
+Below are the download and installation method using the batch installation script. (Replace "ubuntu" with "debian", "raspbian", or "fedora", depending on the distribution you are installing.)
+
+Download the batch installation script for your environment using the following command.
+ $ wget <Download URL of pkg_install_ubuntu.sh>
+
+
+**** Install C ++ version
+
+This is a recommended input example for those who install the C ++ version for the first time. Specify the target language by adding only the option "-l" and perform a default installation without specifying any other options (or with the -d option).
+ $ sudo sh ./pkg_install_ubuntu.sh -l c ++
+
+**** Install Python version (omit "Y" input)
+This is a recommended input example for those who install the Python version for the first time. By adding the option "--yes", you can skip the installation confirmation question and enter "Y". No other options are specified, so the same ones specified with the -d option will be installed.
+ $ sudo sh ./pkg_install_ubuntu.sh -l python --yes
+
+**** Install packages required for C ++ version, Python version and core development (Development of OpenRTM-aist itself)
+Install the packages required for core development by adding the option "-c", and omit the input of "Y" with the option "--yes".
+ $ sudo sh ./pkg_install_ubuntu.sh -l c ++ -l python -c --yes
+
+**** Uninstall C ++ version
+Uninstall the C ++ version by adding the option "-u".
+
+For the packages to be uninstalled, check [[List of deb packages to be installed: # toc3]] and [[List of rpm packages to be installed: # toc6]].
+ $ sudo ./pkg_install_ubuntu.sh -l c ++ -u

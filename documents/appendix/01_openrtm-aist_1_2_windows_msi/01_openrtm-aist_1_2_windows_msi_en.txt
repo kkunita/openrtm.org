@@ -16,4 +16,4 @@ You must install Python before installing OpenRTM-aist. '' You need to install t
 Download and install the installer from the link below, OpenRTM-aist-1.2.x-RELEASE_x86_64.msi for the 64-bit version, and OpenRTM-aist-1.2.x-RELEASE_x86.msi for the 32-bit version.
 
 - [[OpenRTM-aist 1.2.1:https://github.com/OpenRTM/OpenRTM-aist/releases/tag/v1.2.1]]
-- [[OpenRTM.org Download page>/ja/download/openrtm-aist-cpp/openrtm-aist-cpp_1_2_1_release]]
+- [[OpenRTM.org Download page>//node/6935]]
