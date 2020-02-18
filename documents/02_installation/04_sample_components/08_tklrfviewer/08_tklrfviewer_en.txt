@@ -1,0 +1,36 @@
+#contents
+
+This sample comes only with the Python version.
+
+*** Overview
+tkLRFViewer is an example of an RTC that displays the output from a Laser Range Finder sensor. Connect and use the RTC that handles the input from the laser range finder. Enter the RTC to be connected according to the device to be connected. For example, see [[Hokuyo Electric Co., Ltd. URG series>//node/5085]]. The LRF sensor is a sensor that scans the space while rotating the Laser rangefinder and sends out the measured distance data sequentially. Data is output in the form of the initial value and end value of the rotation angle, the angle interval at which each distance data is measured, and a series of measured distance data. This component is to show the scanned data by using a graphic format.
+
+*** Start screen
+When this component is started, the following GUI screen is displayed.
+
+#ref(tklrfviewGui.png,100%,center)
+CENTER:''tkLRFViewer GUI screen''
+
+*** How to use
+To use this RTC, as described above, read the sensor output from the externally connected Laser Range Finder sensor, convert it, and convert it to a [[RangeData type>https://github.com/Nobu19800/DataTypeManual/blob/master/docs/RobotInterface.md#rangedata]] and also refer to the above link about the laser range finder sensor. 
+
+- In the Windows environment, this tkLRFViewer component can be started by double-clicking tkLRFViewer.bat in the "Program Files \ OpenRTM-aist \ 1.2.x \ Components \ Python" directory in Explorer. And start the RTC for the sensor and connect to this component by using RTSystemEditor or RTShell.
+- The tkLRFViewer GUI has four sliders that determine the parameters of [Scale Factor], [Threshold], [Filter (Time)], and [Filter (Spacial)]. There are checkboxes for [Axis], [Grid], [Line], [Fill], [Threshold], [Filter (Time)], and [Fileter (Spacial)]. And there is [Reset Scale] button. The functions of each one are shown in the table below.
+
+|LEFT:30|LEFT:80|c
+|Name|function|
+|Scale Factor|When drawing, the distance is based on a space of 480m x 480m, and scale is used to scale the drawing by a scale value. For detecting a general range of about several m x several m, 0.01 It is better to set the value to|
+|Reset Scale button|Button to reset to Scale Factor 1.0|
+|Axis checkbox|If this checkbox is checked, the X and Y axes will be displayed|
+|Grid checkbox|Tick marks are displayed when this checkbox is checked|
+|Line checkbox|Distance data is drawn as a line when this checkbox checked|
+|Fill checkbox|Distance data is drawn as a filled object when this checkbox checked|
+|Threshold checkbox and slider|If checked, the parameter is enabled and the lower limit (*) is processed. If the input distance is smaller than that value, it is considered invalid and the detection distance is assumed to be 1000m|
+|Fileter (Time) checkbox and slider|If checked, filters for time-domain changes is enabled and the degree of the effect is adjusted with the slider|
+|Fileter (Spacial) checkbox and slider|If checked, filters for changes in scan data in the rotation direction are enabled, and the degree of the effect is adjusted with the slider|
+Note) The current display scale and the way Threshold works are not effective settings in the real world. It is recommended to rewrite and adjust the source code according to the user environment.
+
+* GUI output example
+The GUI will output something like the following screen.
+#ref(tkLRFViewGUIinUse.png,100%,center)
+CENTER:''GUI screen in use ''
