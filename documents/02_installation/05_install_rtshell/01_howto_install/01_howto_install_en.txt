@@ -1,0 +1,16 @@
+// Title: How to install
+
+#contents
+
+To install RTShell, you need to install OpenRTM-aist-Python because RTShell is a Python program. Therefore, to use RTShell, it is required to installOpenRTM-aist-Python and RTShell, and installation of Python execution environment. (The bulk installation script for Linux installs Python in the script, but in the case of Windows the msi install needs to be installed beforehand. The supported Python version is 3.7, 3.6, 2.7.
+
+** Installation on Windows
+*** Install OpenRTM-aist
+Please install OpenRTM-aist by msi installer. Please refer to the following page for the procedure. &br;
+[[OpenRTM-aist 1.2 installation (Windows, using msi installer)>//node/6652]]
+
+** Installation on Linux environment
+Use [[bulk installation script>//node/6990]] and install rtshell_post_install after installing OpenRTM-asit-Python and RTShell with "-l python" and "-l rtshell" options. For example, for Ubuntu 18.04
+ sudo sh ./pkg_install_ubuntu.sh -l python --yes
+ sudo sh ./pkg_install_ubuntu.sh -l rtshell --yes
+ sudo rtshell_post_install

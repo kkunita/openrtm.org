@@ -1,0 +1,19 @@
+// Title: インストール方法
+
+#contents
+
+RTShellのインストールにはRTShellがPythonのプログラムであるため、OpenRTM-aist-Pythonのインストールが必要になります。よって、インストールはOpenRTM-aist-PythonとRTShellのインストール、およびPythonの実行環境のインストールが必要になる場合があります。(Linuxの一括インストールはそのスクリプトの中でPythonのインストールを行いますが、Windowsのmsiのケースは前もってインストールをする必要があります。なお対応しているPythonのバージョンは3.7、3.6、2.7です。
+
+** Windowsへのインストール
+*** OpenRTM-aistのインストール
+msiインストーラーによるOpenRTM-aistをインストールしてください。手順については下記のページを参照してください。&br;
+[[OpenRTM-aist 1.2系のインストール(Windows、msiインストーラー使用):/ja/node/6652]]
+
+** Linux環境へのインストール
+[[一括インストールスクリプト>//node/6345]]を用いて、"-l python"と"-l rtshell"オプションでOpenRTM-asit-PythonとRTShellをインストールをした後にrtshell_post_installを実行してください。例えばUbuntu 18.04の場合は
+//英語版はnode/6990
+ sudo sh ./pkg_install_ubuntu.sh -l python --yes
+ sudo sh ./pkg_install_ubuntu.sh -l rtshell --yes
+ sudo rtshell_post_install
+でインストールができます。
+
