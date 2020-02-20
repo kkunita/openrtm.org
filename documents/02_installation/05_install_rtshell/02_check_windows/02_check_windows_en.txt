@@ -3,7 +3,7 @@
 ** Operation check environment
 The following explanation is based on the environment where OpenRTM-aist is installed to the Windows OS environment by using the msi installer with the default options.
 
-We use the sample component set SimpleIO to check if RTShell was installed correctly.
+We use the sample component set SimpleIO to check if rtshell was installed correctly.
 
 ** About sample RTC set (SimpleIO)
 
@@ -67,7 +67,7 @@ Set the environment variable OMNIORB_USEHOSTNAME as follows (the example below i
  Variable name (N): OMNIORB_USEHOSTNAME
  Variable value (V): 192.168.0.11
 
-** RTShell Operations
+** rtshell Operations
 
 - Open a command-line console.
 

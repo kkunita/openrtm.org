@@ -1,2 +1,2 @@
-OpenRTM-aist provides a tool called RTShell as a tool for operating RTC on the command line. RTShell is a tool that can manage RT components registered on the name server,
-You can activate/deactivate/reset components and connect ports. You can also manage the RT system. This section describes how to install the software and how to check the operation. Please refer to [[RTShell>//node/1305]] for usage other than installation.
+OpenRTM-aist provides a tool called rtshell as a tool for operating RTC on the command line. rtshell is a tool that can manage RT components registered on the name server,
+You can activate/deactivate/reset components and connect ports. You can also manage the RT system. This section describes how to install the software and how to check the operation. Please refer to [[rtshell>//node/1305]] for usage other than installation.
