@@ -1,0 +1,73 @@
+// Title: Operation check (On Linux)
+After successful installation, test the operation with the attached sample. Samples are usually located at:
+
+- /usr/share/openrtm-1.2/components/python/<sample component set name>
+
+Check that OpenRTM-aist is built and installed correctly using the sample component set SimpleIO.
+
+#contents(3)
+
+
+** Sample component set SimpleIO
+
+This is a sample set consisting of RT components ConsoleIn and ConsoleOut. ConsoleIn is a component that outputs numerical values ​​input from the console from OutPort, and ConsoleOut is a component that displays numerical values ​​input to InPort on the console. These are samples to show simple I/O (input/output) operations. It works by connecting ConsoleIn's OutPort to ConsoleOut's InPort and activating these two components.
+
+The samples are under /usr/share/openrtm-1.2/components/python/SimpleIO, and the description is described assuming that the search path is set in the executable file of Python itself.
+
+
+** Operation check using sample
+
+*** Start name server
+- Start the name server. It can be started with the following command.
+ $ sudo python /user/lib/{python2.7|python3.6|python3.7}/dist-packages/OpenRTM_aist/utils/rtm-naming/rtm-naming.py
+ 
+  Here, {Python2.7|python3.6|python3.7} changes depending on the version of Python that was installed in the Linux environment. 
+  If Python 2.7 was installed with OpenRTM-aist-Python, it is "Python2.7". (The default for Ubuntu 18.04 is Python 2.7. However the 
+  version of Python is now "End of Support", then it might be changed.) 
+
+The following screen will be displayed.
+#ref(startnameservice002.png, center)
+CENTER:''Name server screen''
+
+*** Start sample component
+- Open a terminal.
+- In the terminal, change the current directory to /usr/share/openrtm-1.2/components/python/SimpleIO/ or <source directory> / OpenRTM_aist / examples / SimpleIO if the source is built. For example
+ $ cd /usr/share/openrtm-1.2/components/python/SimpleIO
+
+- Start the ConsoleIn component with the following command.
+ $ python ConsoleIn.py
+- Open another terminal.
+- Set the current directory to the same location as above.
+- Start the ConsoleOut component with the following command.
+ $ python ConsoleOut.py
+
+**** Check name on name service
+- Open another terminal
+- Using the following command, check the name as follows.
+ $ rtls -R localhost
+ .:
+ ConsoleIn0.rtc ConsoleOut0.rtc
+
+*** Connecting sample components
+- Connect the ConsoleIn0 component and ConsoleOut0 with the following commands. 
+ $ rtcon /localhost/ConsoleIn0.rtc:out /localhost/ConsoleOut0.rtc:in
+
+*** Activate sample component
+- In the above terminal
+ $ rtact /localhost/ConsoleIn0.rtc /localhost/ConsoleOut0.rtc
+
+Then, the screen of the terminal that started Consolein.py and ConsoleOut.py will be displayed, and the terminal will change to the prompt “Please input number:” on the terminal that started ConsoleIn.py.
+#ref(simpleio_ubuntu.png, center)
+CENTER:''Terminal screen of ConsoleIn and ConsoleOut components after activation''
+- Enter an appropriate number (within the range of short int: 32767 or less) and press the Enter key.
+- The same value as the entered value is displayed on the ConsoleOut.py terminal screen. You can see that the data has been transferred from the ConsoleIn component to the ConsoleOut component.
+
+*** Deactivate and terminate sample components
+- Deactivate with the following command.
+ $ rtdeact /localhost/ConsoleIn0.rtc /localhost/ConsoleOut0.rtc
+- The ConsoleIn.py terminal is waiting for input, so enter a suitable number: 32767 or less and press Enter.
+- Enter the following command and confirm that ConsoleIn.py and ConsoleOut.py have finished executing in each terminal.
+ $ rtexit /localhost/ConsoleIn0.rtc
+ $ rtexit /localhost/ConsoleOut0.rtc
+
+This concludes the confirmation of the basic operation of the component using the command line.
