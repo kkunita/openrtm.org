@@ -1,4 +1,4 @@
-﻿// Title: OpenCVCamera
+﻿// Title: OpenCVCamera/CameraViewer and Simple OpenCV Sample RTCs
 #contents
 
 This sample is included with OpenRTM-aist C ++ Windows version.

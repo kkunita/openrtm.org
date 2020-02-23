@@ -1,4 +1,4 @@
-﻿// Title: TkMotorPosComp / SliderComp 
+﻿// Title: TkMotorPosComp/SliderComp 
 #contents
 
 ** TkMotorPosComp

@@ -1,4 +1,4 @@
-﻿// Title: OpenCVCamera
+﻿// Title: OpenCVCamera/CameraViewerとシンプルOpenCVサンプル
 #contents
 
 OpenRTM-aistのPython版、Java版には付属していませんのでご注意ください。また、Linux上では、[[LinuxにおけるOpenCVサンプルコードのビルド手順>//node/6974]]に従ってビルドしてインストールしてください。
