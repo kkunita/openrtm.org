@@ -1,0 +1,98 @@
+// Title: Operation check (Windows)
+#contents(3)
+** Operation check environment
+The following explanation is based on the environment where OpenRTM-aist is installed to the Windows OS environment by using the msi installer with the default options.
+
+We use the sample component set SimpleIO to check if rtshell was installed correctly.
+
+** About sample RTC set (SimpleIO)
+
+Use a sample set consisting of the RT components ConsoleIn and ConsoleOut. ConsoleIn is a component that outputs the numerical values ​​input from the console from OutPort, and ConsoleOut is a component that displays the numerical values ​​input to InPort on the console. These are samples to show simple I/O (input/output) operations. It works by connecting from ConsoleIn's OutPort to ConsoleOut's InPort and activating these two components.
+
+** Start Name Server
+First, start Name Server by the following procedure.
+- Enter "start naming service" in [Type here to search] at the bottom left of the screen.
+- Click [Start Naming Service].
+#ref(rtshell6_en.png, center, 50%)
+CENTER:''Start Naming Service''
+-The following screen will be displayed.
+#ref(rtshell5.png, center, 50%)
+CENTER:''Name service screen output''
+
+** Start sample component
+Start the sample component.
+
+In the case of Windows 10, enter "Python_Examples" in the "Search here by typing here" on the lower right, and open Explorer in the directory of the startup file of the sample component.
+
+#ref(rtm8-2_en.png, 80%, center)
+CENTER:''Sample component startup file''
+
+Double-click "ConsoleIn.bat" and "ConsoleOut.bat" to start the two components. When started, two console screens as shown below will open.
+Also, since the sample components are usually installed under the following directory, you can start them directly with Explorer from there.
+-C: \ Program Files \ OpenRTM-aist \ 1.2. & Color (blue) {x}; \ Components \ Python
+
+#ref(rtm9-2.png, 60%, center)
+CENTER:''ConsoleIn and ConsoleOut components''
+
+
+*** If the component does not start
+
+If the component does not start, there are several possible causes.
+
+**** Console screen opens and disappears immediately
+
+There are cases where there is a problem with the settings of rtc.conf and it cannot start. Open the Examples\SimpleIO\rtc.conf file under the directory where the above sample startup file is located, and check the settings. For example, if settings such as corba.endpoint/corba.endpoints are mismatched with the host address of the currently running PC, CORBA will terminate abnormally.
+
+Please re-write the line to the following minimum rtc.conf line and try again.
+ corba.nameservers: localhost
+
+**** omniORBpy is not installed.
+
+The msi installer provided by openrtm.org includes omniORBpy, but if you choose a custom installation, you can install OpenRTM-aist-Python without installing omniORBpy. Also, if you have installed it manually, you may not have omniORBpy installed, so check if omniORBpy is installed.
+
+**** The association of py files is different
+
+The file that starts ConsoleIn and ConsoleOut is
+
+C:\Program Files\OpenRTM-aist\1.2. &Color(blue){x};\Components\Python\Examples\SimpleIO\ConsoleIn.py & br;
+C:\Program Files\OpenRTM-aist\1.2. &Color(blue){x};\Components\Python\Examples\SimpleIO\ConsoleOut.py
+
+So double click on these files. If it does not start well, the file association is wrong.
+
+**** Other
+
+There are cases where the startup does not work due to problems with the hostname and the address settings. In that case, if you give omniNames.exe the IP address of the PC you are using, it may work.
+Set the environment variable OMNIORB_USEHOSTNAME as follows (the example below is assumed that the IP address of the local host is 192.168.0.11).
+
+ Variable name (N): OMNIORB_USEHOSTNAME
+ Variable value (V): 192.168.0.11
+
+** rtshell Operations
+
+- Open a command-line console.
+
+- Execute the command rtls from the command-line as shown below, and check that the display is as follows.
+ C: \ Users \ openrtm> rtls -R 127.0.0.1
+ .:
+ ConsoleIn0.rtc ConsoleOut0.rtc
+
+- Connect the ConsoleIn and ConsoleOut components.
+ rtcon /localhost/ConsoleIn0.rtc:out /localhost/ConsoleOut0.rtc:in
+
+- Activate the ConsoleIn and ConsoleOut components.
+ rtact /localhost/ConsoleIn0.rtc /localhost/ConsoleOut0.rtc
+
+- The ConsoleIn and the ConsoleOut consoles will change as follows, and "Please Input number:" will be displayed on the ConsoleIn side console.
+
+#ref(rtm9-3.png, center, 50%)
+
+- Enter a number (within a 16-bit integer range) from the ConsoleIn console and press Enter.
+
+- Confirm that the value entered on the ConsoleIn console is displayed on the ConsoleOut console.
+If the same number is displayed, the operation was confirmed.
+- Enter as follows to deactivate.
+ rtdeact /localhost/ConsoleIn0.rtc /localhost/ConsoleOut0.rtc
+At this time, enter the numerical value on the console of ConsoleIn.py and press the Enter key to cancel the waiting state. afterwards
+ rtexit /localhost/ConsoleIn0.rtc
+ rtexit /localhost/ConsoleOut0.rtc
+And confirm that the console closes.
